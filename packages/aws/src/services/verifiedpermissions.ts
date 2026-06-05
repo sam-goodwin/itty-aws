@@ -2532,7 +2532,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceOutput,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [
@@ -2563,7 +2563,7 @@ export const tagResource: API.OperationMethod<
   TagResourceOutput,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
   errors: [
@@ -2588,7 +2588,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceOutput,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
   errors: [
@@ -2614,7 +2614,7 @@ export const createPolicyStore: API.OperationMethod<
   CreatePolicyStoreOutput,
   CreatePolicyStoreError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePolicyStoreInput,
   output: CreatePolicyStoreOutput,
   errors: [ConflictException, ServiceQuotaExceededException],
@@ -2628,7 +2628,7 @@ export const getPolicyStore: API.OperationMethod<
   GetPolicyStoreOutput,
   GetPolicyStoreError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPolicyStoreInput,
   output: GetPolicyStoreOutput,
   errors: [ResourceNotFoundException],
@@ -2647,7 +2647,7 @@ export const updatePolicyStore: API.OperationMethod<
   UpdatePolicyStoreOutput,
   UpdatePolicyStoreError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePolicyStoreInput,
   output: UpdatePolicyStoreOutput,
   errors: [ConflictException, ResourceNotFoundException],
@@ -2663,7 +2663,7 @@ export const deletePolicyStore: API.OperationMethod<
   DeletePolicyStoreOutput,
   DeletePolicyStoreError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePolicyStoreInput,
   output: DeletePolicyStoreOutput,
   errors: [InvalidStateException],
@@ -2692,7 +2692,7 @@ export const listPolicyStores: API.OperationMethod<
     ListPolicyStoresError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPolicyStoresInput,
   output: ListPolicyStoresOutput,
   errors: [],
@@ -2718,7 +2718,7 @@ export const batchIsAuthorized: API.OperationMethod<
   BatchIsAuthorizedOutput,
   BatchIsAuthorizedError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchIsAuthorizedInput,
   output: BatchIsAuthorizedOutput,
   errors: [ResourceNotFoundException],
@@ -2740,7 +2740,7 @@ export const batchIsAuthorizedWithToken: API.OperationMethod<
   BatchIsAuthorizedWithTokenOutput,
   BatchIsAuthorizedWithTokenError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchIsAuthorizedWithTokenInput,
   output: BatchIsAuthorizedWithTokenOutput,
   errors: [ResourceNotFoundException],
@@ -2754,7 +2754,7 @@ export const getSchema: API.OperationMethod<
   GetSchemaOutput,
   GetSchemaError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSchemaInput,
   output: GetSchemaOutput,
   errors: [ResourceNotFoundException],
@@ -2768,7 +2768,7 @@ export const isAuthorized: API.OperationMethod<
   IsAuthorizedOutput,
   IsAuthorizedError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: IsAuthorizedInput,
   output: IsAuthorizedOutput,
   errors: [ResourceNotFoundException],
@@ -2788,7 +2788,7 @@ export const isAuthorizedWithToken: API.OperationMethod<
   IsAuthorizedWithTokenOutput,
   IsAuthorizedWithTokenError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: IsAuthorizedWithTokenInput,
   output: IsAuthorizedWithTokenOutput,
   errors: [ResourceNotFoundException],
@@ -2808,7 +2808,7 @@ export const putSchema: API.OperationMethod<
   PutSchemaOutput,
   PutSchemaError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutSchemaInput,
   output: PutSchemaOutput,
   errors: [
@@ -2828,7 +2828,7 @@ export const batchGetPolicy: API.OperationMethod<
   BatchGetPolicyOutput,
   BatchGetPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetPolicyInput,
   output: BatchGetPolicyOutput,
   errors: [],
@@ -2858,7 +2858,7 @@ export const createIdentitySource: API.OperationMethod<
   CreateIdentitySourceOutput,
   CreateIdentitySourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateIdentitySourceInput,
   output: CreateIdentitySourceOutput,
   errors: [
@@ -2876,7 +2876,7 @@ export const getIdentitySource: API.OperationMethod<
   GetIdentitySourceOutput,
   GetIdentitySourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIdentitySourceInput,
   output: GetIdentitySourceOutput,
   errors: [ResourceNotFoundException],
@@ -2895,7 +2895,7 @@ export const updateIdentitySource: API.OperationMethod<
   UpdateIdentitySourceOutput,
   UpdateIdentitySourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateIdentitySourceInput,
   output: UpdateIdentitySourceOutput,
   errors: [ConflictException, ResourceNotFoundException],
@@ -2912,7 +2912,7 @@ export const deleteIdentitySource: API.OperationMethod<
   DeleteIdentitySourceOutput,
   DeleteIdentitySourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteIdentitySourceInput,
   output: DeleteIdentitySourceOutput,
   errors: [ConflictException, ResourceNotFoundException],
@@ -2941,7 +2941,7 @@ export const listIdentitySources: API.OperationMethod<
     ListIdentitySourcesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIdentitySourcesInput,
   output: ListIdentitySourcesOutput,
   errors: [ResourceNotFoundException],
@@ -2973,7 +2973,7 @@ export const createPolicy: API.OperationMethod<
   CreatePolicyOutput,
   CreatePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePolicyInput,
   output: CreatePolicyOutput,
   errors: [
@@ -2991,7 +2991,7 @@ export const getPolicy: API.OperationMethod<
   GetPolicyOutput,
   GetPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPolicyInput,
   output: GetPolicyOutput,
   errors: [ResourceNotFoundException],
@@ -3031,7 +3031,7 @@ export const updatePolicy: API.OperationMethod<
   UpdatePolicyOutput,
   UpdatePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePolicyInput,
   output: UpdatePolicyOutput,
   errors: [
@@ -3054,7 +3054,7 @@ export const deletePolicy: API.OperationMethod<
   DeletePolicyOutput,
   DeletePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePolicyInput,
   output: DeletePolicyOutput,
   errors: [ConflictException, ResourceNotFoundException],
@@ -3083,7 +3083,7 @@ export const listPolicies: API.OperationMethod<
     ListPoliciesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPoliciesInput,
   output: ListPoliciesOutput,
   errors: [ResourceNotFoundException],
@@ -3109,7 +3109,7 @@ export const createPolicyTemplate: API.OperationMethod<
   CreatePolicyTemplateOutput,
   CreatePolicyTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePolicyTemplateInput,
   output: CreatePolicyTemplateOutput,
   errors: [
@@ -3127,7 +3127,7 @@ export const getPolicyTemplate: API.OperationMethod<
   GetPolicyTemplateOutput,
   GetPolicyTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPolicyTemplateInput,
   output: GetPolicyTemplateOutput,
   errors: [ResourceNotFoundException],
@@ -3148,7 +3148,7 @@ export const updatePolicyTemplate: API.OperationMethod<
   UpdatePolicyTemplateOutput,
   UpdatePolicyTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePolicyTemplateInput,
   output: UpdatePolicyTemplateOutput,
   errors: [ConflictException, ResourceNotFoundException],
@@ -3167,7 +3167,7 @@ export const deletePolicyTemplate: API.OperationMethod<
   DeletePolicyTemplateOutput,
   DeletePolicyTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePolicyTemplateInput,
   output: DeletePolicyTemplateOutput,
   errors: [ConflictException, ResourceNotFoundException],
@@ -3196,7 +3196,7 @@ export const listPolicyTemplates: API.OperationMethod<
     ListPolicyTemplatesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPolicyTemplatesInput,
   output: ListPolicyTemplatesOutput,
   errors: [ResourceNotFoundException],
@@ -3224,7 +3224,7 @@ export const createPolicyStoreAlias: API.OperationMethod<
   CreatePolicyStoreAliasOutput,
   CreatePolicyStoreAliasError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePolicyStoreAliasInput,
   output: CreatePolicyStoreAliasOutput,
   errors: [
@@ -3242,7 +3242,7 @@ export const getPolicyStoreAlias: API.OperationMethod<
   GetPolicyStoreAliasOutput,
   GetPolicyStoreAliasError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPolicyStoreAliasInput,
   output: GetPolicyStoreAliasOutput,
   errors: [ResourceNotFoundException],
@@ -3260,7 +3260,7 @@ export const deletePolicyStoreAlias: API.OperationMethod<
   DeletePolicyStoreAliasOutput,
   DeletePolicyStoreAliasError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePolicyStoreAliasInput,
   output: DeletePolicyStoreAliasOutput,
   errors: [InvalidStateException],
@@ -3289,7 +3289,7 @@ export const listPolicyStoreAliases: API.OperationMethod<
     ListPolicyStoreAliasesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPolicyStoreAliasesInput,
   output: ListPolicyStoreAliasesOutput,
   errors: [],

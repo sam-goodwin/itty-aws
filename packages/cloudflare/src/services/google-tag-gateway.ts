@@ -21,7 +21,7 @@ export interface GetConfigRequest {
   zoneId: string;
 }
 
-export const GetConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetConfigRequest = /*@__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
 }).pipe(
   T.Http({
@@ -43,7 +43,7 @@ export interface GetConfigResponse {
   setUpTag?: boolean | null;
 }
 
-export const GetConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetConfigResponse = /*@__PURE__*/ Schema.Struct({
   enabled: Schema.Boolean,
   endpoint: Schema.String,
   hideOriginalIp: Schema.Boolean,
@@ -60,7 +60,7 @@ export const getConfig: API.OperationMethod<
   GetConfigResponse,
   GetConfigError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConfigRequest,
   output: GetConfigResponse,
   errors: [],
@@ -81,7 +81,7 @@ export interface PutConfigRequest {
   setUpTag?: boolean | null;
 }
 
-export const PutConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PutConfigRequest = /*@__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   enabled: Schema.Boolean,
   endpoint: Schema.String,
@@ -108,7 +108,7 @@ export interface PutConfigResponse {
   setUpTag?: boolean | null;
 }
 
-export const PutConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PutConfigResponse = /*@__PURE__*/ Schema.Struct({
   enabled: Schema.Boolean,
   endpoint: Schema.String,
   hideOriginalIp: Schema.Boolean,
@@ -125,7 +125,7 @@ export const putConfig: API.OperationMethod<
   PutConfigResponse,
   PutConfigError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutConfigRequest,
   output: PutConfigResponse,
   errors: [],

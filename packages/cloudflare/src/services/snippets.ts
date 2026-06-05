@@ -22,7 +22,7 @@ export interface GetContentRequest {
   zoneId: string;
 }
 
-export const GetContentRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetContentRequest = /*@__PURE__*/ Schema.Struct({
   snippetName: Schema.String.pipe(T.HttpPath("snippetName")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
 }).pipe(
@@ -35,7 +35,7 @@ export const GetContentRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetContentResponse = unknown;
 
 export const GetContentResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<GetContentResponse>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<GetContentResponse>;
 
 export type GetContentError = DefaultErrors;
 
@@ -44,7 +44,7 @@ export const getContent: API.OperationMethod<
   GetContentResponse,
   GetContentError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetContentRequest,
   output: GetContentResponse,
   errors: [],
@@ -59,7 +59,7 @@ export interface ListRulesRequest {
   zoneId: string;
 }
 
-export const ListRulesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListRulesRequest = /*@__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
 }).pipe(
   T.Http({ method: "GET", path: "/zones/{zone_id}/snippets/snippet_rules" }),
@@ -67,10 +67,9 @@ export const ListRulesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type ListRulesResponse = unknown;
 
-export const ListRulesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<ListRulesResponse>;
+export const ListRulesResponse = /*@__PURE__*/ Schema.Unknown.pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<ListRulesResponse>;
 
 export type ListRulesError = DefaultErrors;
 
@@ -79,7 +78,7 @@ export const listRules: API.OperationMethod<
   ListRulesResponse,
   ListRulesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListRulesRequest,
   output: ListRulesResponse,
   errors: [],
@@ -97,7 +96,7 @@ export interface PutRuleRequest {
   }[];
 }
 
-export const PutRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PutRuleRequest = /*@__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   rules: Schema.Array(
     Schema.Struct({
@@ -120,7 +119,7 @@ export const PutRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type PutRuleResponse = unknown;
 
-export const PutRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
+export const PutRuleResponse = /*@__PURE__*/ Schema.Unknown.pipe(
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<PutRuleResponse>;
 
@@ -131,7 +130,7 @@ export const putRule: API.OperationMethod<
   PutRuleResponse,
   PutRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutRuleRequest,
   output: PutRuleResponse,
   errors: [],
@@ -142,7 +141,7 @@ export interface DeleteRuleRequest {
   zoneId: string;
 }
 
-export const DeleteRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteRuleRequest = /*@__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
 }).pipe(
   T.Http({ method: "DELETE", path: "/zones/{zone_id}/snippets/snippet_rules" }),
@@ -150,10 +149,9 @@ export const DeleteRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type DeleteRuleResponse = unknown;
 
-export const DeleteRuleResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<DeleteRuleResponse>;
+export const DeleteRuleResponse = /*@__PURE__*/ Schema.Unknown.pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<DeleteRuleResponse>;
 
 export type DeleteRuleError = DefaultErrors;
 
@@ -162,7 +160,7 @@ export const deleteRule: API.OperationMethod<
   DeleteRuleResponse,
   DeleteRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRuleRequest,
   output: DeleteRuleResponse,
   errors: [],
@@ -178,7 +176,7 @@ export interface GetSnippetRequest {
   zoneId: string;
 }
 
-export const GetSnippetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetSnippetRequest = /*@__PURE__*/ Schema.Struct({
   snippetName: Schema.String.pipe(T.HttpPath("snippetName")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
 }).pipe(
@@ -194,7 +192,7 @@ export interface GetSnippetResponse {
   modifiedOn?: string | null;
 }
 
-export const GetSnippetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetSnippetResponse = /*@__PURE__*/ Schema.Struct({
   createdOn: Schema.String,
   snippetName: Schema.String,
   modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -217,7 +215,7 @@ export const getSnippet: API.OperationMethod<
   GetSnippetResponse,
   GetSnippetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSnippetRequest,
   output: GetSnippetResponse,
   errors: [],
@@ -230,7 +228,7 @@ export interface ListSnippetsRequest {
   perPage?: number;
 }
 
-export const ListSnippetsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListSnippetsRequest = /*@__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
   perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
@@ -252,7 +250,7 @@ export interface ListSnippetsResponse {
   } | null;
 }
 
-export const ListSnippetsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListSnippetsResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       createdOn: Schema.String,
@@ -295,7 +293,7 @@ export const listSnippets: API.PaginatedOperationMethod<
   ListSnippetsResponse,
   ListSnippetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSnippetsRequest,
   output: ListSnippetsResponse,
   errors: [],
@@ -316,7 +314,7 @@ export interface PutSnippetRequest {
   metadata: { mainModule: string };
 }
 
-export const PutSnippetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PutSnippetRequest = /*@__PURE__*/ Schema.Struct({
   snippetName: Schema.String.pipe(T.HttpPath("snippetName")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   metadata: Schema.Struct({
@@ -339,7 +337,7 @@ export interface PutSnippetResponse {
   modifiedOn?: string | null;
 }
 
-export const PutSnippetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PutSnippetResponse = /*@__PURE__*/ Schema.Struct({
   createdOn: Schema.String,
   snippetName: Schema.String,
   modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -362,7 +360,7 @@ export const putSnippet: API.OperationMethod<
   PutSnippetResponse,
   PutSnippetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutSnippetRequest,
   output: PutSnippetResponse,
   errors: [],
@@ -374,7 +372,7 @@ export interface DeleteSnippetRequest {
   zoneId: string;
 }
 
-export const DeleteSnippetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteSnippetRequest = /*@__PURE__*/ Schema.Struct({
   snippetName: Schema.String.pipe(T.HttpPath("snippetName")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
 }).pipe(
@@ -383,10 +381,9 @@ export const DeleteSnippetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type DeleteSnippetResponse = unknown;
 
-export const DeleteSnippetResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<DeleteSnippetResponse>;
+export const DeleteSnippetResponse = /*@__PURE__*/ Schema.Unknown.pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<DeleteSnippetResponse>;
 
 export type DeleteSnippetError = DefaultErrors;
 
@@ -395,7 +392,7 @@ export const deleteSnippet: API.OperationMethod<
   DeleteSnippetResponse,
   DeleteSnippetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSnippetRequest,
   output: DeleteSnippetResponse,
   errors: [],

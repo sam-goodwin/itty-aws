@@ -223,7 +223,7 @@ export const getMedia: API.OperationMethod<
   GetMediaOutput,
   GetMediaError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMediaInput,
   output: GetMediaOutput,
   errors: [

@@ -83,22 +83,23 @@ export interface ListAvailableAlertsRequest {
   accountId: string;
 }
 
-export const ListAvailableAlertsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/alerting/v3/available_alerts",
-    }),
-  ) as unknown as Schema.Schema<ListAvailableAlertsRequest>;
+export const ListAvailableAlertsRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/alerting/v3/available_alerts",
+  }),
+) as unknown as Schema.Schema<ListAvailableAlertsRequest>;
 
 export type ListAvailableAlertsResponse = Record<string, unknown>;
 
-export const ListAvailableAlertsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Record(Schema.String, Schema.Unknown).pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<ListAvailableAlertsResponse>;
+export const ListAvailableAlertsResponse = /*@__PURE__*/ Schema.Record(
+  Schema.String,
+  Schema.Unknown,
+).pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<ListAvailableAlertsResponse>;
 
 export type ListAvailableAlertsError = DefaultErrors | InvalidRoute;
 
@@ -107,7 +108,7 @@ export const listAvailableAlerts: API.OperationMethod<
   ListAvailableAlertsResponse,
   ListAvailableAlertsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListAvailableAlertsRequest,
   output: ListAvailableAlertsResponse,
   errors: [InvalidRoute],
@@ -122,22 +123,23 @@ export interface GetDestinationEligibleRequest {
   accountId: string;
 }
 
-export const GetDestinationEligibleRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/alerting/v3/destinations/eligible",
-    }),
-  ) as unknown as Schema.Schema<GetDestinationEligibleRequest>;
+export const GetDestinationEligibleRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/alerting/v3/destinations/eligible",
+  }),
+) as unknown as Schema.Schema<GetDestinationEligibleRequest>;
 
 export type GetDestinationEligibleResponse = Record<string, unknown>;
 
-export const GetDestinationEligibleResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Record(Schema.String, Schema.Unknown).pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<GetDestinationEligibleResponse>;
+export const GetDestinationEligibleResponse = /*@__PURE__*/ Schema.Record(
+  Schema.String,
+  Schema.Unknown,
+).pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<GetDestinationEligibleResponse>;
 
 export type GetDestinationEligibleError = DefaultErrors | InvalidRoute;
 
@@ -146,7 +148,7 @@ export const getDestinationEligible: API.OperationMethod<
   GetDestinationEligibleResponse,
   GetDestinationEligibleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDestinationEligibleRequest,
   output: GetDestinationEligibleResponse,
   errors: [InvalidRoute],
@@ -161,29 +163,27 @@ export interface GetDestinationPagerdutyRequest {
   accountId: string;
 }
 
-export const GetDestinationPagerdutyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/alerting/v3/destinations/pagerduty",
-    }),
-  ) as unknown as Schema.Schema<GetDestinationPagerdutyRequest>;
+export const GetDestinationPagerdutyRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/alerting/v3/destinations/pagerduty",
+  }),
+) as unknown as Schema.Schema<GetDestinationPagerdutyRequest>;
 
 export interface GetDestinationPagerdutyResponse {
   result: { id?: string | null; name?: string | null }[];
 }
 
-export const GetDestinationPagerdutyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }),
-    ),
-  }) as unknown as Schema.Schema<GetDestinationPagerdutyResponse>;
+export const GetDestinationPagerdutyResponse = /*@__PURE__*/ Schema.Struct({
+  result: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+  ),
+}) as unknown as Schema.Schema<GetDestinationPagerdutyResponse>;
 
 export type GetDestinationPagerdutyError = DefaultErrors;
 
@@ -192,7 +192,7 @@ export const getDestinationPagerduty: API.PaginatedOperationMethod<
   GetDestinationPagerdutyResponse,
   GetDestinationPagerdutyError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetDestinationPagerdutyRequest,
   output: GetDestinationPagerdutyResponse,
   errors: [],
@@ -207,27 +207,25 @@ export interface CreateDestinationPagerdutyRequest {
   accountId: string;
 }
 
-export const CreateDestinationPagerdutyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/alerting/v3/destinations/pagerduty/connect",
-    }),
-  ) as unknown as Schema.Schema<CreateDestinationPagerdutyRequest>;
+export const CreateDestinationPagerdutyRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/accounts/{account_id}/alerting/v3/destinations/pagerduty/connect",
+  }),
+) as unknown as Schema.Schema<CreateDestinationPagerdutyRequest>;
 
 export interface CreateDestinationPagerdutyResponse {
   /** token in form of UUID */
   id?: string | null;
 }
 
-export const CreateDestinationPagerdutyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<CreateDestinationPagerdutyResponse>;
+export const CreateDestinationPagerdutyResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+}).pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<CreateDestinationPagerdutyResponse>;
 
 export type CreateDestinationPagerdutyError = DefaultErrors | InvalidRoute;
 
@@ -236,7 +234,7 @@ export const createDestinationPagerduty: API.OperationMethod<
   CreateDestinationPagerdutyResponse,
   CreateDestinationPagerdutyError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDestinationPagerdutyRequest,
   output: CreateDestinationPagerdutyResponse,
   errors: [InvalidRoute],
@@ -247,15 +245,14 @@ export interface DeleteDestinationPagerdutyRequest {
   accountId: string;
 }
 
-export const DeleteDestinationPagerdutyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/accounts/{account_id}/alerting/v3/destinations/pagerduty",
-    }),
-  ) as unknown as Schema.Schema<DeleteDestinationPagerdutyRequest>;
+export const DeleteDestinationPagerdutyRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/accounts/{account_id}/alerting/v3/destinations/pagerduty",
+  }),
+) as unknown as Schema.Schema<DeleteDestinationPagerdutyRequest>;
 
 export interface DeleteDestinationPagerdutyResponse {
   errors: { message: string; code?: number | null }[];
@@ -264,22 +261,21 @@ export interface DeleteDestinationPagerdutyResponse {
   success: true;
 }
 
-export const DeleteDestinationPagerdutyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    errors: Schema.Array(
-      Schema.Struct({
-        message: Schema.String,
-        code: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      }),
-    ),
-    messages: Schema.Array(
-      Schema.Struct({
-        message: Schema.String,
-        code: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      }),
-    ),
-    success: Schema.Literal(true),
-  }) as unknown as Schema.Schema<DeleteDestinationPagerdutyResponse>;
+export const DeleteDestinationPagerdutyResponse = /*@__PURE__*/ Schema.Struct({
+  errors: Schema.Array(
+    Schema.Struct({
+      message: Schema.String,
+      code: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    }),
+  ),
+  messages: Schema.Array(
+    Schema.Struct({
+      message: Schema.String,
+      code: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    }),
+  ),
+  success: Schema.Literal(true),
+}) as unknown as Schema.Schema<DeleteDestinationPagerdutyResponse>;
 
 export type DeleteDestinationPagerdutyError = DefaultErrors | InvalidRoute;
 
@@ -288,7 +284,7 @@ export const deleteDestinationPagerduty: API.OperationMethod<
   DeleteDestinationPagerdutyResponse,
   DeleteDestinationPagerdutyError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDestinationPagerdutyRequest,
   output: DeleteDestinationPagerdutyResponse,
   errors: [InvalidRoute],
@@ -300,28 +296,26 @@ export interface LinkDestinationPagerdutyRequest {
   accountId: string;
 }
 
-export const LinkDestinationPagerdutyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tokenId: Schema.String.pipe(T.HttpPath("tokenId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/alerting/v3/destinations/pagerduty/connect/{tokenId}",
-    }),
-  ) as unknown as Schema.Schema<LinkDestinationPagerdutyRequest>;
+export const LinkDestinationPagerdutyRequest = /*@__PURE__*/ Schema.Struct({
+  tokenId: Schema.String.pipe(T.HttpPath("tokenId")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/alerting/v3/destinations/pagerduty/connect/{tokenId}",
+  }),
+) as unknown as Schema.Schema<LinkDestinationPagerdutyRequest>;
 
 export interface LinkDestinationPagerdutyResponse {
   /** UUID */
   id?: string | null;
 }
 
-export const LinkDestinationPagerdutyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<LinkDestinationPagerdutyResponse>;
+export const LinkDestinationPagerdutyResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+}).pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<LinkDestinationPagerdutyResponse>;
 
 export type LinkDestinationPagerdutyError = DefaultErrors | InvalidRoute;
 
@@ -330,7 +324,7 @@ export const linkDestinationPagerduty: API.OperationMethod<
   LinkDestinationPagerdutyResponse,
   LinkDestinationPagerdutyError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: LinkDestinationPagerdutyRequest,
   output: LinkDestinationPagerdutyResponse,
   errors: [InvalidRoute],
@@ -346,16 +340,15 @@ export interface GetDestinationWebhookRequest {
   accountId: string;
 }
 
-export const GetDestinationWebhookRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    webhookId: Schema.String.pipe(T.HttpPath("webhookId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/alerting/v3/destinations/webhooks/{webhookId}",
-    }),
-  ) as unknown as Schema.Schema<GetDestinationWebhookRequest>;
+export const GetDestinationWebhookRequest = /*@__PURE__*/ Schema.Struct({
+  webhookId: Schema.String.pipe(T.HttpPath("webhookId")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/alerting/v3/destinations/webhooks/{webhookId}",
+  }),
+) as unknown as Schema.Schema<GetDestinationWebhookRequest>;
 
 export interface GetDestinationWebhookResponse {
   /** The unique identifier of a webhook */
@@ -384,47 +377,46 @@ export interface GetDestinationWebhookResponse {
   url?: string | null;
 }
 
-export const GetDestinationWebhookResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    lastFailure: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    lastSuccess: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    type: Schema.optional(
+export const GetDestinationWebhookResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  lastFailure: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  lastSuccess: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  type: Schema.optional(
+    Schema.Union([
       Schema.Union([
-        Schema.Union([
-          Schema.Literals([
-            "datadog",
-            "discord",
-            "feishu",
-            "gchat",
-            "generic",
-            "opsgenie",
-            "slack",
-            "splunk",
-          ]),
-          Schema.String,
+        Schema.Literals([
+          "datadog",
+          "discord",
+          "feishu",
+          "gchat",
+          "generic",
+          "opsgenie",
+          "slack",
+          "splunk",
         ]),
-        Schema.Null,
+        Schema.String,
       ]),
-    ),
-    url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        createdAt: "created_at",
-        lastFailure: "last_failure",
-        lastSuccess: "last_success",
-        name: "name",
-        type: "type",
-        url: "url",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<GetDestinationWebhookResponse>;
+      Schema.Null,
+    ]),
+  ),
+  url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      createdAt: "created_at",
+      lastFailure: "last_failure",
+      lastSuccess: "last_success",
+      name: "name",
+      type: "type",
+      url: "url",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<GetDestinationWebhookResponse>;
 
 export type GetDestinationWebhookError =
   | DefaultErrors
@@ -436,7 +428,7 @@ export const getDestinationWebhook: API.OperationMethod<
   GetDestinationWebhookResponse,
   GetDestinationWebhookError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDestinationWebhookRequest,
   output: GetDestinationWebhookResponse,
   errors: [InvalidRoute, WebhookNotFound],
@@ -447,15 +439,14 @@ export interface ListDestinationWebhooksRequest {
   accountId: string;
 }
 
-export const ListDestinationWebhooksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/alerting/v3/destinations/webhooks",
-    }),
-  ) as unknown as Schema.Schema<ListDestinationWebhooksRequest>;
+export const ListDestinationWebhooksRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/alerting/v3/destinations/webhooks",
+  }),
+) as unknown as Schema.Schema<ListDestinationWebhooksRequest>;
 
 export interface ListDestinationWebhooksResponse {
   result: {
@@ -479,51 +470,46 @@ export interface ListDestinationWebhooksResponse {
   }[];
 }
 
-export const ListDestinationWebhooksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        lastFailure: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        lastSuccess: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        type: Schema.optional(
+export const ListDestinationWebhooksResponse = /*@__PURE__*/ Schema.Struct({
+  result: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      lastFailure: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      lastSuccess: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      type: Schema.optional(
+        Schema.Union([
           Schema.Union([
-            Schema.Union([
-              Schema.Literals([
-                "datadog",
-                "discord",
-                "feishu",
-                "gchat",
-                "generic",
-                "opsgenie",
-                "slack",
-                "splunk",
-              ]),
-              Schema.String,
+            Schema.Literals([
+              "datadog",
+              "discord",
+              "feishu",
+              "gchat",
+              "generic",
+              "opsgenie",
+              "slack",
+              "splunk",
             ]),
-            Schema.Null,
+            Schema.String,
           ]),
-        ),
-        url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          createdAt: "created_at",
-          lastFailure: "last_failure",
-          lastSuccess: "last_success",
-          name: "name",
-          type: "type",
-          url: "url",
-        }),
+          Schema.Null,
+        ]),
       ),
+      url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdAt: "created_at",
+        lastFailure: "last_failure",
+        lastSuccess: "last_success",
+        name: "name",
+        type: "type",
+        url: "url",
+      }),
     ),
-  }) as unknown as Schema.Schema<ListDestinationWebhooksResponse>;
+  ),
+}) as unknown as Schema.Schema<ListDestinationWebhooksResponse>;
 
 export type ListDestinationWebhooksError = DefaultErrors;
 
@@ -532,7 +518,7 @@ export const listDestinationWebhooks: API.PaginatedOperationMethod<
   ListDestinationWebhooksResponse,
   ListDestinationWebhooksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDestinationWebhooksRequest,
   output: ListDestinationWebhooksResponse,
   errors: [],
@@ -553,30 +539,28 @@ export interface CreateDestinationWebhookRequest {
   secret?: string;
 }
 
-export const CreateDestinationWebhookRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    name: Schema.String,
-    url: Schema.String,
-    secret: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/alerting/v3/destinations/webhooks",
-    }),
-  ) as unknown as Schema.Schema<CreateDestinationWebhookRequest>;
+export const CreateDestinationWebhookRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  name: Schema.String,
+  url: Schema.String,
+  secret: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/accounts/{account_id}/alerting/v3/destinations/webhooks",
+  }),
+) as unknown as Schema.Schema<CreateDestinationWebhookRequest>;
 
 export interface CreateDestinationWebhookResponse {
   /** UUID */
   id?: string | null;
 }
 
-export const CreateDestinationWebhookResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<CreateDestinationWebhookResponse>;
+export const CreateDestinationWebhookResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+}).pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<CreateDestinationWebhookResponse>;
 
 export type CreateDestinationWebhookError =
   | DefaultErrors
@@ -588,7 +572,7 @@ export const createDestinationWebhook: API.OperationMethod<
   CreateDestinationWebhookResponse,
   CreateDestinationWebhookError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDestinationWebhookRequest,
   output: CreateDestinationWebhookResponse,
   errors: [InvalidRoute, WebhookTestFailed],
@@ -606,31 +590,29 @@ export interface UpdateDestinationWebhookRequest {
   secret?: string;
 }
 
-export const UpdateDestinationWebhookRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    webhookId: Schema.String.pipe(T.HttpPath("webhookId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    name: Schema.String,
-    url: Schema.String,
-    secret: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/accounts/{account_id}/alerting/v3/destinations/webhooks/{webhookId}",
-    }),
-  ) as unknown as Schema.Schema<UpdateDestinationWebhookRequest>;
+export const UpdateDestinationWebhookRequest = /*@__PURE__*/ Schema.Struct({
+  webhookId: Schema.String.pipe(T.HttpPath("webhookId")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  name: Schema.String,
+  url: Schema.String,
+  secret: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/accounts/{account_id}/alerting/v3/destinations/webhooks/{webhookId}",
+  }),
+) as unknown as Schema.Schema<UpdateDestinationWebhookRequest>;
 
 export interface UpdateDestinationWebhookResponse {
   /** UUID */
   id?: string | null;
 }
 
-export const UpdateDestinationWebhookResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<UpdateDestinationWebhookResponse>;
+export const UpdateDestinationWebhookResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+}).pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<UpdateDestinationWebhookResponse>;
 
 export type UpdateDestinationWebhookError =
   | DefaultErrors
@@ -642,7 +624,7 @@ export const updateDestinationWebhook: API.OperationMethod<
   UpdateDestinationWebhookResponse,
   UpdateDestinationWebhookError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDestinationWebhookRequest,
   output: UpdateDestinationWebhookResponse,
   errors: [InvalidRoute, InvalidWebhookId],
@@ -654,16 +636,15 @@ export interface DeleteDestinationWebhookRequest {
   accountId: string;
 }
 
-export const DeleteDestinationWebhookRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    webhookId: Schema.String.pipe(T.HttpPath("webhookId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/accounts/{account_id}/alerting/v3/destinations/webhooks/{webhookId}",
-    }),
-  ) as unknown as Schema.Schema<DeleteDestinationWebhookRequest>;
+export const DeleteDestinationWebhookRequest = /*@__PURE__*/ Schema.Struct({
+  webhookId: Schema.String.pipe(T.HttpPath("webhookId")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/accounts/{account_id}/alerting/v3/destinations/webhooks/{webhookId}",
+  }),
+) as unknown as Schema.Schema<DeleteDestinationWebhookRequest>;
 
 export interface DeleteDestinationWebhookResponse {
   errors: { message: string; code?: number | null }[];
@@ -672,22 +653,21 @@ export interface DeleteDestinationWebhookResponse {
   success: true;
 }
 
-export const DeleteDestinationWebhookResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    errors: Schema.Array(
-      Schema.Struct({
-        message: Schema.String,
-        code: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      }),
-    ),
-    messages: Schema.Array(
-      Schema.Struct({
-        message: Schema.String,
-        code: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      }),
-    ),
-    success: Schema.Literal(true),
-  }) as unknown as Schema.Schema<DeleteDestinationWebhookResponse>;
+export const DeleteDestinationWebhookResponse = /*@__PURE__*/ Schema.Struct({
+  errors: Schema.Array(
+    Schema.Struct({
+      message: Schema.String,
+      code: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    }),
+  ),
+  messages: Schema.Array(
+    Schema.Struct({
+      message: Schema.String,
+      code: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    }),
+  ),
+  success: Schema.Literal(true),
+}) as unknown as Schema.Schema<DeleteDestinationWebhookResponse>;
 
 export type DeleteDestinationWebhookError =
   | DefaultErrors
@@ -699,7 +679,7 @@ export const deleteDestinationWebhook: API.OperationMethod<
   DeleteDestinationWebhookResponse,
   DeleteDestinationWebhookError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDestinationWebhookRequest,
   output: DeleteDestinationWebhookResponse,
   errors: [InvalidRoute, InternalServerError],
@@ -720,7 +700,7 @@ export interface ListHistoriesRequest {
   since?: string;
 }
 
-export const ListHistoriesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListHistoriesRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
   perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
@@ -750,7 +730,7 @@ export interface ListHistoriesResponse {
   } | null;
 }
 
-export const ListHistoriesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListHistoriesResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -813,7 +793,7 @@ export const listHistories: API.PaginatedOperationMethod<
   ListHistoriesResponse,
   ListHistoriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListHistoriesRequest,
   output: ListHistoriesResponse,
   errors: [],
@@ -836,7 +816,7 @@ export interface GetPolicyRequest {
   accountId: string;
 }
 
-export const GetPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetPolicyRequest = /*@__PURE__*/ Schema.Struct({
   policyId: Schema.String.pipe(T.HttpPath("policyId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -994,7 +974,7 @@ export interface GetPolicyResponse {
   name?: string | null;
 }
 
-export const GetPolicyResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetPolicyResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   alertInterval: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   alertType: Schema.optional(
@@ -1342,7 +1322,7 @@ export const getPolicy: API.OperationMethod<
   GetPolicyResponse,
   GetPolicyError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPolicyRequest,
   output: GetPolicyResponse,
   errors: [InvalidRoute, PolicyNotFound],
@@ -1353,7 +1333,7 @@ export interface ListPoliciesRequest {
   accountId: string;
 }
 
-export const ListPoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListPoliciesRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
   T.Http({
@@ -1504,7 +1484,7 @@ export interface ListPoliciesResponse {
   }[];
 }
 
-export const ListPoliciesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListPoliciesResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1860,7 +1840,7 @@ export const listPolicies: API.PaginatedOperationMethod<
   ListPoliciesResponse,
   ListPoliciesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPoliciesRequest,
   output: ListPoliciesResponse,
   errors: [],
@@ -2013,7 +1993,7 @@ export interface CreatePolicyRequest {
   };
 }
 
-export const CreatePolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreatePolicyRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   alertType: Schema.Union([
     Schema.Literals([
@@ -2246,7 +2226,7 @@ export interface CreatePolicyResponse {
   id?: string | null;
 }
 
-export const CreatePolicyResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreatePolicyResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
 }).pipe(
   T.ResponsePath("result"),
@@ -2263,7 +2243,7 @@ export const createPolicy: API.OperationMethod<
   CreatePolicyResponse,
   CreatePolicyError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePolicyRequest,
   output: CreatePolicyResponse,
   errors: [InvalidRoute, FiltersRequired, MechanismRequired],
@@ -2413,7 +2393,7 @@ export interface UpdatePolicyRequest {
   name?: string;
 }
 
-export const UpdatePolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdatePolicyRequest = /*@__PURE__*/ Schema.Struct({
   policyId: Schema.String.pipe(T.HttpPath("policyId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   alertInterval: Schema.optional(Schema.String),
@@ -2651,7 +2631,7 @@ export interface UpdatePolicyResponse {
   id?: string | null;
 }
 
-export const UpdatePolicyResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdatePolicyResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
 }).pipe(
   T.ResponsePath("result"),
@@ -2669,7 +2649,7 @@ export const updatePolicy: API.OperationMethod<
   UpdatePolicyResponse,
   UpdatePolicyError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePolicyRequest,
   output: UpdatePolicyResponse,
   errors: [InvalidRoute, PolicyNotFound, InvalidAlertType, MechanismRequired],
@@ -2681,7 +2661,7 @@ export interface DeletePolicyRequest {
   accountId: string;
 }
 
-export const DeletePolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeletePolicyRequest = /*@__PURE__*/ Schema.Struct({
   policyId: Schema.String.pipe(T.HttpPath("policyId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -2704,7 +2684,7 @@ export interface DeletePolicyResponse {
   } | null;
 }
 
-export const DeletePolicyResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeletePolicyResponse = /*@__PURE__*/ Schema.Struct({
   errors: Schema.optional(
     Schema.Union([
       Schema.Array(
@@ -2762,7 +2742,7 @@ export const deletePolicy: API.OperationMethod<
   DeletePolicyResponse,
   DeletePolicyError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePolicyRequest,
   output: DeletePolicyResponse,
   errors: [InvalidRoute, PolicyNotFound],
@@ -2778,7 +2758,7 @@ export interface GetSilenceRequest {
   accountId: string;
 }
 
-export const GetSilenceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetSilenceRequest = /*@__PURE__*/ Schema.Struct({
   silenceId: Schema.String.pipe(T.HttpPath("silenceId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -2803,7 +2783,7 @@ export interface GetSilenceResponse {
   updatedAt?: string | null;
 }
 
-export const GetSilenceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetSilenceResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   endTime: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -2835,7 +2815,7 @@ export const getSilence: API.OperationMethod<
   GetSilenceResponse,
   GetSilenceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSilenceRequest,
   output: GetSilenceResponse,
   errors: [InvalidRoute, InternalServerError],
@@ -2846,7 +2826,7 @@ export interface ListSilencesRequest {
   accountId: string;
 }
 
-export const ListSilencesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListSilencesRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
   T.Http({
@@ -2866,7 +2846,7 @@ export interface ListSilencesResponse {
   }[];
 }
 
-export const ListSilencesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListSilencesResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -2895,7 +2875,7 @@ export const listSilences: API.PaginatedOperationMethod<
   ListSilencesResponse,
   ListSilencesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSilencesRequest,
   output: ListSilencesResponse,
   errors: [],
@@ -2912,7 +2892,7 @@ export interface CreateSilenceRequest {
   body: { endTime?: string; policyId?: string; startTime?: string }[];
 }
 
-export const CreateSilenceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateSilenceRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   body: Schema.Array(
     Schema.Struct({
@@ -2941,7 +2921,7 @@ export interface CreateSilenceResponse {
   success: true;
 }
 
-export const CreateSilenceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateSilenceResponse = /*@__PURE__*/ Schema.Struct({
   errors: Schema.Array(
     Schema.Struct({
       message: Schema.String,
@@ -2964,7 +2944,7 @@ export const createSilence: API.OperationMethod<
   CreateSilenceResponse,
   CreateSilenceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSilenceRequest,
   output: CreateSilenceResponse,
   errors: [InvalidRoute],
@@ -2977,7 +2957,7 @@ export interface UpdateSilenceRequest {
   body: { id?: string; endTime?: string; startTime?: string }[];
 }
 
-export const UpdateSilenceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateSilenceRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   body: Schema.Array(
     Schema.Struct({
@@ -3010,7 +2990,7 @@ export interface UpdateSilenceResponse {
   }[];
 }
 
-export const UpdateSilenceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateSilenceResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -3039,7 +3019,7 @@ export const updateSilence: API.PaginatedOperationMethod<
   UpdateSilenceResponse,
   UpdateSilenceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: UpdateSilenceRequest,
   output: UpdateSilenceResponse,
   errors: [],
@@ -3055,7 +3035,7 @@ export interface DeleteSilenceRequest {
   accountId: string;
 }
 
-export const DeleteSilenceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteSilenceRequest = /*@__PURE__*/ Schema.Struct({
   silenceId: Schema.String.pipe(T.HttpPath("silenceId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -3072,7 +3052,7 @@ export interface DeleteSilenceResponse {
   success: true;
 }
 
-export const DeleteSilenceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteSilenceResponse = /*@__PURE__*/ Schema.Struct({
   errors: Schema.Array(
     Schema.Struct({
       message: Schema.String,
@@ -3095,7 +3075,7 @@ export const deleteSilence: API.OperationMethod<
   DeleteSilenceResponse,
   DeleteSilenceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSilenceRequest,
   output: DeleteSilenceResponse,
   errors: [InvalidRoute],

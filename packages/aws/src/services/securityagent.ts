@@ -3072,7 +3072,7 @@ export const addArtifact: API.OperationMethod<
   AddArtifactOutput,
   AddArtifactError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddArtifactInput,
   output: AddArtifactOutput,
   errors: [
@@ -3092,7 +3092,7 @@ export const batchDeletePentests: API.OperationMethod<
   BatchDeletePentestsOutput,
   BatchDeletePentestsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchDeletePentestsInput,
   output: BatchDeletePentestsOutput,
   errors: [],
@@ -3112,7 +3112,7 @@ export const batchGetArtifactMetadata: API.OperationMethod<
   BatchGetArtifactMetadataOutput,
   BatchGetArtifactMetadataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetArtifactMetadataInput,
   output: BatchGetArtifactMetadataOutput,
   errors: [
@@ -3132,7 +3132,7 @@ export const batchGetFindings: API.OperationMethod<
   BatchGetFindingsOutput,
   BatchGetFindingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetFindingsInput,
   output: BatchGetFindingsOutput,
   errors: [],
@@ -3146,7 +3146,7 @@ export const batchGetPentestJobs: API.OperationMethod<
   BatchGetPentestJobsOutput,
   BatchGetPentestJobsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetPentestJobsInput,
   output: BatchGetPentestJobsOutput,
   errors: [],
@@ -3160,7 +3160,7 @@ export const batchGetPentestJobTasks: API.OperationMethod<
   BatchGetPentestJobTasksOutput,
   BatchGetPentestJobTasksError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetPentestJobTasksInput,
   output: BatchGetPentestJobTasksOutput,
   errors: [],
@@ -3174,7 +3174,7 @@ export const batchGetPentests: API.OperationMethod<
   BatchGetPentestsOutput,
   BatchGetPentestsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetPentestsInput,
   output: BatchGetPentestsOutput,
   errors: [],
@@ -3188,7 +3188,7 @@ export const createMembership: API.OperationMethod<
   CreateMembershipResponse,
   CreateMembershipError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMembershipRequest,
   output: CreateMembershipResponse,
   errors: [],
@@ -3202,7 +3202,7 @@ export const createPentest: API.OperationMethod<
   CreatePentestOutput,
   CreatePentestError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePentestInput,
   output: CreatePentestOutput,
   errors: [],
@@ -3222,7 +3222,7 @@ export const deleteArtifact: API.OperationMethod<
   DeleteArtifactOutput,
   DeleteArtifactError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteArtifactInput,
   output: DeleteArtifactOutput,
   errors: [
@@ -3242,7 +3242,7 @@ export const deleteMembership: API.OperationMethod<
   DeleteMembershipResponse,
   DeleteMembershipError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMembershipRequest,
   output: DeleteMembershipResponse,
   errors: [],
@@ -3262,7 +3262,7 @@ export const getArtifact: API.OperationMethod<
   GetArtifactOutput,
   GetArtifactError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetArtifactInput,
   output: GetArtifactOutput,
   errors: [
@@ -3289,7 +3289,7 @@ export const initiateProviderRegistration: API.OperationMethod<
   InitiateProviderRegistrationOutput,
   InitiateProviderRegistrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InitiateProviderRegistrationInput,
   output: InitiateProviderRegistrationOutput,
   errors: [
@@ -3331,7 +3331,7 @@ export const listArtifacts: API.OperationMethod<
     ListArtifactsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListArtifactsInput,
   output: ListArtifactsOutput,
   errors: [
@@ -3372,7 +3372,7 @@ export const listDiscoveredEndpoints: API.OperationMethod<
     ListDiscoveredEndpointsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDiscoveredEndpointsInput,
   output: ListDiscoveredEndpointsOutput,
   errors: [],
@@ -3407,7 +3407,7 @@ export const listFindings: API.OperationMethod<
     ListFindingsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFindingsInput,
   output: ListFindingsOutput,
   errors: [],
@@ -3448,7 +3448,7 @@ export const listIntegratedResources: API.OperationMethod<
     ListIntegratedResourcesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIntegratedResourcesInput,
   output: ListIntegratedResourcesOutput,
   errors: [
@@ -3489,7 +3489,7 @@ export const listMemberships: API.OperationMethod<
     ListMembershipsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMembershipsRequest,
   output: ListMembershipsResponse,
   errors: [],
@@ -3524,7 +3524,7 @@ export const listPentestJobsForPentest: API.OperationMethod<
     ListPentestJobsForPentestError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPentestJobsForPentestInput,
   output: ListPentestJobsForPentestOutput,
   errors: [],
@@ -3559,7 +3559,7 @@ export const listPentestJobTasks: API.OperationMethod<
     ListPentestJobTasksError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPentestJobTasksInput,
   output: ListPentestJobTasksOutput,
   errors: [],
@@ -3594,7 +3594,7 @@ export const listPentests: API.OperationMethod<
     ListPentestsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPentestsInput,
   output: ListPentestsOutput,
   errors: [],
@@ -3614,7 +3614,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceOutput,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [],
@@ -3628,7 +3628,7 @@ export const startCodeRemediation: API.OperationMethod<
   StartCodeRemediationOutput,
   StartCodeRemediationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartCodeRemediationInput,
   output: StartCodeRemediationOutput,
   errors: [],
@@ -3642,7 +3642,7 @@ export const startPentestJob: API.OperationMethod<
   StartPentestJobOutput,
   StartPentestJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartPentestJobInput,
   output: StartPentestJobOutput,
   errors: [],
@@ -3656,7 +3656,7 @@ export const stopPentestJob: API.OperationMethod<
   StopPentestJobOutput,
   StopPentestJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopPentestJobInput,
   output: StopPentestJobOutput,
   errors: [],
@@ -3670,7 +3670,7 @@ export const tagResource: API.OperationMethod<
   TagResourceOutput,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
   errors: [],
@@ -3684,7 +3684,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceOutput,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
   errors: [],
@@ -3698,7 +3698,7 @@ export const updateFinding: API.OperationMethod<
   UpdateFindingOutput,
   UpdateFindingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateFindingInput,
   output: UpdateFindingOutput,
   errors: [],
@@ -3719,7 +3719,7 @@ export const updateIntegratedResources: API.OperationMethod<
   UpdateIntegratedResourcesOutput,
   UpdateIntegratedResourcesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateIntegratedResourcesInput,
   output: UpdateIntegratedResourcesOutput,
   errors: [
@@ -3740,7 +3740,7 @@ export const updatePentest: API.OperationMethod<
   UpdatePentestOutput,
   UpdatePentestError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePentestInput,
   output: UpdatePentestOutput,
   errors: [],
@@ -3754,7 +3754,7 @@ export const verifyTargetDomain: API.OperationMethod<
   VerifyTargetDomainOutput,
   VerifyTargetDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: VerifyTargetDomainInput,
   output: VerifyTargetDomainOutput,
   errors: [],
@@ -3768,7 +3768,7 @@ export const createAgentSpace: API.OperationMethod<
   CreateAgentSpaceOutput,
   CreateAgentSpaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAgentSpaceInput,
   output: CreateAgentSpaceOutput,
   errors: [],
@@ -3782,7 +3782,7 @@ export const updateAgentSpace: API.OperationMethod<
   UpdateAgentSpaceOutput,
   UpdateAgentSpaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAgentSpaceInput,
   output: UpdateAgentSpaceOutput,
   errors: [],
@@ -3796,7 +3796,7 @@ export const deleteAgentSpace: API.OperationMethod<
   DeleteAgentSpaceOutput,
   DeleteAgentSpaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAgentSpaceInput,
   output: DeleteAgentSpaceOutput,
   errors: [],
@@ -3825,7 +3825,7 @@ export const listAgentSpaces: API.OperationMethod<
     ListAgentSpacesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAgentSpacesInput,
   output: ListAgentSpacesOutput,
   errors: [],
@@ -3845,7 +3845,7 @@ export const batchGetAgentSpaces: API.OperationMethod<
   BatchGetAgentSpacesOutput,
   BatchGetAgentSpacesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetAgentSpacesInput,
   output: BatchGetAgentSpacesOutput,
   errors: [],
@@ -3859,7 +3859,7 @@ export const createApplication: API.OperationMethod<
   CreateApplicationResponse,
   CreateApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateApplicationRequest,
   output: CreateApplicationResponse,
   errors: [],
@@ -3873,7 +3873,7 @@ export const getApplication: API.OperationMethod<
   GetApplicationResponse,
   GetApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetApplicationRequest,
   output: GetApplicationResponse,
   errors: [],
@@ -3887,7 +3887,7 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationResponse,
   UpdateApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateApplicationRequest,
   output: UpdateApplicationResponse,
   errors: [],
@@ -3901,7 +3901,7 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationResponse,
   DeleteApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteApplicationRequest,
   output: DeleteApplicationResponse,
   errors: [],
@@ -3930,7 +3930,7 @@ export const listApplications: API.OperationMethod<
     ListApplicationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationsRequest,
   output: ListApplicationsResponse,
   errors: [],
@@ -3957,7 +3957,7 @@ export const createIntegration: API.OperationMethod<
   CreateIntegrationOutput,
   CreateIntegrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateIntegrationInput,
   output: CreateIntegrationOutput,
   errors: [
@@ -3984,7 +3984,7 @@ export const getIntegration: API.OperationMethod<
   GetIntegrationOutput,
   GetIntegrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIntegrationInput,
   output: GetIntegrationOutput,
   errors: [
@@ -4011,7 +4011,7 @@ export const deleteIntegration: API.OperationMethod<
   DeleteIntegrationOutput,
   DeleteIntegrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteIntegrationInput,
   output: DeleteIntegrationOutput,
   errors: [
@@ -4052,7 +4052,7 @@ export const listIntegrations: API.OperationMethod<
     ListIntegrationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIntegrationsInput,
   output: ListIntegrationsOutput,
   errors: [
@@ -4077,7 +4077,7 @@ export const createTargetDomain: API.OperationMethod<
   CreateTargetDomainOutput,
   CreateTargetDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTargetDomainInput,
   output: CreateTargetDomainOutput,
   errors: [],
@@ -4091,7 +4091,7 @@ export const updateTargetDomain: API.OperationMethod<
   UpdateTargetDomainOutput,
   UpdateTargetDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTargetDomainInput,
   output: UpdateTargetDomainOutput,
   errors: [],
@@ -4105,7 +4105,7 @@ export const deleteTargetDomain: API.OperationMethod<
   DeleteTargetDomainOutput,
   DeleteTargetDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTargetDomainInput,
   output: DeleteTargetDomainOutput,
   errors: [],
@@ -4134,7 +4134,7 @@ export const listTargetDomains: API.OperationMethod<
     ListTargetDomainsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTargetDomainsInput,
   output: ListTargetDomainsOutput,
   errors: [],
@@ -4154,7 +4154,7 @@ export const batchGetTargetDomains: API.OperationMethod<
   BatchGetTargetDomainsOutput,
   BatchGetTargetDomainsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetTargetDomainsInput,
   output: BatchGetTargetDomainsOutput,
   errors: [],

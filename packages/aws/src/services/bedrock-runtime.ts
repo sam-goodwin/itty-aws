@@ -3269,7 +3269,7 @@ export const getAsyncInvoke: API.OperationMethod<
   GetAsyncInvokeResponse,
   GetAsyncInvokeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAsyncInvokeRequest,
   output: GetAsyncInvokeResponse,
   errors: [
@@ -3308,7 +3308,7 @@ export const listAsyncInvokes: API.OperationMethod<
     ListAsyncInvokesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAsyncInvokesRequest,
   output: ListAsyncInvokesResponse,
   errors: [
@@ -3346,7 +3346,7 @@ export const startAsyncInvoke: API.OperationMethod<
   StartAsyncInvokeResponse,
   StartAsyncInvokeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartAsyncInvokeRequest,
   output: StartAsyncInvokeResponse,
   errors: [
@@ -3379,7 +3379,7 @@ export const applyGuardrail: API.OperationMethod<
   ApplyGuardrailResponse,
   ApplyGuardrailError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ApplyGuardrailRequest,
   output: ApplyGuardrailResponse,
   errors: [
@@ -3427,7 +3427,7 @@ export const converse: API.OperationMethod<
   ConverseResponse,
   ConverseError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ConverseRequest,
   output: ConverseResponse,
   errors: [
@@ -3481,7 +3481,7 @@ export const converseStream: API.OperationMethod<
   ConverseStreamResponse,
   ConverseStreamError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ConverseStreamRequest,
   output: ConverseStreamResponse,
   errors: [
@@ -3524,7 +3524,7 @@ export const invokeModel: API.OperationMethod<
   InvokeModelResponse,
   InvokeModelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InvokeModelRequest,
   output: InvokeModelResponse,
   errors: [
@@ -3563,7 +3563,7 @@ export const invokeModelWithBidirectionalStream: API.OperationMethod<
   InvokeModelWithBidirectionalStreamResponse,
   InvokeModelWithBidirectionalStreamError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InvokeModelWithBidirectionalStreamRequest,
   output: InvokeModelWithBidirectionalStreamResponse,
   errors: [
@@ -3613,7 +3613,7 @@ export const invokeModelWithResponseStream: API.OperationMethod<
   InvokeModelWithResponseStreamResponse,
   InvokeModelWithResponseStreamError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InvokeModelWithResponseStreamRequest,
   output: InvokeModelWithResponseStreamResponse,
   errors: [
@@ -3664,7 +3664,7 @@ export const countTokens: API.OperationMethod<
   CountTokensResponse,
   CountTokensError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CountTokensRequest,
   output: CountTokensResponse,
   errors: [

@@ -6134,7 +6134,7 @@ export const associatePermission: API.OperationMethod<
   AssociatePermissionResponse,
   AssociatePermissionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociatePermissionRequest,
   output: AssociatePermissionResponse,
   errors: [
@@ -6165,7 +6165,7 @@ export const batchDeleteDocument: API.OperationMethod<
   BatchDeleteDocumentResponse,
   BatchDeleteDocumentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchDeleteDocumentRequest,
   output: BatchDeleteDocumentResponse,
   errors: [
@@ -6204,7 +6204,7 @@ export const batchPutDocument: API.OperationMethod<
   BatchPutDocumentResponse,
   BatchPutDocumentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchPutDocumentRequest,
   output: BatchPutDocumentResponse,
   errors: [
@@ -6232,7 +6232,7 @@ export const cancelSubscription: API.OperationMethod<
   CancelSubscriptionResponse,
   CancelSubscriptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelSubscriptionRequest,
   output: CancelSubscriptionResponse,
   errors: [
@@ -6261,7 +6261,7 @@ export const chat: API.OperationMethod<
   ChatOutput,
   ChatError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ChatInput,
   output: ChatOutput,
   errors: [
@@ -6293,7 +6293,7 @@ export const chatSync: API.OperationMethod<
   ChatSyncOutput,
   ChatSyncError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ChatSyncInput,
   output: ChatSyncOutput,
   errors: [
@@ -6322,7 +6322,7 @@ export const checkDocumentAccess: API.OperationMethod<
   CheckDocumentAccessResponse,
   CheckDocumentAccessError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CheckDocumentAccessRequest,
   output: CheckDocumentAccessResponse,
   errors: [
@@ -6349,7 +6349,7 @@ export const createAnonymousWebExperienceUrl: API.OperationMethod<
   CreateAnonymousWebExperienceUrlResponse,
   CreateAnonymousWebExperienceUrlError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAnonymousWebExperienceUrlRequest,
   output: CreateAnonymousWebExperienceUrlResponse,
   errors: [
@@ -6378,7 +6378,7 @@ export const createChatResponseConfiguration: API.OperationMethod<
   CreateChatResponseConfigurationResponse,
   CreateChatResponseConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateChatResponseConfigurationRequest,
   output: CreateChatResponseConfigurationResponse,
   errors: [
@@ -6411,7 +6411,7 @@ export const createSubscription: API.OperationMethod<
   CreateSubscriptionResponse,
   CreateSubscriptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSubscriptionRequest,
   output: CreateSubscriptionResponse,
   errors: [
@@ -6440,7 +6440,7 @@ export const createUser: API.OperationMethod<
   CreateUserResponse,
   CreateUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateUserRequest,
   output: CreateUserResponse,
   errors: [
@@ -6469,7 +6469,7 @@ export const deleteAttachment: API.OperationMethod<
   DeleteAttachmentResponse,
   DeleteAttachmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAttachmentRequest,
   output: DeleteAttachmentResponse,
   errors: [
@@ -6496,7 +6496,7 @@ export const deleteChatControlsConfiguration: API.OperationMethod<
   DeleteChatControlsConfigurationResponse,
   DeleteChatControlsConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteChatControlsConfigurationRequest,
   output: DeleteChatControlsConfigurationResponse,
   errors: [
@@ -6523,7 +6523,7 @@ export const deleteChatResponseConfiguration: API.OperationMethod<
   DeleteChatResponseConfigurationResponse,
   DeleteChatResponseConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteChatResponseConfigurationRequest,
   output: DeleteChatResponseConfigurationResponse,
   errors: [
@@ -6552,7 +6552,7 @@ export const deleteConversation: API.OperationMethod<
   DeleteConversationResponse,
   DeleteConversationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConversationRequest,
   output: DeleteConversationResponse,
   errors: [
@@ -6583,7 +6583,7 @@ export const deleteGroup: API.OperationMethod<
   DeleteGroupResponse,
   DeleteGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteGroupRequest,
   output: DeleteGroupResponse,
   errors: [
@@ -6611,7 +6611,7 @@ export const deleteUser: API.OperationMethod<
   DeleteUserResponse,
   DeleteUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteUserRequest,
   output: DeleteUserResponse,
   errors: [
@@ -6639,7 +6639,7 @@ export const disassociatePermission: API.OperationMethod<
   DisassociatePermissionResponse,
   DisassociatePermissionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociatePermissionRequest,
   output: DisassociatePermissionResponse,
   errors: [
@@ -6681,7 +6681,7 @@ export const getChatControlsConfiguration: API.OperationMethod<
     GetChatControlsConfigurationError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetChatControlsConfigurationRequest,
   output: GetChatControlsConfigurationResponse,
   errors: [
@@ -6713,7 +6713,7 @@ export const getChatResponseConfiguration: API.OperationMethod<
   GetChatResponseConfigurationResponse,
   GetChatResponseConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetChatResponseConfigurationRequest,
   output: GetChatResponseConfigurationResponse,
   errors: [
@@ -6739,7 +6739,7 @@ export const getDocumentContent: API.OperationMethod<
   GetDocumentContentResponse,
   GetDocumentContentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDocumentContentRequest,
   output: GetDocumentContentResponse,
   errors: [
@@ -6766,7 +6766,7 @@ export const getGroup: API.OperationMethod<
   GetGroupResponse,
   GetGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetGroupRequest,
   output: GetGroupResponse,
   errors: [
@@ -6797,7 +6797,7 @@ export const getMedia: API.OperationMethod<
   GetMediaResponse,
   GetMediaError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMediaRequest,
   output: GetMediaResponse,
   errors: [
@@ -6825,7 +6825,7 @@ export const getPolicy: API.OperationMethod<
   GetPolicyResponse,
   GetPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPolicyRequest,
   output: GetPolicyResponse,
   errors: [
@@ -6852,7 +6852,7 @@ export const getUser: API.OperationMethod<
   GetUserResponse,
   GetUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUserRequest,
   output: GetUserResponse,
   errors: [
@@ -6895,7 +6895,7 @@ export const listAttachments: API.OperationMethod<
     ListAttachmentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAttachmentsRequest,
   output: ListAttachmentsResponse,
   errors: [
@@ -6943,7 +6943,7 @@ export const listChatResponseConfigurations: API.OperationMethod<
     ListChatResponseConfigurationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChatResponseConfigurationsRequest,
   output: ListChatResponseConfigurationsResponse,
   errors: [
@@ -6991,7 +6991,7 @@ export const listConversations: API.OperationMethod<
     ListConversationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConversationsRequest,
   output: ListConversationsResponse,
   errors: [
@@ -7040,7 +7040,7 @@ export const listDataSourceSyncJobs: API.OperationMethod<
     ListDataSourceSyncJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataSourceSyncJobsRequest,
   output: ListDataSourceSyncJobsResponse,
   errors: [
@@ -7088,7 +7088,7 @@ export const listDocuments: API.OperationMethod<
     ListDocumentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDocumentsRequest,
   output: ListDocumentsResponse,
   errors: [
@@ -7136,7 +7136,7 @@ export const listGroups: API.OperationMethod<
     ListGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGroupsRequest,
   output: ListGroupsResponse,
   errors: [
@@ -7185,7 +7185,7 @@ export const listMessages: API.OperationMethod<
     ListMessagesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMessagesRequest,
   output: ListMessagesResponse,
   errors: [
@@ -7233,7 +7233,7 @@ export const listPluginActions: API.OperationMethod<
     ListPluginActionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPluginActionsRequest,
   output: ListPluginActionsResponse,
   errors: [
@@ -7279,7 +7279,7 @@ export const listPluginTypeActions: API.OperationMethod<
     ListPluginTypeActionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPluginTypeActionsRequest,
   output: ListPluginTypeActionsResponse,
   errors: [
@@ -7324,7 +7324,7 @@ export const listPluginTypeMetadata: API.OperationMethod<
     ListPluginTypeMetadataError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPluginTypeMetadataRequest,
   output: ListPluginTypeMetadataResponse,
   errors: [
@@ -7371,7 +7371,7 @@ export const listSubscriptions: API.OperationMethod<
     ListSubscriptionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSubscriptionsRequest,
   output: ListSubscriptionsResponse,
   errors: [
@@ -7404,7 +7404,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -7430,7 +7430,7 @@ export const putFeedback: API.OperationMethod<
   PutFeedbackResponse,
   PutFeedbackError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutFeedbackRequest,
   output: PutFeedbackResponse,
   errors: [
@@ -7462,7 +7462,7 @@ export const putGroup: API.OperationMethod<
   PutGroupResponse,
   PutGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutGroupRequest,
   output: PutGroupResponse,
   errors: [
@@ -7506,7 +7506,7 @@ export const searchRelevantContent: API.OperationMethod<
     SearchRelevantContentError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchRelevantContentRequest,
   output: SearchRelevantContentResponse,
   errors: [
@@ -7541,7 +7541,7 @@ export const startDataSourceSyncJob: API.OperationMethod<
   StartDataSourceSyncJobResponse,
   StartDataSourceSyncJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartDataSourceSyncJobRequest,
   output: StartDataSourceSyncJobResponse,
   errors: [
@@ -7570,7 +7570,7 @@ export const stopDataSourceSyncJob: API.OperationMethod<
   StopDataSourceSyncJobResponse,
   StopDataSourceSyncJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopDataSourceSyncJobRequest,
   output: StopDataSourceSyncJobResponse,
   errors: [
@@ -7598,7 +7598,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -7625,7 +7625,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -7653,7 +7653,7 @@ export const updateChatControlsConfiguration: API.OperationMethod<
   UpdateChatControlsConfigurationResponse,
   UpdateChatControlsConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateChatControlsConfigurationRequest,
   output: UpdateChatControlsConfigurationResponse,
   errors: [
@@ -7682,7 +7682,7 @@ export const updateChatResponseConfiguration: API.OperationMethod<
   UpdateChatResponseConfigurationResponse,
   UpdateChatResponseConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateChatResponseConfigurationRequest,
   output: UpdateChatResponseConfigurationResponse,
   errors: [
@@ -7710,7 +7710,7 @@ export const updateSubscription: API.OperationMethod<
   UpdateSubscriptionResponse,
   UpdateSubscriptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSubscriptionRequest,
   output: UpdateSubscriptionResponse,
   errors: [
@@ -7739,7 +7739,7 @@ export const updateUser: API.OperationMethod<
   UpdateUserResponse,
   UpdateUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateUserRequest,
   output: UpdateUserResponse,
   errors: [
@@ -7775,7 +7775,7 @@ export const createApplication: API.OperationMethod<
   CreateApplicationResponse,
   CreateApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateApplicationRequest,
   output: CreateApplicationResponse,
   errors: [
@@ -7803,7 +7803,7 @@ export const getApplication: API.OperationMethod<
   GetApplicationResponse,
   GetApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetApplicationRequest,
   output: GetApplicationResponse,
   errors: [
@@ -7834,7 +7834,7 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationResponse,
   UpdateApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateApplicationRequest,
   output: UpdateApplicationResponse,
   errors: [
@@ -7862,7 +7862,7 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationResponse,
   DeleteApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteApplicationRequest,
   output: DeleteApplicationResponse,
   errors: [
@@ -7905,7 +7905,7 @@ export const listApplications: API.OperationMethod<
     ListApplicationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationsRequest,
   output: ListApplicationsResponse,
   errors: [
@@ -7938,7 +7938,7 @@ export const createDataAccessor: API.OperationMethod<
   CreateDataAccessorResponse,
   CreateDataAccessorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDataAccessorRequest,
   output: CreateDataAccessorResponse,
   errors: [
@@ -7966,7 +7966,7 @@ export const getDataAccessor: API.OperationMethod<
   GetDataAccessorResponse,
   GetDataAccessorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDataAccessorRequest,
   output: GetDataAccessorResponse,
   errors: [
@@ -7993,7 +7993,7 @@ export const updateDataAccessor: API.OperationMethod<
   UpdateDataAccessorResponse,
   UpdateDataAccessorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDataAccessorRequest,
   output: UpdateDataAccessorResponse,
   errors: [
@@ -8021,7 +8021,7 @@ export const deleteDataAccessor: API.OperationMethod<
   DeleteDataAccessorResponse,
   DeleteDataAccessorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDataAccessorRequest,
   output: DeleteDataAccessorResponse,
   errors: [
@@ -8063,7 +8063,7 @@ export const listDataAccessors: API.OperationMethod<
     ListDataAccessorsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataAccessorsRequest,
   output: ListDataAccessorsResponse,
   errors: [
@@ -8101,7 +8101,7 @@ export const createIndex: API.OperationMethod<
   CreateIndexResponse,
   CreateIndexError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateIndexRequest,
   output: CreateIndexResponse,
   errors: [
@@ -8129,7 +8129,7 @@ export const getIndex: API.OperationMethod<
   GetIndexResponse,
   GetIndexError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIndexRequest,
   output: GetIndexResponse,
   errors: [
@@ -8157,7 +8157,7 @@ export const updateIndex: API.OperationMethod<
   UpdateIndexResponse,
   UpdateIndexError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateIndexRequest,
   output: UpdateIndexResponse,
   errors: [
@@ -8186,7 +8186,7 @@ export const deleteIndex: API.OperationMethod<
   DeleteIndexResponse,
   DeleteIndexError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteIndexRequest,
   output: DeleteIndexResponse,
   errors: [
@@ -8228,7 +8228,7 @@ export const listIndices: API.OperationMethod<
     ListIndicesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIndicesRequest,
   output: ListIndicesResponse,
   errors: [
@@ -8264,7 +8264,7 @@ export const createDataSource: API.OperationMethod<
   CreateDataSourceResponse,
   CreateDataSourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDataSourceRequest,
   output: CreateDataSourceResponse,
   errors: [
@@ -8292,7 +8292,7 @@ export const getDataSource: API.OperationMethod<
   GetDataSourceResponse,
   GetDataSourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDataSourceRequest,
   output: GetDataSourceResponse,
   errors: [
@@ -8319,7 +8319,7 @@ export const updateDataSource: API.OperationMethod<
   UpdateDataSourceResponse,
   UpdateDataSourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDataSourceRequest,
   output: UpdateDataSourceResponse,
   errors: [
@@ -8347,7 +8347,7 @@ export const deleteDataSource: API.OperationMethod<
   DeleteDataSourceResponse,
   DeleteDataSourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDataSourceRequest,
   output: DeleteDataSourceResponse,
   errors: [
@@ -8389,7 +8389,7 @@ export const listDataSources: API.OperationMethod<
     ListDataSourcesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataSourcesRequest,
   output: ListDataSourcesResponse,
   errors: [
@@ -8423,7 +8423,7 @@ export const createPlugin: API.OperationMethod<
   CreatePluginResponse,
   CreatePluginError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePluginRequest,
   output: CreatePluginResponse,
   errors: [
@@ -8451,7 +8451,7 @@ export const getPlugin: API.OperationMethod<
   GetPluginResponse,
   GetPluginError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPluginRequest,
   output: GetPluginResponse,
   errors: [
@@ -8479,7 +8479,7 @@ export const updatePlugin: API.OperationMethod<
   UpdatePluginResponse,
   UpdatePluginError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePluginRequest,
   output: UpdatePluginResponse,
   errors: [
@@ -8508,7 +8508,7 @@ export const deletePlugin: API.OperationMethod<
   DeletePluginResponse,
   DeletePluginError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePluginRequest,
   output: DeletePluginResponse,
   errors: [
@@ -8550,7 +8550,7 @@ export const listPlugins: API.OperationMethod<
     ListPluginsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPluginsRequest,
   output: ListPluginsResponse,
   errors: [
@@ -8584,7 +8584,7 @@ export const createRetriever: API.OperationMethod<
   CreateRetrieverResponse,
   CreateRetrieverError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRetrieverRequest,
   output: CreateRetrieverResponse,
   errors: [
@@ -8612,7 +8612,7 @@ export const getRetriever: API.OperationMethod<
   GetRetrieverResponse,
   GetRetrieverError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRetrieverRequest,
   output: GetRetrieverResponse,
   errors: [
@@ -8640,7 +8640,7 @@ export const updateRetriever: API.OperationMethod<
   UpdateRetrieverResponse,
   UpdateRetrieverError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRetrieverRequest,
   output: UpdateRetrieverResponse,
   errors: [
@@ -8669,7 +8669,7 @@ export const deleteRetriever: API.OperationMethod<
   DeleteRetrieverResponse,
   DeleteRetrieverError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRetrieverRequest,
   output: DeleteRetrieverResponse,
   errors: [
@@ -8711,7 +8711,7 @@ export const listRetrievers: API.OperationMethod<
     ListRetrieversError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRetrieversRequest,
   output: ListRetrieversResponse,
   errors: [
@@ -8745,7 +8745,7 @@ export const createWebExperience: API.OperationMethod<
   CreateWebExperienceResponse,
   CreateWebExperienceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateWebExperienceRequest,
   output: CreateWebExperienceResponse,
   errors: [
@@ -8773,7 +8773,7 @@ export const getWebExperience: API.OperationMethod<
   GetWebExperienceResponse,
   GetWebExperienceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetWebExperienceRequest,
   output: GetWebExperienceResponse,
   errors: [
@@ -8800,7 +8800,7 @@ export const updateWebExperience: API.OperationMethod<
   UpdateWebExperienceResponse,
   UpdateWebExperienceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateWebExperienceRequest,
   output: UpdateWebExperienceResponse,
   errors: [
@@ -8828,7 +8828,7 @@ export const deleteWebExperience: API.OperationMethod<
   DeleteWebExperienceResponse,
   DeleteWebExperienceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteWebExperienceRequest,
   output: DeleteWebExperienceResponse,
   errors: [
@@ -8870,7 +8870,7 @@ export const listWebExperiences: API.OperationMethod<
     ListWebExperiencesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWebExperiencesRequest,
   output: ListWebExperiencesResponse,
   errors: [

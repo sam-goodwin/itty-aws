@@ -3962,7 +3962,7 @@ export const batchCheckLayerAvailability: API.OperationMethod<
   BatchCheckLayerAvailabilityResponse,
   BatchCheckLayerAvailabilityError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchCheckLayerAvailabilityRequest,
   output: BatchCheckLayerAvailabilityResponse,
   errors: [
@@ -3991,7 +3991,7 @@ export const batchDeleteImage: API.OperationMethod<
   BatchDeleteImageResponse,
   BatchDeleteImageError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchDeleteImageRequest,
   output: BatchDeleteImageResponse,
   errors: [
@@ -4019,7 +4019,7 @@ export const batchGetImage: API.OperationMethod<
   BatchGetImageResponse,
   BatchGetImageError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetImageRequest,
   output: BatchGetImageResponse,
   errors: [
@@ -4044,7 +4044,7 @@ export const batchGetRepositoryScanningConfiguration: API.OperationMethod<
   BatchGetRepositoryScanningConfigurationResponse,
   BatchGetRepositoryScanningConfigurationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetRepositoryScanningConfigurationRequest,
   output: BatchGetRepositoryScanningConfigurationResponse,
   errors: [
@@ -4081,7 +4081,7 @@ export const completeLayerUpload: API.OperationMethod<
   CompleteLayerUploadResponse,
   CompleteLayerUploadError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CompleteLayerUploadRequest,
   output: CompleteLayerUploadResponse,
   errors: [
@@ -4118,7 +4118,7 @@ export const createPullThroughCacheRule: API.OperationMethod<
   CreatePullThroughCacheRuleResponse,
   CreatePullThroughCacheRuleError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePullThroughCacheRuleRequest,
   output: CreatePullThroughCacheRuleResponse,
   errors: [
@@ -4151,7 +4151,7 @@ export const createRepository: API.OperationMethod<
   CreateRepositoryResponse,
   CreateRepositoryError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRepositoryRequest,
   output: CreateRepositoryResponse,
   errors: [
@@ -4183,7 +4183,7 @@ export const createRepositoryCreationTemplate: API.OperationMethod<
   CreateRepositoryCreationTemplateResponse,
   CreateRepositoryCreationTemplateError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRepositoryCreationTemplateRequest,
   output: CreateRepositoryCreationTemplateResponse,
   errors: [
@@ -4209,7 +4209,7 @@ export const deleteLifecyclePolicy: API.OperationMethod<
   DeleteLifecyclePolicyResponse,
   DeleteLifecyclePolicyError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLifecyclePolicyRequest,
   output: DeleteLifecyclePolicyResponse,
   errors: [
@@ -4234,7 +4234,7 @@ export const deletePullThroughCacheRule: API.OperationMethod<
   DeletePullThroughCacheRuleResponse,
   DeletePullThroughCacheRuleError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePullThroughCacheRuleRequest,
   output: DeletePullThroughCacheRuleResponse,
   errors: [
@@ -4258,7 +4258,7 @@ export const deleteRegistryPolicy: API.OperationMethod<
   DeleteRegistryPolicyResponse,
   DeleteRegistryPolicyError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRegistryPolicyRequest,
   output: DeleteRegistryPolicyResponse,
   errors: [
@@ -4285,7 +4285,7 @@ export const deleteRepository: API.OperationMethod<
   DeleteRepositoryResponse,
   DeleteRepositoryError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRepositoryRequest,
   output: DeleteRepositoryResponse,
   errors: [
@@ -4310,7 +4310,7 @@ export const deleteRepositoryCreationTemplate: API.OperationMethod<
   DeleteRepositoryCreationTemplateResponse,
   DeleteRepositoryCreationTemplateError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRepositoryCreationTemplateRequest,
   output: DeleteRepositoryCreationTemplateResponse,
   errors: [
@@ -4334,7 +4334,7 @@ export const deleteRepositoryPolicy: API.OperationMethod<
   DeleteRepositoryPolicyResponse,
   DeleteRepositoryPolicyError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRepositoryPolicyRequest,
   output: DeleteRepositoryPolicyResponse,
   errors: [
@@ -4363,7 +4363,7 @@ export const deleteSigningConfiguration: API.OperationMethod<
   DeleteSigningConfigurationResponse,
   DeleteSigningConfigurationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSigningConfigurationRequest,
   output: DeleteSigningConfigurationResponse,
   errors: [
@@ -4387,7 +4387,7 @@ export const deregisterPullTimeUpdateExclusion: API.OperationMethod<
   DeregisterPullTimeUpdateExclusionResponse,
   DeregisterPullTimeUpdateExclusionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeregisterPullTimeUpdateExclusionRequest,
   output: DeregisterPullTimeUpdateExclusionResponse,
   errors: [
@@ -4413,7 +4413,7 @@ export const describeImageReplicationStatus: API.OperationMethod<
   DescribeImageReplicationStatusResponse,
   DescribeImageReplicationStatusError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeImageReplicationStatusRequest,
   output: DescribeImageReplicationStatusResponse,
   errors: [
@@ -4464,7 +4464,7 @@ export const describeImages: API.OperationMethod<
     DescribeImagesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeImagesRequest,
   output: DescribeImagesResponse,
   errors: [
@@ -4511,7 +4511,7 @@ export const describeImageScanFindings: API.OperationMethod<
     DescribeImageScanFindingsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeImageScanFindingsRequest,
   output: DescribeImageScanFindingsResponse,
   errors: [
@@ -4548,7 +4548,7 @@ export const describeImageSigningStatus: API.OperationMethod<
   DescribeImageSigningStatusResponse,
   DescribeImageSigningStatusError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeImageSigningStatusRequest,
   output: DescribeImageSigningStatusResponse,
   errors: [
@@ -4588,7 +4588,7 @@ export const describePullThroughCacheRules: API.OperationMethod<
     DescribePullThroughCacheRulesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribePullThroughCacheRulesRequest,
   output: DescribePullThroughCacheRulesResponse,
   errors: [
@@ -4619,7 +4619,7 @@ export const describeRegistry: API.OperationMethod<
   DescribeRegistryResponse,
   DescribeRegistryError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeRegistryRequest,
   output: DescribeRegistryResponse,
   errors: [InvalidParameterException, ServerException, ValidationException],
@@ -4652,7 +4652,7 @@ export const describeRepositories: API.OperationMethod<
     DescribeRepositoriesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRepositoriesRequest,
   output: DescribeRepositoriesResponse,
   errors: [
@@ -4697,7 +4697,7 @@ export const describeRepositoryCreationTemplates: API.OperationMethod<
     DescribeRepositoryCreationTemplatesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRepositoryCreationTemplatesRequest,
   output: DescribeRepositoryCreationTemplatesResponse,
   errors: [InvalidParameterException, ServerException, ValidationException],
@@ -4721,7 +4721,7 @@ export const getAccountSetting: API.OperationMethod<
   GetAccountSettingResponse,
   GetAccountSettingError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountSettingRequest,
   output: GetAccountSettingResponse,
   errors: [InvalidParameterException, ServerException, ValidationException],
@@ -4746,7 +4746,7 @@ export const getAuthorizationToken: API.OperationMethod<
   GetAuthorizationTokenResponse,
   GetAuthorizationTokenError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAuthorizationTokenRequest,
   output: GetAuthorizationTokenResponse,
   errors: [InvalidParameterException, ServerException],
@@ -4774,7 +4774,7 @@ export const getDownloadUrlForLayer: API.OperationMethod<
   GetDownloadUrlForLayerResponse,
   GetDownloadUrlForLayerError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDownloadUrlForLayerRequest,
   output: GetDownloadUrlForLayerResponse,
   errors: [
@@ -4801,7 +4801,7 @@ export const getLifecyclePolicy: API.OperationMethod<
   GetLifecyclePolicyResponse,
   GetLifecyclePolicyError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLifecyclePolicyRequest,
   output: GetLifecyclePolicyResponse,
   errors: [
@@ -4843,7 +4843,7 @@ export const getLifecyclePolicyPreview: API.OperationMethod<
     GetLifecyclePolicyPreviewError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetLifecyclePolicyPreviewRequest,
   output: GetLifecyclePolicyPreviewResponse,
   errors: [
@@ -4874,7 +4874,7 @@ export const getRegistryPolicy: API.OperationMethod<
   GetRegistryPolicyResponse,
   GetRegistryPolicyError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRegistryPolicyRequest,
   output: GetRegistryPolicyResponse,
   errors: [
@@ -4897,7 +4897,7 @@ export const getRegistryScanningConfiguration: API.OperationMethod<
   GetRegistryScanningConfigurationResponse,
   GetRegistryScanningConfigurationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRegistryScanningConfigurationRequest,
   output: GetRegistryScanningConfigurationResponse,
   errors: [InvalidParameterException, ServerException, ValidationException],
@@ -4916,7 +4916,7 @@ export const getRepositoryPolicy: API.OperationMethod<
   GetRepositoryPolicyResponse,
   GetRepositoryPolicyError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRepositoryPolicyRequest,
   output: GetRepositoryPolicyResponse,
   errors: [
@@ -4944,7 +4944,7 @@ export const getSigningConfiguration: API.OperationMethod<
   GetSigningConfigurationResponse,
   GetSigningConfigurationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSigningConfigurationRequest,
   output: GetSigningConfigurationResponse,
   errors: [
@@ -4975,7 +4975,7 @@ export const initiateLayerUpload: API.OperationMethod<
   InitiateLayerUploadResponse,
   InitiateLayerUploadError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InitiateLayerUploadRequest,
   output: InitiateLayerUploadResponse,
   errors: [
@@ -5002,7 +5002,7 @@ export const listImageReferrers: API.OperationMethod<
   ListImageReferrersResponse,
   ListImageReferrersError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListImageReferrersRequest,
   output: ListImageReferrersResponse,
   errors: [
@@ -5048,7 +5048,7 @@ export const listImages: API.OperationMethod<
     ListImagesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImagesRequest,
   output: ListImagesResponse,
   errors: [
@@ -5077,7 +5077,7 @@ export const listPullTimeUpdateExclusions: API.OperationMethod<
   ListPullTimeUpdateExclusionsResponse,
   ListPullTimeUpdateExclusionsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListPullTimeUpdateExclusionsRequest,
   output: ListPullTimeUpdateExclusionsResponse,
   errors: [
@@ -5100,7 +5100,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -5123,7 +5123,7 @@ export const putAccountSetting: API.OperationMethod<
   PutAccountSettingResponse,
   PutAccountSettingError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutAccountSettingRequest,
   output: PutAccountSettingResponse,
   errors: [
@@ -5160,7 +5160,7 @@ export const putImage: API.OperationMethod<
   PutImageResponse,
   PutImageError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutImageRequest,
   output: PutImageResponse,
   errors: [
@@ -5194,7 +5194,7 @@ export const putImageScanningConfiguration: API.OperationMethod<
   PutImageScanningConfigurationResponse,
   PutImageScanningConfigurationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutImageScanningConfigurationRequest,
   output: PutImageScanningConfigurationResponse,
   errors: [
@@ -5219,7 +5219,7 @@ export const putImageTagMutability: API.OperationMethod<
   PutImageTagMutabilityResponse,
   PutImageTagMutabilityError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutImageTagMutabilityRequest,
   output: PutImageTagMutabilityResponse,
   errors: [
@@ -5244,7 +5244,7 @@ export const putLifecyclePolicy: API.OperationMethod<
   PutLifecyclePolicyResponse,
   PutLifecyclePolicyError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutLifecyclePolicyRequest,
   output: PutLifecyclePolicyResponse,
   errors: [
@@ -5270,7 +5270,7 @@ export const putRegistryPolicy: API.OperationMethod<
   PutRegistryPolicyResponse,
   PutRegistryPolicyError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutRegistryPolicyRequest,
   output: PutRegistryPolicyResponse,
   errors: [InvalidParameterException, ServerException, ValidationException],
@@ -5289,7 +5289,7 @@ export const putRegistryScanningConfiguration: API.OperationMethod<
   PutRegistryScanningConfigurationResponse,
   PutRegistryScanningConfigurationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutRegistryScanningConfigurationRequest,
   output: PutRegistryScanningConfigurationResponse,
   errors: [
@@ -5321,7 +5321,7 @@ export const putReplicationConfiguration: API.OperationMethod<
   PutReplicationConfigurationResponse,
   PutReplicationConfigurationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutReplicationConfigurationRequest,
   output: PutReplicationConfigurationResponse,
   errors: [InvalidParameterException, ServerException, ValidationException],
@@ -5347,7 +5347,7 @@ export const putSigningConfiguration: API.OperationMethod<
   PutSigningConfigurationResponse,
   PutSigningConfigurationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutSigningConfigurationRequest,
   output: PutSigningConfigurationResponse,
   errors: [InvalidParameterException, ServerException, ValidationException],
@@ -5367,7 +5367,7 @@ export const registerPullTimeUpdateExclusion: API.OperationMethod<
   RegisterPullTimeUpdateExclusionResponse,
   RegisterPullTimeUpdateExclusionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterPullTimeUpdateExclusionRequest,
   output: RegisterPullTimeUpdateExclusionResponse,
   errors: [
@@ -5393,7 +5393,7 @@ export const setRepositoryPolicy: API.OperationMethod<
   SetRepositoryPolicyResponse,
   SetRepositoryPolicyError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetRepositoryPolicyRequest,
   output: SetRepositoryPolicyResponse,
   errors: [
@@ -5425,7 +5425,7 @@ export const startImageScan: API.OperationMethod<
   StartImageScanResponse,
   StartImageScanError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartImageScanRequest,
   output: StartImageScanResponse,
   errors: [
@@ -5456,7 +5456,7 @@ export const startLifecyclePolicyPreview: API.OperationMethod<
   StartLifecyclePolicyPreviewResponse,
   StartLifecyclePolicyPreviewError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartLifecyclePolicyPreviewRequest,
   output: StartLifecyclePolicyPreviewResponse,
   errors: [
@@ -5484,7 +5484,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -5510,7 +5510,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -5537,7 +5537,7 @@ export const updateImageStorageClass: API.OperationMethod<
   UpdateImageStorageClassResponse,
   UpdateImageStorageClassError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateImageStorageClassRequest,
   output: UpdateImageStorageClassResponse,
   errors: [
@@ -5566,7 +5566,7 @@ export const updatePullThroughCacheRule: API.OperationMethod<
   UpdatePullThroughCacheRuleResponse,
   UpdatePullThroughCacheRuleError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePullThroughCacheRuleRequest,
   output: UpdatePullThroughCacheRuleResponse,
   errors: [
@@ -5593,7 +5593,7 @@ export const updateRepositoryCreationTemplate: API.OperationMethod<
   UpdateRepositoryCreationTemplateResponse,
   UpdateRepositoryCreationTemplateError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRepositoryCreationTemplateRequest,
   output: UpdateRepositoryCreationTemplateResponse,
   errors: [
@@ -5627,7 +5627,7 @@ export const uploadLayerPart: API.OperationMethod<
   UploadLayerPartResponse,
   UploadLayerPartError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UploadLayerPartRequest,
   output: UploadLayerPartResponse,
   errors: [
@@ -5657,7 +5657,7 @@ export const validatePullThroughCacheRule: API.OperationMethod<
   ValidatePullThroughCacheRuleResponse,
   ValidatePullThroughCacheRuleError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ValidatePullThroughCacheRuleRequest,
   output: ValidatePullThroughCacheRuleResponse,
   errors: [

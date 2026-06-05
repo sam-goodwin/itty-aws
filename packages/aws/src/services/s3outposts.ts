@@ -399,7 +399,7 @@ export const createEndpoint: API.OperationMethod<
   CreateEndpointResult,
   CreateEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEndpointRequest,
   output: CreateEndpointResult,
   errors: [
@@ -436,7 +436,7 @@ export const deleteEndpoint: API.OperationMethod<
   DeleteEndpointResponse,
   DeleteEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEndpointRequest,
   output: DeleteEndpointResponse,
   errors: [
@@ -484,7 +484,7 @@ export const listEndpoints: API.OperationMethod<
     ListEndpointsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEndpointsRequest,
   output: ListEndpointsResult,
   errors: [
@@ -532,7 +532,7 @@ export const listOutpostsWithS3: API.OperationMethod<
     ListOutpostsWithS3Error,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOutpostsWithS3Request,
   output: ListOutpostsWithS3Result,
   errors: [
@@ -584,7 +584,7 @@ export const listSharedEndpoints: API.OperationMethod<
     ListSharedEndpointsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSharedEndpointsRequest,
   output: ListSharedEndpointsResult,
   errors: [

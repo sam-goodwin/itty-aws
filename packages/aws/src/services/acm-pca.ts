@@ -1255,7 +1255,7 @@ export const createCertificateAuthority: API.OperationMethod<
   CreateCertificateAuthorityResponse,
   CreateCertificateAuthorityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCertificateAuthorityRequest,
   output: CreateCertificateAuthorityResponse,
   errors: [
@@ -1287,7 +1287,7 @@ export const createCertificateAuthorityAuditReport: API.OperationMethod<
   CreateCertificateAuthorityAuditReportResponse,
   CreateCertificateAuthorityAuditReportError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCertificateAuthorityAuditReportRequest,
   output: CreateCertificateAuthorityAuditReportResponse,
   errors: [
@@ -1324,7 +1324,7 @@ export const createPermission: API.OperationMethod<
   CreatePermissionResponse,
   CreatePermissionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePermissionRequest,
   output: CreatePermissionResponse,
   errors: [
@@ -1360,7 +1360,7 @@ export const deleteCertificateAuthority: API.OperationMethod<
   DeleteCertificateAuthorityResponse,
   DeleteCertificateAuthorityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCertificateAuthorityRequest,
   output: DeleteCertificateAuthorityResponse,
   errors: [
@@ -1395,7 +1395,7 @@ export const deletePermission: API.OperationMethod<
   DeletePermissionResponse,
   DeletePermissionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePermissionRequest,
   output: DeletePermissionResponse,
   errors: [
@@ -1436,7 +1436,7 @@ export const deletePolicy: API.OperationMethod<
   DeletePolicyResponse,
   DeletePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePolicyRequest,
   output: DeletePolicyResponse,
   errors: [
@@ -1474,7 +1474,7 @@ export const describeCertificateAuthority: API.OperationMethod<
   DescribeCertificateAuthorityResponse,
   DescribeCertificateAuthorityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeCertificateAuthorityRequest,
   output: DescribeCertificateAuthorityResponse,
   errors: [InvalidArnException, ResourceNotFoundException],
@@ -1492,7 +1492,7 @@ export const describeCertificateAuthorityAuditReport: API.OperationMethod<
   DescribeCertificateAuthorityAuditReportResponse,
   DescribeCertificateAuthorityAuditReportError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeCertificateAuthorityAuditReportRequest,
   output: DescribeCertificateAuthorityAuditReportResponse,
   errors: [
@@ -1516,7 +1516,7 @@ export const getCertificate: API.OperationMethod<
   GetCertificateResponse,
   GetCertificateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCertificateRequest,
   output: GetCertificateResponse,
   errors: [
@@ -1540,7 +1540,7 @@ export const getCertificateAuthorityCertificate: API.OperationMethod<
   GetCertificateAuthorityCertificateResponse,
   GetCertificateAuthorityCertificateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCertificateAuthorityCertificateRequest,
   output: GetCertificateAuthorityCertificateResponse,
   errors: [
@@ -1564,7 +1564,7 @@ export const getCertificateAuthorityCsr: API.OperationMethod<
   GetCertificateAuthorityCsrResponse,
   GetCertificateAuthorityCsrError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCertificateAuthorityCsrRequest,
   output: GetCertificateAuthorityCsrResponse,
   errors: [
@@ -1600,7 +1600,7 @@ export const getPolicy: API.OperationMethod<
   GetPolicyResponse,
   GetPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPolicyRequest,
   output: GetPolicyResponse,
   errors: [
@@ -1703,7 +1703,7 @@ export const importCertificateAuthorityCertificate: API.OperationMethod<
   ImportCertificateAuthorityCertificateResponse,
   ImportCertificateAuthorityCertificateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportCertificateAuthorityCertificateRequest,
   output: ImportCertificateAuthorityCertificateResponse,
   errors: [
@@ -1736,7 +1736,7 @@ export const issueCertificate: API.OperationMethod<
   IssueCertificateResponse,
   IssueCertificateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: IssueCertificateRequest,
   output: IssueCertificateResponse,
   errors: [
@@ -1774,7 +1774,7 @@ export const listCertificateAuthorities: API.OperationMethod<
     ListCertificateAuthoritiesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCertificateAuthoritiesRequest,
   output: ListCertificateAuthoritiesResponse,
   errors: [InvalidNextTokenException],
@@ -1826,7 +1826,7 @@ export const listPermissions: API.OperationMethod<
     ListPermissionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPermissionsRequest,
   output: ListPermissionsResponse,
   errors: [
@@ -1872,7 +1872,7 @@ export const listTags: API.OperationMethod<
     ListTagsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagsRequest,
   output: ListTagsResponse,
   errors: [
@@ -1918,7 +1918,7 @@ export const putPolicy: API.OperationMethod<
   PutPolicyResponse,
   PutPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutPolicyRequest,
   output: PutPolicyResponse,
   errors: [
@@ -1944,7 +1944,7 @@ export const restoreCertificateAuthority: API.OperationMethod<
   RestoreCertificateAuthorityResponse,
   RestoreCertificateAuthorityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RestoreCertificateAuthorityRequest,
   output: RestoreCertificateAuthorityResponse,
   errors: [
@@ -1978,7 +1978,7 @@ export const revokeCertificate: API.OperationMethod<
   RevokeCertificateResponse,
   RevokeCertificateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RevokeCertificateRequest,
   output: RevokeCertificateResponse,
   errors: [
@@ -2010,7 +2010,7 @@ export const tagCertificateAuthority: API.OperationMethod<
   TagCertificateAuthorityResponse,
   TagCertificateAuthorityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagCertificateAuthorityRequest,
   output: TagCertificateAuthorityResponse,
   errors: [
@@ -2035,7 +2035,7 @@ export const untagCertificateAuthority: API.OperationMethod<
   UntagCertificateAuthorityResponse,
   UntagCertificateAuthorityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagCertificateAuthorityRequest,
   output: UntagCertificateAuthorityResponse,
   errors: [
@@ -2063,7 +2063,7 @@ export const updateCertificateAuthority: API.OperationMethod<
   UpdateCertificateAuthorityResponse,
   UpdateCertificateAuthorityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCertificateAuthorityRequest,
   output: UpdateCertificateAuthorityResponse,
   errors: [

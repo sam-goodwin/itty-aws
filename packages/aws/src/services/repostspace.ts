@@ -1019,7 +1019,7 @@ export const batchAddChannelRoleToAccessors: API.OperationMethod<
   BatchAddChannelRoleToAccessorsOutput,
   BatchAddChannelRoleToAccessorsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchAddChannelRoleToAccessorsInput,
   output: BatchAddChannelRoleToAccessorsOutput,
   errors: [
@@ -1045,7 +1045,7 @@ export const batchAddRole: API.OperationMethod<
   BatchAddRoleOutput,
   BatchAddRoleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchAddRoleInput,
   output: BatchAddRoleOutput,
   errors: [
@@ -1071,7 +1071,7 @@ export const batchRemoveChannelRoleFromAccessors: API.OperationMethod<
   BatchRemoveChannelRoleFromAccessorsOutput,
   BatchRemoveChannelRoleFromAccessorsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchRemoveChannelRoleFromAccessorsInput,
   output: BatchRemoveChannelRoleFromAccessorsOutput,
   errors: [
@@ -1097,7 +1097,7 @@ export const batchRemoveRole: API.OperationMethod<
   BatchRemoveRoleOutput,
   BatchRemoveRoleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchRemoveRoleInput,
   output: BatchRemoveRoleOutput,
   errors: [
@@ -1125,7 +1125,7 @@ export const createChannel: API.OperationMethod<
   CreateChannelOutput,
   CreateChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateChannelInput,
   output: CreateChannelOutput,
   errors: [
@@ -1155,7 +1155,7 @@ export const createSpace: API.OperationMethod<
   CreateSpaceOutput,
   CreateSpaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSpaceInput,
   output: CreateSpaceOutput,
   errors: [
@@ -1183,7 +1183,7 @@ export const deleteSpace: API.OperationMethod<
   DeleteSpaceResponse,
   DeleteSpaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSpaceInput,
   output: DeleteSpaceResponse,
   errors: [
@@ -1209,7 +1209,7 @@ export const deregisterAdmin: API.OperationMethod<
   DeregisterAdminResponse,
   DeregisterAdminError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeregisterAdminInput,
   output: DeregisterAdminResponse,
   errors: [
@@ -1235,7 +1235,7 @@ export const getChannel: API.OperationMethod<
   GetChannelOutput,
   GetChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetChannelInput,
   output: GetChannelOutput,
   errors: [
@@ -1261,7 +1261,7 @@ export const getSpace: API.OperationMethod<
   GetSpaceOutput,
   GetSpaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSpaceInput,
   output: GetSpaceOutput,
   errors: [
@@ -1301,7 +1301,7 @@ export const listChannels: API.OperationMethod<
     ListChannelsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChannelsInput,
   output: ListChannelsOutput,
   errors: [
@@ -1346,7 +1346,7 @@ export const listSpaces: API.OperationMethod<
     ListSpacesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSpacesInput,
   output: ListSpacesOutput,
   errors: [
@@ -1377,7 +1377,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -1403,7 +1403,7 @@ export const registerAdmin: API.OperationMethod<
   RegisterAdminResponse,
   RegisterAdminError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterAdminInput,
   output: RegisterAdminResponse,
   errors: [
@@ -1429,7 +1429,7 @@ export const sendInvites: API.OperationMethod<
   SendInvitesResponse,
   SendInvitesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendInvitesInput,
   output: SendInvitesResponse,
   errors: [
@@ -1455,7 +1455,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -1481,7 +1481,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -1508,7 +1508,7 @@ export const updateChannel: API.OperationMethod<
   UpdateChannelOutput,
   UpdateChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateChannelInput,
   output: UpdateChannelOutput,
   errors: [
@@ -1536,7 +1536,7 @@ export const updateSpace: API.OperationMethod<
   UpdateSpaceResponse,
   UpdateSpaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSpaceInput,
   output: UpdateSpaceResponse,
   errors: [

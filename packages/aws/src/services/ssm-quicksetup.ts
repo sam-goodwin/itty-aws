@@ -775,7 +775,7 @@ export const createConfigurationManager: API.OperationMethod<
   CreateConfigurationManagerOutput,
   CreateConfigurationManagerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateConfigurationManagerInput,
   output: CreateConfigurationManagerOutput,
   errors: [
@@ -802,7 +802,7 @@ export const deleteConfigurationManager: API.OperationMethod<
   DeleteConfigurationManagerResponse,
   DeleteConfigurationManagerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConfigurationManagerInput,
   output: DeleteConfigurationManagerResponse,
   errors: [
@@ -830,7 +830,7 @@ export const getConfiguration: API.OperationMethod<
   GetConfigurationOutput,
   GetConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConfigurationInput,
   output: GetConfigurationOutput,
   errors: [
@@ -858,7 +858,7 @@ export const getConfigurationManager: API.OperationMethod<
   GetConfigurationManagerOutput,
   GetConfigurationManagerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConfigurationManagerInput,
   output: GetConfigurationManagerOutput,
   errors: [
@@ -884,7 +884,7 @@ export const getServiceSettings: API.OperationMethod<
   GetServiceSettingsOutput,
   GetServiceSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetServiceSettingsRequest,
   output: GetServiceSettingsOutput,
   errors: [
@@ -924,7 +924,7 @@ export const listConfigurationManagers: API.OperationMethod<
     ListConfigurationManagersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfigurationManagersInput,
   output: ListConfigurationManagersOutput,
   errors: [
@@ -971,7 +971,7 @@ export const listConfigurations: API.OperationMethod<
     ListConfigurationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfigurationsInput,
   output: ListConfigurationsOutput,
   errors: [
@@ -1002,7 +1002,7 @@ export const listQuickSetupTypes: API.OperationMethod<
   ListQuickSetupTypesOutput,
   ListQuickSetupTypesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListQuickSetupTypesRequest,
   output: ListQuickSetupTypesOutput,
   errors: [
@@ -1028,7 +1028,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -1056,7 +1056,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceResponse,
   errors: [
@@ -1084,7 +1084,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceResponse,
   errors: [
@@ -1112,7 +1112,7 @@ export const updateConfigurationDefinition: API.OperationMethod<
   UpdateConfigurationDefinitionResponse,
   UpdateConfigurationDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateConfigurationDefinitionInput,
   output: UpdateConfigurationDefinitionResponse,
   errors: [
@@ -1140,7 +1140,7 @@ export const updateConfigurationManager: API.OperationMethod<
   UpdateConfigurationManagerResponse,
   UpdateConfigurationManagerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateConfigurationManagerInput,
   output: UpdateConfigurationManagerResponse,
   errors: [
@@ -1167,7 +1167,7 @@ export const updateServiceSettings: API.OperationMethod<
   UpdateServiceSettingsResponse,
   UpdateServiceSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateServiceSettingsInput,
   output: UpdateServiceSettingsResponse,
   errors: [

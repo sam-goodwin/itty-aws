@@ -3646,7 +3646,7 @@ export const acceptInboundCrossClusterSearchConnection: API.OperationMethod<
   AcceptInboundCrossClusterSearchConnectionResponse,
   AcceptInboundCrossClusterSearchConnectionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AcceptInboundCrossClusterSearchConnectionRequest,
   output: AcceptInboundCrossClusterSearchConnectionResponse,
   errors: [
@@ -3670,7 +3670,7 @@ export const addTags: API.OperationMethod<
   AddTagsResponse,
   AddTagsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddTagsRequest,
   output: AddTagsResponse,
   errors: [
@@ -3696,7 +3696,7 @@ export const associatePackage: API.OperationMethod<
   AssociatePackageResponse,
   AssociatePackageError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociatePackageRequest,
   output: AssociatePackageResponse,
   errors: [
@@ -3724,7 +3724,7 @@ export const authorizeVpcEndpointAccess: API.OperationMethod<
   AuthorizeVpcEndpointAccessResponse,
   AuthorizeVpcEndpointAccessError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AuthorizeVpcEndpointAccessRequest,
   output: AuthorizeVpcEndpointAccessResponse,
   errors: [
@@ -3751,7 +3751,7 @@ export const cancelDomainConfigChange: API.OperationMethod<
   CancelDomainConfigChangeResponse,
   CancelDomainConfigChangeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelDomainConfigChangeRequest,
   output: CancelDomainConfigChangeResponse,
   errors: [
@@ -3776,7 +3776,7 @@ export const cancelElasticsearchServiceSoftwareUpdate: API.OperationMethod<
   CancelElasticsearchServiceSoftwareUpdateResponse,
   CancelElasticsearchServiceSoftwareUpdateError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelElasticsearchServiceSoftwareUpdateRequest,
   output: CancelElasticsearchServiceSoftwareUpdateResponse,
   errors: [
@@ -3804,7 +3804,7 @@ export const createElasticsearchDomain: API.OperationMethod<
   CreateElasticsearchDomainResponse,
   CreateElasticsearchDomainError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateElasticsearchDomainRequest,
   output: CreateElasticsearchDomainResponse,
   errors: [
@@ -3831,7 +3831,7 @@ export const createOutboundCrossClusterSearchConnection: API.OperationMethod<
   CreateOutboundCrossClusterSearchConnectionResponse,
   CreateOutboundCrossClusterSearchConnectionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOutboundCrossClusterSearchConnectionRequest,
   output: CreateOutboundCrossClusterSearchConnectionResponse,
   errors: [
@@ -3858,7 +3858,7 @@ export const createPackage: API.OperationMethod<
   CreatePackageResponse,
   CreatePackageError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePackageRequest,
   output: CreatePackageResponse,
   errors: [
@@ -3887,7 +3887,7 @@ export const createVpcEndpoint: API.OperationMethod<
   CreateVpcEndpointResponse,
   CreateVpcEndpointError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateVpcEndpointRequest,
   output: CreateVpcEndpointResponse,
   errors: [
@@ -3913,7 +3913,7 @@ export const deleteElasticsearchDomain: API.OperationMethod<
   DeleteElasticsearchDomainResponse,
   DeleteElasticsearchDomainError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteElasticsearchDomainRequest,
   output: DeleteElasticsearchDomainResponse,
   errors: [
@@ -3936,7 +3936,7 @@ export const deleteElasticsearchServiceRole: API.OperationMethod<
   DeleteElasticsearchServiceRoleResponse,
   DeleteElasticsearchServiceRoleError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteElasticsearchServiceRoleRequest,
   output: DeleteElasticsearchServiceRoleResponse,
   errors: [BaseException, InternalException, ValidationException],
@@ -3953,7 +3953,7 @@ export const deleteInboundCrossClusterSearchConnection: API.OperationMethod<
   DeleteInboundCrossClusterSearchConnectionResponse,
   DeleteInboundCrossClusterSearchConnectionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteInboundCrossClusterSearchConnectionRequest,
   output: DeleteInboundCrossClusterSearchConnectionResponse,
   errors: [DisabledOperationException, ResourceNotFoundException],
@@ -3970,7 +3970,7 @@ export const deleteOutboundCrossClusterSearchConnection: API.OperationMethod<
   DeleteOutboundCrossClusterSearchConnectionResponse,
   DeleteOutboundCrossClusterSearchConnectionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOutboundCrossClusterSearchConnectionRequest,
   output: DeleteOutboundCrossClusterSearchConnectionResponse,
   errors: [DisabledOperationException, ResourceNotFoundException],
@@ -3991,7 +3991,7 @@ export const deletePackage: API.OperationMethod<
   DeletePackageResponse,
   DeletePackageError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePackageRequest,
   output: DeletePackageResponse,
   errors: [
@@ -4017,7 +4017,7 @@ export const deleteVpcEndpoint: API.OperationMethod<
   DeleteVpcEndpointResponse,
   DeleteVpcEndpointError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteVpcEndpointRequest,
   output: DeleteVpcEndpointResponse,
   errors: [
@@ -4056,7 +4056,7 @@ export const describeDomainAutoTunes: API.OperationMethod<
     DescribeDomainAutoTunesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDomainAutoTunesRequest,
   output: DescribeDomainAutoTunesResponse,
   errors: [
@@ -4086,7 +4086,7 @@ export const describeDomainChangeProgress: API.OperationMethod<
   DescribeDomainChangeProgressResponse,
   DescribeDomainChangeProgressError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDomainChangeProgressRequest,
   output: DescribeDomainChangeProgressResponse,
   errors: [
@@ -4110,7 +4110,7 @@ export const describeElasticsearchDomain: API.OperationMethod<
   DescribeElasticsearchDomainResponse,
   DescribeElasticsearchDomainError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeElasticsearchDomainRequest,
   output: DescribeElasticsearchDomainResponse,
   errors: [
@@ -4134,7 +4134,7 @@ export const describeElasticsearchDomainConfig: API.OperationMethod<
   DescribeElasticsearchDomainConfigResponse,
   DescribeElasticsearchDomainConfigError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeElasticsearchDomainConfigRequest,
   output: DescribeElasticsearchDomainConfigResponse,
   errors: [
@@ -4157,7 +4157,7 @@ export const describeElasticsearchDomains: API.OperationMethod<
   DescribeElasticsearchDomainsResponse,
   DescribeElasticsearchDomainsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeElasticsearchDomainsRequest,
   output: DescribeElasticsearchDomainsResponse,
   errors: [BaseException, InternalException, ValidationException],
@@ -4183,7 +4183,7 @@ export const describeElasticsearchInstanceTypeLimits: API.OperationMethod<
   DescribeElasticsearchInstanceTypeLimitsResponse,
   DescribeElasticsearchInstanceTypeLimitsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeElasticsearchInstanceTypeLimitsRequest,
   output: DescribeElasticsearchInstanceTypeLimitsResponse,
   errors: [
@@ -4222,7 +4222,7 @@ export const describeInboundCrossClusterSearchConnections: API.OperationMethod<
     DescribeInboundCrossClusterSearchConnectionsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInboundCrossClusterSearchConnectionsRequest,
   output: DescribeInboundCrossClusterSearchConnectionsResponse,
   errors: [DisabledOperationException, InvalidPaginationTokenException],
@@ -4259,7 +4259,7 @@ export const describeOutboundCrossClusterSearchConnections: API.OperationMethod<
     DescribeOutboundCrossClusterSearchConnectionsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeOutboundCrossClusterSearchConnectionsRequest,
   output: DescribeOutboundCrossClusterSearchConnectionsResponse,
   errors: [DisabledOperationException, InvalidPaginationTokenException],
@@ -4299,7 +4299,7 @@ export const describePackages: API.OperationMethod<
     DescribePackagesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribePackagesRequest,
   output: DescribePackagesResponse,
   errors: [
@@ -4344,7 +4344,7 @@ export const describeReservedElasticsearchInstanceOfferings: API.OperationMethod
     DescribeReservedElasticsearchInstanceOfferingsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReservedElasticsearchInstanceOfferingsRequest,
   output: DescribeReservedElasticsearchInstanceOfferingsResponse,
   errors: [
@@ -4388,7 +4388,7 @@ export const describeReservedElasticsearchInstances: API.OperationMethod<
     DescribeReservedElasticsearchInstancesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReservedElasticsearchInstancesRequest,
   output: DescribeReservedElasticsearchInstancesResponse,
   errors: [
@@ -4417,7 +4417,7 @@ export const describeVpcEndpoints: API.OperationMethod<
   DescribeVpcEndpointsResponse,
   DescribeVpcEndpointsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeVpcEndpointsRequest,
   output: DescribeVpcEndpointsResponse,
   errors: [
@@ -4443,7 +4443,7 @@ export const dissociatePackage: API.OperationMethod<
   DissociatePackageResponse,
   DissociatePackageError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DissociatePackageRequest,
   output: DissociatePackageResponse,
   errors: [
@@ -4475,7 +4475,7 @@ export const getCompatibleElasticsearchVersions: API.OperationMethod<
   GetCompatibleElasticsearchVersionsResponse,
   GetCompatibleElasticsearchVersionsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCompatibleElasticsearchVersionsRequest,
   output: GetCompatibleElasticsearchVersionsResponse,
   errors: [
@@ -4516,7 +4516,7 @@ export const getPackageVersionHistory: API.OperationMethod<
     GetPackageVersionHistoryError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetPackageVersionHistoryRequest,
   output: GetPackageVersionHistoryResponse,
   errors: [
@@ -4562,7 +4562,7 @@ export const getUpgradeHistory: API.OperationMethod<
     GetUpgradeHistoryError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetUpgradeHistoryRequest,
   output: GetUpgradeHistoryResponse,
   errors: [
@@ -4593,7 +4593,7 @@ export const getUpgradeStatus: API.OperationMethod<
   GetUpgradeStatusResponse,
   GetUpgradeStatusError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUpgradeStatusRequest,
   output: GetUpgradeStatusResponse,
   errors: [
@@ -4616,7 +4616,7 @@ export const listDomainNames: API.OperationMethod<
   ListDomainNamesResponse,
   ListDomainNamesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListDomainNamesRequest,
   output: ListDomainNamesResponse,
   errors: [BaseException, ValidationException],
@@ -4651,7 +4651,7 @@ export const listDomainsForPackage: API.OperationMethod<
     ListDomainsForPackageError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDomainsForPackageRequest,
   output: ListDomainsForPackageResponse,
   errors: [
@@ -4696,7 +4696,7 @@ export const listElasticsearchInstanceTypes: API.OperationMethod<
     ListElasticsearchInstanceTypesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListElasticsearchInstanceTypesRequest,
   output: ListElasticsearchInstanceTypesResponse,
   errors: [
@@ -4740,7 +4740,7 @@ export const listElasticsearchVersions: API.OperationMethod<
     ListElasticsearchVersionsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListElasticsearchVersionsRequest,
   output: ListElasticsearchVersionsResponse,
   errors: [
@@ -4785,7 +4785,7 @@ export const listPackagesForDomain: API.OperationMethod<
     ListPackagesForDomainError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPackagesForDomainRequest,
   output: ListPackagesForDomainResponse,
   errors: [
@@ -4815,7 +4815,7 @@ export const listTags: API.OperationMethod<
   ListTagsResponse,
   ListTagsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsRequest,
   output: ListTagsResponse,
   errors: [
@@ -4840,7 +4840,7 @@ export const listVpcEndpointAccess: API.OperationMethod<
   ListVpcEndpointAccessResponse,
   ListVpcEndpointAccessError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListVpcEndpointAccessRequest,
   output: ListVpcEndpointAccessResponse,
   errors: [
@@ -4863,7 +4863,7 @@ export const listVpcEndpoints: API.OperationMethod<
   ListVpcEndpointsResponse,
   ListVpcEndpointsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListVpcEndpointsRequest,
   output: ListVpcEndpointsResponse,
   errors: [BaseException, DisabledOperationException, InternalException],
@@ -4882,7 +4882,7 @@ export const listVpcEndpointsForDomain: API.OperationMethod<
   ListVpcEndpointsForDomainResponse,
   ListVpcEndpointsForDomainError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListVpcEndpointsForDomainRequest,
   output: ListVpcEndpointsForDomainResponse,
   errors: [
@@ -4908,7 +4908,7 @@ export const purchaseReservedElasticsearchInstanceOffering: API.OperationMethod<
   PurchaseReservedElasticsearchInstanceOfferingResponse,
   PurchaseReservedElasticsearchInstanceOfferingError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PurchaseReservedElasticsearchInstanceOfferingRequest,
   output: PurchaseReservedElasticsearchInstanceOfferingResponse,
   errors: [
@@ -4932,7 +4932,7 @@ export const rejectInboundCrossClusterSearchConnection: API.OperationMethod<
   RejectInboundCrossClusterSearchConnectionResponse,
   RejectInboundCrossClusterSearchConnectionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RejectInboundCrossClusterSearchConnectionRequest,
   output: RejectInboundCrossClusterSearchConnectionResponse,
   errors: [DisabledOperationException, ResourceNotFoundException],
@@ -4950,7 +4950,7 @@ export const removeTags: API.OperationMethod<
   RemoveTagsResponse,
   RemoveTagsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveTagsRequest,
   output: RemoveTagsResponse,
   errors: [BaseException, InternalException, ValidationException],
@@ -4971,7 +4971,7 @@ export const revokeVpcEndpointAccess: API.OperationMethod<
   RevokeVpcEndpointAccessResponse,
   RevokeVpcEndpointAccessError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RevokeVpcEndpointAccessRequest,
   output: RevokeVpcEndpointAccessResponse,
   errors: [
@@ -4996,7 +4996,7 @@ export const startElasticsearchServiceSoftwareUpdate: API.OperationMethod<
   StartElasticsearchServiceSoftwareUpdateResponse,
   StartElasticsearchServiceSoftwareUpdateError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartElasticsearchServiceSoftwareUpdateRequest,
   output: StartElasticsearchServiceSoftwareUpdateResponse,
   errors: [
@@ -5022,7 +5022,7 @@ export const updateElasticsearchDomainConfig: API.OperationMethod<
   UpdateElasticsearchDomainConfigResponse,
   UpdateElasticsearchDomainConfigError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateElasticsearchDomainConfigRequest,
   output: UpdateElasticsearchDomainConfigResponse,
   errors: [
@@ -5050,7 +5050,7 @@ export const updatePackage: API.OperationMethod<
   UpdatePackageResponse,
   UpdatePackageError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePackageRequest,
   output: UpdatePackageResponse,
   errors: [
@@ -5078,7 +5078,7 @@ export const updateVpcEndpoint: API.OperationMethod<
   UpdateVpcEndpointResponse,
   UpdateVpcEndpointError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateVpcEndpointRequest,
   output: UpdateVpcEndpointResponse,
   errors: [
@@ -5106,7 +5106,7 @@ export const upgradeElasticsearchDomain: API.OperationMethod<
   UpgradeElasticsearchDomainResponse,
   UpgradeElasticsearchDomainError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpgradeElasticsearchDomainRequest,
   output: UpgradeElasticsearchDomainResponse,
   errors: [

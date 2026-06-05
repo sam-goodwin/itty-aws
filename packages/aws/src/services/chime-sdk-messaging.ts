@@ -2704,7 +2704,7 @@ export const associateChannelFlow: API.OperationMethod<
   AssociateChannelFlowResponse,
   AssociateChannelFlowError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateChannelFlowRequest,
   output: AssociateChannelFlowResponse,
   errors: [
@@ -2736,7 +2736,7 @@ export const batchCreateChannelMembership: API.OperationMethod<
   BatchCreateChannelMembershipResponse,
   BatchCreateChannelMembershipError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchCreateChannelMembershipRequest,
   output: BatchCreateChannelMembershipResponse,
   errors: [
@@ -2775,7 +2775,7 @@ export const channelFlowCallback: API.OperationMethod<
   ChannelFlowCallbackResponse,
   ChannelFlowCallbackError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ChannelFlowCallbackRequest,
   output: ChannelFlowCallbackResponse,
   errors: [
@@ -2813,7 +2813,7 @@ export const createChannel: API.OperationMethod<
   CreateChannelResponse,
   CreateChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateChannelRequest,
   output: CreateChannelResponse,
   errors: [
@@ -2855,7 +2855,7 @@ export const createChannelBan: API.OperationMethod<
   CreateChannelBanResponse,
   CreateChannelBanError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateChannelBanRequest,
   output: CreateChannelBanResponse,
   errors: [
@@ -2901,7 +2901,7 @@ export const createChannelFlow: API.OperationMethod<
   CreateChannelFlowResponse,
   CreateChannelFlowError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateChannelFlowRequest,
   output: CreateChannelFlowResponse,
   errors: [
@@ -2956,7 +2956,7 @@ export const createChannelMembership: API.OperationMethod<
   CreateChannelMembershipResponse,
   CreateChannelMembershipError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateChannelMembershipRequest,
   output: CreateChannelMembershipResponse,
   errors: [
@@ -3003,7 +3003,7 @@ export const createChannelModerator: API.OperationMethod<
   CreateChannelModeratorResponse,
   CreateChannelModeratorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateChannelModeratorRequest,
   output: CreateChannelModeratorResponse,
   errors: [
@@ -3039,7 +3039,7 @@ export const deleteChannel: API.OperationMethod<
   DeleteChannelResponse,
   DeleteChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteChannelRequest,
   output: DeleteChannelResponse,
   errors: [
@@ -3072,7 +3072,7 @@ export const deleteChannelBan: API.OperationMethod<
   DeleteChannelBanResponse,
   DeleteChannelBanError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteChannelBanRequest,
   output: DeleteChannelBanResponse,
   errors: [
@@ -3104,7 +3104,7 @@ export const deleteChannelFlow: API.OperationMethod<
   DeleteChannelFlowResponse,
   DeleteChannelFlowError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteChannelFlowRequest,
   output: DeleteChannelFlowResponse,
   errors: [
@@ -3138,7 +3138,7 @@ export const deleteChannelMembership: API.OperationMethod<
   DeleteChannelMembershipResponse,
   DeleteChannelMembershipError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteChannelMembershipRequest,
   output: DeleteChannelMembershipResponse,
   errors: [
@@ -3173,7 +3173,7 @@ export const deleteChannelMessage: API.OperationMethod<
   DeleteChannelMessageResponse,
   DeleteChannelMessageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteChannelMessageRequest,
   output: DeleteChannelMessageResponse,
   errors: [
@@ -3205,7 +3205,7 @@ export const deleteChannelModerator: API.OperationMethod<
   DeleteChannelModeratorResponse,
   DeleteChannelModeratorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteChannelModeratorRequest,
   output: DeleteChannelModeratorResponse,
   errors: [
@@ -3234,7 +3234,7 @@ export const deleteMessagingStreamingConfigurations: API.OperationMethod<
   DeleteMessagingStreamingConfigurationsResponse,
   DeleteMessagingStreamingConfigurationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMessagingStreamingConfigurationsRequest,
   output: DeleteMessagingStreamingConfigurationsResponse,
   errors: [
@@ -3267,7 +3267,7 @@ export const describeChannel: API.OperationMethod<
   DescribeChannelResponse,
   DescribeChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeChannelRequest,
   output: DescribeChannelResponse,
   errors: [
@@ -3300,7 +3300,7 @@ export const describeChannelBan: API.OperationMethod<
   DescribeChannelBanResponse,
   DescribeChannelBanError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeChannelBanRequest,
   output: DescribeChannelBanResponse,
   errors: [
@@ -3329,7 +3329,7 @@ export const describeChannelFlow: API.OperationMethod<
   DescribeChannelFlowResponse,
   DescribeChannelFlowError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeChannelFlowRequest,
   output: DescribeChannelFlowResponse,
   errors: [
@@ -3362,7 +3362,7 @@ export const describeChannelMembership: API.OperationMethod<
   DescribeChannelMembershipResponse,
   DescribeChannelMembershipError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeChannelMembershipRequest,
   output: DescribeChannelMembershipResponse,
   errors: [
@@ -3396,7 +3396,7 @@ export const describeChannelMembershipForAppInstanceUser: API.OperationMethod<
   DescribeChannelMembershipForAppInstanceUserResponse,
   DescribeChannelMembershipForAppInstanceUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeChannelMembershipForAppInstanceUserRequest,
   output: DescribeChannelMembershipForAppInstanceUserResponse,
   errors: [
@@ -3429,7 +3429,7 @@ export const describeChannelModeratedByAppInstanceUser: API.OperationMethod<
   DescribeChannelModeratedByAppInstanceUserResponse,
   DescribeChannelModeratedByAppInstanceUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeChannelModeratedByAppInstanceUserRequest,
   output: DescribeChannelModeratedByAppInstanceUserResponse,
   errors: [
@@ -3462,7 +3462,7 @@ export const describeChannelModerator: API.OperationMethod<
   DescribeChannelModeratorResponse,
   DescribeChannelModeratorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeChannelModeratorRequest,
   output: DescribeChannelModeratorResponse,
   errors: [
@@ -3500,7 +3500,7 @@ export const disassociateChannelFlow: API.OperationMethod<
   DisassociateChannelFlowResponse,
   DisassociateChannelFlowError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateChannelFlowRequest,
   output: DisassociateChannelFlowResponse,
   errors: [
@@ -3538,7 +3538,7 @@ export const getChannelMembershipPreferences: API.OperationMethod<
   GetChannelMembershipPreferencesResponse,
   GetChannelMembershipPreferencesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetChannelMembershipPreferencesRequest,
   output: GetChannelMembershipPreferencesResponse,
   errors: [
@@ -3571,7 +3571,7 @@ export const getChannelMessage: API.OperationMethod<
   GetChannelMessageResponse,
   GetChannelMessageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetChannelMessageRequest,
   output: GetChannelMessageResponse,
   errors: [
@@ -3627,7 +3627,7 @@ export const getChannelMessageStatus: API.OperationMethod<
   GetChannelMessageStatusResponse,
   GetChannelMessageStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetChannelMessageStatusRequest,
   output: GetChannelMessageStatusResponse,
   errors: [
@@ -3654,7 +3654,7 @@ export const getMessagingSessionEndpoint: API.OperationMethod<
   GetMessagingSessionEndpointResponse,
   GetMessagingSessionEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMessagingSessionEndpointRequest,
   output: GetMessagingSessionEndpointResponse,
   errors: [
@@ -3683,7 +3683,7 @@ export const getMessagingStreamingConfigurations: API.OperationMethod<
   GetMessagingStreamingConfigurationsResponse,
   GetMessagingStreamingConfigurationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMessagingStreamingConfigurationsRequest,
   output: GetMessagingStreamingConfigurationsResponse,
   errors: [
@@ -3731,7 +3731,7 @@ export const listChannelBans: API.OperationMethod<
     ListChannelBansError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChannelBansRequest,
   output: ListChannelBansResponse,
   errors: [
@@ -3779,7 +3779,7 @@ export const listChannelFlows: API.OperationMethod<
     ListChannelFlowsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChannelFlowsRequest,
   output: ListChannelFlowsResponse,
   errors: [
@@ -3834,7 +3834,7 @@ export const listChannelMemberships: API.OperationMethod<
     ListChannelMembershipsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChannelMembershipsRequest,
   output: ListChannelMembershipsResponse,
   errors: [
@@ -3887,7 +3887,7 @@ export const listChannelMembershipsForAppInstanceUser: API.OperationMethod<
     ListChannelMembershipsForAppInstanceUserError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChannelMembershipsForAppInstanceUserRequest,
   output: ListChannelMembershipsForAppInstanceUserResponse,
   errors: [
@@ -3945,7 +3945,7 @@ export const listChannelMessages: API.OperationMethod<
     ListChannelMessagesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChannelMessagesRequest,
   output: ListChannelMessagesResponse,
   errors: [
@@ -3997,7 +3997,7 @@ export const listChannelModerators: API.OperationMethod<
     ListChannelModeratorsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChannelModeratorsRequest,
   output: ListChannelModeratorsResponse,
   errors: [
@@ -4058,7 +4058,7 @@ export const listChannels: API.OperationMethod<
     ListChannelsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChannelsRequest,
   output: ListChannelsResponse,
   errors: [
@@ -4106,7 +4106,7 @@ export const listChannelsAssociatedWithChannelFlow: API.OperationMethod<
     ListChannelsAssociatedWithChannelFlowError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChannelsAssociatedWithChannelFlowRequest,
   output: ListChannelsAssociatedWithChannelFlowResponse,
   errors: [
@@ -4158,7 +4158,7 @@ export const listChannelsModeratedByAppInstanceUser: API.OperationMethod<
     ListChannelsModeratedByAppInstanceUserError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChannelsModeratedByAppInstanceUserRequest,
   output: ListChannelsModeratedByAppInstanceUserResponse,
   errors: [
@@ -4206,7 +4206,7 @@ export const listSubChannels: API.OperationMethod<
     ListSubChannelsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSubChannelsRequest,
   output: ListSubChannelsResponse,
   errors: [
@@ -4239,7 +4239,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -4278,7 +4278,7 @@ export const putChannelExpirationSettings: API.OperationMethod<
   PutChannelExpirationSettingsResponse,
   PutChannelExpirationSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutChannelExpirationSettingsRequest,
   output: PutChannelExpirationSettingsResponse,
   errors: [
@@ -4316,7 +4316,7 @@ export const putChannelMembershipPreferences: API.OperationMethod<
   PutChannelMembershipPreferencesResponse,
   PutChannelMembershipPreferencesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutChannelMembershipPreferencesRequest,
   output: PutChannelMembershipPreferencesResponse,
   errors: [
@@ -4348,7 +4348,7 @@ export const putMessagingStreamingConfigurations: API.OperationMethod<
   PutMessagingStreamingConfigurationsResponse,
   PutMessagingStreamingConfigurationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutMessagingStreamingConfigurationsRequest,
   output: PutMessagingStreamingConfigurationsResponse,
   errors: [
@@ -4384,7 +4384,7 @@ export const redactChannelMessage: API.OperationMethod<
   RedactChannelMessageResponse,
   RedactChannelMessageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RedactChannelMessageRequest,
   output: RedactChannelMessageResponse,
   errors: [
@@ -4436,7 +4436,7 @@ export const searchChannels: API.OperationMethod<
     SearchChannelsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchChannelsRequest,
   output: SearchChannelsResponse,
   errors: [
@@ -4479,7 +4479,7 @@ export const sendChannelMessage: API.OperationMethod<
   SendChannelMessageResponse,
   SendChannelMessageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendChannelMessageRequest,
   output: SendChannelMessageResponse,
   errors: [
@@ -4509,7 +4509,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -4538,7 +4538,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -4573,7 +4573,7 @@ export const updateChannel: API.OperationMethod<
   UpdateChannelResponse,
   UpdateChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateChannelRequest,
   output: UpdateChannelResponse,
   errors: [
@@ -4603,7 +4603,7 @@ export const updateChannelFlow: API.OperationMethod<
   UpdateChannelFlowResponse,
   UpdateChannelFlowError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateChannelFlowRequest,
   output: UpdateChannelFlowResponse,
   errors: [
@@ -4637,7 +4637,7 @@ export const updateChannelMessage: API.OperationMethod<
   UpdateChannelMessageResponse,
   UpdateChannelMessageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateChannelMessageRequest,
   output: UpdateChannelMessageResponse,
   errors: [
@@ -4671,7 +4671,7 @@ export const updateChannelReadMarker: API.OperationMethod<
   UpdateChannelReadMarkerResponse,
   UpdateChannelReadMarkerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateChannelReadMarkerRequest,
   output: UpdateChannelReadMarkerResponse,
   errors: [

@@ -942,7 +942,7 @@ export const activatePipeline: API.OperationMethod<
   ActivatePipelineOutput,
   ActivatePipelineError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ActivatePipelineInput,
   output: ActivatePipelineOutput,
   errors: [
@@ -966,7 +966,7 @@ export const addTags: API.OperationMethod<
   AddTagsOutput,
   AddTagsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddTagsInput,
   output: AddTagsOutput,
   errors: [
@@ -1008,7 +1008,7 @@ export const createPipeline: API.OperationMethod<
   CreatePipelineOutput,
   CreatePipelineError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePipelineInput,
   output: CreatePipelineOutput,
   errors: [InternalServiceError, InvalidRequestException],
@@ -1031,7 +1031,7 @@ export const deactivatePipeline: API.OperationMethod<
   DeactivatePipelineOutput,
   DeactivatePipelineError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeactivatePipelineInput,
   output: DeactivatePipelineOutput,
   errors: [
@@ -1076,7 +1076,7 @@ export const deletePipeline: API.OperationMethod<
   DeletePipelineResponse,
   DeletePipelineError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePipelineInput,
   output: DeletePipelineResponse,
   errors: [
@@ -1162,7 +1162,7 @@ export const describeObjects: API.OperationMethod<
     DescribeObjectsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeObjectsInput,
   output: DescribeObjectsOutput,
   errors: [
@@ -1244,7 +1244,7 @@ export const describePipelines: API.OperationMethod<
   DescribePipelinesOutput,
   DescribePipelinesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribePipelinesInput,
   output: DescribePipelinesOutput,
   errors: [
@@ -1289,7 +1289,7 @@ export const evaluateExpression: API.OperationMethod<
   EvaluateExpressionOutput,
   EvaluateExpressionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EvaluateExpressionInput,
   output: EvaluateExpressionOutput,
   errors: [
@@ -1368,7 +1368,7 @@ export const getPipelineDefinition: API.OperationMethod<
   GetPipelineDefinitionOutput,
   GetPipelineDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPipelineDefinitionInput,
   output: GetPipelineDefinitionOutput,
   errors: [
@@ -1430,7 +1430,7 @@ export const listPipelines: API.OperationMethod<
     ListPipelinesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPipelinesInput,
   output: ListPipelinesOutput,
   errors: [InternalServiceError, InvalidRequestException],
@@ -1521,7 +1521,7 @@ export const pollForTask: API.OperationMethod<
   PollForTaskOutput,
   PollForTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PollForTaskInput,
   output: PollForTaskOutput,
   errors: [
@@ -1683,7 +1683,7 @@ export const putPipelineDefinition: API.OperationMethod<
   PutPipelineDefinitionOutput,
   PutPipelineDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutPipelineDefinitionInput,
   output: PutPipelineDefinitionOutput,
   errors: [
@@ -1750,7 +1750,7 @@ export const queryObjects: API.OperationMethod<
     QueryObjectsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: QueryObjectsInput,
   output: QueryObjectsOutput,
   errors: [
@@ -1780,7 +1780,7 @@ export const removeTags: API.OperationMethod<
   RemoveTagsOutput,
   RemoveTagsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveTagsInput,
   output: RemoveTagsOutput,
   errors: [
@@ -1834,7 +1834,7 @@ export const reportTaskProgress: API.OperationMethod<
   ReportTaskProgressOutput,
   ReportTaskProgressError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReportTaskProgressInput,
   output: ReportTaskProgressOutput,
   errors: [
@@ -1879,7 +1879,7 @@ export const reportTaskRunnerHeartbeat: API.OperationMethod<
   ReportTaskRunnerHeartbeatOutput,
   ReportTaskRunnerHeartbeatError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReportTaskRunnerHeartbeatInput,
   output: ReportTaskRunnerHeartbeatOutput,
   errors: [InternalServiceError, InvalidRequestException],
@@ -1920,7 +1920,7 @@ export const setStatus: API.OperationMethod<
   SetStatusResponse,
   SetStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetStatusInput,
   output: SetStatusResponse,
   errors: [
@@ -1965,7 +1965,7 @@ export const setTaskStatus: API.OperationMethod<
   SetTaskStatusOutput,
   SetTaskStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetTaskStatusInput,
   output: SetTaskStatusOutput,
   errors: [
@@ -2121,7 +2121,7 @@ export const validatePipelineDefinition: API.OperationMethod<
   ValidatePipelineDefinitionOutput,
   ValidatePipelineDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ValidatePipelineDefinitionInput,
   output: ValidatePipelineDefinitionOutput,
   errors: [

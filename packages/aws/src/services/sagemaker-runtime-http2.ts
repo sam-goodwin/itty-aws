@@ -519,7 +519,7 @@ export const invokeEndpointWithBidirectionalStream: API.OperationMethod<
   InvokeEndpointWithBidirectionalStreamOutput,
   InvokeEndpointWithBidirectionalStreamError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InvokeEndpointWithBidirectionalStreamInput,
   output: InvokeEndpointWithBidirectionalStreamOutput,
   errors: [

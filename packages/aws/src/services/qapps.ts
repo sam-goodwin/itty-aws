@@ -2222,7 +2222,7 @@ export const associateLibraryItemReview: API.OperationMethod<
   AssociateLibraryItemReviewResponse,
   AssociateLibraryItemReviewError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateLibraryItemReviewInput,
   output: AssociateLibraryItemReviewResponse,
   errors: [
@@ -2253,7 +2253,7 @@ export const associateQAppWithUser: API.OperationMethod<
   AssociateQAppWithUserResponse,
   AssociateQAppWithUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateQAppWithUserInput,
   output: AssociateQAppWithUserResponse,
   errors: [
@@ -2283,7 +2283,7 @@ export const batchCreateCategory: API.OperationMethod<
   BatchCreateCategoryResponse,
   BatchCreateCategoryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchCreateCategoryInput,
   output: BatchCreateCategoryResponse,
   errors: [
@@ -2313,7 +2313,7 @@ export const batchDeleteCategory: API.OperationMethod<
   BatchDeleteCategoryResponse,
   BatchDeleteCategoryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchDeleteCategoryInput,
   output: BatchDeleteCategoryResponse,
   errors: [
@@ -2343,7 +2343,7 @@ export const batchUpdateCategory: API.OperationMethod<
   BatchUpdateCategoryResponse,
   BatchUpdateCategoryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchUpdateCategoryInput,
   output: BatchUpdateCategoryResponse,
   errors: [
@@ -2373,7 +2373,7 @@ export const createLibraryItem: API.OperationMethod<
   CreateLibraryItemOutput,
   CreateLibraryItemError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLibraryItemInput,
   output: CreateLibraryItemOutput,
   errors: [
@@ -2403,7 +2403,7 @@ export const createPresignedUrl: API.OperationMethod<
   CreatePresignedUrlOutput,
   CreatePresignedUrlError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePresignedUrlInput,
   output: CreatePresignedUrlOutput,
   errors: [
@@ -2432,7 +2432,7 @@ export const createQApp: API.OperationMethod<
   CreateQAppOutput,
   CreateQAppError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateQAppInput,
   output: CreateQAppOutput,
   errors: [
@@ -2463,7 +2463,7 @@ export const deleteLibraryItem: API.OperationMethod<
   DeleteLibraryItemResponse,
   DeleteLibraryItemError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLibraryItemInput,
   output: DeleteLibraryItemResponse,
   errors: [
@@ -2492,7 +2492,7 @@ export const deleteQApp: API.OperationMethod<
   DeleteQAppResponse,
   DeleteQAppError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteQAppInput,
   output: DeleteQAppResponse,
   errors: [
@@ -2520,7 +2520,7 @@ export const describeQAppPermissions: API.OperationMethod<
   DescribeQAppPermissionsOutput,
   DescribeQAppPermissionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeQAppPermissionsInput,
   output: DescribeQAppPermissionsOutput,
   errors: [
@@ -2550,7 +2550,7 @@ export const disassociateLibraryItemReview: API.OperationMethod<
   DisassociateLibraryItemReviewResponse,
   DisassociateLibraryItemReviewError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateLibraryItemReviewInput,
   output: DisassociateLibraryItemReviewResponse,
   errors: [
@@ -2580,7 +2580,7 @@ export const disassociateQAppFromUser: API.OperationMethod<
   DisassociateQAppFromUserResponse,
   DisassociateQAppFromUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateQAppFromUserInput,
   output: DisassociateQAppFromUserResponse,
   errors: [
@@ -2610,7 +2610,7 @@ export const exportQAppSessionData: API.OperationMethod<
   ExportQAppSessionDataOutput,
   ExportQAppSessionDataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExportQAppSessionDataInput,
   output: ExportQAppSessionDataOutput,
   errors: [
@@ -2640,7 +2640,7 @@ export const getLibraryItem: API.OperationMethod<
   GetLibraryItemOutput,
   GetLibraryItemError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLibraryItemInput,
   output: GetLibraryItemOutput,
   errors: [
@@ -2668,7 +2668,7 @@ export const getQApp: API.OperationMethod<
   GetQAppOutput,
   GetQAppError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetQAppInput,
   output: GetQAppOutput,
   errors: [
@@ -2697,7 +2697,7 @@ export const getQAppSession: API.OperationMethod<
   GetQAppSessionOutput,
   GetQAppSessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetQAppSessionInput,
   output: GetQAppSessionOutput,
   errors: [
@@ -2727,7 +2727,7 @@ export const getQAppSessionMetadata: API.OperationMethod<
   GetQAppSessionMetadataOutput,
   GetQAppSessionMetadataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetQAppSessionMetadataInput,
   output: GetQAppSessionMetadataOutput,
   errors: [
@@ -2758,7 +2758,7 @@ export const importDocument: API.OperationMethod<
   ImportDocumentOutput,
   ImportDocumentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportDocumentInput,
   output: ImportDocumentOutput,
   errors: [
@@ -2788,7 +2788,7 @@ export const listCategories: API.OperationMethod<
   ListCategoriesOutput,
   ListCategoriesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListCategoriesInput,
   output: ListCategoriesOutput,
   errors: [
@@ -2831,7 +2831,7 @@ export const listLibraryItems: API.OperationMethod<
     ListLibraryItemsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLibraryItemsInput,
   output: ListLibraryItemsOutput,
   errors: [
@@ -2879,7 +2879,7 @@ export const listQApps: API.OperationMethod<
     ListQAppsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListQAppsInput,
   output: ListQAppsOutput,
   errors: [
@@ -2913,7 +2913,7 @@ export const listQAppSessionData: API.OperationMethod<
   ListQAppSessionDataOutput,
   ListQAppSessionDataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListQAppSessionDataInput,
   output: ListQAppSessionDataOutput,
   errors: [
@@ -2941,7 +2941,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -2967,7 +2967,7 @@ export const predictQApp: API.OperationMethod<
   PredictQAppOutput,
   PredictQAppError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PredictQAppInput,
   output: PredictQAppOutput,
   errors: [
@@ -2997,7 +2997,7 @@ export const startQAppSession: API.OperationMethod<
   StartQAppSessionOutput,
   StartQAppSessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartQAppSessionInput,
   output: StartQAppSessionOutput,
   errors: [
@@ -3027,7 +3027,7 @@ export const stopQAppSession: API.OperationMethod<
   StopQAppSessionResponse,
   StopQAppSessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopQAppSessionInput,
   output: StopQAppSessionResponse,
   errors: [
@@ -3056,7 +3056,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -3083,7 +3083,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -3111,7 +3111,7 @@ export const updateLibraryItem: API.OperationMethod<
   UpdateLibraryItemOutput,
   UpdateLibraryItemError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateLibraryItemInput,
   output: UpdateLibraryItemOutput,
   errors: [
@@ -3141,7 +3141,7 @@ export const updateLibraryItemMetadata: API.OperationMethod<
   UpdateLibraryItemMetadataResponse,
   UpdateLibraryItemMetadataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateLibraryItemMetadataInput,
   output: UpdateLibraryItemMetadataResponse,
   errors: [
@@ -3171,7 +3171,7 @@ export const updateQApp: API.OperationMethod<
   UpdateQAppOutput,
   UpdateQAppError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateQAppInput,
   output: UpdateQAppOutput,
   errors: [
@@ -3200,7 +3200,7 @@ export const updateQAppPermissions: API.OperationMethod<
   UpdateQAppPermissionsOutput,
   UpdateQAppPermissionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateQAppPermissionsInput,
   output: UpdateQAppPermissionsOutput,
   errors: [
@@ -3229,7 +3229,7 @@ export const updateQAppSession: API.OperationMethod<
   UpdateQAppSessionOutput,
   UpdateQAppSessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateQAppSessionInput,
   output: UpdateQAppSessionOutput,
   errors: [
@@ -3259,7 +3259,7 @@ export const updateQAppSessionMetadata: API.OperationMethod<
   UpdateQAppSessionMetadataOutput,
   UpdateQAppSessionMetadataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateQAppSessionMetadataInput,
   output: UpdateQAppSessionMetadataOutput,
   errors: [

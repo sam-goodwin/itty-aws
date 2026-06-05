@@ -1494,7 +1494,7 @@ export const cancelCluster: API.OperationMethod<
   CancelClusterResult,
   CancelClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelClusterRequest,
   output: CancelClusterResult,
   errors: [
@@ -1519,7 +1519,7 @@ export const cancelJob: API.OperationMethod<
   CancelJobResult,
   CancelJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelJobRequest,
   output: CancelJobResult,
   errors: [
@@ -1543,7 +1543,7 @@ export const createAddress: API.OperationMethod<
   CreateAddressResult,
   CreateAddressError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAddressRequest,
   output: CreateAddressResult,
   errors: [InvalidAddressException, UnsupportedAddressException],
@@ -1563,7 +1563,7 @@ export const createCluster: API.OperationMethod<
   CreateClusterResult,
   CreateClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateClusterRequest,
   output: CreateClusterResult,
   errors: [
@@ -1667,7 +1667,7 @@ export const createJob: API.OperationMethod<
   CreateJobResult,
   CreateJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateJobRequest,
   output: CreateJobResult,
   errors: [
@@ -1690,7 +1690,7 @@ export const createLongTermPricing: API.OperationMethod<
   CreateLongTermPricingResult,
   CreateLongTermPricingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLongTermPricingRequest,
   output: CreateLongTermPricingResult,
   errors: [InvalidResourceException],
@@ -1710,7 +1710,7 @@ export const createReturnShippingLabel: API.OperationMethod<
   CreateReturnShippingLabelResult,
   CreateReturnShippingLabelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateReturnShippingLabelRequest,
   output: CreateReturnShippingLabelResult,
   errors: [
@@ -1731,7 +1731,7 @@ export const describeAddress: API.OperationMethod<
   DescribeAddressResult,
   DescribeAddressError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAddressRequest,
   output: DescribeAddressResult,
   errors: [InvalidResourceException],
@@ -1765,7 +1765,7 @@ export const describeAddresses: API.OperationMethod<
     DescribeAddressesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAddressesRequest,
   output: DescribeAddressesResult,
   errors: [InvalidNextTokenException, InvalidResourceException],
@@ -1786,7 +1786,7 @@ export const describeCluster: API.OperationMethod<
   DescribeClusterResult,
   DescribeClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeClusterRequest,
   output: DescribeClusterResult,
   errors: [InvalidResourceException],
@@ -1801,7 +1801,7 @@ export const describeJob: API.OperationMethod<
   DescribeJobResult,
   DescribeJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeJobRequest,
   output: DescribeJobResult,
   errors: [InvalidResourceException],
@@ -1819,7 +1819,7 @@ export const describeReturnShippingLabel: API.OperationMethod<
   DescribeReturnShippingLabelResult,
   DescribeReturnShippingLabelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeReturnShippingLabelRequest,
   output: DescribeReturnShippingLabelResult,
   errors: [
@@ -1858,7 +1858,7 @@ export const getJobManifest: API.OperationMethod<
   GetJobManifestResult,
   GetJobManifestError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetJobManifestRequest,
   output: GetJobManifestResult,
   errors: [InvalidJobStateException, InvalidResourceException],
@@ -1889,7 +1889,7 @@ export const getJobUnlockCode: API.OperationMethod<
   GetJobUnlockCodeResult,
   GetJobUnlockCodeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetJobUnlockCodeRequest,
   output: GetJobUnlockCodeResult,
   errors: [InvalidJobStateException, InvalidResourceException],
@@ -1907,7 +1907,7 @@ export const getSnowballUsage: API.OperationMethod<
   GetSnowballUsageResult,
   GetSnowballUsageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSnowballUsageRequest,
   output: GetSnowballUsageResult,
   errors: [],
@@ -1925,7 +1925,7 @@ export const getSoftwareUpdates: API.OperationMethod<
   GetSoftwareUpdatesResult,
   GetSoftwareUpdatesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSoftwareUpdatesRequest,
   output: GetSoftwareUpdatesResult,
   errors: [InvalidJobStateException, InvalidResourceException],
@@ -1959,7 +1959,7 @@ export const listClusterJobs: API.OperationMethod<
     ListClusterJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListClusterJobsRequest,
   output: ListClusterJobsResult,
   errors: [InvalidNextTokenException, InvalidResourceException],
@@ -1996,7 +1996,7 @@ export const listClusters: API.OperationMethod<
     ListClustersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListClustersRequest,
   output: ListClustersResult,
   errors: [InvalidNextTokenException],
@@ -2037,7 +2037,7 @@ export const listCompatibleImages: API.OperationMethod<
     ListCompatibleImagesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCompatibleImagesRequest,
   output: ListCompatibleImagesResult,
   errors: [Ec2RequestFailedException, InvalidNextTokenException],
@@ -2076,7 +2076,7 @@ export const listJobs: API.OperationMethod<
     ListJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJobsRequest,
   output: ListJobsResult,
   errors: [InvalidNextTokenException],
@@ -2114,7 +2114,7 @@ export const listLongTermPricing: API.OperationMethod<
     ListLongTermPricingError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLongTermPricingRequest,
   output: ListLongTermPricingResult,
   errors: [InvalidNextTokenException, InvalidResourceException],
@@ -2149,7 +2149,7 @@ export const listPickupLocations: API.OperationMethod<
     ListPickupLocationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPickupLocationsRequest,
   output: ListPickupLocationsResult,
   errors: [InvalidResourceException],
@@ -2172,7 +2172,7 @@ export const listServiceVersions: API.OperationMethod<
   ListServiceVersionsResult,
   ListServiceVersionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListServiceVersionsRequest,
   output: ListServiceVersionsResult,
   errors: [InvalidNextTokenException, InvalidResourceException],
@@ -2195,7 +2195,7 @@ export const updateCluster: API.OperationMethod<
   UpdateClusterResult,
   UpdateClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateClusterRequest,
   output: UpdateClusterResult,
   errors: [
@@ -2224,7 +2224,7 @@ export const updateJob: API.OperationMethod<
   UpdateJobResult,
   UpdateJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateJobRequest,
   output: UpdateJobResult,
   errors: [
@@ -2248,7 +2248,7 @@ export const updateJobShipmentState: API.OperationMethod<
   UpdateJobShipmentStateResult,
   UpdateJobShipmentStateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateJobShipmentStateRequest,
   output: UpdateJobShipmentStateResult,
   errors: [InvalidJobStateException, InvalidResourceException],
@@ -2264,7 +2264,7 @@ export const updateLongTermPricing: API.OperationMethod<
   UpdateLongTermPricingResult,
   UpdateLongTermPricingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateLongTermPricingRequest,
   output: UpdateLongTermPricingResult,
   errors: [InvalidResourceException],

@@ -1729,7 +1729,7 @@ export const getVerification: API.OperationMethod<
   GetVerificationResponse,
   GetVerificationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetVerificationRequest,
   output: GetVerificationResponse,
   errors: [
@@ -1755,7 +1755,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -1781,7 +1781,7 @@ export const sendEmailVerificationCode: API.OperationMethod<
   SendEmailVerificationCodeResponse,
   SendEmailVerificationCodeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendEmailVerificationCodeRequest,
   output: SendEmailVerificationCodeResponse,
   errors: [
@@ -1808,7 +1808,7 @@ export const startVerification: API.OperationMethod<
   StartVerificationResponse,
   StartVerificationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartVerificationRequest,
   output: StartVerificationResponse,
   errors: [
@@ -1836,7 +1836,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -1864,7 +1864,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -1893,7 +1893,7 @@ export const createConnectionInvitation: API.OperationMethod<
   CreateConnectionInvitationResponse,
   CreateConnectionInvitationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateConnectionInvitationRequest,
   output: CreateConnectionInvitationResponse,
   errors: [
@@ -1921,7 +1921,7 @@ export const getConnectionInvitation: API.OperationMethod<
   GetConnectionInvitationResponse,
   GetConnectionInvitationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConnectionInvitationRequest,
   output: GetConnectionInvitationResponse,
   errors: [
@@ -1961,7 +1961,7 @@ export const listConnectionInvitations: API.OperationMethod<
     ListConnectionInvitationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConnectionInvitationsRequest,
   output: ListConnectionInvitationsResponse,
   errors: [
@@ -1994,7 +1994,7 @@ export const acceptConnectionInvitation: API.OperationMethod<
   AcceptConnectionInvitationResponse,
   AcceptConnectionInvitationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AcceptConnectionInvitationRequest,
   output: AcceptConnectionInvitationResponse,
   errors: [
@@ -2023,7 +2023,7 @@ export const cancelConnectionInvitation: API.OperationMethod<
   CancelConnectionInvitationResponse,
   CancelConnectionInvitationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelConnectionInvitationRequest,
   output: CancelConnectionInvitationResponse,
   errors: [
@@ -2051,7 +2051,7 @@ export const rejectConnectionInvitation: API.OperationMethod<
   RejectConnectionInvitationResponse,
   RejectConnectionInvitationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RejectConnectionInvitationRequest,
   output: RejectConnectionInvitationResponse,
   errors: [
@@ -2077,7 +2077,7 @@ export const getConnectionPreferences: API.OperationMethod<
   GetConnectionPreferencesResponse,
   GetConnectionPreferencesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConnectionPreferencesRequest,
   output: GetConnectionPreferencesResponse,
   errors: [
@@ -2102,7 +2102,7 @@ export const updateConnectionPreferences: API.OperationMethod<
   UpdateConnectionPreferencesResponse,
   UpdateConnectionPreferencesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateConnectionPreferencesRequest,
   output: UpdateConnectionPreferencesResponse,
   errors: [
@@ -2128,7 +2128,7 @@ export const getConnection: API.OperationMethod<
   GetConnectionResponse,
   GetConnectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConnectionRequest,
   output: GetConnectionResponse,
   errors: [
@@ -2168,7 +2168,7 @@ export const listConnections: API.OperationMethod<
     ListConnectionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConnectionsRequest,
   output: ListConnectionsResponse,
   errors: [
@@ -2200,7 +2200,7 @@ export const cancelConnection: API.OperationMethod<
   CancelConnectionResponse,
   CancelConnectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelConnectionRequest,
   output: CancelConnectionResponse,
   errors: [
@@ -2227,7 +2227,7 @@ export const createPartner: API.OperationMethod<
   CreatePartnerResponse,
   CreatePartnerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePartnerRequest,
   output: CreatePartnerResponse,
   errors: [
@@ -2253,7 +2253,7 @@ export const getPartner: API.OperationMethod<
   GetPartnerResponse,
   GetPartnerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPartnerRequest,
   output: GetPartnerResponse,
   errors: [
@@ -2293,7 +2293,7 @@ export const listPartners: API.OperationMethod<
     ListPartnersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPartnersRequest,
   output: ListPartnersResponse,
   errors: [
@@ -2324,7 +2324,7 @@ export const associateAwsTrainingCertificationEmailDomain: API.OperationMethod<
   AssociateAwsTrainingCertificationEmailDomainResponse,
   AssociateAwsTrainingCertificationEmailDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateAwsTrainingCertificationEmailDomainRequest,
   output: AssociateAwsTrainingCertificationEmailDomainResponse,
   errors: [
@@ -2352,7 +2352,7 @@ export const cancelProfileUpdateTask: API.OperationMethod<
   CancelProfileUpdateTaskResponse,
   CancelProfileUpdateTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelProfileUpdateTaskRequest,
   output: CancelProfileUpdateTaskResponse,
   errors: [
@@ -2379,7 +2379,7 @@ export const disassociateAwsTrainingCertificationEmailDomain: API.OperationMetho
   DisassociateAwsTrainingCertificationEmailDomainResponse,
   DisassociateAwsTrainingCertificationEmailDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateAwsTrainingCertificationEmailDomainRequest,
   output: DisassociateAwsTrainingCertificationEmailDomainResponse,
   errors: [
@@ -2405,7 +2405,7 @@ export const getAllianceLeadContact: API.OperationMethod<
   GetAllianceLeadContactResponse,
   GetAllianceLeadContactError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAllianceLeadContactRequest,
   output: GetAllianceLeadContactResponse,
   errors: [
@@ -2431,7 +2431,7 @@ export const getProfileUpdateTask: API.OperationMethod<
   GetProfileUpdateTaskResponse,
   GetProfileUpdateTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProfileUpdateTaskRequest,
   output: GetProfileUpdateTaskResponse,
   errors: [
@@ -2457,7 +2457,7 @@ export const getProfileVisibility: API.OperationMethod<
   GetProfileVisibilityResponse,
   GetProfileVisibilityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProfileVisibilityRequest,
   output: GetProfileVisibilityResponse,
   errors: [
@@ -2483,7 +2483,7 @@ export const putAllianceLeadContact: API.OperationMethod<
   PutAllianceLeadContactResponse,
   PutAllianceLeadContactError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutAllianceLeadContactRequest,
   output: PutAllianceLeadContactResponse,
   errors: [
@@ -2509,7 +2509,7 @@ export const putProfileVisibility: API.OperationMethod<
   PutProfileVisibilityResponse,
   PutProfileVisibilityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutProfileVisibilityRequest,
   output: PutProfileVisibilityResponse,
   errors: [
@@ -2536,7 +2536,7 @@ export const startProfileUpdateTask: API.OperationMethod<
   StartProfileUpdateTaskResponse,
   StartProfileUpdateTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartProfileUpdateTaskRequest,
   output: StartProfileUpdateTaskResponse,
   errors: [

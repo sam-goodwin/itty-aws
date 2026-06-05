@@ -3232,7 +3232,7 @@ export const createAddressListImportJob: API.OperationMethod<
   CreateAddressListImportJobResponse,
   CreateAddressListImportJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAddressListImportJobRequest,
   output: CreateAddressListImportJobResponse,
   errors: [
@@ -3257,7 +3257,7 @@ export const deregisterMemberFromAddressList: API.OperationMethod<
   DeregisterMemberFromAddressListResponse,
   DeregisterMemberFromAddressListError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeregisterMemberFromAddressListRequest,
   output: DeregisterMemberFromAddressListResponse,
   errors: [
@@ -3282,7 +3282,7 @@ export const getAddressListImportJob: API.OperationMethod<
   GetAddressListImportJobResponse,
   GetAddressListImportJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAddressListImportJobRequest,
   output: GetAddressListImportJobResponse,
   errors: [
@@ -3305,7 +3305,7 @@ export const getArchiveExport: API.OperationMethod<
   GetArchiveExportResponse,
   GetArchiveExportError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetArchiveExportRequest,
   output: GetArchiveExportResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
@@ -3323,7 +3323,7 @@ export const getArchiveMessage: API.OperationMethod<
   GetArchiveMessageResponse,
   GetArchiveMessageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetArchiveMessageRequest,
   output: GetArchiveMessageResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
@@ -3341,7 +3341,7 @@ export const getArchiveMessageContent: API.OperationMethod<
   GetArchiveMessageContentResponse,
   GetArchiveMessageContentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetArchiveMessageContentRequest,
   output: GetArchiveMessageContentResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
@@ -3359,7 +3359,7 @@ export const getArchiveSearch: API.OperationMethod<
   GetArchiveSearchResponse,
   GetArchiveSearchError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetArchiveSearchRequest,
   output: GetArchiveSearchResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
@@ -3378,7 +3378,7 @@ export const getArchiveSearchResults: API.OperationMethod<
   GetArchiveSearchResultsResponse,
   GetArchiveSearchResultsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetArchiveSearchResultsRequest,
   output: GetArchiveSearchResultsResponse,
   errors: [
@@ -3402,7 +3402,7 @@ export const getMemberOfAddressList: API.OperationMethod<
   GetMemberOfAddressListResponse,
   GetMemberOfAddressListError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMemberOfAddressListRequest,
   output: GetMemberOfAddressListResponse,
   errors: [
@@ -3441,7 +3441,7 @@ export const listAddressListImportJobs: API.OperationMethod<
     ListAddressListImportJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAddressListImportJobsRequest,
   output: ListAddressListImportJobsResponse,
   errors: [
@@ -3486,7 +3486,7 @@ export const listArchiveExports: API.OperationMethod<
     ListArchiveExportsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListArchiveExportsRequest,
   output: ListArchiveExportsResponse,
   errors: [
@@ -3531,7 +3531,7 @@ export const listArchiveSearches: API.OperationMethod<
     ListArchiveSearchesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListArchiveSearchesRequest,
   output: ListArchiveSearchesResponse,
   errors: [
@@ -3576,7 +3576,7 @@ export const listMembersOfAddressList: API.OperationMethod<
     ListMembersOfAddressListError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMembersOfAddressListRequest,
   output: ListMembersOfAddressListResponse,
   errors: [
@@ -3604,7 +3604,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException, ValidationException],
@@ -3625,7 +3625,7 @@ export const registerMemberToAddressList: API.OperationMethod<
   RegisterMemberToAddressListResponse,
   RegisterMemberToAddressListError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterMemberToAddressListRequest,
   output: RegisterMemberToAddressListResponse,
   errors: [
@@ -3653,7 +3653,7 @@ export const startAddressListImportJob: API.OperationMethod<
   StartAddressListImportJobResponse,
   StartAddressListImportJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartAddressListImportJobRequest,
   output: StartAddressListImportJobResponse,
   errors: [
@@ -3680,7 +3680,7 @@ export const startArchiveExport: API.OperationMethod<
   StartArchiveExportResponse,
   StartArchiveExportError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartArchiveExportRequest,
   output: StartArchiveExportResponse,
   errors: [
@@ -3707,7 +3707,7 @@ export const startArchiveSearch: API.OperationMethod<
   StartArchiveSearchResponse,
   StartArchiveSearchError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartArchiveSearchRequest,
   output: StartArchiveSearchResponse,
   errors: [
@@ -3734,7 +3734,7 @@ export const stopAddressListImportJob: API.OperationMethod<
   StopAddressListImportJobResponse,
   StopAddressListImportJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopAddressListImportJobRequest,
   output: StopAddressListImportJobResponse,
   errors: [
@@ -3758,7 +3758,7 @@ export const stopArchiveExport: API.OperationMethod<
   StopArchiveExportResponse,
   StopArchiveExportError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopArchiveExportRequest,
   output: StopArchiveExportResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
@@ -3776,7 +3776,7 @@ export const stopArchiveSearch: API.OperationMethod<
   StopArchiveSearchResponse,
   StopArchiveSearchError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopArchiveSearchRequest,
   output: StopArchiveSearchResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
@@ -3795,7 +3795,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -3818,7 +3818,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
@@ -3837,7 +3837,7 @@ export const createAddonInstance: API.OperationMethod<
   CreateAddonInstanceResponse,
   CreateAddonInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAddonInstanceRequest,
   output: CreateAddonInstanceResponse,
   errors: [
@@ -3859,7 +3859,7 @@ export const getAddonInstance: API.OperationMethod<
   GetAddonInstanceResponse,
   GetAddonInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAddonInstanceRequest,
   output: GetAddonInstanceResponse,
   errors: [ResourceNotFoundException, ValidationException],
@@ -3876,7 +3876,7 @@ export const deleteAddonInstance: API.OperationMethod<
   DeleteAddonInstanceResponse,
   DeleteAddonInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAddonInstanceRequest,
   output: DeleteAddonInstanceResponse,
   errors: [ConflictException, ValidationException],
@@ -3905,7 +3905,7 @@ export const listAddonInstances: API.OperationMethod<
     ListAddonInstancesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAddonInstancesRequest,
   output: ListAddonInstancesResponse,
   errors: [ValidationException],
@@ -3930,7 +3930,7 @@ export const createAddonSubscription: API.OperationMethod<
   CreateAddonSubscriptionResponse,
   CreateAddonSubscriptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAddonSubscriptionRequest,
   output: CreateAddonSubscriptionResponse,
   errors: [
@@ -3952,7 +3952,7 @@ export const getAddonSubscription: API.OperationMethod<
   GetAddonSubscriptionResponse,
   GetAddonSubscriptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAddonSubscriptionRequest,
   output: GetAddonSubscriptionResponse,
   errors: [ResourceNotFoundException, ValidationException],
@@ -3969,7 +3969,7 @@ export const deleteAddonSubscription: API.OperationMethod<
   DeleteAddonSubscriptionResponse,
   DeleteAddonSubscriptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAddonSubscriptionRequest,
   output: DeleteAddonSubscriptionResponse,
   errors: [ConflictException, ValidationException],
@@ -3998,7 +3998,7 @@ export const listAddonSubscriptions: API.OperationMethod<
     ListAddonSubscriptionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAddonSubscriptionsRequest,
   output: ListAddonSubscriptionsResponse,
   errors: [ValidationException],
@@ -4024,7 +4024,7 @@ export const createAddressList: API.OperationMethod<
   CreateAddressListResponse,
   CreateAddressListError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAddressListRequest,
   output: CreateAddressListResponse,
   errors: [
@@ -4049,7 +4049,7 @@ export const getAddressList: API.OperationMethod<
   GetAddressListResponse,
   GetAddressListError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAddressListRequest,
   output: GetAddressListResponse,
   errors: [
@@ -4073,7 +4073,7 @@ export const deleteAddressList: API.OperationMethod<
   DeleteAddressListResponse,
   DeleteAddressListError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAddressListRequest,
   output: DeleteAddressListResponse,
   errors: [
@@ -4111,7 +4111,7 @@ export const listAddressLists: API.OperationMethod<
     ListAddressListsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAddressListsRequest,
   output: ListAddressListsResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
@@ -4137,7 +4137,7 @@ export const createArchive: API.OperationMethod<
   CreateArchiveResponse,
   CreateArchiveError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateArchiveRequest,
   output: CreateArchiveResponse,
   errors: [
@@ -4162,7 +4162,7 @@ export const getArchive: API.OperationMethod<
   GetArchiveResponse,
   GetArchiveError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetArchiveRequest,
   output: GetArchiveResponse,
   errors: [
@@ -4188,7 +4188,7 @@ export const updateArchive: API.OperationMethod<
   UpdateArchiveResponse,
   UpdateArchiveError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateArchiveRequest,
   output: UpdateArchiveResponse,
   errors: [
@@ -4214,7 +4214,7 @@ export const deleteArchive: API.OperationMethod<
   DeleteArchiveResponse,
   DeleteArchiveError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteArchiveRequest,
   output: DeleteArchiveResponse,
   errors: [
@@ -4252,7 +4252,7 @@ export const listArchives: API.OperationMethod<
     ListArchivesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListArchivesRequest,
   output: ListArchivesResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
@@ -4276,7 +4276,7 @@ export const createIngressPoint: API.OperationMethod<
   CreateIngressPointResponse,
   CreateIngressPointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateIngressPointRequest,
   output: CreateIngressPointResponse,
   errors: [
@@ -4297,7 +4297,7 @@ export const getIngressPoint: API.OperationMethod<
   GetIngressPointResponse,
   GetIngressPointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIngressPointRequest,
   output: GetIngressPointResponse,
   errors: [ResourceNotFoundException, ValidationException],
@@ -4315,7 +4315,7 @@ export const updateIngressPoint: API.OperationMethod<
   UpdateIngressPointResponse,
   UpdateIngressPointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateIngressPointRequest,
   output: UpdateIngressPointResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
@@ -4333,7 +4333,7 @@ export const deleteIngressPoint: API.OperationMethod<
   DeleteIngressPointResponse,
   DeleteIngressPointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteIngressPointRequest,
   output: DeleteIngressPointResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
@@ -4362,7 +4362,7 @@ export const listIngressPoints: API.OperationMethod<
     ListIngressPointsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIngressPointsRequest,
   output: ListIngressPointsResponse,
   errors: [ValidationException],
@@ -4386,7 +4386,7 @@ export const createRelay: API.OperationMethod<
   CreateRelayResponse,
   CreateRelayError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRelayRequest,
   output: CreateRelayResponse,
   errors: [
@@ -4407,7 +4407,7 @@ export const getRelay: API.OperationMethod<
   GetRelayResponse,
   GetRelayError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRelayRequest,
   output: GetRelayResponse,
   errors: [ResourceNotFoundException, ValidationException],
@@ -4425,7 +4425,7 @@ export const updateRelay: API.OperationMethod<
   UpdateRelayResponse,
   UpdateRelayError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRelayRequest,
   output: UpdateRelayResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
@@ -4443,7 +4443,7 @@ export const deleteRelay: API.OperationMethod<
   DeleteRelayResponse,
   DeleteRelayError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRelayRequest,
   output: DeleteRelayResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
@@ -4472,7 +4472,7 @@ export const listRelays: API.OperationMethod<
     ListRelaysError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRelaysRequest,
   output: ListRelaysResponse,
   errors: [ValidationException],
@@ -4496,7 +4496,7 @@ export const createRuleSet: API.OperationMethod<
   CreateRuleSetResponse,
   CreateRuleSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRuleSetRequest,
   output: CreateRuleSetResponse,
   errors: [
@@ -4517,7 +4517,7 @@ export const getRuleSet: API.OperationMethod<
   GetRuleSetResponse,
   GetRuleSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRuleSetRequest,
   output: GetRuleSetResponse,
   errors: [ResourceNotFoundException, ValidationException],
@@ -4535,7 +4535,7 @@ export const updateRuleSet: API.OperationMethod<
   UpdateRuleSetResponse,
   UpdateRuleSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRuleSetRequest,
   output: UpdateRuleSetResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
@@ -4552,7 +4552,7 @@ export const deleteRuleSet: API.OperationMethod<
   DeleteRuleSetResponse,
   DeleteRuleSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRuleSetRequest,
   output: DeleteRuleSetResponse,
   errors: [ConflictException, ValidationException],
@@ -4581,7 +4581,7 @@ export const listRuleSets: API.OperationMethod<
     ListRuleSetsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRuleSetsRequest,
   output: ListRuleSetsResponse,
   errors: [ValidationException],
@@ -4605,7 +4605,7 @@ export const createTrafficPolicy: API.OperationMethod<
   CreateTrafficPolicyResponse,
   CreateTrafficPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTrafficPolicyRequest,
   output: CreateTrafficPolicyResponse,
   errors: [
@@ -4626,7 +4626,7 @@ export const getTrafficPolicy: API.OperationMethod<
   GetTrafficPolicyResponse,
   GetTrafficPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTrafficPolicyRequest,
   output: GetTrafficPolicyResponse,
   errors: [ResourceNotFoundException, ValidationException],
@@ -4644,7 +4644,7 @@ export const updateTrafficPolicy: API.OperationMethod<
   UpdateTrafficPolicyResponse,
   UpdateTrafficPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTrafficPolicyRequest,
   output: UpdateTrafficPolicyResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
@@ -4662,7 +4662,7 @@ export const deleteTrafficPolicy: API.OperationMethod<
   DeleteTrafficPolicyResponse,
   DeleteTrafficPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTrafficPolicyRequest,
   output: DeleteTrafficPolicyResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
@@ -4691,7 +4691,7 @@ export const listTrafficPolicies: API.OperationMethod<
     ListTrafficPoliciesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTrafficPoliciesRequest,
   output: ListTrafficPoliciesResponse,
   errors: [ValidationException],

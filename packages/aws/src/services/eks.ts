@@ -4667,7 +4667,7 @@ export const associateAccessPolicy: API.OperationMethod<
   AssociateAccessPolicyResponse,
   AssociateAccessPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateAccessPolicyRequest,
   output: AssociateAccessPolicyResponse,
   errors: [
@@ -4698,7 +4698,7 @@ export const associateEncryptionConfig: API.OperationMethod<
   AssociateEncryptionConfigResponse,
   AssociateEncryptionConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateEncryptionConfigRequest,
   output: AssociateEncryptionConfigResponse,
   errors: [
@@ -4736,7 +4736,7 @@ export const associateIdentityProviderConfig: API.OperationMethod<
   AssociateIdentityProviderConfigResponse,
   AssociateIdentityProviderConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateIdentityProviderConfigRequest,
   output: AssociateIdentityProviderConfigResponse,
   errors: [
@@ -4779,7 +4779,7 @@ export const createAccessEntry: API.OperationMethod<
   CreateAccessEntryResponse,
   CreateAccessEntryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessEntryRequest,
   output: CreateAccessEntryResponse,
   errors: [
@@ -4811,7 +4811,7 @@ export const createAddon: API.OperationMethod<
   CreateAddonResponse,
   CreateAddonError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAddonRequest,
   output: CreateAddonResponse,
   errors: [
@@ -4846,7 +4846,7 @@ export const createCapability: API.OperationMethod<
   CreateCapabilityResponse,
   CreateCapabilityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCapabilityRequest,
   output: CreateCapabilityResponse,
   errors: [
@@ -4919,7 +4919,7 @@ export const createCluster: API.OperationMethod<
   CreateClusterResponse,
   CreateClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateClusterRequest,
   output: CreateClusterResponse,
   errors: [
@@ -4950,7 +4950,7 @@ export const createEksAnywhereSubscription: API.OperationMethod<
   CreateEksAnywhereSubscriptionResponse,
   CreateEksAnywhereSubscriptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEksAnywhereSubscriptionRequest,
   output: CreateEksAnywhereSubscriptionResponse,
   errors: [
@@ -5006,7 +5006,7 @@ export const createFargateProfile: API.OperationMethod<
   CreateFargateProfileResponse,
   CreateFargateProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFargateProfileRequest,
   output: CreateFargateProfileResponse,
   errors: [
@@ -5054,7 +5054,7 @@ export const createNodegroup: API.OperationMethod<
   CreateNodegroupResponse,
   CreateNodegroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateNodegroupRequest,
   output: CreateNodegroupResponse,
   errors: [
@@ -5110,7 +5110,7 @@ export const createPodIdentityAssociation: API.OperationMethod<
   CreatePodIdentityAssociationResponse,
   CreatePodIdentityAssociationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePodIdentityAssociationRequest,
   output: CreatePodIdentityAssociationResponse,
   errors: [
@@ -5139,7 +5139,7 @@ export const deleteAccessEntry: API.OperationMethod<
   DeleteAccessEntryResponse,
   DeleteAccessEntryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessEntryRequest,
   output: DeleteAccessEntryResponse,
   errors: [InvalidRequestException, ResourceNotFoundException, ServerException],
@@ -5162,7 +5162,7 @@ export const deleteAddon: API.OperationMethod<
   DeleteAddonResponse,
   DeleteAddonError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAddonRequest,
   output: DeleteAddonResponse,
   errors: [
@@ -5190,7 +5190,7 @@ export const deleteCapability: API.OperationMethod<
   DeleteCapabilityResponse,
   DeleteCapabilityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCapabilityRequest,
   output: DeleteCapabilityResponse,
   errors: [
@@ -5227,7 +5227,7 @@ export const deleteCluster: API.OperationMethod<
   DeleteClusterResponse,
   DeleteClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteClusterRequest,
   output: DeleteClusterResponse,
   errors: [
@@ -5256,7 +5256,7 @@ export const deleteEksAnywhereSubscription: API.OperationMethod<
   DeleteEksAnywhereSubscriptionResponse,
   DeleteEksAnywhereSubscriptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEksAnywhereSubscriptionRequest,
   output: DeleteEksAnywhereSubscriptionResponse,
   errors: [
@@ -5290,7 +5290,7 @@ export const deleteFargateProfile: API.OperationMethod<
   DeleteFargateProfileResponse,
   DeleteFargateProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFargateProfileRequest,
   output: DeleteFargateProfileResponse,
   errors: [
@@ -5316,7 +5316,7 @@ export const deleteNodegroup: API.OperationMethod<
   DeleteNodegroupResponse,
   DeleteNodegroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteNodegroupRequest,
   output: DeleteNodegroupResponse,
   errors: [
@@ -5344,7 +5344,7 @@ export const deletePodIdentityAssociation: API.OperationMethod<
   DeletePodIdentityAssociationResponse,
   DeletePodIdentityAssociationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePodIdentityAssociationRequest,
   output: DeletePodIdentityAssociationResponse,
   errors: [
@@ -5373,7 +5373,7 @@ export const deregisterCluster: API.OperationMethod<
   DeregisterClusterResponse,
   DeregisterClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeregisterClusterRequest,
   output: DeregisterClusterResponse,
   errors: [
@@ -5398,7 +5398,7 @@ export const describeAccessEntry: API.OperationMethod<
   DescribeAccessEntryResponse,
   DescribeAccessEntryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAccessEntryRequest,
   output: DescribeAccessEntryResponse,
   errors: [InvalidRequestException, ResourceNotFoundException, ServerException],
@@ -5418,7 +5418,7 @@ export const describeAddon: API.OperationMethod<
   DescribeAddonResponse,
   DescribeAddonError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAddonRequest,
   output: DescribeAddonResponse,
   errors: [
@@ -5442,7 +5442,7 @@ export const describeAddonConfiguration: API.OperationMethod<
   DescribeAddonConfigurationResponse,
   DescribeAddonConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAddonConfigurationRequest,
   output: DescribeAddonConfigurationResponse,
   errors: [
@@ -5483,7 +5483,7 @@ export const describeAddonVersions: API.OperationMethod<
     DescribeAddonVersionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAddonVersionsRequest,
   output: DescribeAddonVersionsResponse,
   errors: [
@@ -5512,7 +5512,7 @@ export const describeCapability: API.OperationMethod<
   DescribeCapabilityResponse,
   DescribeCapabilityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeCapabilityRequest,
   output: DescribeCapabilityResponse,
   errors: [
@@ -5544,7 +5544,7 @@ export const describeCluster: API.OperationMethod<
   DescribeClusterResponse,
   DescribeClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeClusterRequest,
   output: DescribeClusterResponse,
   errors: [
@@ -5582,7 +5582,7 @@ export const describeClusterVersions: API.OperationMethod<
     DescribeClusterVersionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeClusterVersionsRequest,
   output: DescribeClusterVersionsResponse,
   errors: [InvalidParameterException, InvalidRequestException, ServerException],
@@ -5607,7 +5607,7 @@ export const describeEksAnywhereSubscription: API.OperationMethod<
   DescribeEksAnywhereSubscriptionResponse,
   DescribeEksAnywhereSubscriptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeEksAnywhereSubscriptionRequest,
   output: DescribeEksAnywhereSubscriptionResponse,
   errors: [
@@ -5631,7 +5631,7 @@ export const describeFargateProfile: API.OperationMethod<
   DescribeFargateProfileResponse,
   DescribeFargateProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeFargateProfileRequest,
   output: DescribeFargateProfileResponse,
   errors: [
@@ -5656,7 +5656,7 @@ export const describeIdentityProviderConfig: API.OperationMethod<
   DescribeIdentityProviderConfigResponse,
   DescribeIdentityProviderConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeIdentityProviderConfigRequest,
   output: DescribeIdentityProviderConfigResponse,
   errors: [
@@ -5681,7 +5681,7 @@ export const describeInsight: API.OperationMethod<
   DescribeInsightResponse,
   DescribeInsightError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeInsightRequest,
   output: DescribeInsightResponse,
   errors: [
@@ -5705,7 +5705,7 @@ export const describeInsightsRefresh: API.OperationMethod<
   DescribeInsightsRefreshResponse,
   DescribeInsightsRefreshError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeInsightsRefreshRequest,
   output: DescribeInsightsRefreshResponse,
   errors: [
@@ -5730,7 +5730,7 @@ export const describeNodegroup: API.OperationMethod<
   DescribeNodegroupResponse,
   DescribeNodegroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeNodegroupRequest,
   output: DescribeNodegroupResponse,
   errors: [
@@ -5760,7 +5760,7 @@ export const describePodIdentityAssociation: API.OperationMethod<
   DescribePodIdentityAssociationResponse,
   DescribePodIdentityAssociationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribePodIdentityAssociationRequest,
   output: DescribePodIdentityAssociationResponse,
   errors: [
@@ -5788,7 +5788,7 @@ export const describeUpdate: API.OperationMethod<
   DescribeUpdateResponse,
   DescribeUpdateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeUpdateRequest,
   output: DescribeUpdateResponse,
   errors: [
@@ -5811,7 +5811,7 @@ export const disassociateAccessPolicy: API.OperationMethod<
   DisassociateAccessPolicyResponse,
   DisassociateAccessPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateAccessPolicyRequest,
   output: DisassociateAccessPolicyResponse,
   errors: [InvalidRequestException, ResourceNotFoundException, ServerException],
@@ -5837,7 +5837,7 @@ export const disassociateIdentityProviderConfig: API.OperationMethod<
   DisassociateIdentityProviderConfigResponse,
   DisassociateIdentityProviderConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateIdentityProviderConfigRequest,
   output: DisassociateIdentityProviderConfigResponse,
   errors: [
@@ -5879,7 +5879,7 @@ export const listAccessEntries: API.OperationMethod<
     ListAccessEntriesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessEntriesRequest,
   output: ListAccessEntriesResponse,
   errors: [
@@ -5919,7 +5919,7 @@ export const listAccessPolicies: API.OperationMethod<
     ListAccessPoliciesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessPoliciesRequest,
   output: ListAccessPoliciesResponse,
   errors: [ServerException],
@@ -5960,7 +5960,7 @@ export const listAddons: API.OperationMethod<
     ListAddonsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAddonsRequest,
   output: ListAddonsResponse,
   errors: [
@@ -6005,7 +6005,7 @@ export const listAssociatedAccessPolicies: API.OperationMethod<
     ListAssociatedAccessPoliciesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssociatedAccessPoliciesRequest,
   output: ListAssociatedAccessPoliciesResponse,
   errors: [InvalidRequestException, ResourceNotFoundException, ServerException],
@@ -6043,7 +6043,7 @@ export const listCapabilities: API.OperationMethod<
     ListCapabilitiesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCapabilitiesRequest,
   output: ListCapabilitiesResponse,
   errors: [InvalidParameterException, ServerException],
@@ -6083,7 +6083,7 @@ export const listClusters: API.OperationMethod<
     ListClustersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListClustersRequest,
   output: ListClustersResponse,
   errors: [
@@ -6128,7 +6128,7 @@ export const listEksAnywhereSubscriptions: API.OperationMethod<
     ListEksAnywhereSubscriptionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEksAnywhereSubscriptionsRequest,
   output: ListEksAnywhereSubscriptionsResponse,
   errors: [
@@ -6174,7 +6174,7 @@ export const listFargateProfiles: API.OperationMethod<
     ListFargateProfilesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFargateProfilesRequest,
   output: ListFargateProfilesResponse,
   errors: [
@@ -6220,7 +6220,7 @@ export const listIdentityProviderConfigs: API.OperationMethod<
     ListIdentityProviderConfigsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIdentityProviderConfigsRequest,
   output: ListIdentityProviderConfigsResponse,
   errors: [
@@ -6277,7 +6277,7 @@ export const listInsights: API.OperationMethod<
     ListInsightsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInsightsRequest,
   output: ListInsightsResponse,
   errors: [
@@ -6324,7 +6324,7 @@ export const listNodegroups: API.OperationMethod<
     ListNodegroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNodegroupsRequest,
   output: ListNodegroupsResponse,
   errors: [
@@ -6371,7 +6371,7 @@ export const listPodIdentityAssociations: API.OperationMethod<
     ListPodIdentityAssociationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPodIdentityAssociationsRequest,
   output: ListPodIdentityAssociationsResponse,
   errors: [
@@ -6399,7 +6399,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [BadRequestException, NotFoundException],
@@ -6434,7 +6434,7 @@ export const listUpdates: API.OperationMethod<
     ListUpdatesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUpdatesRequest,
   output: ListUpdatesResponse,
   errors: [
@@ -6485,7 +6485,7 @@ export const registerCluster: API.OperationMethod<
   RegisterClusterResponse,
   RegisterClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterClusterRequest,
   output: RegisterClusterResponse,
   errors: [
@@ -6513,7 +6513,7 @@ export const startInsightsRefresh: API.OperationMethod<
   StartInsightsRefreshResponse,
   StartInsightsRefreshError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartInsightsRefreshRequest,
   output: StartInsightsRefreshResponse,
   errors: [
@@ -6541,7 +6541,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [BadRequestException, NotFoundException],
@@ -6558,7 +6558,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [BadRequestException, NotFoundException],
@@ -6577,7 +6577,7 @@ export const updateAccessEntry: API.OperationMethod<
   UpdateAccessEntryResponse,
   UpdateAccessEntryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccessEntryRequest,
   output: UpdateAccessEntryResponse,
   errors: [
@@ -6603,7 +6603,7 @@ export const updateAddon: API.OperationMethod<
   UpdateAddonResponse,
   UpdateAddonError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAddonRequest,
   output: UpdateAddonResponse,
   errors: [
@@ -6632,7 +6632,7 @@ export const updateCapability: API.OperationMethod<
   UpdateCapabilityResponse,
   UpdateCapabilityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCapabilityRequest,
   output: UpdateCapabilityResponse,
   errors: [
@@ -6706,7 +6706,7 @@ export const updateClusterConfig: API.OperationMethod<
   UpdateClusterConfigResponse,
   UpdateClusterConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateClusterConfigRequest,
   output: UpdateClusterConfigResponse,
   errors: [
@@ -6750,7 +6750,7 @@ export const updateClusterVersion: API.OperationMethod<
   UpdateClusterVersionResponse,
   UpdateClusterVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateClusterVersionRequest,
   output: UpdateClusterVersionResponse,
   errors: [
@@ -6780,7 +6780,7 @@ export const updateEksAnywhereSubscription: API.OperationMethod<
   UpdateEksAnywhereSubscriptionResponse,
   UpdateEksAnywhereSubscriptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEksAnywhereSubscriptionRequest,
   output: UpdateEksAnywhereSubscriptionResponse,
   errors: [
@@ -6812,7 +6812,7 @@ export const updateNodegroupConfig: API.OperationMethod<
   UpdateNodegroupConfigResponse,
   UpdateNodegroupConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateNodegroupConfigRequest,
   output: UpdateNodegroupConfigResponse,
   errors: [
@@ -6866,7 +6866,7 @@ export const updateNodegroupVersion: API.OperationMethod<
   UpdateNodegroupVersionResponse,
   UpdateNodegroupVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateNodegroupVersionRequest,
   output: UpdateNodegroupVersionResponse,
   errors: [
@@ -6910,7 +6910,7 @@ export const updatePodIdentityAssociation: API.OperationMethod<
   UpdatePodIdentityAssociationResponse,
   UpdatePodIdentityAssociationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePodIdentityAssociationRequest,
   output: UpdatePodIdentityAssociationResponse,
   errors: [

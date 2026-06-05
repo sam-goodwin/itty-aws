@@ -4185,7 +4185,7 @@ export const acceptPortfolioShare: API.OperationMethod<
   AcceptPortfolioShareOutput,
   AcceptPortfolioShareError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AcceptPortfolioShareInput,
   output: AcceptPortfolioShareOutput,
   errors: [
@@ -4208,7 +4208,7 @@ export const associateBudgetWithResource: API.OperationMethod<
   AssociateBudgetWithResourceOutput,
   AssociateBudgetWithResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateBudgetWithResourceInput,
   output: AssociateBudgetWithResourceOutput,
   errors: [
@@ -4247,7 +4247,7 @@ export const associatePrincipalWithPortfolio: API.OperationMethod<
   AssociatePrincipalWithPortfolioOutput,
   AssociatePrincipalWithPortfolioError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociatePrincipalWithPortfolioInput,
   output: AssociatePrincipalWithPortfolioOutput,
   errors: [
@@ -4271,7 +4271,7 @@ export const associateProductWithPortfolio: API.OperationMethod<
   AssociateProductWithPortfolioOutput,
   AssociateProductWithPortfolioError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateProductWithPortfolioInput,
   output: AssociateProductWithPortfolioOutput,
   errors: [
@@ -4294,7 +4294,7 @@ export const associateServiceActionWithProvisioningArtifact: API.OperationMethod
   AssociateServiceActionWithProvisioningArtifactOutput,
   AssociateServiceActionWithProvisioningArtifactError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateServiceActionWithProvisioningArtifactInput,
   output: AssociateServiceActionWithProvisioningArtifactOutput,
   errors: [
@@ -4320,7 +4320,7 @@ export const associateTagOptionWithResource: API.OperationMethod<
   AssociateTagOptionWithResourceOutput,
   AssociateTagOptionWithResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateTagOptionWithResourceInput,
   output: AssociateTagOptionWithResourceOutput,
   errors: [
@@ -4343,7 +4343,7 @@ export const batchAssociateServiceActionWithProvisioningArtifact: API.OperationM
   BatchAssociateServiceActionWithProvisioningArtifactOutput,
   BatchAssociateServiceActionWithProvisioningArtifactError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchAssociateServiceActionWithProvisioningArtifactInput,
   output: BatchAssociateServiceActionWithProvisioningArtifactOutput,
   errors: [InvalidParametersException],
@@ -4359,7 +4359,7 @@ export const batchDisassociateServiceActionFromProvisioningArtifact: API.Operati
   BatchDisassociateServiceActionFromProvisioningArtifactOutput,
   BatchDisassociateServiceActionFromProvisioningArtifactError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchDisassociateServiceActionFromProvisioningArtifactInput,
   output: BatchDisassociateServiceActionFromProvisioningArtifactOutput,
   errors: [InvalidParametersException],
@@ -4384,7 +4384,7 @@ export const copyProduct: API.OperationMethod<
   CopyProductOutput,
   CopyProductError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CopyProductInput,
   output: CopyProductOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
@@ -4405,7 +4405,7 @@ export const createConstraint: API.OperationMethod<
   CreateConstraintOutput,
   CreateConstraintError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateConstraintInput,
   output: CreateConstraintOutput,
   errors: [
@@ -4430,7 +4430,7 @@ export const createPortfolio: API.OperationMethod<
   CreatePortfolioOutput,
   CreatePortfolioError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePortfolioInput,
   output: CreatePortfolioOutput,
   errors: [
@@ -4474,7 +4474,7 @@ export const createPortfolioShare: API.OperationMethod<
   CreatePortfolioShareOutput,
   CreatePortfolioShareError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePortfolioShareInput,
   output: CreatePortfolioShareOutput,
   errors: [
@@ -4505,7 +4505,7 @@ export const createProduct: API.OperationMethod<
   CreateProductOutput,
   CreateProductError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProductInput,
   output: CreateProductOutput,
   errors: [
@@ -4537,7 +4537,7 @@ export const createProvisionedProductPlan: API.OperationMethod<
   CreateProvisionedProductPlanOutput,
   CreateProvisionedProductPlanError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProvisionedProductPlanInput,
   output: CreateProvisionedProductPlanOutput,
   errors: [
@@ -4565,7 +4565,7 @@ export const createProvisioningArtifact: API.OperationMethod<
   CreateProvisioningArtifactOutput,
   CreateProvisioningArtifactError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProvisioningArtifactInput,
   output: CreateProvisioningArtifactOutput,
   errors: [
@@ -4586,7 +4586,7 @@ export const createServiceAction: API.OperationMethod<
   CreateServiceActionOutput,
   CreateServiceActionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateServiceActionInput,
   output: CreateServiceActionOutput,
   errors: [InvalidParametersException, LimitExceededException],
@@ -4604,7 +4604,7 @@ export const createTagOption: API.OperationMethod<
   CreateTagOptionOutput,
   CreateTagOptionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTagOptionInput,
   output: CreateTagOptionOutput,
   errors: [
@@ -4627,7 +4627,7 @@ export const deleteConstraint: API.OperationMethod<
   DeleteConstraintOutput,
   DeleteConstraintError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConstraintInput,
   output: DeleteConstraintOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
@@ -4651,7 +4651,7 @@ export const deletePortfolio: API.OperationMethod<
   DeletePortfolioOutput,
   DeletePortfolioError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePortfolioInput,
   output: DeletePortfolioOutput,
   errors: [
@@ -4679,7 +4679,7 @@ export const deletePortfolioShare: API.OperationMethod<
   DeletePortfolioShareOutput,
   DeletePortfolioShareError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePortfolioShareInput,
   output: DeletePortfolioShareOutput,
   errors: [
@@ -4707,7 +4707,7 @@ export const deleteProduct: API.OperationMethod<
   DeleteProductOutput,
   DeleteProductError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProductInput,
   output: DeleteProductOutput,
   errors: [
@@ -4729,7 +4729,7 @@ export const deleteProvisionedProductPlan: API.OperationMethod<
   DeleteProvisionedProductPlanOutput,
   DeleteProvisionedProductPlanError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProvisionedProductPlanInput,
   output: DeleteProvisionedProductPlanOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
@@ -4751,7 +4751,7 @@ export const deleteProvisioningArtifact: API.OperationMethod<
   DeleteProvisioningArtifactOutput,
   DeleteProvisioningArtifactError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProvisioningArtifactInput,
   output: DeleteProvisioningArtifactOutput,
   errors: [
@@ -4773,7 +4773,7 @@ export const deleteServiceAction: API.OperationMethod<
   DeleteServiceActionOutput,
   DeleteServiceActionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteServiceActionInput,
   output: DeleteServiceActionOutput,
   errors: [
@@ -4797,7 +4797,7 @@ export const deleteTagOption: API.OperationMethod<
   DeleteTagOptionOutput,
   DeleteTagOptionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTagOptionInput,
   output: DeleteTagOptionOutput,
   errors: [
@@ -4815,7 +4815,7 @@ export const describeConstraint: API.OperationMethod<
   DescribeConstraintOutput,
   DescribeConstraintError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeConstraintInput,
   output: DescribeConstraintOutput,
   errors: [ResourceNotFoundException],
@@ -4831,7 +4831,7 @@ export const describeCopyProductStatus: API.OperationMethod<
   DescribeCopyProductStatusOutput,
   DescribeCopyProductStatusError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeCopyProductStatusInput,
   output: DescribeCopyProductStatusOutput,
   errors: [ResourceNotFoundException],
@@ -4847,7 +4847,7 @@ export const describePortfolio: API.OperationMethod<
   DescribePortfolioOutput,
   DescribePortfolioError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribePortfolioInput,
   output: DescribePortfolioOutput,
   errors: [ResourceNotFoundException],
@@ -4885,7 +4885,7 @@ export const describePortfolioShares: API.OperationMethod<
     DescribePortfolioSharesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribePortfolioSharesInput,
   output: DescribePortfolioSharesOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
@@ -4909,7 +4909,7 @@ export const describePortfolioShareStatus: API.OperationMethod<
   DescribePortfolioShareStatusOutput,
   DescribePortfolioShareStatusError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribePortfolioShareStatusInput,
   output: DescribePortfolioShareStatusOutput,
   errors: [
@@ -4936,7 +4936,7 @@ export const describeProduct: API.OperationMethod<
   DescribeProductOutput,
   DescribeProductError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeProductInput,
   output: DescribeProductOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
@@ -4953,7 +4953,7 @@ export const describeProductAsAdmin: API.OperationMethod<
   DescribeProductAsAdminOutput,
   DescribeProductAsAdminError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeProductAsAdminInput,
   output: DescribeProductAsAdminOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
@@ -4970,7 +4970,7 @@ export const describeProductView: API.OperationMethod<
   DescribeProductViewOutput,
   DescribeProductViewError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeProductViewInput,
   output: DescribeProductViewOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
@@ -4987,7 +4987,7 @@ export const describeProvisionedProduct: API.OperationMethod<
   DescribeProvisionedProductOutput,
   DescribeProvisionedProductError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeProvisionedProductInput,
   output: DescribeProvisionedProductOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
@@ -5004,7 +5004,7 @@ export const describeProvisionedProductPlan: API.OperationMethod<
   DescribeProvisionedProductPlanOutput,
   DescribeProvisionedProductPlanError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeProvisionedProductPlanInput,
   output: DescribeProvisionedProductPlanOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
@@ -5021,7 +5021,7 @@ export const describeProvisioningArtifact: API.OperationMethod<
   DescribeProvisioningArtifactOutput,
   DescribeProvisioningArtifactError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeProvisioningArtifactInput,
   output: DescribeProvisioningArtifactOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
@@ -5046,7 +5046,7 @@ export const describeProvisioningParameters: API.OperationMethod<
   DescribeProvisioningParametersOutput,
   DescribeProvisioningParametersError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeProvisioningParametersInput,
   output: DescribeProvisioningParametersOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
@@ -5067,7 +5067,7 @@ export const describeRecord: API.OperationMethod<
   DescribeRecordOutput,
   DescribeRecordError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeRecordInput,
   output: DescribeRecordOutput,
   errors: [ResourceNotFoundException],
@@ -5083,7 +5083,7 @@ export const describeServiceAction: API.OperationMethod<
   DescribeServiceActionOutput,
   DescribeServiceActionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeServiceActionInput,
   output: DescribeServiceActionOutput,
   errors: [ResourceNotFoundException],
@@ -5100,7 +5100,7 @@ export const describeServiceActionExecutionParameters: API.OperationMethod<
   DescribeServiceActionExecutionParametersOutput,
   DescribeServiceActionExecutionParametersError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeServiceActionExecutionParametersInput,
   output: DescribeServiceActionExecutionParametersOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
@@ -5117,7 +5117,7 @@ export const describeTagOption: API.OperationMethod<
   DescribeTagOptionOutput,
   DescribeTagOptionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeTagOptionInput,
   output: DescribeTagOptionOutput,
   errors: [ResourceNotFoundException, TagOptionNotMigratedException],
@@ -5148,7 +5148,7 @@ export const disableAWSOrganizationsAccess: API.OperationMethod<
   DisableAWSOrganizationsAccessOutput,
   DisableAWSOrganizationsAccessError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableAWSOrganizationsAccessInput,
   output: DisableAWSOrganizationsAccessOutput,
   errors: [
@@ -5168,7 +5168,7 @@ export const disassociateBudgetFromResource: API.OperationMethod<
   DisassociateBudgetFromResourceOutput,
   DisassociateBudgetFromResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateBudgetFromResourceInput,
   output: DisassociateBudgetFromResourceOutput,
   errors: [ResourceNotFoundException],
@@ -5204,7 +5204,7 @@ export const disassociatePrincipalFromPortfolio: API.OperationMethod<
   DisassociatePrincipalFromPortfolioOutput,
   DisassociatePrincipalFromPortfolioError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociatePrincipalFromPortfolioInput,
   output: DisassociatePrincipalFromPortfolioOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
@@ -5224,7 +5224,7 @@ export const disassociateProductFromPortfolio: API.OperationMethod<
   DisassociateProductFromPortfolioOutput,
   DisassociateProductFromPortfolioError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateProductFromPortfolioInput,
   output: DisassociateProductFromPortfolioOutput,
   errors: [
@@ -5245,7 +5245,7 @@ export const disassociateServiceActionFromProvisioningArtifact: API.OperationMet
   DisassociateServiceActionFromProvisioningArtifactOutput,
   DisassociateServiceActionFromProvisioningArtifactError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateServiceActionFromProvisioningArtifactInput,
   output: DisassociateServiceActionFromProvisioningArtifactOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
@@ -5262,7 +5262,7 @@ export const disassociateTagOptionFromResource: API.OperationMethod<
   DisassociateTagOptionFromResourceOutput,
   DisassociateTagOptionFromResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateTagOptionFromResourceInput,
   output: DisassociateTagOptionFromResourceOutput,
   errors: [ResourceNotFoundException, TagOptionNotMigratedException],
@@ -5293,7 +5293,7 @@ export const enableAWSOrganizationsAccess: API.OperationMethod<
   EnableAWSOrganizationsAccessOutput,
   EnableAWSOrganizationsAccessError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableAWSOrganizationsAccessInput,
   output: EnableAWSOrganizationsAccessOutput,
   errors: [
@@ -5315,7 +5315,7 @@ export const executeProvisionedProductPlan: API.OperationMethod<
   ExecuteProvisionedProductPlanOutput,
   ExecuteProvisionedProductPlanError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExecuteProvisionedProductPlanInput,
   output: ExecuteProvisionedProductPlanOutput,
   errors: [
@@ -5337,7 +5337,7 @@ export const executeProvisionedProductServiceAction: API.OperationMethod<
   ExecuteProvisionedProductServiceActionOutput,
   ExecuteProvisionedProductServiceActionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExecuteProvisionedProductServiceActionInput,
   output: ExecuteProvisionedProductServiceActionOutput,
   errors: [
@@ -5359,7 +5359,7 @@ export const getAWSOrganizationsAccessStatus: API.OperationMethod<
   GetAWSOrganizationsAccessStatusOutput,
   GetAWSOrganizationsAccessStatusError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAWSOrganizationsAccessStatusInput,
   output: GetAWSOrganizationsAccessStatusOutput,
   errors: [OperationNotSupportedException, ResourceNotFoundException],
@@ -5391,7 +5391,7 @@ export const getProvisionedProductOutputs: API.OperationMethod<
     GetProvisionedProductOutputsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetProvisionedProductOutputsInput,
   output: GetProvisionedProductOutputsOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
@@ -5440,7 +5440,7 @@ export const importAsProvisionedProduct: API.OperationMethod<
   ImportAsProvisionedProductOutput,
   ImportAsProvisionedProductError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportAsProvisionedProductInput,
   output: ImportAsProvisionedProductOutput,
   errors: [
@@ -5479,7 +5479,7 @@ export const listAcceptedPortfolioShares: API.OperationMethod<
     ListAcceptedPortfolioSharesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAcceptedPortfolioSharesInput,
   output: ListAcceptedPortfolioSharesOutput,
   errors: [InvalidParametersException, OperationNotSupportedException],
@@ -5516,7 +5516,7 @@ export const listBudgetsForResource: API.OperationMethod<
     ListBudgetsForResourceError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBudgetsForResourceInput,
   output: ListBudgetsForResourceOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
@@ -5553,7 +5553,7 @@ export const listConstraintsForPortfolio: API.OperationMethod<
     ListConstraintsForPortfolioError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConstraintsForPortfolioInput,
   output: ListConstraintsForPortfolioOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
@@ -5610,7 +5610,7 @@ export const listLaunchPaths: API.OperationMethod<
     ListLaunchPathsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLaunchPathsInput,
   output: ListLaunchPathsOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
@@ -5652,7 +5652,7 @@ export const listOrganizationPortfolioAccess: API.OperationMethod<
     ListOrganizationPortfolioAccessError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationPortfolioAccessInput,
   output: ListOrganizationPortfolioAccessOutput,
   errors: [
@@ -5695,7 +5695,7 @@ export const listPortfolioAccess: API.OperationMethod<
     ListPortfolioAccessError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPortfolioAccessInput,
   output: ListPortfolioAccessOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
@@ -5729,7 +5729,7 @@ export const listPortfolios: API.OperationMethod<
     ListPortfoliosError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPortfoliosInput,
   output: ListPortfoliosOutput,
   errors: [InvalidParametersException],
@@ -5766,7 +5766,7 @@ export const listPortfoliosForProduct: API.OperationMethod<
     ListPortfoliosForProductError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPortfoliosForProductInput,
   output: ListPortfoliosForProductOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
@@ -5803,7 +5803,7 @@ export const listPrincipalsForPortfolio: API.OperationMethod<
     ListPrincipalsForPortfolioError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPrincipalsForPortfolioInput,
   output: ListPrincipalsForPortfolioOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
@@ -5825,7 +5825,7 @@ export const listProvisionedProductPlans: API.OperationMethod<
   ListProvisionedProductPlansOutput,
   ListProvisionedProductPlansError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListProvisionedProductPlansInput,
   output: ListProvisionedProductPlansOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
@@ -5842,7 +5842,7 @@ export const listProvisioningArtifacts: API.OperationMethod<
   ListProvisioningArtifactsOutput,
   ListProvisioningArtifactsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListProvisioningArtifactsInput,
   output: ListProvisioningArtifactsOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
@@ -5874,7 +5874,7 @@ export const listProvisioningArtifactsForServiceAction: API.OperationMethod<
     ListProvisioningArtifactsForServiceActionError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProvisioningArtifactsForServiceActionInput,
   output: ListProvisioningArtifactsForServiceActionOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
@@ -5893,7 +5893,7 @@ export const listRecordHistory: API.OperationMethod<
   ListRecordHistoryOutput,
   ListRecordHistoryError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListRecordHistoryInput,
   output: ListRecordHistoryOutput,
   errors: [InvalidParametersException],
@@ -5926,7 +5926,7 @@ export const listResourcesForTagOption: API.OperationMethod<
     ListResourcesForTagOptionError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourcesForTagOptionInput,
   output: ListResourcesForTagOptionOutput,
   errors: [
@@ -5964,7 +5964,7 @@ export const listServiceActions: API.OperationMethod<
     ListServiceActionsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServiceActionsInput,
   output: ListServiceActionsOutput,
   errors: [InvalidParametersException],
@@ -6001,7 +6001,7 @@ export const listServiceActionsForProvisioningArtifact: API.OperationMethod<
     ListServiceActionsForProvisioningArtifactError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServiceActionsForProvisioningArtifactInput,
   output: ListServiceActionsForProvisioningArtifactOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
@@ -6023,7 +6023,7 @@ export const listStackInstancesForProvisionedProduct: API.OperationMethod<
   ListStackInstancesForProvisionedProductOutput,
   ListStackInstancesForProvisionedProductError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListStackInstancesForProvisionedProductInput,
   output: ListStackInstancesForProvisionedProductOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
@@ -6055,7 +6055,7 @@ export const listTagOptions: API.OperationMethod<
     ListTagOptionsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagOptionsInput,
   output: ListTagOptionsOutput,
   errors: [InvalidParametersException, TagOptionNotMigratedException],
@@ -6078,7 +6078,7 @@ export const notifyProvisionProductEngineWorkflowResult: API.OperationMethod<
   NotifyProvisionProductEngineWorkflowResultOutput,
   NotifyProvisionProductEngineWorkflowResultError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: NotifyProvisionProductEngineWorkflowResultInput,
   output: NotifyProvisionProductEngineWorkflowResultOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
@@ -6096,7 +6096,7 @@ export const notifyTerminateProvisionedProductEngineWorkflowResult: API.Operatio
   NotifyTerminateProvisionedProductEngineWorkflowResultOutput,
   NotifyTerminateProvisionedProductEngineWorkflowResultError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: NotifyTerminateProvisionedProductEngineWorkflowResultInput,
   output: NotifyTerminateProvisionedProductEngineWorkflowResultOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
@@ -6114,7 +6114,7 @@ export const notifyUpdateProvisionedProductEngineWorkflowResult: API.OperationMe
   NotifyUpdateProvisionedProductEngineWorkflowResultOutput,
   NotifyUpdateProvisionedProductEngineWorkflowResultError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: NotifyUpdateProvisionedProductEngineWorkflowResultInput,
   output: NotifyUpdateProvisionedProductEngineWorkflowResultOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
@@ -6161,7 +6161,7 @@ export const provisionProduct: API.OperationMethod<
   ProvisionProductOutput,
   ProvisionProductError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ProvisionProductInput,
   output: ProvisionProductOutput,
   errors: [
@@ -6181,7 +6181,7 @@ export const rejectPortfolioShare: API.OperationMethod<
   RejectPortfolioShareOutput,
   RejectPortfolioShareError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RejectPortfolioShareInput,
   output: RejectPortfolioShareOutput,
   errors: [ResourceNotFoundException],
@@ -6199,7 +6199,7 @@ export const scanProvisionedProducts: API.OperationMethod<
   ScanProvisionedProductsOutput,
   ScanProvisionedProductsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ScanProvisionedProductsInput,
   output: ScanProvisionedProductsOutput,
   errors: [InvalidParametersException],
@@ -6228,7 +6228,7 @@ export const searchProducts: API.OperationMethod<
     SearchProductsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchProductsInput,
   output: SearchProductsOutput,
   errors: [InvalidParametersException],
@@ -6265,7 +6265,7 @@ export const searchProductsAsAdmin: API.OperationMethod<
     SearchProductsAsAdminError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchProductsAsAdminInput,
   output: SearchProductsAsAdminOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
@@ -6301,7 +6301,7 @@ export const searchProvisionedProducts: API.OperationMethod<
     SearchProvisionedProductsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchProvisionedProductsInput,
   output: SearchProvisionedProductsOutput,
   errors: [InvalidParametersException],
@@ -6326,7 +6326,7 @@ export const terminateProvisionedProduct: API.OperationMethod<
   TerminateProvisionedProductOutput,
   TerminateProvisionedProductError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TerminateProvisionedProductInput,
   output: TerminateProvisionedProductOutput,
   errors: [ResourceNotFoundException],
@@ -6343,7 +6343,7 @@ export const updateConstraint: API.OperationMethod<
   UpdateConstraintOutput,
   UpdateConstraintError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateConstraintInput,
   output: UpdateConstraintOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
@@ -6364,7 +6364,7 @@ export const updatePortfolio: API.OperationMethod<
   UpdatePortfolioOutput,
   UpdatePortfolioError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePortfolioInput,
   output: UpdatePortfolioOutput,
   errors: [
@@ -6406,7 +6406,7 @@ export const updatePortfolioShare: API.OperationMethod<
   UpdatePortfolioShareOutput,
   UpdatePortfolioShareError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePortfolioShareInput,
   output: UpdatePortfolioShareOutput,
   errors: [
@@ -6429,7 +6429,7 @@ export const updateProduct: API.OperationMethod<
   UpdateProductOutput,
   UpdateProductError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateProductInput,
   output: UpdateProductOutput,
   errors: [
@@ -6456,7 +6456,7 @@ export const updateProvisionedProduct: API.OperationMethod<
   UpdateProvisionedProductOutput,
   UpdateProvisionedProductError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateProvisionedProductInput,
   output: UpdateProvisionedProductOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
@@ -6474,7 +6474,7 @@ export const updateProvisionedProductProperties: API.OperationMethod<
   UpdateProvisionedProductPropertiesOutput,
   UpdateProvisionedProductPropertiesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateProvisionedProductPropertiesInput,
   output: UpdateProvisionedProductPropertiesOutput,
   errors: [
@@ -6497,7 +6497,7 @@ export const updateProvisioningArtifact: API.OperationMethod<
   UpdateProvisioningArtifactOutput,
   UpdateProvisioningArtifactError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateProvisioningArtifactInput,
   output: UpdateProvisioningArtifactOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
@@ -6514,7 +6514,7 @@ export const updateServiceAction: API.OperationMethod<
   UpdateServiceActionOutput,
   UpdateServiceActionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateServiceActionInput,
   output: UpdateServiceActionOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
@@ -6533,7 +6533,7 @@ export const updateTagOption: API.OperationMethod<
   UpdateTagOptionOutput,
   UpdateTagOptionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTagOptionInput,
   output: UpdateTagOptionOutput,
   errors: [

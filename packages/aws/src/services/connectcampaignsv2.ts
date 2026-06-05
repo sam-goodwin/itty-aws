@@ -2133,7 +2133,7 @@ export const createCampaign: API.OperationMethod<
   CreateCampaignResponse,
   CreateCampaignError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCampaignRequest,
   output: CreateCampaignResponse,
   errors: [
@@ -2160,7 +2160,7 @@ export const deleteCampaign: API.OperationMethod<
   DeleteCampaignResponse,
   DeleteCampaignError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCampaignRequest,
   output: DeleteCampaignResponse,
   errors: [
@@ -2185,7 +2185,7 @@ export const deleteCampaignChannelSubtypeConfig: API.OperationMethod<
   DeleteCampaignChannelSubtypeConfigResponse,
   DeleteCampaignChannelSubtypeConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCampaignChannelSubtypeConfigRequest,
   output: DeleteCampaignChannelSubtypeConfigResponse,
   errors: [
@@ -2212,7 +2212,7 @@ export const deleteCampaignCommunicationLimits: API.OperationMethod<
   DeleteCampaignCommunicationLimitsResponse,
   DeleteCampaignCommunicationLimitsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCampaignCommunicationLimitsRequest,
   output: DeleteCampaignCommunicationLimitsResponse,
   errors: [
@@ -2240,7 +2240,7 @@ export const deleteCampaignCommunicationTime: API.OperationMethod<
   DeleteCampaignCommunicationTimeResponse,
   DeleteCampaignCommunicationTimeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCampaignCommunicationTimeRequest,
   output: DeleteCampaignCommunicationTimeResponse,
   errors: [
@@ -2268,7 +2268,7 @@ export const deleteConnectInstanceConfig: API.OperationMethod<
   DeleteConnectInstanceConfigResponse,
   DeleteConnectInstanceConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConnectInstanceConfigRequest,
   output: DeleteConnectInstanceConfigResponse,
   errors: [
@@ -2295,7 +2295,7 @@ export const deleteConnectInstanceIntegration: API.OperationMethod<
   DeleteConnectInstanceIntegrationResponse,
   DeleteConnectInstanceIntegrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConnectInstanceIntegrationRequest,
   output: DeleteConnectInstanceIntegrationResponse,
   errors: [
@@ -2321,7 +2321,7 @@ export const deleteInstanceOnboardingJob: API.OperationMethod<
   DeleteInstanceOnboardingJobResponse,
   DeleteInstanceOnboardingJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteInstanceOnboardingJobRequest,
   output: DeleteInstanceOnboardingJobResponse,
   errors: [
@@ -2346,7 +2346,7 @@ export const describeCampaign: API.OperationMethod<
   DescribeCampaignResponse,
   DescribeCampaignError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeCampaignRequest,
   output: DescribeCampaignResponse,
   errors: [
@@ -2371,7 +2371,7 @@ export const getCampaignState: API.OperationMethod<
   GetCampaignStateResponse,
   GetCampaignStateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCampaignStateRequest,
   output: GetCampaignStateResponse,
   errors: [
@@ -2396,7 +2396,7 @@ export const getCampaignStateBatch: API.OperationMethod<
   GetCampaignStateBatchResponse,
   GetCampaignStateBatchError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCampaignStateBatchRequest,
   output: GetCampaignStateBatchResponse,
   errors: [
@@ -2420,7 +2420,7 @@ export const getConnectInstanceConfig: API.OperationMethod<
   GetConnectInstanceConfigResponse,
   GetConnectInstanceConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConnectInstanceConfigRequest,
   output: GetConnectInstanceConfigResponse,
   errors: [
@@ -2444,7 +2444,7 @@ export const getInstanceCommunicationLimits: API.OperationMethod<
   GetInstanceCommunicationLimitsResponse,
   GetInstanceCommunicationLimitsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInstanceCommunicationLimitsRequest,
   output: GetInstanceCommunicationLimitsResponse,
   errors: [
@@ -2468,7 +2468,7 @@ export const getInstanceOnboardingJobStatus: API.OperationMethod<
   GetInstanceOnboardingJobStatusResponse,
   GetInstanceOnboardingJobStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInstanceOnboardingJobStatusRequest,
   output: GetInstanceOnboardingJobStatusResponse,
   errors: [
@@ -2506,7 +2506,7 @@ export const listCampaigns: API.OperationMethod<
     ListCampaignsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCampaignsRequest,
   output: ListCampaignsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
@@ -2547,7 +2547,7 @@ export const listConnectInstanceIntegrations: API.OperationMethod<
     ListConnectInstanceIntegrationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConnectInstanceIntegrationsRequest,
   output: ListConnectInstanceIntegrationsResponse,
   errors: [
@@ -2579,7 +2579,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -2607,7 +2607,7 @@ export const pauseCampaign: API.OperationMethod<
   PauseCampaignResponse,
   PauseCampaignError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PauseCampaignRequest,
   output: PauseCampaignResponse,
   errors: [
@@ -2636,7 +2636,7 @@ export const putConnectInstanceIntegration: API.OperationMethod<
   PutConnectInstanceIntegrationResponse,
   PutConnectInstanceIntegrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutConnectInstanceIntegrationRequest,
   output: PutConnectInstanceIntegrationResponse,
   errors: [
@@ -2663,7 +2663,7 @@ export const putInstanceCommunicationLimits: API.OperationMethod<
   PutInstanceCommunicationLimitsResponse,
   PutInstanceCommunicationLimitsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutInstanceCommunicationLimitsRequest,
   output: PutInstanceCommunicationLimitsResponse,
   errors: [
@@ -2691,7 +2691,7 @@ export const putOutboundRequestBatch: API.OperationMethod<
   PutOutboundRequestBatchResponse,
   PutOutboundRequestBatchError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutOutboundRequestBatchRequest,
   output: PutOutboundRequestBatchResponse,
   errors: [
@@ -2721,7 +2721,7 @@ export const putProfileOutboundRequestBatch: API.OperationMethod<
   PutProfileOutboundRequestBatchResponse,
   PutProfileOutboundRequestBatchError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutProfileOutboundRequestBatchRequest,
   output: PutProfileOutboundRequestBatchResponse,
   errors: [
@@ -2751,7 +2751,7 @@ export const resumeCampaign: API.OperationMethod<
   ResumeCampaignResponse,
   ResumeCampaignError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResumeCampaignRequest,
   output: ResumeCampaignResponse,
   errors: [
@@ -2781,7 +2781,7 @@ export const startCampaign: API.OperationMethod<
   StartCampaignResponse,
   StartCampaignError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartCampaignRequest,
   output: StartCampaignResponse,
   errors: [
@@ -2810,7 +2810,7 @@ export const startInstanceOnboardingJob: API.OperationMethod<
   StartInstanceOnboardingJobResponse,
   StartInstanceOnboardingJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartInstanceOnboardingJobRequest,
   output: StartInstanceOnboardingJobResponse,
   errors: [
@@ -2839,7 +2839,7 @@ export const stopCampaign: API.OperationMethod<
   StopCampaignResponse,
   StopCampaignError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopCampaignRequest,
   output: StopCampaignResponse,
   errors: [
@@ -2867,7 +2867,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -2893,7 +2893,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -2919,7 +2919,7 @@ export const updateCampaignChannelSubtypeConfig: API.OperationMethod<
   UpdateCampaignChannelSubtypeConfigResponse,
   UpdateCampaignChannelSubtypeConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCampaignChannelSubtypeConfigRequest,
   output: UpdateCampaignChannelSubtypeConfigResponse,
   errors: [
@@ -2946,7 +2946,7 @@ export const updateCampaignCommunicationLimits: API.OperationMethod<
   UpdateCampaignCommunicationLimitsResponse,
   UpdateCampaignCommunicationLimitsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCampaignCommunicationLimitsRequest,
   output: UpdateCampaignCommunicationLimitsResponse,
   errors: [
@@ -2974,7 +2974,7 @@ export const updateCampaignCommunicationTime: API.OperationMethod<
   UpdateCampaignCommunicationTimeResponse,
   UpdateCampaignCommunicationTimeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCampaignCommunicationTimeRequest,
   output: UpdateCampaignCommunicationTimeResponse,
   errors: [
@@ -3002,7 +3002,7 @@ export const updateCampaignFlowAssociation: API.OperationMethod<
   UpdateCampaignFlowAssociationResponse,
   UpdateCampaignFlowAssociationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCampaignFlowAssociationRequest,
   output: UpdateCampaignFlowAssociationResponse,
   errors: [
@@ -3029,7 +3029,7 @@ export const updateCampaignName: API.OperationMethod<
   UpdateCampaignNameResponse,
   UpdateCampaignNameError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCampaignNameRequest,
   output: UpdateCampaignNameResponse,
   errors: [
@@ -3056,7 +3056,7 @@ export const updateCampaignSchedule: API.OperationMethod<
   UpdateCampaignScheduleResponse,
   UpdateCampaignScheduleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCampaignScheduleRequest,
   output: UpdateCampaignScheduleResponse,
   errors: [
@@ -3084,7 +3084,7 @@ export const updateCampaignSource: API.OperationMethod<
   UpdateCampaignSourceResponse,
   UpdateCampaignSourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCampaignSourceRequest,
   output: UpdateCampaignSourceResponse,
   errors: [

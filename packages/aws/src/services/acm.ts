@@ -1517,7 +1517,7 @@ export const addTagsToCertificate: API.OperationMethod<
   AddTagsToCertificateResponse,
   AddTagsToCertificateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddTagsToCertificateRequest,
   output: AddTagsToCertificateResponse,
   errors: [
@@ -1552,7 +1552,7 @@ export const deleteCertificate: API.OperationMethod<
   DeleteCertificateResponse,
   DeleteCertificateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCertificateRequest,
   output: DeleteCertificateResponse,
   errors: [
@@ -1578,7 +1578,7 @@ export const describeCertificate: API.OperationMethod<
   DescribeCertificateResponse,
   DescribeCertificateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeCertificateRequest,
   output: DescribeCertificateResponse,
   errors: [InvalidArnException, ResourceNotFoundException],
@@ -1601,7 +1601,7 @@ export const exportCertificate: API.OperationMethod<
   ExportCertificateResponse,
   ExportCertificateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExportCertificateRequest,
   output: ExportCertificateResponse,
   errors: [
@@ -1623,7 +1623,7 @@ export const getAccountConfiguration: API.OperationMethod<
   GetAccountConfigurationResponse,
   GetAccountConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountConfigurationRequest,
   output: GetAccountConfigurationResponse,
   errors: [AccessDeniedException, ThrottlingException],
@@ -1641,7 +1641,7 @@ export const getCertificate: API.OperationMethod<
   GetCertificateResponse,
   GetCertificateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCertificateRequest,
   output: GetCertificateResponse,
   errors: [
@@ -1696,7 +1696,7 @@ export const importCertificate: API.OperationMethod<
   ImportCertificateResponse,
   ImportCertificateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportCertificateRequest,
   output: ImportCertificateResponse,
   errors: [
@@ -1737,7 +1737,7 @@ export const listCertificates: API.OperationMethod<
     ListCertificatesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCertificatesRequest,
   output: ListCertificatesResponse,
   errors: [InvalidArgsException, ValidationException],
@@ -1760,7 +1760,7 @@ export const listTagsForCertificate: API.OperationMethod<
   ListTagsForCertificateResponse,
   ListTagsForCertificateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForCertificateRequest,
   output: ListTagsForCertificateResponse,
   errors: [InvalidArnException, ResourceNotFoundException],
@@ -1781,7 +1781,7 @@ export const putAccountConfiguration: API.OperationMethod<
   PutAccountConfigurationResponse,
   PutAccountConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutAccountConfigurationRequest,
   output: PutAccountConfigurationResponse,
   errors: [
@@ -1809,7 +1809,7 @@ export const removeTagsFromCertificate: API.OperationMethod<
   RemoveTagsFromCertificateResponse,
   RemoveTagsFromCertificateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveTagsFromCertificateRequest,
   output: RemoveTagsFromCertificateResponse,
   errors: [
@@ -1834,7 +1834,7 @@ export const renewCertificate: API.OperationMethod<
   RenewCertificateResponse,
   RenewCertificateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RenewCertificateRequest,
   output: RenewCertificateResponse,
   errors: [
@@ -1866,7 +1866,7 @@ export const requestCertificate: API.OperationMethod<
   RequestCertificateResponse,
   RequestCertificateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RequestCertificateRequest,
   output: RequestCertificateResponse,
   errors: [
@@ -1893,7 +1893,7 @@ export const resendValidationEmail: API.OperationMethod<
   ResendValidationEmailResponse,
   ResendValidationEmailError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResendValidationEmailRequest,
   output: ResendValidationEmailResponse,
   errors: [
@@ -1921,7 +1921,7 @@ export const revokeCertificate: API.OperationMethod<
   RevokeCertificateResponse,
   RevokeCertificateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RevokeCertificateRequest,
   output: RevokeCertificateResponse,
   errors: [
@@ -1961,7 +1961,7 @@ export const searchCertificates: API.OperationMethod<
     SearchCertificatesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchCertificatesRequest,
   output: SearchCertificatesResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
@@ -1986,7 +1986,7 @@ export const updateCertificateOptions: API.OperationMethod<
   UpdateCertificateOptionsResponse,
   UpdateCertificateOptionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCertificateOptionsRequest,
   output: UpdateCertificateOptionsResponse,
   errors: [

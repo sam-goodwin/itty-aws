@@ -3454,7 +3454,7 @@ export const createEnvironment: API.OperationMethod<
   CreateEnvironmentResponse,
   CreateEnvironmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEnvironmentRequest,
   output: CreateEnvironmentResponse,
   errors: [
@@ -3483,7 +3483,7 @@ export const createKxChangeset: API.OperationMethod<
   CreateKxChangesetResponse,
   CreateKxChangesetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateKxChangesetRequest,
   output: CreateKxChangesetResponse,
   errors: [
@@ -3513,7 +3513,7 @@ export const createKxCluster: API.OperationMethod<
   CreateKxClusterResponse,
   CreateKxClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateKxClusterRequest,
   output: CreateKxClusterResponse,
   errors: [
@@ -3544,7 +3544,7 @@ export const createKxDatabase: API.OperationMethod<
   CreateKxDatabaseResponse,
   CreateKxDatabaseError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateKxDatabaseRequest,
   output: CreateKxDatabaseResponse,
   errors: [
@@ -3576,7 +3576,7 @@ export const createKxDataview: API.OperationMethod<
   CreateKxDataviewResponse,
   CreateKxDataviewError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateKxDataviewRequest,
   output: CreateKxDataviewResponse,
   errors: [
@@ -3607,7 +3607,7 @@ export const createKxEnvironment: API.OperationMethod<
   CreateKxEnvironmentResponse,
   CreateKxEnvironmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateKxEnvironmentRequest,
   output: CreateKxEnvironmentResponse,
   errors: [
@@ -3637,7 +3637,7 @@ export const createKxScalingGroup: API.OperationMethod<
   CreateKxScalingGroupResponse,
   CreateKxScalingGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateKxScalingGroupRequest,
   output: CreateKxScalingGroupResponse,
   errors: [
@@ -3668,7 +3668,7 @@ export const createKxUser: API.OperationMethod<
   CreateKxUserResponse,
   CreateKxUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateKxUserRequest,
   output: CreateKxUserResponse,
   errors: [
@@ -3700,7 +3700,7 @@ export const createKxVolume: API.OperationMethod<
   CreateKxVolumeResponse,
   CreateKxVolumeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateKxVolumeRequest,
   output: CreateKxVolumeResponse,
   errors: [
@@ -3729,7 +3729,7 @@ export const deleteEnvironment: API.OperationMethod<
   DeleteEnvironmentResponse,
   DeleteEnvironmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEnvironmentRequest,
   output: DeleteEnvironmentResponse,
   errors: [
@@ -3757,7 +3757,7 @@ export const deleteKxCluster: API.OperationMethod<
   DeleteKxClusterResponse,
   DeleteKxClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteKxClusterRequest,
   output: DeleteKxClusterResponse,
   errors: [
@@ -3785,7 +3785,7 @@ export const deleteKxClusterNode: API.OperationMethod<
   DeleteKxClusterNodeResponse,
   DeleteKxClusterNodeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteKxClusterNodeRequest,
   output: DeleteKxClusterNodeResponse,
   errors: [
@@ -3812,7 +3812,7 @@ export const deleteKxDatabase: API.OperationMethod<
   DeleteKxDatabaseResponse,
   DeleteKxDatabaseError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteKxDatabaseRequest,
   output: DeleteKxDatabaseResponse,
   errors: [
@@ -3840,7 +3840,7 @@ export const deleteKxDataview: API.OperationMethod<
   DeleteKxDataviewResponse,
   DeleteKxDataviewError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteKxDataviewRequest,
   output: DeleteKxDataviewResponse,
   errors: [
@@ -3868,7 +3868,7 @@ export const deleteKxEnvironment: API.OperationMethod<
   DeleteKxEnvironmentResponse,
   DeleteKxEnvironmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteKxEnvironmentRequest,
   output: DeleteKxEnvironmentResponse,
   errors: [
@@ -3897,7 +3897,7 @@ export const deleteKxScalingGroup: API.OperationMethod<
   DeleteKxScalingGroupResponse,
   DeleteKxScalingGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteKxScalingGroupRequest,
   output: DeleteKxScalingGroupResponse,
   errors: [
@@ -3926,7 +3926,7 @@ export const deleteKxUser: API.OperationMethod<
   DeleteKxUserResponse,
   DeleteKxUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteKxUserRequest,
   output: DeleteKxUserResponse,
   errors: [
@@ -3955,7 +3955,7 @@ export const deleteKxVolume: API.OperationMethod<
   DeleteKxVolumeResponse,
   DeleteKxVolumeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteKxVolumeRequest,
   output: DeleteKxVolumeResponse,
   errors: [
@@ -3982,7 +3982,7 @@ export const getEnvironment: API.OperationMethod<
   GetEnvironmentResponse,
   GetEnvironmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEnvironmentRequest,
   output: GetEnvironmentResponse,
   errors: [
@@ -4007,7 +4007,7 @@ export const getKxChangeset: API.OperationMethod<
   GetKxChangesetResponse,
   GetKxChangesetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetKxChangesetRequest,
   output: GetKxChangesetResponse,
   errors: [
@@ -4035,7 +4035,7 @@ export const getKxCluster: API.OperationMethod<
   GetKxClusterResponse,
   GetKxClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetKxClusterRequest,
   output: GetKxClusterResponse,
   errors: [
@@ -4063,7 +4063,7 @@ export const getKxConnectionString: API.OperationMethod<
   GetKxConnectionStringResponse,
   GetKxConnectionStringError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetKxConnectionStringRequest,
   output: GetKxConnectionStringResponse,
   errors: [
@@ -4089,7 +4089,7 @@ export const getKxDatabase: API.OperationMethod<
   GetKxDatabaseResponse,
   GetKxDatabaseError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetKxDatabaseRequest,
   output: GetKxDatabaseResponse,
   errors: [
@@ -4115,7 +4115,7 @@ export const getKxDataview: API.OperationMethod<
   GetKxDataviewResponse,
   GetKxDataviewError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetKxDataviewRequest,
   output: GetKxDataviewResponse,
   errors: [
@@ -4141,7 +4141,7 @@ export const getKxEnvironment: API.OperationMethod<
   GetKxEnvironmentResponse,
   GetKxEnvironmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetKxEnvironmentRequest,
   output: GetKxEnvironmentResponse,
   errors: [
@@ -4169,7 +4169,7 @@ export const getKxScalingGroup: API.OperationMethod<
   GetKxScalingGroupResponse,
   GetKxScalingGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetKxScalingGroupRequest,
   output: GetKxScalingGroupResponse,
   errors: [
@@ -4197,7 +4197,7 @@ export const getKxUser: API.OperationMethod<
   GetKxUserResponse,
   GetKxUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetKxUserRequest,
   output: GetKxUserResponse,
   errors: [
@@ -4225,7 +4225,7 @@ export const getKxVolume: API.OperationMethod<
   GetKxVolumeResponse,
   GetKxVolumeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetKxVolumeRequest,
   output: GetKxVolumeResponse,
   errors: [
@@ -4251,7 +4251,7 @@ export const listEnvironments: API.OperationMethod<
   ListEnvironmentsResponse,
   ListEnvironmentsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListEnvironmentsRequest,
   output: ListEnvironmentsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
@@ -4286,7 +4286,7 @@ export const listKxChangesets: API.OperationMethod<
     ListKxChangesetsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListKxChangesetsRequest,
   output: ListKxChangesetsResponse,
   errors: [
@@ -4333,7 +4333,7 @@ export const listKxClusterNodes: API.OperationMethod<
     ListKxClusterNodesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListKxClusterNodesRequest,
   output: ListKxClusterNodesResponse,
   errors: [
@@ -4367,7 +4367,7 @@ export const listKxClusters: API.OperationMethod<
   ListKxClustersResponse,
   ListKxClustersError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListKxClustersRequest,
   output: ListKxClustersResponse,
   errors: [
@@ -4410,7 +4410,7 @@ export const listKxDatabases: API.OperationMethod<
     ListKxDatabasesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListKxDatabasesRequest,
   output: ListKxDatabasesResponse,
   errors: [
@@ -4456,7 +4456,7 @@ export const listKxDataviews: API.OperationMethod<
     ListKxDataviewsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListKxDataviewsRequest,
   output: ListKxDataviewsResponse,
   errors: [
@@ -4500,7 +4500,7 @@ export const listKxEnvironments: API.OperationMethod<
     ListKxEnvironmentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListKxEnvironmentsRequest,
   output: ListKxEnvironmentsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
@@ -4543,7 +4543,7 @@ export const listKxScalingGroups: API.OperationMethod<
     ListKxScalingGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListKxScalingGroupsRequest,
   output: ListKxScalingGroupsResponse,
   errors: [
@@ -4576,7 +4576,7 @@ export const listKxUsers: API.OperationMethod<
   ListKxUsersResponse,
   ListKxUsersError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListKxUsersRequest,
   output: ListKxUsersResponse,
   errors: [
@@ -4604,7 +4604,7 @@ export const listKxVolumes: API.OperationMethod<
   ListKxVolumesResponse,
   ListKxVolumesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListKxVolumesRequest,
   output: ListKxVolumesResponse,
   errors: [
@@ -4630,7 +4630,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -4652,7 +4652,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -4674,7 +4674,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -4698,7 +4698,7 @@ export const updateEnvironment: API.OperationMethod<
   UpdateEnvironmentResponse,
   UpdateEnvironmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEnvironmentRequest,
   output: UpdateEnvironmentResponse,
   errors: [
@@ -4727,7 +4727,7 @@ export const updateKxClusterCodeConfiguration: API.OperationMethod<
   UpdateKxClusterCodeConfigurationResponse,
   UpdateKxClusterCodeConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateKxClusterCodeConfigurationRequest,
   output: UpdateKxClusterCodeConfigurationResponse,
   errors: [
@@ -4759,7 +4759,7 @@ export const updateKxClusterDatabases: API.OperationMethod<
   UpdateKxClusterDatabasesResponse,
   UpdateKxClusterDatabasesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateKxClusterDatabasesRequest,
   output: UpdateKxClusterDatabasesResponse,
   errors: [
@@ -4788,7 +4788,7 @@ export const updateKxDatabase: API.OperationMethod<
   UpdateKxDatabaseResponse,
   UpdateKxDatabaseError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateKxDatabaseRequest,
   output: UpdateKxDatabaseResponse,
   errors: [
@@ -4817,7 +4817,7 @@ export const updateKxDataview: API.OperationMethod<
   UpdateKxDataviewResponse,
   UpdateKxDataviewError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateKxDataviewRequest,
   output: UpdateKxDataviewResponse,
   errors: [
@@ -4846,7 +4846,7 @@ export const updateKxEnvironment: API.OperationMethod<
   UpdateKxEnvironmentResponse,
   UpdateKxEnvironmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateKxEnvironmentRequest,
   output: UpdateKxEnvironmentResponse,
   errors: [
@@ -4876,7 +4876,7 @@ export const updateKxEnvironmentNetwork: API.OperationMethod<
   UpdateKxEnvironmentNetworkResponse,
   UpdateKxEnvironmentNetworkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateKxEnvironmentNetworkRequest,
   output: UpdateKxEnvironmentNetworkResponse,
   errors: [
@@ -4905,7 +4905,7 @@ export const updateKxUser: API.OperationMethod<
   UpdateKxUserResponse,
   UpdateKxUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateKxUserRequest,
   output: UpdateKxUserResponse,
   errors: [
@@ -4936,7 +4936,7 @@ export const updateKxVolume: API.OperationMethod<
   UpdateKxVolumeResponse,
   UpdateKxVolumeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateKxVolumeRequest,
   output: UpdateKxVolumeResponse,
   errors: [

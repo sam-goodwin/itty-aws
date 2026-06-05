@@ -3217,7 +3217,7 @@ export const batchGetNamedQuery: API.OperationMethod<
   BatchGetNamedQueryOutput,
   BatchGetNamedQueryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetNamedQueryInput,
   output: BatchGetNamedQueryOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -3238,7 +3238,7 @@ export const batchGetPreparedStatement: API.OperationMethod<
   BatchGetPreparedStatementOutput,
   BatchGetPreparedStatementError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetPreparedStatementInput,
   output: BatchGetPreparedStatementOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -3260,7 +3260,7 @@ export const batchGetQueryExecution: API.OperationMethod<
   BatchGetQueryExecutionOutput,
   BatchGetQueryExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetQueryExecutionInput,
   output: BatchGetQueryExecutionOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -3280,7 +3280,7 @@ export const cancelCapacityReservation: API.OperationMethod<
   CancelCapacityReservationOutput,
   CancelCapacityReservationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelCapacityReservationInput,
   output: CancelCapacityReservationOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -3298,7 +3298,7 @@ export const createCapacityReservation: API.OperationMethod<
   CreateCapacityReservationOutput,
   CreateCapacityReservationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCapacityReservationInput,
   output: CreateCapacityReservationOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -3331,7 +3331,7 @@ export const createDataCatalog: API.OperationMethod<
   CreateDataCatalogOutput,
   CreateDataCatalogError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDataCatalogInput,
   output: CreateDataCatalogOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -3349,7 +3349,7 @@ export const createNamedQuery: API.OperationMethod<
   CreateNamedQueryOutput,
   CreateNamedQueryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateNamedQueryInput,
   output: CreateNamedQueryOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -3369,7 +3369,7 @@ export const createNotebook: API.OperationMethod<
   CreateNotebookOutput,
   CreateNotebookError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateNotebookInput,
   output: CreateNotebookOutput,
   errors: [
@@ -3390,7 +3390,7 @@ export const createPreparedStatement: API.OperationMethod<
   CreatePreparedStatementOutput,
   CreatePreparedStatementError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePreparedStatementInput,
   output: CreatePreparedStatementOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -3412,7 +3412,7 @@ export const createPresignedNotebookUrl: API.OperationMethod<
   CreatePresignedNotebookUrlResponse,
   CreatePresignedNotebookUrlError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePresignedNotebookUrlRequest,
   output: CreatePresignedNotebookUrlResponse,
   errors: [
@@ -3434,7 +3434,7 @@ export const createWorkGroup: API.OperationMethod<
   CreateWorkGroupOutput,
   CreateWorkGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateWorkGroupInput,
   output: CreateWorkGroupOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -3455,7 +3455,7 @@ export const deleteCapacityReservation: API.OperationMethod<
   DeleteCapacityReservationOutput,
   DeleteCapacityReservationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCapacityReservationInput,
   output: DeleteCapacityReservationOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -3472,7 +3472,7 @@ export const deleteDataCatalog: API.OperationMethod<
   DeleteDataCatalogOutput,
   DeleteDataCatalogError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDataCatalogInput,
   output: DeleteDataCatalogOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -3490,7 +3490,7 @@ export const deleteNamedQuery: API.OperationMethod<
   DeleteNamedQueryOutput,
   DeleteNamedQueryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteNamedQueryInput,
   output: DeleteNamedQueryOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -3508,7 +3508,7 @@ export const deleteNotebook: API.OperationMethod<
   DeleteNotebookOutput,
   DeleteNotebookError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteNotebookInput,
   output: DeleteNotebookOutput,
   errors: [
@@ -3531,7 +3531,7 @@ export const deletePreparedStatement: API.OperationMethod<
   DeletePreparedStatementOutput,
   DeletePreparedStatementError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePreparedStatementInput,
   output: DeletePreparedStatementOutput,
   errors: [
@@ -3553,7 +3553,7 @@ export const deleteWorkGroup: API.OperationMethod<
   DeleteWorkGroupOutput,
   DeleteWorkGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteWorkGroupInput,
   output: DeleteWorkGroupOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -3571,7 +3571,7 @@ export const exportNotebook: API.OperationMethod<
   ExportNotebookOutput,
   ExportNotebookError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExportNotebookInput,
   output: ExportNotebookOutput,
   errors: [
@@ -3593,7 +3593,7 @@ export const getCalculationExecution: API.OperationMethod<
   GetCalculationExecutionResponse,
   GetCalculationExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCalculationExecutionRequest,
   output: GetCalculationExecutionResponse,
   errors: [
@@ -3615,7 +3615,7 @@ export const getCalculationExecutionCode: API.OperationMethod<
   GetCalculationExecutionCodeResponse,
   GetCalculationExecutionCodeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCalculationExecutionCodeRequest,
   output: GetCalculationExecutionCodeResponse,
   errors: [
@@ -3637,7 +3637,7 @@ export const getCalculationExecutionStatus: API.OperationMethod<
   GetCalculationExecutionStatusResponse,
   GetCalculationExecutionStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCalculationExecutionStatusRequest,
   output: GetCalculationExecutionStatusResponse,
   errors: [
@@ -3659,7 +3659,7 @@ export const getCapacityAssignmentConfiguration: API.OperationMethod<
   GetCapacityAssignmentConfigurationOutput,
   GetCapacityAssignmentConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCapacityAssignmentConfigurationInput,
   output: GetCapacityAssignmentConfigurationOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -3676,7 +3676,7 @@ export const getCapacityReservation: API.OperationMethod<
   GetCapacityReservationOutput,
   GetCapacityReservationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCapacityReservationInput,
   output: GetCapacityReservationOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -3694,7 +3694,7 @@ export const getDatabase: API.OperationMethod<
   GetDatabaseOutput,
   GetDatabaseError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDatabaseInput,
   output: GetDatabaseOutput,
   errors: [InternalServerException, InvalidRequestException, MetadataException],
@@ -3711,7 +3711,7 @@ export const getDataCatalog: API.OperationMethod<
   GetDataCatalogOutput,
   GetDataCatalogError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDataCatalogInput,
   output: GetDataCatalogOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -3729,7 +3729,7 @@ export const getNamedQuery: API.OperationMethod<
   GetNamedQueryOutput,
   GetNamedQueryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetNamedQueryInput,
   output: GetNamedQueryOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -3747,7 +3747,7 @@ export const getNotebookMetadata: API.OperationMethod<
   GetNotebookMetadataOutput,
   GetNotebookMetadataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetNotebookMetadataInput,
   output: GetNotebookMetadataOutput,
   errors: [
@@ -3770,7 +3770,7 @@ export const getPreparedStatement: API.OperationMethod<
   GetPreparedStatementOutput,
   GetPreparedStatementError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPreparedStatementInput,
   output: GetPreparedStatementOutput,
   errors: [
@@ -3793,7 +3793,7 @@ export const getQueryExecution: API.OperationMethod<
   GetQueryExecutionOutput,
   GetQueryExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetQueryExecutionInput,
   output: GetQueryExecutionOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -3841,7 +3841,7 @@ export const getQueryResults: API.OperationMethod<
     GetQueryResultsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetQueryResultsInput,
   output: GetQueryResultsOutput,
   errors: [
@@ -3873,7 +3873,7 @@ export const getQueryRuntimeStatistics: API.OperationMethod<
   GetQueryRuntimeStatisticsOutput,
   GetQueryRuntimeStatisticsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetQueryRuntimeStatisticsInput,
   output: GetQueryRuntimeStatisticsOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -3891,7 +3891,7 @@ export const getResourceDashboard: API.OperationMethod<
   GetResourceDashboardResponse,
   GetResourceDashboardError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResourceDashboardRequest,
   output: GetResourceDashboardResponse,
   errors: [
@@ -3914,7 +3914,7 @@ export const getSession: API.OperationMethod<
   GetSessionResponse,
   GetSessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSessionRequest,
   output: GetSessionResponse,
   errors: [
@@ -3936,7 +3936,7 @@ export const getSessionEndpoint: API.OperationMethod<
   GetSessionEndpointResponse,
   GetSessionEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSessionEndpointRequest,
   output: GetSessionEndpointResponse,
   errors: [
@@ -3958,7 +3958,7 @@ export const getSessionStatus: API.OperationMethod<
   GetSessionStatusResponse,
   GetSessionStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSessionStatusRequest,
   output: GetSessionStatusResponse,
   errors: [
@@ -3980,7 +3980,7 @@ export const getTableMetadata: API.OperationMethod<
   GetTableMetadataOutput,
   GetTableMetadataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTableMetadataInput,
   output: GetTableMetadataOutput,
   errors: [InternalServerException, InvalidRequestException, MetadataException],
@@ -3997,7 +3997,7 @@ export const getWorkGroup: API.OperationMethod<
   GetWorkGroupOutput,
   GetWorkGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetWorkGroupInput,
   output: GetWorkGroupOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -4020,7 +4020,7 @@ export const importNotebook: API.OperationMethod<
   ImportNotebookOutput,
   ImportNotebookError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportNotebookInput,
   output: ImportNotebookOutput,
   errors: [
@@ -4058,7 +4058,7 @@ export const listApplicationDPUSizes: API.OperationMethod<
     ListApplicationDPUSizesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationDPUSizesInput,
   output: ListApplicationDPUSizesOutput,
   errors: [
@@ -4101,7 +4101,7 @@ export const listCalculationExecutions: API.OperationMethod<
     ListCalculationExecutionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCalculationExecutionsRequest,
   output: ListCalculationExecutionsResponse,
   errors: [
@@ -4142,7 +4142,7 @@ export const listCapacityReservations: API.OperationMethod<
     ListCapacityReservationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCapacityReservationsInput,
   output: ListCapacityReservationsOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -4180,7 +4180,7 @@ export const listDatabases: API.OperationMethod<
     ListDatabasesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatabasesInput,
   output: ListDatabasesOutput,
   errors: [InternalServerException, InvalidRequestException, MetadataException],
@@ -4221,7 +4221,7 @@ export const listDataCatalogs: API.OperationMethod<
     ListDataCatalogsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataCatalogsInput,
   output: ListDataCatalogsOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -4260,7 +4260,7 @@ export const listEngineVersions: API.OperationMethod<
     ListEngineVersionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEngineVersionsInput,
   output: ListEngineVersionsOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -4300,7 +4300,7 @@ export const listExecutors: API.OperationMethod<
     ListExecutorsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExecutorsRequest,
   output: ListExecutorsResponse,
   errors: [
@@ -4343,7 +4343,7 @@ export const listNamedQueries: API.OperationMethod<
     ListNamedQueriesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNamedQueriesInput,
   output: ListNamedQueriesOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -4366,7 +4366,7 @@ export const listNotebookMetadata: API.OperationMethod<
   ListNotebookMetadataOutput,
   ListNotebookMetadataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListNotebookMetadataInput,
   output: ListNotebookMetadataOutput,
   errors: [
@@ -4391,7 +4391,7 @@ export const listNotebookSessions: API.OperationMethod<
   ListNotebookSessionsResponse,
   ListNotebookSessionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListNotebookSessionsRequest,
   output: ListNotebookSessionsResponse,
   errors: [
@@ -4427,7 +4427,7 @@ export const listPreparedStatements: API.OperationMethod<
     ListPreparedStatementsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPreparedStatementsInput,
   output: ListPreparedStatementsOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -4467,7 +4467,7 @@ export const listQueryExecutions: API.OperationMethod<
     ListQueryExecutionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListQueryExecutionsInput,
   output: ListQueryExecutionsOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -4508,7 +4508,7 @@ export const listSessions: API.OperationMethod<
     ListSessionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSessionsRequest,
   output: ListSessionsResponse,
   errors: [
@@ -4550,7 +4550,7 @@ export const listTableMetadata: API.OperationMethod<
     ListTableMetadataError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTableMetadataInput,
   output: ListTableMetadataOutput,
   errors: [InternalServerException, InvalidRequestException, MetadataException],
@@ -4589,7 +4589,7 @@ export const listTagsForResource: API.OperationMethod<
     ListTagsForResourceError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [
@@ -4631,7 +4631,7 @@ export const listWorkGroups: API.OperationMethod<
     ListWorkGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkGroupsInput,
   output: ListWorkGroupsOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -4655,7 +4655,7 @@ export const putCapacityAssignmentConfiguration: API.OperationMethod<
   PutCapacityAssignmentConfigurationOutput,
   PutCapacityAssignmentConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutCapacityAssignmentConfigurationInput,
   output: PutCapacityAssignmentConfigurationOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -4679,7 +4679,7 @@ export const startCalculationExecution: API.OperationMethod<
   StartCalculationExecutionResponse,
   StartCalculationExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartCalculationExecutionRequest,
   output: StartCalculationExecutionResponse,
   errors: [
@@ -4706,7 +4706,7 @@ export const startQueryExecution: API.OperationMethod<
   StartQueryExecutionOutput,
   StartQueryExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartQueryExecutionInput,
   output: StartQueryExecutionOutput,
   errors: [
@@ -4731,7 +4731,7 @@ export const startSession: API.OperationMethod<
   StartSessionResponse,
   StartSessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartSessionRequest,
   output: StartSessionResponse,
   errors: [
@@ -4763,7 +4763,7 @@ export const stopCalculationExecution: API.OperationMethod<
   StopCalculationExecutionResponse,
   StopCalculationExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopCalculationExecutionRequest,
   output: StopCalculationExecutionResponse,
   errors: [
@@ -4785,7 +4785,7 @@ export const stopQueryExecution: API.OperationMethod<
   StopQueryExecutionOutput,
   StopQueryExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopQueryExecutionInput,
   output: StopQueryExecutionOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -4813,7 +4813,7 @@ export const tagResource: API.OperationMethod<
   TagResourceOutput,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
   errors: [
@@ -4839,7 +4839,7 @@ export const terminateSession: API.OperationMethod<
   TerminateSessionResponse,
   TerminateSessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TerminateSessionRequest,
   output: TerminateSessionResponse,
   errors: [
@@ -4861,7 +4861,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceOutput,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
   errors: [
@@ -4883,7 +4883,7 @@ export const updateCapacityReservation: API.OperationMethod<
   UpdateCapacityReservationOutput,
   UpdateCapacityReservationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCapacityReservationInput,
   output: UpdateCapacityReservationOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -4900,7 +4900,7 @@ export const updateDataCatalog: API.OperationMethod<
   UpdateDataCatalogOutput,
   UpdateDataCatalogError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDataCatalogInput,
   output: UpdateDataCatalogOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -4918,7 +4918,7 @@ export const updateNamedQuery: API.OperationMethod<
   UpdateNamedQueryOutput,
   UpdateNamedQueryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateNamedQueryInput,
   output: UpdateNamedQueryOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -4936,7 +4936,7 @@ export const updateNotebook: API.OperationMethod<
   UpdateNotebookOutput,
   UpdateNotebookError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateNotebookInput,
   output: UpdateNotebookOutput,
   errors: [
@@ -4958,7 +4958,7 @@ export const updateNotebookMetadata: API.OperationMethod<
   UpdateNotebookMetadataOutput,
   UpdateNotebookMetadataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateNotebookMetadataInput,
   output: UpdateNotebookMetadataOutput,
   errors: [
@@ -4980,7 +4980,7 @@ export const updatePreparedStatement: API.OperationMethod<
   UpdatePreparedStatementOutput,
   UpdatePreparedStatementError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePreparedStatementInput,
   output: UpdatePreparedStatementOutput,
   errors: [
@@ -5002,7 +5002,7 @@ export const updateWorkGroup: API.OperationMethod<
   UpdateWorkGroupOutput,
   UpdateWorkGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateWorkGroupInput,
   output: UpdateWorkGroupOutput,
   errors: [InternalServerException, InvalidRequestException],

@@ -2889,7 +2889,7 @@ export const createActivity: API.OperationMethod<
   CreateActivityOutput,
   CreateActivityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateActivityInput,
   output: CreateActivityOutput,
   errors: [
@@ -2948,7 +2948,7 @@ export const createStateMachine: API.OperationMethod<
   CreateStateMachineOutput,
   CreateStateMachineError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateStateMachineInput,
   output: CreateStateMachineOutput,
   errors: [
@@ -3014,7 +3014,7 @@ export const createStateMachineAlias: API.OperationMethod<
   CreateStateMachineAliasOutput,
   CreateStateMachineAliasError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateStateMachineAliasInput,
   output: CreateStateMachineAliasOutput,
   errors: [
@@ -3036,7 +3036,7 @@ export const deleteActivity: API.OperationMethod<
   DeleteActivityOutput,
   DeleteActivityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteActivityInput,
   output: DeleteActivityOutput,
   errors: [InvalidArn],
@@ -3074,7 +3074,7 @@ export const deleteStateMachine: API.OperationMethod<
   DeleteStateMachineOutput,
   DeleteStateMachineError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteStateMachineInput,
   output: DeleteStateMachineOutput,
   errors: [InvalidArn, ValidationException],
@@ -3107,7 +3107,7 @@ export const deleteStateMachineAlias: API.OperationMethod<
   DeleteStateMachineAliasOutput,
   DeleteStateMachineAliasError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteStateMachineAliasInput,
   output: DeleteStateMachineAliasOutput,
   errors: [
@@ -3142,7 +3142,7 @@ export const deleteStateMachineVersion: API.OperationMethod<
   DeleteStateMachineVersionOutput,
   DeleteStateMachineVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteStateMachineVersionInput,
   output: DeleteStateMachineVersionOutput,
   errors: [ConflictException, InvalidArn, ValidationException],
@@ -3161,7 +3161,7 @@ export const describeActivity: API.OperationMethod<
   DescribeActivityOutput,
   DescribeActivityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeActivityInput,
   output: DescribeActivityOutput,
   errors: [ActivityDoesNotExist, InvalidArn],
@@ -3188,7 +3188,7 @@ export const describeExecution: API.OperationMethod<
   DescribeExecutionOutput,
   DescribeExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeExecutionInput,
   output: DescribeExecutionOutput,
   errors: [
@@ -3208,7 +3208,7 @@ export const describeMapRun: API.OperationMethod<
   DescribeMapRunOutput,
   DescribeMapRunError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeMapRunInput,
   output: DescribeMapRunOutput,
   errors: [InvalidArn, ResourceNotFound],
@@ -3253,7 +3253,7 @@ export const describeStateMachine: API.OperationMethod<
   DescribeStateMachineOutput,
   DescribeStateMachineError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeStateMachineInput,
   output: DescribeStateMachineOutput,
   errors: [
@@ -3287,7 +3287,7 @@ export const describeStateMachineAlias: API.OperationMethod<
   DescribeStateMachineAliasOutput,
   DescribeStateMachineAliasError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeStateMachineAliasInput,
   output: DescribeStateMachineAliasOutput,
   errors: [InvalidArn, ResourceNotFound, ValidationException],
@@ -3314,7 +3314,7 @@ export const describeStateMachineForExecution: API.OperationMethod<
   DescribeStateMachineForExecutionOutput,
   DescribeStateMachineForExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeStateMachineForExecutionInput,
   output: DescribeStateMachineForExecutionOutput,
   errors: [
@@ -3355,7 +3355,7 @@ export const getActivityTask: API.OperationMethod<
   GetActivityTaskOutput,
   GetActivityTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetActivityTaskInput,
   output: GetActivityTaskOutput,
   errors: [
@@ -3405,7 +3405,7 @@ export const getExecutionHistory: API.OperationMethod<
     GetExecutionHistoryError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetExecutionHistoryInput,
   output: GetExecutionHistoryOutput,
   errors: [
@@ -3452,7 +3452,7 @@ export const listActivities: API.OperationMethod<
     ListActivitiesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListActivitiesInput,
   output: ListActivitiesOutput,
   errors: [InvalidToken],
@@ -3506,7 +3506,7 @@ export const listExecutions: API.OperationMethod<
     ListExecutionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExecutionsInput,
   output: ListExecutionsOutput,
   errors: [
@@ -3552,7 +3552,7 @@ export const listMapRuns: API.OperationMethod<
     ListMapRunsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMapRunsInput,
   output: ListMapRunsOutput,
   errors: [ExecutionDoesNotExist, InvalidArn, InvalidToken],
@@ -3593,7 +3593,7 @@ export const listStateMachineAliases: API.OperationMethod<
   ListStateMachineAliasesOutput,
   ListStateMachineAliasesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListStateMachineAliasesInput,
   output: ListStateMachineAliasesOutput,
   errors: [
@@ -3633,7 +3633,7 @@ export const listStateMachines: API.OperationMethod<
     ListStateMachinesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStateMachinesInput,
   output: ListStateMachinesOutput,
   errors: [InvalidToken],
@@ -3668,7 +3668,7 @@ export const listStateMachineVersions: API.OperationMethod<
   ListStateMachineVersionsOutput,
   ListStateMachineVersionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListStateMachineVersionsInput,
   output: ListStateMachineVersionsOutput,
   errors: [InvalidArn, InvalidToken, ValidationException],
@@ -3687,7 +3687,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceOutput,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [InvalidArn, ResourceNotFound],
@@ -3726,7 +3726,7 @@ export const publishStateMachineVersion: API.OperationMethod<
   PublishStateMachineVersionOutput,
   PublishStateMachineVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PublishStateMachineVersionInput,
   output: PublishStateMachineVersionOutput,
   errors: [
@@ -3771,7 +3771,7 @@ export const redriveExecution: API.OperationMethod<
   RedriveExecutionOutput,
   RedriveExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RedriveExecutionInput,
   output: RedriveExecutionOutput,
   errors: [
@@ -3803,7 +3803,7 @@ export const sendTaskFailure: API.OperationMethod<
   SendTaskFailureOutput,
   SendTaskFailureError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendTaskFailureInput,
   output: SendTaskFailureOutput,
   errors: [
@@ -3841,7 +3841,7 @@ export const sendTaskHeartbeat: API.OperationMethod<
   SendTaskHeartbeatOutput,
   SendTaskHeartbeatError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendTaskHeartbeatInput,
   output: SendTaskHeartbeatOutput,
   errors: [InvalidToken, TaskDoesNotExist, TaskTimedOut],
@@ -3865,7 +3865,7 @@ export const sendTaskSuccess: API.OperationMethod<
   SendTaskSuccessOutput,
   SendTaskSuccessError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendTaskSuccessInput,
   output: SendTaskSuccessOutput,
   errors: [
@@ -3932,7 +3932,7 @@ export const startExecution: API.OperationMethod<
   StartExecutionOutput,
   StartExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartExecutionInput,
   output: StartExecutionOutput,
   errors: [
@@ -3977,7 +3977,7 @@ export const startSyncExecution: API.OperationMethod<
   StartSyncExecutionOutput,
   StartSyncExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartSyncExecutionInput,
   output: StartSyncExecutionOutput,
   errors: [
@@ -4014,7 +4014,7 @@ export const stopExecution: API.OperationMethod<
   StopExecutionOutput,
   StopExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopExecutionInput,
   output: StopExecutionOutput,
   errors: [
@@ -4046,7 +4046,7 @@ export const tagResource: API.OperationMethod<
   TagResourceOutput,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
   errors: [InvalidArn, ResourceNotFound, TooManyTags],
@@ -4092,7 +4092,7 @@ export const testState: API.OperationMethod<
   TestStateOutput,
   TestStateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestStateInput,
   output: TestStateOutput,
   errors: [
@@ -4111,7 +4111,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceOutput,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
   errors: [InvalidArn, ResourceNotFound],
@@ -4129,7 +4129,7 @@ export const updateMapRun: API.OperationMethod<
   UpdateMapRunOutput,
   UpdateMapRunError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateMapRunInput,
   output: UpdateMapRunOutput,
   errors: [InvalidArn, ResourceNotFound, ValidationException],
@@ -4194,7 +4194,7 @@ export const updateStateMachine: API.OperationMethod<
   UpdateStateMachineOutput,
   UpdateStateMachineError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateStateMachineInput,
   output: UpdateStateMachineOutput,
   errors: [
@@ -4250,7 +4250,7 @@ export const updateStateMachineAlias: API.OperationMethod<
   UpdateStateMachineAliasOutput,
   UpdateStateMachineAliasError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateStateMachineAliasInput,
   output: UpdateStateMachineAliasOutput,
   errors: [
@@ -4303,7 +4303,7 @@ export const validateStateMachineDefinition: API.OperationMethod<
   ValidateStateMachineDefinitionOutput,
   ValidateStateMachineDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ValidateStateMachineDefinitionInput,
   output: ValidateStateMachineDefinitionOutput,
   errors: [ValidationException],

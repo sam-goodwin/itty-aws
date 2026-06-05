@@ -3155,7 +3155,7 @@ export const cloneReceiptRuleSet: API.OperationMethod<
   CloneReceiptRuleSetResponse,
   CloneReceiptRuleSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CloneReceiptRuleSetRequest,
   output: CloneReceiptRuleSetResponse,
   errors: [
@@ -3183,7 +3183,7 @@ export const createConfigurationSet: API.OperationMethod<
   CreateConfigurationSetResponse,
   CreateConfigurationSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateConfigurationSetRequest,
   output: CreateConfigurationSetResponse,
   errors: [
@@ -3218,7 +3218,7 @@ export const createConfigurationSetEventDestination: API.OperationMethod<
   CreateConfigurationSetEventDestinationResponse,
   CreateConfigurationSetEventDestinationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateConfigurationSetEventDestinationRequest,
   output: CreateConfigurationSetEventDestinationResponse,
   errors: [
@@ -3248,7 +3248,7 @@ export const createConfigurationSetTrackingOptions: API.OperationMethod<
   CreateConfigurationSetTrackingOptionsResponse,
   CreateConfigurationSetTrackingOptionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateConfigurationSetTrackingOptionsRequest,
   output: CreateConfigurationSetTrackingOptionsResponse,
   errors: [
@@ -3277,7 +3277,7 @@ export const createCustomVerificationEmailTemplate: API.OperationMethod<
   CreateCustomVerificationEmailTemplateResponse,
   CreateCustomVerificationEmailTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCustomVerificationEmailTemplateRequest,
   output: CreateCustomVerificationEmailTemplateResponse,
   errors: [
@@ -3304,7 +3304,7 @@ export const createReceiptFilter: API.OperationMethod<
   CreateReceiptFilterResponse,
   CreateReceiptFilterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateReceiptFilterRequest,
   output: CreateReceiptFilterResponse,
   errors: [AlreadyExistsException, LimitExceededException],
@@ -3331,7 +3331,7 @@ export const createReceiptRule: API.OperationMethod<
   CreateReceiptRuleResponse,
   CreateReceiptRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateReceiptRuleRequest,
   output: CreateReceiptRuleResponse,
   errors: [
@@ -3360,7 +3360,7 @@ export const createReceiptRuleSet: API.OperationMethod<
   CreateReceiptRuleSetResponse,
   CreateReceiptRuleSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateReceiptRuleSetRequest,
   output: CreateReceiptRuleSetResponse,
   errors: [AlreadyExistsException, LimitExceededException],
@@ -3382,7 +3382,7 @@ export const createTemplate: API.OperationMethod<
   CreateTemplateResponse,
   CreateTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTemplateRequest,
   output: CreateTemplateResponse,
   errors: [
@@ -3406,7 +3406,7 @@ export const deleteConfigurationSet: API.OperationMethod<
   DeleteConfigurationSetResponse,
   DeleteConfigurationSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConfigurationSetRequest,
   output: DeleteConfigurationSetResponse,
   errors: [ConfigurationSetDoesNotExistException],
@@ -3428,7 +3428,7 @@ export const deleteConfigurationSetEventDestination: API.OperationMethod<
   DeleteConfigurationSetEventDestinationResponse,
   DeleteConfigurationSetEventDestinationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConfigurationSetEventDestinationRequest,
   output: DeleteConfigurationSetEventDestinationResponse,
   errors: [
@@ -3457,7 +3457,7 @@ export const deleteConfigurationSetTrackingOptions: API.OperationMethod<
   DeleteConfigurationSetTrackingOptionsResponse,
   DeleteConfigurationSetTrackingOptionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConfigurationSetTrackingOptionsRequest,
   output: DeleteConfigurationSetTrackingOptionsResponse,
   errors: [
@@ -3480,7 +3480,7 @@ export const deleteCustomVerificationEmailTemplate: API.OperationMethod<
   DeleteCustomVerificationEmailTemplateResponse,
   DeleteCustomVerificationEmailTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCustomVerificationEmailTemplateRequest,
   output: DeleteCustomVerificationEmailTemplateResponse,
   errors: [],
@@ -3497,7 +3497,7 @@ export const deleteIdentity: API.OperationMethod<
   DeleteIdentityResponse,
   DeleteIdentityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteIdentityRequest,
   output: DeleteIdentityResponse,
   errors: [],
@@ -3523,7 +3523,7 @@ export const deleteIdentityPolicy: API.OperationMethod<
   DeleteIdentityPolicyResponse,
   DeleteIdentityPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteIdentityPolicyRequest,
   output: DeleteIdentityPolicyResponse,
   errors: [],
@@ -3542,7 +3542,7 @@ export const deleteReceiptFilter: API.OperationMethod<
   DeleteReceiptFilterResponse,
   DeleteReceiptFilterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteReceiptFilterRequest,
   output: DeleteReceiptFilterResponse,
   errors: [],
@@ -3563,7 +3563,7 @@ export const deleteReceiptRule: API.OperationMethod<
   DeleteReceiptRuleResponse,
   DeleteReceiptRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteReceiptRuleRequest,
   output: DeleteReceiptRuleResponse,
   errors: [RuleSetDoesNotExistException],
@@ -3585,7 +3585,7 @@ export const deleteReceiptRuleSet: API.OperationMethod<
   DeleteReceiptRuleSetResponse,
   DeleteReceiptRuleSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteReceiptRuleSetRequest,
   output: DeleteReceiptRuleSetResponse,
   errors: [CannotDeleteException],
@@ -3601,7 +3601,7 @@ export const deleteTemplate: API.OperationMethod<
   DeleteTemplateResponse,
   DeleteTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTemplateRequest,
   output: DeleteTemplateResponse,
   errors: [],
@@ -3616,7 +3616,7 @@ export const deleteVerifiedEmailAddress: API.OperationMethod<
   DeleteVerifiedEmailAddressResponse,
   DeleteVerifiedEmailAddressError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteVerifiedEmailAddressRequest,
   output: DeleteVerifiedEmailAddressResponse,
   errors: [],
@@ -3635,7 +3635,7 @@ export const describeActiveReceiptRuleSet: API.OperationMethod<
   DescribeActiveReceiptRuleSetResponse,
   DescribeActiveReceiptRuleSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeActiveReceiptRuleSetRequest,
   output: DescribeActiveReceiptRuleSetResponse,
   errors: [],
@@ -3655,7 +3655,7 @@ export const describeConfigurationSet: API.OperationMethod<
   DescribeConfigurationSetResponse,
   DescribeConfigurationSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeConfigurationSetRequest,
   output: DescribeConfigurationSetResponse,
   errors: [ConfigurationSetDoesNotExistException],
@@ -3677,7 +3677,7 @@ export const describeReceiptRule: API.OperationMethod<
   DescribeReceiptRuleResponse,
   DescribeReceiptRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeReceiptRuleRequest,
   output: DescribeReceiptRuleResponse,
   errors: [RuleDoesNotExistException, RuleSetDoesNotExistException],
@@ -3698,7 +3698,7 @@ export const describeReceiptRuleSet: API.OperationMethod<
   DescribeReceiptRuleSetResponse,
   DescribeReceiptRuleSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeReceiptRuleSetRequest,
   output: DescribeReceiptRuleSetResponse,
   errors: [RuleSetDoesNotExistException],
@@ -3714,7 +3714,7 @@ export const getAccountSendingEnabled: API.OperationMethod<
   GetAccountSendingEnabledResponse,
   GetAccountSendingEnabledError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountSendingEnabledRequest,
   output: GetAccountSendingEnabledResponse,
   errors: [],
@@ -3737,7 +3737,7 @@ export const getCustomVerificationEmailTemplate: API.OperationMethod<
   GetCustomVerificationEmailTemplateResponse,
   GetCustomVerificationEmailTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCustomVerificationEmailTemplateRequest,
   output: GetCustomVerificationEmailTemplateResponse,
   errors: [CustomVerificationEmailTemplateDoesNotExistException],
@@ -3772,7 +3772,7 @@ export const getIdentityDkimAttributes: API.OperationMethod<
   GetIdentityDkimAttributesResponse,
   GetIdentityDkimAttributesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIdentityDkimAttributesRequest,
   output: GetIdentityDkimAttributesResponse,
   errors: [],
@@ -3790,7 +3790,7 @@ export const getIdentityMailFromDomainAttributes: API.OperationMethod<
   GetIdentityMailFromDomainAttributesResponse,
   GetIdentityMailFromDomainAttributesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIdentityMailFromDomainAttributesRequest,
   output: GetIdentityMailFromDomainAttributesResponse,
   errors: [],
@@ -3811,7 +3811,7 @@ export const getIdentityNotificationAttributes: API.OperationMethod<
   GetIdentityNotificationAttributesResponse,
   GetIdentityNotificationAttributesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIdentityNotificationAttributesRequest,
   output: GetIdentityNotificationAttributesResponse,
   errors: [],
@@ -3837,7 +3837,7 @@ export const getIdentityPolicies: API.OperationMethod<
   GetIdentityPoliciesResponse,
   GetIdentityPoliciesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIdentityPoliciesRequest,
   output: GetIdentityPoliciesResponse,
   errors: [],
@@ -3869,7 +3869,7 @@ export const getIdentityVerificationAttributes: API.OperationMethod<
   GetIdentityVerificationAttributesResponse,
   GetIdentityVerificationAttributesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIdentityVerificationAttributesRequest,
   output: GetIdentityVerificationAttributesResponse,
   errors: [],
@@ -3885,7 +3885,7 @@ export const getSendQuota: API.OperationMethod<
   GetSendQuotaResponse,
   GetSendQuotaError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSendQuotaRequest,
   output: GetSendQuotaResponse,
   errors: [],
@@ -3903,7 +3903,7 @@ export const getSendStatistics: API.OperationMethod<
   GetSendStatisticsResponse,
   GetSendStatisticsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSendStatisticsRequest,
   output: GetSendStatisticsResponse,
   errors: [],
@@ -3920,7 +3920,7 @@ export const getTemplate: API.OperationMethod<
   GetTemplateResponse,
   GetTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTemplateRequest,
   output: GetTemplateResponse,
   errors: [TemplateDoesNotExistException],
@@ -3944,7 +3944,7 @@ export const listConfigurationSets: API.OperationMethod<
   ListConfigurationSetsResponse,
   ListConfigurationSetsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListConfigurationSetsRequest,
   output: ListConfigurationSetsResponse,
   errors: [],
@@ -3980,7 +3980,7 @@ export const listCustomVerificationEmailTemplates: API.OperationMethod<
     ListCustomVerificationEmailTemplatesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomVerificationEmailTemplatesRequest,
   output: ListCustomVerificationEmailTemplatesResponse,
   errors: [],
@@ -4026,7 +4026,7 @@ export const listIdentities: API.OperationMethod<
     ListIdentitiesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIdentitiesRequest,
   output: ListIdentitiesResponse,
   errors: [],
@@ -4058,7 +4058,7 @@ export const listIdentityPolicies: API.OperationMethod<
   ListIdentityPoliciesResponse,
   ListIdentityPoliciesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListIdentityPoliciesRequest,
   output: ListIdentityPoliciesResponse,
   errors: [],
@@ -4078,7 +4078,7 @@ export const listReceiptFilters: API.OperationMethod<
   ListReceiptFiltersResponse,
   ListReceiptFiltersError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListReceiptFiltersRequest,
   output: ListReceiptFiltersResponse,
   errors: [],
@@ -4100,7 +4100,7 @@ export const listReceiptRuleSets: API.OperationMethod<
   ListReceiptRuleSetsResponse,
   ListReceiptRuleSetsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListReceiptRuleSetsRequest,
   output: ListReceiptRuleSetsResponse,
   errors: [],
@@ -4117,7 +4117,7 @@ export const listTemplates: API.OperationMethod<
   ListTemplatesResponse,
   ListTemplatesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTemplatesRequest,
   output: ListTemplatesResponse,
   errors: [],
@@ -4132,7 +4132,7 @@ export const listVerifiedEmailAddresses: API.OperationMethod<
   ListVerifiedEmailAddressesResponse,
   ListVerifiedEmailAddressesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListVerifiedEmailAddressesRequest,
   output: ListVerifiedEmailAddressesResponse,
   errors: [],
@@ -4149,7 +4149,7 @@ export const putConfigurationSetDeliveryOptions: API.OperationMethod<
   PutConfigurationSetDeliveryOptionsResponse,
   PutConfigurationSetDeliveryOptionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutConfigurationSetDeliveryOptionsRequest,
   output: PutConfigurationSetDeliveryOptionsResponse,
   errors: [
@@ -4177,7 +4177,7 @@ export const putIdentityPolicy: API.OperationMethod<
   PutIdentityPolicyResponse,
   PutIdentityPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutIdentityPolicyRequest,
   output: PutIdentityPolicyResponse,
   errors: [InvalidPolicyException],
@@ -4202,7 +4202,7 @@ export const reorderReceiptRuleSet: API.OperationMethod<
   ReorderReceiptRuleSetResponse,
   ReorderReceiptRuleSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReorderReceiptRuleSetRequest,
   output: ReorderReceiptRuleSetResponse,
   errors: [RuleDoesNotExistException, RuleSetDoesNotExistException],
@@ -4226,7 +4226,7 @@ export const sendBounce: API.OperationMethod<
   SendBounceResponse,
   SendBounceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendBounceRequest,
   output: SendBounceResponse,
   errors: [MessageRejected],
@@ -4280,7 +4280,7 @@ export const sendBulkTemplatedEmail: API.OperationMethod<
   SendBulkTemplatedEmailResponse,
   SendBulkTemplatedEmailError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendBulkTemplatedEmailRequest,
   output: SendBulkTemplatedEmailResponse,
   errors: [
@@ -4317,7 +4317,7 @@ export const sendCustomVerificationEmail: API.OperationMethod<
   SendCustomVerificationEmailResponse,
   SendCustomVerificationEmailError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendCustomVerificationEmailRequest,
   output: SendCustomVerificationEmailResponse,
   errors: [
@@ -4375,7 +4375,7 @@ export const sendEmail: API.OperationMethod<
   SendEmailResponse,
   SendEmailError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendEmailRequest,
   output: SendEmailResponse,
   errors: [
@@ -4478,7 +4478,7 @@ export const sendRawEmail: API.OperationMethod<
   SendRawEmailResponse,
   SendRawEmailError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendRawEmailRequest,
   output: SendRawEmailResponse,
   errors: [
@@ -4545,7 +4545,7 @@ export const sendTemplatedEmail: API.OperationMethod<
   SendTemplatedEmailResponse,
   SendTemplatedEmailError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendTemplatedEmailRequest,
   output: SendTemplatedEmailResponse,
   errors: [
@@ -4576,7 +4576,7 @@ export const setActiveReceiptRuleSet: API.OperationMethod<
   SetActiveReceiptRuleSetResponse,
   SetActiveReceiptRuleSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetActiveReceiptRuleSetRequest,
   output: SetActiveReceiptRuleSetResponse,
   errors: [RuleSetDoesNotExistException],
@@ -4605,7 +4605,7 @@ export const setIdentityDkimEnabled: API.OperationMethod<
   SetIdentityDkimEnabledResponse,
   SetIdentityDkimEnabledError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIdentityDkimEnabledRequest,
   output: SetIdentityDkimEnabledResponse,
   errors: [],
@@ -4630,7 +4630,7 @@ export const setIdentityFeedbackForwardingEnabled: API.OperationMethod<
   SetIdentityFeedbackForwardingEnabledResponse,
   SetIdentityFeedbackForwardingEnabledError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIdentityFeedbackForwardingEnabledRequest,
   output: SetIdentityFeedbackForwardingEnabledResponse,
   errors: [],
@@ -4651,7 +4651,7 @@ export const setIdentityHeadersInNotificationsEnabled: API.OperationMethod<
   SetIdentityHeadersInNotificationsEnabledResponse,
   SetIdentityHeadersInNotificationsEnabledError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIdentityHeadersInNotificationsEnabledRequest,
   output: SetIdentityHeadersInNotificationsEnabledResponse,
   errors: [],
@@ -4673,7 +4673,7 @@ export const setIdentityMailFromDomain: API.OperationMethod<
   SetIdentityMailFromDomainResponse,
   SetIdentityMailFromDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIdentityMailFromDomainRequest,
   output: SetIdentityMailFromDomainResponse,
   errors: [],
@@ -4697,7 +4697,7 @@ export const setIdentityNotificationTopic: API.OperationMethod<
   SetIdentityNotificationTopicResponse,
   SetIdentityNotificationTopicError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIdentityNotificationTopicRequest,
   output: SetIdentityNotificationTopicResponse,
   errors: [],
@@ -4719,7 +4719,7 @@ export const setReceiptRulePosition: API.OperationMethod<
   SetReceiptRulePositionResponse,
   SetReceiptRulePositionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetReceiptRulePositionRequest,
   output: SetReceiptRulePositionResponse,
   errors: [RuleDoesNotExistException, RuleSetDoesNotExistException],
@@ -4740,7 +4740,7 @@ export const testRenderTemplate: API.OperationMethod<
   TestRenderTemplateResponse,
   TestRenderTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestRenderTemplateRequest,
   output: TestRenderTemplateResponse,
   errors: [
@@ -4764,7 +4764,7 @@ export const updateAccountSendingEnabled: API.OperationMethod<
   UpdateAccountSendingEnabledResponse,
   UpdateAccountSendingEnabledError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccountSendingEnabledRequest,
   output: UpdateAccountSendingEnabledResponse,
   errors: [],
@@ -4794,7 +4794,7 @@ export const updateConfigurationSetEventDestination: API.OperationMethod<
   UpdateConfigurationSetEventDestinationResponse,
   UpdateConfigurationSetEventDestinationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateConfigurationSetEventDestinationRequest,
   output: UpdateConfigurationSetEventDestinationResponse,
   errors: [
@@ -4821,7 +4821,7 @@ export const updateConfigurationSetReputationMetricsEnabled: API.OperationMethod
   UpdateConfigurationSetReputationMetricsEnabledResponse,
   UpdateConfigurationSetReputationMetricsEnabledError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateConfigurationSetReputationMetricsEnabledRequest,
   output: UpdateConfigurationSetReputationMetricsEnabledResponse,
   errors: [ConfigurationSetDoesNotExistException],
@@ -4843,7 +4843,7 @@ export const updateConfigurationSetSendingEnabled: API.OperationMethod<
   UpdateConfigurationSetSendingEnabledResponse,
   UpdateConfigurationSetSendingEnabledError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateConfigurationSetSendingEnabledRequest,
   output: UpdateConfigurationSetSendingEnabledResponse,
   errors: [ConfigurationSetDoesNotExistException],
@@ -4866,7 +4866,7 @@ export const updateConfigurationSetTrackingOptions: API.OperationMethod<
   UpdateConfigurationSetTrackingOptionsResponse,
   UpdateConfigurationSetTrackingOptionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateConfigurationSetTrackingOptionsRequest,
   output: UpdateConfigurationSetTrackingOptionsResponse,
   errors: [
@@ -4894,7 +4894,7 @@ export const updateCustomVerificationEmailTemplate: API.OperationMethod<
   UpdateCustomVerificationEmailTemplateResponse,
   UpdateCustomVerificationEmailTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCustomVerificationEmailTemplateRequest,
   output: UpdateCustomVerificationEmailTemplateResponse,
   errors: [
@@ -4924,7 +4924,7 @@ export const updateReceiptRule: API.OperationMethod<
   UpdateReceiptRuleResponse,
   UpdateReceiptRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateReceiptRuleRequest,
   output: UpdateReceiptRuleResponse,
   errors: [
@@ -4952,7 +4952,7 @@ export const updateTemplate: API.OperationMethod<
   UpdateTemplateResponse,
   UpdateTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTemplateRequest,
   output: UpdateTemplateResponse,
   errors: [InvalidTemplateException, TemplateDoesNotExistException],
@@ -4998,7 +4998,7 @@ export const verifyDomainDkim: API.OperationMethod<
   VerifyDomainDkimResponse,
   VerifyDomainDkimError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: VerifyDomainDkimRequest,
   output: VerifyDomainDkimResponse,
   errors: [],
@@ -5017,7 +5017,7 @@ export const verifyDomainIdentity: API.OperationMethod<
   VerifyDomainIdentityResponse,
   VerifyDomainIdentityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: VerifyDomainIdentityRequest,
   output: VerifyDomainIdentityResponse,
   errors: [],
@@ -5032,7 +5032,7 @@ export const verifyEmailAddress: API.OperationMethod<
   VerifyEmailAddressResponse,
   VerifyEmailAddressError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: VerifyEmailAddressRequest,
   output: VerifyEmailAddressResponse,
   errors: [],
@@ -5050,7 +5050,7 @@ export const verifyEmailIdentity: API.OperationMethod<
   VerifyEmailIdentityResponse,
   VerifyEmailIdentityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: VerifyEmailIdentityRequest,
   output: VerifyEmailIdentityResponse,
   errors: [],

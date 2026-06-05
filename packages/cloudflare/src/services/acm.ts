@@ -38,18 +38,17 @@ export interface GetCustomTrustStoreRequest {
   zoneId: string;
 }
 
-export const GetCustomTrustStoreRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    customOriginTrustStoreId: Schema.String.pipe(
-      T.HttpPath("customOriginTrustStoreId"),
-    ),
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/zones/{zone_id}/acm/custom_trust_store/{customOriginTrustStoreId}",
-    }),
-  ) as unknown as Schema.Schema<GetCustomTrustStoreRequest>;
+export const GetCustomTrustStoreRequest = /*@__PURE__*/ Schema.Struct({
+  customOriginTrustStoreId: Schema.String.pipe(
+    T.HttpPath("customOriginTrustStoreId"),
+  ),
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/zones/{zone_id}/acm/custom_trust_store/{customOriginTrustStoreId}",
+  }),
+) as unknown as Schema.Schema<GetCustomTrustStoreRequest>;
 
 export interface GetCustomTrustStoreResponse {
   /** Identifier. */
@@ -77,42 +76,41 @@ export interface GetCustomTrustStoreResponse {
   uploadedOn: string;
 }
 
-export const GetCustomTrustStoreResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    certificate: Schema.String,
-    expiresOn: Schema.String,
-    issuer: Schema.String,
-    signature: Schema.String,
-    status: Schema.Union([
-      Schema.Literals([
-        "initializing",
-        "pending_deployment",
-        "active",
-        "pending_deletion",
-        "deleted",
-        "expired",
-      ]),
-      Schema.String,
+export const GetCustomTrustStoreResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  certificate: Schema.String,
+  expiresOn: Schema.String,
+  issuer: Schema.String,
+  signature: Schema.String,
+  status: Schema.Union([
+    Schema.Literals([
+      "initializing",
+      "pending_deployment",
+      "active",
+      "pending_deletion",
+      "deleted",
+      "expired",
     ]),
-    updatedAt: Schema.String,
-    uploadedOn: Schema.String,
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        certificate: "certificate",
-        expiresOn: "expires_on",
-        issuer: "issuer",
-        signature: "signature",
-        status: "status",
-        updatedAt: "updated_at",
-        uploadedOn: "uploaded_on",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<GetCustomTrustStoreResponse>;
+    Schema.String,
+  ]),
+  updatedAt: Schema.String,
+  uploadedOn: Schema.String,
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      certificate: "certificate",
+      expiresOn: "expires_on",
+      issuer: "issuer",
+      signature: "signature",
+      status: "status",
+      updatedAt: "updated_at",
+      uploadedOn: "uploaded_on",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<GetCustomTrustStoreResponse>;
 
 export type GetCustomTrustStoreError = DefaultErrors;
 
@@ -121,7 +119,7 @@ export const getCustomTrustStore: API.OperationMethod<
   GetCustomTrustStoreResponse,
   GetCustomTrustStoreError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCustomTrustStoreRequest,
   output: GetCustomTrustStoreResponse,
   errors: [],
@@ -138,16 +136,15 @@ export interface ListCustomTrustStoresRequest {
   offset?: number;
 }
 
-export const ListCustomTrustStoresRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-    limit: Schema.optional(Schema.Number).pipe(T.HttpQuery("limit")),
-    offset: Schema.optional(Schema.Number).pipe(T.HttpQuery("offset")),
-  }).pipe(
-    T.Http({ method: "GET", path: "/zones/{zone_id}/acm/custom_trust_store" }),
-  ) as unknown as Schema.Schema<ListCustomTrustStoresRequest>;
+export const ListCustomTrustStoresRequest = /*@__PURE__*/ Schema.Struct({
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+  limit: Schema.optional(Schema.Number).pipe(T.HttpQuery("limit")),
+  offset: Schema.optional(Schema.Number).pipe(T.HttpQuery("offset")),
+}).pipe(
+  T.Http({ method: "GET", path: "/zones/{zone_id}/acm/custom_trust_store" }),
+) as unknown as Schema.Schema<ListCustomTrustStoresRequest>;
 
 export interface ListCustomTrustStoresResponse {
   result: {
@@ -175,64 +172,61 @@ export interface ListCustomTrustStoresResponse {
   } | null;
 }
 
-export const ListCustomTrustStoresResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        certificate: Schema.String,
-        expiresOn: Schema.String,
-        issuer: Schema.String,
-        signature: Schema.String,
-        status: Schema.Union([
-          Schema.Literals([
-            "initializing",
-            "pending_deployment",
-            "active",
-            "pending_deletion",
-            "deleted",
-            "expired",
-          ]),
-          Schema.String,
+export const ListCustomTrustStoresResponse = /*@__PURE__*/ Schema.Struct({
+  result: Schema.Array(
+    Schema.Struct({
+      id: Schema.String,
+      certificate: Schema.String,
+      expiresOn: Schema.String,
+      issuer: Schema.String,
+      signature: Schema.String,
+      status: Schema.Union([
+        Schema.Literals([
+          "initializing",
+          "pending_deployment",
+          "active",
+          "pending_deletion",
+          "deleted",
+          "expired",
         ]),
-        updatedAt: Schema.String,
-        uploadedOn: Schema.String,
+        Schema.String,
+      ]),
+      updatedAt: Schema.String,
+      uploadedOn: Schema.String,
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        certificate: "certificate",
+        expiresOn: "expires_on",
+        issuer: "issuer",
+        signature: "signature",
+        status: "status",
+        updatedAt: "updated_at",
+        uploadedOn: "uploaded_on",
+      }),
+    ),
+  ),
+  resultInfo: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       }).pipe(
         Schema.encodeKeys({
-          id: "id",
-          certificate: "certificate",
-          expiresOn: "expires_on",
-          issuer: "issuer",
-          signature: "signature",
-          status: "status",
-          updatedAt: "updated_at",
-          uploadedOn: "uploaded_on",
+          count: "count",
+          page: "page",
+          perPage: "per_page",
+          totalCount: "total_count",
         }),
       ),
-    ),
-    resultInfo: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          totalCount: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            count: "count",
-            page: "page",
-            perPage: "per_page",
-            totalCount: "total_count",
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
-  }).pipe(
-    Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
-  ) as unknown as Schema.Schema<ListCustomTrustStoresResponse>;
+      Schema.Null,
+    ]),
+  ),
+}).pipe(
+  Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
+) as unknown as Schema.Schema<ListCustomTrustStoresResponse>;
 
 export type ListCustomTrustStoresError = DefaultErrors;
 
@@ -241,7 +235,7 @@ export const listCustomTrustStores: API.PaginatedOperationMethod<
   ListCustomTrustStoresResponse,
   ListCustomTrustStoresError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomTrustStoresRequest,
   output: ListCustomTrustStoresResponse,
   errors: [],
@@ -261,13 +255,12 @@ export interface CreateCustomTrustStoreRequest {
   certificate: string;
 }
 
-export const CreateCustomTrustStoreRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    certificate: Schema.String,
-  }).pipe(
-    T.Http({ method: "POST", path: "/zones/{zone_id}/acm/custom_trust_store" }),
-  ) as unknown as Schema.Schema<CreateCustomTrustStoreRequest>;
+export const CreateCustomTrustStoreRequest = /*@__PURE__*/ Schema.Struct({
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  certificate: Schema.String,
+}).pipe(
+  T.Http({ method: "POST", path: "/zones/{zone_id}/acm/custom_trust_store" }),
+) as unknown as Schema.Schema<CreateCustomTrustStoreRequest>;
 
 export interface CreateCustomTrustStoreResponse {
   /** Identifier. */
@@ -295,42 +288,41 @@ export interface CreateCustomTrustStoreResponse {
   uploadedOn: string;
 }
 
-export const CreateCustomTrustStoreResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    certificate: Schema.String,
-    expiresOn: Schema.String,
-    issuer: Schema.String,
-    signature: Schema.String,
-    status: Schema.Union([
-      Schema.Literals([
-        "initializing",
-        "pending_deployment",
-        "active",
-        "pending_deletion",
-        "deleted",
-        "expired",
-      ]),
-      Schema.String,
+export const CreateCustomTrustStoreResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  certificate: Schema.String,
+  expiresOn: Schema.String,
+  issuer: Schema.String,
+  signature: Schema.String,
+  status: Schema.Union([
+    Schema.Literals([
+      "initializing",
+      "pending_deployment",
+      "active",
+      "pending_deletion",
+      "deleted",
+      "expired",
     ]),
-    updatedAt: Schema.String,
-    uploadedOn: Schema.String,
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        certificate: "certificate",
-        expiresOn: "expires_on",
-        issuer: "issuer",
-        signature: "signature",
-        status: "status",
-        updatedAt: "updated_at",
-        uploadedOn: "uploaded_on",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<CreateCustomTrustStoreResponse>;
+    Schema.String,
+  ]),
+  updatedAt: Schema.String,
+  uploadedOn: Schema.String,
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      certificate: "certificate",
+      expiresOn: "expires_on",
+      issuer: "issuer",
+      signature: "signature",
+      status: "status",
+      updatedAt: "updated_at",
+      uploadedOn: "uploaded_on",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<CreateCustomTrustStoreResponse>;
 
 export type CreateCustomTrustStoreError = DefaultErrors;
 
@@ -339,7 +331,7 @@ export const createCustomTrustStore: API.OperationMethod<
   CreateCustomTrustStoreResponse,
   CreateCustomTrustStoreError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCustomTrustStoreRequest,
   output: CreateCustomTrustStoreResponse,
   errors: [],
@@ -351,30 +343,28 @@ export interface DeleteCustomTrustStoreRequest {
   zoneId: string;
 }
 
-export const DeleteCustomTrustStoreRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    customOriginTrustStoreId: Schema.String.pipe(
-      T.HttpPath("customOriginTrustStoreId"),
-    ),
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/zones/{zone_id}/acm/custom_trust_store/{customOriginTrustStoreId}",
-    }),
-  ) as unknown as Schema.Schema<DeleteCustomTrustStoreRequest>;
+export const DeleteCustomTrustStoreRequest = /*@__PURE__*/ Schema.Struct({
+  customOriginTrustStoreId: Schema.String.pipe(
+    T.HttpPath("customOriginTrustStoreId"),
+  ),
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/zones/{zone_id}/acm/custom_trust_store/{customOriginTrustStoreId}",
+  }),
+) as unknown as Schema.Schema<DeleteCustomTrustStoreRequest>;
 
 export interface DeleteCustomTrustStoreResponse {
   /** Identifier. */
   id?: string | null;
 }
 
-export const DeleteCustomTrustStoreResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<DeleteCustomTrustStoreResponse>;
+export const DeleteCustomTrustStoreResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+}).pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<DeleteCustomTrustStoreResponse>;
 
 export type DeleteCustomTrustStoreError = DefaultErrors;
 
@@ -383,7 +373,7 @@ export const deleteCustomTrustStore: API.OperationMethod<
   DeleteCustomTrustStoreResponse,
   DeleteCustomTrustStoreError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCustomTrustStoreRequest,
   output: DeleteCustomTrustStoreResponse,
   errors: [],
@@ -398,7 +388,7 @@ export interface GetTotalTlRequest {
   zoneId: string;
 }
 
-export const GetTotalTlRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetTotalTlRequest = /*@__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
 }).pipe(
   T.Http({ method: "GET", path: "/zones/{zone_id}/acm/total_tls" }),
@@ -418,7 +408,7 @@ export interface GetTotalTlResponse {
   validityPeriod?: number | null;
 }
 
-export const GetTotalTlResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetTotalTlResponse = /*@__PURE__*/ Schema.Struct({
   certificateAuthority: Schema.optional(
     Schema.Union([
       Schema.Union([
@@ -452,7 +442,7 @@ export const getTotalTl: API.OperationMethod<
   GetTotalTlResponse,
   GetTotalTlError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTotalTlRequest,
   output: GetTotalTlResponse,
   errors: [InvalidObjectIdentifier, AdvancedCertificateManagerRequired],
@@ -467,7 +457,7 @@ export interface UpdateTotalTlRequest {
   certificateAuthority?: "google" | "lets_encrypt" | "ssl_com" | (string & {});
 }
 
-export const UpdateTotalTlRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateTotalTlRequest = /*@__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   enabled: Schema.Boolean,
   certificateAuthority: Schema.optional(
@@ -498,7 +488,7 @@ export interface UpdateTotalTlResponse {
   validityPeriod?: "90" | null;
 }
 
-export const UpdateTotalTlResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateTotalTlResponse = /*@__PURE__*/ Schema.Struct({
   certificateAuthority: Schema.optional(
     Schema.Union([
       Schema.Union([
@@ -531,7 +521,7 @@ export const updateTotalTl: API.OperationMethod<
   UpdateTotalTlResponse,
   UpdateTotalTlError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTotalTlRequest,
   output: UpdateTotalTlResponse,
   errors: [],
@@ -546,7 +536,7 @@ export interface EditTotalTlRequest {
   certificateAuthority?: "google" | "lets_encrypt" | "ssl_com" | (string & {});
 }
 
-export const EditTotalTlRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EditTotalTlRequest = /*@__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   enabled: Schema.Boolean,
   certificateAuthority: Schema.optional(
@@ -577,7 +567,7 @@ export interface EditTotalTlResponse {
   validityPeriod?: "90" | null;
 }
 
-export const EditTotalTlResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EditTotalTlResponse = /*@__PURE__*/ Schema.Struct({
   certificateAuthority: Schema.optional(
     Schema.Union([
       Schema.Union([
@@ -610,7 +600,7 @@ export const editTotalTl: API.OperationMethod<
   EditTotalTlResponse,
   EditTotalTlError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EditTotalTlRequest,
   output: EditTotalTlResponse,
   errors: [],

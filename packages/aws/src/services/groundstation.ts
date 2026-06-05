@@ -2571,7 +2571,7 @@ export const getAgentTaskResponseUrl: API.OperationMethod<
   GetAgentTaskResponseUrlResponse,
   GetAgentTaskResponseUrlError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAgentTaskResponseUrlRequest,
   output: GetAgentTaskResponseUrlResponse,
   errors: [
@@ -2593,7 +2593,7 @@ export const getMinuteUsage: API.OperationMethod<
   GetMinuteUsageResponse,
   GetMinuteUsageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMinuteUsageRequest,
   output: GetMinuteUsageResponse,
   errors: [
@@ -2615,7 +2615,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -2637,7 +2637,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -2659,7 +2659,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -2683,7 +2683,7 @@ export const registerAgent: API.OperationMethod<
   RegisterAgentResponse,
   RegisterAgentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterAgentRequest,
   output: RegisterAgentResponse,
   errors: [
@@ -2707,7 +2707,7 @@ export const getAgentConfiguration: API.OperationMethod<
   GetAgentConfigurationResponse,
   GetAgentConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAgentConfigurationRequest,
   output: GetAgentConfigurationResponse,
   errors: [
@@ -2731,7 +2731,7 @@ export const updateAgentStatus: API.OperationMethod<
   UpdateAgentStatusResponse,
   UpdateAgentStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAgentStatusRequest,
   output: UpdateAgentStatusResponse,
   errors: [
@@ -2756,7 +2756,7 @@ export const createConfig: API.OperationMethod<
   ConfigIdResponse,
   CreateConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateConfigRequest,
   output: ConfigIdResponse,
   errors: [
@@ -2781,7 +2781,7 @@ export const getConfig: API.OperationMethod<
   GetConfigResponse,
   GetConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConfigRequest,
   output: GetConfigResponse,
   errors: [
@@ -2805,7 +2805,7 @@ export const updateConfig: API.OperationMethod<
   ConfigIdResponse,
   UpdateConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateConfigRequest,
   output: ConfigIdResponse,
   errors: [
@@ -2827,7 +2827,7 @@ export const deleteConfig: API.OperationMethod<
   ConfigIdResponse,
   DeleteConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConfigRequest,
   output: ConfigIdResponse,
   errors: [
@@ -2864,7 +2864,7 @@ export const listConfigs: API.OperationMethod<
     ListConfigsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfigsRequest,
   output: ListConfigsResponse,
   errors: [
@@ -2893,7 +2893,7 @@ export const reserveContact: API.OperationMethod<
   ContactIdResponse,
   ReserveContactError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReserveContactRequest,
   output: ContactIdResponse,
   errors: [
@@ -2916,7 +2916,7 @@ export const describeContact: API.OperationMethod<
   DescribeContactResponse,
   DescribeContactError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeContactRequest,
   output: DescribeContactResponse,
   errors: [
@@ -2944,7 +2944,7 @@ export const cancelContact: API.OperationMethod<
   ContactIdResponse,
   CancelContactError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelContactRequest,
   output: ContactIdResponse,
   errors: [
@@ -2983,7 +2983,7 @@ export const listContacts: API.OperationMethod<
     ListContactsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListContactsRequest,
   output: ListContactsResponse,
   errors: [
@@ -3015,7 +3015,7 @@ export const createDataflowEndpointGroup: API.OperationMethod<
   DataflowEndpointGroupIdResponse,
   CreateDataflowEndpointGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDataflowEndpointGroupRequest,
   output: DataflowEndpointGroupIdResponse,
   errors: [
@@ -3037,7 +3037,7 @@ export const getDataflowEndpointGroup: API.OperationMethod<
   GetDataflowEndpointGroupResponse,
   GetDataflowEndpointGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDataflowEndpointGroupRequest,
   output: GetDataflowEndpointGroupResponse,
   errors: [
@@ -3059,7 +3059,7 @@ export const deleteDataflowEndpointGroup: API.OperationMethod<
   DataflowEndpointGroupIdResponse,
   DeleteDataflowEndpointGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDataflowEndpointGroupRequest,
   output: DataflowEndpointGroupIdResponse,
   errors: [
@@ -3096,7 +3096,7 @@ export const listDataflowEndpointGroups: API.OperationMethod<
     ListDataflowEndpointGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataflowEndpointGroupsRequest,
   output: ListDataflowEndpointGroupsResponse,
   errors: [
@@ -3129,7 +3129,7 @@ export const createDataflowEndpointGroupV2: API.OperationMethod<
   CreateDataflowEndpointGroupV2Response,
   CreateDataflowEndpointGroupV2Error,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDataflowEndpointGroupV2Request,
   output: CreateDataflowEndpointGroupV2Response,
   errors: [
@@ -3152,7 +3152,7 @@ export const createEphemeris: API.OperationMethod<
   EphemerisIdResponse,
   CreateEphemerisError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEphemerisRequest,
   output: EphemerisIdResponse,
   errors: [
@@ -3174,7 +3174,7 @@ export const describeEphemeris: API.OperationMethod<
   DescribeEphemerisResponse,
   DescribeEphemerisError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeEphemerisRequest,
   output: DescribeEphemerisResponse,
   errors: [
@@ -3196,7 +3196,7 @@ export const updateEphemeris: API.OperationMethod<
   EphemerisIdResponse,
   UpdateEphemerisError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEphemerisRequest,
   output: EphemerisIdResponse,
   errors: [
@@ -3219,7 +3219,7 @@ export const deleteEphemeris: API.OperationMethod<
   EphemerisIdResponse,
   DeleteEphemerisError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEphemerisRequest,
   output: EphemerisIdResponse,
   errors: [
@@ -3257,7 +3257,7 @@ export const listEphemerides: API.OperationMethod<
     ListEphemeridesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEphemeridesRequest,
   output: ListEphemeridesResponse,
   errors: [
@@ -3300,7 +3300,7 @@ export const listGroundStations: API.OperationMethod<
     ListGroundStationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGroundStationsRequest,
   output: ListGroundStationsResponse,
   errors: [
@@ -3330,7 +3330,7 @@ export const createMissionProfile: API.OperationMethod<
   MissionProfileIdResponse,
   CreateMissionProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMissionProfileRequest,
   output: MissionProfileIdResponse,
   errors: [
@@ -3352,7 +3352,7 @@ export const getMissionProfile: API.OperationMethod<
   GetMissionProfileResponse,
   GetMissionProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMissionProfileRequest,
   output: GetMissionProfileResponse,
   errors: [
@@ -3376,7 +3376,7 @@ export const updateMissionProfile: API.OperationMethod<
   MissionProfileIdResponse,
   UpdateMissionProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateMissionProfileRequest,
   output: MissionProfileIdResponse,
   errors: [
@@ -3398,7 +3398,7 @@ export const deleteMissionProfile: API.OperationMethod<
   MissionProfileIdResponse,
   DeleteMissionProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMissionProfileRequest,
   output: MissionProfileIdResponse,
   errors: [
@@ -3435,7 +3435,7 @@ export const listMissionProfiles: API.OperationMethod<
     ListMissionProfilesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMissionProfilesRequest,
   output: ListMissionProfilesResponse,
   errors: [
@@ -3463,7 +3463,7 @@ export const getSatellite: API.OperationMethod<
   GetSatelliteResponse,
   GetSatelliteError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSatelliteRequest,
   output: GetSatelliteResponse,
   errors: [
@@ -3500,7 +3500,7 @@ export const listSatellites: API.OperationMethod<
     ListSatellitesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSatellitesRequest,
   output: ListSatellitesResponse,
   errors: [

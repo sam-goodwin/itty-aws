@@ -77,7 +77,7 @@ export interface GetByIdsIndexRequest {
   ids?: string[];
 }
 
-export const GetByIdsIndexRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetByIdsIndexRequest = /*@__PURE__*/ Schema.Struct({
   indexName: Schema.String.pipe(T.HttpPath("indexName")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   ids: Schema.optional(Schema.Array(Schema.String)),
@@ -90,10 +90,9 @@ export const GetByIdsIndexRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type GetByIdsIndexResponse = unknown;
 
-export const GetByIdsIndexResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<GetByIdsIndexResponse>;
+export const GetByIdsIndexResponse = /*@__PURE__*/ Schema.Unknown.pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<GetByIdsIndexResponse>;
 
 export type GetByIdsIndexError = DefaultErrors;
 
@@ -102,7 +101,7 @@ export const getByIdsIndex: API.OperationMethod<
   GetByIdsIndexResponse,
   GetByIdsIndexError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetByIdsIndexRequest,
   output: GetByIdsIndexResponse,
   errors: [],
@@ -116,29 +115,27 @@ export interface DeleteByIdsIndexRequest {
   ids?: string[];
 }
 
-export const DeleteByIdsIndexRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    indexName: Schema.String.pipe(T.HttpPath("indexName")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    ids: Schema.optional(Schema.Array(Schema.String)),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/vectorize/v2/indexes/{indexName}/delete_by_ids",
-    }),
-  ) as unknown as Schema.Schema<DeleteByIdsIndexRequest>;
+export const DeleteByIdsIndexRequest = /*@__PURE__*/ Schema.Struct({
+  indexName: Schema.String.pipe(T.HttpPath("indexName")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  ids: Schema.optional(Schema.Array(Schema.String)),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/accounts/{account_id}/vectorize/v2/indexes/{indexName}/delete_by_ids",
+  }),
+) as unknown as Schema.Schema<DeleteByIdsIndexRequest>;
 
 export interface DeleteByIdsIndexResponse {
   /** The unique identifier for the async mutation operation containing the changeset. */
   mutationId?: string | null;
 }
 
-export const DeleteByIdsIndexResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    mutationId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<DeleteByIdsIndexResponse>;
+export const DeleteByIdsIndexResponse = /*@__PURE__*/ Schema.Struct({
+  mutationId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+}).pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<DeleteByIdsIndexResponse>;
 
 export type DeleteByIdsIndexError = DefaultErrors;
 
@@ -147,7 +144,7 @@ export const deleteByIdsIndex: API.OperationMethod<
   DeleteByIdsIndexResponse,
   DeleteByIdsIndexError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteByIdsIndexRequest,
   output: DeleteByIdsIndexResponse,
   errors: [],
@@ -163,7 +160,7 @@ export interface GetIndexRequest {
   accountId: string;
 }
 
-export const GetIndexRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetIndexRequest = /*@__PURE__*/ Schema.Struct({
   indexName: Schema.String.pipe(T.HttpPath("indexName")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -187,7 +184,7 @@ export interface GetIndexResponse {
   name?: string | null;
 }
 
-export const GetIndexResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetIndexResponse = /*@__PURE__*/ Schema.Struct({
   config: Schema.optional(
     Schema.Union([
       Schema.Struct({
@@ -223,7 +220,7 @@ export const getIndex: API.OperationMethod<
   GetIndexResponse,
   GetIndexError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIndexRequest,
   output: GetIndexResponse,
   errors: [NotFound, Gone],
@@ -234,7 +231,7 @@ export interface ListIndexesRequest {
   accountId: string;
 }
 
-export const ListIndexesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListIndexesRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
   T.Http({
@@ -256,7 +253,7 @@ export interface ListIndexesResponse {
   }[];
 }
 
-export const ListIndexesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListIndexesResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       config: Schema.optional(
@@ -294,7 +291,7 @@ export const listIndexes: API.PaginatedOperationMethod<
   ListIndexesResponse,
   ListIndexesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIndexesRequest,
   output: ListIndexesResponse,
   errors: [],
@@ -328,7 +325,7 @@ export interface CreateIndexRequest {
   description?: string;
 }
 
-export const CreateIndexRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateIndexRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   config: Schema.Union([
     Schema.Struct({
@@ -374,7 +371,7 @@ export interface CreateIndexResponse {
   name?: string | null;
 }
 
-export const CreateIndexResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateIndexResponse = /*@__PURE__*/ Schema.Struct({
   config: Schema.optional(
     Schema.Union([
       Schema.Struct({
@@ -416,7 +413,7 @@ export const createIndex: API.OperationMethod<
   CreateIndexResponse,
   CreateIndexError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateIndexRequest,
   output: CreateIndexResponse,
   errors: [IndexAlreadyExists, IndexInvalidName, IndexInvalidConfig],
@@ -428,7 +425,7 @@ export interface DeleteIndexRequest {
   accountId: string;
 }
 
-export const DeleteIndexRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteIndexRequest = /*@__PURE__*/ Schema.Struct({
   indexName: Schema.String.pipe(T.HttpPath("indexName")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -440,10 +437,9 @@ export const DeleteIndexRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type DeleteIndexResponse = unknown;
 
-export const DeleteIndexResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<DeleteIndexResponse>;
+export const DeleteIndexResponse = /*@__PURE__*/ Schema.Unknown.pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<DeleteIndexResponse>;
 
 export type DeleteIndexError = DefaultErrors | NotFound | Gone;
 
@@ -452,7 +448,7 @@ export const deleteIndex: API.OperationMethod<
   DeleteIndexResponse,
   DeleteIndexError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteIndexRequest,
   output: DeleteIndexResponse,
   errors: [NotFound, Gone],
@@ -464,7 +460,7 @@ export interface InfoIndexRequest {
   accountId: string;
 }
 
-export const InfoIndexRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InfoIndexRequest = /*@__PURE__*/ Schema.Struct({
   indexName: Schema.String.pipe(T.HttpPath("indexName")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -485,7 +481,7 @@ export interface InfoIndexResponse {
   vectorCount?: number | null;
 }
 
-export const InfoIndexResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InfoIndexResponse = /*@__PURE__*/ Schema.Struct({
   dimensions: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   processedUpToDatetime: Schema.optional(
     Schema.Union([Schema.String, Schema.Null]),
@@ -505,7 +501,7 @@ export const infoIndex: API.OperationMethod<
   InfoIndexResponse,
   InfoIndexError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InfoIndexRequest,
   output: InfoIndexResponse,
   errors: [],
@@ -521,7 +517,7 @@ export interface InsertIndexRequest {
   body: File | Blob;
 }
 
-export const InsertIndexRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InsertIndexRequest = /*@__PURE__*/ Schema.Struct({
   indexName: Schema.String.pipe(T.HttpPath("indexName")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   unparsableBehavior: Schema.optional(
@@ -541,7 +537,7 @@ export interface InsertIndexResponse {
   mutationId?: string | null;
 }
 
-export const InsertIndexResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InsertIndexResponse = /*@__PURE__*/ Schema.Struct({
   mutationId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
 }).pipe(
   T.ResponsePath("result"),
@@ -554,7 +550,7 @@ export const insertIndex: API.OperationMethod<
   InsertIndexResponse,
   InsertIndexError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertIndexRequest,
   output: InsertIndexResponse,
   errors: [],
@@ -576,7 +572,7 @@ export interface QueryIndexRequest {
   topK?: number;
 }
 
-export const QueryIndexRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueryIndexRequest = /*@__PURE__*/ Schema.Struct({
   indexName: Schema.String.pipe(T.HttpPath("indexName")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   vector: Schema.Array(Schema.Number),
@@ -608,7 +604,7 @@ export interface QueryIndexResponse {
     | null;
 }
 
-export const QueryIndexResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueryIndexResponse = /*@__PURE__*/ Schema.Struct({
   count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   matches: Schema.optional(
     Schema.Union([
@@ -641,7 +637,7 @@ export const queryIndex: API.OperationMethod<
   QueryIndexResponse,
   QueryIndexError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: QueryIndexRequest,
   output: QueryIndexResponse,
   errors: [],
@@ -657,7 +653,7 @@ export interface UpsertIndexRequest {
   body: File | Blob;
 }
 
-export const UpsertIndexRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpsertIndexRequest = /*@__PURE__*/ Schema.Struct({
   indexName: Schema.String.pipe(T.HttpPath("indexName")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   unparsableBehavior: Schema.optional(
@@ -677,7 +673,7 @@ export interface UpsertIndexResponse {
   mutationId?: string | null;
 }
 
-export const UpsertIndexResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpsertIndexResponse = /*@__PURE__*/ Schema.Struct({
   mutationId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
 }).pipe(
   T.ResponsePath("result"),
@@ -690,7 +686,7 @@ export const upsertIndex: API.OperationMethod<
   UpsertIndexResponse,
   UpsertIndexError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpsertIndexRequest,
   output: UpsertIndexResponse,
   errors: [],
@@ -706,16 +702,15 @@ export interface ListIndexMetadataIndexesRequest {
   accountId: string;
 }
 
-export const ListIndexMetadataIndexesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    indexName: Schema.String.pipe(T.HttpPath("indexName")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/vectorize/v2/indexes/{indexName}/metadata_index/list",
-    }),
-  ) as unknown as Schema.Schema<ListIndexMetadataIndexesRequest>;
+export const ListIndexMetadataIndexesRequest = /*@__PURE__*/ Schema.Struct({
+  indexName: Schema.String.pipe(T.HttpPath("indexName")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/vectorize/v2/indexes/{indexName}/metadata_index/list",
+  }),
+) as unknown as Schema.Schema<ListIndexMetadataIndexesRequest>;
 
 export interface ListIndexMetadataIndexesResponse {
   /** Array of indexed metadata properties. */
@@ -735,39 +730,38 @@ export interface ListIndexMetadataIndexesResponse {
     | null;
 }
 
-export const ListIndexMetadataIndexesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    metadataIndexes: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            indexType: Schema.optional(
+export const ListIndexMetadataIndexesResponse = /*@__PURE__*/ Schema.Struct({
+  metadataIndexes: Schema.optional(
+    Schema.Union([
+      Schema.Array(
+        Schema.Struct({
+          indexType: Schema.optional(
+            Schema.Union([
               Schema.Union([
-                Schema.Union([
-                  Schema.Literals([
-                    "string",
-                    "number",
-                    "boolean",
-                    "String",
-                    "Number",
-                    "Boolean",
-                  ]),
-                  Schema.String,
+                Schema.Literals([
+                  "string",
+                  "number",
+                  "boolean",
+                  "String",
+                  "Number",
+                  "Boolean",
                 ]),
-                Schema.Null,
+                Schema.String,
               ]),
-            ),
-            propertyName: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
-  }).pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<ListIndexMetadataIndexesResponse>;
+              Schema.Null,
+            ]),
+          ),
+          propertyName: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+        }),
+      ),
+      Schema.Null,
+    ]),
+  ),
+}).pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<ListIndexMetadataIndexesResponse>;
 
 export type ListIndexMetadataIndexesError = DefaultErrors | NotFound | Gone;
 
@@ -776,7 +770,7 @@ export const listIndexMetadataIndexes: API.OperationMethod<
   ListIndexMetadataIndexesResponse,
   ListIndexMetadataIndexesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListIndexMetadataIndexesRequest,
   output: ListIndexMetadataIndexesResponse,
   errors: [NotFound, Gone],
@@ -792,33 +786,31 @@ export interface CreateIndexMetadataIndexRequest {
   propertyName: string;
 }
 
-export const CreateIndexMetadataIndexRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    indexName: Schema.String.pipe(T.HttpPath("indexName")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    indexType: Schema.Union([
-      Schema.Literals(["string", "number", "boolean"]),
-      Schema.String,
-    ]),
-    propertyName: Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/vectorize/v2/indexes/{indexName}/metadata_index/create",
-    }),
-  ) as unknown as Schema.Schema<CreateIndexMetadataIndexRequest>;
+export const CreateIndexMetadataIndexRequest = /*@__PURE__*/ Schema.Struct({
+  indexName: Schema.String.pipe(T.HttpPath("indexName")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  indexType: Schema.Union([
+    Schema.Literals(["string", "number", "boolean"]),
+    Schema.String,
+  ]),
+  propertyName: Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/accounts/{account_id}/vectorize/v2/indexes/{indexName}/metadata_index/create",
+  }),
+) as unknown as Schema.Schema<CreateIndexMetadataIndexRequest>;
 
 export interface CreateIndexMetadataIndexResponse {
   /** The unique identifier for the async mutation operation containing the changeset. */
   mutationId?: string | null;
 }
 
-export const CreateIndexMetadataIndexResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    mutationId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<CreateIndexMetadataIndexResponse>;
+export const CreateIndexMetadataIndexResponse = /*@__PURE__*/ Schema.Struct({
+  mutationId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+}).pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<CreateIndexMetadataIndexResponse>;
 
 export type CreateIndexMetadataIndexError =
   | DefaultErrors
@@ -831,7 +823,7 @@ export const createIndexMetadataIndex: API.OperationMethod<
   CreateIndexMetadataIndexResponse,
   CreateIndexMetadataIndexError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateIndexMetadataIndexRequest,
   output: CreateIndexMetadataIndexResponse,
   errors: [NotFound, MetadataIndexAlreadyExists, MetadataIndexInvalidType],
@@ -845,29 +837,27 @@ export interface DeleteIndexMetadataIndexRequest {
   propertyName: string;
 }
 
-export const DeleteIndexMetadataIndexRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    indexName: Schema.String.pipe(T.HttpPath("indexName")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    propertyName: Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/vectorize/v2/indexes/{indexName}/metadata_index/delete",
-    }),
-  ) as unknown as Schema.Schema<DeleteIndexMetadataIndexRequest>;
+export const DeleteIndexMetadataIndexRequest = /*@__PURE__*/ Schema.Struct({
+  indexName: Schema.String.pipe(T.HttpPath("indexName")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  propertyName: Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/accounts/{account_id}/vectorize/v2/indexes/{indexName}/metadata_index/delete",
+  }),
+) as unknown as Schema.Schema<DeleteIndexMetadataIndexRequest>;
 
 export interface DeleteIndexMetadataIndexResponse {
   /** The unique identifier for the async mutation operation containing the changeset. */
   mutationId?: string | null;
 }
 
-export const DeleteIndexMetadataIndexResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    mutationId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<DeleteIndexMetadataIndexResponse>;
+export const DeleteIndexMetadataIndexResponse = /*@__PURE__*/ Schema.Struct({
+  mutationId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+}).pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<DeleteIndexMetadataIndexResponse>;
 
 export type DeleteIndexMetadataIndexError =
   | DefaultErrors
@@ -880,7 +870,7 @@ export const deleteIndexMetadataIndex: API.OperationMethod<
   DeleteIndexMetadataIndexResponse,
   DeleteIndexMetadataIndexError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteIndexMetadataIndexRequest,
   output: DeleteIndexMetadataIndexResponse,
   errors: [NotFound, Gone, MetadataIndexNotFound],
@@ -900,18 +890,17 @@ export interface ListVectorsIndexRequest {
   cursor?: string;
 }
 
-export const ListVectorsIndexRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    indexName: Schema.String.pipe(T.HttpPath("indexName")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    count: Schema.optional(Schema.Number).pipe(T.HttpQuery("count")),
-    cursor: Schema.optional(Schema.String).pipe(T.HttpQuery("cursor")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/vectorize/v2/indexes/{indexName}/list",
-    }),
-  ) as unknown as Schema.Schema<ListVectorsIndexRequest>;
+export const ListVectorsIndexRequest = /*@__PURE__*/ Schema.Struct({
+  indexName: Schema.String.pipe(T.HttpPath("indexName")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  count: Schema.optional(Schema.Number).pipe(T.HttpQuery("count")),
+  cursor: Schema.optional(Schema.String).pipe(T.HttpQuery("cursor")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/vectorize/v2/indexes/{indexName}/list",
+  }),
+) as unknown as Schema.Schema<ListVectorsIndexRequest>;
 
 export interface ListVectorsIndexResponse {
   /** Number of vectors returned in this response */
@@ -928,23 +917,22 @@ export interface ListVectorsIndexResponse {
   nextCursor?: string | null;
 }
 
-export const ListVectorsIndexResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    count: Schema.Number,
-    isTruncated: Schema.Boolean,
-    totalCount: Schema.Number,
-    vectors: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-      }),
-    ),
-    cursorExpirationTimestamp: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    nextCursor: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<ListVectorsIndexResponse>;
+export const ListVectorsIndexResponse = /*@__PURE__*/ Schema.Struct({
+  count: Schema.Number,
+  isTruncated: Schema.Boolean,
+  totalCount: Schema.Number,
+  vectors: Schema.Array(
+    Schema.Struct({
+      id: Schema.String,
+    }),
+  ),
+  cursorExpirationTimestamp: Schema.optional(
+    Schema.Union([Schema.String, Schema.Null]),
+  ),
+  nextCursor: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+}).pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<ListVectorsIndexResponse>;
 
 export type ListVectorsIndexError = DefaultErrors;
 
@@ -953,7 +941,7 @@ export const listVectorsIndex: API.OperationMethod<
   ListVectorsIndexResponse,
   ListVectorsIndexError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListVectorsIndexRequest,
   output: ListVectorsIndexResponse,
   errors: [],

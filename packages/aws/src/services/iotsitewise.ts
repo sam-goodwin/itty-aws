@@ -7040,7 +7040,7 @@ export const associateAssets: API.OperationMethod<
   AssociateAssetsResponse,
   AssociateAssetsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateAssetsRequest,
   output: AssociateAssetsResponse,
   errors: [
@@ -7068,7 +7068,7 @@ export const associateTimeSeriesToAssetProperty: API.OperationMethod<
   AssociateTimeSeriesToAssetPropertyResponse,
   AssociateTimeSeriesToAssetPropertyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateTimeSeriesToAssetPropertyRequest,
   output: AssociateTimeSeriesToAssetPropertyResponse,
   errors: [
@@ -7094,7 +7094,7 @@ export const batchAssociateProjectAssets: API.OperationMethod<
   BatchAssociateProjectAssetsResponse,
   BatchAssociateProjectAssetsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchAssociateProjectAssetsRequest,
   output: BatchAssociateProjectAssetsResponse,
   errors: [
@@ -7119,7 +7119,7 @@ export const batchDisassociateProjectAssets: API.OperationMethod<
   BatchDisassociateProjectAssetsResponse,
   BatchDisassociateProjectAssetsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchDisassociateProjectAssetsRequest,
   output: BatchDisassociateProjectAssetsResponse,
   errors: [
@@ -7160,7 +7160,7 @@ export const batchGetAssetPropertyAggregates: API.OperationMethod<
     BatchGetAssetPropertyAggregatesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: BatchGetAssetPropertyAggregatesRequest,
   output: BatchGetAssetPropertyAggregatesResponse,
   errors: [
@@ -7205,7 +7205,7 @@ export const batchGetAssetPropertyValue: API.OperationMethod<
     BatchGetAssetPropertyValueError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: BatchGetAssetPropertyValueRequest,
   output: BatchGetAssetPropertyValueResponse,
   errors: [
@@ -7246,7 +7246,7 @@ export const batchGetAssetPropertyValueHistory: API.OperationMethod<
     BatchGetAssetPropertyValueHistoryError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: BatchGetAssetPropertyValueHistoryRequest,
   output: BatchGetAssetPropertyValueHistoryResponse,
   errors: [
@@ -7300,7 +7300,7 @@ export const batchPutAssetPropertyValue: API.OperationMethod<
   BatchPutAssetPropertyValueResponse,
   BatchPutAssetPropertyValueError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchPutAssetPropertyValueRequest,
   output: BatchPutAssetPropertyValueResponse,
   errors: [
@@ -7331,7 +7331,7 @@ export const createAccessPolicy: API.OperationMethod<
   CreateAccessPolicyResponse,
   CreateAccessPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessPolicyRequest,
   output: CreateAccessPolicyResponse,
   errors: [
@@ -7360,7 +7360,7 @@ export const createAsset: API.OperationMethod<
   CreateAssetResponse,
   CreateAssetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAssetRequest,
   output: CreateAssetResponse,
   errors: [
@@ -7408,7 +7408,7 @@ export const createAssetModel: API.OperationMethod<
   CreateAssetModelResponse,
   CreateAssetModelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAssetModelRequest,
   output: CreateAssetModelResponse,
   errors: [
@@ -7459,7 +7459,7 @@ export const createAssetModelCompositeModel: API.OperationMethod<
   CreateAssetModelCompositeModelResponse,
   CreateAssetModelCompositeModelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAssetModelCompositeModelRequest,
   output: CreateAssetModelCompositeModelResponse,
   errors: [
@@ -7503,7 +7503,7 @@ export const createBulkImportJob: API.OperationMethod<
   CreateBulkImportJobResponse,
   CreateBulkImportJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateBulkImportJobRequest,
   output: CreateBulkImportJobResponse,
   errors: [
@@ -7533,7 +7533,7 @@ export const createComputationModel: API.OperationMethod<
   CreateComputationModelResponse,
   CreateComputationModelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateComputationModelRequest,
   output: CreateComputationModelResponse,
   errors: [
@@ -7561,7 +7561,7 @@ export const createDashboard: API.OperationMethod<
   CreateDashboardResponse,
   CreateDashboardError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDashboardRequest,
   output: CreateDashboardResponse,
   errors: [
@@ -7589,7 +7589,7 @@ export const createDataset: API.OperationMethod<
   CreateDatasetResponse,
   CreateDatasetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDatasetRequest,
   output: CreateDatasetResponse,
   errors: [
@@ -7619,7 +7619,7 @@ export const createGateway: API.OperationMethod<
   CreateGatewayResponse,
   CreateGatewayError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateGatewayRequest,
   output: CreateGatewayResponse,
   errors: [
@@ -7650,7 +7650,7 @@ export const createPortal: API.OperationMethod<
   CreatePortalResponse,
   CreatePortalError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePortalRequest,
   output: CreatePortalResponse,
   errors: [
@@ -7679,7 +7679,7 @@ export const createProject: API.OperationMethod<
   CreateProjectResponse,
   CreateProjectError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectRequest,
   output: CreateProjectResponse,
   errors: [
@@ -7706,7 +7706,7 @@ export const deleteAccessPolicy: API.OperationMethod<
   DeleteAccessPolicyResponse,
   DeleteAccessPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessPolicyRequest,
   output: DeleteAccessPolicyResponse,
   errors: [
@@ -7735,7 +7735,7 @@ export const deleteAsset: API.OperationMethod<
   DeleteAssetResponse,
   DeleteAssetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAssetRequest,
   output: DeleteAssetResponse,
   errors: [
@@ -7766,7 +7766,7 @@ export const deleteAssetModel: API.OperationMethod<
   DeleteAssetModelResponse,
   DeleteAssetModelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAssetModelRequest,
   output: DeleteAssetModelResponse,
   errors: [
@@ -7798,7 +7798,7 @@ export const deleteAssetModelCompositeModel: API.OperationMethod<
   DeleteAssetModelCompositeModelResponse,
   DeleteAssetModelCompositeModelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAssetModelCompositeModelRequest,
   output: DeleteAssetModelCompositeModelResponse,
   errors: [
@@ -7826,7 +7826,7 @@ export const deleteAssetModelInterfaceRelationship: API.OperationMethod<
   DeleteAssetModelInterfaceRelationshipResponse,
   DeleteAssetModelInterfaceRelationshipError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAssetModelInterfaceRelationshipRequest,
   output: DeleteAssetModelInterfaceRelationshipResponse,
   errors: [
@@ -7852,7 +7852,7 @@ export const deleteComputationModel: API.OperationMethod<
   DeleteComputationModelResponse,
   DeleteComputationModelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteComputationModelRequest,
   output: DeleteComputationModelResponse,
   errors: [
@@ -7877,7 +7877,7 @@ export const deleteDashboard: API.OperationMethod<
   DeleteDashboardResponse,
   DeleteDashboardError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDashboardRequest,
   output: DeleteDashboardResponse,
   errors: [
@@ -7902,7 +7902,7 @@ export const deleteDataset: API.OperationMethod<
   DeleteDatasetResponse,
   DeleteDatasetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDatasetRequest,
   output: DeleteDatasetResponse,
   errors: [
@@ -7929,7 +7929,7 @@ export const deleteGateway: API.OperationMethod<
   DeleteGatewayResponse,
   DeleteGatewayError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteGatewayRequest,
   output: DeleteGatewayResponse,
   errors: [
@@ -7955,7 +7955,7 @@ export const deletePortal: API.OperationMethod<
   DeletePortalResponse,
   DeletePortalError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePortalRequest,
   output: DeletePortalResponse,
   errors: [
@@ -7980,7 +7980,7 @@ export const deleteProject: API.OperationMethod<
   DeleteProjectResponse,
   DeleteProjectError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectRequest,
   output: DeleteProjectResponse,
   errors: [
@@ -8019,7 +8019,7 @@ export const deleteTimeSeries: API.OperationMethod<
   DeleteTimeSeriesResponse,
   DeleteTimeSeriesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTimeSeriesRequest,
   output: DeleteTimeSeriesResponse,
   errors: [
@@ -8045,7 +8045,7 @@ export const describeAccessPolicy: API.OperationMethod<
   DescribeAccessPolicyResponse,
   DescribeAccessPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAccessPolicyRequest,
   output: DescribeAccessPolicyResponse,
   errors: [
@@ -8069,7 +8069,7 @@ export const describeAction: API.OperationMethod<
   DescribeActionResponse,
   DescribeActionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeActionRequest,
   output: DescribeActionResponse,
   errors: [
@@ -8093,7 +8093,7 @@ export const describeAsset: API.OperationMethod<
   DescribeAssetResponse,
   DescribeAssetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAssetRequest,
   output: DescribeAssetResponse,
   errors: [
@@ -8120,7 +8120,7 @@ export const describeAssetCompositeModel: API.OperationMethod<
   DescribeAssetCompositeModelResponse,
   DescribeAssetCompositeModelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAssetCompositeModelRequest,
   output: DescribeAssetCompositeModelResponse,
   errors: [
@@ -8146,7 +8146,7 @@ export const describeAssetModel: API.OperationMethod<
   DescribeAssetModelResponse,
   DescribeAssetModelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAssetModelRequest,
   output: DescribeAssetModelResponse,
   errors: [
@@ -8172,7 +8172,7 @@ export const describeAssetModelCompositeModel: API.OperationMethod<
   DescribeAssetModelCompositeModelResponse,
   DescribeAssetModelCompositeModelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAssetModelCompositeModelRequest,
   output: DescribeAssetModelCompositeModelResponse,
   errors: [
@@ -8197,7 +8197,7 @@ export const describeAssetModelInterfaceRelationship: API.OperationMethod<
   DescribeAssetModelInterfaceRelationshipResponse,
   DescribeAssetModelInterfaceRelationshipError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAssetModelInterfaceRelationshipRequest,
   output: DescribeAssetModelInterfaceRelationshipResponse,
   errors: [
@@ -8228,7 +8228,7 @@ export const describeAssetProperty: API.OperationMethod<
   DescribeAssetPropertyResponse,
   DescribeAssetPropertyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAssetPropertyRequest,
   output: DescribeAssetPropertyResponse,
   errors: [
@@ -8253,7 +8253,7 @@ export const describeBulkImportJob: API.OperationMethod<
   DescribeBulkImportJobResponse,
   DescribeBulkImportJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeBulkImportJobRequest,
   output: DescribeBulkImportJobResponse,
   errors: [
@@ -8277,7 +8277,7 @@ export const describeComputationModel: API.OperationMethod<
   DescribeComputationModelResponse,
   DescribeComputationModelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeComputationModelRequest,
   output: DescribeComputationModelResponse,
   errors: [
@@ -8301,7 +8301,7 @@ export const describeComputationModelExecutionSummary: API.OperationMethod<
   DescribeComputationModelExecutionSummaryResponse,
   DescribeComputationModelExecutionSummaryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeComputationModelExecutionSummaryRequest,
   output: DescribeComputationModelExecutionSummaryResponse,
   errors: [
@@ -8325,7 +8325,7 @@ export const describeDashboard: API.OperationMethod<
   DescribeDashboardResponse,
   DescribeDashboardError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDashboardRequest,
   output: DescribeDashboardResponse,
   errors: [
@@ -8349,7 +8349,7 @@ export const describeDataset: API.OperationMethod<
   DescribeDatasetResponse,
   DescribeDatasetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDatasetRequest,
   output: DescribeDatasetResponse,
   errors: [
@@ -8374,7 +8374,7 @@ export const describeDefaultEncryptionConfiguration: API.OperationMethod<
   DescribeDefaultEncryptionConfigurationResponse,
   DescribeDefaultEncryptionConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDefaultEncryptionConfigurationRequest,
   output: DescribeDefaultEncryptionConfigurationResponse,
   errors: [
@@ -8397,7 +8397,7 @@ export const describeExecution: API.OperationMethod<
   DescribeExecutionResponse,
   DescribeExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeExecutionRequest,
   output: DescribeExecutionResponse,
   errors: [
@@ -8421,7 +8421,7 @@ export const describeGateway: API.OperationMethod<
   DescribeGatewayResponse,
   DescribeGatewayError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeGatewayRequest,
   output: DescribeGatewayResponse,
   errors: [
@@ -8457,7 +8457,7 @@ export const describeGatewayCapabilityConfiguration: API.OperationMethod<
   DescribeGatewayCapabilityConfigurationResponse,
   DescribeGatewayCapabilityConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeGatewayCapabilityConfigurationRequest,
   output: DescribeGatewayCapabilityConfigurationResponse,
   errors: [
@@ -8481,7 +8481,7 @@ export const describeLoggingOptions: API.OperationMethod<
   DescribeLoggingOptionsResponse,
   DescribeLoggingOptionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeLoggingOptionsRequest,
   output: DescribeLoggingOptionsResponse,
   errors: [
@@ -8505,7 +8505,7 @@ export const describePortal: API.OperationMethod<
   DescribePortalResponse,
   DescribePortalError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribePortalRequest,
   output: DescribePortalResponse,
   errors: [
@@ -8529,7 +8529,7 @@ export const describeProject: API.OperationMethod<
   DescribeProjectResponse,
   DescribeProjectError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeProjectRequest,
   output: DescribeProjectResponse,
   errors: [
@@ -8555,7 +8555,7 @@ export const describeStorageConfiguration: API.OperationMethod<
   DescribeStorageConfigurationResponse,
   DescribeStorageConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeStorageConfigurationRequest,
   output: DescribeStorageConfigurationResponse,
   errors: [
@@ -8593,7 +8593,7 @@ export const describeTimeSeries: API.OperationMethod<
   DescribeTimeSeriesResponse,
   DescribeTimeSeriesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeTimeSeriesRequest,
   output: DescribeTimeSeriesResponse,
   errors: [
@@ -8619,7 +8619,7 @@ export const disassociateAssets: API.OperationMethod<
   DisassociateAssetsResponse,
   DisassociateAssetsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateAssetsRequest,
   output: DisassociateAssetsResponse,
   errors: [
@@ -8645,7 +8645,7 @@ export const disassociateTimeSeriesFromAssetProperty: API.OperationMethod<
   DisassociateTimeSeriesFromAssetPropertyResponse,
   DisassociateTimeSeriesFromAssetPropertyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateTimeSeriesFromAssetPropertyRequest,
   output: DisassociateTimeSeriesFromAssetPropertyResponse,
   errors: [
@@ -8672,7 +8672,7 @@ export const executeAction: API.OperationMethod<
   ExecuteActionResponse,
   ExecuteActionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExecuteActionRequest,
   output: ExecuteActionResponse,
   errors: [
@@ -8717,7 +8717,7 @@ export const executeQuery: API.OperationMethod<
     ExecuteQueryError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ExecuteQueryRequest,
   output: ExecuteQueryResponse,
   errors: [
@@ -8774,7 +8774,7 @@ export const getAssetPropertyAggregates: API.OperationMethod<
     GetAssetPropertyAggregatesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetAssetPropertyAggregatesRequest,
   output: GetAssetPropertyAggregatesResponse,
   errors: [
@@ -8814,7 +8814,7 @@ export const getAssetPropertyValue: API.OperationMethod<
   GetAssetPropertyValueResponse,
   GetAssetPropertyValueError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAssetPropertyValueRequest,
   output: GetAssetPropertyValueResponse,
   errors: [
@@ -8863,7 +8863,7 @@ export const getAssetPropertyValueHistory: API.OperationMethod<
     GetAssetPropertyValueHistoryError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetAssetPropertyValueHistoryRequest,
   output: GetAssetPropertyValueHistoryResponse,
   errors: [
@@ -8922,7 +8922,7 @@ export const getInterpolatedAssetPropertyValues: API.OperationMethod<
     GetInterpolatedAssetPropertyValuesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetInterpolatedAssetPropertyValuesRequest,
   output: GetInterpolatedAssetPropertyValuesResponse,
   errors: [
@@ -8956,7 +8956,7 @@ export const invokeAssistant: API.OperationMethod<
   InvokeAssistantResponse,
   InvokeAssistantError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InvokeAssistantRequest,
   output: InvokeAssistantResponse,
   errors: [
@@ -8998,7 +8998,7 @@ export const listAccessPolicies: API.OperationMethod<
     ListAccessPoliciesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessPoliciesRequest,
   output: ListAccessPoliciesResponse,
   errors: [
@@ -9027,7 +9027,7 @@ export const listActions: API.OperationMethod<
   ListActionsResponse,
   ListActionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListActionsRequest,
   output: ListActionsResponse,
   errors: [
@@ -9066,7 +9066,7 @@ export const listAssetModelCompositeModels: API.OperationMethod<
     ListAssetModelCompositeModelsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssetModelCompositeModelsRequest,
   output: ListAssetModelCompositeModelsResponse,
   errors: [
@@ -9113,7 +9113,7 @@ export const listAssetModelProperties: API.OperationMethod<
     ListAssetModelPropertiesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssetModelPropertiesRequest,
   output: ListAssetModelPropertiesResponse,
   errors: [
@@ -9157,7 +9157,7 @@ export const listAssetModels: API.OperationMethod<
     ListAssetModelsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssetModelsRequest,
   output: ListAssetModelsResponse,
   errors: [
@@ -9203,7 +9203,7 @@ export const listAssetProperties: API.OperationMethod<
     ListAssetPropertiesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssetPropertiesRequest,
   output: ListAssetPropertiesResponse,
   errors: [
@@ -9250,7 +9250,7 @@ export const listAssetRelationships: API.OperationMethod<
     ListAssetRelationshipsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssetRelationshipsRequest,
   output: ListAssetRelationshipsResponse,
   errors: [
@@ -9305,7 +9305,7 @@ export const listAssets: API.OperationMethod<
     ListAssetsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssetsRequest,
   output: ListAssetsResponse,
   errors: [
@@ -9356,7 +9356,7 @@ export const listAssociatedAssets: API.OperationMethod<
     ListAssociatedAssetsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssociatedAssetsRequest,
   output: ListAssociatedAssetsResponse,
   errors: [
@@ -9402,7 +9402,7 @@ export const listBulkImportJobs: API.OperationMethod<
     ListBulkImportJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBulkImportJobsRequest,
   output: ListBulkImportJobsResponse,
   errors: [
@@ -9448,7 +9448,7 @@ export const listCompositionRelationships: API.OperationMethod<
     ListCompositionRelationshipsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCompositionRelationshipsRequest,
   output: ListCompositionRelationshipsResponse,
   errors: [
@@ -9494,7 +9494,7 @@ export const listComputationModelDataBindingUsages: API.OperationMethod<
     ListComputationModelDataBindingUsagesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListComputationModelDataBindingUsagesRequest,
   output: ListComputationModelDataBindingUsagesResponse,
   errors: [
@@ -9539,7 +9539,7 @@ export const listComputationModelResolveToResources: API.OperationMethod<
     ListComputationModelResolveToResourcesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListComputationModelResolveToResourcesRequest,
   output: ListComputationModelResolveToResourcesResponse,
   errors: [
@@ -9583,7 +9583,7 @@ export const listComputationModels: API.OperationMethod<
     ListComputationModelsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListComputationModelsRequest,
   output: ListComputationModelsResponse,
   errors: [
@@ -9626,7 +9626,7 @@ export const listDashboards: API.OperationMethod<
     ListDashboardsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDashboardsRequest,
   output: ListDashboardsResponse,
   errors: [
@@ -9669,7 +9669,7 @@ export const listDatasets: API.OperationMethod<
     ListDatasetsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatasetsRequest,
   output: ListDatasetsResponse,
   errors: [
@@ -9713,7 +9713,7 @@ export const listExecutions: API.OperationMethod<
     ListExecutionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExecutionsRequest,
   output: ListExecutionsResponse,
   errors: [
@@ -9757,7 +9757,7 @@ export const listGateways: API.OperationMethod<
     ListGatewaysError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGatewaysRequest,
   output: ListGatewaysResponse,
   errors: [
@@ -9802,7 +9802,7 @@ export const listInterfaceRelationships: API.OperationMethod<
     ListInterfaceRelationshipsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInterfaceRelationshipsRequest,
   output: ListInterfaceRelationshipsResponse,
   errors: [
@@ -9846,7 +9846,7 @@ export const listPortals: API.OperationMethod<
     ListPortalsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPortalsRequest,
   output: ListPortalsResponse,
   errors: [
@@ -9889,7 +9889,7 @@ export const listProjectAssets: API.OperationMethod<
     ListProjectAssetsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectAssetsRequest,
   output: ListProjectAssetsResponse,
   errors: [
@@ -9932,7 +9932,7 @@ export const listProjects: API.OperationMethod<
     ListProjectsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsRequest,
   output: ListProjectsResponse,
   errors: [
@@ -9964,7 +9964,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -10006,7 +10006,7 @@ export const listTimeSeries: API.OperationMethod<
     ListTimeSeriesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTimeSeriesRequest,
   output: ListTimeSeriesResponse,
   errors: [
@@ -10039,7 +10039,7 @@ export const putAssetModelInterfaceRelationship: API.OperationMethod<
   PutAssetModelInterfaceRelationshipResponse,
   PutAssetModelInterfaceRelationshipError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutAssetModelInterfaceRelationshipRequest,
   output: PutAssetModelInterfaceRelationshipResponse,
   errors: [
@@ -10068,7 +10068,7 @@ export const putDefaultEncryptionConfiguration: API.OperationMethod<
   PutDefaultEncryptionConfigurationResponse,
   PutDefaultEncryptionConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutDefaultEncryptionConfigurationRequest,
   output: PutDefaultEncryptionConfigurationResponse,
   errors: [
@@ -10094,7 +10094,7 @@ export const putLoggingOptions: API.OperationMethod<
   PutLoggingOptionsResponse,
   PutLoggingOptionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutLoggingOptionsRequest,
   output: PutLoggingOptionsResponse,
   errors: [
@@ -10122,7 +10122,7 @@ export const putStorageConfiguration: API.OperationMethod<
   PutStorageConfigurationResponse,
   PutStorageConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutStorageConfigurationRequest,
   output: PutStorageConfigurationResponse,
   errors: [
@@ -10154,7 +10154,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -10185,7 +10185,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -10213,7 +10213,7 @@ export const updateAccessPolicy: API.OperationMethod<
   UpdateAccessPolicyResponse,
   UpdateAccessPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccessPolicyRequest,
   output: UpdateAccessPolicyResponse,
   errors: [
@@ -10240,7 +10240,7 @@ export const updateAsset: API.OperationMethod<
   UpdateAssetResponse,
   UpdateAssetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAssetRequest,
   output: UpdateAssetResponse,
   errors: [
@@ -10286,7 +10286,7 @@ export const updateAssetModel: API.OperationMethod<
   UpdateAssetModelResponse,
   UpdateAssetModelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAssetModelRequest,
   output: UpdateAssetModelResponse,
   errors: [
@@ -10334,7 +10334,7 @@ export const updateAssetModelCompositeModel: API.OperationMethod<
   UpdateAssetModelCompositeModelResponse,
   UpdateAssetModelCompositeModelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAssetModelCompositeModelRequest,
   output: UpdateAssetModelCompositeModelResponse,
   errors: [
@@ -10367,7 +10367,7 @@ export const updateAssetProperty: API.OperationMethod<
   UpdateAssetPropertyResponse,
   UpdateAssetPropertyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAssetPropertyRequest,
   output: UpdateAssetPropertyResponse,
   errors: [
@@ -10395,7 +10395,7 @@ export const updateComputationModel: API.OperationMethod<
   UpdateComputationModelResponse,
   UpdateComputationModelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateComputationModelRequest,
   output: UpdateComputationModelResponse,
   errors: [
@@ -10422,7 +10422,7 @@ export const updateDashboard: API.OperationMethod<
   UpdateDashboardResponse,
   UpdateDashboardError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDashboardRequest,
   output: UpdateDashboardResponse,
   errors: [
@@ -10448,7 +10448,7 @@ export const updateDataset: API.OperationMethod<
   UpdateDatasetResponse,
   UpdateDatasetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDatasetRequest,
   output: UpdateDatasetResponse,
   errors: [
@@ -10475,7 +10475,7 @@ export const updateGateway: API.OperationMethod<
   UpdateGatewayResponse,
   UpdateGatewayError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateGatewayRequest,
   output: UpdateGatewayResponse,
   errors: [
@@ -10518,7 +10518,7 @@ export const updateGatewayCapabilityConfiguration: API.OperationMethod<
   UpdateGatewayCapabilityConfigurationResponse,
   UpdateGatewayCapabilityConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateGatewayCapabilityConfigurationRequest,
   output: UpdateGatewayCapabilityConfigurationResponse,
   errors: [
@@ -10545,7 +10545,7 @@ export const updatePortal: API.OperationMethod<
   UpdatePortalResponse,
   UpdatePortalError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePortalRequest,
   output: UpdatePortalResponse,
   errors: [
@@ -10570,7 +10570,7 @@ export const updateProject: API.OperationMethod<
   UpdateProjectResponse,
   UpdateProjectError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateProjectRequest,
   output: UpdateProjectResponse,
   errors: [

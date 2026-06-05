@@ -253,7 +253,7 @@ export const getEntitlements: API.OperationMethod<
     GetEntitlementsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetEntitlementsRequest,
   output: GetEntitlementsResult,
   errors: [

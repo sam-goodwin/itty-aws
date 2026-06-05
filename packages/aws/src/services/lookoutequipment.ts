@@ -2585,7 +2585,7 @@ export const createDataset: API.OperationMethod<
   CreateDatasetResponse,
   CreateDatasetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDatasetRequest,
   output: CreateDatasetResponse,
   errors: [
@@ -2618,7 +2618,7 @@ export const createInferenceScheduler: API.OperationMethod<
   CreateInferenceSchedulerResponse,
   CreateInferenceSchedulerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateInferenceSchedulerRequest,
   output: CreateInferenceSchedulerResponse,
   errors: [
@@ -2648,7 +2648,7 @@ export const createLabel: API.OperationMethod<
   CreateLabelResponse,
   CreateLabelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLabelRequest,
   output: CreateLabelResponse,
   errors: [
@@ -2677,7 +2677,7 @@ export const createLabelGroup: API.OperationMethod<
   CreateLabelGroupResponse,
   CreateLabelGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLabelGroupRequest,
   output: CreateLabelGroupResponse,
   errors: [
@@ -2716,7 +2716,7 @@ export const createModel: API.OperationMethod<
   CreateModelResponse,
   CreateModelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateModelRequest,
   output: CreateModelResponse,
   errors: [
@@ -2745,7 +2745,7 @@ export const createRetrainingScheduler: API.OperationMethod<
   CreateRetrainingSchedulerResponse,
   CreateRetrainingSchedulerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRetrainingSchedulerRequest,
   output: CreateRetrainingSchedulerResponse,
   errors: [
@@ -2777,7 +2777,7 @@ export const deleteDataset: API.OperationMethod<
   DeleteDatasetResponse,
   DeleteDatasetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDatasetRequest,
   output: DeleteDatasetResponse,
   errors: [
@@ -2806,7 +2806,7 @@ export const deleteInferenceScheduler: API.OperationMethod<
   DeleteInferenceSchedulerResponse,
   DeleteInferenceSchedulerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteInferenceSchedulerRequest,
   output: DeleteInferenceSchedulerResponse,
   errors: [
@@ -2834,7 +2834,7 @@ export const deleteLabel: API.OperationMethod<
   DeleteLabelResponse,
   DeleteLabelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLabelRequest,
   output: DeleteLabelResponse,
   errors: [
@@ -2862,7 +2862,7 @@ export const deleteLabelGroup: API.OperationMethod<
   DeleteLabelGroupResponse,
   DeleteLabelGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLabelGroupRequest,
   output: DeleteLabelGroupResponse,
   errors: [
@@ -2891,7 +2891,7 @@ export const deleteModel: API.OperationMethod<
   DeleteModelResponse,
   DeleteModelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteModelRequest,
   output: DeleteModelResponse,
   errors: [
@@ -2919,7 +2919,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyResponse,
   DeleteResourcePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourcePolicyRequest,
   output: DeleteResourcePolicyResponse,
   errors: [
@@ -2948,7 +2948,7 @@ export const deleteRetrainingScheduler: API.OperationMethod<
   DeleteRetrainingSchedulerResponse,
   DeleteRetrainingSchedulerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRetrainingSchedulerRequest,
   output: DeleteRetrainingSchedulerResponse,
   errors: [
@@ -2976,7 +2976,7 @@ export const describeDataIngestionJob: API.OperationMethod<
   DescribeDataIngestionJobResponse,
   DescribeDataIngestionJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDataIngestionJobRequest,
   output: DescribeDataIngestionJobResponse,
   errors: [
@@ -3003,7 +3003,7 @@ export const describeDataset: API.OperationMethod<
   DescribeDatasetResponse,
   DescribeDatasetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDatasetRequest,
   output: DescribeDatasetResponse,
   errors: [
@@ -3030,7 +3030,7 @@ export const describeInferenceScheduler: API.OperationMethod<
   DescribeInferenceSchedulerResponse,
   DescribeInferenceSchedulerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeInferenceSchedulerRequest,
   output: DescribeInferenceSchedulerResponse,
   errors: [
@@ -3056,7 +3056,7 @@ export const describeLabel: API.OperationMethod<
   DescribeLabelResponse,
   DescribeLabelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeLabelRequest,
   output: DescribeLabelResponse,
   errors: [
@@ -3082,7 +3082,7 @@ export const describeLabelGroup: API.OperationMethod<
   DescribeLabelGroupResponse,
   DescribeLabelGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeLabelGroupRequest,
   output: DescribeLabelGroupResponse,
   errors: [
@@ -3110,7 +3110,7 @@ export const describeModel: API.OperationMethod<
   DescribeModelResponse,
   DescribeModelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeModelRequest,
   output: DescribeModelResponse,
   errors: [
@@ -3136,7 +3136,7 @@ export const describeModelVersion: API.OperationMethod<
   DescribeModelVersionResponse,
   DescribeModelVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeModelVersionRequest,
   output: DescribeModelVersionResponse,
   errors: [
@@ -3162,7 +3162,7 @@ export const describeResourcePolicy: API.OperationMethod<
   DescribeResourcePolicyResponse,
   DescribeResourcePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeResourcePolicyRequest,
   output: DescribeResourcePolicyResponse,
   errors: [
@@ -3189,7 +3189,7 @@ export const describeRetrainingScheduler: API.OperationMethod<
   DescribeRetrainingSchedulerResponse,
   DescribeRetrainingSchedulerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeRetrainingSchedulerRequest,
   output: DescribeRetrainingSchedulerResponse,
   errors: [
@@ -3217,7 +3217,7 @@ export const importDataset: API.OperationMethod<
   ImportDatasetResponse,
   ImportDatasetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportDatasetRequest,
   output: ImportDatasetResponse,
   errors: [
@@ -3247,7 +3247,7 @@ export const importModelVersion: API.OperationMethod<
   ImportModelVersionResponse,
   ImportModelVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportModelVersionRequest,
   output: ImportModelVersionResponse,
   errors: [
@@ -3290,7 +3290,7 @@ export const listDataIngestionJobs: API.OperationMethod<
     ListDataIngestionJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataIngestionJobsRequest,
   output: ListDataIngestionJobsResponse,
   errors: [
@@ -3334,7 +3334,7 @@ export const listDatasets: API.OperationMethod<
     ListDatasetsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatasetsRequest,
   output: ListDatasetsResponse,
   errors: [
@@ -3379,7 +3379,7 @@ export const listInferenceEvents: API.OperationMethod<
     ListInferenceEventsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInferenceEventsRequest,
   output: ListInferenceEventsResponse,
   errors: [
@@ -3426,7 +3426,7 @@ export const listInferenceExecutions: API.OperationMethod<
     ListInferenceExecutionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInferenceExecutionsRequest,
   output: ListInferenceExecutionsResponse,
   errors: [
@@ -3471,7 +3471,7 @@ export const listInferenceSchedulers: API.OperationMethod<
     ListInferenceSchedulersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInferenceSchedulersRequest,
   output: ListInferenceSchedulersResponse,
   errors: [
@@ -3515,7 +3515,7 @@ export const listLabelGroups: API.OperationMethod<
     ListLabelGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLabelGroupsRequest,
   output: ListLabelGroupsResponse,
   errors: [
@@ -3559,7 +3559,7 @@ export const listLabels: API.OperationMethod<
     ListLabelsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLabelsRequest,
   output: ListLabelsResponse,
   errors: [
@@ -3604,7 +3604,7 @@ export const listModels: API.OperationMethod<
     ListModelsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListModelsRequest,
   output: ListModelsResponse,
   errors: [
@@ -3651,7 +3651,7 @@ export const listModelVersions: API.OperationMethod<
     ListModelVersionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListModelVersionsRequest,
   output: ListModelVersionsResponse,
   errors: [
@@ -3697,7 +3697,7 @@ export const listRetrainingSchedulers: API.OperationMethod<
     ListRetrainingSchedulersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRetrainingSchedulersRequest,
   output: ListRetrainingSchedulersResponse,
   errors: [
@@ -3744,7 +3744,7 @@ export const listSensorStatistics: API.OperationMethod<
     ListSensorStatisticsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSensorStatisticsRequest,
   output: ListSensorStatisticsResponse,
   errors: [
@@ -3775,7 +3775,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -3803,7 +3803,7 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyResponse,
   PutResourcePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutResourcePolicyRequest,
   output: PutResourcePolicyResponse,
   errors: [
@@ -3833,7 +3833,7 @@ export const startDataIngestionJob: API.OperationMethod<
   StartDataIngestionJobResponse,
   StartDataIngestionJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartDataIngestionJobRequest,
   output: StartDataIngestionJobResponse,
   errors: [
@@ -3862,7 +3862,7 @@ export const startInferenceScheduler: API.OperationMethod<
   StartInferenceSchedulerResponse,
   StartInferenceSchedulerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartInferenceSchedulerRequest,
   output: StartInferenceSchedulerResponse,
   errors: [
@@ -3890,7 +3890,7 @@ export const startRetrainingScheduler: API.OperationMethod<
   StartRetrainingSchedulerResponse,
   StartRetrainingSchedulerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartRetrainingSchedulerRequest,
   output: StartRetrainingSchedulerResponse,
   errors: [
@@ -3918,7 +3918,7 @@ export const stopInferenceScheduler: API.OperationMethod<
   StopInferenceSchedulerResponse,
   StopInferenceSchedulerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopInferenceSchedulerRequest,
   output: StopInferenceSchedulerResponse,
   errors: [
@@ -3946,7 +3946,7 @@ export const stopRetrainingScheduler: API.OperationMethod<
   StopRetrainingSchedulerResponse,
   StopRetrainingSchedulerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopRetrainingSchedulerRequest,
   output: StopRetrainingSchedulerResponse,
   errors: [
@@ -3978,7 +3978,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -4005,7 +4005,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -4032,7 +4032,7 @@ export const updateActiveModelVersion: API.OperationMethod<
   UpdateActiveModelVersionResponse,
   UpdateActiveModelVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateActiveModelVersionRequest,
   output: UpdateActiveModelVersionResponse,
   errors: [
@@ -4060,7 +4060,7 @@ export const updateInferenceScheduler: API.OperationMethod<
   UpdateInferenceSchedulerResponse,
   UpdateInferenceSchedulerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateInferenceSchedulerRequest,
   output: UpdateInferenceSchedulerResponse,
   errors: [
@@ -4088,7 +4088,7 @@ export const updateLabelGroup: API.OperationMethod<
   UpdateLabelGroupResponse,
   UpdateLabelGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateLabelGroupRequest,
   output: UpdateLabelGroupResponse,
   errors: [
@@ -4116,7 +4116,7 @@ export const updateModel: API.OperationMethod<
   UpdateModelResponse,
   UpdateModelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateModelRequest,
   output: UpdateModelResponse,
   errors: [
@@ -4144,7 +4144,7 @@ export const updateRetrainingScheduler: API.OperationMethod<
   UpdateRetrainingSchedulerResponse,
   UpdateRetrainingSchedulerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRetrainingSchedulerRequest,
   output: UpdateRetrainingSchedulerResponse,
   errors: [

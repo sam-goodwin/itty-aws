@@ -381,7 +381,7 @@ export const deleteReportDefinition: API.OperationMethod<
   DeleteReportDefinitionResult,
   DeleteReportDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteReportDefinitionRequest,
   output: DeleteReportDefinitionResult,
   errors: [
@@ -405,7 +405,7 @@ export const getReportDefinition: API.OperationMethod<
   GetReportDefinitionResult,
   GetReportDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetReportDefinitionRequest,
   output: GetReportDefinitionResult,
   errors: [
@@ -433,7 +433,7 @@ export const importApplicationUsage: API.OperationMethod<
   ImportApplicationUsageResult,
   ImportApplicationUsageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportApplicationUsageRequest,
   output: ImportApplicationUsageResult,
   errors: [
@@ -474,7 +474,7 @@ export const listReportDefinitions: API.OperationMethod<
     ListReportDefinitionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReportDefinitionsRequest,
   output: ListReportDefinitionsResult,
   errors: [
@@ -505,7 +505,7 @@ export const putReportDefinition: API.OperationMethod<
   PutReportDefinitionResult,
   PutReportDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutReportDefinitionRequest,
   output: PutReportDefinitionResult,
   errors: [
@@ -530,7 +530,7 @@ export const updateReportDefinition: API.OperationMethod<
   UpdateReportDefinitionResult,
   UpdateReportDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateReportDefinitionRequest,
   output: UpdateReportDefinitionResult,
   errors: [

@@ -9205,7 +9205,7 @@ export const getUseCaseForModelAccess: API.OperationMethod<
   GetUseCaseForModelAccessResponse,
   GetUseCaseForModelAccessError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUseCaseForModelAccessRequest,
   output: GetUseCaseForModelAccessResponse,
   errors: [
@@ -9229,7 +9229,7 @@ export const putUseCaseForModelAccess: API.OperationMethod<
   PutUseCaseForModelAccessResponse,
   PutUseCaseForModelAccessError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutUseCaseForModelAccessRequest,
   output: PutUseCaseForModelAccessResponse,
   errors: [
@@ -9259,7 +9259,7 @@ export const createAutomatedReasoningPolicy: API.OperationMethod<
   CreateAutomatedReasoningPolicyResponse,
   CreateAutomatedReasoningPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAutomatedReasoningPolicyRequest,
   output: CreateAutomatedReasoningPolicyResponse,
   errors: [
@@ -9288,7 +9288,7 @@ export const getAutomatedReasoningPolicy: API.OperationMethod<
   GetAutomatedReasoningPolicyResponse,
   GetAutomatedReasoningPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAutomatedReasoningPolicyRequest,
   output: GetAutomatedReasoningPolicyResponse,
   errors: [
@@ -9316,7 +9316,7 @@ export const updateAutomatedReasoningPolicy: API.OperationMethod<
   UpdateAutomatedReasoningPolicyResponse,
   UpdateAutomatedReasoningPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAutomatedReasoningPolicyRequest,
   output: UpdateAutomatedReasoningPolicyResponse,
   errors: [
@@ -9346,7 +9346,7 @@ export const deleteAutomatedReasoningPolicy: API.OperationMethod<
   DeleteAutomatedReasoningPolicyResponse,
   DeleteAutomatedReasoningPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAutomatedReasoningPolicyRequest,
   output: DeleteAutomatedReasoningPolicyResponse,
   errors: [
@@ -9389,7 +9389,7 @@ export const listAutomatedReasoningPolicies: API.OperationMethod<
     ListAutomatedReasoningPoliciesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAutomatedReasoningPoliciesRequest,
   output: ListAutomatedReasoningPoliciesResponse,
   errors: [
@@ -9421,7 +9421,7 @@ export const cancelAutomatedReasoningPolicyBuildWorkflow: API.OperationMethod<
   CancelAutomatedReasoningPolicyBuildWorkflowResponse,
   CancelAutomatedReasoningPolicyBuildWorkflowError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelAutomatedReasoningPolicyBuildWorkflowRequest,
   output: CancelAutomatedReasoningPolicyBuildWorkflowResponse,
   errors: [
@@ -9449,7 +9449,7 @@ export const createAutomatedReasoningPolicyTestCase: API.OperationMethod<
   CreateAutomatedReasoningPolicyTestCaseResponse,
   CreateAutomatedReasoningPolicyTestCaseError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAutomatedReasoningPolicyTestCaseRequest,
   output: CreateAutomatedReasoningPolicyTestCaseResponse,
   errors: [
@@ -9480,7 +9480,7 @@ export const createAutomatedReasoningPolicyVersion: API.OperationMethod<
   CreateAutomatedReasoningPolicyVersionResponse,
   CreateAutomatedReasoningPolicyVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAutomatedReasoningPolicyVersionRequest,
   output: CreateAutomatedReasoningPolicyVersionResponse,
   errors: [
@@ -9511,7 +9511,7 @@ export const deleteAutomatedReasoningPolicyBuildWorkflow: API.OperationMethod<
   DeleteAutomatedReasoningPolicyBuildWorkflowResponse,
   DeleteAutomatedReasoningPolicyBuildWorkflowError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAutomatedReasoningPolicyBuildWorkflowRequest,
   output: DeleteAutomatedReasoningPolicyBuildWorkflowResponse,
   errors: [
@@ -9541,7 +9541,7 @@ export const deleteAutomatedReasoningPolicyTestCase: API.OperationMethod<
   DeleteAutomatedReasoningPolicyTestCaseResponse,
   DeleteAutomatedReasoningPolicyTestCaseError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAutomatedReasoningPolicyTestCaseRequest,
   output: DeleteAutomatedReasoningPolicyTestCaseResponse,
   errors: [
@@ -9569,7 +9569,7 @@ export const exportAutomatedReasoningPolicyVersion: API.OperationMethod<
   ExportAutomatedReasoningPolicyVersionResponse,
   ExportAutomatedReasoningPolicyVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExportAutomatedReasoningPolicyVersionRequest,
   output: ExportAutomatedReasoningPolicyVersionResponse,
   errors: [
@@ -9595,7 +9595,7 @@ export const getAutomatedReasoningPolicyAnnotations: API.OperationMethod<
   GetAutomatedReasoningPolicyAnnotationsResponse,
   GetAutomatedReasoningPolicyAnnotationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAutomatedReasoningPolicyAnnotationsRequest,
   output: GetAutomatedReasoningPolicyAnnotationsResponse,
   errors: [
@@ -9621,7 +9621,7 @@ export const getAutomatedReasoningPolicyBuildWorkflow: API.OperationMethod<
   GetAutomatedReasoningPolicyBuildWorkflowResponse,
   GetAutomatedReasoningPolicyBuildWorkflowError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAutomatedReasoningPolicyBuildWorkflowRequest,
   output: GetAutomatedReasoningPolicyBuildWorkflowResponse,
   errors: [
@@ -9647,7 +9647,7 @@ export const getAutomatedReasoningPolicyBuildWorkflowResultAssets: API.Operation
   GetAutomatedReasoningPolicyBuildWorkflowResultAssetsResponse,
   GetAutomatedReasoningPolicyBuildWorkflowResultAssetsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAutomatedReasoningPolicyBuildWorkflowResultAssetsRequest,
   output: GetAutomatedReasoningPolicyBuildWorkflowResultAssetsResponse,
   errors: [
@@ -9673,7 +9673,7 @@ export const getAutomatedReasoningPolicyNextScenario: API.OperationMethod<
   GetAutomatedReasoningPolicyNextScenarioResponse,
   GetAutomatedReasoningPolicyNextScenarioError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAutomatedReasoningPolicyNextScenarioRequest,
   output: GetAutomatedReasoningPolicyNextScenarioResponse,
   errors: [
@@ -9699,7 +9699,7 @@ export const getAutomatedReasoningPolicyTestCase: API.OperationMethod<
   GetAutomatedReasoningPolicyTestCaseResponse,
   GetAutomatedReasoningPolicyTestCaseError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAutomatedReasoningPolicyTestCaseRequest,
   output: GetAutomatedReasoningPolicyTestCaseResponse,
   errors: [
@@ -9725,7 +9725,7 @@ export const getAutomatedReasoningPolicyTestResult: API.OperationMethod<
   GetAutomatedReasoningPolicyTestResultResponse,
   GetAutomatedReasoningPolicyTestResultError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAutomatedReasoningPolicyTestResultRequest,
   output: GetAutomatedReasoningPolicyTestResultResponse,
   errors: [
@@ -9766,7 +9766,7 @@ export const listAutomatedReasoningPolicyBuildWorkflows: API.OperationMethod<
     ListAutomatedReasoningPolicyBuildWorkflowsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAutomatedReasoningPolicyBuildWorkflowsRequest,
   output: ListAutomatedReasoningPolicyBuildWorkflowsResponse,
   errors: [
@@ -9813,7 +9813,7 @@ export const listAutomatedReasoningPolicyTestCases: API.OperationMethod<
     ListAutomatedReasoningPolicyTestCasesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAutomatedReasoningPolicyTestCasesRequest,
   output: ListAutomatedReasoningPolicyTestCasesResponse,
   errors: [
@@ -9861,7 +9861,7 @@ export const listAutomatedReasoningPolicyTestResults: API.OperationMethod<
     ListAutomatedReasoningPolicyTestResultsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAutomatedReasoningPolicyTestResultsRequest,
   output: ListAutomatedReasoningPolicyTestResultsResponse,
   errors: [
@@ -9897,7 +9897,7 @@ export const startAutomatedReasoningPolicyBuildWorkflow: API.OperationMethod<
   StartAutomatedReasoningPolicyBuildWorkflowResponse,
   StartAutomatedReasoningPolicyBuildWorkflowError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartAutomatedReasoningPolicyBuildWorkflowRequest,
   output: StartAutomatedReasoningPolicyBuildWorkflowResponse,
   errors: [
@@ -9927,7 +9927,7 @@ export const startAutomatedReasoningPolicyTestWorkflow: API.OperationMethod<
   StartAutomatedReasoningPolicyTestWorkflowResponse,
   StartAutomatedReasoningPolicyTestWorkflowError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartAutomatedReasoningPolicyTestWorkflowRequest,
   output: StartAutomatedReasoningPolicyTestWorkflowResponse,
   errors: [
@@ -9955,7 +9955,7 @@ export const updateAutomatedReasoningPolicyAnnotations: API.OperationMethod<
   UpdateAutomatedReasoningPolicyAnnotationsResponse,
   UpdateAutomatedReasoningPolicyAnnotationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAutomatedReasoningPolicyAnnotationsRequest,
   output: UpdateAutomatedReasoningPolicyAnnotationsResponse,
   errors: [
@@ -9984,7 +9984,7 @@ export const updateAutomatedReasoningPolicyTestCase: API.OperationMethod<
   UpdateAutomatedReasoningPolicyTestCaseResponse,
   UpdateAutomatedReasoningPolicyTestCaseError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAutomatedReasoningPolicyTestCaseRequest,
   output: UpdateAutomatedReasoningPolicyTestCaseResponse,
   errors: [
@@ -10014,7 +10014,7 @@ export const createMarketplaceModelEndpoint: API.OperationMethod<
   CreateMarketplaceModelEndpointResponse,
   CreateMarketplaceModelEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMarketplaceModelEndpointRequest,
   output: CreateMarketplaceModelEndpointResponse,
   errors: [
@@ -10042,7 +10042,7 @@ export const deleteMarketplaceModelEndpoint: API.OperationMethod<
   DeleteMarketplaceModelEndpointResponse,
   DeleteMarketplaceModelEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMarketplaceModelEndpointRequest,
   output: DeleteMarketplaceModelEndpointResponse,
   errors: [
@@ -10069,7 +10069,7 @@ export const deregisterMarketplaceModelEndpoint: API.OperationMethod<
   DeregisterMarketplaceModelEndpointResponse,
   DeregisterMarketplaceModelEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeregisterMarketplaceModelEndpointRequest,
   output: DeregisterMarketplaceModelEndpointResponse,
   errors: [
@@ -10096,7 +10096,7 @@ export const getMarketplaceModelEndpoint: API.OperationMethod<
   GetMarketplaceModelEndpointResponse,
   GetMarketplaceModelEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMarketplaceModelEndpointRequest,
   output: GetMarketplaceModelEndpointResponse,
   errors: [
@@ -10137,7 +10137,7 @@ export const listMarketplaceModelEndpoints: API.OperationMethod<
     ListMarketplaceModelEndpointsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMarketplaceModelEndpointsRequest,
   output: ListMarketplaceModelEndpointsResponse,
   errors: [
@@ -10170,7 +10170,7 @@ export const registerMarketplaceModelEndpoint: API.OperationMethod<
   RegisterMarketplaceModelEndpointResponse,
   RegisterMarketplaceModelEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterMarketplaceModelEndpointRequest,
   output: RegisterMarketplaceModelEndpointResponse,
   errors: [
@@ -10199,7 +10199,7 @@ export const updateMarketplaceModelEndpoint: API.OperationMethod<
   UpdateMarketplaceModelEndpointResponse,
   UpdateMarketplaceModelEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateMarketplaceModelEndpointRequest,
   output: UpdateMarketplaceModelEndpointResponse,
   errors: [
@@ -10239,7 +10239,7 @@ export const createCustomModelDeployment: API.OperationMethod<
   CreateCustomModelDeploymentResponse,
   CreateCustomModelDeploymentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCustomModelDeploymentRequest,
   output: CreateCustomModelDeploymentResponse,
   errors: [
@@ -10276,7 +10276,7 @@ export const deleteCustomModelDeployment: API.OperationMethod<
   DeleteCustomModelDeploymentResponse,
   DeleteCustomModelDeploymentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCustomModelDeploymentRequest,
   output: DeleteCustomModelDeploymentResponse,
   errors: [
@@ -10311,7 +10311,7 @@ export const getCustomModelDeployment: API.OperationMethod<
   GetCustomModelDeploymentResponse,
   GetCustomModelDeploymentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCustomModelDeploymentRequest,
   output: GetCustomModelDeploymentResponse,
   errors: [
@@ -10361,7 +10361,7 @@ export const listCustomModelDeployments: API.OperationMethod<
     ListCustomModelDeploymentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomModelDeploymentsRequest,
   output: ListCustomModelDeploymentsResponse,
   errors: [
@@ -10392,7 +10392,7 @@ export const updateCustomModelDeployment: API.OperationMethod<
   UpdateCustomModelDeploymentResponse,
   UpdateCustomModelDeploymentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCustomModelDeploymentRequest,
   output: UpdateCustomModelDeploymentResponse,
   errors: [
@@ -10439,7 +10439,7 @@ export const createCustomModel: API.OperationMethod<
   CreateCustomModelResponse,
   CreateCustomModelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCustomModelRequest,
   output: CreateCustomModelResponse,
   errors: [
@@ -10469,7 +10469,7 @@ export const deleteCustomModel: API.OperationMethod<
   DeleteCustomModelResponse,
   DeleteCustomModelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCustomModelRequest,
   output: DeleteCustomModelResponse,
   errors: [
@@ -10496,7 +10496,7 @@ export const getCustomModel: API.OperationMethod<
   GetCustomModelResponse,
   GetCustomModelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCustomModelRequest,
   output: GetCustomModelResponse,
   errors: [
@@ -10538,7 +10538,7 @@ export const listCustomModels: API.OperationMethod<
     ListCustomModelsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomModelsRequest,
   output: ListCustomModelsResponse,
   errors: [
@@ -10569,7 +10569,7 @@ export const deleteEnforcedGuardrailConfiguration: API.OperationMethod<
   DeleteEnforcedGuardrailConfigurationResponse,
   DeleteEnforcedGuardrailConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEnforcedGuardrailConfigurationRequest,
   output: DeleteEnforcedGuardrailConfigurationResponse,
   errors: [
@@ -10610,7 +10610,7 @@ export const listEnforcedGuardrailsConfiguration: API.OperationMethod<
     ListEnforcedGuardrailsConfigurationError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnforcedGuardrailsConfigurationRequest,
   output: ListEnforcedGuardrailsConfigurationResponse,
   errors: [
@@ -10642,7 +10642,7 @@ export const putEnforcedGuardrailConfiguration: API.OperationMethod<
   PutEnforcedGuardrailConfigurationResponse,
   PutEnforcedGuardrailConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutEnforcedGuardrailConfigurationRequest,
   output: PutEnforcedGuardrailConfigurationResponse,
   errors: [
@@ -10670,7 +10670,7 @@ export const batchDeleteEvaluationJob: API.OperationMethod<
   BatchDeleteEvaluationJobResponse,
   BatchDeleteEvaluationJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchDeleteEvaluationJobRequest,
   output: BatchDeleteEvaluationJobResponse,
   errors: [
@@ -10699,7 +10699,7 @@ export const createEvaluationJob: API.OperationMethod<
   CreateEvaluationJobResponse,
   CreateEvaluationJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEvaluationJobRequest,
   output: CreateEvaluationJobResponse,
   errors: [
@@ -10727,7 +10727,7 @@ export const getEvaluationJob: API.OperationMethod<
   GetEvaluationJobResponse,
   GetEvaluationJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEvaluationJobRequest,
   output: GetEvaluationJobResponse,
   errors: [
@@ -10767,7 +10767,7 @@ export const listEvaluationJobs: API.OperationMethod<
     ListEvaluationJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEvaluationJobsRequest,
   output: ListEvaluationJobsResponse,
   errors: [
@@ -10799,7 +10799,7 @@ export const stopEvaluationJob: API.OperationMethod<
   StopEvaluationJobResponse,
   StopEvaluationJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopEvaluationJobRequest,
   output: StopEvaluationJobResponse,
   errors: [
@@ -10843,7 +10843,7 @@ export const createGuardrail: API.OperationMethod<
   CreateGuardrailResponse,
   CreateGuardrailError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateGuardrailRequest,
   output: CreateGuardrailResponse,
   errors: [
@@ -10872,7 +10872,7 @@ export const getGuardrail: API.OperationMethod<
   GetGuardrailResponse,
   GetGuardrailError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetGuardrailRequest,
   output: GetGuardrailResponse,
   errors: [
@@ -10920,7 +10920,7 @@ export const updateGuardrail: API.OperationMethod<
   UpdateGuardrailResponse,
   UpdateGuardrailError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateGuardrailRequest,
   output: UpdateGuardrailResponse,
   errors: [
@@ -10954,7 +10954,7 @@ export const deleteGuardrail: API.OperationMethod<
   DeleteGuardrailResponse,
   DeleteGuardrailError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteGuardrailRequest,
   output: DeleteGuardrailResponse,
   errors: [
@@ -10999,7 +10999,7 @@ export const listGuardrails: API.OperationMethod<
     ListGuardrailsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGuardrailsRequest,
   output: ListGuardrailsResponse,
   errors: [
@@ -11033,7 +11033,7 @@ export const createGuardrailVersion: API.OperationMethod<
   CreateGuardrailVersionResponse,
   CreateGuardrailVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateGuardrailVersionRequest,
   output: CreateGuardrailVersionResponse,
   errors: [
@@ -11064,7 +11064,7 @@ export const createInferenceProfile: API.OperationMethod<
   CreateInferenceProfileResponse,
   CreateInferenceProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateInferenceProfileRequest,
   output: CreateInferenceProfileResponse,
   errors: [
@@ -11093,7 +11093,7 @@ export const getInferenceProfile: API.OperationMethod<
   GetInferenceProfileResponse,
   GetInferenceProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInferenceProfileRequest,
   output: GetInferenceProfileResponse,
   errors: [
@@ -11120,7 +11120,7 @@ export const deleteInferenceProfile: API.OperationMethod<
   DeleteInferenceProfileResponse,
   DeleteInferenceProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteInferenceProfileRequest,
   output: DeleteInferenceProfileResponse,
   errors: [
@@ -11161,7 +11161,7 @@ export const listInferenceProfiles: API.OperationMethod<
     ListInferenceProfilesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInferenceProfilesRequest,
   output: ListInferenceProfilesResponse,
   errors: [
@@ -11190,7 +11190,7 @@ export const deleteModelInvocationLoggingConfiguration: API.OperationMethod<
   DeleteModelInvocationLoggingConfigurationResponse,
   DeleteModelInvocationLoggingConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteModelInvocationLoggingConfigurationRequest,
   output: DeleteModelInvocationLoggingConfigurationResponse,
   errors: [AccessDeniedException, InternalServerException, ThrottlingException],
@@ -11208,7 +11208,7 @@ export const getModelInvocationLoggingConfiguration: API.OperationMethod<
   GetModelInvocationLoggingConfigurationResponse,
   GetModelInvocationLoggingConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetModelInvocationLoggingConfigurationRequest,
   output: GetModelInvocationLoggingConfigurationResponse,
   errors: [AccessDeniedException, InternalServerException, ThrottlingException],
@@ -11227,7 +11227,7 @@ export const putModelInvocationLoggingConfiguration: API.OperationMethod<
   PutModelInvocationLoggingConfigurationResponse,
   PutModelInvocationLoggingConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutModelInvocationLoggingConfigurationRequest,
   output: PutModelInvocationLoggingConfigurationResponse,
   errors: [
@@ -11251,7 +11251,7 @@ export const createModelCopyJob: API.OperationMethod<
   CreateModelCopyJobResponse,
   CreateModelCopyJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateModelCopyJobRequest,
   output: CreateModelCopyJobResponse,
   errors: [
@@ -11276,7 +11276,7 @@ export const getModelCopyJob: API.OperationMethod<
   GetModelCopyJobResponse,
   GetModelCopyJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetModelCopyJobRequest,
   output: GetModelCopyJobResponse,
   errors: [
@@ -11317,7 +11317,7 @@ export const listModelCopyJobs: API.OperationMethod<
     ListModelCopyJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListModelCopyJobsRequest,
   output: ListModelCopyJobsResponse,
   errors: [
@@ -11352,7 +11352,7 @@ export const createModelImportJob: API.OperationMethod<
   CreateModelImportJobResponse,
   CreateModelImportJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateModelImportJobRequest,
   output: CreateModelImportJobResponse,
   errors: [
@@ -11382,7 +11382,7 @@ export const deleteImportedModel: API.OperationMethod<
   DeleteImportedModelResponse,
   DeleteImportedModelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteImportedModelRequest,
   output: DeleteImportedModelResponse,
   errors: [
@@ -11409,7 +11409,7 @@ export const getImportedModel: API.OperationMethod<
   GetImportedModelResponse,
   GetImportedModelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetImportedModelRequest,
   output: GetImportedModelResponse,
   errors: [
@@ -11435,7 +11435,7 @@ export const getModelImportJob: API.OperationMethod<
   GetModelImportJobResponse,
   GetModelImportJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetModelImportJobRequest,
   output: GetModelImportJobResponse,
   errors: [
@@ -11475,7 +11475,7 @@ export const listImportedModels: API.OperationMethod<
     ListImportedModelsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImportedModelsRequest,
   output: ListImportedModelsResponse,
   errors: [
@@ -11520,7 +11520,7 @@ export const listModelImportJobs: API.OperationMethod<
     ListModelImportJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListModelImportJobsRequest,
   output: ListModelImportJobsResponse,
   errors: [
@@ -11555,7 +11555,7 @@ export const createModelInvocationJob: API.OperationMethod<
   CreateModelInvocationJobResponse,
   CreateModelInvocationJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateModelInvocationJobRequest,
   output: CreateModelInvocationJobResponse,
   errors: [
@@ -11583,7 +11583,7 @@ export const getModelInvocationJob: API.OperationMethod<
   GetModelInvocationJobResponse,
   GetModelInvocationJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetModelInvocationJobRequest,
   output: GetModelInvocationJobResponse,
   errors: [
@@ -11623,7 +11623,7 @@ export const listModelInvocationJobs: API.OperationMethod<
     ListModelInvocationJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListModelInvocationJobsRequest,
   output: ListModelInvocationJobsResponse,
   errors: [
@@ -11655,7 +11655,7 @@ export const stopModelInvocationJob: API.OperationMethod<
   StopModelInvocationJobResponse,
   StopModelInvocationJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopModelInvocationJobRequest,
   output: StopModelInvocationJobResponse,
   errors: [
@@ -11682,7 +11682,7 @@ export const getFoundationModel: API.OperationMethod<
   GetFoundationModelResponse,
   GetFoundationModelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFoundationModelRequest,
   output: GetFoundationModelResponse,
   errors: [
@@ -11707,7 +11707,7 @@ export const listFoundationModels: API.OperationMethod<
   ListFoundationModelsResponse,
   ListFoundationModelsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListFoundationModelsRequest,
   output: ListFoundationModelsResponse,
   errors: [
@@ -11735,7 +11735,7 @@ export const createPromptRouter: API.OperationMethod<
   CreatePromptRouterResponse,
   CreatePromptRouterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePromptRouterRequest,
   output: CreatePromptRouterResponse,
   errors: [
@@ -11764,7 +11764,7 @@ export const getPromptRouter: API.OperationMethod<
   GetPromptRouterResponse,
   GetPromptRouterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPromptRouterRequest,
   output: GetPromptRouterResponse,
   errors: [
@@ -11790,7 +11790,7 @@ export const deletePromptRouter: API.OperationMethod<
   DeletePromptRouterResponse,
   DeletePromptRouterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePromptRouterRequest,
   output: DeletePromptRouterResponse,
   errors: [
@@ -11830,7 +11830,7 @@ export const listPromptRouters: API.OperationMethod<
     ListPromptRoutersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPromptRoutersRequest,
   output: ListPromptRoutersResponse,
   errors: [
@@ -11863,7 +11863,7 @@ export const createProvisionedModelThroughput: API.OperationMethod<
   CreateProvisionedModelThroughputResponse,
   CreateProvisionedModelThroughputError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProvisionedModelThroughputRequest,
   output: CreateProvisionedModelThroughputResponse,
   errors: [
@@ -11892,7 +11892,7 @@ export const deleteProvisionedModelThroughput: API.OperationMethod<
   DeleteProvisionedModelThroughputResponse,
   DeleteProvisionedModelThroughputError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProvisionedModelThroughputRequest,
   output: DeleteProvisionedModelThroughputResponse,
   errors: [
@@ -11919,7 +11919,7 @@ export const getProvisionedModelThroughput: API.OperationMethod<
   GetProvisionedModelThroughputResponse,
   GetProvisionedModelThroughputError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProvisionedModelThroughputRequest,
   output: GetProvisionedModelThroughputResponse,
   errors: [
@@ -11959,7 +11959,7 @@ export const listProvisionedModelThroughputs: API.OperationMethod<
     ListProvisionedModelThroughputsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProvisionedModelThroughputsRequest,
   output: ListProvisionedModelThroughputsResponse,
   errors: [
@@ -11990,7 +11990,7 @@ export const updateProvisionedModelThroughput: API.OperationMethod<
   UpdateProvisionedModelThroughputResponse,
   UpdateProvisionedModelThroughputError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateProvisionedModelThroughputRequest,
   output: UpdateProvisionedModelThroughputResponse,
   errors: [
@@ -12016,7 +12016,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyResponse,
   DeleteResourcePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourcePolicyRequest,
   output: DeleteResourcePolicyResponse,
   errors: [
@@ -12042,7 +12042,7 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyResponse,
   GetResourcePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResourcePolicyRequest,
   output: GetResourcePolicyResponse,
   errors: [
@@ -12068,7 +12068,7 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyResponse,
   PutResourcePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutResourcePolicyRequest,
   output: PutResourcePolicyResponse,
   errors: [
@@ -12095,7 +12095,7 @@ export const createFoundationModelAgreement: API.OperationMethod<
   CreateFoundationModelAgreementResponse,
   CreateFoundationModelAgreementError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFoundationModelAgreementRequest,
   output: CreateFoundationModelAgreementResponse,
   errors: [
@@ -12123,7 +12123,7 @@ export const deleteFoundationModelAgreement: API.OperationMethod<
   DeleteFoundationModelAgreementResponse,
   DeleteFoundationModelAgreementError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFoundationModelAgreementRequest,
   output: DeleteFoundationModelAgreementResponse,
   errors: [
@@ -12150,7 +12150,7 @@ export const getFoundationModelAvailability: API.OperationMethod<
   GetFoundationModelAvailabilityResponse,
   GetFoundationModelAvailabilityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFoundationModelAvailabilityRequest,
   output: GetFoundationModelAvailabilityResponse,
   errors: [
@@ -12176,7 +12176,7 @@ export const listFoundationModelAgreementOffers: API.OperationMethod<
   ListFoundationModelAgreementOffersResponse,
   ListFoundationModelAgreementOffersError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListFoundationModelAgreementOffersRequest,
   output: ListFoundationModelAgreementOffersResponse,
   errors: [
@@ -12204,7 +12204,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -12231,7 +12231,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -12258,7 +12258,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -12295,7 +12295,7 @@ export const createModelCustomizationJob: API.OperationMethod<
   CreateModelCustomizationJobResponse,
   CreateModelCustomizationJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateModelCustomizationJobRequest,
   output: CreateModelCustomizationJobResponse,
   errors: [
@@ -12324,7 +12324,7 @@ export const getModelCustomizationJob: API.OperationMethod<
   GetModelCustomizationJobResponse,
   GetModelCustomizationJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetModelCustomizationJobRequest,
   output: GetModelCustomizationJobResponse,
   errors: [
@@ -12366,7 +12366,7 @@ export const listModelCustomizationJobs: API.OperationMethod<
     ListModelCustomizationJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListModelCustomizationJobsRequest,
   output: ListModelCustomizationJobsResponse,
   errors: [
@@ -12398,7 +12398,7 @@ export const stopModelCustomizationJob: API.OperationMethod<
   StopModelCustomizationJobResponse,
   StopModelCustomizationJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopModelCustomizationJobRequest,
   output: StopModelCustomizationJobResponse,
   errors: [

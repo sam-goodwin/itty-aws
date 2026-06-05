@@ -3507,7 +3507,7 @@ export const batchDeleteBuilds: API.OperationMethod<
   BatchDeleteBuildsOutput,
   BatchDeleteBuildsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchDeleteBuildsInput,
   output: BatchDeleteBuildsOutput,
   errors: [InvalidInputException],
@@ -3521,7 +3521,7 @@ export const batchGetBuildBatches: API.OperationMethod<
   BatchGetBuildBatchesOutput,
   BatchGetBuildBatchesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetBuildBatchesInput,
   output: BatchGetBuildBatchesOutput,
   errors: [InvalidInputException],
@@ -3535,7 +3535,7 @@ export const batchGetBuilds: API.OperationMethod<
   BatchGetBuildsOutput,
   BatchGetBuildsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetBuildsInput,
   output: BatchGetBuildsOutput,
   errors: [InvalidInputException],
@@ -3551,7 +3551,7 @@ export const batchGetCommandExecutions: API.OperationMethod<
   BatchGetCommandExecutionsOutput,
   BatchGetCommandExecutionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetCommandExecutionsInput,
   output: BatchGetCommandExecutionsOutput,
   errors: [InvalidInputException],
@@ -3565,7 +3565,7 @@ export const batchGetFleets: API.OperationMethod<
   BatchGetFleetsOutput,
   BatchGetFleetsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetFleetsInput,
   output: BatchGetFleetsOutput,
   errors: [InvalidInputException],
@@ -3579,7 +3579,7 @@ export const batchGetProjects: API.OperationMethod<
   BatchGetProjectsOutput,
   BatchGetProjectsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetProjectsInput,
   output: BatchGetProjectsOutput,
   errors: [InvalidInputException],
@@ -3593,7 +3593,7 @@ export const batchGetReportGroups: API.OperationMethod<
   BatchGetReportGroupsOutput,
   BatchGetReportGroupsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetReportGroupsInput,
   output: BatchGetReportGroupsOutput,
   errors: [InvalidInputException],
@@ -3607,7 +3607,7 @@ export const batchGetReports: API.OperationMethod<
   BatchGetReportsOutput,
   BatchGetReportsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetReportsInput,
   output: BatchGetReportsOutput,
   errors: [InvalidInputException],
@@ -3621,7 +3621,7 @@ export const batchGetSandboxes: API.OperationMethod<
   BatchGetSandboxesOutput,
   BatchGetSandboxesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetSandboxesInput,
   output: BatchGetSandboxesOutput,
   errors: [InvalidInputException],
@@ -3639,7 +3639,7 @@ export const createFleet: API.OperationMethod<
   CreateFleetOutput,
   CreateFleetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFleetInput,
   output: CreateFleetOutput,
   errors: [
@@ -3661,7 +3661,7 @@ export const createProject: API.OperationMethod<
   CreateProjectOutput,
   CreateProjectError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectInput,
   output: CreateProjectOutput,
   errors: [
@@ -3683,7 +3683,7 @@ export const createReportGroup: API.OperationMethod<
   CreateReportGroupOutput,
   CreateReportGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateReportGroupInput,
   output: CreateReportGroupOutput,
   errors: [
@@ -3715,7 +3715,7 @@ export const createWebhook: API.OperationMethod<
   CreateWebhookOutput,
   CreateWebhookError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateWebhookInput,
   output: CreateWebhookOutput,
   errors: [
@@ -3734,7 +3734,7 @@ export const deleteBuildBatch: API.OperationMethod<
   DeleteBuildBatchOutput,
   DeleteBuildBatchError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteBuildBatchInput,
   output: DeleteBuildBatchOutput,
   errors: [InvalidInputException],
@@ -3748,7 +3748,7 @@ export const deleteFleet: API.OperationMethod<
   DeleteFleetOutput,
   DeleteFleetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFleetInput,
   output: DeleteFleetOutput,
   errors: [InvalidInputException],
@@ -3762,7 +3762,7 @@ export const deleteProject: API.OperationMethod<
   DeleteProjectOutput,
   DeleteProjectError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectInput,
   output: DeleteProjectOutput,
   errors: [InvalidInputException],
@@ -3776,7 +3776,7 @@ export const deleteReport: API.OperationMethod<
   DeleteReportOutput,
   DeleteReportError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteReportInput,
   output: DeleteReportOutput,
   errors: [InvalidInputException],
@@ -3790,7 +3790,7 @@ export const deleteReportGroup: API.OperationMethod<
   DeleteReportGroupOutput,
   DeleteReportGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteReportGroupInput,
   output: DeleteReportGroupOutput,
   errors: [InvalidInputException],
@@ -3804,7 +3804,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyOutput,
   DeleteResourcePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourcePolicyInput,
   output: DeleteResourcePolicyOutput,
   errors: [InvalidInputException],
@@ -3821,7 +3821,7 @@ export const deleteSourceCredentials: API.OperationMethod<
   DeleteSourceCredentialsOutput,
   DeleteSourceCredentialsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSourceCredentialsInput,
   output: DeleteSourceCredentialsOutput,
   errors: [InvalidInputException, ResourceNotFoundException],
@@ -3841,7 +3841,7 @@ export const deleteWebhook: API.OperationMethod<
   DeleteWebhookOutput,
   DeleteWebhookError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteWebhookInput,
   output: DeleteWebhookOutput,
   errors: [
@@ -3874,7 +3874,7 @@ export const describeCodeCoverages: API.OperationMethod<
     DescribeCodeCoveragesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCodeCoveragesInput,
   output: DescribeCodeCoveragesOutput,
   errors: [InvalidInputException],
@@ -3912,7 +3912,7 @@ export const describeTestCases: API.OperationMethod<
     DescribeTestCasesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTestCasesInput,
   output: DescribeTestCasesOutput,
   errors: [InvalidInputException, ResourceNotFoundException],
@@ -3935,7 +3935,7 @@ export const getReportGroupTrend: API.OperationMethod<
   GetReportGroupTrendOutput,
   GetReportGroupTrendError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetReportGroupTrendInput,
   output: GetReportGroupTrendOutput,
   errors: [InvalidInputException, ResourceNotFoundException],
@@ -3952,7 +3952,7 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyOutput,
   GetResourcePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResourcePolicyInput,
   output: GetResourcePolicyOutput,
   errors: [InvalidInputException, ResourceNotFoundException],
@@ -3971,7 +3971,7 @@ export const importSourceCredentials: API.OperationMethod<
   ImportSourceCredentialsOutput,
   ImportSourceCredentialsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportSourceCredentialsInput,
   output: ImportSourceCredentialsOutput,
   errors: [
@@ -3992,7 +3992,7 @@ export const invalidateProjectCache: API.OperationMethod<
   InvalidateProjectCacheOutput,
   InvalidateProjectCacheError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InvalidateProjectCacheInput,
   output: InvalidateProjectCacheOutput,
   errors: [InvalidInputException, ResourceNotFoundException],
@@ -4021,7 +4021,7 @@ export const listBuildBatches: API.OperationMethod<
     ListBuildBatchesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBuildBatchesInput,
   output: ListBuildBatchesOutput,
   errors: [InvalidInputException],
@@ -4059,7 +4059,7 @@ export const listBuildBatchesForProject: API.OperationMethod<
     ListBuildBatchesForProjectError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBuildBatchesForProjectInput,
   output: ListBuildBatchesForProjectOutput,
   errors: [InvalidInputException, ResourceNotFoundException],
@@ -4094,7 +4094,7 @@ export const listBuilds: API.OperationMethod<
     ListBuildsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBuildsInput,
   output: ListBuildsOutput,
   errors: [InvalidInputException],
@@ -4132,7 +4132,7 @@ export const listBuildsForProject: API.OperationMethod<
     ListBuildsForProjectError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBuildsForProjectInput,
   output: ListBuildsForProjectOutput,
   errors: [InvalidInputException, ResourceNotFoundException],
@@ -4169,7 +4169,7 @@ export const listCommandExecutionsForSandbox: API.OperationMethod<
     ListCommandExecutionsForSandboxError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCommandExecutionsForSandboxInput,
   output: ListCommandExecutionsForSandboxOutput,
   errors: [InvalidInputException, ResourceNotFoundException],
@@ -4189,7 +4189,7 @@ export const listCuratedEnvironmentImages: API.OperationMethod<
   ListCuratedEnvironmentImagesOutput,
   ListCuratedEnvironmentImagesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListCuratedEnvironmentImagesInput,
   output: ListCuratedEnvironmentImagesOutput,
   errors: [],
@@ -4218,7 +4218,7 @@ export const listFleets: API.OperationMethod<
     ListFleetsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFleetsInput,
   output: ListFleetsOutput,
   errors: [InvalidInputException],
@@ -4253,7 +4253,7 @@ export const listProjects: API.OperationMethod<
     ListProjectsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInput,
   output: ListProjectsOutput,
   errors: [InvalidInputException],
@@ -4287,7 +4287,7 @@ export const listReportGroups: API.OperationMethod<
     ListReportGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReportGroupsInput,
   output: ListReportGroupsOutput,
   errors: [InvalidInputException],
@@ -4322,7 +4322,7 @@ export const listReports: API.OperationMethod<
     ListReportsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReportsInput,
   output: ListReportsOutput,
   errors: [InvalidInputException],
@@ -4360,7 +4360,7 @@ export const listReportsForReportGroup: API.OperationMethod<
     ListReportsForReportGroupError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReportsForReportGroupInput,
   output: ListReportsForReportGroupOutput,
   errors: [InvalidInputException, ResourceNotFoundException],
@@ -4395,7 +4395,7 @@ export const listSandboxes: API.OperationMethod<
     ListSandboxesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSandboxesInput,
   output: ListSandboxesOutput,
   errors: [InvalidInputException],
@@ -4433,7 +4433,7 @@ export const listSandboxesForProject: API.OperationMethod<
     ListSandboxesForProjectError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSandboxesForProjectInput,
   output: ListSandboxesForProjectOutput,
   errors: [InvalidInputException, ResourceNotFoundException],
@@ -4468,7 +4468,7 @@ export const listSharedProjects: API.OperationMethod<
     ListSharedProjectsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSharedProjectsInput,
   output: ListSharedProjectsOutput,
   errors: [InvalidInputException],
@@ -4503,7 +4503,7 @@ export const listSharedReportGroups: API.OperationMethod<
     ListSharedReportGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSharedReportGroupsInput,
   output: ListSharedReportGroupsOutput,
   errors: [InvalidInputException],
@@ -4523,7 +4523,7 @@ export const listSourceCredentials: API.OperationMethod<
   ListSourceCredentialsOutput,
   ListSourceCredentialsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListSourceCredentialsInput,
   output: ListSourceCredentialsOutput,
   errors: [InvalidInputException],
@@ -4541,7 +4541,7 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyOutput,
   PutResourcePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutResourcePolicyInput,
   output: PutResourcePolicyOutput,
   errors: [InvalidInputException, ResourceNotFoundException],
@@ -4559,7 +4559,7 @@ export const retryBuild: API.OperationMethod<
   RetryBuildOutput,
   RetryBuildError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RetryBuildInput,
   output: RetryBuildOutput,
   errors: [
@@ -4580,7 +4580,7 @@ export const retryBuildBatch: API.OperationMethod<
   RetryBuildBatchOutput,
   RetryBuildBatchError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RetryBuildBatchInput,
   output: RetryBuildBatchOutput,
   errors: [InvalidInputException, ResourceNotFoundException],
@@ -4602,7 +4602,7 @@ export const startBuild: API.OperationMethod<
   StartBuildOutput,
   StartBuildError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartBuildInput,
   output: StartBuildOutput,
   errors: [
@@ -4623,7 +4623,7 @@ export const startBuildBatch: API.OperationMethod<
   StartBuildBatchOutput,
   StartBuildBatchError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartBuildBatchInput,
   output: StartBuildBatchOutput,
   errors: [InvalidInputException, ResourceNotFoundException],
@@ -4640,7 +4640,7 @@ export const startCommandExecution: API.OperationMethod<
   StartCommandExecutionOutput,
   StartCommandExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartCommandExecutionInput,
   output: StartCommandExecutionOutput,
   errors: [InvalidInputException, ResourceNotFoundException],
@@ -4658,7 +4658,7 @@ export const startSandbox: API.OperationMethod<
   StartSandboxOutput,
   StartSandboxError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartSandboxInput,
   output: StartSandboxOutput,
   errors: [
@@ -4679,7 +4679,7 @@ export const startSandboxConnection: API.OperationMethod<
   StartSandboxConnectionOutput,
   StartSandboxConnectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartSandboxConnectionInput,
   output: StartSandboxConnectionOutput,
   errors: [InvalidInputException, ResourceNotFoundException],
@@ -4696,7 +4696,7 @@ export const stopBuild: API.OperationMethod<
   StopBuildOutput,
   StopBuildError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopBuildInput,
   output: StopBuildOutput,
   errors: [InvalidInputException, ResourceNotFoundException],
@@ -4713,7 +4713,7 @@ export const stopBuildBatch: API.OperationMethod<
   StopBuildBatchOutput,
   StopBuildBatchError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopBuildBatchInput,
   output: StopBuildBatchOutput,
   errors: [InvalidInputException, ResourceNotFoundException],
@@ -4730,7 +4730,7 @@ export const stopSandbox: API.OperationMethod<
   StopSandboxOutput,
   StopSandboxError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopSandboxInput,
   output: StopSandboxOutput,
   errors: [InvalidInputException, ResourceNotFoundException],
@@ -4748,7 +4748,7 @@ export const updateFleet: API.OperationMethod<
   UpdateFleetOutput,
   UpdateFleetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateFleetInput,
   output: UpdateFleetOutput,
   errors: [
@@ -4769,7 +4769,7 @@ export const updateProject: API.OperationMethod<
   UpdateProjectOutput,
   UpdateProjectError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateProjectInput,
   output: UpdateProjectOutput,
   errors: [InvalidInputException, ResourceNotFoundException],
@@ -4812,7 +4812,7 @@ export const updateProjectVisibility: API.OperationMethod<
   UpdateProjectVisibilityOutput,
   UpdateProjectVisibilityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateProjectVisibilityInput,
   output: UpdateProjectVisibilityOutput,
   errors: [InvalidInputException, ResourceNotFoundException],
@@ -4829,7 +4829,7 @@ export const updateReportGroup: API.OperationMethod<
   UpdateReportGroupOutput,
   UpdateReportGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateReportGroupInput,
   output: UpdateReportGroupOutput,
   errors: [InvalidInputException, ResourceNotFoundException],
@@ -4849,7 +4849,7 @@ export const updateWebhook: API.OperationMethod<
   UpdateWebhookOutput,
   UpdateWebhookError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateWebhookInput,
   output: UpdateWebhookOutput,
   errors: [

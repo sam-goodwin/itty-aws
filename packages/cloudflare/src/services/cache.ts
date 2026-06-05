@@ -31,7 +31,7 @@ export interface PurgeCacheRequest {
   files?: string[] | { headers?: Record<string, unknown>; url?: string }[];
 }
 
-export const PurgeCacheRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PurgeCacheRequest = /*@__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   tags: Schema.optional(Schema.Array(Schema.String)),
   hosts: Schema.optional(Schema.Array(Schema.String)),
@@ -65,7 +65,7 @@ export interface PurgeCacheResponse {
   id: string;
 }
 
-export const PurgeCacheResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PurgeCacheResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
 }).pipe(
   T.ResponsePath("result"),
@@ -78,7 +78,7 @@ export const purgeCache: API.OperationMethod<
   PurgeCacheResponse,
   PurgeCacheError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PurgeCacheRequest,
   output: PurgeCacheResponse,
   errors: [],
@@ -93,11 +93,9 @@ export interface GetCacheReserveRequest {
   zoneId: string;
 }
 
-export const GetCacheReserveRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  },
-).pipe(
+export const GetCacheReserveRequest = /*@__PURE__*/ Schema.Struct({
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+}).pipe(
   T.Http({ method: "GET", path: "/zones/{zone_id}/cache/cache_reserve" }),
 ) as unknown as Schema.Schema<GetCacheReserveRequest>;
 
@@ -112,24 +110,23 @@ export interface GetCacheReserveResponse {
   modifiedOn?: string | null;
 }
 
-export const GetCacheReserveResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.Literal("cache_reserve"),
-    editable: Schema.Boolean,
-    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        editable: "editable",
-        value: "value",
-        modifiedOn: "modified_on",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<GetCacheReserveResponse>;
+export const GetCacheReserveResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.Literal("cache_reserve"),
+  editable: Schema.Boolean,
+  value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+  modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      editable: "editable",
+      value: "value",
+      modifiedOn: "modified_on",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<GetCacheReserveResponse>;
 
 export type GetCacheReserveError = DefaultErrors;
 
@@ -138,7 +135,7 @@ export const getCacheReserve: API.OperationMethod<
   GetCacheReserveResponse,
   GetCacheReserveError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCacheReserveRequest,
   output: GetCacheReserveResponse,
   errors: [],
@@ -151,13 +148,12 @@ export interface PatchCacheReserveRequest {
   value: "on" | "off" | (string & {});
 }
 
-export const PatchCacheReserveRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-  }).pipe(
-    T.Http({ method: "PATCH", path: "/zones/{zone_id}/cache/cache_reserve" }),
-  ) as unknown as Schema.Schema<PatchCacheReserveRequest>;
+export const PatchCacheReserveRequest = /*@__PURE__*/ Schema.Struct({
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+}).pipe(
+  T.Http({ method: "PATCH", path: "/zones/{zone_id}/cache/cache_reserve" }),
+) as unknown as Schema.Schema<PatchCacheReserveRequest>;
 
 export interface PatchCacheReserveResponse {
   /** The identifier of the caching setting. */
@@ -170,24 +166,23 @@ export interface PatchCacheReserveResponse {
   modifiedOn?: string | null;
 }
 
-export const PatchCacheReserveResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.Literal("cache_reserve"),
-    editable: Schema.Boolean,
-    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        editable: "editable",
-        value: "value",
-        modifiedOn: "modified_on",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<PatchCacheReserveResponse>;
+export const PatchCacheReserveResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.Literal("cache_reserve"),
+  editable: Schema.Boolean,
+  value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+  modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      editable: "editable",
+      value: "value",
+      modifiedOn: "modified_on",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<PatchCacheReserveResponse>;
 
 export type PatchCacheReserveError = DefaultErrors;
 
@@ -196,7 +191,7 @@ export const patchCacheReserve: API.OperationMethod<
   PatchCacheReserveResponse,
   PatchCacheReserveError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchCacheReserveRequest,
   output: PatchCacheReserveResponse,
   errors: [],
@@ -207,15 +202,11 @@ export interface StatusCacheReserveRequest {
   zoneId: string;
 }
 
-export const StatusCacheReserveRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/zones/{zone_id}/cache/cache_reserve_clear",
-    }),
-  ) as unknown as Schema.Schema<StatusCacheReserveRequest>;
+export const StatusCacheReserveRequest = /*@__PURE__*/ Schema.Struct({
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+}).pipe(
+  T.Http({ method: "GET", path: "/zones/{zone_id}/cache/cache_reserve_clear" }),
+) as unknown as Schema.Schema<StatusCacheReserveRequest>;
 
 export interface StatusCacheReserveResponse {
   /** ID of the zone setting. */
@@ -230,29 +221,28 @@ export interface StatusCacheReserveResponse {
   modifiedOn?: string | null;
 }
 
-export const StatusCacheReserveResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.Literal("cache_reserve_clear"),
-    startTs: Schema.String,
-    state: Schema.Union([
-      Schema.Literals(["In-progress", "Completed"]),
-      Schema.String,
-    ]),
-    endTs: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        startTs: "start_ts",
-        state: "state",
-        endTs: "end_ts",
-        modifiedOn: "modified_on",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<StatusCacheReserveResponse>;
+export const StatusCacheReserveResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.Literal("cache_reserve_clear"),
+  startTs: Schema.String,
+  state: Schema.Union([
+    Schema.Literals(["In-progress", "Completed"]),
+    Schema.String,
+  ]),
+  endTs: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      startTs: "start_ts",
+      state: "state",
+      endTs: "end_ts",
+      modifiedOn: "modified_on",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<StatusCacheReserveResponse>;
 
 export type StatusCacheReserveError = DefaultErrors;
 
@@ -261,7 +251,7 @@ export const statusCacheReserve: API.OperationMethod<
   StatusCacheReserveResponse,
   StatusCacheReserveError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StatusCacheReserveRequest,
   output: StatusCacheReserveResponse,
   errors: [],
@@ -274,16 +264,15 @@ export interface ClearCacheReserveRequest {
   body: unknown;
 }
 
-export const ClearCacheReserveRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    body: Schema.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/zones/{zone_id}/cache/cache_reserve_clear",
-    }),
-  ) as unknown as Schema.Schema<ClearCacheReserveRequest>;
+export const ClearCacheReserveRequest = /*@__PURE__*/ Schema.Struct({
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  body: Schema.Unknown.pipe(T.HttpBody()),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/zones/{zone_id}/cache/cache_reserve_clear",
+  }),
+) as unknown as Schema.Schema<ClearCacheReserveRequest>;
 
 export interface ClearCacheReserveResponse {
   /** ID of the zone setting. */
@@ -298,29 +287,28 @@ export interface ClearCacheReserveResponse {
   modifiedOn?: string | null;
 }
 
-export const ClearCacheReserveResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.Literal("cache_reserve_clear"),
-    startTs: Schema.String,
-    state: Schema.Union([
-      Schema.Literals(["In-progress", "Completed"]),
-      Schema.String,
-    ]),
-    endTs: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        startTs: "start_ts",
-        state: "state",
-        endTs: "end_ts",
-        modifiedOn: "modified_on",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<ClearCacheReserveResponse>;
+export const ClearCacheReserveResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.Literal("cache_reserve_clear"),
+  startTs: Schema.String,
+  state: Schema.Union([
+    Schema.Literals(["In-progress", "Completed"]),
+    Schema.String,
+  ]),
+  endTs: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      startTs: "start_ts",
+      state: "state",
+      endTs: "end_ts",
+      modifiedOn: "modified_on",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<ClearCacheReserveResponse>;
 
 export type ClearCacheReserveError = DefaultErrors;
 
@@ -329,7 +317,7 @@ export const clearCacheReserve: API.OperationMethod<
   ClearCacheReserveResponse,
   ClearCacheReserveError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ClearCacheReserveRequest,
   output: ClearCacheReserveResponse,
   errors: [],
@@ -345,16 +333,15 @@ export interface GetOriginCloudRegionRequest {
   zoneId: string;
 }
 
-export const GetOriginCloudRegionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    originIP: Schema.String.pipe(T.HttpPath("originIP")),
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/zones/{zone_id}/cache/origin_cloud_regions/{originIP}",
-    }),
-  ) as unknown as Schema.Schema<GetOriginCloudRegionRequest>;
+export const GetOriginCloudRegionRequest = /*@__PURE__*/ Schema.Struct({
+  originIP: Schema.String.pipe(T.HttpPath("originIP")),
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/zones/{zone_id}/cache/origin_cloud_regions/{originIP}",
+  }),
+) as unknown as Schema.Schema<GetOriginCloudRegionRequest>;
 
 export interface GetOriginCloudRegionResponse {
   id: "origin_public_cloud_region";
@@ -371,39 +358,38 @@ export interface GetOriginCloudRegionResponse {
   modifiedOn?: string | null;
 }
 
-export const GetOriginCloudRegionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.Literal("origin_public_cloud_region"),
-    editable: Schema.Boolean,
-    value: Schema.Struct({
-      originIp: Schema.String,
-      region: Schema.String,
-      vendor: Schema.Union([
-        Schema.Literals(["aws", "azure", "gcp", "oci"]),
-        Schema.String,
-      ]),
-      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        originIp: "origin-ip",
-        region: "region",
-        vendor: "vendor",
-        modifiedOn: "modified_on",
-      }),
-    ),
+export const GetOriginCloudRegionResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.Literal("origin_public_cloud_region"),
+  editable: Schema.Boolean,
+  value: Schema.Struct({
+    originIp: Schema.String,
+    region: Schema.String,
+    vendor: Schema.Union([
+      Schema.Literals(["aws", "azure", "gcp", "oci"]),
+      Schema.String,
+    ]),
     modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        editable: "editable",
-        value: "value",
-        modifiedOn: "modified_on",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<GetOriginCloudRegionResponse>;
+  }).pipe(
+    Schema.encodeKeys({
+      originIp: "origin-ip",
+      region: "region",
+      vendor: "vendor",
+      modifiedOn: "modified_on",
+    }),
+  ),
+  modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      editable: "editable",
+      value: "value",
+      modifiedOn: "modified_on",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<GetOriginCloudRegionResponse>;
 
 export type GetOriginCloudRegionError = DefaultErrors;
 
@@ -412,7 +398,7 @@ export const getOriginCloudRegion: API.OperationMethod<
   GetOriginCloudRegionResponse,
   GetOriginCloudRegionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOriginCloudRegionRequest,
   output: GetOriginCloudRegionResponse,
   errors: [],
@@ -423,15 +409,14 @@ export interface ListOriginCloudRegionsRequest {
   zoneId: string;
 }
 
-export const ListOriginCloudRegionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/zones/{zone_id}/cache/origin_cloud_regions",
-    }),
-  ) as unknown as Schema.Schema<ListOriginCloudRegionsRequest>;
+export const ListOriginCloudRegionsRequest = /*@__PURE__*/ Schema.Struct({
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/zones/{zone_id}/cache/origin_cloud_regions",
+  }),
+) as unknown as Schema.Schema<ListOriginCloudRegionsRequest>;
 
 export interface ListOriginCloudRegionsResponse {
   id: "origin_public_cloud_region";
@@ -447,41 +432,40 @@ export interface ListOriginCloudRegionsResponse {
   modifiedOn?: string | null;
 }
 
-export const ListOriginCloudRegionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.Literal("origin_public_cloud_region"),
-    editable: Schema.Boolean,
-    value: Schema.Array(
-      Schema.Struct({
-        originIp: Schema.String,
-        region: Schema.String,
-        vendor: Schema.Union([
-          Schema.Literals(["aws", "azure", "gcp", "oci"]),
-          Schema.String,
-        ]),
-        modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          originIp: "origin-ip",
-          region: "region",
-          vendor: "vendor",
-          modifiedOn: "modified_on",
-        }),
-      ),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(
+export const ListOriginCloudRegionsResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.Literal("origin_public_cloud_region"),
+  editable: Schema.Boolean,
+  value: Schema.Array(
+    Schema.Struct({
+      originIp: Schema.String,
+      region: Schema.String,
+      vendor: Schema.Union([
+        Schema.Literals(["aws", "azure", "gcp", "oci"]),
+        Schema.String,
+      ]),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
       Schema.encodeKeys({
-        id: "id",
-        editable: "editable",
-        value: "value",
+        originIp: "origin-ip",
+        region: "region",
+        vendor: "vendor",
         modifiedOn: "modified_on",
       }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<ListOriginCloudRegionsResponse>;
+    ),
+  ),
+  modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      editable: "editable",
+      value: "value",
+      modifiedOn: "modified_on",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<ListOriginCloudRegionsResponse>;
 
 export type ListOriginCloudRegionsError = DefaultErrors;
 
@@ -490,7 +474,7 @@ export const listOriginCloudRegions: API.OperationMethod<
   ListOriginCloudRegionsResponse,
   ListOriginCloudRegionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListOriginCloudRegionsRequest,
   output: ListOriginCloudRegionsResponse,
   errors: [],
@@ -507,21 +491,20 @@ export interface CreateOriginCloudRegionRequest {
   vendor: "aws" | "azure" | "gcp" | "oci" | (string & {});
 }
 
-export const CreateOriginCloudRegionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    ip: Schema.String,
-    region: Schema.String,
-    vendor: Schema.Union([
-      Schema.Literals(["aws", "azure", "gcp", "oci"]),
-      Schema.String,
-    ]),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/zones/{zone_id}/cache/origin_cloud_regions",
-    }),
-  ) as unknown as Schema.Schema<CreateOriginCloudRegionRequest>;
+export const CreateOriginCloudRegionRequest = /*@__PURE__*/ Schema.Struct({
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  ip: Schema.String,
+  region: Schema.String,
+  vendor: Schema.Union([
+    Schema.Literals(["aws", "azure", "gcp", "oci"]),
+    Schema.String,
+  ]),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/zones/{zone_id}/cache/origin_cloud_regions",
+  }),
+) as unknown as Schema.Schema<CreateOriginCloudRegionRequest>;
 
 export interface CreateOriginCloudRegionResponse {
   id: "origin_public_cloud_region";
@@ -538,39 +521,38 @@ export interface CreateOriginCloudRegionResponse {
   modifiedOn?: string | null;
 }
 
-export const CreateOriginCloudRegionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.Literal("origin_public_cloud_region"),
-    editable: Schema.Boolean,
-    value: Schema.Struct({
-      originIp: Schema.String,
-      region: Schema.String,
-      vendor: Schema.Union([
-        Schema.Literals(["aws", "azure", "gcp", "oci"]),
-        Schema.String,
-      ]),
-      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        originIp: "origin-ip",
-        region: "region",
-        vendor: "vendor",
-        modifiedOn: "modified_on",
-      }),
-    ),
+export const CreateOriginCloudRegionResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.Literal("origin_public_cloud_region"),
+  editable: Schema.Boolean,
+  value: Schema.Struct({
+    originIp: Schema.String,
+    region: Schema.String,
+    vendor: Schema.Union([
+      Schema.Literals(["aws", "azure", "gcp", "oci"]),
+      Schema.String,
+    ]),
     modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        editable: "editable",
-        value: "value",
-        modifiedOn: "modified_on",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<CreateOriginCloudRegionResponse>;
+  }).pipe(
+    Schema.encodeKeys({
+      originIp: "origin-ip",
+      region: "region",
+      vendor: "vendor",
+      modifiedOn: "modified_on",
+    }),
+  ),
+  modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      editable: "editable",
+      value: "value",
+      modifiedOn: "modified_on",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<CreateOriginCloudRegionResponse>;
 
 export type CreateOriginCloudRegionError = DefaultErrors;
 
@@ -579,7 +561,7 @@ export const createOriginCloudRegion: API.OperationMethod<
   CreateOriginCloudRegionResponse,
   CreateOriginCloudRegionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOriginCloudRegionRequest,
   output: CreateOriginCloudRegionResponse,
   errors: [],
@@ -596,21 +578,20 @@ export interface PatchOriginCloudRegionRequest {
   vendor: "aws" | "azure" | "gcp" | "oci" | (string & {});
 }
 
-export const PatchOriginCloudRegionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    ip: Schema.String,
-    region: Schema.String,
-    vendor: Schema.Union([
-      Schema.Literals(["aws", "azure", "gcp", "oci"]),
-      Schema.String,
-    ]),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/zones/{zone_id}/cache/origin_cloud_regions",
-    }),
-  ) as unknown as Schema.Schema<PatchOriginCloudRegionRequest>;
+export const PatchOriginCloudRegionRequest = /*@__PURE__*/ Schema.Struct({
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  ip: Schema.String,
+  region: Schema.String,
+  vendor: Schema.Union([
+    Schema.Literals(["aws", "azure", "gcp", "oci"]),
+    Schema.String,
+  ]),
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/zones/{zone_id}/cache/origin_cloud_regions",
+  }),
+) as unknown as Schema.Schema<PatchOriginCloudRegionRequest>;
 
 export interface PatchOriginCloudRegionResponse {
   id: "origin_public_cloud_region";
@@ -626,41 +607,40 @@ export interface PatchOriginCloudRegionResponse {
   modifiedOn?: string | null;
 }
 
-export const PatchOriginCloudRegionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.Literal("origin_public_cloud_region"),
-    editable: Schema.Boolean,
-    value: Schema.Array(
-      Schema.Struct({
-        originIp: Schema.String,
-        region: Schema.String,
-        vendor: Schema.Union([
-          Schema.Literals(["aws", "azure", "gcp", "oci"]),
-          Schema.String,
-        ]),
-        modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          originIp: "origin-ip",
-          region: "region",
-          vendor: "vendor",
-          modifiedOn: "modified_on",
-        }),
-      ),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(
+export const PatchOriginCloudRegionResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.Literal("origin_public_cloud_region"),
+  editable: Schema.Boolean,
+  value: Schema.Array(
+    Schema.Struct({
+      originIp: Schema.String,
+      region: Schema.String,
+      vendor: Schema.Union([
+        Schema.Literals(["aws", "azure", "gcp", "oci"]),
+        Schema.String,
+      ]),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
       Schema.encodeKeys({
-        id: "id",
-        editable: "editable",
-        value: "value",
+        originIp: "origin-ip",
+        region: "region",
+        vendor: "vendor",
         modifiedOn: "modified_on",
       }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<PatchOriginCloudRegionResponse>;
+    ),
+  ),
+  modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      editable: "editable",
+      value: "value",
+      modifiedOn: "modified_on",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<PatchOriginCloudRegionResponse>;
 
 export type PatchOriginCloudRegionError = DefaultErrors;
 
@@ -669,7 +649,7 @@ export const patchOriginCloudRegion: API.OperationMethod<
   PatchOriginCloudRegionResponse,
   PatchOriginCloudRegionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchOriginCloudRegionRequest,
   output: PatchOriginCloudRegionResponse,
   errors: [],
@@ -681,16 +661,15 @@ export interface DeleteOriginCloudRegionRequest {
   zoneId: string;
 }
 
-export const DeleteOriginCloudRegionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    originIP: Schema.String.pipe(T.HttpPath("originIP")),
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/zones/{zone_id}/cache/origin_cloud_regions/{originIP}",
-    }),
-  ) as unknown as Schema.Schema<DeleteOriginCloudRegionRequest>;
+export const DeleteOriginCloudRegionRequest = /*@__PURE__*/ Schema.Struct({
+  originIP: Schema.String.pipe(T.HttpPath("originIP")),
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/zones/{zone_id}/cache/origin_cloud_regions/{originIP}",
+  }),
+) as unknown as Schema.Schema<DeleteOriginCloudRegionRequest>;
 
 export interface DeleteOriginCloudRegionResponse {
   id: "origin_public_cloud_region";
@@ -707,39 +686,38 @@ export interface DeleteOriginCloudRegionResponse {
   modifiedOn?: string | null;
 }
 
-export const DeleteOriginCloudRegionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.Literal("origin_public_cloud_region"),
-    editable: Schema.Boolean,
-    value: Schema.Struct({
-      originIp: Schema.String,
-      region: Schema.String,
-      vendor: Schema.Union([
-        Schema.Literals(["aws", "azure", "gcp", "oci"]),
-        Schema.String,
-      ]),
-      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        originIp: "origin-ip",
-        region: "region",
-        vendor: "vendor",
-        modifiedOn: "modified_on",
-      }),
-    ),
+export const DeleteOriginCloudRegionResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.Literal("origin_public_cloud_region"),
+  editable: Schema.Boolean,
+  value: Schema.Struct({
+    originIp: Schema.String,
+    region: Schema.String,
+    vendor: Schema.Union([
+      Schema.Literals(["aws", "azure", "gcp", "oci"]),
+      Schema.String,
+    ]),
     modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        editable: "editable",
-        value: "value",
-        modifiedOn: "modified_on",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<DeleteOriginCloudRegionResponse>;
+  }).pipe(
+    Schema.encodeKeys({
+      originIp: "origin-ip",
+      region: "region",
+      vendor: "vendor",
+      modifiedOn: "modified_on",
+    }),
+  ),
+  modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      editable: "editable",
+      value: "value",
+      modifiedOn: "modified_on",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<DeleteOriginCloudRegionResponse>;
 
 export type DeleteOriginCloudRegionError = DefaultErrors;
 
@@ -748,7 +726,7 @@ export const deleteOriginCloudRegion: API.OperationMethod<
   DeleteOriginCloudRegionResponse,
   DeleteOriginCloudRegionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOriginCloudRegionRequest,
   output: DeleteOriginCloudRegionResponse,
   errors: [],
@@ -765,25 +743,24 @@ export interface BulkPatchOriginCloudRegionsRequest {
   }[];
 }
 
-export const BulkPatchOriginCloudRegionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    body: Schema.Array(
-      Schema.Struct({
-        ip: Schema.String,
-        region: Schema.String,
-        vendor: Schema.Union([
-          Schema.Literals(["aws", "azure", "gcp", "oci"]),
-          Schema.String,
-        ]),
-      }),
-    ).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/zones/{zone_id}/cache/origin_cloud_regions/batch",
+export const BulkPatchOriginCloudRegionsRequest = /*@__PURE__*/ Schema.Struct({
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  body: Schema.Array(
+    Schema.Struct({
+      ip: Schema.String,
+      region: Schema.String,
+      vendor: Schema.Union([
+        Schema.Literals(["aws", "azure", "gcp", "oci"]),
+        Schema.String,
+      ]),
     }),
-  ) as unknown as Schema.Schema<BulkPatchOriginCloudRegionsRequest>;
+  ).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/zones/{zone_id}/cache/origin_cloud_regions/batch",
+  }),
+) as unknown as Schema.Schema<BulkPatchOriginCloudRegionsRequest>;
 
 export interface BulkPatchOriginCloudRegionsResponse {
   id: "origin_public_cloud_region";
@@ -807,55 +784,54 @@ export interface BulkPatchOriginCloudRegionsResponse {
   modifiedOn?: string | null;
 }
 
-export const BulkPatchOriginCloudRegionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.Literal("origin_public_cloud_region"),
-    editable: Schema.Boolean,
-    value: Schema.Struct({
-      failed: Schema.Array(
-        Schema.Struct({
-          originIp: Schema.String,
-          error: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          region: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          vendor: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }).pipe(
-          Schema.encodeKeys({
-            originIp: "origin-ip",
-            error: "error",
-            region: "region",
-            vendor: "vendor",
-          }),
-        ),
+export const BulkPatchOriginCloudRegionsResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.Literal("origin_public_cloud_region"),
+  editable: Schema.Boolean,
+  value: Schema.Struct({
+    failed: Schema.Array(
+      Schema.Struct({
+        originIp: Schema.String,
+        error: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        region: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        vendor: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      }).pipe(
+        Schema.encodeKeys({
+          originIp: "origin-ip",
+          error: "error",
+          region: "region",
+          vendor: "vendor",
+        }),
       ),
-      succeeded: Schema.Array(
-        Schema.Struct({
-          originIp: Schema.String,
-          error: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          region: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          vendor: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }).pipe(
-          Schema.encodeKeys({
-            originIp: "origin-ip",
-            error: "error",
-            region: "region",
-            vendor: "vendor",
-          }),
-        ),
+    ),
+    succeeded: Schema.Array(
+      Schema.Struct({
+        originIp: Schema.String,
+        error: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        region: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        vendor: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      }).pipe(
+        Schema.encodeKeys({
+          originIp: "origin-ip",
+          error: "error",
+          region: "region",
+          vendor: "vendor",
+        }),
       ),
+    ),
+  }),
+  modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      editable: "editable",
+      value: "value",
+      modifiedOn: "modified_on",
     }),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        editable: "editable",
-        value: "value",
-        modifiedOn: "modified_on",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<BulkPatchOriginCloudRegionsResponse>;
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<BulkPatchOriginCloudRegionsResponse>;
 
 export type BulkPatchOriginCloudRegionsError = DefaultErrors;
 
@@ -864,7 +840,7 @@ export const bulkPatchOriginCloudRegions: API.OperationMethod<
   BulkPatchOriginCloudRegionsResponse,
   BulkPatchOriginCloudRegionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BulkPatchOriginCloudRegionsRequest,
   output: BulkPatchOriginCloudRegionsResponse,
   errors: [],
@@ -875,15 +851,14 @@ export interface BulkDeleteOriginCloudRegionsRequest {
   zoneId: string;
 }
 
-export const BulkDeleteOriginCloudRegionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/zones/{zone_id}/cache/origin_cloud_regions/batch",
-    }),
-  ) as unknown as Schema.Schema<BulkDeleteOriginCloudRegionsRequest>;
+export const BulkDeleteOriginCloudRegionsRequest = /*@__PURE__*/ Schema.Struct({
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/zones/{zone_id}/cache/origin_cloud_regions/batch",
+  }),
+) as unknown as Schema.Schema<BulkDeleteOriginCloudRegionsRequest>;
 
 export interface BulkDeleteOriginCloudRegionsResponse {
   id: "origin_public_cloud_region";
@@ -907,8 +882,8 @@ export interface BulkDeleteOriginCloudRegionsResponse {
   modifiedOn?: string | null;
 }
 
-export const BulkDeleteOriginCloudRegionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BulkDeleteOriginCloudRegionsResponse = /*@__PURE__*/ Schema.Struct(
+  {
     id: Schema.Literal("origin_public_cloud_region"),
     editable: Schema.Boolean,
     value: Schema.Struct({
@@ -944,18 +919,19 @@ export const BulkDeleteOriginCloudRegionsResponse =
       ),
     }),
     modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        editable: "editable",
-        value: "value",
-        modifiedOn: "modified_on",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<BulkDeleteOriginCloudRegionsResponse>;
+  },
+)
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      editable: "editable",
+      value: "value",
+      modifiedOn: "modified_on",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<BulkDeleteOriginCloudRegionsResponse>;
 
 export type BulkDeleteOriginCloudRegionsError = DefaultErrors;
 
@@ -964,7 +940,7 @@ export const bulkDeleteOriginCloudRegions: API.OperationMethod<
   BulkDeleteOriginCloudRegionsResponse,
   BulkDeleteOriginCloudRegionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BulkDeleteOriginCloudRegionsRequest,
   output: BulkDeleteOriginCloudRegionsResponse,
   errors: [],
@@ -979,15 +955,14 @@ export interface GetRegionalTieredCacheRequest {
   zoneId: string;
 }
 
-export const GetRegionalTieredCacheRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/zones/{zone_id}/cache/regional_tiered_cache",
-    }),
-  ) as unknown as Schema.Schema<GetRegionalTieredCacheRequest>;
+export const GetRegionalTieredCacheRequest = /*@__PURE__*/ Schema.Struct({
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/zones/{zone_id}/cache/regional_tiered_cache",
+  }),
+) as unknown as Schema.Schema<GetRegionalTieredCacheRequest>;
 
 export interface GetRegionalTieredCacheResponse {
   /** The identifier of the caching setting. */
@@ -1000,24 +975,23 @@ export interface GetRegionalTieredCacheResponse {
   modifiedOn?: string | null;
 }
 
-export const GetRegionalTieredCacheResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.Literal("tc_regional"),
-    editable: Schema.Boolean,
-    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        editable: "editable",
-        value: "value",
-        modifiedOn: "modified_on",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<GetRegionalTieredCacheResponse>;
+export const GetRegionalTieredCacheResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.Literal("tc_regional"),
+  editable: Schema.Boolean,
+  value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+  modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      editable: "editable",
+      value: "value",
+      modifiedOn: "modified_on",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<GetRegionalTieredCacheResponse>;
 
 export type GetRegionalTieredCacheError = DefaultErrors;
 
@@ -1026,7 +1000,7 @@ export const getRegionalTieredCache: API.OperationMethod<
   GetRegionalTieredCacheResponse,
   GetRegionalTieredCacheError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRegionalTieredCacheRequest,
   output: GetRegionalTieredCacheResponse,
   errors: [],
@@ -1039,16 +1013,15 @@ export interface PatchRegionalTieredCacheRequest {
   value: "on" | "off" | (string & {});
 }
 
-export const PatchRegionalTieredCacheRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/zones/{zone_id}/cache/regional_tiered_cache",
-    }),
-  ) as unknown as Schema.Schema<PatchRegionalTieredCacheRequest>;
+export const PatchRegionalTieredCacheRequest = /*@__PURE__*/ Schema.Struct({
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/zones/{zone_id}/cache/regional_tiered_cache",
+  }),
+) as unknown as Schema.Schema<PatchRegionalTieredCacheRequest>;
 
 export interface PatchRegionalTieredCacheResponse {
   /** The identifier of the caching setting. */
@@ -1061,24 +1034,23 @@ export interface PatchRegionalTieredCacheResponse {
   modifiedOn?: string | null;
 }
 
-export const PatchRegionalTieredCacheResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.Literal("tc_regional"),
-    editable: Schema.Boolean,
-    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        editable: "editable",
-        value: "value",
-        modifiedOn: "modified_on",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<PatchRegionalTieredCacheResponse>;
+export const PatchRegionalTieredCacheResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.Literal("tc_regional"),
+  editable: Schema.Boolean,
+  value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+  modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      editable: "editable",
+      value: "value",
+      modifiedOn: "modified_on",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<PatchRegionalTieredCacheResponse>;
 
 export type PatchRegionalTieredCacheError = DefaultErrors;
 
@@ -1087,7 +1059,7 @@ export const patchRegionalTieredCache: API.OperationMethod<
   PatchRegionalTieredCacheResponse,
   PatchRegionalTieredCacheError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchRegionalTieredCacheRequest,
   output: PatchRegionalTieredCacheResponse,
   errors: [],
@@ -1103,7 +1075,7 @@ export interface SupportedRegionsOriginCloudRegionRequest {
 }
 
 export const SupportedRegionsOriginCloudRegionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   }).pipe(
     T.Http({
@@ -1120,7 +1092,7 @@ export interface SupportedRegionsOriginCloudRegionResponse {
 }
 
 export const SupportedRegionsOriginCloudRegionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     obtainedCodes: Schema.Boolean,
     vendors: Schema.Record(Schema.String, Schema.Unknown),
   })
@@ -1141,7 +1113,7 @@ export const supportedRegionsOriginCloudRegion: API.OperationMethod<
   SupportedRegionsOriginCloudRegionResponse,
   SupportedRegionsOriginCloudRegionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SupportedRegionsOriginCloudRegionRequest,
   output: SupportedRegionsOriginCloudRegionResponse,
   errors: [],
@@ -1156,15 +1128,14 @@ export interface GetSmartTieredCacheRequest {
   zoneId: string;
 }
 
-export const GetSmartTieredCacheRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/zones/{zone_id}/cache/tiered_cache_smart_topology_enable",
-    }),
-  ) as unknown as Schema.Schema<GetSmartTieredCacheRequest>;
+export const GetSmartTieredCacheRequest = /*@__PURE__*/ Schema.Struct({
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/zones/{zone_id}/cache/tiered_cache_smart_topology_enable",
+  }),
+) as unknown as Schema.Schema<GetSmartTieredCacheRequest>;
 
 export interface GetSmartTieredCacheResponse {
   /** The identifier of the caching setting. */
@@ -1177,24 +1148,23 @@ export interface GetSmartTieredCacheResponse {
   modifiedOn?: string | null;
 }
 
-export const GetSmartTieredCacheResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.Literal("tiered_cache_smart_topology_enable"),
-    editable: Schema.Boolean,
-    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        editable: "editable",
-        value: "value",
-        modifiedOn: "modified_on",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<GetSmartTieredCacheResponse>;
+export const GetSmartTieredCacheResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.Literal("tiered_cache_smart_topology_enable"),
+  editable: Schema.Boolean,
+  value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+  modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      editable: "editable",
+      value: "value",
+      modifiedOn: "modified_on",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<GetSmartTieredCacheResponse>;
 
 export type GetSmartTieredCacheError = DefaultErrors;
 
@@ -1203,7 +1173,7 @@ export const getSmartTieredCache: API.OperationMethod<
   GetSmartTieredCacheResponse,
   GetSmartTieredCacheError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSmartTieredCacheRequest,
   output: GetSmartTieredCacheResponse,
   errors: [],
@@ -1216,16 +1186,15 @@ export interface PatchSmartTieredCacheRequest {
   value: "on" | "off" | (string & {});
 }
 
-export const PatchSmartTieredCacheRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/zones/{zone_id}/cache/tiered_cache_smart_topology_enable",
-    }),
-  ) as unknown as Schema.Schema<PatchSmartTieredCacheRequest>;
+export const PatchSmartTieredCacheRequest = /*@__PURE__*/ Schema.Struct({
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/zones/{zone_id}/cache/tiered_cache_smart_topology_enable",
+  }),
+) as unknown as Schema.Schema<PatchSmartTieredCacheRequest>;
 
 export interface PatchSmartTieredCacheResponse {
   /** The identifier of the caching setting. */
@@ -1238,24 +1207,23 @@ export interface PatchSmartTieredCacheResponse {
   modifiedOn?: string | null;
 }
 
-export const PatchSmartTieredCacheResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.Literal("tiered_cache_smart_topology_enable"),
-    editable: Schema.Boolean,
-    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        editable: "editable",
-        value: "value",
-        modifiedOn: "modified_on",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<PatchSmartTieredCacheResponse>;
+export const PatchSmartTieredCacheResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.Literal("tiered_cache_smart_topology_enable"),
+  editable: Schema.Boolean,
+  value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+  modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      editable: "editable",
+      value: "value",
+      modifiedOn: "modified_on",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<PatchSmartTieredCacheResponse>;
 
 export type PatchSmartTieredCacheError = DefaultErrors;
 
@@ -1264,7 +1232,7 @@ export const patchSmartTieredCache: API.OperationMethod<
   PatchSmartTieredCacheResponse,
   PatchSmartTieredCacheError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchSmartTieredCacheRequest,
   output: PatchSmartTieredCacheResponse,
   errors: [],
@@ -1275,15 +1243,14 @@ export interface DeleteSmartTieredCacheRequest {
   zoneId: string;
 }
 
-export const DeleteSmartTieredCacheRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/zones/{zone_id}/cache/tiered_cache_smart_topology_enable",
-    }),
-  ) as unknown as Schema.Schema<DeleteSmartTieredCacheRequest>;
+export const DeleteSmartTieredCacheRequest = /*@__PURE__*/ Schema.Struct({
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/zones/{zone_id}/cache/tiered_cache_smart_topology_enable",
+  }),
+) as unknown as Schema.Schema<DeleteSmartTieredCacheRequest>;
 
 export interface DeleteSmartTieredCacheResponse {
   /** The identifier of the caching setting. */
@@ -1294,22 +1261,21 @@ export interface DeleteSmartTieredCacheResponse {
   modifiedOn?: string | null;
 }
 
-export const DeleteSmartTieredCacheResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.Literal("tiered_cache_smart_topology_enable"),
-    editable: Schema.Boolean,
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        editable: "editable",
-        modifiedOn: "modified_on",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<DeleteSmartTieredCacheResponse>;
+export const DeleteSmartTieredCacheResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.Literal("tiered_cache_smart_topology_enable"),
+  editable: Schema.Boolean,
+  modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      editable: "editable",
+      modifiedOn: "modified_on",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<DeleteSmartTieredCacheResponse>;
 
 export type DeleteSmartTieredCacheError = DefaultErrors;
 
@@ -1318,7 +1284,7 @@ export const deleteSmartTieredCache: API.OperationMethod<
   DeleteSmartTieredCacheResponse,
   DeleteSmartTieredCacheError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSmartTieredCacheRequest,
   output: DeleteSmartTieredCacheResponse,
   errors: [],
@@ -1333,7 +1299,7 @@ export interface GetVariantRequest {
   zoneId: string;
 }
 
-export const GetVariantRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetVariantRequest = /*@__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
 }).pipe(
   T.Http({ method: "GET", path: "/zones/{zone_id}/cache/variants" }),
@@ -1362,7 +1328,7 @@ export interface GetVariantResponse {
   modifiedOn?: string | null;
 }
 
-export const GetVariantResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetVariantResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.Literal("variants"),
   editable: Schema.Boolean,
   value: Schema.Struct({
@@ -1421,7 +1387,7 @@ export const getVariant: API.OperationMethod<
   GetVariantResponse,
   GetVariantError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetVariantRequest,
   output: GetVariantResponse,
   errors: [],
@@ -1446,7 +1412,7 @@ export interface PatchVariantRequest {
   };
 }
 
-export const PatchVariantRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PatchVariantRequest = /*@__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   value: Schema.Struct({
     avif: Schema.optional(Schema.Array(Schema.String)),
@@ -1488,7 +1454,7 @@ export interface PatchVariantResponse {
   modifiedOn?: string | null;
 }
 
-export const PatchVariantResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PatchVariantResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.Literal("variants"),
   editable: Schema.Boolean,
   value: Schema.Struct({
@@ -1547,7 +1513,7 @@ export const patchVariant: API.OperationMethod<
   PatchVariantResponse,
   PatchVariantError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchVariantRequest,
   output: PatchVariantResponse,
   errors: [],
@@ -1558,7 +1524,7 @@ export interface DeleteVariantRequest {
   zoneId: string;
 }
 
-export const DeleteVariantRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteVariantRequest = /*@__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
 }).pipe(
   T.Http({ method: "DELETE", path: "/zones/{zone_id}/cache/variants" }),
@@ -1573,7 +1539,7 @@ export interface DeleteVariantResponse {
   modifiedOn?: string | null;
 }
 
-export const DeleteVariantResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteVariantResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.Literal("variants"),
   editable: Schema.Boolean,
   modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1596,7 +1562,7 @@ export const deleteVariant: API.OperationMethod<
   DeleteVariantResponse,
   DeleteVariantError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteVariantRequest,
   output: DeleteVariantResponse,
   errors: [],

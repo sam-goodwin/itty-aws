@@ -2722,7 +2722,7 @@ export const associatePhoneNumberWithUser: API.OperationMethod<
   AssociatePhoneNumberWithUserResponse,
   AssociatePhoneNumberWithUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociatePhoneNumberWithUserRequest,
   output: AssociatePhoneNumberWithUserResponse,
   errors: [
@@ -2753,7 +2753,7 @@ export const associateSigninDelegateGroupsWithAccount: API.OperationMethod<
   AssociateSigninDelegateGroupsWithAccountResponse,
   AssociateSigninDelegateGroupsWithAccountError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateSigninDelegateGroupsWithAccountRequest,
   output: AssociateSigninDelegateGroupsWithAccountResponse,
   errors: [
@@ -2784,7 +2784,7 @@ export const batchCreateRoomMembership: API.OperationMethod<
   BatchCreateRoomMembershipResponse,
   BatchCreateRoomMembershipError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchCreateRoomMembershipRequest,
   output: BatchCreateRoomMembershipResponse,
   errors: [
@@ -2818,7 +2818,7 @@ export const batchDeletePhoneNumber: API.OperationMethod<
   BatchDeletePhoneNumberResponse,
   BatchDeletePhoneNumberError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchDeletePhoneNumberRequest,
   output: BatchDeletePhoneNumberResponse,
   errors: [
@@ -2862,7 +2862,7 @@ export const batchSuspendUser: API.OperationMethod<
   BatchSuspendUserResponse,
   BatchSuspendUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchSuspendUserRequest,
   output: BatchSuspendUserResponse,
   errors: [
@@ -2901,7 +2901,7 @@ export const batchUnsuspendUser: API.OperationMethod<
   BatchUnsuspendUserResponse,
   BatchUnsuspendUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchUnsuspendUserRequest,
   output: BatchUnsuspendUserResponse,
   errors: [
@@ -2935,7 +2935,7 @@ export const batchUpdatePhoneNumber: API.OperationMethod<
   BatchUpdatePhoneNumberResponse,
   BatchUpdatePhoneNumberError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchUpdatePhoneNumberRequest,
   output: BatchUpdatePhoneNumberResponse,
   errors: [
@@ -2965,7 +2965,7 @@ export const batchUpdateUser: API.OperationMethod<
   BatchUpdateUserResponse,
   BatchUpdateUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchUpdateUserRequest,
   output: BatchUpdateUserResponse,
   errors: [
@@ -2998,7 +2998,7 @@ export const createAccount: API.OperationMethod<
   CreateAccountResponse,
   CreateAccountError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccountRequest,
   output: CreateAccountResponse,
   errors: [
@@ -3029,7 +3029,7 @@ export const createBot: API.OperationMethod<
   CreateBotResponse,
   CreateBotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateBotRequest,
   output: CreateBotResponse,
   errors: [
@@ -3067,7 +3067,7 @@ export const createMeetingDialOut: API.OperationMethod<
   CreateMeetingDialOutResponse,
   CreateMeetingDialOutError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMeetingDialOutRequest,
   output: CreateMeetingDialOutResponse,
   errors: [
@@ -3100,7 +3100,7 @@ export const createPhoneNumberOrder: API.OperationMethod<
   CreatePhoneNumberOrderResponse,
   CreatePhoneNumberOrderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePhoneNumberOrderRequest,
   output: CreatePhoneNumberOrderResponse,
   errors: [
@@ -3132,7 +3132,7 @@ export const createRoom: API.OperationMethod<
   CreateRoomResponse,
   CreateRoomError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRoomRequest,
   output: CreateRoomResponse,
   errors: [
@@ -3165,7 +3165,7 @@ export const createRoomMembership: API.OperationMethod<
   CreateRoomMembershipResponse,
   CreateRoomMembershipError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRoomMembershipRequest,
   output: CreateRoomMembershipResponse,
   errors: [
@@ -3198,7 +3198,7 @@ export const createUser: API.OperationMethod<
   CreateUserResponse,
   CreateUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateUserRequest,
   output: CreateUserResponse,
   errors: [
@@ -3243,7 +3243,7 @@ export const deleteAccount: API.OperationMethod<
   DeleteAccountResponse,
   DeleteAccountError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccountRequest,
   output: DeleteAccountResponse,
   errors: [
@@ -3273,7 +3273,7 @@ export const deleteEventsConfiguration: API.OperationMethod<
   DeleteEventsConfigurationResponse,
   DeleteEventsConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEventsConfigurationRequest,
   output: DeleteEventsConfigurationResponse,
   errors: [
@@ -3308,7 +3308,7 @@ export const deletePhoneNumber: API.OperationMethod<
   DeletePhoneNumberResponse,
   DeletePhoneNumberError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePhoneNumberRequest,
   output: DeletePhoneNumberResponse,
   errors: [
@@ -3338,7 +3338,7 @@ export const deleteRoom: API.OperationMethod<
   DeleteRoomResponse,
   DeleteRoomError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRoomRequest,
   output: DeleteRoomResponse,
   errors: [
@@ -3368,7 +3368,7 @@ export const deleteRoomMembership: API.OperationMethod<
   DeleteRoomMembershipResponse,
   DeleteRoomMembershipError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRoomMembershipRequest,
   output: DeleteRoomMembershipResponse,
   errors: [
@@ -3398,7 +3398,7 @@ export const disassociatePhoneNumberFromUser: API.OperationMethod<
   DisassociatePhoneNumberFromUserResponse,
   DisassociatePhoneNumberFromUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociatePhoneNumberFromUserRequest,
   output: DisassociatePhoneNumberFromUserResponse,
   errors: [
@@ -3428,7 +3428,7 @@ export const disassociateSigninDelegateGroupsFromAccount: API.OperationMethod<
   DisassociateSigninDelegateGroupsFromAccountResponse,
   DisassociateSigninDelegateGroupsFromAccountError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateSigninDelegateGroupsFromAccountRequest,
   output: DisassociateSigninDelegateGroupsFromAccountResponse,
   errors: [
@@ -3459,7 +3459,7 @@ export const getAccount: API.OperationMethod<
   GetAccountResponse,
   GetAccountError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountRequest,
   output: GetAccountResponse,
   errors: [
@@ -3491,7 +3491,7 @@ export const getAccountSettings: API.OperationMethod<
   GetAccountSettingsResponse,
   GetAccountSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountSettingsRequest,
   output: GetAccountSettingsResponse,
   errors: [
@@ -3521,7 +3521,7 @@ export const getBot: API.OperationMethod<
   GetBotResponse,
   GetBotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetBotRequest,
   output: GetBotResponse,
   errors: [
@@ -3551,7 +3551,7 @@ export const getEventsConfiguration: API.OperationMethod<
   GetEventsConfigurationResponse,
   GetEventsConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEventsConfigurationRequest,
   output: GetEventsConfigurationResponse,
   errors: [
@@ -3581,7 +3581,7 @@ export const getGlobalSettings: API.OperationMethod<
   GetGlobalSettingsResponse,
   GetGlobalSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetGlobalSettingsRequest,
   output: GetGlobalSettingsResponse,
   errors: [
@@ -3610,7 +3610,7 @@ export const getPhoneNumber: API.OperationMethod<
   GetPhoneNumberResponse,
   GetPhoneNumberError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPhoneNumberRequest,
   output: GetPhoneNumberResponse,
   errors: [
@@ -3641,7 +3641,7 @@ export const getPhoneNumberOrder: API.OperationMethod<
   GetPhoneNumberOrderResponse,
   GetPhoneNumberOrderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPhoneNumberOrderRequest,
   output: GetPhoneNumberOrderResponse,
   errors: [
@@ -3670,7 +3670,7 @@ export const getPhoneNumberSettings: API.OperationMethod<
   GetPhoneNumberSettingsResponse,
   GetPhoneNumberSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPhoneNumberSettingsRequest,
   output: GetPhoneNumberSettingsResponse,
   errors: [
@@ -3700,7 +3700,7 @@ export const getRetentionSettings: API.OperationMethod<
   GetRetentionSettingsResponse,
   GetRetentionSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRetentionSettingsRequest,
   output: GetRetentionSettingsResponse,
   errors: [
@@ -3730,7 +3730,7 @@ export const getRoom: API.OperationMethod<
   GetRoomResponse,
   GetRoomError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRoomRequest,
   output: GetRoomResponse,
   errors: [
@@ -3763,7 +3763,7 @@ export const getUser: API.OperationMethod<
   GetUserResponse,
   GetUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUserRequest,
   output: GetUserResponse,
   errors: [
@@ -3793,7 +3793,7 @@ export const getUserSettings: API.OperationMethod<
   GetUserSettingsResponse,
   GetUserSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUserSettingsRequest,
   output: GetUserSettingsResponse,
   errors: [
@@ -3825,7 +3825,7 @@ export const inviteUsers: API.OperationMethod<
   InviteUsersResponse,
   InviteUsersError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InviteUsersRequest,
   output: InviteUsersResponse,
   errors: [
@@ -3872,7 +3872,7 @@ export const listAccounts: API.OperationMethod<
     ListAccountsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsRequest,
   output: ListAccountsResponse,
   errors: [
@@ -3922,7 +3922,7 @@ export const listBots: API.OperationMethod<
     ListBotsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBotsRequest,
   output: ListBotsResponse,
   errors: [
@@ -3971,7 +3971,7 @@ export const listPhoneNumberOrders: API.OperationMethod<
     ListPhoneNumberOrdersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPhoneNumberOrdersRequest,
   output: ListPhoneNumberOrdersResponse,
   errors: [
@@ -4020,7 +4020,7 @@ export const listPhoneNumbers: API.OperationMethod<
     ListPhoneNumbersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPhoneNumbersRequest,
   output: ListPhoneNumbersResponse,
   errors: [
@@ -4071,7 +4071,7 @@ export const listRoomMemberships: API.OperationMethod<
     ListRoomMembershipsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRoomMembershipsRequest,
   output: ListRoomMembershipsResponse,
   errors: [
@@ -4121,7 +4121,7 @@ export const listRooms: API.OperationMethod<
     ListRoomsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRoomsRequest,
   output: ListRoomsResponse,
   errors: [
@@ -4156,7 +4156,7 @@ export const listSupportedPhoneNumberCountries: API.OperationMethod<
   ListSupportedPhoneNumberCountriesResponse,
   ListSupportedPhoneNumberCountriesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListSupportedPhoneNumberCountriesRequest,
   output: ListSupportedPhoneNumberCountriesResponse,
   errors: [
@@ -4202,7 +4202,7 @@ export const listUsers: API.OperationMethod<
     ListUsersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsersRequest,
   output: ListUsersResponse,
   errors: [
@@ -4237,7 +4237,7 @@ export const logoutUser: API.OperationMethod<
   LogoutUserResponse,
   LogoutUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: LogoutUserRequest,
   output: LogoutUserResponse,
   errors: [
@@ -4269,7 +4269,7 @@ export const putEventsConfiguration: API.OperationMethod<
   PutEventsConfigurationResponse,
   PutEventsConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutEventsConfigurationRequest,
   output: PutEventsConfigurationResponse,
   errors: [
@@ -4310,7 +4310,7 @@ export const putRetentionSettings: API.OperationMethod<
   PutRetentionSettingsResponse,
   PutRetentionSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutRetentionSettingsRequest,
   output: PutRetentionSettingsResponse,
   errors: [
@@ -4341,7 +4341,7 @@ export const redactConversationMessage: API.OperationMethod<
   RedactConversationMessageResponse,
   RedactConversationMessageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RedactConversationMessageRequest,
   output: RedactConversationMessageResponse,
   errors: [
@@ -4371,7 +4371,7 @@ export const redactRoomMessage: API.OperationMethod<
   RedactRoomMessageResponse,
   RedactRoomMessageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RedactRoomMessageRequest,
   output: RedactRoomMessageResponse,
   errors: [
@@ -4401,7 +4401,7 @@ export const regenerateSecurityToken: API.OperationMethod<
   RegenerateSecurityTokenResponse,
   RegenerateSecurityTokenError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegenerateSecurityTokenRequest,
   output: RegenerateSecurityTokenResponse,
   errors: [
@@ -4432,7 +4432,7 @@ export const resetPersonalPIN: API.OperationMethod<
   ResetPersonalPINResponse,
   ResetPersonalPINError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetPersonalPINRequest,
   output: ResetPersonalPINResponse,
   errors: [
@@ -4464,7 +4464,7 @@ export const restorePhoneNumber: API.OperationMethod<
   RestorePhoneNumberResponse,
   RestorePhoneNumberError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RestorePhoneNumberRequest,
   output: RestorePhoneNumberResponse,
   errors: [
@@ -4514,7 +4514,7 @@ export const searchAvailablePhoneNumbers: API.OperationMethod<
     SearchAvailablePhoneNumbersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchAvailablePhoneNumbersRequest,
   output: SearchAvailablePhoneNumbersResponse,
   errors: [
@@ -4549,7 +4549,7 @@ export const updateAccount: API.OperationMethod<
   UpdateAccountResponse,
   UpdateAccountError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccountRequest,
   output: UpdateAccountResponse,
   errors: [
@@ -4584,7 +4584,7 @@ export const updateAccountSettings: API.OperationMethod<
   UpdateAccountSettingsResponse,
   UpdateAccountSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccountSettingsRequest,
   output: UpdateAccountSettingsResponse,
   errors: [
@@ -4615,7 +4615,7 @@ export const updateBot: API.OperationMethod<
   UpdateBotResponse,
   UpdateBotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateBotRequest,
   output: UpdateBotResponse,
   errors: [
@@ -4644,7 +4644,7 @@ export const updateGlobalSettings: API.OperationMethod<
   UpdateGlobalSettingsResponse,
   UpdateGlobalSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateGlobalSettingsRequest,
   output: UpdateGlobalSettingsResponse,
   errors: [
@@ -4678,7 +4678,7 @@ export const updatePhoneNumber: API.OperationMethod<
   UpdatePhoneNumberResponse,
   UpdatePhoneNumberError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePhoneNumberRequest,
   output: UpdatePhoneNumberResponse,
   errors: [
@@ -4710,7 +4710,7 @@ export const updatePhoneNumberSettings: API.OperationMethod<
   UpdatePhoneNumberSettingsResponse,
   UpdatePhoneNumberSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePhoneNumberSettingsRequest,
   output: UpdatePhoneNumberSettingsResponse,
   errors: [
@@ -4739,7 +4739,7 @@ export const updateRoom: API.OperationMethod<
   UpdateRoomResponse,
   UpdateRoomError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRoomRequest,
   output: UpdateRoomResponse,
   errors: [
@@ -4772,7 +4772,7 @@ export const updateRoomMembership: API.OperationMethod<
   UpdateRoomMembershipResponse,
   UpdateRoomMembershipError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRoomMembershipRequest,
   output: UpdateRoomMembershipResponse,
   errors: [
@@ -4802,7 +4802,7 @@ export const updateUser: API.OperationMethod<
   UpdateUserResponse,
   UpdateUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateUserRequest,
   output: UpdateUserResponse,
   errors: [
@@ -4832,7 +4832,7 @@ export const updateUserSettings: API.OperationMethod<
   UpdateUserSettingsResponse,
   UpdateUserSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateUserSettingsRequest,
   output: UpdateUserSettingsResponse,
   errors: [

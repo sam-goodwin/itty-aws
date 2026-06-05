@@ -1407,7 +1407,7 @@ export const copyImageSet: API.OperationMethod<
   CopyImageSetResponse,
   CopyImageSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CopyImageSetRequest,
   output: CopyImageSetResponse,
   errors: [
@@ -1436,7 +1436,7 @@ export const deleteImageSet: API.OperationMethod<
   DeleteImageSetResponse,
   DeleteImageSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteImageSetRequest,
   output: DeleteImageSetResponse,
   errors: [
@@ -1466,7 +1466,7 @@ export const getDICOMImportJob: API.OperationMethod<
   GetDICOMImportJobResponse,
   GetDICOMImportJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDICOMImportJobRequest,
   output: GetDICOMImportJobResponse,
   errors: [
@@ -1496,7 +1496,7 @@ export const getImageFrame: API.OperationMethod<
   GetImageFrameResponse,
   GetImageFrameError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetImageFrameRequest,
   output: GetImageFrameResponse,
   errors: [
@@ -1526,7 +1526,7 @@ export const getImageSet: API.OperationMethod<
   GetImageSetResponse,
   GetImageSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetImageSetRequest,
   output: GetImageSetResponse,
   errors: [
@@ -1554,7 +1554,7 @@ export const getImageSetMetadata: API.OperationMethod<
   GetImageSetMetadataResponse,
   GetImageSetMetadataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetImageSetMetadataRequest,
   output: GetImageSetMetadataResponse,
   errors: [
@@ -1597,7 +1597,7 @@ export const listDICOMImportJobs: API.OperationMethod<
     ListDICOMImportJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDICOMImportJobsRequest,
   output: ListDICOMImportJobsResponse,
   errors: [
@@ -1646,7 +1646,7 @@ export const listImageSetVersions: API.OperationMethod<
     ListImageSetVersionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImageSetVersionsRequest,
   output: ListImageSetVersionsResponse,
   errors: [
@@ -1679,7 +1679,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -1725,7 +1725,7 @@ export const searchImageSets: API.OperationMethod<
     SearchImageSetsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchImageSetsRequest,
   output: SearchImageSetsResponse,
   errors: [
@@ -1760,7 +1760,7 @@ export const startDICOMImportJob: API.OperationMethod<
   StartDICOMImportJobResponse,
   StartDICOMImportJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartDICOMImportJobRequest,
   output: StartDICOMImportJobResponse,
   errors: [
@@ -1788,7 +1788,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -1814,7 +1814,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -1842,7 +1842,7 @@ export const updateImageSetMetadata: API.OperationMethod<
   UpdateImageSetMetadataResponse,
   UpdateImageSetMetadataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateImageSetMetadataRequest,
   output: UpdateImageSetMetadataResponse,
   errors: [
@@ -1872,7 +1872,7 @@ export const createDatastore: API.OperationMethod<
   CreateDatastoreResponse,
   CreateDatastoreError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDatastoreRequest,
   output: CreateDatastoreResponse,
   errors: [
@@ -1900,7 +1900,7 @@ export const getDatastore: API.OperationMethod<
   GetDatastoreResponse,
   GetDatastoreError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDatastoreRequest,
   output: GetDatastoreResponse,
   errors: [
@@ -1929,7 +1929,7 @@ export const deleteDatastore: API.OperationMethod<
   DeleteDatastoreResponse,
   DeleteDatastoreError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDatastoreRequest,
   output: DeleteDatastoreResponse,
   errors: [
@@ -1970,7 +1970,7 @@ export const listDatastores: API.OperationMethod<
     ListDatastoresError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatastoresRequest,
   output: ListDatastoresResponse,
   errors: [

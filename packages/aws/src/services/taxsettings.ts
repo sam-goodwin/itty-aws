@@ -1493,7 +1493,7 @@ export const batchDeleteTaxRegistration: API.OperationMethod<
   BatchDeleteTaxRegistrationResponse,
   BatchDeleteTaxRegistrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchDeleteTaxRegistrationRequest,
   output: BatchDeleteTaxRegistrationResponse,
   errors: [ConflictException, InternalServerException, ValidationException],
@@ -1511,7 +1511,7 @@ export const batchGetTaxExemptions: API.OperationMethod<
   BatchGetTaxExemptionsResponse,
   BatchGetTaxExemptionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetTaxExemptionsRequest,
   output: BatchGetTaxExemptionsResponse,
   errors: [
@@ -1667,7 +1667,7 @@ export const batchPutTaxRegistration: API.OperationMethod<
   BatchPutTaxRegistrationResponse,
   BatchPutTaxRegistrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchPutTaxRegistrationRequest,
   output: BatchPutTaxRegistrationResponse,
   errors: [ConflictException, InternalServerException, ValidationException],
@@ -1686,7 +1686,7 @@ export const deleteSupplementalTaxRegistration: API.OperationMethod<
   DeleteSupplementalTaxRegistrationResponse,
   DeleteSupplementalTaxRegistrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSupplementalTaxRegistrationRequest,
   output: DeleteSupplementalTaxRegistrationResponse,
   errors: [
@@ -1712,7 +1712,7 @@ export const deleteTaxRegistration: API.OperationMethod<
   DeleteTaxRegistrationResponse,
   DeleteTaxRegistrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTaxRegistrationRequest,
   output: DeleteTaxRegistrationResponse,
   errors: [
@@ -1735,7 +1735,7 @@ export const getTaxExemptionTypes: API.OperationMethod<
   GetTaxExemptionTypesResponse,
   GetTaxExemptionTypesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTaxExemptionTypesRequest,
   output: GetTaxExemptionTypesResponse,
   errors: [
@@ -1757,7 +1757,7 @@ export const getTaxInheritance: API.OperationMethod<
   GetTaxInheritanceResponse,
   GetTaxInheritanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTaxInheritanceRequest,
   output: GetTaxInheritanceResponse,
   errors: [
@@ -1779,7 +1779,7 @@ export const getTaxRegistration: API.OperationMethod<
   GetTaxRegistrationResponse,
   GetTaxRegistrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTaxRegistrationRequest,
   output: GetTaxRegistrationResponse,
   errors: [
@@ -1801,7 +1801,7 @@ export const getTaxRegistrationDocument: API.OperationMethod<
   GetTaxRegistrationDocumentResponse,
   GetTaxRegistrationDocumentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTaxRegistrationDocumentRequest,
   output: GetTaxRegistrationDocumentResponse,
   errors: [InternalServerException, ValidationException],
@@ -1834,7 +1834,7 @@ export const listSupplementalTaxRegistrations: API.OperationMethod<
     ListSupplementalTaxRegistrationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSupplementalTaxRegistrationsRequest,
   output: ListSupplementalTaxRegistrationsResponse,
   errors: [
@@ -1877,7 +1877,7 @@ export const listTaxExemptions: API.OperationMethod<
     ListTaxExemptionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTaxExemptionsRequest,
   output: ListTaxExemptionsResponse,
   errors: [
@@ -1921,7 +1921,7 @@ export const listTaxRegistrations: API.OperationMethod<
     ListTaxRegistrationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTaxRegistrationsRequest,
   output: ListTaxRegistrationsResponse,
   errors: [
@@ -1949,7 +1949,7 @@ export const putSupplementalTaxRegistration: API.OperationMethod<
   PutSupplementalTaxRegistrationResponse,
   PutSupplementalTaxRegistrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutSupplementalTaxRegistrationRequest,
   output: PutSupplementalTaxRegistrationResponse,
   errors: [ConflictException, InternalServerException, ValidationException],
@@ -1970,7 +1970,7 @@ export const putTaxExemption: API.OperationMethod<
   PutTaxExemptionResponse,
   PutTaxExemptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutTaxExemptionRequest,
   output: PutTaxExemptionResponse,
   errors: [
@@ -1996,7 +1996,7 @@ export const putTaxInheritance: API.OperationMethod<
   PutTaxInheritanceResponse,
   PutTaxInheritanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutTaxInheritanceRequest,
   output: PutTaxInheritanceResponse,
   errors: [
@@ -2152,7 +2152,7 @@ export const putTaxRegistration: API.OperationMethod<
   PutTaxRegistrationResponse,
   PutTaxRegistrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutTaxRegistrationRequest,
   output: PutTaxRegistrationResponse,
   errors: [ConflictException, InternalServerException, ValidationException],

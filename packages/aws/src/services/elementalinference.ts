@@ -595,7 +595,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -622,7 +622,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -650,7 +650,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -678,7 +678,7 @@ export const createFeed: API.OperationMethod<
   CreateFeedResponse,
   CreateFeedError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFeedRequest,
   output: CreateFeedResponse,
   errors: [
@@ -704,7 +704,7 @@ export const getFeed: API.OperationMethod<
   GetFeedResponse,
   GetFeedError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFeedRequest,
   output: GetFeedResponse,
   errors: [
@@ -731,7 +731,7 @@ export const updateFeed: API.OperationMethod<
   UpdateFeedResponse,
   UpdateFeedError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateFeedRequest,
   output: UpdateFeedResponse,
   errors: [
@@ -760,7 +760,7 @@ export const deleteFeed: API.OperationMethod<
   DeleteFeedResponse,
   DeleteFeedError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFeedRequest,
   output: DeleteFeedResponse,
   errors: [
@@ -802,7 +802,7 @@ export const listFeeds: API.OperationMethod<
     ListFeedsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFeedsRequest,
   output: ListFeedsResponse,
   errors: [
@@ -836,7 +836,7 @@ export const associateFeed: API.OperationMethod<
   AssociateFeedResponse,
   AssociateFeedError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateFeedRequest,
   output: AssociateFeedResponse,
   errors: [
@@ -865,7 +865,7 @@ export const disassociateFeed: API.OperationMethod<
   DisassociateFeedResponse,
   DisassociateFeedError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateFeedRequest,
   output: DisassociateFeedResponse,
   errors: [

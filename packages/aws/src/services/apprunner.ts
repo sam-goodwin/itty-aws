@@ -2085,7 +2085,7 @@ export const associateCustomDomain: API.OperationMethod<
   AssociateCustomDomainResponse,
   AssociateCustomDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateCustomDomainRequest,
   output: AssociateCustomDomainResponse,
   errors: [
@@ -2118,7 +2118,7 @@ export const createAutoScalingConfiguration: API.OperationMethod<
   CreateAutoScalingConfigurationResponse,
   CreateAutoScalingConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAutoScalingConfigurationRequest,
   output: CreateAutoScalingConfigurationResponse,
   errors: [
@@ -2145,7 +2145,7 @@ export const createConnection: API.OperationMethod<
   CreateConnectionResponse,
   CreateConnectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateConnectionRequest,
   output: CreateConnectionResponse,
   errors: [
@@ -2177,7 +2177,7 @@ export const createObservabilityConfiguration: API.OperationMethod<
   CreateObservabilityConfigurationResponse,
   CreateObservabilityConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateObservabilityConfigurationRequest,
   output: CreateObservabilityConfigurationResponse,
   errors: [
@@ -2201,7 +2201,7 @@ export const createService: API.OperationMethod<
   CreateServiceResponse,
   CreateServiceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateServiceRequest,
   output: CreateServiceResponse,
   errors: [
@@ -2224,7 +2224,7 @@ export const createVpcConnector: API.OperationMethod<
   CreateVpcConnectorResponse,
   CreateVpcConnectorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateVpcConnectorRequest,
   output: CreateVpcConnectorResponse,
   errors: [
@@ -2247,7 +2247,7 @@ export const createVpcIngressConnection: API.OperationMethod<
   CreateVpcIngressConnectionResponse,
   CreateVpcIngressConnectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateVpcIngressConnectionRequest,
   output: CreateVpcIngressConnectionResponse,
   errors: [
@@ -2272,7 +2272,7 @@ export const deleteAutoScalingConfiguration: API.OperationMethod<
   DeleteAutoScalingConfigurationResponse,
   DeleteAutoScalingConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAutoScalingConfigurationRequest,
   output: DeleteAutoScalingConfigurationResponse,
   errors: [
@@ -2295,7 +2295,7 @@ export const deleteConnection: API.OperationMethod<
   DeleteConnectionResponse,
   DeleteConnectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConnectionRequest,
   output: DeleteConnectionResponse,
   errors: [
@@ -2318,7 +2318,7 @@ export const deleteObservabilityConfiguration: API.OperationMethod<
   DeleteObservabilityConfigurationResponse,
   DeleteObservabilityConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteObservabilityConfigurationRequest,
   output: DeleteObservabilityConfigurationResponse,
   errors: [
@@ -2346,7 +2346,7 @@ export const deleteService: API.OperationMethod<
   DeleteServiceResponse,
   DeleteServiceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteServiceRequest,
   output: DeleteServiceResponse,
   errors: [
@@ -2370,7 +2370,7 @@ export const deleteVpcConnector: API.OperationMethod<
   DeleteVpcConnectorResponse,
   DeleteVpcConnectorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteVpcConnectorRequest,
   output: DeleteVpcConnectorResponse,
   errors: [
@@ -2401,7 +2401,7 @@ export const deleteVpcIngressConnection: API.OperationMethod<
   DeleteVpcIngressConnectionResponse,
   DeleteVpcIngressConnectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteVpcIngressConnectionRequest,
   output: DeleteVpcIngressConnectionResponse,
   errors: [
@@ -2424,7 +2424,7 @@ export const describeAutoScalingConfiguration: API.OperationMethod<
   DescribeAutoScalingConfigurationResponse,
   DescribeAutoScalingConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAutoScalingConfigurationRequest,
   output: DescribeAutoScalingConfigurationResponse,
   errors: [
@@ -2461,7 +2461,7 @@ export const describeCustomDomains: API.OperationMethod<
     DescribeCustomDomainsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCustomDomainsRequest,
   output: DescribeCustomDomainsResponse,
   errors: [
@@ -2488,7 +2488,7 @@ export const describeObservabilityConfiguration: API.OperationMethod<
   DescribeObservabilityConfigurationResponse,
   DescribeObservabilityConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeObservabilityConfigurationRequest,
   output: DescribeObservabilityConfigurationResponse,
   errors: [
@@ -2510,7 +2510,7 @@ export const describeService: API.OperationMethod<
   DescribeServiceResponse,
   DescribeServiceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeServiceRequest,
   output: DescribeServiceResponse,
   errors: [
@@ -2532,7 +2532,7 @@ export const describeVpcConnector: API.OperationMethod<
   DescribeVpcConnectorResponse,
   DescribeVpcConnectorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeVpcConnectorRequest,
   output: DescribeVpcConnectorResponse,
   errors: [
@@ -2554,7 +2554,7 @@ export const describeVpcIngressConnection: API.OperationMethod<
   DescribeVpcIngressConnectionResponse,
   DescribeVpcIngressConnectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeVpcIngressConnectionRequest,
   output: DescribeVpcIngressConnectionResponse,
   errors: [
@@ -2581,7 +2581,7 @@ export const disassociateCustomDomain: API.OperationMethod<
   DisassociateCustomDomainResponse,
   DisassociateCustomDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateCustomDomainRequest,
   output: DisassociateCustomDomainResponse,
   errors: [
@@ -2623,7 +2623,7 @@ export const listAutoScalingConfigurations: API.OperationMethod<
     ListAutoScalingConfigurationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAutoScalingConfigurationsRequest,
   output: ListAutoScalingConfigurationsResponse,
   errors: [InternalServiceErrorException, InvalidRequestException],
@@ -2660,7 +2660,7 @@ export const listConnections: API.OperationMethod<
     ListConnectionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConnectionsRequest,
   output: ListConnectionsResponse,
   errors: [InternalServiceErrorException, InvalidRequestException],
@@ -2702,7 +2702,7 @@ export const listObservabilityConfigurations: API.OperationMethod<
     ListObservabilityConfigurationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListObservabilityConfigurationsRequest,
   output: ListObservabilityConfigurationsResponse,
   errors: [InternalServiceErrorException, InvalidRequestException],
@@ -2743,7 +2743,7 @@ export const listOperations: API.OperationMethod<
     ListOperationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsRequest,
   output: ListOperationsResponse,
   errors: [
@@ -2784,7 +2784,7 @@ export const listServices: API.OperationMethod<
     ListServicesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicesRequest,
   output: ListServicesResponse,
   errors: [InternalServiceErrorException, InvalidRequestException],
@@ -2822,7 +2822,7 @@ export const listServicesForAutoScalingConfiguration: API.OperationMethod<
     ListServicesForAutoScalingConfigurationError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicesForAutoScalingConfigurationRequest,
   output: ListServicesForAutoScalingConfigurationResponse,
   errors: [
@@ -2850,7 +2850,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -2887,7 +2887,7 @@ export const listVpcConnectors: API.OperationMethod<
     ListVpcConnectorsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVpcConnectorsRequest,
   output: ListVpcConnectorsResponse,
   errors: [InternalServiceErrorException, InvalidRequestException],
@@ -2924,7 +2924,7 @@ export const listVpcIngressConnections: API.OperationMethod<
     ListVpcIngressConnectionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVpcIngressConnectionsRequest,
   output: ListVpcIngressConnectionsResponse,
   errors: [InternalServiceErrorException, InvalidRequestException],
@@ -2952,7 +2952,7 @@ export const pauseService: API.OperationMethod<
   PauseServiceResponse,
   PauseServiceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PauseServiceRequest,
   output: PauseServiceResponse,
   errors: [
@@ -2979,7 +2979,7 @@ export const resumeService: API.OperationMethod<
   ResumeServiceResponse,
   ResumeServiceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResumeServiceRequest,
   output: ResumeServiceResponse,
   errors: [
@@ -3009,7 +3009,7 @@ export const startDeployment: API.OperationMethod<
   StartDeploymentResponse,
   StartDeploymentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartDeploymentRequest,
   output: StartDeploymentResponse,
   errors: [
@@ -3032,7 +3032,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -3056,7 +3056,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -3080,7 +3080,7 @@ export const updateDefaultAutoScalingConfiguration: API.OperationMethod<
   UpdateDefaultAutoScalingConfigurationResponse,
   UpdateDefaultAutoScalingConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDefaultAutoScalingConfigurationRequest,
   output: UpdateDefaultAutoScalingConfigurationResponse,
   errors: [
@@ -3110,7 +3110,7 @@ export const updateService: API.OperationMethod<
   UpdateServiceResponse,
   UpdateServiceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateServiceRequest,
   output: UpdateServiceResponse,
   errors: [
@@ -3140,7 +3140,7 @@ export const updateVpcIngressConnection: API.OperationMethod<
   UpdateVpcIngressConnectionResponse,
   UpdateVpcIngressConnectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateVpcIngressConnectionRequest,
   output: UpdateVpcIngressConnectionResponse,
   errors: [

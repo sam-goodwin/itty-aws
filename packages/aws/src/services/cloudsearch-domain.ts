@@ -431,7 +431,7 @@ export const search: API.OperationMethod<
   SearchResponse,
   SearchError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SearchRequest,
   output: SearchResponse,
   errors: [SearchException],
@@ -449,7 +449,7 @@ export const suggest: API.OperationMethod<
   SuggestResponse,
   SuggestError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SuggestRequest,
   output: SuggestResponse,
   errors: [SearchException],
@@ -468,7 +468,7 @@ export const uploadDocuments: API.OperationMethod<
   UploadDocumentsResponse,
   UploadDocumentsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UploadDocumentsRequest,
   output: UploadDocumentsResponse,
   errors: [DocumentServiceException],

@@ -2440,7 +2440,7 @@ export const createEncoderConfiguration: API.OperationMethod<
   CreateEncoderConfigurationResponse,
   CreateEncoderConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEncoderConfigurationRequest,
   output: CreateEncoderConfigurationResponse,
   errors: [
@@ -2467,7 +2467,7 @@ export const createIngestConfiguration: API.OperationMethod<
   CreateIngestConfigurationResponse,
   CreateIngestConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateIngestConfigurationRequest,
   output: CreateIngestConfigurationResponse,
   errors: [
@@ -2497,7 +2497,7 @@ export const createParticipantToken: API.OperationMethod<
   CreateParticipantTokenResponse,
   CreateParticipantTokenError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateParticipantTokenRequest,
   output: CreateParticipantTokenResponse,
   errors: [
@@ -2522,7 +2522,7 @@ export const createStage: API.OperationMethod<
   CreateStageResponse,
   CreateStageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateStageRequest,
   output: CreateStageResponse,
   errors: [
@@ -2551,7 +2551,7 @@ export const createStorageConfiguration: API.OperationMethod<
   CreateStorageConfigurationResponse,
   CreateStorageConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateStorageConfigurationRequest,
   output: CreateStorageConfigurationResponse,
   errors: [
@@ -2581,7 +2581,7 @@ export const deleteEncoderConfiguration: API.OperationMethod<
   DeleteEncoderConfigurationResponse,
   DeleteEncoderConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEncoderConfigurationRequest,
   output: DeleteEncoderConfigurationResponse,
   errors: [
@@ -2608,7 +2608,7 @@ export const deleteIngestConfiguration: API.OperationMethod<
   DeleteIngestConfigurationResponse,
   DeleteIngestConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteIngestConfigurationRequest,
   output: DeleteIngestConfigurationResponse,
   errors: [
@@ -2635,7 +2635,7 @@ export const deletePublicKey: API.OperationMethod<
   DeletePublicKeyResponse,
   DeletePublicKeyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePublicKeyRequest,
   output: DeletePublicKeyResponse,
   errors: [
@@ -2663,7 +2663,7 @@ export const deleteStage: API.OperationMethod<
   DeleteStageResponse,
   DeleteStageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteStageRequest,
   output: DeleteStageResponse,
   errors: [
@@ -2694,7 +2694,7 @@ export const deleteStorageConfiguration: API.OperationMethod<
   DeleteStorageConfigurationResponse,
   DeleteStorageConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteStorageConfigurationRequest,
   output: DeleteStorageConfigurationResponse,
   errors: [
@@ -2722,7 +2722,7 @@ export const disconnectParticipant: API.OperationMethod<
   DisconnectParticipantResponse,
   DisconnectParticipantError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisconnectParticipantRequest,
   output: DisconnectParticipantResponse,
   errors: [
@@ -2748,7 +2748,7 @@ export const getComposition: API.OperationMethod<
   GetCompositionResponse,
   GetCompositionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCompositionRequest,
   output: GetCompositionResponse,
   errors: [
@@ -2776,7 +2776,7 @@ export const getEncoderConfiguration: API.OperationMethod<
   GetEncoderConfigurationResponse,
   GetEncoderConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEncoderConfigurationRequest,
   output: GetEncoderConfigurationResponse,
   errors: [
@@ -2801,7 +2801,7 @@ export const getIngestConfiguration: API.OperationMethod<
   GetIngestConfigurationResponse,
   GetIngestConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIngestConfigurationRequest,
   output: GetIngestConfigurationResponse,
   errors: [
@@ -2823,7 +2823,7 @@ export const getParticipant: API.OperationMethod<
   GetParticipantResponse,
   GetParticipantError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetParticipantRequest,
   output: GetParticipantResponse,
   errors: [
@@ -2845,7 +2845,7 @@ export const getPublicKey: API.OperationMethod<
   GetPublicKeyResponse,
   GetPublicKeyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPublicKeyRequest,
   output: GetPublicKeyResponse,
   errors: [
@@ -2867,7 +2867,7 @@ export const getStage: API.OperationMethod<
   GetStageResponse,
   GetStageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetStageRequest,
   output: GetStageResponse,
   errors: [
@@ -2889,7 +2889,7 @@ export const getStageSession: API.OperationMethod<
   GetStageSessionResponse,
   GetStageSessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetStageSessionRequest,
   output: GetStageSessionResponse,
   errors: [
@@ -2914,7 +2914,7 @@ export const getStorageConfiguration: API.OperationMethod<
   GetStorageConfigurationResponse,
   GetStorageConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetStorageConfigurationRequest,
   output: GetStorageConfigurationResponse,
   errors: [
@@ -2941,7 +2941,7 @@ export const importPublicKey: API.OperationMethod<
   ImportPublicKeyResponse,
   ImportPublicKeyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportPublicKeyRequest,
   output: ImportPublicKeyResponse,
   errors: [
@@ -2983,7 +2983,7 @@ export const listCompositions: API.OperationMethod<
     ListCompositionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCompositionsRequest,
   output: ListCompositionsResponse,
   errors: [
@@ -3030,7 +3030,7 @@ export const listEncoderConfigurations: API.OperationMethod<
     ListEncoderConfigurationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEncoderConfigurationsRequest,
   output: ListEncoderConfigurationsResponse,
   errors: [
@@ -3073,7 +3073,7 @@ export const listIngestConfigurations: API.OperationMethod<
     ListIngestConfigurationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIngestConfigurationsRequest,
   output: ListIngestConfigurationsResponse,
   errors: [AccessDeniedException, ValidationException],
@@ -3112,7 +3112,7 @@ export const listParticipantEvents: API.OperationMethod<
     ListParticipantEventsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListParticipantEventsRequest,
   output: ListParticipantEventsResponse,
   errors: [AccessDeniedException, ValidationException],
@@ -3149,7 +3149,7 @@ export const listParticipantReplicas: API.OperationMethod<
     ListParticipantReplicasError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListParticipantReplicasRequest,
   output: ListParticipantReplicasResponse,
   errors: [AccessDeniedException, ValidationException],
@@ -3187,7 +3187,7 @@ export const listParticipants: API.OperationMethod<
     ListParticipantsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListParticipantsRequest,
   output: ListParticipantsResponse,
   errors: [AccessDeniedException, ValidationException],
@@ -3224,7 +3224,7 @@ export const listPublicKeys: API.OperationMethod<
     ListPublicKeysError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPublicKeysRequest,
   output: ListPublicKeysResponse,
   errors: [AccessDeniedException, ValidationException],
@@ -3264,7 +3264,7 @@ export const listStages: API.OperationMethod<
     ListStagesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStagesRequest,
   output: ListStagesResponse,
   errors: [AccessDeniedException, ConflictException, ValidationException],
@@ -3301,7 +3301,7 @@ export const listStageSessions: API.OperationMethod<
     ListStageSessionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStageSessionsRequest,
   output: ListStageSessionsResponse,
   errors: [AccessDeniedException, ValidationException],
@@ -3342,7 +3342,7 @@ export const listStorageConfigurations: API.OperationMethod<
     ListStorageConfigurationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStorageConfigurationsRequest,
   output: ListStorageConfigurationsResponse,
   errors: [
@@ -3371,7 +3371,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -3414,7 +3414,7 @@ export const startComposition: API.OperationMethod<
   StartCompositionResponse,
   StartCompositionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartCompositionRequest,
   output: StartCompositionResponse,
   errors: [
@@ -3444,7 +3444,7 @@ export const startParticipantReplication: API.OperationMethod<
   StartParticipantReplicationResponse,
   StartParticipantReplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartParticipantReplicationRequest,
   output: StartParticipantReplicationResponse,
   errors: [
@@ -3474,7 +3474,7 @@ export const stopComposition: API.OperationMethod<
   StopCompositionResponse,
   StopCompositionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopCompositionRequest,
   output: StopCompositionResponse,
   errors: [
@@ -3500,7 +3500,7 @@ export const stopParticipantReplication: API.OperationMethod<
   StopParticipantReplicationResponse,
   StopParticipantReplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopParticipantReplicationRequest,
   output: StopParticipantReplicationResponse,
   errors: [
@@ -3523,7 +3523,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -3545,7 +3545,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -3569,7 +3569,7 @@ export const updateIngestConfiguration: API.OperationMethod<
   UpdateIngestConfigurationResponse,
   UpdateIngestConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateIngestConfigurationRequest,
   output: UpdateIngestConfigurationResponse,
   errors: [
@@ -3596,7 +3596,7 @@ export const updateStage: API.OperationMethod<
   UpdateStageResponse,
   UpdateStageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateStageRequest,
   output: UpdateStageResponse,
   errors: [

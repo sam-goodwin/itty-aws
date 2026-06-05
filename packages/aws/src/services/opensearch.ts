@@ -6199,7 +6199,7 @@ export const acceptInboundConnection: API.OperationMethod<
   AcceptInboundConnectionResponse,
   AcceptInboundConnectionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AcceptInboundConnectionRequest,
   output: AcceptInboundConnectionResponse,
   errors: [
@@ -6227,7 +6227,7 @@ export const addDataSource: API.OperationMethod<
   AddDataSourceResponse,
   AddDataSourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddDataSourceRequest,
   output: AddDataSourceResponse,
   errors: [
@@ -6257,7 +6257,7 @@ export const addDirectQueryDataSource: API.OperationMethod<
   AddDirectQueryDataSourceResponse,
   AddDirectQueryDataSourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddDirectQueryDataSourceRequest,
   output: AddDirectQueryDataSourceResponse,
   errors: [
@@ -6287,7 +6287,7 @@ export const addTags: API.OperationMethod<
   AddTagsResponse,
   AddTagsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddTagsRequest,
   output: AddTagsResponse,
   errors: [
@@ -6315,7 +6315,7 @@ export const associatePackage: API.OperationMethod<
   AssociatePackageResponse,
   AssociatePackageError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociatePackageRequest,
   output: AssociatePackageResponse,
   errors: [
@@ -6344,7 +6344,7 @@ export const associatePackages: API.OperationMethod<
   AssociatePackagesResponse,
   AssociatePackagesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociatePackagesRequest,
   output: AssociatePackagesResponse,
   errors: [
@@ -6373,7 +6373,7 @@ export const authorizeVpcEndpointAccess: API.OperationMethod<
   AuthorizeVpcEndpointAccessResponse,
   AuthorizeVpcEndpointAccessError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AuthorizeVpcEndpointAccessRequest,
   output: AuthorizeVpcEndpointAccessResponse,
   errors: [
@@ -6400,7 +6400,7 @@ export const cancelDomainConfigChange: API.OperationMethod<
   CancelDomainConfigChangeResponse,
   CancelDomainConfigChangeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelDomainConfigChangeRequest,
   output: CancelDomainConfigChangeResponse,
   errors: [
@@ -6429,7 +6429,7 @@ export const cancelServiceSoftwareUpdate: API.OperationMethod<
   CancelServiceSoftwareUpdateResponse,
   CancelServiceSoftwareUpdateError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelServiceSoftwareUpdateRequest,
   output: CancelServiceSoftwareUpdateResponse,
   errors: [
@@ -6455,7 +6455,7 @@ export const createApplication: API.OperationMethod<
   CreateApplicationResponse,
   CreateApplicationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateApplicationRequest,
   output: CreateApplicationResponse,
   errors: [
@@ -6485,7 +6485,7 @@ export const createDomain: API.OperationMethod<
   CreateDomainResponse,
   CreateDomainError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDomainRequest,
   output: CreateDomainResponse,
   errors: [
@@ -6516,7 +6516,7 @@ export const createIndex: API.OperationMethod<
   CreateIndexResponse,
   CreateIndexError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateIndexRequest,
   output: CreateIndexResponse,
   errors: [
@@ -6546,7 +6546,7 @@ export const createOutboundConnection: API.OperationMethod<
   CreateOutboundConnectionResponse,
   CreateOutboundConnectionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOutboundConnectionRequest,
   output: CreateOutboundConnectionResponse,
   errors: [
@@ -6575,7 +6575,7 @@ export const createPackage: API.OperationMethod<
   CreatePackageResponse,
   CreatePackageError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePackageRequest,
   output: CreatePackageResponse,
   errors: [
@@ -6604,7 +6604,7 @@ export const createVpcEndpoint: API.OperationMethod<
   CreateVpcEndpointResponse,
   CreateVpcEndpointError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateVpcEndpointRequest,
   output: CreateVpcEndpointResponse,
   errors: [
@@ -6633,7 +6633,7 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationResponse,
   DeleteApplicationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteApplicationRequest,
   output: DeleteApplicationResponse,
   errors: [
@@ -6663,7 +6663,7 @@ export const deleteDataSource: API.OperationMethod<
   DeleteDataSourceResponse,
   DeleteDataSourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDataSourceRequest,
   output: DeleteDataSourceResponse,
   errors: [
@@ -6691,7 +6691,7 @@ export const deleteDirectQueryDataSource: API.OperationMethod<
   DeleteDirectQueryDataSourceResponse,
   DeleteDirectQueryDataSourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDirectQueryDataSourceRequest,
   output: DeleteDirectQueryDataSourceResponse,
   errors: [
@@ -6717,7 +6717,7 @@ export const deleteDomain: API.OperationMethod<
   DeleteDomainResponse,
   DeleteDomainError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDomainRequest,
   output: DeleteDomainResponse,
   errors: [
@@ -6740,7 +6740,7 @@ export const deleteInboundConnection: API.OperationMethod<
   DeleteInboundConnectionResponse,
   DeleteInboundConnectionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteInboundConnectionRequest,
   output: DeleteInboundConnectionResponse,
   errors: [DisabledOperationException, ResourceNotFoundException],
@@ -6762,7 +6762,7 @@ export const deleteIndex: API.OperationMethod<
   DeleteIndexResponse,
   DeleteIndexError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteIndexRequest,
   output: DeleteIndexResponse,
   errors: [
@@ -6788,7 +6788,7 @@ export const deleteOutboundConnection: API.OperationMethod<
   DeleteOutboundConnectionResponse,
   DeleteOutboundConnectionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOutboundConnectionRequest,
   output: DeleteOutboundConnectionResponse,
   errors: [DisabledOperationException, ResourceNotFoundException],
@@ -6810,7 +6810,7 @@ export const deletePackage: API.OperationMethod<
   DeletePackageResponse,
   DeletePackageError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePackageRequest,
   output: DeletePackageResponse,
   errors: [
@@ -6836,7 +6836,7 @@ export const deleteVpcEndpoint: API.OperationMethod<
   DeleteVpcEndpointResponse,
   DeleteVpcEndpointError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteVpcEndpointRequest,
   output: DeleteVpcEndpointResponse,
   errors: [
@@ -6862,7 +6862,7 @@ export const deregisterCapability: API.OperationMethod<
   DeregisterCapabilityResponse,
   DeregisterCapabilityError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeregisterCapabilityRequest,
   output: DeregisterCapabilityResponse,
   errors: [
@@ -6889,7 +6889,7 @@ export const describeDomain: API.OperationMethod<
   DescribeDomainResponse,
   DescribeDomainError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDomainRequest,
   output: DescribeDomainResponse,
   errors: [
@@ -6930,7 +6930,7 @@ export const describeDomainAutoTunes: API.OperationMethod<
     DescribeDomainAutoTunesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDomainAutoTunesRequest,
   output: DescribeDomainAutoTunesResponse,
   errors: [
@@ -6960,7 +6960,7 @@ export const describeDomainChangeProgress: API.OperationMethod<
   DescribeDomainChangeProgressResponse,
   DescribeDomainChangeProgressError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDomainChangeProgressRequest,
   output: DescribeDomainChangeProgressResponse,
   errors: [
@@ -6984,7 +6984,7 @@ export const describeDomainConfig: API.OperationMethod<
   DescribeDomainConfigResponse,
   DescribeDomainConfigError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDomainConfigRequest,
   output: DescribeDomainConfigResponse,
   errors: [
@@ -7010,7 +7010,7 @@ export const describeDomainHealth: API.OperationMethod<
   DescribeDomainHealthResponse,
   DescribeDomainHealthError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDomainHealthRequest,
   output: DescribeDomainHealthResponse,
   errors: [
@@ -7039,7 +7039,7 @@ export const describeDomainNodes: API.OperationMethod<
   DescribeDomainNodesResponse,
   DescribeDomainNodesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDomainNodesRequest,
   output: DescribeDomainNodesResponse,
   errors: [
@@ -7065,7 +7065,7 @@ export const describeDomains: API.OperationMethod<
   DescribeDomainsResponse,
   DescribeDomainsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDomainsRequest,
   output: DescribeDomainsResponse,
   errors: [BaseException, InternalException, ValidationException],
@@ -7086,7 +7086,7 @@ export const describeDryRunProgress: API.OperationMethod<
   DescribeDryRunProgressResponse,
   DescribeDryRunProgressError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDryRunProgressRequest,
   output: DescribeDryRunProgressResponse,
   errors: [
@@ -7125,7 +7125,7 @@ export const describeInboundConnections: API.OperationMethod<
     DescribeInboundConnectionsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInboundConnectionsRequest,
   output: DescribeInboundConnectionsResponse,
   errors: [DisabledOperationException, InvalidPaginationTokenException],
@@ -7153,7 +7153,7 @@ export const describeInsightDetails: API.OperationMethod<
   DescribeInsightDetailsResponse,
   DescribeInsightDetailsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeInsightDetailsRequest,
   output: DescribeInsightDetailsResponse,
   errors: [
@@ -7182,7 +7182,7 @@ export const describeInstanceTypeLimits: API.OperationMethod<
   DescribeInstanceTypeLimitsResponse,
   DescribeInstanceTypeLimitsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeInstanceTypeLimitsRequest,
   output: DescribeInstanceTypeLimitsResponse,
   errors: [
@@ -7222,7 +7222,7 @@ export const describeOutboundConnections: API.OperationMethod<
     DescribeOutboundConnectionsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeOutboundConnectionsRequest,
   output: DescribeOutboundConnectionsResponse,
   errors: [DisabledOperationException, InvalidPaginationTokenException],
@@ -7264,7 +7264,7 @@ export const describePackages: API.OperationMethod<
     DescribePackagesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribePackagesRequest,
   output: DescribePackagesResponse,
   errors: [
@@ -7311,7 +7311,7 @@ export const describeReservedInstanceOfferings: API.OperationMethod<
     DescribeReservedInstanceOfferingsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReservedInstanceOfferingsRequest,
   output: DescribeReservedInstanceOfferingsResponse,
   errors: [
@@ -7357,7 +7357,7 @@ export const describeReservedInstances: API.OperationMethod<
     DescribeReservedInstancesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReservedInstancesRequest,
   output: DescribeReservedInstancesResponse,
   errors: [
@@ -7386,7 +7386,7 @@ export const describeVpcEndpoints: API.OperationMethod<
   DescribeVpcEndpointsResponse,
   DescribeVpcEndpointsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeVpcEndpointsRequest,
   output: DescribeVpcEndpointsResponse,
   errors: [
@@ -7416,7 +7416,7 @@ export const dissociatePackage: API.OperationMethod<
   DissociatePackageResponse,
   DissociatePackageError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DissociatePackageRequest,
   output: DissociatePackageResponse,
   errors: [
@@ -7444,7 +7444,7 @@ export const dissociatePackages: API.OperationMethod<
   DissociatePackagesResponse,
   DissociatePackagesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DissociatePackagesRequest,
   output: DissociatePackagesResponse,
   errors: [
@@ -7472,7 +7472,7 @@ export const getApplication: API.OperationMethod<
   GetApplicationResponse,
   GetApplicationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetApplicationRequest,
   output: GetApplicationResponse,
   errors: [
@@ -7499,7 +7499,7 @@ export const getCapability: API.OperationMethod<
   GetCapabilityResponse,
   GetCapabilityError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCapabilityRequest,
   output: GetCapabilityResponse,
   errors: [
@@ -7526,7 +7526,7 @@ export const getCompatibleVersions: API.OperationMethod<
   GetCompatibleVersionsResponse,
   GetCompatibleVersionsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCompatibleVersionsRequest,
   output: GetCompatibleVersionsResponse,
   errors: [
@@ -7553,7 +7553,7 @@ export const getDataSource: API.OperationMethod<
   GetDataSourceResponse,
   GetDataSourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDataSourceRequest,
   output: GetDataSourceResponse,
   errors: [
@@ -7582,7 +7582,7 @@ export const getDefaultApplicationSetting: API.OperationMethod<
   GetDefaultApplicationSettingResponse,
   GetDefaultApplicationSettingError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDefaultApplicationSettingRequest,
   output: GetDefaultApplicationSettingResponse,
   errors: [
@@ -7608,7 +7608,7 @@ export const getDirectQueryDataSource: API.OperationMethod<
   GetDirectQueryDataSourceResponse,
   GetDirectQueryDataSourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDirectQueryDataSourceRequest,
   output: GetDirectQueryDataSourceResponse,
   errors: [
@@ -7634,7 +7634,7 @@ export const getDomainMaintenanceStatus: API.OperationMethod<
   GetDomainMaintenanceStatusResponse,
   GetDomainMaintenanceStatusError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDomainMaintenanceStatusRequest,
   output: GetDomainMaintenanceStatusResponse,
   errors: [
@@ -7662,7 +7662,7 @@ export const getIndex: API.OperationMethod<
   GetIndexResponse,
   GetIndexError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIndexRequest,
   output: GetIndexResponse,
   errors: [
@@ -7708,7 +7708,7 @@ export const getPackageVersionHistory: API.OperationMethod<
     GetPackageVersionHistoryError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetPackageVersionHistoryRequest,
   output: GetPackageVersionHistoryResponse,
   errors: [
@@ -7755,7 +7755,7 @@ export const getUpgradeHistory: API.OperationMethod<
     GetUpgradeHistoryError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetUpgradeHistoryRequest,
   output: GetUpgradeHistoryResponse,
   errors: [
@@ -7787,7 +7787,7 @@ export const getUpgradeStatus: API.OperationMethod<
   GetUpgradeStatusResponse,
   GetUpgradeStatusError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUpgradeStatusRequest,
   output: GetUpgradeStatusResponse,
   errors: [
@@ -7829,7 +7829,7 @@ export const listApplications: API.OperationMethod<
     ListApplicationsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationsRequest,
   output: ListApplicationsResponse,
   errors: [
@@ -7865,7 +7865,7 @@ export const listDataSources: API.OperationMethod<
   ListDataSourcesResponse,
   ListDataSourcesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListDataSourcesRequest,
   output: ListDataSourcesResponse,
   errors: [
@@ -7893,7 +7893,7 @@ export const listDirectQueryDataSources: API.OperationMethod<
   ListDirectQueryDataSourcesResponse,
   ListDirectQueryDataSourcesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListDirectQueryDataSourcesRequest,
   output: ListDirectQueryDataSourcesResponse,
   errors: [
@@ -7934,7 +7934,7 @@ export const listDomainMaintenances: API.OperationMethod<
     ListDomainMaintenancesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDomainMaintenancesRequest,
   output: ListDomainMaintenancesResponse,
   errors: [
@@ -7963,7 +7963,7 @@ export const listDomainNames: API.OperationMethod<
   ListDomainNamesResponse,
   ListDomainNamesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListDomainNamesRequest,
   output: ListDomainNamesResponse,
   errors: [BaseException, ValidationException],
@@ -8000,7 +8000,7 @@ export const listDomainsForPackage: API.OperationMethod<
     ListDomainsForPackageError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDomainsForPackageRequest,
   output: ListDomainsForPackageResponse,
   errors: [
@@ -8034,7 +8034,7 @@ export const listInsights: API.OperationMethod<
   ListInsightsResponse,
   ListInsightsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListInsightsRequest,
   output: ListInsightsResponse,
   errors: [
@@ -8076,7 +8076,7 @@ export const listInstanceTypeDetails: API.OperationMethod<
     ListInstanceTypeDetailsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInstanceTypeDetailsRequest,
   output: ListInstanceTypeDetailsResponse,
   errors: [
@@ -8123,7 +8123,7 @@ export const listPackagesForDomain: API.OperationMethod<
     ListPackagesForDomainError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPackagesForDomainRequest,
   output: ListPackagesForDomainResponse,
   errors: [
@@ -8171,7 +8171,7 @@ export const listScheduledActions: API.OperationMethod<
     ListScheduledActionsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListScheduledActionsRequest,
   output: ListScheduledActionsResponse,
   errors: [
@@ -8202,7 +8202,7 @@ export const listTags: API.OperationMethod<
   ListTagsResponse,
   ListTagsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsRequest,
   output: ListTagsResponse,
   errors: [
@@ -8242,7 +8242,7 @@ export const listVersions: API.OperationMethod<
     ListVersionsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVersionsRequest,
   output: ListVersionsResponse,
   errors: [
@@ -8273,7 +8273,7 @@ export const listVpcEndpointAccess: API.OperationMethod<
   ListVpcEndpointAccessResponse,
   ListVpcEndpointAccessError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListVpcEndpointAccessRequest,
   output: ListVpcEndpointAccessResponse,
   errors: [
@@ -8296,7 +8296,7 @@ export const listVpcEndpoints: API.OperationMethod<
   ListVpcEndpointsResponse,
   ListVpcEndpointsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListVpcEndpointsRequest,
   output: ListVpcEndpointsResponse,
   errors: [BaseException, DisabledOperationException, InternalException],
@@ -8316,7 +8316,7 @@ export const listVpcEndpointsForDomain: API.OperationMethod<
   ListVpcEndpointsForDomainResponse,
   ListVpcEndpointsForDomainError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListVpcEndpointsForDomainRequest,
   output: ListVpcEndpointsForDomainResponse,
   errors: [
@@ -8342,7 +8342,7 @@ export const purchaseReservedInstanceOffering: API.OperationMethod<
   PurchaseReservedInstanceOfferingResponse,
   PurchaseReservedInstanceOfferingError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PurchaseReservedInstanceOfferingRequest,
   output: PurchaseReservedInstanceOfferingResponse,
   errors: [
@@ -8373,7 +8373,7 @@ export const putDefaultApplicationSetting: API.OperationMethod<
   PutDefaultApplicationSettingResponse,
   PutDefaultApplicationSettingError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutDefaultApplicationSettingRequest,
   output: PutDefaultApplicationSettingResponse,
   errors: [
@@ -8400,7 +8400,7 @@ export const registerCapability: API.OperationMethod<
   RegisterCapabilityResponse,
   RegisterCapabilityError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterCapabilityRequest,
   output: RegisterCapabilityResponse,
   errors: [
@@ -8426,7 +8426,7 @@ export const rejectInboundConnection: API.OperationMethod<
   RejectInboundConnectionResponse,
   RejectInboundConnectionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RejectInboundConnectionRequest,
   output: RejectInboundConnectionResponse,
   errors: [DisabledOperationException, ResourceNotFoundException],
@@ -8445,7 +8445,7 @@ export const removeTags: API.OperationMethod<
   RemoveTagsResponse,
   RemoveTagsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveTagsRequest,
   output: RemoveTagsResponse,
   errors: [BaseException, InternalException, ValidationException],
@@ -8466,7 +8466,7 @@ export const revokeVpcEndpointAccess: API.OperationMethod<
   RevokeVpcEndpointAccessResponse,
   RevokeVpcEndpointAccessError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RevokeVpcEndpointAccessRequest,
   output: RevokeVpcEndpointAccessResponse,
   errors: [
@@ -8494,7 +8494,7 @@ export const startDomainMaintenance: API.OperationMethod<
   StartDomainMaintenanceResponse,
   StartDomainMaintenanceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartDomainMaintenanceRequest,
   output: StartDomainMaintenanceResponse,
   errors: [
@@ -8521,7 +8521,7 @@ export const startServiceSoftwareUpdate: API.OperationMethod<
   StartServiceSoftwareUpdateResponse,
   StartServiceSoftwareUpdateError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartServiceSoftwareUpdateRequest,
   output: StartServiceSoftwareUpdateResponse,
   errors: [
@@ -8548,7 +8548,7 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationResponse,
   UpdateApplicationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateApplicationRequest,
   output: UpdateApplicationResponse,
   errors: [
@@ -8579,7 +8579,7 @@ export const updateDataSource: API.OperationMethod<
   UpdateDataSourceResponse,
   UpdateDataSourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDataSourceRequest,
   output: UpdateDataSourceResponse,
   errors: [
@@ -8608,7 +8608,7 @@ export const updateDirectQueryDataSource: API.OperationMethod<
   UpdateDirectQueryDataSourceResponse,
   UpdateDirectQueryDataSourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDirectQueryDataSourceRequest,
   output: UpdateDirectQueryDataSourceResponse,
   errors: [
@@ -8637,7 +8637,7 @@ export const updateDomainConfig: API.OperationMethod<
   UpdateDomainConfigResponse,
   UpdateDomainConfigError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDomainConfigRequest,
   output: UpdateDomainConfigResponse,
   errors: [
@@ -8666,7 +8666,7 @@ export const updateIndex: API.OperationMethod<
   UpdateIndexResponse,
   UpdateIndexError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateIndexRequest,
   output: UpdateIndexResponse,
   errors: [
@@ -8697,7 +8697,7 @@ export const updatePackage: API.OperationMethod<
   UpdatePackageResponse,
   UpdatePackageError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePackageRequest,
   output: UpdatePackageResponse,
   errors: [
@@ -8725,7 +8725,7 @@ export const updatePackageScope: API.OperationMethod<
   UpdatePackageScopeResponse,
   UpdatePackageScopeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePackageScopeRequest,
   output: UpdatePackageScopeResponse,
   errors: [
@@ -8755,7 +8755,7 @@ export const updateScheduledAction: API.OperationMethod<
   UpdateScheduledActionResponse,
   UpdateScheduledActionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateScheduledActionRequest,
   output: UpdateScheduledActionResponse,
   errors: [
@@ -8784,7 +8784,7 @@ export const updateVpcEndpoint: API.OperationMethod<
   UpdateVpcEndpointResponse,
   UpdateVpcEndpointError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateVpcEndpointRequest,
   output: UpdateVpcEndpointResponse,
   errors: [
@@ -8813,7 +8813,7 @@ export const upgradeDomain: API.OperationMethod<
   UpgradeDomainResponse,
   UpgradeDomainError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpgradeDomainRequest,
   output: UpgradeDomainResponse,
   errors: [

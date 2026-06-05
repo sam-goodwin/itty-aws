@@ -4610,7 +4610,7 @@ export const addInstanceFleet: API.OperationMethod<
   AddInstanceFleetOutput,
   AddInstanceFleetError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddInstanceFleetInput,
   output: AddInstanceFleetOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -4624,7 +4624,7 @@ export const addInstanceGroups: API.OperationMethod<
   AddInstanceGroupsOutput,
   AddInstanceGroupsError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddInstanceGroupsInput,
   output: AddInstanceGroupsOutput,
   errors: [InternalServerError],
@@ -4659,7 +4659,7 @@ export const addJobFlowSteps: API.OperationMethod<
   AddJobFlowStepsOutput,
   AddJobFlowStepsError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddJobFlowStepsInput,
   output: AddJobFlowStepsOutput,
   errors: [InternalServerError],
@@ -4680,7 +4680,7 @@ export const addTags: API.OperationMethod<
   AddTagsOutput,
   AddTagsError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddTagsInput,
   output: AddTagsOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -4701,7 +4701,7 @@ export const cancelSteps: API.OperationMethod<
   CancelStepsOutput,
   CancelStepsError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelStepsInput,
   output: CancelStepsOutput,
   errors: [InternalServerError, InvalidRequestException],
@@ -4718,7 +4718,7 @@ export const createPersistentAppUI: API.OperationMethod<
   CreatePersistentAppUIOutput,
   CreatePersistentAppUIError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePersistentAppUIInput,
   output: CreatePersistentAppUIOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -4736,7 +4736,7 @@ export const createSecurityConfiguration: API.OperationMethod<
   CreateSecurityConfigurationOutput,
   CreateSecurityConfigurationError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSecurityConfigurationInput,
   output: CreateSecurityConfigurationOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -4753,7 +4753,7 @@ export const createStudio: API.OperationMethod<
   CreateStudioOutput,
   CreateStudioError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateStudioInput,
   output: CreateStudioOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -4774,7 +4774,7 @@ export const createStudioSessionMapping: API.OperationMethod<
   CreateStudioSessionMappingResponse,
   CreateStudioSessionMappingError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateStudioSessionMappingInput,
   output: CreateStudioSessionMappingResponse,
   errors: [InternalServerError, InvalidRequestException],
@@ -4791,7 +4791,7 @@ export const deleteSecurityConfiguration: API.OperationMethod<
   DeleteSecurityConfigurationOutput,
   DeleteSecurityConfigurationError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSecurityConfigurationInput,
   output: DeleteSecurityConfigurationOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -4808,7 +4808,7 @@ export const deleteStudio: API.OperationMethod<
   DeleteStudioResponse,
   DeleteStudioError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteStudioInput,
   output: DeleteStudioResponse,
   errors: [InternalServerException, InvalidRequestException],
@@ -4825,7 +4825,7 @@ export const deleteStudioSessionMapping: API.OperationMethod<
   DeleteStudioSessionMappingResponse,
   DeleteStudioSessionMappingError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteStudioSessionMappingInput,
   output: DeleteStudioSessionMappingResponse,
   errors: [InternalServerError, InvalidRequestException],
@@ -4843,7 +4843,7 @@ export const describeCluster: API.OperationMethod<
   DescribeClusterOutput,
   DescribeClusterError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeClusterInput,
   output: DescribeClusterOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -4876,7 +4876,7 @@ export const describeJobFlows: API.OperationMethod<
   DescribeJobFlowsOutput,
   DescribeJobFlowsError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeJobFlowsInput,
   output: DescribeJobFlowsOutput,
   errors: [InternalServerError],
@@ -4893,7 +4893,7 @@ export const describeNotebookExecution: API.OperationMethod<
   DescribeNotebookExecutionOutput,
   DescribeNotebookExecutionError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeNotebookExecutionInput,
   output: DescribeNotebookExecutionOutput,
   errors: [InternalServerError, InvalidRequestException],
@@ -4910,7 +4910,7 @@ export const describePersistentAppUI: API.OperationMethod<
   DescribePersistentAppUIOutput,
   DescribePersistentAppUIError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribePersistentAppUIInput,
   output: DescribePersistentAppUIOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -4929,7 +4929,7 @@ export const describeReleaseLabel: API.OperationMethod<
   DescribeReleaseLabelOutput,
   DescribeReleaseLabelError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeReleaseLabelInput,
   output: DescribeReleaseLabelOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -4947,7 +4947,7 @@ export const describeSecurityConfiguration: API.OperationMethod<
   DescribeSecurityConfigurationOutput,
   DescribeSecurityConfigurationError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeSecurityConfigurationInput,
   output: DescribeSecurityConfigurationOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -4964,7 +4964,7 @@ export const describeStep: API.OperationMethod<
   DescribeStepOutput,
   DescribeStepError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeStepInput,
   output: DescribeStepOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -4982,7 +4982,7 @@ export const describeStudio: API.OperationMethod<
   DescribeStudioOutput,
   DescribeStudioError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeStudioInput,
   output: DescribeStudioOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -4996,7 +4996,7 @@ export const getAutoTerminationPolicy: API.OperationMethod<
   GetAutoTerminationPolicyOutput,
   GetAutoTerminationPolicyError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAutoTerminationPolicyInput,
   output: GetAutoTerminationPolicyOutput,
   errors: [],
@@ -5015,7 +5015,7 @@ export const getBlockPublicAccessConfiguration: API.OperationMethod<
   GetBlockPublicAccessConfigurationOutput,
   GetBlockPublicAccessConfigurationError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetBlockPublicAccessConfigurationInput,
   output: GetBlockPublicAccessConfigurationOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -5035,7 +5035,7 @@ export const getClusterSessionCredentials: API.OperationMethod<
   GetClusterSessionCredentialsOutput,
   GetClusterSessionCredentialsError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetClusterSessionCredentialsInput,
   output: GetClusterSessionCredentialsOutput,
   errors: [InternalServerError, InvalidRequestException],
@@ -5049,7 +5049,7 @@ export const getManagedScalingPolicy: API.OperationMethod<
   GetManagedScalingPolicyOutput,
   GetManagedScalingPolicyError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetManagedScalingPolicyInput,
   output: GetManagedScalingPolicyOutput,
   errors: [],
@@ -5066,7 +5066,7 @@ export const getOnClusterAppUIPresignedURL: API.OperationMethod<
   GetOnClusterAppUIPresignedURLOutput,
   GetOnClusterAppUIPresignedURLError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOnClusterAppUIPresignedURLInput,
   output: GetOnClusterAppUIPresignedURLOutput,
   errors: [InternalServerError, InvalidRequestException],
@@ -5083,7 +5083,7 @@ export const getPersistentAppUIPresignedURL: API.OperationMethod<
   GetPersistentAppUIPresignedURLOutput,
   GetPersistentAppUIPresignedURLError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPersistentAppUIPresignedURLInput,
   output: GetPersistentAppUIPresignedURLOutput,
   errors: [InternalServerError, InvalidRequestException],
@@ -5101,7 +5101,7 @@ export const getStudioSessionMapping: API.OperationMethod<
   GetStudioSessionMappingOutput,
   GetStudioSessionMappingError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetStudioSessionMappingInput,
   output: GetStudioSessionMappingOutput,
   errors: [InternalServerError, InvalidRequestException],
@@ -5133,7 +5133,7 @@ export const listBootstrapActions: API.OperationMethod<
     ListBootstrapActionsError,
     Creds | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBootstrapActionsInput,
   output: ListBootstrapActionsOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -5174,7 +5174,7 @@ export const listClusters: API.OperationMethod<
     ListClustersError,
     Creds | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListClustersInput,
   output: ListClustersOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -5214,7 +5214,7 @@ export const listInstanceFleets: API.OperationMethod<
     ListInstanceFleetsError,
     Creds | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInstanceFleetsInput,
   output: ListInstanceFleetsOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -5251,7 +5251,7 @@ export const listInstanceGroups: API.OperationMethod<
     ListInstanceGroupsError,
     Creds | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInstanceGroupsInput,
   output: ListInstanceGroupsOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -5291,7 +5291,7 @@ export const listInstances: API.OperationMethod<
     ListInstancesError,
     Creds | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInstancesInput,
   output: ListInstancesOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -5331,7 +5331,7 @@ export const listNotebookExecutions: API.OperationMethod<
     ListNotebookExecutionsError,
     Creds | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNotebookExecutionsInput,
   output: ListNotebookExecutionsOutput,
   errors: [InternalServerError, InvalidRequestException],
@@ -5369,7 +5369,7 @@ export const listReleaseLabels: API.OperationMethod<
     ListReleaseLabelsError,
     Creds | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReleaseLabelsInput,
   output: ListReleaseLabelsOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -5409,7 +5409,7 @@ export const listSecurityConfigurations: API.OperationMethod<
     ListSecurityConfigurationsError,
     Creds | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSecurityConfigurationsInput,
   output: ListSecurityConfigurationsOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -5451,7 +5451,7 @@ export const listSteps: API.OperationMethod<
     ListStepsError,
     Creds | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStepsInput,
   output: ListStepsOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -5489,7 +5489,7 @@ export const listStudios: API.OperationMethod<
     ListStudiosError,
     Creds | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStudiosInput,
   output: ListStudiosOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -5527,7 +5527,7 @@ export const listStudioSessionMappings: API.OperationMethod<
     ListStudioSessionMappingsError,
     Creds | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStudioSessionMappingsInput,
   output: ListStudioSessionMappingsOutput,
   errors: [InternalServerError, InvalidRequestException],
@@ -5565,7 +5565,7 @@ export const listSupportedInstanceTypes: API.OperationMethod<
     ListSupportedInstanceTypesError,
     Creds | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSupportedInstanceTypesInput,
   output: ListSupportedInstanceTypesOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -5584,7 +5584,7 @@ export const modifyCluster: API.OperationMethod<
   ModifyClusterOutput,
   ModifyClusterError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyClusterInput,
   output: ModifyClusterOutput,
   errors: [InternalServerError, InvalidRequestException],
@@ -5606,7 +5606,7 @@ export const modifyInstanceFleet: API.OperationMethod<
   ModifyInstanceFleetResponse,
   ModifyInstanceFleetError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyInstanceFleetInput,
   output: ModifyInstanceFleetResponse,
   errors: [InternalServerException, InvalidRequestException],
@@ -5622,7 +5622,7 @@ export const modifyInstanceGroups: API.OperationMethod<
   ModifyInstanceGroupsResponse,
   ModifyInstanceGroupsError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyInstanceGroupsInput,
   output: ModifyInstanceGroupsResponse,
   errors: [InternalServerError],
@@ -5639,7 +5639,7 @@ export const putAutoScalingPolicy: API.OperationMethod<
   PutAutoScalingPolicyOutput,
   PutAutoScalingPolicyError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutAutoScalingPolicyInput,
   output: PutAutoScalingPolicyOutput,
   errors: [],
@@ -5660,7 +5660,7 @@ export const putAutoTerminationPolicy: API.OperationMethod<
   PutAutoTerminationPolicyOutput,
   PutAutoTerminationPolicyError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutAutoTerminationPolicyInput,
   output: PutAutoTerminationPolicyOutput,
   errors: [],
@@ -5680,7 +5680,7 @@ export const putBlockPublicAccessConfiguration: API.OperationMethod<
   PutBlockPublicAccessConfigurationOutput,
   PutBlockPublicAccessConfigurationError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutBlockPublicAccessConfigurationInput,
   output: PutBlockPublicAccessConfigurationOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -5697,7 +5697,7 @@ export const putManagedScalingPolicy: API.OperationMethod<
   PutManagedScalingPolicyOutput,
   PutManagedScalingPolicyError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutManagedScalingPolicyInput,
   output: PutManagedScalingPolicyOutput,
   errors: [],
@@ -5711,7 +5711,7 @@ export const removeAutoScalingPolicy: API.OperationMethod<
   RemoveAutoScalingPolicyOutput,
   RemoveAutoScalingPolicyError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveAutoScalingPolicyInput,
   output: RemoveAutoScalingPolicyOutput,
   errors: [],
@@ -5725,7 +5725,7 @@ export const removeAutoTerminationPolicy: API.OperationMethod<
   RemoveAutoTerminationPolicyOutput,
   RemoveAutoTerminationPolicyError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveAutoTerminationPolicyInput,
   output: RemoveAutoTerminationPolicyOutput,
   errors: [],
@@ -5739,7 +5739,7 @@ export const removeManagedScalingPolicy: API.OperationMethod<
   RemoveManagedScalingPolicyOutput,
   RemoveManagedScalingPolicyError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveManagedScalingPolicyInput,
   output: RemoveManagedScalingPolicyOutput,
   errors: [],
@@ -5761,7 +5761,7 @@ export const removeTags: API.OperationMethod<
   RemoveTagsOutput,
   RemoveTagsError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveTagsInput,
   output: RemoveTagsOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -5799,7 +5799,7 @@ export const runJobFlow: API.OperationMethod<
   RunJobFlowOutput,
   RunJobFlowError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RunJobFlowInput,
   output: RunJobFlowOutput,
   errors: [InternalServerError],
@@ -5819,7 +5819,7 @@ export const setKeepJobFlowAliveWhenNoSteps: API.OperationMethod<
   SetKeepJobFlowAliveWhenNoStepsResponse,
   SetKeepJobFlowAliveWhenNoStepsError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetKeepJobFlowAliveWhenNoStepsInput,
   output: SetKeepJobFlowAliveWhenNoStepsResponse,
   errors: [InternalServerError],
@@ -5851,7 +5851,7 @@ export const setTerminationProtection: API.OperationMethod<
   SetTerminationProtectionResponse,
   SetTerminationProtectionError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetTerminationProtectionInput,
   output: SetTerminationProtectionResponse,
   errors: [InternalServerError],
@@ -5880,7 +5880,7 @@ export const setUnhealthyNodeReplacement: API.OperationMethod<
   SetUnhealthyNodeReplacementResponse,
   SetUnhealthyNodeReplacementError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetUnhealthyNodeReplacementInput,
   output: SetUnhealthyNodeReplacementResponse,
   errors: [InternalServerError],
@@ -5907,7 +5907,7 @@ export const setVisibleToAllUsers: API.OperationMethod<
   SetVisibleToAllUsersResponse,
   SetVisibleToAllUsersError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetVisibleToAllUsersInput,
   output: SetVisibleToAllUsersResponse,
   errors: [InternalServerError],
@@ -5924,7 +5924,7 @@ export const startNotebookExecution: API.OperationMethod<
   StartNotebookExecutionOutput,
   StartNotebookExecutionError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartNotebookExecutionInput,
   output: StartNotebookExecutionOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -5941,7 +5941,7 @@ export const stopNotebookExecution: API.OperationMethod<
   StopNotebookExecutionResponse,
   StopNotebookExecutionError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopNotebookExecutionInput,
   output: StopNotebookExecutionResponse,
   errors: [InternalServerError, InvalidRequestException],
@@ -5962,7 +5962,7 @@ export const terminateJobFlows: API.OperationMethod<
   TerminateJobFlowsResponse,
   TerminateJobFlowsError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TerminateJobFlowsInput,
   output: TerminateJobFlowsResponse,
   errors: [InternalServerError],
@@ -5980,7 +5980,7 @@ export const updateStudio: API.OperationMethod<
   UpdateStudioResponse,
   UpdateStudioError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateStudioInput,
   output: UpdateStudioResponse,
   errors: [InternalServerException, InvalidRequestException],
@@ -5997,7 +5997,7 @@ export const updateStudioSessionMapping: API.OperationMethod<
   UpdateStudioSessionMappingResponse,
   UpdateStudioSessionMappingError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateStudioSessionMappingInput,
   output: UpdateStudioSessionMappingResponse,
   errors: [InternalServerError, InvalidRequestException],

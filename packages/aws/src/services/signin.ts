@@ -267,7 +267,7 @@ export const createOAuth2Token: API.OperationMethod<
   CreateOAuth2TokenResponse,
   CreateOAuth2TokenError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOAuth2TokenRequest,
   output: CreateOAuth2TokenResponse,
   errors: [

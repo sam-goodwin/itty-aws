@@ -356,7 +356,7 @@ export const deleteObject: API.OperationMethod<
   DeleteObjectResponse,
   DeleteObjectError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteObjectRequest,
   output: DeleteObjectResponse,
   errors: [
@@ -378,7 +378,7 @@ export const describeObject: API.OperationMethod<
   DescribeObjectResponse,
   DescribeObjectError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeObjectRequest,
   output: DescribeObjectResponse,
   errors: [
@@ -401,7 +401,7 @@ export const getObject: API.OperationMethod<
   GetObjectResponse,
   GetObjectError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetObjectRequest,
   output: GetObjectResponse,
   errors: [
@@ -439,7 +439,7 @@ export const listItems: API.OperationMethod<
     ListItemsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListItemsRequest,
   output: ListItemsResponse,
   errors: [ContainerNotFoundException, InternalServerError],
@@ -461,7 +461,7 @@ export const putObject: API.OperationMethod<
   PutObjectResponse,
   PutObjectError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutObjectRequest,
   output: PutObjectResponse,
   errors: [ContainerNotFoundException, InternalServerError],

@@ -22,7 +22,7 @@ export interface GetRateLimitRequest {
   zoneId: string;
 }
 
-export const GetRateLimitRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetRateLimitRequest = /*@__PURE__*/ Schema.Struct({
   rateLimitId: Schema.String.pipe(T.HttpPath("rateLimitId")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
 }).pipe(
@@ -84,7 +84,7 @@ export interface GetRateLimitResponse {
   threshold?: number | null;
 }
 
-export const GetRateLimitResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetRateLimitResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   action: Schema.optional(
     Schema.Union([
@@ -221,7 +221,7 @@ export const getRateLimit: API.OperationMethod<
   GetRateLimitResponse,
   GetRateLimitError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRateLimitRequest,
   output: GetRateLimitResponse,
   errors: [],
@@ -234,7 +234,7 @@ export interface ListRateLimitsRequest {
   perPage?: number;
 }
 
-export const ListRateLimitsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListRateLimitsRequest = /*@__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
   perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
@@ -297,174 +297,166 @@ export interface ListRateLimitsResponse {
   } | null;
 }
 
-export const ListRateLimitsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    result: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        action: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              mode: Schema.optional(
+export const ListRateLimitsResponse = /*@__PURE__*/ Schema.Struct({
+  result: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      action: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            mode: Schema.optional(
+              Schema.Union([
                 Schema.Union([
-                  Schema.Union([
-                    Schema.Literals([
-                      "simulate",
-                      "ban",
-                      "challenge",
-                      "js_challenge",
-                      "managed_challenge",
-                    ]),
-                    Schema.String,
+                  Schema.Literals([
+                    "simulate",
+                    "ban",
+                    "challenge",
+                    "js_challenge",
+                    "managed_challenge",
                   ]),
-                  Schema.Null,
+                  Schema.String,
                 ]),
-              ),
-              response: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    body: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    contentType: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      body: "body",
-                      contentType: "content_type",
-                    }),
+                Schema.Null,
+              ]),
+            ),
+            response: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  body: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
                   ),
-                  Schema.Null,
-                ]),
+                  contentType: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    body: "body",
+                    contentType: "content_type",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+            timeout: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+          }),
+          Schema.Null,
+        ]),
+      ),
+      bypass: Schema.optional(
+        Schema.Union([
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(
+                Schema.Union([Schema.Literal("url"), Schema.Null]),
               ),
-              timeout: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
+              value: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
               ),
             }),
-            Schema.Null,
-          ]),
-        ),
-        bypass: Schema.optional(
-          Schema.Union([
-            Schema.Array(
-              Schema.Struct({
-                name: Schema.optional(
-                  Schema.Union([Schema.Literal("url"), Schema.Null]),
-                ),
-                value: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-        description: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        disabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-        match: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              headers: Schema.optional(
-                Schema.Union([
-                  Schema.Array(
-                    Schema.Struct({
-                      name: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      op: Schema.optional(
-                        Schema.Union([
-                          Schema.Union([
-                            Schema.Literals(["eq", "ne"]),
-                            Schema.String,
-                          ]),
-                          Schema.Null,
-                        ]),
-                      ),
-                      value: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                    }),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-              request: Schema.optional(
-                Schema.Union([
+          ),
+          Schema.Null,
+        ]),
+      ),
+      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      disabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      match: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            headers: Schema.optional(
+              Schema.Union([
+                Schema.Array(
                   Schema.Struct({
-                    methods: Schema.optional(
+                    name: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
+                    op: Schema.optional(
                       Schema.Union([
-                        Schema.Array(
-                          Schema.Union([
-                            Schema.Literals([
-                              "GET",
-                              "POST",
-                              "PUT",
-                              "DELETE",
-                              "PATCH",
-                              "HEAD",
-                              "_ALL_",
-                            ]),
-                            Schema.String,
-                          ]),
-                        ),
+                        Schema.Union([
+                          Schema.Literals(["eq", "ne"]),
+                          Schema.String,
+                        ]),
                         Schema.Null,
                       ]),
                     ),
-                    schemes: Schema.optional(
-                      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                    ),
-                    url: Schema.optional(
+                    value: Schema.optional(
                       Schema.Union([Schema.String, Schema.Null]),
                     ),
                   }),
-                  Schema.Null,
-                ]),
-              ),
-              response: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    originTraffic: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({ originTraffic: "origin_traffic" }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+            request: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  methods: Schema.optional(
+                    Schema.Union([
+                      Schema.Array(
+                        Schema.Union([
+                          Schema.Literals([
+                            "GET",
+                            "POST",
+                            "PUT",
+                            "DELETE",
+                            "PATCH",
+                            "HEAD",
+                            "_ALL_",
+                          ]),
+                          Schema.String,
+                        ]),
+                      ),
+                      Schema.Null,
+                    ]),
                   ),
-                  Schema.Null,
-                ]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-        period: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        threshold: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      }),
-    ),
-    resultInfo: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          totalCount: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            count: "count",
-            page: "page",
-            perPage: "per_page",
-            totalCount: "total_count",
+                  schemes: Schema.optional(
+                    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                  ),
+                  url: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                }),
+                Schema.Null,
+              ]),
+            ),
+            response: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  originTraffic: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                }).pipe(Schema.encodeKeys({ originTraffic: "origin_traffic" })),
+                Schema.Null,
+              ]),
+            ),
           }),
-        ),
-        Schema.Null,
-      ]),
-    ),
-  },
-).pipe(
+          Schema.Null,
+        ]),
+      ),
+      period: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      threshold: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    }),
+  ),
+  resultInfo: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      }).pipe(
+        Schema.encodeKeys({
+          count: "count",
+          page: "page",
+          perPage: "per_page",
+          totalCount: "total_count",
+        }),
+      ),
+      Schema.Null,
+    ]),
+  ),
+}).pipe(
   Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
 ) as unknown as Schema.Schema<ListRateLimitsResponse>;
 
@@ -475,7 +467,7 @@ export const listRateLimits: API.PaginatedOperationMethod<
   ListRateLimitsResponse,
   ListRateLimitsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRateLimitsRequest,
   output: ListRateLimitsResponse,
   errors: [],
@@ -532,76 +524,72 @@ export interface CreateRateLimitRequest {
   threshold: number;
 }
 
-export const CreateRateLimitRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    action: Schema.Struct({
-      mode: Schema.optional(
-        Schema.Union([
-          Schema.Literals([
-            "simulate",
-            "ban",
-            "challenge",
-            "js_challenge",
-            "managed_challenge",
-          ]),
-          Schema.String,
+export const CreateRateLimitRequest = /*@__PURE__*/ Schema.Struct({
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  action: Schema.Struct({
+    mode: Schema.optional(
+      Schema.Union([
+        Schema.Literals([
+          "simulate",
+          "ban",
+          "challenge",
+          "js_challenge",
+          "managed_challenge",
         ]),
-      ),
-      response: Schema.optional(
+        Schema.String,
+      ]),
+    ),
+    response: Schema.optional(
+      Schema.Struct({
+        body: Schema.optional(Schema.String),
+        contentType: Schema.optional(Schema.String),
+      }).pipe(Schema.encodeKeys({ body: "body", contentType: "content_type" })),
+    ),
+    timeout: Schema.optional(Schema.Number),
+  }),
+  match: Schema.Struct({
+    headers: Schema.optional(
+      Schema.Array(
         Schema.Struct({
-          body: Schema.optional(Schema.String),
-          contentType: Schema.optional(Schema.String),
-        }).pipe(
-          Schema.encodeKeys({ body: "body", contentType: "content_type" }),
-        ),
-      ),
-      timeout: Schema.optional(Schema.Number),
-    }),
-    match: Schema.Struct({
-      headers: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            op: Schema.optional(
-              Schema.Union([Schema.Literals(["eq", "ne"]), Schema.String]),
-            ),
-            value: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      request: Schema.optional(
-        Schema.Struct({
-          methods: Schema.optional(
-            Schema.Array(
-              Schema.Union([
-                Schema.Literals([
-                  "GET",
-                  "POST",
-                  "PUT",
-                  "DELETE",
-                  "PATCH",
-                  "HEAD",
-                  "_ALL_",
-                ]),
-                Schema.String,
-              ]),
-            ),
+          name: Schema.optional(Schema.String),
+          op: Schema.optional(
+            Schema.Union([Schema.Literals(["eq", "ne"]), Schema.String]),
           ),
-          schemes: Schema.optional(Schema.Array(Schema.String)),
-          url: Schema.optional(Schema.String),
+          value: Schema.optional(Schema.String),
         }),
       ),
-      response: Schema.optional(
-        Schema.Struct({
-          originTraffic: Schema.optional(Schema.Boolean),
-        }).pipe(Schema.encodeKeys({ originTraffic: "origin_traffic" })),
-      ),
-    }),
-    period: Schema.Number,
-    threshold: Schema.Number,
-  },
-).pipe(
+    ),
+    request: Schema.optional(
+      Schema.Struct({
+        methods: Schema.optional(
+          Schema.Array(
+            Schema.Union([
+              Schema.Literals([
+                "GET",
+                "POST",
+                "PUT",
+                "DELETE",
+                "PATCH",
+                "HEAD",
+                "_ALL_",
+              ]),
+              Schema.String,
+            ]),
+          ),
+        ),
+        schemes: Schema.optional(Schema.Array(Schema.String)),
+        url: Schema.optional(Schema.String),
+      }),
+    ),
+    response: Schema.optional(
+      Schema.Struct({
+        originTraffic: Schema.optional(Schema.Boolean),
+      }).pipe(Schema.encodeKeys({ originTraffic: "origin_traffic" })),
+    ),
+  }),
+  period: Schema.Number,
+  threshold: Schema.Number,
+}).pipe(
   T.Http({ method: "POST", path: "/zones/{zone_id}/rate_limits" }),
 ) as unknown as Schema.Schema<CreateRateLimitRequest>;
 
@@ -660,143 +648,135 @@ export interface CreateRateLimitResponse {
   threshold?: number | null;
 }
 
-export const CreateRateLimitResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    action: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          mode: Schema.optional(
+export const CreateRateLimitResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  action: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        mode: Schema.optional(
+          Schema.Union([
             Schema.Union([
-              Schema.Union([
-                Schema.Literals([
-                  "simulate",
-                  "ban",
-                  "challenge",
-                  "js_challenge",
-                  "managed_challenge",
-                ]),
-                Schema.String,
+              Schema.Literals([
+                "simulate",
+                "ban",
+                "challenge",
+                "js_challenge",
+                "managed_challenge",
               ]),
-              Schema.Null,
+              Schema.String,
             ]),
-          ),
-          response: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                body: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                contentType: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  body: "body",
-                  contentType: "content_type",
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-          timeout: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        }),
-        Schema.Null,
-      ]),
-    ),
-    bypass: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.optional(
-              Schema.Union([Schema.Literal("url"), Schema.Null]),
-            ),
-            value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }),
+            Schema.Null,
+          ]),
         ),
-        Schema.Null,
-      ]),
-    ),
-    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    disabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    match: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          headers: Schema.optional(
-            Schema.Union([
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  op: Schema.optional(
-                    Schema.Union([
-                      Schema.Union([
-                        Schema.Literals(["eq", "ne"]),
-                        Schema.String,
-                      ]),
-                      Schema.Null,
-                    ]),
-                  ),
-                  value: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }),
+        response: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              body: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+              contentType: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
               ),
-              Schema.Null,
-            ]),
+            }).pipe(
+              Schema.encodeKeys({ body: "body", contentType: "content_type" }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        timeout: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      }),
+      Schema.Null,
+    ]),
+  ),
+  bypass: Schema.optional(
+    Schema.Union([
+      Schema.Array(
+        Schema.Struct({
+          name: Schema.optional(
+            Schema.Union([Schema.Literal("url"), Schema.Null]),
           ),
-          request: Schema.optional(
-            Schema.Union([
+          value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        }),
+      ),
+      Schema.Null,
+    ]),
+  ),
+  description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  disabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  match: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        headers: Schema.optional(
+          Schema.Union([
+            Schema.Array(
               Schema.Struct({
-                methods: Schema.optional(
+                name: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                op: Schema.optional(
                   Schema.Union([
-                    Schema.Array(
-                      Schema.Union([
-                        Schema.Literals([
-                          "GET",
-                          "POST",
-                          "PUT",
-                          "DELETE",
-                          "PATCH",
-                          "HEAD",
-                          "_ALL_",
-                        ]),
-                        Schema.String,
-                      ]),
-                    ),
+                    Schema.Union([
+                      Schema.Literals(["eq", "ne"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
-                schemes: Schema.optional(
-                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                ),
-                url: Schema.optional(
+                value: Schema.optional(
                   Schema.Union([Schema.String, Schema.Null]),
                 ),
               }),
-              Schema.Null,
-            ]),
-          ),
-          response: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                originTraffic: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-              }).pipe(Schema.encodeKeys({ originTraffic: "origin_traffic" })),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Null,
-      ]),
-    ),
-    period: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    threshold: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  }).pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<CreateRateLimitResponse>;
+            ),
+            Schema.Null,
+          ]),
+        ),
+        request: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              methods: Schema.optional(
+                Schema.Union([
+                  Schema.Array(
+                    Schema.Union([
+                      Schema.Literals([
+                        "GET",
+                        "POST",
+                        "PUT",
+                        "DELETE",
+                        "PATCH",
+                        "HEAD",
+                        "_ALL_",
+                      ]),
+                      Schema.String,
+                    ]),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              schemes: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
+              url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            }),
+            Schema.Null,
+          ]),
+        ),
+        response: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              originTraffic: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+            }).pipe(Schema.encodeKeys({ originTraffic: "origin_traffic" })),
+            Schema.Null,
+          ]),
+        ),
+      }),
+      Schema.Null,
+    ]),
+  ),
+  period: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  threshold: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+}).pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<CreateRateLimitResponse>;
 
 export type CreateRateLimitError = DefaultErrors;
 
@@ -805,7 +785,7 @@ export const createRateLimit: API.OperationMethod<
   CreateRateLimitResponse,
   CreateRateLimitError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRateLimitRequest,
   output: CreateRateLimitResponse,
   errors: [],
@@ -817,12 +797,10 @@ export interface DeleteRateLimitRequest {
   zoneId: string;
 }
 
-export const DeleteRateLimitRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    rateLimitId: Schema.String.pipe(T.HttpPath("rateLimitId")),
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  },
-).pipe(
+export const DeleteRateLimitRequest = /*@__PURE__*/ Schema.Struct({
+  rateLimitId: Schema.String.pipe(T.HttpPath("rateLimitId")),
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/zones/{zone_id}/rate_limits/{rateLimitId}",
@@ -884,143 +862,135 @@ export interface DeleteRateLimitResponse {
   threshold?: number | null;
 }
 
-export const DeleteRateLimitResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    action: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          mode: Schema.optional(
+export const DeleteRateLimitResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  action: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        mode: Schema.optional(
+          Schema.Union([
             Schema.Union([
-              Schema.Union([
-                Schema.Literals([
-                  "simulate",
-                  "ban",
-                  "challenge",
-                  "js_challenge",
-                  "managed_challenge",
-                ]),
-                Schema.String,
+              Schema.Literals([
+                "simulate",
+                "ban",
+                "challenge",
+                "js_challenge",
+                "managed_challenge",
               ]),
-              Schema.Null,
+              Schema.String,
             ]),
-          ),
-          response: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                body: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                contentType: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  body: "body",
-                  contentType: "content_type",
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-          timeout: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        }),
-        Schema.Null,
-      ]),
-    ),
-    bypass: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.optional(
-              Schema.Union([Schema.Literal("url"), Schema.Null]),
-            ),
-            value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }),
+            Schema.Null,
+          ]),
         ),
-        Schema.Null,
-      ]),
-    ),
-    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    disabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    match: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          headers: Schema.optional(
-            Schema.Union([
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  op: Schema.optional(
-                    Schema.Union([
-                      Schema.Union([
-                        Schema.Literals(["eq", "ne"]),
-                        Schema.String,
-                      ]),
-                      Schema.Null,
-                    ]),
-                  ),
-                  value: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }),
+        response: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              body: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+              contentType: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
               ),
-              Schema.Null,
-            ]),
+            }).pipe(
+              Schema.encodeKeys({ body: "body", contentType: "content_type" }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        timeout: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      }),
+      Schema.Null,
+    ]),
+  ),
+  bypass: Schema.optional(
+    Schema.Union([
+      Schema.Array(
+        Schema.Struct({
+          name: Schema.optional(
+            Schema.Union([Schema.Literal("url"), Schema.Null]),
           ),
-          request: Schema.optional(
-            Schema.Union([
+          value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        }),
+      ),
+      Schema.Null,
+    ]),
+  ),
+  description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  disabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  match: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        headers: Schema.optional(
+          Schema.Union([
+            Schema.Array(
               Schema.Struct({
-                methods: Schema.optional(
+                name: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                op: Schema.optional(
                   Schema.Union([
-                    Schema.Array(
-                      Schema.Union([
-                        Schema.Literals([
-                          "GET",
-                          "POST",
-                          "PUT",
-                          "DELETE",
-                          "PATCH",
-                          "HEAD",
-                          "_ALL_",
-                        ]),
-                        Schema.String,
-                      ]),
-                    ),
+                    Schema.Union([
+                      Schema.Literals(["eq", "ne"]),
+                      Schema.String,
+                    ]),
                     Schema.Null,
                   ]),
                 ),
-                schemes: Schema.optional(
-                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                ),
-                url: Schema.optional(
+                value: Schema.optional(
                   Schema.Union([Schema.String, Schema.Null]),
                 ),
               }),
-              Schema.Null,
-            ]),
-          ),
-          response: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                originTraffic: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-              }).pipe(Schema.encodeKeys({ originTraffic: "origin_traffic" })),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Null,
-      ]),
-    ),
-    period: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    threshold: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  }).pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<DeleteRateLimitResponse>;
+            ),
+            Schema.Null,
+          ]),
+        ),
+        request: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              methods: Schema.optional(
+                Schema.Union([
+                  Schema.Array(
+                    Schema.Union([
+                      Schema.Literals([
+                        "GET",
+                        "POST",
+                        "PUT",
+                        "DELETE",
+                        "PATCH",
+                        "HEAD",
+                        "_ALL_",
+                      ]),
+                      Schema.String,
+                    ]),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              schemes: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
+              url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            }),
+            Schema.Null,
+          ]),
+        ),
+        response: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              originTraffic: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+            }).pipe(Schema.encodeKeys({ originTraffic: "origin_traffic" })),
+            Schema.Null,
+          ]),
+        ),
+      }),
+      Schema.Null,
+    ]),
+  ),
+  period: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  threshold: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+}).pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<DeleteRateLimitResponse>;
 
 export type DeleteRateLimitError = DefaultErrors;
 
@@ -1029,7 +999,7 @@ export const deleteRateLimit: API.OperationMethod<
   DeleteRateLimitResponse,
   DeleteRateLimitError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRateLimitRequest,
   output: DeleteRateLimitResponse,
   errors: [],
@@ -1080,7 +1050,7 @@ export interface EditRateLimitRequest {
   threshold: number;
 }
 
-export const EditRateLimitRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EditRateLimitRequest = /*@__PURE__*/ Schema.Struct({
   rateLimitId: Schema.String.pipe(T.HttpPath("rateLimitId")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   action: Schema.Struct({
@@ -1205,7 +1175,7 @@ export interface EditRateLimitResponse {
   threshold?: number | null;
 }
 
-export const EditRateLimitResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EditRateLimitResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   action: Schema.optional(
     Schema.Union([
@@ -1342,7 +1312,7 @@ export const editRateLimit: API.OperationMethod<
   EditRateLimitResponse,
   EditRateLimitError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EditRateLimitRequest,
   output: EditRateLimitResponse,
   errors: [],

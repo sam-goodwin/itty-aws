@@ -3171,7 +3171,7 @@ export const configureLogsForPlaybackConfiguration: API.OperationMethod<
   ConfigureLogsForPlaybackConfigurationResponse,
   ConfigureLogsForPlaybackConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ConfigureLogsForPlaybackConfigurationRequest,
   output: ConfigureLogsForPlaybackConfigurationResponse,
   errors: [],
@@ -3200,7 +3200,7 @@ export const listAlerts: API.OperationMethod<
     ListAlertsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAlertsRequest,
   output: ListAlertsResponse,
   errors: [],
@@ -3220,7 +3220,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [BadRequestException],
@@ -3234,7 +3234,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [BadRequestException],
@@ -3248,7 +3248,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [BadRequestException],
@@ -3262,7 +3262,7 @@ export const createChannel: API.OperationMethod<
   CreateChannelResponse,
   CreateChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateChannelRequest,
   output: CreateChannelResponse,
   errors: [],
@@ -3276,7 +3276,7 @@ export const describeChannel: API.OperationMethod<
   DescribeChannelResponse,
   DescribeChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeChannelRequest,
   output: DescribeChannelResponse,
   errors: [],
@@ -3290,7 +3290,7 @@ export const updateChannel: API.OperationMethod<
   UpdateChannelResponse,
   UpdateChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateChannelRequest,
   output: UpdateChannelResponse,
   errors: [],
@@ -3304,7 +3304,7 @@ export const deleteChannel: API.OperationMethod<
   DeleteChannelResponse,
   DeleteChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteChannelRequest,
   output: DeleteChannelResponse,
   errors: [],
@@ -3333,7 +3333,7 @@ export const listChannels: API.OperationMethod<
     ListChannelsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChannelsRequest,
   output: ListChannelsResponse,
   errors: [],
@@ -3353,7 +3353,7 @@ export const configureLogsForChannel: API.OperationMethod<
   ConfigureLogsForChannelResponse,
   ConfigureLogsForChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ConfigureLogsForChannelRequest,
   output: ConfigureLogsForChannelResponse,
   errors: [],
@@ -3382,7 +3382,7 @@ export const getChannelSchedule: API.OperationMethod<
     GetChannelScheduleError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetChannelScheduleRequest,
   output: GetChannelScheduleResponse,
   errors: [],
@@ -3402,7 +3402,7 @@ export const startChannel: API.OperationMethod<
   StartChannelResponse,
   StartChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartChannelRequest,
   output: StartChannelResponse,
   errors: [],
@@ -3416,7 +3416,7 @@ export const stopChannel: API.OperationMethod<
   StopChannelResponse,
   StopChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopChannelRequest,
   output: StopChannelResponse,
   errors: [],
@@ -3430,7 +3430,7 @@ export const putChannelPolicy: API.OperationMethod<
   PutChannelPolicyResponse,
   PutChannelPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutChannelPolicyRequest,
   output: PutChannelPolicyResponse,
   errors: [],
@@ -3444,7 +3444,7 @@ export const getChannelPolicy: API.OperationMethod<
   GetChannelPolicyResponse,
   GetChannelPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetChannelPolicyRequest,
   output: GetChannelPolicyResponse,
   errors: [],
@@ -3458,7 +3458,7 @@ export const deleteChannelPolicy: API.OperationMethod<
   DeleteChannelPolicyResponse,
   DeleteChannelPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteChannelPolicyRequest,
   output: DeleteChannelPolicyResponse,
   errors: [],
@@ -3472,7 +3472,7 @@ export const createProgram: API.OperationMethod<
   CreateProgramResponse,
   CreateProgramError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProgramRequest,
   output: CreateProgramResponse,
   errors: [],
@@ -3486,7 +3486,7 @@ export const describeProgram: API.OperationMethod<
   DescribeProgramResponse,
   DescribeProgramError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeProgramRequest,
   output: DescribeProgramResponse,
   errors: [],
@@ -3500,7 +3500,7 @@ export const updateProgram: API.OperationMethod<
   UpdateProgramResponse,
   UpdateProgramError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateProgramRequest,
   output: UpdateProgramResponse,
   errors: [],
@@ -3514,7 +3514,7 @@ export const deleteProgram: API.OperationMethod<
   DeleteProgramResponse,
   DeleteProgramError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProgramRequest,
   output: DeleteProgramResponse,
   errors: [],
@@ -3528,7 +3528,7 @@ export const createLiveSource: API.OperationMethod<
   CreateLiveSourceResponse,
   CreateLiveSourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLiveSourceRequest,
   output: CreateLiveSourceResponse,
   errors: [],
@@ -3542,7 +3542,7 @@ export const describeLiveSource: API.OperationMethod<
   DescribeLiveSourceResponse,
   DescribeLiveSourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeLiveSourceRequest,
   output: DescribeLiveSourceResponse,
   errors: [],
@@ -3556,7 +3556,7 @@ export const updateLiveSource: API.OperationMethod<
   UpdateLiveSourceResponse,
   UpdateLiveSourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateLiveSourceRequest,
   output: UpdateLiveSourceResponse,
   errors: [],
@@ -3570,7 +3570,7 @@ export const deleteLiveSource: API.OperationMethod<
   DeleteLiveSourceResponse,
   DeleteLiveSourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLiveSourceRequest,
   output: DeleteLiveSourceResponse,
   errors: [],
@@ -3599,7 +3599,7 @@ export const listLiveSources: API.OperationMethod<
     ListLiveSourcesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLiveSourcesRequest,
   output: ListLiveSourcesResponse,
   errors: [],
@@ -3619,7 +3619,7 @@ export const putPlaybackConfiguration: API.OperationMethod<
   PutPlaybackConfigurationResponse,
   PutPlaybackConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutPlaybackConfigurationRequest,
   output: PutPlaybackConfigurationResponse,
   errors: [],
@@ -3633,7 +3633,7 @@ export const getPlaybackConfiguration: API.OperationMethod<
   GetPlaybackConfigurationResponse,
   GetPlaybackConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPlaybackConfigurationRequest,
   output: GetPlaybackConfigurationResponse,
   errors: [],
@@ -3647,7 +3647,7 @@ export const deletePlaybackConfiguration: API.OperationMethod<
   DeletePlaybackConfigurationResponse,
   DeletePlaybackConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePlaybackConfigurationRequest,
   output: DeletePlaybackConfigurationResponse,
   errors: [],
@@ -3676,7 +3676,7 @@ export const listPlaybackConfigurations: API.OperationMethod<
     ListPlaybackConfigurationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlaybackConfigurationsRequest,
   output: ListPlaybackConfigurationsResponse,
   errors: [],
@@ -3696,7 +3696,7 @@ export const createPrefetchSchedule: API.OperationMethod<
   CreatePrefetchScheduleResponse,
   CreatePrefetchScheduleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePrefetchScheduleRequest,
   output: CreatePrefetchScheduleResponse,
   errors: [],
@@ -3710,7 +3710,7 @@ export const getPrefetchSchedule: API.OperationMethod<
   GetPrefetchScheduleResponse,
   GetPrefetchScheduleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPrefetchScheduleRequest,
   output: GetPrefetchScheduleResponse,
   errors: [],
@@ -3724,7 +3724,7 @@ export const deletePrefetchSchedule: API.OperationMethod<
   DeletePrefetchScheduleResponse,
   DeletePrefetchScheduleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePrefetchScheduleRequest,
   output: DeletePrefetchScheduleResponse,
   errors: [],
@@ -3753,7 +3753,7 @@ export const listPrefetchSchedules: API.OperationMethod<
     ListPrefetchSchedulesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPrefetchSchedulesRequest,
   output: ListPrefetchSchedulesResponse,
   errors: [],
@@ -3773,7 +3773,7 @@ export const createSourceLocation: API.OperationMethod<
   CreateSourceLocationResponse,
   CreateSourceLocationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSourceLocationRequest,
   output: CreateSourceLocationResponse,
   errors: [],
@@ -3787,7 +3787,7 @@ export const describeSourceLocation: API.OperationMethod<
   DescribeSourceLocationResponse,
   DescribeSourceLocationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeSourceLocationRequest,
   output: DescribeSourceLocationResponse,
   errors: [],
@@ -3801,7 +3801,7 @@ export const updateSourceLocation: API.OperationMethod<
   UpdateSourceLocationResponse,
   UpdateSourceLocationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSourceLocationRequest,
   output: UpdateSourceLocationResponse,
   errors: [],
@@ -3815,7 +3815,7 @@ export const deleteSourceLocation: API.OperationMethod<
   DeleteSourceLocationResponse,
   DeleteSourceLocationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSourceLocationRequest,
   output: DeleteSourceLocationResponse,
   errors: [],
@@ -3844,7 +3844,7 @@ export const listSourceLocations: API.OperationMethod<
     ListSourceLocationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSourceLocationsRequest,
   output: ListSourceLocationsResponse,
   errors: [],
@@ -3864,7 +3864,7 @@ export const createVodSource: API.OperationMethod<
   CreateVodSourceResponse,
   CreateVodSourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateVodSourceRequest,
   output: CreateVodSourceResponse,
   errors: [],
@@ -3878,7 +3878,7 @@ export const describeVodSource: API.OperationMethod<
   DescribeVodSourceResponse,
   DescribeVodSourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeVodSourceRequest,
   output: DescribeVodSourceResponse,
   errors: [],
@@ -3892,7 +3892,7 @@ export const updateVodSource: API.OperationMethod<
   UpdateVodSourceResponse,
   UpdateVodSourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateVodSourceRequest,
   output: UpdateVodSourceResponse,
   errors: [],
@@ -3906,7 +3906,7 @@ export const deleteVodSource: API.OperationMethod<
   DeleteVodSourceResponse,
   DeleteVodSourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteVodSourceRequest,
   output: DeleteVodSourceResponse,
   errors: [],
@@ -3935,7 +3935,7 @@ export const listVodSources: API.OperationMethod<
     ListVodSourcesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVodSourcesRequest,
   output: ListVodSourcesResponse,
   errors: [],

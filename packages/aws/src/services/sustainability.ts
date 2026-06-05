@@ -364,7 +364,7 @@ export const getEstimatedCarbonEmissions: API.OperationMethod<
     GetEstimatedCarbonEmissionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetEstimatedCarbonEmissionsRequest,
   output: GetEstimatedCarbonEmissionsResponse,
   errors: [
@@ -409,7 +409,7 @@ export const getEstimatedCarbonEmissionsDimensionValues: API.OperationMethod<
     GetEstimatedCarbonEmissionsDimensionValuesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetEstimatedCarbonEmissionsDimensionValuesRequest,
   output: GetEstimatedCarbonEmissionsDimensionValuesResponse,
   errors: [

@@ -1855,7 +1855,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException, ValidationException],
@@ -1872,7 +1872,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [ResourceNotFoundException, ValidationException],
@@ -1889,7 +1889,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException, ValidationException],
@@ -1908,7 +1908,7 @@ export const createWorkflow: API.OperationMethod<
   CreateMigrationWorkflowResponse,
   CreateWorkflowError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMigrationWorkflowRequest,
   output: CreateMigrationWorkflowResponse,
   errors: [
@@ -1933,7 +1933,7 @@ export const getWorkflow: API.OperationMethod<
   GetMigrationWorkflowResponse,
   GetWorkflowError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMigrationWorkflowRequest,
   output: GetMigrationWorkflowResponse,
   errors: [
@@ -1959,7 +1959,7 @@ export const updateWorkflow: API.OperationMethod<
   UpdateMigrationWorkflowResponse,
   UpdateWorkflowError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateMigrationWorkflowRequest,
   output: UpdateMigrationWorkflowResponse,
   errors: [
@@ -1986,7 +1986,7 @@ export const deleteWorkflow: API.OperationMethod<
   DeleteMigrationWorkflowResponse,
   DeleteWorkflowError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMigrationWorkflowRequest,
   output: DeleteMigrationWorkflowResponse,
   errors: [
@@ -2027,7 +2027,7 @@ export const listWorkflows: API.OperationMethod<
     ListWorkflowsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMigrationWorkflowsRequest,
   output: ListMigrationWorkflowsResponse,
   errors: [
@@ -2059,7 +2059,7 @@ export const startWorkflow: API.OperationMethod<
   StartMigrationWorkflowResponse,
   StartWorkflowError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartMigrationWorkflowRequest,
   output: StartMigrationWorkflowResponse,
   errors: [
@@ -2085,7 +2085,7 @@ export const stopWorkflow: API.OperationMethod<
   StopMigrationWorkflowResponse,
   StopWorkflowError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopMigrationWorkflowRequest,
   output: StopMigrationWorkflowResponse,
   errors: [
@@ -2111,7 +2111,7 @@ export const createTemplate: API.OperationMethod<
   CreateTemplateResponse,
   CreateTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTemplateRequest,
   output: CreateTemplateResponse,
   errors: [
@@ -2136,7 +2136,7 @@ export const getTemplate: API.OperationMethod<
   GetMigrationWorkflowTemplateResponse,
   GetTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMigrationWorkflowTemplateRequest,
   output: GetMigrationWorkflowTemplateResponse,
   errors: [
@@ -2161,7 +2161,7 @@ export const updateTemplate: API.OperationMethod<
   UpdateTemplateResponse,
   UpdateTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTemplateRequest,
   output: UpdateTemplateResponse,
   errors: [
@@ -2187,7 +2187,7 @@ export const deleteTemplate: API.OperationMethod<
   DeleteTemplateResponse,
   DeleteTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTemplateRequest,
   output: DeleteTemplateResponse,
   errors: [
@@ -2226,7 +2226,7 @@ export const listTemplates: API.OperationMethod<
     ListTemplatesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMigrationWorkflowTemplatesRequest,
   output: ListMigrationWorkflowTemplatesResponse,
   errors: [AccessDeniedException, InternalServerException, ThrottlingException],
@@ -2265,7 +2265,7 @@ export const listPlugins: API.OperationMethod<
     ListPluginsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPluginsRequest,
   output: ListPluginsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
@@ -2291,7 +2291,7 @@ export const getTemplateStep: API.OperationMethod<
   GetTemplateStepResponse,
   GetTemplateStepError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTemplateStepRequest,
   output: GetTemplateStepResponse,
   errors: [
@@ -2332,7 +2332,7 @@ export const listTemplateSteps: API.OperationMethod<
     ListTemplateStepsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTemplateStepsRequest,
   output: ListTemplateStepsResponse,
   errors: [
@@ -2364,7 +2364,7 @@ export const getTemplateStepGroup: API.OperationMethod<
   GetTemplateStepGroupResponse,
   GetTemplateStepGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTemplateStepGroupRequest,
   output: GetTemplateStepGroupResponse,
   errors: [
@@ -2404,7 +2404,7 @@ export const listTemplateStepGroups: API.OperationMethod<
     ListTemplateStepGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTemplateStepGroupsRequest,
   output: ListTemplateStepGroupsResponse,
   errors: [
@@ -2434,7 +2434,7 @@ export const createWorkflowStep: API.OperationMethod<
   CreateWorkflowStepResponse,
   CreateWorkflowStepError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateWorkflowStepRequest,
   output: CreateWorkflowStepResponse,
   errors: [
@@ -2458,7 +2458,7 @@ export const getWorkflowStep: API.OperationMethod<
   GetWorkflowStepResponse,
   GetWorkflowStepError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetWorkflowStepRequest,
   output: GetWorkflowStepResponse,
   errors: [
@@ -2482,7 +2482,7 @@ export const updateWorkflowStep: API.OperationMethod<
   UpdateWorkflowStepResponse,
   UpdateWorkflowStepError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateWorkflowStepRequest,
   output: UpdateWorkflowStepResponse,
   errors: [
@@ -2508,7 +2508,7 @@ export const deleteWorkflowStep: API.OperationMethod<
   DeleteWorkflowStepResponse,
   DeleteWorkflowStepError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteWorkflowStepRequest,
   output: DeleteWorkflowStepResponse,
   errors: [
@@ -2548,7 +2548,7 @@ export const listWorkflowSteps: API.OperationMethod<
     ListWorkflowStepsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkflowStepsRequest,
   output: ListWorkflowStepsResponse,
   errors: [
@@ -2578,7 +2578,7 @@ export const retryWorkflowStep: API.OperationMethod<
   RetryWorkflowStepResponse,
   RetryWorkflowStepError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RetryWorkflowStepRequest,
   output: RetryWorkflowStepResponse,
   errors: [
@@ -2602,7 +2602,7 @@ export const createWorkflowStepGroup: API.OperationMethod<
   CreateWorkflowStepGroupResponse,
   CreateWorkflowStepGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateWorkflowStepGroupRequest,
   output: CreateWorkflowStepGroupResponse,
   errors: [
@@ -2627,7 +2627,7 @@ export const getWorkflowStepGroup: API.OperationMethod<
   GetWorkflowStepGroupResponse,
   GetWorkflowStepGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetWorkflowStepGroupRequest,
   output: GetWorkflowStepGroupResponse,
   errors: [
@@ -2653,7 +2653,7 @@ export const updateWorkflowStepGroup: API.OperationMethod<
   UpdateWorkflowStepGroupResponse,
   UpdateWorkflowStepGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateWorkflowStepGroupRequest,
   output: UpdateWorkflowStepGroupResponse,
   errors: [
@@ -2679,7 +2679,7 @@ export const deleteWorkflowStepGroup: API.OperationMethod<
   DeleteWorkflowStepGroupResponse,
   DeleteWorkflowStepGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteWorkflowStepGroupRequest,
   output: DeleteWorkflowStepGroupResponse,
   errors: [
@@ -2720,7 +2720,7 @@ export const listWorkflowStepGroups: API.OperationMethod<
     ListWorkflowStepGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkflowStepGroupsRequest,
   output: ListWorkflowStepGroupsResponse,
   errors: [

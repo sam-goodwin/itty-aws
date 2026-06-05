@@ -933,7 +933,7 @@ export const listAutoshifts: API.OperationMethod<
     ListAutoshiftsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAutoshiftsRequest,
   output: ListAutoshiftsResponse,
   errors: [
@@ -962,7 +962,7 @@ export const getAutoshiftObserverNotificationStatus: API.OperationMethod<
   GetAutoshiftObserverNotificationStatusResponse,
   GetAutoshiftObserverNotificationStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAutoshiftObserverNotificationStatusRequest,
   output: GetAutoshiftObserverNotificationStatusResponse,
   errors: [AccessDeniedException, InternalServerException, ThrottlingException],
@@ -985,7 +985,7 @@ export const updateAutoshiftObserverNotificationStatus: API.OperationMethod<
   UpdateAutoshiftObserverNotificationStatusResponse,
   UpdateAutoshiftObserverNotificationStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAutoshiftObserverNotificationStatusRequest,
   output: UpdateAutoshiftObserverNotificationStatusResponse,
   errors: [
@@ -1010,7 +1010,7 @@ export const getManagedResource: API.OperationMethod<
   GetManagedResourceResponse,
   GetManagedResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetManagedResourceRequest,
   output: GetManagedResourceResponse,
   errors: [
@@ -1050,7 +1050,7 @@ export const listManagedResources: API.OperationMethod<
     ListManagedResourcesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedResourcesRequest,
   output: ListManagedResourcesResponse,
   errors: [
@@ -1084,7 +1084,7 @@ export const updateZonalAutoshiftConfiguration: API.OperationMethod<
   UpdateZonalAutoshiftConfigurationResponse,
   UpdateZonalAutoshiftConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateZonalAutoshiftConfigurationRequest,
   output: UpdateZonalAutoshiftConfigurationResponse,
   errors: [
@@ -1112,7 +1112,7 @@ export const updatePracticeRunConfiguration: API.OperationMethod<
   UpdatePracticeRunConfigurationResponse,
   UpdatePracticeRunConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePracticeRunConfigurationRequest,
   output: UpdatePracticeRunConfigurationResponse,
   errors: [
@@ -1140,7 +1140,7 @@ export const deletePracticeRunConfiguration: API.OperationMethod<
   DeletePracticeRunConfigurationResponse,
   DeletePracticeRunConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePracticeRunConfigurationRequest,
   output: DeletePracticeRunConfigurationResponse,
   errors: [
@@ -1172,7 +1172,7 @@ export const createPracticeRunConfiguration: API.OperationMethod<
   CreatePracticeRunConfigurationResponse,
   CreatePracticeRunConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePracticeRunConfigurationRequest,
   output: CreatePracticeRunConfigurationResponse,
   errors: [
@@ -1200,7 +1200,7 @@ export const cancelPracticeRun: API.OperationMethod<
   CancelPracticeRunResponse,
   CancelPracticeRunError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelPracticeRunRequest,
   output: CancelPracticeRunResponse,
   errors: [
@@ -1230,7 +1230,7 @@ export const cancelZonalShift: API.OperationMethod<
   ZonalShift,
   CancelZonalShiftError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelZonalShiftRequest,
   output: ZonalShift,
   errors: [
@@ -1258,7 +1258,7 @@ export const updateZonalShift: API.OperationMethod<
   ZonalShift,
   UpdateZonalShiftError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateZonalShiftRequest,
   output: ZonalShift,
   errors: [
@@ -1301,7 +1301,7 @@ export const listZonalShifts: API.OperationMethod<
     ListZonalShiftsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListZonalShiftsRequest,
   output: ListZonalShiftsResponse,
   errors: [
@@ -1335,7 +1335,7 @@ export const startPracticeRun: API.OperationMethod<
   StartPracticeRunResponse,
   StartPracticeRunError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartPracticeRunRequest,
   output: StartPracticeRunResponse,
   errors: [
@@ -1377,7 +1377,7 @@ export const startZonalShift: API.OperationMethod<
   ZonalShift,
   StartZonalShiftError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartZonalShiftRequest,
   output: ZonalShift,
   errors: [

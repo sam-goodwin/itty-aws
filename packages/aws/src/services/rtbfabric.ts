@@ -1689,7 +1689,7 @@ export const listRequesterGateways: API.OperationMethod<
     ListRequesterGatewaysError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRequesterGatewaysRequest,
   output: ListRequesterGatewaysResponse,
   errors: [InternalServerException, ValidationException],
@@ -1727,7 +1727,7 @@ export const listResponderGateways: API.OperationMethod<
     ListResponderGatewaysError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResponderGatewaysRequest,
   output: ListResponderGatewaysResponse,
   errors: [InternalServerException, ValidationException],
@@ -1753,7 +1753,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -1779,7 +1779,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -1805,7 +1805,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -1835,7 +1835,7 @@ export const createLink: API.OperationMethod<
   CreateLinkResponse,
   CreateLinkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLinkRequest,
   output: CreateLinkResponse,
   errors: [
@@ -1866,7 +1866,7 @@ export const getLink: API.OperationMethod<
   GetLinkResponse,
   GetLinkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLinkRequest,
   output: GetLinkResponse,
   errors: [
@@ -1896,7 +1896,7 @@ export const deleteLink: API.OperationMethod<
   DeleteLinkResponse,
   DeleteLinkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLinkRequest,
   output: DeleteLinkResponse,
   errors: [
@@ -1940,7 +1940,7 @@ export const listLinks: API.OperationMethod<
     ListLinksError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLinksRequest,
   output: ListLinksResponse,
   errors: [
@@ -1975,7 +1975,7 @@ export const acceptLink: API.OperationMethod<
   AcceptLinkResponse,
   AcceptLinkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AcceptLinkRequest,
   output: AcceptLinkResponse,
   errors: [
@@ -2005,7 +2005,7 @@ export const rejectLink: API.OperationMethod<
   RejectLinkResponse,
   RejectLinkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RejectLinkRequest,
   output: RejectLinkResponse,
   errors: [
@@ -2035,7 +2035,7 @@ export const updateLink: API.OperationMethod<
   UpdateLinkResponse,
   UpdateLinkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateLinkRequest,
   output: UpdateLinkResponse,
   errors: [
@@ -2064,7 +2064,7 @@ export const updateLinkModuleFlow: API.OperationMethod<
   UpdateLinkModuleFlowResponse,
   UpdateLinkModuleFlowError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateLinkModuleFlowRequest,
   output: UpdateLinkModuleFlowResponse,
   errors: [
@@ -2093,7 +2093,7 @@ export const createRequesterGateway: API.OperationMethod<
   CreateRequesterGatewayResponse,
   CreateRequesterGatewayError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRequesterGatewayRequest,
   output: CreateRequesterGatewayResponse,
   errors: [
@@ -2120,7 +2120,7 @@ export const getRequesterGateway: API.OperationMethod<
   GetRequesterGatewayResponse,
   GetRequesterGatewayError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRequesterGatewayRequest,
   output: GetRequesterGatewayResponse,
   errors: [
@@ -2146,7 +2146,7 @@ export const deleteRequesterGateway: API.OperationMethod<
   DeleteRequesterGatewayResponse,
   DeleteRequesterGatewayError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRequesterGatewayRequest,
   output: DeleteRequesterGatewayResponse,
   errors: [
@@ -2173,7 +2173,7 @@ export const updateRequesterGateway: API.OperationMethod<
   UpdateRequesterGatewayResponse,
   UpdateRequesterGatewayError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRequesterGatewayRequest,
   output: UpdateRequesterGatewayResponse,
   errors: [
@@ -2201,7 +2201,7 @@ export const createOutboundExternalLink: API.OperationMethod<
   CreateOutboundExternalLinkResponse,
   CreateOutboundExternalLinkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOutboundExternalLinkRequest,
   output: CreateOutboundExternalLinkResponse,
   errors: [
@@ -2229,7 +2229,7 @@ export const deleteOutboundExternalLink: API.OperationMethod<
   DeleteOutboundExternalLinkResponse,
   DeleteOutboundExternalLinkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOutboundExternalLinkRequest,
   output: DeleteOutboundExternalLinkResponse,
   errors: [
@@ -2256,7 +2256,7 @@ export const getOutboundExternalLink: API.OperationMethod<
   GetOutboundExternalLinkResponse,
   GetOutboundExternalLinkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOutboundExternalLinkRequest,
   output: GetOutboundExternalLinkResponse,
   errors: [
@@ -2285,7 +2285,7 @@ export const createResponderGateway: API.OperationMethod<
   CreateResponderGatewayResponse,
   CreateResponderGatewayError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateResponderGatewayRequest,
   output: CreateResponderGatewayResponse,
   errors: [
@@ -2312,7 +2312,7 @@ export const getResponderGateway: API.OperationMethod<
   GetResponderGatewayResponse,
   GetResponderGatewayError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResponderGatewayRequest,
   output: GetResponderGatewayResponse,
   errors: [
@@ -2338,7 +2338,7 @@ export const deleteResponderGateway: API.OperationMethod<
   DeleteResponderGatewayResponse,
   DeleteResponderGatewayError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteResponderGatewayRequest,
   output: DeleteResponderGatewayResponse,
   errors: [
@@ -2365,7 +2365,7 @@ export const updateResponderGateway: API.OperationMethod<
   UpdateResponderGatewayResponse,
   UpdateResponderGatewayError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateResponderGatewayRequest,
   output: UpdateResponderGatewayResponse,
   errors: [
@@ -2394,7 +2394,7 @@ export const createInboundExternalLink: API.OperationMethod<
   CreateInboundExternalLinkResponse,
   CreateInboundExternalLinkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateInboundExternalLinkRequest,
   output: CreateInboundExternalLinkResponse,
   errors: [
@@ -2423,7 +2423,7 @@ export const deleteInboundExternalLink: API.OperationMethod<
   DeleteInboundExternalLinkResponse,
   DeleteInboundExternalLinkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteInboundExternalLinkRequest,
   output: DeleteInboundExternalLinkResponse,
   errors: [
@@ -2450,7 +2450,7 @@ export const getInboundExternalLink: API.OperationMethod<
   GetInboundExternalLinkResponse,
   GetInboundExternalLinkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInboundExternalLinkRequest,
   output: GetInboundExternalLinkResponse,
   errors: [

@@ -2482,7 +2482,7 @@ export const getPreferences: API.OperationMethod<
   GetPreferencesResponse,
   GetPreferencesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPreferencesRequest,
   output: GetPreferencesResponse,
   errors: [DataUnavailableException],
@@ -2496,7 +2496,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException],
@@ -2513,7 +2513,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [ResourceNotFoundException, ServiceQuotaExceededException],
@@ -2527,7 +2527,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException],
@@ -2544,7 +2544,7 @@ export const updatePreferences: API.OperationMethod<
   UpdatePreferencesResponse,
   UpdatePreferencesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePreferencesRequest,
   output: UpdatePreferencesResponse,
   errors: [DataUnavailableException, ServiceQuotaExceededException],
@@ -2562,7 +2562,7 @@ export const createBillEstimate: API.OperationMethod<
   CreateBillEstimateResponse,
   CreateBillEstimateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateBillEstimateRequest,
   output: CreateBillEstimateResponse,
   errors: [
@@ -2583,7 +2583,7 @@ export const getBillEstimate: API.OperationMethod<
   GetBillEstimateResponse,
   GetBillEstimateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetBillEstimateRequest,
   output: GetBillEstimateResponse,
   errors: [DataUnavailableException, ResourceNotFoundException],
@@ -2601,7 +2601,7 @@ export const updateBillEstimate: API.OperationMethod<
   UpdateBillEstimateResponse,
   UpdateBillEstimateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateBillEstimateRequest,
   output: UpdateBillEstimateResponse,
   errors: [
@@ -2622,7 +2622,7 @@ export const deleteBillEstimate: API.OperationMethod<
   DeleteBillEstimateResponse,
   DeleteBillEstimateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteBillEstimateRequest,
   output: DeleteBillEstimateResponse,
   errors: [ConflictException, DataUnavailableException],
@@ -2651,7 +2651,7 @@ export const listBillEstimates: API.OperationMethod<
     ListBillEstimatesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBillEstimatesRequest,
   output: ListBillEstimatesResponse,
   errors: [DataUnavailableException],
@@ -2689,7 +2689,7 @@ export const listBillEstimateCommitments: API.OperationMethod<
     ListBillEstimateCommitmentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBillEstimateCommitmentsRequest,
   output: ListBillEstimateCommitmentsResponse,
   errors: [DataUnavailableException, ResourceNotFoundException],
@@ -2727,7 +2727,7 @@ export const listBillEstimateInputCommitmentModifications: API.OperationMethod<
     ListBillEstimateInputCommitmentModificationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBillEstimateInputCommitmentModificationsRequest,
   output: ListBillEstimateInputCommitmentModificationsResponse,
   errors: [DataUnavailableException, ResourceNotFoundException],
@@ -2765,7 +2765,7 @@ export const listBillEstimateInputUsageModifications: API.OperationMethod<
     ListBillEstimateInputUsageModificationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBillEstimateInputUsageModificationsRequest,
   output: ListBillEstimateInputUsageModificationsResponse,
   errors: [DataUnavailableException, ResourceNotFoundException],
@@ -2803,7 +2803,7 @@ export const listBillEstimateLineItems: API.OperationMethod<
     ListBillEstimateLineItemsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBillEstimateLineItemsRequest,
   output: ListBillEstimateLineItemsResponse,
   errors: [DataUnavailableException, ResourceNotFoundException],
@@ -2827,7 +2827,7 @@ export const createBillScenario: API.OperationMethod<
   CreateBillScenarioResponse,
   CreateBillScenarioError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateBillScenarioRequest,
   output: CreateBillScenarioResponse,
   errors: [
@@ -2848,7 +2848,7 @@ export const getBillScenario: API.OperationMethod<
   GetBillScenarioResponse,
   GetBillScenarioError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetBillScenarioRequest,
   output: GetBillScenarioResponse,
   errors: [DataUnavailableException, ResourceNotFoundException],
@@ -2866,7 +2866,7 @@ export const updateBillScenario: API.OperationMethod<
   UpdateBillScenarioResponse,
   UpdateBillScenarioError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateBillScenarioRequest,
   output: UpdateBillScenarioResponse,
   errors: [
@@ -2887,7 +2887,7 @@ export const deleteBillScenario: API.OperationMethod<
   DeleteBillScenarioResponse,
   DeleteBillScenarioError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteBillScenarioRequest,
   output: DeleteBillScenarioResponse,
   errors: [ConflictException, DataUnavailableException],
@@ -2916,7 +2916,7 @@ export const listBillScenarios: API.OperationMethod<
     ListBillScenariosError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBillScenariosRequest,
   output: ListBillScenariosResponse,
   errors: [DataUnavailableException],
@@ -2954,7 +2954,7 @@ export const listBillScenarioCommitmentModifications: API.OperationMethod<
     ListBillScenarioCommitmentModificationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBillScenarioCommitmentModificationsRequest,
   output: ListBillScenarioCommitmentModificationsResponse,
   errors: [DataUnavailableException, ResourceNotFoundException],
@@ -2980,7 +2980,7 @@ export const batchCreateBillScenarioCommitmentModification: API.OperationMethod<
   BatchCreateBillScenarioCommitmentModificationResponse,
   BatchCreateBillScenarioCommitmentModificationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchCreateBillScenarioCommitmentModificationRequest,
   output: BatchCreateBillScenarioCommitmentModificationResponse,
   errors: [
@@ -3004,7 +3004,7 @@ export const batchDeleteBillScenarioCommitmentModification: API.OperationMethod<
   BatchDeleteBillScenarioCommitmentModificationResponse,
   BatchDeleteBillScenarioCommitmentModificationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchDeleteBillScenarioCommitmentModificationRequest,
   output: BatchDeleteBillScenarioCommitmentModificationResponse,
   errors: [
@@ -3028,7 +3028,7 @@ export const batchUpdateBillScenarioCommitmentModification: API.OperationMethod<
   BatchUpdateBillScenarioCommitmentModificationResponse,
   BatchUpdateBillScenarioCommitmentModificationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchUpdateBillScenarioCommitmentModificationRequest,
   output: BatchUpdateBillScenarioCommitmentModificationResponse,
   errors: [
@@ -3064,7 +3064,7 @@ export const listBillScenarioUsageModifications: API.OperationMethod<
     ListBillScenarioUsageModificationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBillScenarioUsageModificationsRequest,
   output: ListBillScenarioUsageModificationsResponse,
   errors: [DataUnavailableException, ResourceNotFoundException],
@@ -3091,7 +3091,7 @@ export const batchCreateBillScenarioUsageModification: API.OperationMethod<
   BatchCreateBillScenarioUsageModificationResponse,
   BatchCreateBillScenarioUsageModificationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchCreateBillScenarioUsageModificationRequest,
   output: BatchCreateBillScenarioUsageModificationResponse,
   errors: [
@@ -3117,7 +3117,7 @@ export const batchDeleteBillScenarioUsageModification: API.OperationMethod<
   BatchDeleteBillScenarioUsageModificationResponse,
   BatchDeleteBillScenarioUsageModificationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchDeleteBillScenarioUsageModificationRequest,
   output: BatchDeleteBillScenarioUsageModificationResponse,
   errors: [
@@ -3143,7 +3143,7 @@ export const batchUpdateBillScenarioUsageModification: API.OperationMethod<
   BatchUpdateBillScenarioUsageModificationResponse,
   BatchUpdateBillScenarioUsageModificationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchUpdateBillScenarioUsageModificationRequest,
   output: BatchUpdateBillScenarioUsageModificationResponse,
   errors: [
@@ -3166,7 +3166,7 @@ export const createWorkloadEstimate: API.OperationMethod<
   CreateWorkloadEstimateResponse,
   CreateWorkloadEstimateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateWorkloadEstimateRequest,
   output: CreateWorkloadEstimateResponse,
   errors: [
@@ -3187,7 +3187,7 @@ export const getWorkloadEstimate: API.OperationMethod<
   GetWorkloadEstimateResponse,
   GetWorkloadEstimateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetWorkloadEstimateRequest,
   output: GetWorkloadEstimateResponse,
   errors: [DataUnavailableException, ResourceNotFoundException],
@@ -3205,7 +3205,7 @@ export const updateWorkloadEstimate: API.OperationMethod<
   UpdateWorkloadEstimateResponse,
   UpdateWorkloadEstimateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateWorkloadEstimateRequest,
   output: UpdateWorkloadEstimateResponse,
   errors: [
@@ -3225,7 +3225,7 @@ export const deleteWorkloadEstimate: API.OperationMethod<
   DeleteWorkloadEstimateResponse,
   DeleteWorkloadEstimateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteWorkloadEstimateRequest,
   output: DeleteWorkloadEstimateResponse,
   errors: [DataUnavailableException],
@@ -3256,7 +3256,7 @@ export const listWorkloadEstimates: API.OperationMethod<
     ListWorkloadEstimatesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkloadEstimatesRequest,
   output: ListWorkloadEstimatesResponse,
   errors: [DataUnavailableException],
@@ -3294,7 +3294,7 @@ export const listWorkloadEstimateUsage: API.OperationMethod<
     ListWorkloadEstimateUsageError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkloadEstimateUsageRequest,
   output: ListWorkloadEstimateUsageResponse,
   errors: [DataUnavailableException, ResourceNotFoundException],
@@ -3321,7 +3321,7 @@ export const batchCreateWorkloadEstimateUsage: API.OperationMethod<
   BatchCreateWorkloadEstimateUsageResponse,
   BatchCreateWorkloadEstimateUsageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchCreateWorkloadEstimateUsageRequest,
   output: BatchCreateWorkloadEstimateUsageResponse,
   errors: [
@@ -3346,7 +3346,7 @@ export const batchDeleteWorkloadEstimateUsage: API.OperationMethod<
   BatchDeleteWorkloadEstimateUsageResponse,
   BatchDeleteWorkloadEstimateUsageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchDeleteWorkloadEstimateUsageRequest,
   output: BatchDeleteWorkloadEstimateUsageResponse,
   errors: [
@@ -3370,7 +3370,7 @@ export const batchUpdateWorkloadEstimateUsage: API.OperationMethod<
   BatchUpdateWorkloadEstimateUsageResponse,
   BatchUpdateWorkloadEstimateUsageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchUpdateWorkloadEstimateUsageRequest,
   output: BatchUpdateWorkloadEstimateUsageResponse,
   errors: [

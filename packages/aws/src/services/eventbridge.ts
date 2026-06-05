@@ -3678,7 +3678,7 @@ export const activateEventSource: API.OperationMethod<
   ActivateEventSourceResponse,
   ActivateEventSourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ActivateEventSourceRequest,
   output: ActivateEventSourceResponse,
   errors: [
@@ -3703,7 +3703,7 @@ export const cancelReplay: API.OperationMethod<
   CancelReplayResponse,
   CancelReplayError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelReplayRequest,
   output: CancelReplayResponse,
   errors: [
@@ -3734,7 +3734,7 @@ export const createApiDestination: API.OperationMethod<
   CreateApiDestinationResponse,
   CreateApiDestinationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateApiDestinationRequest,
   output: CreateApiDestinationResponse,
   errors: [
@@ -3769,7 +3769,7 @@ export const createArchive: API.OperationMethod<
   CreateArchiveResponse,
   CreateArchiveError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateArchiveRequest,
   output: CreateArchiveResponse,
   errors: [
@@ -3800,7 +3800,7 @@ export const createConnection: API.OperationMethod<
   CreateConnectionResponse,
   CreateConnectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateConnectionRequest,
   output: CreateConnectionResponse,
   errors: [
@@ -3830,7 +3830,7 @@ export const createEndpoint: API.OperationMethod<
   CreateEndpointResponse,
   CreateEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEndpointRequest,
   output: CreateEndpointResponse,
   errors: [
@@ -3858,7 +3858,7 @@ export const createEventBus: API.OperationMethod<
   CreateEventBusResponse,
   CreateEventBusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEventBusRequest,
   output: CreateEventBusResponse,
   errors: [
@@ -3920,7 +3920,7 @@ export const createPartnerEventSource: API.OperationMethod<
   CreatePartnerEventSourceResponse,
   CreatePartnerEventSourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePartnerEventSourceRequest,
   output: CreatePartnerEventSourceResponse,
   errors: [
@@ -3952,7 +3952,7 @@ export const deactivateEventSource: API.OperationMethod<
   DeactivateEventSourceResponse,
   DeactivateEventSourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeactivateEventSourceRequest,
   output: DeactivateEventSourceResponse,
   errors: [
@@ -3977,7 +3977,7 @@ export const deauthorizeConnection: API.OperationMethod<
   DeauthorizeConnectionResponse,
   DeauthorizeConnectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeauthorizeConnectionRequest,
   output: DeauthorizeConnectionResponse,
   errors: [
@@ -3999,7 +3999,7 @@ export const deleteApiDestination: API.OperationMethod<
   DeleteApiDestinationResponse,
   DeleteApiDestinationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteApiDestinationRequest,
   output: DeleteApiDestinationResponse,
   errors: [
@@ -4021,7 +4021,7 @@ export const deleteArchive: API.OperationMethod<
   DeleteArchiveResponse,
   DeleteArchiveError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteArchiveRequest,
   output: DeleteArchiveResponse,
   errors: [
@@ -4043,7 +4043,7 @@ export const deleteConnection: API.OperationMethod<
   DeleteConnectionResponse,
   DeleteConnectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConnectionRequest,
   output: DeleteConnectionResponse,
   errors: [
@@ -4069,7 +4069,7 @@ export const deleteEndpoint: API.OperationMethod<
   DeleteEndpointResponse,
   DeleteEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEndpointRequest,
   output: DeleteEndpointResponse,
   errors: [
@@ -4092,7 +4092,7 @@ export const deleteEventBus: API.OperationMethod<
   DeleteEventBusResponse,
   DeleteEventBusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEventBusRequest,
   output: DeleteEventBusResponse,
   errors: [
@@ -4118,7 +4118,7 @@ export const deletePartnerEventSource: API.OperationMethod<
   DeletePartnerEventSourceResponse,
   DeletePartnerEventSourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePartnerEventSourceRequest,
   output: DeletePartnerEventSourceResponse,
   errors: [
@@ -4156,7 +4156,7 @@ export const deleteRule: API.OperationMethod<
   DeleteRuleResponse,
   DeleteRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRuleRequest,
   output: DeleteRuleResponse,
   errors: [
@@ -4178,7 +4178,7 @@ export const describeApiDestination: API.OperationMethod<
   DescribeApiDestinationResponse,
   DescribeApiDestinationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeApiDestinationRequest,
   output: DescribeApiDestinationResponse,
   errors: [InternalException, ResourceNotFoundException],
@@ -4196,7 +4196,7 @@ export const describeArchive: API.OperationMethod<
   DescribeArchiveResponse,
   DescribeArchiveError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeArchiveRequest,
   output: DescribeArchiveResponse,
   errors: [
@@ -4217,7 +4217,7 @@ export const describeConnection: API.OperationMethod<
   DescribeConnectionResponse,
   DescribeConnectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeConnectionRequest,
   output: DescribeConnectionResponse,
   errors: [InternalException, ResourceNotFoundException],
@@ -4239,7 +4239,7 @@ export const describeEndpoint: API.OperationMethod<
   DescribeEndpointResponse,
   DescribeEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeEndpointRequest,
   output: DescribeEndpointResponse,
   errors: [InternalException, ResourceNotFoundException],
@@ -4263,7 +4263,7 @@ export const describeEventBus: API.OperationMethod<
   DescribeEventBusResponse,
   DescribeEventBusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeEventBusRequest,
   output: DescribeEventBusResponse,
   errors: [InternalException, ResourceNotFoundException],
@@ -4282,7 +4282,7 @@ export const describeEventSource: API.OperationMethod<
   DescribeEventSourceResponse,
   DescribeEventSourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeEventSourceRequest,
   output: DescribeEventSourceResponse,
   errors: [
@@ -4306,7 +4306,7 @@ export const describePartnerEventSource: API.OperationMethod<
   DescribePartnerEventSourceResponse,
   DescribePartnerEventSourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribePartnerEventSourceRequest,
   output: DescribePartnerEventSourceResponse,
   errors: [
@@ -4335,7 +4335,7 @@ export const describeReplay: API.OperationMethod<
   DescribeReplayResponse,
   DescribeReplayError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeReplayRequest,
   output: DescribeReplayResponse,
   errors: [InternalException, ResourceNotFoundException],
@@ -4355,7 +4355,7 @@ export const describeRule: API.OperationMethod<
   DescribeRuleResponse,
   DescribeRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeRuleRequest,
   output: DescribeRuleResponse,
   errors: [InternalException, ResourceNotFoundException],
@@ -4378,7 +4378,7 @@ export const disableRule: API.OperationMethod<
   DisableRuleResponse,
   DisableRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableRuleRequest,
   output: DisableRuleResponse,
   errors: [
@@ -4405,7 +4405,7 @@ export const enableRule: API.OperationMethod<
   EnableRuleResponse,
   EnableRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableRuleRequest,
   output: EnableRuleResponse,
   errors: [
@@ -4424,7 +4424,7 @@ export const listApiDestinations: API.OperationMethod<
   ListApiDestinationsResponse,
   ListApiDestinationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListApiDestinationsRequest,
   output: ListApiDestinationsResponse,
   errors: [InternalException],
@@ -4442,7 +4442,7 @@ export const listArchives: API.OperationMethod<
   ListArchivesResponse,
   ListArchivesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListArchivesRequest,
   output: ListArchivesResponse,
   errors: [InternalException, ResourceNotFoundException],
@@ -4456,7 +4456,7 @@ export const listConnections: API.OperationMethod<
   ListConnectionsResponse,
   ListConnectionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListConnectionsRequest,
   output: ListConnectionsResponse,
   errors: [InternalException],
@@ -4475,7 +4475,7 @@ export const listEndpoints: API.OperationMethod<
   ListEndpointsResponse,
   ListEndpointsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListEndpointsRequest,
   output: ListEndpointsResponse,
   errors: [InternalException],
@@ -4490,7 +4490,7 @@ export const listEventBuses: API.OperationMethod<
   ListEventBusesResponse,
   ListEventBusesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListEventBusesRequest,
   output: ListEventBusesResponse,
   errors: [InternalException],
@@ -4508,7 +4508,7 @@ export const listEventSources: API.OperationMethod<
   ListEventSourcesResponse,
   ListEventSourcesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListEventSourcesRequest,
   output: ListEventSourcesResponse,
   errors: [InternalException, OperationDisabledException],
@@ -4527,7 +4527,7 @@ export const listPartnerEventSourceAccounts: API.OperationMethod<
   ListPartnerEventSourceAccountsResponse,
   ListPartnerEventSourceAccountsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListPartnerEventSourceAccountsRequest,
   output: ListPartnerEventSourceAccountsResponse,
   errors: [
@@ -4549,7 +4549,7 @@ export const listPartnerEventSources: API.OperationMethod<
   ListPartnerEventSourcesResponse,
   ListPartnerEventSourcesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListPartnerEventSourcesRequest,
   output: ListPartnerEventSourcesResponse,
   errors: [InternalException, OperationDisabledException],
@@ -4564,7 +4564,7 @@ export const listReplays: API.OperationMethod<
   ListReplaysResponse,
   ListReplaysError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListReplaysRequest,
   output: ListReplaysResponse,
   errors: [InternalException],
@@ -4584,7 +4584,7 @@ export const listRuleNamesByTarget: API.OperationMethod<
   ListRuleNamesByTargetResponse,
   ListRuleNamesByTargetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListRuleNamesByTargetRequest,
   output: ListRuleNamesByTargetResponse,
   errors: [InternalException, ResourceNotFoundException],
@@ -4607,7 +4607,7 @@ export const listRules: API.OperationMethod<
   ListRulesResponse,
   ListRulesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListRulesRequest,
   output: ListRulesResponse,
   errors: [InternalException, ResourceNotFoundException],
@@ -4626,7 +4626,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [InternalException, ResourceNotFoundException, ThrottlingException],
@@ -4645,7 +4645,7 @@ export const listTargetsByRule: API.OperationMethod<
   ListTargetsByRuleResponse,
   ListTargetsByRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTargetsByRuleRequest,
   output: ListTargetsByRuleResponse,
   errors: [InternalException, ResourceNotFoundException],
@@ -4672,7 +4672,7 @@ export const putEvents: API.OperationMethod<
   PutEventsResponse,
   PutEventsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutEventsRequest,
   output: PutEventsResponse,
   errors: [InternalException],
@@ -4692,7 +4692,7 @@ export const putPartnerEvents: API.OperationMethod<
   PutPartnerEventsResponse,
   PutPartnerEventsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutPartnerEventsRequest,
   output: PutPartnerEventsResponse,
   errors: [InternalException, OperationDisabledException],
@@ -4731,7 +4731,7 @@ export const putPermission: API.OperationMethod<
   PutPermissionResponse,
   PutPermissionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutPermissionRequest,
   output: PutPermissionResponse,
   errors: [
@@ -4810,7 +4810,7 @@ export const putRule: API.OperationMethod<
   PutRuleResponse,
   PutRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutRuleRequest,
   output: PutRuleResponse,
   errors: [
@@ -4934,7 +4934,7 @@ export const putTargets: API.OperationMethod<
   PutTargetsResponse,
   PutTargetsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutTargetsRequest,
   output: PutTargetsResponse,
   errors: [
@@ -4962,7 +4962,7 @@ export const removePermission: API.OperationMethod<
   RemovePermissionResponse,
   RemovePermissionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemovePermissionRequest,
   output: RemovePermissionResponse,
   errors: [
@@ -4999,7 +4999,7 @@ export const removeTargets: API.OperationMethod<
   RemoveTargetsResponse,
   RemoveTargetsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveTargetsRequest,
   output: RemoveTargetsResponse,
   errors: [
@@ -5032,7 +5032,7 @@ export const startReplay: API.OperationMethod<
   StartReplayResponse,
   StartReplayError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartReplayRequest,
   output: StartReplayResponse,
   errors: [
@@ -5071,7 +5071,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -5099,7 +5099,7 @@ export const testEventPattern: API.OperationMethod<
   TestEventPatternResponse,
   TestEventPatternError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestEventPatternRequest,
   output: TestEventPatternResponse,
   errors: [InternalException, InvalidEventPatternException],
@@ -5119,7 +5119,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -5144,7 +5144,7 @@ export const updateApiDestination: API.OperationMethod<
   UpdateApiDestinationResponse,
   UpdateApiDestinationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateApiDestinationRequest,
   output: UpdateApiDestinationResponse,
   errors: [
@@ -5169,7 +5169,7 @@ export const updateArchive: API.OperationMethod<
   UpdateArchiveResponse,
   UpdateArchiveError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateArchiveRequest,
   output: UpdateArchiveResponse,
   errors: [
@@ -5196,7 +5196,7 @@ export const updateConnection: API.OperationMethod<
   UpdateConnectionResponse,
   UpdateConnectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateConnectionRequest,
   output: UpdateConnectionResponse,
   errors: [
@@ -5225,7 +5225,7 @@ export const updateEndpoint: API.OperationMethod<
   UpdateEndpointResponse,
   UpdateEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEndpointRequest,
   output: UpdateEndpointResponse,
   errors: [
@@ -5248,7 +5248,7 @@ export const updateEventBus: API.OperationMethod<
   UpdateEventBusResponse,
   UpdateEventBusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEventBusRequest,
   output: UpdateEventBusResponse,
   errors: [

@@ -805,7 +805,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceOutput,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [ResourceNotFoundException, ValidationException],
@@ -824,7 +824,7 @@ export const tagResource: API.OperationMethod<
   TagResourceOutput,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
   errors: [
@@ -846,7 +846,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceOutput,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
   errors: [ResourceNotFoundException, ValidationException],
@@ -871,7 +871,7 @@ export const startSimulation: API.OperationMethod<
   StartSimulationOutput,
   StartSimulationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartSimulationInput,
   output: StartSimulationOutput,
   errors: [
@@ -896,7 +896,7 @@ export const describeSimulation: API.OperationMethod<
   DescribeSimulationOutput,
   DescribeSimulationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeSimulationInput,
   output: DescribeSimulationOutput,
   errors: [
@@ -924,7 +924,7 @@ export const stopSimulation: API.OperationMethod<
   StopSimulationOutput,
   StopSimulationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopSimulationInput,
   output: StopSimulationOutput,
   errors: [
@@ -953,7 +953,7 @@ export const deleteSimulation: API.OperationMethod<
   DeleteSimulationOutput,
   DeleteSimulationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSimulationInput,
   output: DeleteSimulationOutput,
   errors: [
@@ -992,7 +992,7 @@ export const listSimulations: API.OperationMethod<
     ListSimulationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSimulationsInput,
   output: ListSimulationsOutput,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
@@ -1058,7 +1058,7 @@ export const createSnapshot: API.OperationMethod<
   CreateSnapshotOutput,
   CreateSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSnapshotInput,
   output: CreateSnapshotOutput,
   errors: [
@@ -1084,7 +1084,7 @@ export const deleteApp: API.OperationMethod<
   DeleteAppOutput,
   DeleteAppError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAppInput,
   output: DeleteAppOutput,
   errors: [
@@ -1109,7 +1109,7 @@ export const describeApp: API.OperationMethod<
   DescribeAppOutput,
   DescribeAppError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAppInput,
   output: DescribeAppOutput,
   errors: [
@@ -1148,7 +1148,7 @@ export const listApps: API.OperationMethod<
     ListAppsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppsInput,
   output: ListAppsOutput,
   errors: [
@@ -1178,7 +1178,7 @@ export const startApp: API.OperationMethod<
   StartAppOutput,
   StartAppError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartAppInput,
   output: StartAppOutput,
   errors: [
@@ -1204,7 +1204,7 @@ export const startClock: API.OperationMethod<
   StartClockOutput,
   StartClockError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartClockInput,
   output: StartClockOutput,
   errors: [
@@ -1230,7 +1230,7 @@ export const stopApp: API.OperationMethod<
   StopAppOutput,
   StopAppError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopAppInput,
   output: StopAppOutput,
   errors: [
@@ -1256,7 +1256,7 @@ export const stopClock: API.OperationMethod<
   StopClockOutput,
   StopClockError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopClockInput,
   output: StopClockOutput,
   errors: [

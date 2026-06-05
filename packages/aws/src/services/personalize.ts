@@ -3455,7 +3455,7 @@ export const createBatchInferenceJob: API.OperationMethod<
   CreateBatchInferenceJobResponse,
   CreateBatchInferenceJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateBatchInferenceJobRequest,
   output: CreateBatchInferenceJobResponse,
   errors: [
@@ -3485,7 +3485,7 @@ export const createBatchSegmentJob: API.OperationMethod<
   CreateBatchSegmentJobResponse,
   CreateBatchSegmentJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateBatchSegmentJobRequest,
   output: CreateBatchSegmentJobResponse,
   errors: [
@@ -3567,7 +3567,7 @@ export const createCampaign: API.OperationMethod<
   CreateCampaignResponse,
   CreateCampaignError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCampaignRequest,
   output: CreateCampaignResponse,
   errors: [
@@ -3629,7 +3629,7 @@ export const createDataDeletionJob: API.OperationMethod<
   CreateDataDeletionJobResponse,
   CreateDataDeletionJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDataDeletionJobRequest,
   output: CreateDataDeletionJobResponse,
   errors: [
@@ -3694,7 +3694,7 @@ export const createDataset: API.OperationMethod<
   CreateDatasetResponse,
   CreateDatasetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDatasetRequest,
   output: CreateDatasetResponse,
   errors: [
@@ -3738,7 +3738,7 @@ export const createDatasetExportJob: API.OperationMethod<
   CreateDatasetExportJobResponse,
   CreateDatasetExportJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDatasetExportJobRequest,
   output: CreateDatasetExportJobResponse,
   errors: [
@@ -3818,7 +3818,7 @@ export const createDatasetGroup: API.OperationMethod<
   CreateDatasetGroupResponse,
   CreateDatasetGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDatasetGroupRequest,
   output: CreateDatasetGroupResponse,
   errors: [
@@ -3881,7 +3881,7 @@ export const createDatasetImportJob: API.OperationMethod<
   CreateDatasetImportJobResponse,
   CreateDatasetImportJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDatasetImportJobRequest,
   output: CreateDatasetImportJobResponse,
   errors: [
@@ -3938,7 +3938,7 @@ export const createEventTracker: API.OperationMethod<
   CreateEventTrackerResponse,
   CreateEventTrackerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEventTrackerRequest,
   output: CreateEventTrackerResponse,
   errors: [
@@ -3965,7 +3965,7 @@ export const createFilter: API.OperationMethod<
   CreateFilterResponse,
   CreateFilterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFilterRequest,
   output: CreateFilterResponse,
   errors: [
@@ -3993,7 +3993,7 @@ export const createMetricAttribution: API.OperationMethod<
   CreateMetricAttributionResponse,
   CreateMetricAttributionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMetricAttributionRequest,
   output: CreateMetricAttributionResponse,
   errors: [
@@ -4073,7 +4073,7 @@ export const createRecommender: API.OperationMethod<
   CreateRecommenderResponse,
   CreateRecommenderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRecommenderRequest,
   output: CreateRecommenderResponse,
   errors: [
@@ -4112,7 +4112,7 @@ export const createSchema: API.OperationMethod<
   CreateSchemaResponse,
   CreateSchemaError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSchemaRequest,
   output: CreateSchemaResponse,
   errors: [
@@ -4193,7 +4193,7 @@ export const createSolution: API.OperationMethod<
   CreateSolutionResponse,
   CreateSolutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSolutionRequest,
   output: CreateSolutionResponse,
   errors: [
@@ -4260,7 +4260,7 @@ export const createSolutionVersion: API.OperationMethod<
   CreateSolutionVersionResponse,
   CreateSolutionVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSolutionVersionRequest,
   output: CreateSolutionVersionResponse,
   errors: [
@@ -4290,7 +4290,7 @@ export const deleteCampaign: API.OperationMethod<
   DeleteCampaignResponse,
   DeleteCampaignError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCampaignRequest,
   output: DeleteCampaignResponse,
   errors: [
@@ -4315,7 +4315,7 @@ export const deleteDataset: API.OperationMethod<
   DeleteDatasetResponse,
   DeleteDatasetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDatasetRequest,
   output: DeleteDatasetResponse,
   errors: [
@@ -4344,7 +4344,7 @@ export const deleteDatasetGroup: API.OperationMethod<
   DeleteDatasetGroupResponse,
   DeleteDatasetGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDatasetGroupRequest,
   output: DeleteDatasetGroupResponse,
   errors: [
@@ -4368,7 +4368,7 @@ export const deleteEventTracker: API.OperationMethod<
   DeleteEventTrackerResponse,
   DeleteEventTrackerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEventTrackerRequest,
   output: DeleteEventTrackerResponse,
   errors: [
@@ -4390,7 +4390,7 @@ export const deleteFilter: API.OperationMethod<
   DeleteFilterResponse,
   DeleteFilterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFilterRequest,
   output: DeleteFilterResponse,
   errors: [
@@ -4412,7 +4412,7 @@ export const deleteMetricAttribution: API.OperationMethod<
   DeleteMetricAttributionResponse,
   DeleteMetricAttributionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMetricAttributionRequest,
   output: DeleteMetricAttributionResponse,
   errors: [
@@ -4435,7 +4435,7 @@ export const deleteRecommender: API.OperationMethod<
   DeleteRecommenderResponse,
   DeleteRecommenderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRecommenderRequest,
   output: DeleteRecommenderResponse,
   errors: [
@@ -4459,7 +4459,7 @@ export const deleteSchema: API.OperationMethod<
   DeleteSchemaResponse,
   DeleteSchemaError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSchemaRequest,
   output: DeleteSchemaResponse,
   errors: [
@@ -4487,7 +4487,7 @@ export const deleteSolution: API.OperationMethod<
   DeleteSolutionResponse,
   DeleteSolutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSolutionRequest,
   output: DeleteSolutionResponse,
   errors: [
@@ -4508,7 +4508,7 @@ export const describeAlgorithm: API.OperationMethod<
   DescribeAlgorithmResponse,
   DescribeAlgorithmError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAlgorithmRequest,
   output: DescribeAlgorithmResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
@@ -4527,7 +4527,7 @@ export const describeBatchInferenceJob: API.OperationMethod<
   DescribeBatchInferenceJobResponse,
   DescribeBatchInferenceJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeBatchInferenceJobRequest,
   output: DescribeBatchInferenceJobResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
@@ -4546,7 +4546,7 @@ export const describeBatchSegmentJob: API.OperationMethod<
   DescribeBatchSegmentJobResponse,
   DescribeBatchSegmentJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeBatchSegmentJobRequest,
   output: DescribeBatchSegmentJobResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
@@ -4574,7 +4574,7 @@ export const describeCampaign: API.OperationMethod<
   DescribeCampaignResponse,
   DescribeCampaignError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeCampaignRequest,
   output: DescribeCampaignResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
@@ -4591,7 +4591,7 @@ export const describeDataDeletionJob: API.OperationMethod<
   DescribeDataDeletionJobResponse,
   DescribeDataDeletionJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDataDeletionJobRequest,
   output: DescribeDataDeletionJobResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
@@ -4609,7 +4609,7 @@ export const describeDataset: API.OperationMethod<
   DescribeDatasetResponse,
   DescribeDatasetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDatasetRequest,
   output: DescribeDatasetResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
@@ -4626,7 +4626,7 @@ export const describeDatasetExportJob: API.OperationMethod<
   DescribeDatasetExportJobResponse,
   DescribeDatasetExportJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDatasetExportJobRequest,
   output: DescribeDatasetExportJobResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
@@ -4644,7 +4644,7 @@ export const describeDatasetGroup: API.OperationMethod<
   DescribeDatasetGroupResponse,
   DescribeDatasetGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDatasetGroupRequest,
   output: DescribeDatasetGroupResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
@@ -4661,7 +4661,7 @@ export const describeDatasetImportJob: API.OperationMethod<
   DescribeDatasetImportJobResponse,
   DescribeDatasetImportJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDatasetImportJobRequest,
   output: DescribeDatasetImportJobResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
@@ -4680,7 +4680,7 @@ export const describeEventTracker: API.OperationMethod<
   DescribeEventTrackerResponse,
   DescribeEventTrackerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeEventTrackerRequest,
   output: DescribeEventTrackerResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
@@ -4697,7 +4697,7 @@ export const describeFeatureTransformation: API.OperationMethod<
   DescribeFeatureTransformationResponse,
   DescribeFeatureTransformationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeFeatureTransformationRequest,
   output: DescribeFeatureTransformationResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
@@ -4714,7 +4714,7 @@ export const describeFilter: API.OperationMethod<
   DescribeFilterResponse,
   DescribeFilterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeFilterRequest,
   output: DescribeFilterResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
@@ -4731,7 +4731,7 @@ export const describeMetricAttribution: API.OperationMethod<
   DescribeMetricAttributionResponse,
   DescribeMetricAttributionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeMetricAttributionRequest,
   output: DescribeMetricAttributionResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
@@ -4763,7 +4763,7 @@ export const describeRecipe: API.OperationMethod<
   DescribeRecipeResponse,
   DescribeRecipeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeRecipeRequest,
   output: DescribeRecipeResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
@@ -4796,7 +4796,7 @@ export const describeRecommender: API.OperationMethod<
   DescribeRecommenderResponse,
   DescribeRecommenderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeRecommenderRequest,
   output: DescribeRecommenderResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
@@ -4814,7 +4814,7 @@ export const describeSchema: API.OperationMethod<
   DescribeSchemaResponse,
   DescribeSchemaError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeSchemaRequest,
   output: DescribeSchemaResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
@@ -4832,7 +4832,7 @@ export const describeSolution: API.OperationMethod<
   DescribeSolutionResponse,
   DescribeSolutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeSolutionRequest,
   output: DescribeSolutionResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
@@ -4849,7 +4849,7 @@ export const describeSolutionVersion: API.OperationMethod<
   DescribeSolutionVersionResponse,
   DescribeSolutionVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeSolutionVersionRequest,
   output: DescribeSolutionVersionResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
@@ -4867,7 +4867,7 @@ export const getSolutionMetrics: API.OperationMethod<
   GetSolutionMetricsResponse,
   GetSolutionMetricsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSolutionMetricsRequest,
   output: GetSolutionMetricsResponse,
   errors: [
@@ -4904,7 +4904,7 @@ export const listBatchInferenceJobs: API.OperationMethod<
     ListBatchInferenceJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBatchInferenceJobsRequest,
   output: ListBatchInferenceJobsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
@@ -4943,7 +4943,7 @@ export const listBatchSegmentJobs: API.OperationMethod<
     ListBatchSegmentJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBatchSegmentJobsRequest,
   output: ListBatchSegmentJobsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
@@ -4984,7 +4984,7 @@ export const listCampaigns: API.OperationMethod<
     ListCampaignsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCampaignsRequest,
   output: ListCampaignsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
@@ -5013,7 +5013,7 @@ export const listDataDeletionJobs: API.OperationMethod<
   ListDataDeletionJobsResponse,
   ListDataDeletionJobsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListDataDeletionJobsRequest,
   output: ListDataDeletionJobsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
@@ -5050,7 +5050,7 @@ export const listDatasetExportJobs: API.OperationMethod<
     ListDatasetExportJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatasetExportJobsRequest,
   output: ListDatasetExportJobsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
@@ -5087,7 +5087,7 @@ export const listDatasetGroups: API.OperationMethod<
     ListDatasetGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatasetGroupsRequest,
   output: ListDatasetGroupsResponse,
   errors: [InvalidNextTokenException],
@@ -5130,7 +5130,7 @@ export const listDatasetImportJobs: API.OperationMethod<
     ListDatasetImportJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatasetImportJobsRequest,
   output: ListDatasetImportJobsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
@@ -5170,7 +5170,7 @@ export const listDatasets: API.OperationMethod<
     ListDatasetsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatasetsRequest,
   output: ListDatasetsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
@@ -5211,7 +5211,7 @@ export const listEventTrackers: API.OperationMethod<
     ListEventTrackersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEventTrackersRequest,
   output: ListEventTrackersResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
@@ -5249,7 +5249,7 @@ export const listFilters: API.OperationMethod<
     ListFiltersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFiltersRequest,
   output: ListFiltersResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
@@ -5287,7 +5287,7 @@ export const listMetricAttributionMetrics: API.OperationMethod<
     ListMetricAttributionMetricsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMetricAttributionMetricsRequest,
   output: ListMetricAttributionMetricsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
@@ -5325,7 +5325,7 @@ export const listMetricAttributions: API.OperationMethod<
     ListMetricAttributionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMetricAttributionsRequest,
   output: ListMetricAttributionsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
@@ -5364,7 +5364,7 @@ export const listRecipes: API.OperationMethod<
     ListRecipesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecipesRequest,
   output: ListRecipesResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
@@ -5405,7 +5405,7 @@ export const listRecommenders: API.OperationMethod<
     ListRecommendersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecommendersRequest,
   output: ListRecommendersResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
@@ -5442,7 +5442,7 @@ export const listSchemas: API.OperationMethod<
     ListSchemasError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSchemasRequest,
   output: ListSchemasResponse,
   errors: [InvalidNextTokenException],
@@ -5483,7 +5483,7 @@ export const listSolutions: API.OperationMethod<
     ListSolutionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSolutionsRequest,
   output: ListSolutionsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
@@ -5524,7 +5524,7 @@ export const listSolutionVersions: API.OperationMethod<
     ListSolutionVersionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSolutionVersionsRequest,
   output: ListSolutionVersionsResponse,
   errors: [
@@ -5552,7 +5552,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -5575,7 +5575,7 @@ export const startRecommender: API.OperationMethod<
   StartRecommenderResponse,
   StartRecommenderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartRecommenderRequest,
   output: StartRecommenderResponse,
   errors: [
@@ -5597,7 +5597,7 @@ export const stopRecommender: API.OperationMethod<
   StopRecommenderResponse,
   StopRecommenderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopRecommenderRequest,
   output: StopRecommenderResponse,
   errors: [
@@ -5630,7 +5630,7 @@ export const stopSolutionVersionCreation: API.OperationMethod<
   StopSolutionVersionCreationResponse,
   StopSolutionVersionCreationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopSolutionVersionCreationRequest,
   output: StopSolutionVersionCreationResponse,
   errors: [
@@ -5654,7 +5654,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -5679,7 +5679,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -5719,7 +5719,7 @@ export const updateCampaign: API.OperationMethod<
   UpdateCampaignResponse,
   UpdateCampaignError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCampaignRequest,
   output: UpdateCampaignResponse,
   errors: [
@@ -5741,7 +5741,7 @@ export const updateDataset: API.OperationMethod<
   UpdateDatasetResponse,
   UpdateDatasetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDatasetRequest,
   output: UpdateDatasetResponse,
   errors: [
@@ -5764,7 +5764,7 @@ export const updateMetricAttribution: API.OperationMethod<
   UpdateMetricAttributionResponse,
   UpdateMetricAttributionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateMetricAttributionRequest,
   output: UpdateMetricAttributionResponse,
   errors: [
@@ -5793,7 +5793,7 @@ export const updateRecommender: API.OperationMethod<
   UpdateRecommenderResponse,
   UpdateRecommenderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRecommenderRequest,
   output: UpdateRecommenderResponse,
   errors: [
@@ -5828,7 +5828,7 @@ export const updateSolution: API.OperationMethod<
   UpdateSolutionResponse,
   UpdateSolutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSolutionRequest,
   output: UpdateSolutionResponse,
   errors: [

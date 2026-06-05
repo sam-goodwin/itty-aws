@@ -1268,7 +1268,7 @@ export const associateAttributeGroup: API.OperationMethod<
   AssociateAttributeGroupResponse,
   AssociateAttributeGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateAttributeGroupRequest,
   output: AssociateAttributeGroupResponse,
   errors: [
@@ -1317,7 +1317,7 @@ export const associateResource: API.OperationMethod<
   AssociateResourceResponse,
   AssociateResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateResourceRequest,
   output: AssociateResourceResponse,
   errors: [
@@ -1344,7 +1344,7 @@ export const createApplication: API.OperationMethod<
   CreateApplicationResponse,
   CreateApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateApplicationRequest,
   output: CreateApplicationResponse,
   errors: [
@@ -1372,7 +1372,7 @@ export const createAttributeGroup: API.OperationMethod<
   CreateAttributeGroupResponse,
   CreateAttributeGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAttributeGroupRequest,
   output: CreateAttributeGroupResponse,
   errors: [
@@ -1395,7 +1395,7 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationResponse,
   DeleteApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteApplicationRequest,
   output: DeleteApplicationResponse,
   errors: [
@@ -1417,7 +1417,7 @@ export const deleteAttributeGroup: API.OperationMethod<
   DeleteAttributeGroupResponse,
   DeleteAttributeGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAttributeGroupRequest,
   output: DeleteAttributeGroupResponse,
   errors: [
@@ -1439,7 +1439,7 @@ export const disassociateAttributeGroup: API.OperationMethod<
   DisassociateAttributeGroupResponse,
   DisassociateAttributeGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateAttributeGroupRequest,
   output: DisassociateAttributeGroupResponse,
   errors: [
@@ -1483,7 +1483,7 @@ export const disassociateResource: API.OperationMethod<
   DisassociateResourceResponse,
   DisassociateResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateResourceRequest,
   output: DisassociateResourceResponse,
   errors: [
@@ -1523,7 +1523,7 @@ export const getApplication: API.OperationMethod<
   GetApplicationResponse,
   GetApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetApplicationRequest,
   output: GetApplicationResponse,
   errors: [
@@ -1546,7 +1546,7 @@ export const getAssociatedResource: API.OperationMethod<
   GetAssociatedResourceResponse,
   GetAssociatedResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAssociatedResourceRequest,
   output: GetAssociatedResourceResponse,
   errors: [
@@ -1572,7 +1572,7 @@ export const getAttributeGroup: API.OperationMethod<
   GetAttributeGroupResponse,
   GetAttributeGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAttributeGroupRequest,
   output: GetAttributeGroupResponse,
   errors: [
@@ -1592,7 +1592,7 @@ export const getConfiguration: API.OperationMethod<
   GetConfigurationResponse,
   GetConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConfigurationRequest,
   output: GetConfigurationResponse,
   errors: [InternalServerException],
@@ -1624,7 +1624,7 @@ export const listApplications: API.OperationMethod<
     ListApplicationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationsRequest,
   output: ListApplicationsResponse,
   errors: [InternalServerException, ValidationException],
@@ -1663,7 +1663,7 @@ export const listAssociatedAttributeGroups: API.OperationMethod<
     ListAssociatedAttributeGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssociatedAttributeGroupsRequest,
   output: ListAssociatedAttributeGroupsResponse,
   errors: [
@@ -1721,7 +1721,7 @@ export const listAssociatedResources: API.OperationMethod<
     ListAssociatedResourcesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssociatedResourcesRequest,
   output: ListAssociatedResourcesResponse,
   errors: [
@@ -1763,7 +1763,7 @@ export const listAttributeGroups: API.OperationMethod<
     ListAttributeGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAttributeGroupsRequest,
   output: ListAttributeGroupsResponse,
   errors: [InternalServerException, ValidationException],
@@ -1802,7 +1802,7 @@ export const listAttributeGroupsForApplication: API.OperationMethod<
     ListAttributeGroupsForApplicationError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAttributeGroupsForApplicationRequest,
   output: ListAttributeGroupsForApplicationResponse,
   errors: [
@@ -1830,7 +1830,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -1853,7 +1853,7 @@ export const putConfiguration: API.OperationMethod<
   PutConfigurationResponse,
   PutConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutConfigurationRequest,
   output: PutConfigurationResponse,
   errors: [ConflictException, InternalServerException, ValidationException],
@@ -1875,7 +1875,7 @@ export const syncResource: API.OperationMethod<
   SyncResourceResponse,
   SyncResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SyncResourceRequest,
   output: SyncResourceResponse,
   errors: [
@@ -1903,7 +1903,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -1927,7 +1927,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -1951,7 +1951,7 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationResponse,
   UpdateApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateApplicationRequest,
   output: UpdateApplicationResponse,
   errors: [
@@ -1976,7 +1976,7 @@ export const updateAttributeGroup: API.OperationMethod<
   UpdateAttributeGroupResponse,
   UpdateAttributeGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAttributeGroupRequest,
   output: UpdateAttributeGroupResponse,
   errors: [

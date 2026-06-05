@@ -1122,7 +1122,7 @@ export const batchUpdateRecommendationResourceExclusion: API.OperationMethod<
   BatchUpdateRecommendationResourceExclusionResponse,
   BatchUpdateRecommendationResourceExclusionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchUpdateRecommendationResourceExclusionRequest,
   output: BatchUpdateRecommendationResourceExclusionResponse,
   errors: [
@@ -1148,7 +1148,7 @@ export const getOrganizationRecommendation: API.OperationMethod<
   GetOrganizationRecommendationResponse,
   GetOrganizationRecommendationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationRecommendationRequest,
   output: GetOrganizationRecommendationResponse,
   errors: [
@@ -1174,7 +1174,7 @@ export const getRecommendation: API.OperationMethod<
   GetRecommendationResponse,
   GetRecommendationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRecommendationRequest,
   output: GetRecommendationResponse,
   errors: [
@@ -1214,7 +1214,7 @@ export const listChecks: API.OperationMethod<
     ListChecksError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChecksRequest,
   output: ListChecksResponse,
   errors: [
@@ -1260,7 +1260,7 @@ export const listOrganizationRecommendationAccounts: API.OperationMethod<
     ListOrganizationRecommendationAccountsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationRecommendationAccountsRequest,
   output: ListOrganizationRecommendationAccountsResponse,
   errors: [
@@ -1307,7 +1307,7 @@ export const listOrganizationRecommendationResources: API.OperationMethod<
     ListOrganizationRecommendationResourcesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationRecommendationResourcesRequest,
   output: ListOrganizationRecommendationResourcesResponse,
   errors: [
@@ -1353,7 +1353,7 @@ export const listOrganizationRecommendations: API.OperationMethod<
     ListOrganizationRecommendationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationRecommendationsRequest,
   output: ListOrganizationRecommendationsResponse,
   errors: [
@@ -1399,7 +1399,7 @@ export const listRecommendationResources: API.OperationMethod<
     ListRecommendationResourcesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecommendationResourcesRequest,
   output: ListRecommendationResourcesResponse,
   errors: [
@@ -1445,7 +1445,7 @@ export const listRecommendations: API.OperationMethod<
     ListRecommendationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecommendationsRequest,
   output: ListRecommendationsResponse,
   errors: [
@@ -1477,7 +1477,7 @@ export const updateOrganizationRecommendationLifecycle: API.OperationMethod<
   UpdateOrganizationRecommendationLifecycleResponse,
   UpdateOrganizationRecommendationLifecycleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateOrganizationRecommendationLifecycleRequest,
   output: UpdateOrganizationRecommendationLifecycleResponse,
   errors: [
@@ -1505,7 +1505,7 @@ export const updateRecommendationLifecycle: API.OperationMethod<
   UpdateRecommendationLifecycleResponse,
   UpdateRecommendationLifecycleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRecommendationLifecycleRequest,
   output: UpdateRecommendationLifecycleResponse,
   errors: [

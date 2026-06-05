@@ -504,7 +504,7 @@ export const deleteConnection: API.OperationMethod<
   DeleteConnectionResponse,
   DeleteConnectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConnectionRequest,
   output: DeleteConnectionResponse,
   errors: [
@@ -537,7 +537,7 @@ export const deleteThingShadow: API.OperationMethod<
   DeleteThingShadowResponse,
   DeleteThingShadowError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteThingShadowRequest,
   output: DeleteThingShadowResponse,
   errors: [
@@ -577,7 +577,7 @@ export const getRetainedMessage: API.OperationMethod<
   GetRetainedMessageResponse,
   GetRetainedMessageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRetainedMessageRequest,
   output: GetRetainedMessageResponse,
   errors: [
@@ -613,7 +613,7 @@ export const getThingShadow: API.OperationMethod<
   GetThingShadowResponse,
   GetThingShadowError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetThingShadowRequest,
   output: GetThingShadowResponse,
   errors: [
@@ -646,7 +646,7 @@ export const listNamedShadowsForThing: API.OperationMethod<
   ListNamedShadowsForThingResponse,
   ListNamedShadowsForThingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListNamedShadowsForThingRequest,
   output: ListNamedShadowsForThingResponse,
   errors: [
@@ -703,7 +703,7 @@ export const listRetainedMessages: API.OperationMethod<
     ListRetainedMessagesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRetainedMessagesRequest,
   output: ListRetainedMessagesResponse,
   errors: [
@@ -745,7 +745,7 @@ export const publish: API.OperationMethod<
   PublishResponse,
   PublishError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PublishRequest,
   output: PublishResponse,
   errors: [
@@ -780,7 +780,7 @@ export const updateThingShadow: API.OperationMethod<
   UpdateThingShadowResponse,
   UpdateThingShadowError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateThingShadowRequest,
   output: UpdateThingShadowResponse,
   errors: [

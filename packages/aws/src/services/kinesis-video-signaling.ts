@@ -237,7 +237,7 @@ export const getIceServerConfig: API.OperationMethod<
   GetIceServerConfigResponse,
   GetIceServerConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIceServerConfigRequest,
   output: GetIceServerConfigResponse,
   errors: [
@@ -268,7 +268,7 @@ export const sendAlexaOfferToMaster: API.OperationMethod<
   SendAlexaOfferToMasterResponse,
   SendAlexaOfferToMasterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendAlexaOfferToMasterRequest,
   output: SendAlexaOfferToMasterResponse,
   errors: [

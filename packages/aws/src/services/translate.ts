@@ -1075,7 +1075,7 @@ export const createParallelData: API.OperationMethod<
   CreateParallelDataResponse,
   CreateParallelDataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateParallelDataRequest,
   output: CreateParallelDataResponse,
   errors: [
@@ -1103,7 +1103,7 @@ export const deleteParallelData: API.OperationMethod<
   DeleteParallelDataResponse,
   DeleteParallelDataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteParallelDataRequest,
   output: DeleteParallelDataResponse,
   errors: [
@@ -1127,7 +1127,7 @@ export const deleteTerminology: API.OperationMethod<
   DeleteTerminologyResponse,
   DeleteTerminologyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTerminologyRequest,
   output: DeleteTerminologyResponse,
   errors: [
@@ -1151,7 +1151,7 @@ export const describeTextTranslationJob: API.OperationMethod<
   DescribeTextTranslationJobResponse,
   DescribeTextTranslationJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeTextTranslationJobRequest,
   output: DescribeTextTranslationJobResponse,
   errors: [
@@ -1174,7 +1174,7 @@ export const getParallelData: API.OperationMethod<
   GetParallelDataResponse,
   GetParallelDataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetParallelDataRequest,
   output: GetParallelDataResponse,
   errors: [
@@ -1198,7 +1198,7 @@ export const getTerminology: API.OperationMethod<
   GetTerminologyResponse,
   GetTerminologyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTerminologyRequest,
   output: GetTerminologyResponse,
   errors: [
@@ -1232,7 +1232,7 @@ export const importTerminology: API.OperationMethod<
   ImportTerminologyResponse,
   ImportTerminologyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportTerminologyRequest,
   output: ImportTerminologyResponse,
   errors: [
@@ -1273,7 +1273,7 @@ export const listLanguages: API.OperationMethod<
     ListLanguagesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLanguagesRequest,
   output: ListLanguagesResponse,
   errors: [
@@ -1316,7 +1316,7 @@ export const listParallelData: API.OperationMethod<
     ListParallelDataError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListParallelDataRequest,
   output: ListParallelDataResponse,
   errors: [
@@ -1345,7 +1345,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -1382,7 +1382,7 @@ export const listTerminologies: API.OperationMethod<
     ListTerminologiesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTerminologiesRequest,
   output: ListTerminologiesResponse,
   errors: [
@@ -1425,7 +1425,7 @@ export const listTextTranslationJobs: API.OperationMethod<
     ListTextTranslationJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTextTranslationJobsRequest,
   output: ListTextTranslationJobsResponse,
   errors: [
@@ -1464,7 +1464,7 @@ export const startTextTranslationJob: API.OperationMethod<
   StartTextTranslationJobResponse,
   StartTextTranslationJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartTextTranslationJobRequest,
   output: StartTextTranslationJobResponse,
   errors: [
@@ -1497,7 +1497,7 @@ export const stopTextTranslationJob: API.OperationMethod<
   StopTextTranslationJobResponse,
   StopTextTranslationJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopTextTranslationJobRequest,
   output: StopTextTranslationJobResponse,
   errors: [
@@ -1524,7 +1524,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -1561,7 +1561,7 @@ export const translateDocument: API.OperationMethod<
   TranslateDocumentResponse,
   TranslateDocumentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TranslateDocumentRequest,
   output: TranslateDocumentResponse,
   errors: [
@@ -1593,7 +1593,7 @@ export const translateText: API.OperationMethod<
   TranslateTextResponse,
   TranslateTextError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TranslateTextRequest,
   output: TranslateTextResponse,
   errors: [
@@ -1623,7 +1623,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -1652,7 +1652,7 @@ export const updateParallelData: API.OperationMethod<
   UpdateParallelDataResponse,
   UpdateParallelDataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateParallelDataRequest,
   output: UpdateParallelDataResponse,
   errors: [

@@ -34,23 +34,20 @@ export interface GetAssetForZoneRequest extends GetAssetBaseRequest {
   zoneId: string;
 }
 
-export const GetAssetForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    ...GetAssetBaseFields,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/custom_pages/assets/{assetName}",
-    }),
-  ) as unknown as Schema.Schema<GetAssetForAccountRequest>;
+export const GetAssetForAccountRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  ...GetAssetBaseFields,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/custom_pages/assets/{assetName}",
+  }),
+) as unknown as Schema.Schema<GetAssetForAccountRequest>;
 
-export const GetAssetForZoneRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    ...GetAssetBaseFields,
-  },
-).pipe(
+export const GetAssetForZoneRequest = /*@__PURE__*/ Schema.Struct({
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  ...GetAssetBaseFields,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/zones/{zone_id}/custom_pages/assets/{assetName}",
@@ -69,7 +66,7 @@ export interface GetAssetResponse {
   url?: string | null;
 }
 
-export const GetAssetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetAssetResponse = /*@__PURE__*/ Schema.Struct({
   description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   lastUpdated: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -94,7 +91,7 @@ export const getAssetForAccount: API.OperationMethod<
   GetAssetResponse,
   GetAssetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAssetForAccountRequest,
   output: GetAssetResponse,
   errors: [],
@@ -105,7 +102,7 @@ export const getAssetForZone: API.OperationMethod<
   GetAssetResponse,
   GetAssetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAssetForZoneRequest,
   output: GetAssetResponse,
   errors: [],
@@ -125,24 +122,19 @@ export interface ListAssetsForZoneRequest extends ListAssetsBaseRequest {
   zoneId: string;
 }
 
-export const ListAssetsForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    ...ListAssetsBaseFields,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/custom_pages/assets",
-    }),
-  ) as unknown as Schema.Schema<ListAssetsForAccountRequest>;
+export const ListAssetsForAccountRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  ...ListAssetsBaseFields,
+}).pipe(
+  T.Http({ method: "GET", path: "/accounts/{account_id}/custom_pages/assets" }),
+) as unknown as Schema.Schema<ListAssetsForAccountRequest>;
 
-export const ListAssetsForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    ...ListAssetsBaseFields,
-  }).pipe(
-    T.Http({ method: "GET", path: "/zones/{zone_id}/custom_pages/assets" }),
-  ) as unknown as Schema.Schema<ListAssetsForZoneRequest>;
+export const ListAssetsForZoneRequest = /*@__PURE__*/ Schema.Struct({
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  ...ListAssetsBaseFields,
+}).pipe(
+  T.Http({ method: "GET", path: "/zones/{zone_id}/custom_pages/assets" }),
+) as unknown as Schema.Schema<ListAssetsForZoneRequest>;
 
 export interface ListAssetsResponse {
   result: {
@@ -160,7 +152,7 @@ export interface ListAssetsResponse {
   } | null;
 }
 
-export const ListAssetsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListAssetsResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -207,7 +199,7 @@ export const listAssetsForAccount: API.PaginatedOperationMethod<
   ListAssetsResponse,
   ListAssetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssetsForAccountRequest,
   output: ListAssetsResponse,
   errors: [],
@@ -225,7 +217,7 @@ export const listAssetsForZone: API.PaginatedOperationMethod<
   ListAssetsResponse,
   ListAssetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssetsForZoneRequest,
   output: ListAssetsResponse,
   errors: [],
@@ -263,24 +255,22 @@ export interface CreateAssetForZoneRequest extends CreateAssetBaseRequest {
   zoneId: string;
 }
 
-export const CreateAssetForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    ...CreateAssetBaseFields,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/custom_pages/assets",
-    }),
-  ) as unknown as Schema.Schema<CreateAssetForAccountRequest>;
+export const CreateAssetForAccountRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  ...CreateAssetBaseFields,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/accounts/{account_id}/custom_pages/assets",
+  }),
+) as unknown as Schema.Schema<CreateAssetForAccountRequest>;
 
-export const CreateAssetForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    ...CreateAssetBaseFields,
-  }).pipe(
-    T.Http({ method: "POST", path: "/zones/{zone_id}/custom_pages/assets" }),
-  ) as unknown as Schema.Schema<CreateAssetForZoneRequest>;
+export const CreateAssetForZoneRequest = /*@__PURE__*/ Schema.Struct({
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  ...CreateAssetBaseFields,
+}).pipe(
+  T.Http({ method: "POST", path: "/zones/{zone_id}/custom_pages/assets" }),
+) as unknown as Schema.Schema<CreateAssetForZoneRequest>;
 
 export interface CreateAssetResponse {
   /** A short description of the custom asset. */
@@ -294,7 +284,7 @@ export interface CreateAssetResponse {
   url?: string | null;
 }
 
-export const CreateAssetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateAssetResponse = /*@__PURE__*/ Schema.Struct({
   description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   lastUpdated: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -321,7 +311,7 @@ export const createAssetForAccount: API.OperationMethod<
   CreateAssetResponse,
   CreateAssetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAssetForAccountRequest,
   output: CreateAssetResponse,
   errors: [],
@@ -332,7 +322,7 @@ export const createAssetForZone: API.OperationMethod<
   CreateAssetResponse,
   CreateAssetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAssetForZoneRequest,
   output: CreateAssetResponse,
   errors: [],
@@ -362,27 +352,25 @@ export interface UpdateAssetForZoneRequest extends UpdateAssetBaseRequest {
   zoneId: string;
 }
 
-export const UpdateAssetForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    ...UpdateAssetBaseFields,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/accounts/{account_id}/custom_pages/assets/{assetName}",
-    }),
-  ) as unknown as Schema.Schema<UpdateAssetForAccountRequest>;
+export const UpdateAssetForAccountRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  ...UpdateAssetBaseFields,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/accounts/{account_id}/custom_pages/assets/{assetName}",
+  }),
+) as unknown as Schema.Schema<UpdateAssetForAccountRequest>;
 
-export const UpdateAssetForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    ...UpdateAssetBaseFields,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/zones/{zone_id}/custom_pages/assets/{assetName}",
-    }),
-  ) as unknown as Schema.Schema<UpdateAssetForZoneRequest>;
+export const UpdateAssetForZoneRequest = /*@__PURE__*/ Schema.Struct({
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  ...UpdateAssetBaseFields,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/zones/{zone_id}/custom_pages/assets/{assetName}",
+  }),
+) as unknown as Schema.Schema<UpdateAssetForZoneRequest>;
 
 export interface UpdateAssetResponse {
   /** A short description of the custom asset. */
@@ -396,7 +384,7 @@ export interface UpdateAssetResponse {
   url?: string | null;
 }
 
-export const UpdateAssetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateAssetResponse = /*@__PURE__*/ Schema.Struct({
   description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   lastUpdated: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -423,7 +411,7 @@ export const updateAssetForAccount: API.OperationMethod<
   UpdateAssetResponse,
   UpdateAssetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAssetForAccountRequest,
   output: UpdateAssetResponse,
   errors: [],
@@ -434,7 +422,7 @@ export const updateAssetForZone: API.OperationMethod<
   UpdateAssetResponse,
   UpdateAssetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAssetForZoneRequest,
   output: UpdateAssetResponse,
   errors: [],
@@ -458,32 +446,30 @@ export interface DeleteAssetForZoneRequest extends DeleteAssetBaseRequest {
   zoneId: string;
 }
 
-export const DeleteAssetForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    ...DeleteAssetBaseFields,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/accounts/{account_id}/custom_pages/assets/{assetName}",
-    }),
-  ) as unknown as Schema.Schema<DeleteAssetForAccountRequest>;
+export const DeleteAssetForAccountRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  ...DeleteAssetBaseFields,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/accounts/{account_id}/custom_pages/assets/{assetName}",
+  }),
+) as unknown as Schema.Schema<DeleteAssetForAccountRequest>;
 
-export const DeleteAssetForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    ...DeleteAssetBaseFields,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/zones/{zone_id}/custom_pages/assets/{assetName}",
-    }),
-  ) as unknown as Schema.Schema<DeleteAssetForZoneRequest>;
+export const DeleteAssetForZoneRequest = /*@__PURE__*/ Schema.Struct({
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  ...DeleteAssetBaseFields,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/zones/{zone_id}/custom_pages/assets/{assetName}",
+  }),
+) as unknown as Schema.Schema<DeleteAssetForZoneRequest>;
 
 export type DeleteAssetResponse = unknown;
 
 export const DeleteAssetResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeleteAssetResponse>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeleteAssetResponse>;
 
 export type DeleteAssetError = DefaultErrors;
 
@@ -492,7 +478,7 @@ export const deleteAssetForAccount: API.OperationMethod<
   DeleteAssetResponse,
   DeleteAssetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAssetForAccountRequest,
   output: DeleteAssetResponse,
   errors: [],
@@ -503,7 +489,7 @@ export const deleteAssetForZone: API.OperationMethod<
   DeleteAssetResponse,
   DeleteAssetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAssetForZoneRequest,
   output: DeleteAssetResponse,
   errors: [],
@@ -556,27 +542,22 @@ export interface GetCustomPageForZoneRequest extends GetCustomPageBaseRequest {
   zoneId: string;
 }
 
-export const GetCustomPageForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    ...GetCustomPageBaseFields,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/custom_pages/{identifier}",
-    }),
-  ) as unknown as Schema.Schema<GetCustomPageForAccountRequest>;
+export const GetCustomPageForAccountRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  ...GetCustomPageBaseFields,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/custom_pages/{identifier}",
+  }),
+) as unknown as Schema.Schema<GetCustomPageForAccountRequest>;
 
-export const GetCustomPageForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    ...GetCustomPageBaseFields,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/zones/{zone_id}/custom_pages/{identifier}",
-    }),
-  ) as unknown as Schema.Schema<GetCustomPageForZoneRequest>;
+export const GetCustomPageForZoneRequest = /*@__PURE__*/ Schema.Struct({
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  ...GetCustomPageBaseFields,
+}).pipe(
+  T.Http({ method: "GET", path: "/zones/{zone_id}/custom_pages/{identifier}" }),
+) as unknown as Schema.Schema<GetCustomPageForZoneRequest>;
 
 export interface GetCustomPageResponse {
   id?: string | null;
@@ -591,7 +572,7 @@ export interface GetCustomPageResponse {
   url?: string | null;
 }
 
-export const GetCustomPageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetCustomPageResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -631,7 +612,7 @@ export const getCustomPageForAccount: API.OperationMethod<
   GetCustomPageResponse,
   GetCustomPageError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCustomPageForAccountRequest,
   output: GetCustomPageResponse,
   errors: [],
@@ -642,7 +623,7 @@ export const getCustomPageForZone: API.OperationMethod<
   GetCustomPageResponse,
   GetCustomPageError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCustomPageForZoneRequest,
   output: GetCustomPageResponse,
   errors: [],
@@ -662,21 +643,19 @@ export interface ListCustomPagesForZoneRequest extends ListCustomPagesBaseReques
   zoneId: string;
 }
 
-export const ListCustomPagesForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    ...ListCustomPagesBaseFields,
-  }).pipe(
-    T.Http({ method: "GET", path: "/accounts/{account_id}/custom_pages" }),
-  ) as unknown as Schema.Schema<ListCustomPagesForAccountRequest>;
+export const ListCustomPagesForAccountRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  ...ListCustomPagesBaseFields,
+}).pipe(
+  T.Http({ method: "GET", path: "/accounts/{account_id}/custom_pages" }),
+) as unknown as Schema.Schema<ListCustomPagesForAccountRequest>;
 
-export const ListCustomPagesForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    ...ListCustomPagesBaseFields,
-  }).pipe(
-    T.Http({ method: "GET", path: "/zones/{zone_id}/custom_pages" }),
-  ) as unknown as Schema.Schema<ListCustomPagesForZoneRequest>;
+export const ListCustomPagesForZoneRequest = /*@__PURE__*/ Schema.Struct({
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  ...ListCustomPagesBaseFields,
+}).pipe(
+  T.Http({ method: "GET", path: "/zones/{zone_id}/custom_pages" }),
+) as unknown as Schema.Schema<ListCustomPagesForZoneRequest>;
 
 export interface ListCustomPagesResponse {
   result: {
@@ -691,46 +670,43 @@ export interface ListCustomPagesResponse {
   }[];
 }
 
-export const ListCustomPagesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        description: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        previewTarget: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        requiredTokens: Schema.optional(
-          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-        ),
-        state: Schema.optional(
-          Schema.Union([
-            Schema.Union([
-              Schema.Literals(["default", "customized"]),
-              Schema.String,
-            ]),
-            Schema.Null,
-          ]),
-        ),
-        url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          createdOn: "created_on",
-          description: "description",
-          modifiedOn: "modified_on",
-          previewTarget: "preview_target",
-          requiredTokens: "required_tokens",
-          state: "state",
-          url: "url",
-        }),
+export const ListCustomPagesResponse = /*@__PURE__*/ Schema.Struct({
+  result: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      previewTarget: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
       ),
+      requiredTokens: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+      state: Schema.optional(
+        Schema.Union([
+          Schema.Union([
+            Schema.Literals(["default", "customized"]),
+            Schema.String,
+          ]),
+          Schema.Null,
+        ]),
+      ),
+      url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdOn: "created_on",
+        description: "description",
+        modifiedOn: "modified_on",
+        previewTarget: "preview_target",
+        requiredTokens: "required_tokens",
+        state: "state",
+        url: "url",
+      }),
     ),
-  }) as unknown as Schema.Schema<ListCustomPagesResponse>;
+  ),
+}) as unknown as Schema.Schema<ListCustomPagesResponse>;
 
 export type ListCustomPagesError = DefaultErrors;
 
@@ -739,7 +715,7 @@ export const listCustomPagesForAccount: API.PaginatedOperationMethod<
   ListCustomPagesResponse,
   ListCustomPagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomPagesForAccountRequest,
   output: ListCustomPagesResponse,
   errors: [],
@@ -754,7 +730,7 @@ export const listCustomPagesForZone: API.PaginatedOperationMethod<
   ListCustomPagesResponse,
   ListCustomPagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomPagesForZoneRequest,
   output: ListCustomPagesResponse,
   errors: [],
@@ -816,27 +792,22 @@ export interface PutCustomPageForZoneRequest extends PutCustomPageBaseRequest {
   zoneId: string;
 }
 
-export const PutCustomPageForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    ...PutCustomPageBaseFields,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/accounts/{account_id}/custom_pages/{identifier}",
-    }),
-  ) as unknown as Schema.Schema<PutCustomPageForAccountRequest>;
+export const PutCustomPageForAccountRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  ...PutCustomPageBaseFields,
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/accounts/{account_id}/custom_pages/{identifier}",
+  }),
+) as unknown as Schema.Schema<PutCustomPageForAccountRequest>;
 
-export const PutCustomPageForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    ...PutCustomPageBaseFields,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/zones/{zone_id}/custom_pages/{identifier}",
-    }),
-  ) as unknown as Schema.Schema<PutCustomPageForZoneRequest>;
+export const PutCustomPageForZoneRequest = /*@__PURE__*/ Schema.Struct({
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  ...PutCustomPageBaseFields,
+}).pipe(
+  T.Http({ method: "PUT", path: "/zones/{zone_id}/custom_pages/{identifier}" }),
+) as unknown as Schema.Schema<PutCustomPageForZoneRequest>;
 
 export interface PutCustomPageResponse {
   id?: string | null;
@@ -851,7 +822,7 @@ export interface PutCustomPageResponse {
   url?: string | null;
 }
 
-export const PutCustomPageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PutCustomPageResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -891,7 +862,7 @@ export const putCustomPageForAccount: API.OperationMethod<
   PutCustomPageResponse,
   PutCustomPageError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutCustomPageForAccountRequest,
   output: PutCustomPageResponse,
   errors: [],
@@ -902,7 +873,7 @@ export const putCustomPageForZone: API.OperationMethod<
   PutCustomPageResponse,
   PutCustomPageError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutCustomPageForZoneRequest,
   output: PutCustomPageResponse,
   errors: [],

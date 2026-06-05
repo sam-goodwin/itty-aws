@@ -138,7 +138,7 @@ export interface RunAiRequest {
   ignoreEos?: boolean;
 }
 
-export const RunAiRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RunAiRequest = /*@__PURE__*/ Schema.Struct({
   modelName: Schema.String.pipe(T.HttpPath("modelName")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   text: Schema.optional(
@@ -331,7 +331,7 @@ export type RunAiResponse =
   | { summary?: string | null }
   | { description?: string | null };
 
-export const RunAiResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
+export const RunAiResponse = /*@__PURE__*/ Schema.Union([
   Schema.Struct({
     text: Schema.String,
     vtt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -453,7 +453,7 @@ export const runAi: API.OperationMethod<
   RunAiResponse,
   RunAiError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RunAiRequest,
   output: RunAiResponse,
   errors: [ModelNotFound],
@@ -467,7 +467,7 @@ export interface ListAuthorsRequest {
   accountId: string;
 }
 
-export const ListAuthorsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListAuthorsRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
   T.Http({ method: "GET", path: "/accounts/{account_id}/ai/authors/search" }),
@@ -477,7 +477,7 @@ export interface ListAuthorsResponse {
   result: unknown[];
 }
 
-export const ListAuthorsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListAuthorsResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Array(Schema.Unknown),
 }) as unknown as Schema.Schema<ListAuthorsResponse>;
 
@@ -488,7 +488,7 @@ export const listAuthors: API.PaginatedOperationMethod<
   ListAuthorsResponse,
   ListAuthorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAuthorsRequest,
   output: ListAuthorsResponse,
   errors: [],
@@ -506,7 +506,7 @@ export interface ListFinetunesRequest {
   accountId: string;
 }
 
-export const ListFinetunesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListFinetunesRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
   T.Http({ method: "GET", path: "/accounts/{account_id}/ai/finetunes" }),
@@ -521,7 +521,7 @@ export type ListFinetunesResponse = {
   description?: string | null;
 }[];
 
-export const ListFinetunesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const ListFinetunesResponse = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     id: Schema.String,
     createdAt: Schema.String,
@@ -550,7 +550,7 @@ export const listFinetunes: API.OperationMethod<
   ListFinetunesResponse,
   ListFinetunesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListFinetunesRequest,
   output: ListFinetunesResponse,
   errors: [AccountNotFound],
@@ -569,7 +569,7 @@ export interface CreateFinetuneRequest {
   public?: boolean;
 }
 
-export const CreateFinetuneRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateFinetuneRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   model: Schema.String,
   name: Schema.String,
@@ -589,17 +589,15 @@ export interface CreateFinetuneResponse {
   description?: string | null;
 }
 
-export const CreateFinetuneResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.String,
-    createdAt: Schema.String,
-    model: Schema.String,
-    modifiedAt: Schema.String,
-    name: Schema.String,
-    public: Schema.Boolean,
-    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  },
-)
+export const CreateFinetuneResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  createdAt: Schema.String,
+  model: Schema.String,
+  modifiedAt: Schema.String,
+  name: Schema.String,
+  public: Schema.Boolean,
+  description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+})
   .pipe(
     Schema.encodeKeys({
       id: "id",
@@ -625,7 +623,7 @@ export const createFinetune: API.OperationMethod<
   CreateFinetuneResponse,
   CreateFinetuneError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFinetuneRequest,
   output: CreateFinetuneResponse,
   errors: [ModelNotSupported, AccountNotFound],
@@ -645,29 +643,27 @@ export interface CreateFinetuneAssetRequest {
   fileName: string;
 }
 
-export const CreateFinetuneAssetRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    finetuneId: Schema.String.pipe(T.HttpPath("finetuneId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    file: UploadableSchema.pipe(T.HttpFormDataFile()),
-    fileName: Schema.String,
-  }).pipe(
-    Schema.encodeKeys({ file: "file", fileName: "file_name" }),
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/ai/finetunes/{finetuneId}/finetune-assets",
-      contentType: "multipart",
-    }),
-  ) as unknown as Schema.Schema<CreateFinetuneAssetRequest>;
+export const CreateFinetuneAssetRequest = /*@__PURE__*/ Schema.Struct({
+  finetuneId: Schema.String.pipe(T.HttpPath("finetuneId")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  file: UploadableSchema.pipe(T.HttpFormDataFile()),
+  fileName: Schema.String,
+}).pipe(
+  Schema.encodeKeys({ file: "file", fileName: "file_name" }),
+  T.Http({
+    method: "POST",
+    path: "/accounts/{account_id}/ai/finetunes/{finetuneId}/finetune-assets",
+    contentType: "multipart",
+  }),
+) as unknown as Schema.Schema<CreateFinetuneAssetRequest>;
 
 export interface CreateFinetuneAssetResponse {
   success: boolean;
 }
 
-export const CreateFinetuneAssetResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    success: Schema.Boolean,
-  }) as unknown as Schema.Schema<CreateFinetuneAssetResponse>;
+export const CreateFinetuneAssetResponse = /*@__PURE__*/ Schema.Struct({
+  success: Schema.Boolean,
+}) as unknown as Schema.Schema<CreateFinetuneAssetResponse>;
 
 export type CreateFinetuneAssetError =
   | DefaultErrors
@@ -679,7 +675,7 @@ export const createFinetuneAsset: API.OperationMethod<
   CreateFinetuneAssetResponse,
   CreateFinetuneAssetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFinetuneAssetRequest,
   output: CreateFinetuneAssetResponse,
   errors: [ModelNotSupported, AccountNotFound],
@@ -700,18 +696,14 @@ export interface ListFinetunePublicsRequest {
   orderBy?: string;
 }
 
-export const ListFinetunePublicsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    limit: Schema.optional(Schema.Number).pipe(T.HttpQuery("limit")),
-    offset: Schema.optional(Schema.Number).pipe(T.HttpQuery("offset")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/ai/finetunes/public",
-    }),
-  ) as unknown as Schema.Schema<ListFinetunePublicsRequest>;
+export const ListFinetunePublicsRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  limit: Schema.optional(Schema.Number).pipe(T.HttpQuery("limit")),
+  offset: Schema.optional(Schema.Number).pipe(T.HttpQuery("offset")),
+  orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+}).pipe(
+  T.Http({ method: "GET", path: "/accounts/{account_id}/ai/finetunes/public" }),
+) as unknown as Schema.Schema<ListFinetunePublicsRequest>;
 
 export interface ListFinetunePublicsResponse {
   result: {
@@ -725,32 +717,29 @@ export interface ListFinetunePublicsResponse {
   }[];
 }
 
-export const ListFinetunePublicsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        createdAt: Schema.String,
-        model: Schema.String,
-        modifiedAt: Schema.String,
-        name: Schema.String,
-        public: Schema.Boolean,
-        description: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          createdAt: "created_at",
-          model: "model",
-          modifiedAt: "modified_at",
-          name: "name",
-          public: "public",
-          description: "description",
-        }),
-      ),
+export const ListFinetunePublicsResponse = /*@__PURE__*/ Schema.Struct({
+  result: Schema.Array(
+    Schema.Struct({
+      id: Schema.String,
+      createdAt: Schema.String,
+      model: Schema.String,
+      modifiedAt: Schema.String,
+      name: Schema.String,
+      public: Schema.Boolean,
+      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdAt: "created_at",
+        model: "model",
+        modifiedAt: "modified_at",
+        name: "name",
+        public: "public",
+        description: "description",
+      }),
     ),
-  }) as unknown as Schema.Schema<ListFinetunePublicsResponse>;
+  ),
+}) as unknown as Schema.Schema<ListFinetunePublicsResponse>;
 
 export type ListFinetunePublicsError = DefaultErrors;
 
@@ -759,7 +748,7 @@ export const listFinetunePublics: API.PaginatedOperationMethod<
   ListFinetunePublicsResponse,
   ListFinetunePublicsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFinetunePublicsRequest,
   output: ListFinetunePublicsResponse,
   errors: [],
@@ -792,7 +781,7 @@ export interface ListModelsRequest {
   task?: string;
 }
 
-export const ListModelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListModelsRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
   perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
@@ -820,7 +809,7 @@ export interface ListModelsResponse {
   } | null;
 }
 
-export const ListModelsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListModelsResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Array(Schema.Unknown),
   resultInfo: Schema.optional(
     Schema.Union([
@@ -851,7 +840,7 @@ export const listModels: API.PaginatedOperationMethod<
   ListModelsResponse,
   ListModelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListModelsRequest,
   output: ListModelsResponse,
   errors: [],
@@ -875,7 +864,7 @@ export interface GetModelSchemaRequest {
   model: string;
 }
 
-export const GetModelSchemaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetModelSchemaRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   model: Schema.String.pipe(T.HttpQuery("model")),
 }).pipe(
@@ -887,20 +876,18 @@ export interface GetModelSchemaResponse {
   output: { additionalProperties: boolean; description: string; type: string };
 }
 
-export const GetModelSchemaResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    input: Schema.Struct({
-      additionalProperties: Schema.Boolean,
-      description: Schema.String,
-      type: Schema.String,
-    }),
-    output: Schema.Struct({
-      additionalProperties: Schema.Boolean,
-      description: Schema.String,
-      type: Schema.String,
-    }),
-  },
-).pipe(
+export const GetModelSchemaResponse = /*@__PURE__*/ Schema.Struct({
+  input: Schema.Struct({
+    additionalProperties: Schema.Boolean,
+    description: Schema.String,
+    type: Schema.String,
+  }),
+  output: Schema.Struct({
+    additionalProperties: Schema.Boolean,
+    description: Schema.String,
+    type: Schema.String,
+  }),
+}).pipe(
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<GetModelSchemaResponse>;
 
@@ -915,7 +902,7 @@ export const getModelSchema: API.OperationMethod<
   GetModelSchemaResponse,
   GetModelSchemaError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetModelSchemaRequest,
   output: GetModelSchemaResponse,
   errors: [ModelNotSupported, ModelSchemaNotFound, AccountNotFound],
@@ -929,7 +916,7 @@ export interface ListTasksRequest {
   accountId: string;
 }
 
-export const ListTasksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListTasksRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
   T.Http({ method: "GET", path: "/accounts/{account_id}/ai/tasks/search" }),
@@ -939,7 +926,7 @@ export interface ListTasksResponse {
   result: unknown[];
 }
 
-export const ListTasksResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListTasksResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Array(Schema.Unknown),
 }) as unknown as Schema.Schema<ListTasksResponse>;
 
@@ -950,7 +937,7 @@ export const listTasks: API.PaginatedOperationMethod<
   ListTasksResponse,
   ListTasksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTasksRequest,
   output: ListTasksResponse,
   errors: [],
@@ -968,29 +955,27 @@ export interface SupportedToMarkdownRequest {
   accountId: string;
 }
 
-export const SupportedToMarkdownRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/ai/tomarkdown/supported",
-    }),
-  ) as unknown as Schema.Schema<SupportedToMarkdownRequest>;
+export const SupportedToMarkdownRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/ai/tomarkdown/supported",
+  }),
+) as unknown as Schema.Schema<SupportedToMarkdownRequest>;
 
 export interface SupportedToMarkdownResponse {
   result: { extension: string; mimeType: string }[];
 }
 
-export const SupportedToMarkdownResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
-      Schema.Struct({
-        extension: Schema.String,
-        mimeType: Schema.String,
-      }),
-    ),
-  }) as unknown as Schema.Schema<SupportedToMarkdownResponse>;
+export const SupportedToMarkdownResponse = /*@__PURE__*/ Schema.Struct({
+  result: Schema.Array(
+    Schema.Struct({
+      extension: Schema.String,
+      mimeType: Schema.String,
+    }),
+  ),
+}) as unknown as Schema.Schema<SupportedToMarkdownResponse>;
 
 export type SupportedToMarkdownError = DefaultErrors;
 
@@ -999,7 +984,7 @@ export const supportedToMarkdown: API.PaginatedOperationMethod<
   SupportedToMarkdownResponse,
   SupportedToMarkdownError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SupportedToMarkdownRequest,
   output: SupportedToMarkdownResponse,
   errors: [],
@@ -1016,19 +1001,18 @@ export interface TransformToMarkdownRequest {
   file: { files: (File | Blob)[] };
 }
 
-export const TransformToMarkdownRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    file: Schema.Struct({
-      files: Schema.Array(UploadableSchema.pipe(T.HttpFormDataFile())),
-    }),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/ai/tomarkdown",
-      contentType: "multipart",
-    }),
-  ) as unknown as Schema.Schema<TransformToMarkdownRequest>;
+export const TransformToMarkdownRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  file: Schema.Struct({
+    files: Schema.Array(UploadableSchema.pipe(T.HttpFormDataFile())),
+  }),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/accounts/{account_id}/ai/tomarkdown",
+    contentType: "multipart",
+  }),
+) as unknown as Schema.Schema<TransformToMarkdownRequest>;
 
 export type TransformToMarkdownResponse = {
   data: string;
@@ -1038,18 +1022,17 @@ export type TransformToMarkdownResponse = {
   tokens: string;
 }[];
 
-export const TransformToMarkdownResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-    Schema.Struct({
-      data: Schema.String,
-      format: Schema.String,
-      mimeType: Schema.String,
-      name: Schema.String,
-      tokens: Schema.String,
-    }),
-  ).pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<TransformToMarkdownResponse>;
+export const TransformToMarkdownResponse = /*@__PURE__*/ Schema.Array(
+  Schema.Struct({
+    data: Schema.String,
+    format: Schema.String,
+    mimeType: Schema.String,
+    name: Schema.String,
+    tokens: Schema.String,
+  }),
+).pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<TransformToMarkdownResponse>;
 
 export type TransformToMarkdownError = DefaultErrors;
 
@@ -1058,7 +1041,7 @@ export const transformToMarkdown: API.OperationMethod<
   TransformToMarkdownResponse,
   TransformToMarkdownError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TransformToMarkdownRequest,
   output: TransformToMarkdownResponse,
   errors: [],

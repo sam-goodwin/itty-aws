@@ -383,7 +383,7 @@ export const batchGetRecord: API.OperationMethod<
   BatchGetRecordResponse,
   BatchGetRecordError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetRecordRequest,
   output: BatchGetRecordResponse,
   errors: [
@@ -437,7 +437,7 @@ export const deleteRecord: API.OperationMethod<
   DeleteRecordResponse,
   DeleteRecordError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRecordRequest,
   output: DeleteRecordResponse,
   errors: [
@@ -464,7 +464,7 @@ export const getRecord: API.OperationMethod<
   GetRecordResponse,
   GetRecordError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRecordRequest,
   output: GetRecordResponse,
   errors: [
@@ -507,7 +507,7 @@ export const putRecord: API.OperationMethod<
   PutRecordResponse,
   PutRecordError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutRecordRequest,
   output: PutRecordResponse,
   errors: [

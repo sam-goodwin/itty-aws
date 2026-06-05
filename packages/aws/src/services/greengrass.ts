@@ -4400,7 +4400,7 @@ export const associateRoleToGroup: API.OperationMethod<
   AssociateRoleToGroupResponse,
   AssociateRoleToGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateRoleToGroupRequest,
   output: AssociateRoleToGroupResponse,
   errors: [BadRequestException, InternalServerErrorException],
@@ -4417,7 +4417,7 @@ export const associateServiceRoleToAccount: API.OperationMethod<
   AssociateServiceRoleToAccountResponse,
   AssociateServiceRoleToAccountError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateServiceRoleToAccountRequest,
   output: AssociateServiceRoleToAccountResponse,
   errors: [BadRequestException, InternalServerErrorException],
@@ -4431,7 +4431,7 @@ export const createConnectorDefinition: API.OperationMethod<
   CreateConnectorDefinitionResponse,
   CreateConnectorDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateConnectorDefinitionRequest,
   output: CreateConnectorDefinitionResponse,
   errors: [BadRequestException],
@@ -4447,7 +4447,7 @@ export const createConnectorDefinitionVersion: API.OperationMethod<
   CreateConnectorDefinitionVersionResponse,
   CreateConnectorDefinitionVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateConnectorDefinitionVersionRequest,
   output: CreateConnectorDefinitionVersionResponse,
   errors: [BadRequestException],
@@ -4461,7 +4461,7 @@ export const createCoreDefinition: API.OperationMethod<
   CreateCoreDefinitionResponse,
   CreateCoreDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCoreDefinitionRequest,
   output: CreateCoreDefinitionResponse,
   errors: [BadRequestException],
@@ -4477,7 +4477,7 @@ export const createCoreDefinitionVersion: API.OperationMethod<
   CreateCoreDefinitionVersionResponse,
   CreateCoreDefinitionVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCoreDefinitionVersionRequest,
   output: CreateCoreDefinitionVersionResponse,
   errors: [BadRequestException],
@@ -4491,7 +4491,7 @@ export const createDeployment: API.OperationMethod<
   CreateDeploymentResponse,
   CreateDeploymentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDeploymentRequest,
   output: CreateDeploymentResponse,
   errors: [BadRequestException],
@@ -4505,7 +4505,7 @@ export const createDeviceDefinition: API.OperationMethod<
   CreateDeviceDefinitionResponse,
   CreateDeviceDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDeviceDefinitionRequest,
   output: CreateDeviceDefinitionResponse,
   errors: [BadRequestException],
@@ -4521,7 +4521,7 @@ export const createDeviceDefinitionVersion: API.OperationMethod<
   CreateDeviceDefinitionVersionResponse,
   CreateDeviceDefinitionVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDeviceDefinitionVersionRequest,
   output: CreateDeviceDefinitionVersionResponse,
   errors: [BadRequestException],
@@ -4535,7 +4535,7 @@ export const createFunctionDefinition: API.OperationMethod<
   CreateFunctionDefinitionResponse,
   CreateFunctionDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFunctionDefinitionRequest,
   output: CreateFunctionDefinitionResponse,
   errors: [BadRequestException],
@@ -4551,7 +4551,7 @@ export const createFunctionDefinitionVersion: API.OperationMethod<
   CreateFunctionDefinitionVersionResponse,
   CreateFunctionDefinitionVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFunctionDefinitionVersionRequest,
   output: CreateFunctionDefinitionVersionResponse,
   errors: [BadRequestException],
@@ -4565,7 +4565,7 @@ export const createGroup: API.OperationMethod<
   CreateGroupResponse,
   CreateGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateGroupRequest,
   output: CreateGroupResponse,
   errors: [BadRequestException],
@@ -4582,7 +4582,7 @@ export const createGroupCertificateAuthority: API.OperationMethod<
   CreateGroupCertificateAuthorityResponse,
   CreateGroupCertificateAuthorityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateGroupCertificateAuthorityRequest,
   output: CreateGroupCertificateAuthorityResponse,
   errors: [BadRequestException, InternalServerErrorException],
@@ -4596,7 +4596,7 @@ export const createGroupVersion: API.OperationMethod<
   CreateGroupVersionResponse,
   CreateGroupVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateGroupVersionRequest,
   output: CreateGroupVersionResponse,
   errors: [BadRequestException],
@@ -4610,7 +4610,7 @@ export const createLoggerDefinition: API.OperationMethod<
   CreateLoggerDefinitionResponse,
   CreateLoggerDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLoggerDefinitionRequest,
   output: CreateLoggerDefinitionResponse,
   errors: [BadRequestException],
@@ -4626,7 +4626,7 @@ export const createLoggerDefinitionVersion: API.OperationMethod<
   CreateLoggerDefinitionVersionResponse,
   CreateLoggerDefinitionVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLoggerDefinitionVersionRequest,
   output: CreateLoggerDefinitionVersionResponse,
   errors: [BadRequestException],
@@ -4640,7 +4640,7 @@ export const createResourceDefinition: API.OperationMethod<
   CreateResourceDefinitionResponse,
   CreateResourceDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateResourceDefinitionRequest,
   output: CreateResourceDefinitionResponse,
   errors: [BadRequestException],
@@ -4656,7 +4656,7 @@ export const createResourceDefinitionVersion: API.OperationMethod<
   CreateResourceDefinitionVersionResponse,
   CreateResourceDefinitionVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateResourceDefinitionVersionRequest,
   output: CreateResourceDefinitionVersionResponse,
   errors: [BadRequestException],
@@ -4673,7 +4673,7 @@ export const createSoftwareUpdateJob: API.OperationMethod<
   CreateSoftwareUpdateJobResponse,
   CreateSoftwareUpdateJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSoftwareUpdateJobRequest,
   output: CreateSoftwareUpdateJobResponse,
   errors: [BadRequestException, InternalServerErrorException],
@@ -4689,7 +4689,7 @@ export const createSubscriptionDefinition: API.OperationMethod<
   CreateSubscriptionDefinitionResponse,
   CreateSubscriptionDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSubscriptionDefinitionRequest,
   output: CreateSubscriptionDefinitionResponse,
   errors: [BadRequestException],
@@ -4705,7 +4705,7 @@ export const createSubscriptionDefinitionVersion: API.OperationMethod<
   CreateSubscriptionDefinitionVersionResponse,
   CreateSubscriptionDefinitionVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSubscriptionDefinitionVersionRequest,
   output: CreateSubscriptionDefinitionVersionResponse,
   errors: [BadRequestException],
@@ -4719,7 +4719,7 @@ export const deleteConnectorDefinition: API.OperationMethod<
   DeleteConnectorDefinitionResponse,
   DeleteConnectorDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConnectorDefinitionRequest,
   output: DeleteConnectorDefinitionResponse,
   errors: [BadRequestException],
@@ -4733,7 +4733,7 @@ export const deleteCoreDefinition: API.OperationMethod<
   DeleteCoreDefinitionResponse,
   DeleteCoreDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCoreDefinitionRequest,
   output: DeleteCoreDefinitionResponse,
   errors: [BadRequestException],
@@ -4747,7 +4747,7 @@ export const deleteDeviceDefinition: API.OperationMethod<
   DeleteDeviceDefinitionResponse,
   DeleteDeviceDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDeviceDefinitionRequest,
   output: DeleteDeviceDefinitionResponse,
   errors: [BadRequestException],
@@ -4761,7 +4761,7 @@ export const deleteFunctionDefinition: API.OperationMethod<
   DeleteFunctionDefinitionResponse,
   DeleteFunctionDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFunctionDefinitionRequest,
   output: DeleteFunctionDefinitionResponse,
   errors: [BadRequestException],
@@ -4775,7 +4775,7 @@ export const deleteGroup: API.OperationMethod<
   DeleteGroupResponse,
   DeleteGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteGroupRequest,
   output: DeleteGroupResponse,
   errors: [BadRequestException],
@@ -4789,7 +4789,7 @@ export const deleteLoggerDefinition: API.OperationMethod<
   DeleteLoggerDefinitionResponse,
   DeleteLoggerDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLoggerDefinitionRequest,
   output: DeleteLoggerDefinitionResponse,
   errors: [BadRequestException],
@@ -4803,7 +4803,7 @@ export const deleteResourceDefinition: API.OperationMethod<
   DeleteResourceDefinitionResponse,
   DeleteResourceDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourceDefinitionRequest,
   output: DeleteResourceDefinitionResponse,
   errors: [BadRequestException],
@@ -4819,7 +4819,7 @@ export const deleteSubscriptionDefinition: API.OperationMethod<
   DeleteSubscriptionDefinitionResponse,
   DeleteSubscriptionDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSubscriptionDefinitionRequest,
   output: DeleteSubscriptionDefinitionResponse,
   errors: [BadRequestException],
@@ -4836,7 +4836,7 @@ export const disassociateRoleFromGroup: API.OperationMethod<
   DisassociateRoleFromGroupResponse,
   DisassociateRoleFromGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateRoleFromGroupRequest,
   output: DisassociateRoleFromGroupResponse,
   errors: [BadRequestException, InternalServerErrorException],
@@ -4852,7 +4852,7 @@ export const disassociateServiceRoleFromAccount: API.OperationMethod<
   DisassociateServiceRoleFromAccountResponse,
   DisassociateServiceRoleFromAccountError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateServiceRoleFromAccountRequest,
   output: DisassociateServiceRoleFromAccountResponse,
   errors: [InternalServerErrorException],
@@ -4869,7 +4869,7 @@ export const getAssociatedRole: API.OperationMethod<
   GetAssociatedRoleResponse,
   GetAssociatedRoleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAssociatedRoleRequest,
   output: GetAssociatedRoleResponse,
   errors: [BadRequestException, InternalServerErrorException],
@@ -4883,7 +4883,7 @@ export const getBulkDeploymentStatus: API.OperationMethod<
   GetBulkDeploymentStatusResponse,
   GetBulkDeploymentStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetBulkDeploymentStatusRequest,
   output: GetBulkDeploymentStatusResponse,
   errors: [BadRequestException],
@@ -4900,7 +4900,7 @@ export const getConnectivityInfo: API.OperationMethod<
   GetConnectivityInfoResponse,
   GetConnectivityInfoError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConnectivityInfoRequest,
   output: GetConnectivityInfoResponse,
   errors: [BadRequestException, InternalServerErrorException],
@@ -4914,7 +4914,7 @@ export const getConnectorDefinition: API.OperationMethod<
   GetConnectorDefinitionResponse,
   GetConnectorDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConnectorDefinitionRequest,
   output: GetConnectorDefinitionResponse,
   errors: [BadRequestException],
@@ -4930,7 +4930,7 @@ export const getConnectorDefinitionVersion: API.OperationMethod<
   GetConnectorDefinitionVersionResponse,
   GetConnectorDefinitionVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConnectorDefinitionVersionRequest,
   output: GetConnectorDefinitionVersionResponse,
   errors: [BadRequestException],
@@ -4944,7 +4944,7 @@ export const getCoreDefinition: API.OperationMethod<
   GetCoreDefinitionResponse,
   GetCoreDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCoreDefinitionRequest,
   output: GetCoreDefinitionResponse,
   errors: [BadRequestException],
@@ -4958,7 +4958,7 @@ export const getCoreDefinitionVersion: API.OperationMethod<
   GetCoreDefinitionVersionResponse,
   GetCoreDefinitionVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCoreDefinitionVersionRequest,
   output: GetCoreDefinitionVersionResponse,
   errors: [BadRequestException],
@@ -4972,7 +4972,7 @@ export const getDeploymentStatus: API.OperationMethod<
   GetDeploymentStatusResponse,
   GetDeploymentStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDeploymentStatusRequest,
   output: GetDeploymentStatusResponse,
   errors: [BadRequestException],
@@ -4986,7 +4986,7 @@ export const getDeviceDefinition: API.OperationMethod<
   GetDeviceDefinitionResponse,
   GetDeviceDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDeviceDefinitionRequest,
   output: GetDeviceDefinitionResponse,
   errors: [BadRequestException],
@@ -5002,7 +5002,7 @@ export const getDeviceDefinitionVersion: API.OperationMethod<
   GetDeviceDefinitionVersionResponse,
   GetDeviceDefinitionVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDeviceDefinitionVersionRequest,
   output: GetDeviceDefinitionVersionResponse,
   errors: [BadRequestException],
@@ -5016,7 +5016,7 @@ export const getFunctionDefinition: API.OperationMethod<
   GetFunctionDefinitionResponse,
   GetFunctionDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFunctionDefinitionRequest,
   output: GetFunctionDefinitionResponse,
   errors: [BadRequestException],
@@ -5032,7 +5032,7 @@ export const getFunctionDefinitionVersion: API.OperationMethod<
   GetFunctionDefinitionVersionResponse,
   GetFunctionDefinitionVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFunctionDefinitionVersionRequest,
   output: GetFunctionDefinitionVersionResponse,
   errors: [BadRequestException],
@@ -5046,7 +5046,7 @@ export const getGroup: API.OperationMethod<
   GetGroupResponse,
   GetGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetGroupRequest,
   output: GetGroupResponse,
   errors: [BadRequestException],
@@ -5063,7 +5063,7 @@ export const getGroupCertificateAuthority: API.OperationMethod<
   GetGroupCertificateAuthorityResponse,
   GetGroupCertificateAuthorityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetGroupCertificateAuthorityRequest,
   output: GetGroupCertificateAuthorityResponse,
   errors: [BadRequestException, InternalServerErrorException],
@@ -5080,7 +5080,7 @@ export const getGroupCertificateConfiguration: API.OperationMethod<
   GetGroupCertificateConfigurationResponse,
   GetGroupCertificateConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetGroupCertificateConfigurationRequest,
   output: GetGroupCertificateConfigurationResponse,
   errors: [BadRequestException, InternalServerErrorException],
@@ -5094,7 +5094,7 @@ export const getGroupVersion: API.OperationMethod<
   GetGroupVersionResponse,
   GetGroupVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetGroupVersionRequest,
   output: GetGroupVersionResponse,
   errors: [BadRequestException],
@@ -5108,7 +5108,7 @@ export const getLoggerDefinition: API.OperationMethod<
   GetLoggerDefinitionResponse,
   GetLoggerDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLoggerDefinitionRequest,
   output: GetLoggerDefinitionResponse,
   errors: [BadRequestException],
@@ -5124,7 +5124,7 @@ export const getLoggerDefinitionVersion: API.OperationMethod<
   GetLoggerDefinitionVersionResponse,
   GetLoggerDefinitionVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLoggerDefinitionVersionRequest,
   output: GetLoggerDefinitionVersionResponse,
   errors: [BadRequestException],
@@ -5138,7 +5138,7 @@ export const getResourceDefinition: API.OperationMethod<
   GetResourceDefinitionResponse,
   GetResourceDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResourceDefinitionRequest,
   output: GetResourceDefinitionResponse,
   errors: [BadRequestException],
@@ -5154,7 +5154,7 @@ export const getResourceDefinitionVersion: API.OperationMethod<
   GetResourceDefinitionVersionResponse,
   GetResourceDefinitionVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResourceDefinitionVersionRequest,
   output: GetResourceDefinitionVersionResponse,
   errors: [BadRequestException],
@@ -5170,7 +5170,7 @@ export const getServiceRoleForAccount: API.OperationMethod<
   GetServiceRoleForAccountResponse,
   GetServiceRoleForAccountError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetServiceRoleForAccountRequest,
   output: GetServiceRoleForAccountResponse,
   errors: [InternalServerErrorException],
@@ -5184,7 +5184,7 @@ export const getSubscriptionDefinition: API.OperationMethod<
   GetSubscriptionDefinitionResponse,
   GetSubscriptionDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSubscriptionDefinitionRequest,
   output: GetSubscriptionDefinitionResponse,
   errors: [BadRequestException],
@@ -5200,7 +5200,7 @@ export const getSubscriptionDefinitionVersion: API.OperationMethod<
   GetSubscriptionDefinitionVersionResponse,
   GetSubscriptionDefinitionVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSubscriptionDefinitionVersionRequest,
   output: GetSubscriptionDefinitionVersionResponse,
   errors: [BadRequestException],
@@ -5217,7 +5217,7 @@ export const getThingRuntimeConfiguration: API.OperationMethod<
   GetThingRuntimeConfigurationResponse,
   GetThingRuntimeConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetThingRuntimeConfigurationRequest,
   output: GetThingRuntimeConfigurationResponse,
   errors: [BadRequestException, InternalServerErrorException],
@@ -5233,7 +5233,7 @@ export const listBulkDeploymentDetailedReports: API.OperationMethod<
   ListBulkDeploymentDetailedReportsResponse,
   ListBulkDeploymentDetailedReportsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListBulkDeploymentDetailedReportsRequest,
   output: ListBulkDeploymentDetailedReportsResponse,
   errors: [BadRequestException],
@@ -5247,7 +5247,7 @@ export const listBulkDeployments: API.OperationMethod<
   ListBulkDeploymentsResponse,
   ListBulkDeploymentsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListBulkDeploymentsRequest,
   output: ListBulkDeploymentsResponse,
   errors: [BadRequestException],
@@ -5261,7 +5261,7 @@ export const listConnectorDefinitions: API.OperationMethod<
   ListConnectorDefinitionsResponse,
   ListConnectorDefinitionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListConnectorDefinitionsRequest,
   output: ListConnectorDefinitionsResponse,
   errors: [],
@@ -5277,7 +5277,7 @@ export const listConnectorDefinitionVersions: API.OperationMethod<
   ListConnectorDefinitionVersionsResponse,
   ListConnectorDefinitionVersionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListConnectorDefinitionVersionsRequest,
   output: ListConnectorDefinitionVersionsResponse,
   errors: [BadRequestException],
@@ -5291,7 +5291,7 @@ export const listCoreDefinitions: API.OperationMethod<
   ListCoreDefinitionsResponse,
   ListCoreDefinitionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListCoreDefinitionsRequest,
   output: ListCoreDefinitionsResponse,
   errors: [],
@@ -5307,7 +5307,7 @@ export const listCoreDefinitionVersions: API.OperationMethod<
   ListCoreDefinitionVersionsResponse,
   ListCoreDefinitionVersionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListCoreDefinitionVersionsRequest,
   output: ListCoreDefinitionVersionsResponse,
   errors: [BadRequestException],
@@ -5321,7 +5321,7 @@ export const listDeployments: API.OperationMethod<
   ListDeploymentsResponse,
   ListDeploymentsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListDeploymentsRequest,
   output: ListDeploymentsResponse,
   errors: [BadRequestException],
@@ -5335,7 +5335,7 @@ export const listDeviceDefinitions: API.OperationMethod<
   ListDeviceDefinitionsResponse,
   ListDeviceDefinitionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListDeviceDefinitionsRequest,
   output: ListDeviceDefinitionsResponse,
   errors: [],
@@ -5351,7 +5351,7 @@ export const listDeviceDefinitionVersions: API.OperationMethod<
   ListDeviceDefinitionVersionsResponse,
   ListDeviceDefinitionVersionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListDeviceDefinitionVersionsRequest,
   output: ListDeviceDefinitionVersionsResponse,
   errors: [BadRequestException],
@@ -5365,7 +5365,7 @@ export const listFunctionDefinitions: API.OperationMethod<
   ListFunctionDefinitionsResponse,
   ListFunctionDefinitionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListFunctionDefinitionsRequest,
   output: ListFunctionDefinitionsResponse,
   errors: [],
@@ -5381,7 +5381,7 @@ export const listFunctionDefinitionVersions: API.OperationMethod<
   ListFunctionDefinitionVersionsResponse,
   ListFunctionDefinitionVersionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListFunctionDefinitionVersionsRequest,
   output: ListFunctionDefinitionVersionsResponse,
   errors: [BadRequestException],
@@ -5398,7 +5398,7 @@ export const listGroupCertificateAuthorities: API.OperationMethod<
   ListGroupCertificateAuthoritiesResponse,
   ListGroupCertificateAuthoritiesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListGroupCertificateAuthoritiesRequest,
   output: ListGroupCertificateAuthoritiesResponse,
   errors: [BadRequestException, InternalServerErrorException],
@@ -5412,7 +5412,7 @@ export const listGroups: API.OperationMethod<
   ListGroupsResponse,
   ListGroupsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListGroupsRequest,
   output: ListGroupsResponse,
   errors: [],
@@ -5426,7 +5426,7 @@ export const listGroupVersions: API.OperationMethod<
   ListGroupVersionsResponse,
   ListGroupVersionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListGroupVersionsRequest,
   output: ListGroupVersionsResponse,
   errors: [BadRequestException],
@@ -5440,7 +5440,7 @@ export const listLoggerDefinitions: API.OperationMethod<
   ListLoggerDefinitionsResponse,
   ListLoggerDefinitionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListLoggerDefinitionsRequest,
   output: ListLoggerDefinitionsResponse,
   errors: [],
@@ -5456,7 +5456,7 @@ export const listLoggerDefinitionVersions: API.OperationMethod<
   ListLoggerDefinitionVersionsResponse,
   ListLoggerDefinitionVersionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListLoggerDefinitionVersionsRequest,
   output: ListLoggerDefinitionVersionsResponse,
   errors: [BadRequestException],
@@ -5470,7 +5470,7 @@ export const listResourceDefinitions: API.OperationMethod<
   ListResourceDefinitionsResponse,
   ListResourceDefinitionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListResourceDefinitionsRequest,
   output: ListResourceDefinitionsResponse,
   errors: [],
@@ -5486,7 +5486,7 @@ export const listResourceDefinitionVersions: API.OperationMethod<
   ListResourceDefinitionVersionsResponse,
   ListResourceDefinitionVersionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListResourceDefinitionVersionsRequest,
   output: ListResourceDefinitionVersionsResponse,
   errors: [BadRequestException],
@@ -5500,7 +5500,7 @@ export const listSubscriptionDefinitions: API.OperationMethod<
   ListSubscriptionDefinitionsResponse,
   ListSubscriptionDefinitionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListSubscriptionDefinitionsRequest,
   output: ListSubscriptionDefinitionsResponse,
   errors: [],
@@ -5516,7 +5516,7 @@ export const listSubscriptionDefinitionVersions: API.OperationMethod<
   ListSubscriptionDefinitionVersionsResponse,
   ListSubscriptionDefinitionVersionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListSubscriptionDefinitionVersionsRequest,
   output: ListSubscriptionDefinitionVersionsResponse,
   errors: [BadRequestException],
@@ -5530,7 +5530,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [BadRequestException],
@@ -5544,7 +5544,7 @@ export const resetDeployments: API.OperationMethod<
   ResetDeploymentsResponse,
   ResetDeploymentsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetDeploymentsRequest,
   output: ResetDeploymentsResponse,
   errors: [BadRequestException],
@@ -5558,7 +5558,7 @@ export const startBulkDeployment: API.OperationMethod<
   StartBulkDeploymentResponse,
   StartBulkDeploymentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartBulkDeploymentRequest,
   output: StartBulkDeploymentResponse,
   errors: [BadRequestException],
@@ -5572,7 +5572,7 @@ export const stopBulkDeployment: API.OperationMethod<
   StopBulkDeploymentResponse,
   StopBulkDeploymentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopBulkDeploymentRequest,
   output: StopBulkDeploymentResponse,
   errors: [BadRequestException],
@@ -5586,7 +5586,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [BadRequestException],
@@ -5600,7 +5600,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [BadRequestException],
@@ -5617,7 +5617,7 @@ export const updateConnectivityInfo: API.OperationMethod<
   UpdateConnectivityInfoResponse,
   UpdateConnectivityInfoError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateConnectivityInfoRequest,
   output: UpdateConnectivityInfoResponse,
   errors: [BadRequestException, InternalServerErrorException],
@@ -5631,7 +5631,7 @@ export const updateConnectorDefinition: API.OperationMethod<
   UpdateConnectorDefinitionResponse,
   UpdateConnectorDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateConnectorDefinitionRequest,
   output: UpdateConnectorDefinitionResponse,
   errors: [BadRequestException],
@@ -5645,7 +5645,7 @@ export const updateCoreDefinition: API.OperationMethod<
   UpdateCoreDefinitionResponse,
   UpdateCoreDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCoreDefinitionRequest,
   output: UpdateCoreDefinitionResponse,
   errors: [BadRequestException],
@@ -5659,7 +5659,7 @@ export const updateDeviceDefinition: API.OperationMethod<
   UpdateDeviceDefinitionResponse,
   UpdateDeviceDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDeviceDefinitionRequest,
   output: UpdateDeviceDefinitionResponse,
   errors: [BadRequestException],
@@ -5673,7 +5673,7 @@ export const updateFunctionDefinition: API.OperationMethod<
   UpdateFunctionDefinitionResponse,
   UpdateFunctionDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateFunctionDefinitionRequest,
   output: UpdateFunctionDefinitionResponse,
   errors: [BadRequestException],
@@ -5687,7 +5687,7 @@ export const updateGroup: API.OperationMethod<
   UpdateGroupResponse,
   UpdateGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateGroupRequest,
   output: UpdateGroupResponse,
   errors: [BadRequestException],
@@ -5704,7 +5704,7 @@ export const updateGroupCertificateConfiguration: API.OperationMethod<
   UpdateGroupCertificateConfigurationResponse,
   UpdateGroupCertificateConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateGroupCertificateConfigurationRequest,
   output: UpdateGroupCertificateConfigurationResponse,
   errors: [BadRequestException, InternalServerErrorException],
@@ -5718,7 +5718,7 @@ export const updateLoggerDefinition: API.OperationMethod<
   UpdateLoggerDefinitionResponse,
   UpdateLoggerDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateLoggerDefinitionRequest,
   output: UpdateLoggerDefinitionResponse,
   errors: [BadRequestException],
@@ -5732,7 +5732,7 @@ export const updateResourceDefinition: API.OperationMethod<
   UpdateResourceDefinitionResponse,
   UpdateResourceDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateResourceDefinitionRequest,
   output: UpdateResourceDefinitionResponse,
   errors: [BadRequestException],
@@ -5748,7 +5748,7 @@ export const updateSubscriptionDefinition: API.OperationMethod<
   UpdateSubscriptionDefinitionResponse,
   UpdateSubscriptionDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSubscriptionDefinitionRequest,
   output: UpdateSubscriptionDefinitionResponse,
   errors: [BadRequestException],
@@ -5765,7 +5765,7 @@ export const updateThingRuntimeConfiguration: API.OperationMethod<
   UpdateThingRuntimeConfigurationResponse,
   UpdateThingRuntimeConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateThingRuntimeConfigurationRequest,
   output: UpdateThingRuntimeConfigurationResponse,
   errors: [BadRequestException, InternalServerErrorException],

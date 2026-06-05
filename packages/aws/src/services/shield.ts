@@ -1668,7 +1668,7 @@ export const associateDRTLogBucket: API.OperationMethod<
   AssociateDRTLogBucketResponse,
   AssociateDRTLogBucketError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateDRTLogBucketRequest,
   output: AssociateDRTLogBucketResponse,
   errors: [
@@ -1709,7 +1709,7 @@ export const associateDRTRole: API.OperationMethod<
   AssociateDRTRoleResponse,
   AssociateDRTRoleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateDRTRoleRequest,
   output: AssociateDRTRoleResponse,
   errors: [
@@ -1739,7 +1739,7 @@ export const associateHealthCheck: API.OperationMethod<
   AssociateHealthCheckResponse,
   AssociateHealthCheckError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateHealthCheckRequest,
   output: AssociateHealthCheckResponse,
   errors: [
@@ -1772,7 +1772,7 @@ export const associateProactiveEngagementDetails: API.OperationMethod<
   AssociateProactiveEngagementDetailsResponse,
   AssociateProactiveEngagementDetailsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateProactiveEngagementDetailsRequest,
   output: AssociateProactiveEngagementDetailsResponse,
   errors: [
@@ -1807,7 +1807,7 @@ export const createProtection: API.OperationMethod<
   CreateProtectionResponse,
   CreateProtectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProtectionRequest,
   output: CreateProtectionResponse,
   errors: [
@@ -1837,7 +1837,7 @@ export const createProtectionGroup: API.OperationMethod<
   CreateProtectionGroupResponse,
   CreateProtectionGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProtectionGroupRequest,
   output: CreateProtectionGroupResponse,
   errors: [
@@ -1866,7 +1866,7 @@ export const createSubscription: API.OperationMethod<
   CreateSubscriptionResponse,
   CreateSubscriptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSubscriptionRequest,
   output: CreateSubscriptionResponse,
   errors: [InternalErrorException, ResourceAlreadyExistsException],
@@ -1884,7 +1884,7 @@ export const deleteProtection: API.OperationMethod<
   DeleteProtectionResponse,
   DeleteProtectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProtectionRequest,
   output: DeleteProtectionResponse,
   errors: [
@@ -1906,7 +1906,7 @@ export const deleteProtectionGroup: API.OperationMethod<
   DeleteProtectionGroupResponse,
   DeleteProtectionGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProtectionGroupRequest,
   output: DeleteProtectionGroupResponse,
   errors: [
@@ -1928,7 +1928,7 @@ export const deleteSubscription: API.OperationMethod<
   DeleteSubscriptionResponse,
   DeleteSubscriptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSubscriptionRequest,
   output: DeleteSubscriptionResponse,
   errors: [
@@ -1949,7 +1949,7 @@ export const describeAttack: API.OperationMethod<
   DescribeAttackResponse,
   DescribeAttackError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAttackRequest,
   output: DescribeAttackResponse,
   errors: [AccessDeniedException, InternalErrorException],
@@ -1969,7 +1969,7 @@ export const describeAttackStatistics: API.OperationMethod<
   DescribeAttackStatisticsResponse,
   DescribeAttackStatisticsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAttackStatisticsRequest,
   output: DescribeAttackStatisticsResponse,
   errors: [InternalErrorException],
@@ -1986,7 +1986,7 @@ export const describeDRTAccess: API.OperationMethod<
   DescribeDRTAccessResponse,
   DescribeDRTAccessError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDRTAccessRequest,
   output: DescribeDRTAccessResponse,
   errors: [InternalErrorException, ResourceNotFoundException],
@@ -2003,7 +2003,7 @@ export const describeEmergencyContactSettings: API.OperationMethod<
   DescribeEmergencyContactSettingsResponse,
   DescribeEmergencyContactSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeEmergencyContactSettingsRequest,
   output: DescribeEmergencyContactSettingsResponse,
   errors: [InternalErrorException, ResourceNotFoundException],
@@ -2021,7 +2021,7 @@ export const describeProtection: API.OperationMethod<
   DescribeProtectionResponse,
   DescribeProtectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeProtectionRequest,
   output: DescribeProtectionResponse,
   errors: [
@@ -2042,7 +2042,7 @@ export const describeProtectionGroup: API.OperationMethod<
   DescribeProtectionGroupResponse,
   DescribeProtectionGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeProtectionGroupRequest,
   output: DescribeProtectionGroupResponse,
   errors: [InternalErrorException, ResourceNotFoundException],
@@ -2059,7 +2059,7 @@ export const describeSubscription: API.OperationMethod<
   DescribeSubscriptionResponse,
   DescribeSubscriptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeSubscriptionRequest,
   output: DescribeSubscriptionResponse,
   errors: [InternalErrorException, ResourceNotFoundException],
@@ -2080,7 +2080,7 @@ export const disableApplicationLayerAutomaticResponse: API.OperationMethod<
   DisableApplicationLayerAutomaticResponseResponse,
   DisableApplicationLayerAutomaticResponseError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableApplicationLayerAutomaticResponseRequest,
   output: DisableApplicationLayerAutomaticResponseResponse,
   errors: [
@@ -2106,7 +2106,7 @@ export const disableProactiveEngagement: API.OperationMethod<
   DisableProactiveEngagementResponse,
   DisableProactiveEngagementError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableProactiveEngagementRequest,
   output: DisableProactiveEngagementResponse,
   errors: [
@@ -2133,7 +2133,7 @@ export const disassociateDRTLogBucket: API.OperationMethod<
   DisassociateDRTLogBucketResponse,
   DisassociateDRTLogBucketError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateDRTLogBucketRequest,
   output: DisassociateDRTLogBucketResponse,
   errors: [
@@ -2159,7 +2159,7 @@ export const disassociateDRTRole: API.OperationMethod<
   DisassociateDRTRoleResponse,
   DisassociateDRTRoleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateDRTRoleRequest,
   output: DisassociateDRTRoleResponse,
   errors: [
@@ -2186,7 +2186,7 @@ export const disassociateHealthCheck: API.OperationMethod<
   DisassociateHealthCheckResponse,
   DisassociateHealthCheckError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateHealthCheckRequest,
   output: DisassociateHealthCheckResponse,
   errors: [
@@ -2227,7 +2227,7 @@ export const enableApplicationLayerAutomaticResponse: API.OperationMethod<
   EnableApplicationLayerAutomaticResponseResponse,
   EnableApplicationLayerAutomaticResponseError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableApplicationLayerAutomaticResponseRequest,
   output: EnableApplicationLayerAutomaticResponseResponse,
   errors: [
@@ -2254,7 +2254,7 @@ export const enableProactiveEngagement: API.OperationMethod<
   EnableProactiveEngagementResponse,
   EnableProactiveEngagementError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableProactiveEngagementRequest,
   output: EnableProactiveEngagementResponse,
   errors: [
@@ -2274,7 +2274,7 @@ export const getSubscriptionState: API.OperationMethod<
   GetSubscriptionStateResponse,
   GetSubscriptionStateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSubscriptionStateRequest,
   output: GetSubscriptionStateResponse,
   errors: [InternalErrorException],
@@ -2308,7 +2308,7 @@ export const listAttacks: API.OperationMethod<
     ListAttacksError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAttacksRequest,
   output: ListAttacksResponse,
   errors: [
@@ -2352,7 +2352,7 @@ export const listProtectionGroups: API.OperationMethod<
     ListProtectionGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProtectionGroupsRequest,
   output: ListProtectionGroupsResponse,
   errors: [
@@ -2395,7 +2395,7 @@ export const listProtections: API.OperationMethod<
     ListProtectionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProtectionsRequest,
   output: ListProtectionsResponse,
   errors: [
@@ -2438,7 +2438,7 @@ export const listResourcesInProtectionGroup: API.OperationMethod<
     ListResourcesInProtectionGroupError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourcesInProtectionGroupRequest,
   output: ListResourcesInProtectionGroupResponse,
   errors: [
@@ -2465,7 +2465,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -2488,7 +2488,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -2512,7 +2512,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -2537,7 +2537,7 @@ export const updateApplicationLayerAutomaticResponse: API.OperationMethod<
   UpdateApplicationLayerAutomaticResponseResponse,
   UpdateApplicationLayerAutomaticResponseError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateApplicationLayerAutomaticResponseRequest,
   output: UpdateApplicationLayerAutomaticResponseResponse,
   errors: [
@@ -2562,7 +2562,7 @@ export const updateEmergencyContactSettings: API.OperationMethod<
   UpdateEmergencyContactSettingsResponse,
   UpdateEmergencyContactSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEmergencyContactSettingsRequest,
   output: UpdateEmergencyContactSettingsResponse,
   errors: [
@@ -2586,7 +2586,7 @@ export const updateProtectionGroup: API.OperationMethod<
   UpdateProtectionGroupResponse,
   UpdateProtectionGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateProtectionGroupRequest,
   output: UpdateProtectionGroupResponse,
   errors: [
@@ -2614,7 +2614,7 @@ export const updateSubscription: API.OperationMethod<
   UpdateSubscriptionResponse,
   UpdateSubscriptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSubscriptionRequest,
   output: UpdateSubscriptionResponse,
   errors: [

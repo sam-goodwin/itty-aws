@@ -940,7 +940,7 @@ export const applyPendingMaintenanceAction: API.OperationMethod<
   ApplyPendingMaintenanceActionOutput,
   ApplyPendingMaintenanceActionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ApplyPendingMaintenanceActionInput,
   output: ApplyPendingMaintenanceActionOutput,
   errors: [
@@ -969,7 +969,7 @@ export const copyClusterSnapshot: API.OperationMethod<
   CopyClusterSnapshotOutput,
   CopyClusterSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CopyClusterSnapshotInput,
   output: CopyClusterSnapshotOutput,
   errors: [
@@ -998,7 +998,7 @@ export const createCluster: API.OperationMethod<
   CreateClusterOutput,
   CreateClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateClusterInput,
   output: CreateClusterOutput,
   errors: [
@@ -1027,7 +1027,7 @@ export const createClusterSnapshot: API.OperationMethod<
   CreateClusterSnapshotOutput,
   CreateClusterSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateClusterSnapshotInput,
   output: CreateClusterSnapshotOutput,
   errors: [
@@ -1056,7 +1056,7 @@ export const deleteCluster: API.OperationMethod<
   DeleteClusterOutput,
   DeleteClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteClusterInput,
   output: DeleteClusterOutput,
   errors: [
@@ -1084,7 +1084,7 @@ export const deleteClusterSnapshot: API.OperationMethod<
   DeleteClusterSnapshotOutput,
   DeleteClusterSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteClusterSnapshotInput,
   output: DeleteClusterSnapshotOutput,
   errors: [
@@ -1111,7 +1111,7 @@ export const getCluster: API.OperationMethod<
   GetClusterOutput,
   GetClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetClusterInput,
   output: GetClusterOutput,
   errors: [
@@ -1137,7 +1137,7 @@ export const getClusterSnapshot: API.OperationMethod<
   GetClusterSnapshotOutput,
   GetClusterSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetClusterSnapshotInput,
   output: GetClusterSnapshotOutput,
   errors: [
@@ -1164,7 +1164,7 @@ export const getPendingMaintenanceAction: API.OperationMethod<
   GetPendingMaintenanceActionOutput,
   GetPendingMaintenanceActionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPendingMaintenanceActionInput,
   output: GetPendingMaintenanceActionOutput,
   errors: [
@@ -1205,7 +1205,7 @@ export const listClusters: API.OperationMethod<
     ListClustersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListClustersInput,
   output: ListClustersOutput,
   errors: [
@@ -1250,7 +1250,7 @@ export const listClusterSnapshots: API.OperationMethod<
     ListClusterSnapshotsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListClusterSnapshotsInput,
   output: ListClusterSnapshotsOutput,
   errors: [
@@ -1295,7 +1295,7 @@ export const listPendingMaintenanceActions: API.OperationMethod<
     ListPendingMaintenanceActionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPendingMaintenanceActionsInput,
   output: ListPendingMaintenanceActionsOutput,
   errors: [
@@ -1325,7 +1325,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -1352,7 +1352,7 @@ export const restoreClusterFromSnapshot: API.OperationMethod<
   RestoreClusterFromSnapshotOutput,
   RestoreClusterFromSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RestoreClusterFromSnapshotInput,
   output: RestoreClusterFromSnapshotOutput,
   errors: [
@@ -1380,7 +1380,7 @@ export const startCluster: API.OperationMethod<
   StartClusterOutput,
   StartClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartClusterInput,
   output: StartClusterOutput,
   errors: [
@@ -1407,7 +1407,7 @@ export const stopCluster: API.OperationMethod<
   StopClusterOutput,
   StopClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopClusterInput,
   output: StopClusterOutput,
   errors: [
@@ -1432,7 +1432,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -1456,7 +1456,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -1483,7 +1483,7 @@ export const updateCluster: API.OperationMethod<
   UpdateClusterOutput,
   UpdateClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateClusterInput,
   output: UpdateClusterOutput,
   errors: [

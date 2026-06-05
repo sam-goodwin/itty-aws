@@ -1868,7 +1868,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -1894,7 +1894,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -1920,7 +1920,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -1949,7 +1949,7 @@ export const createConnector: API.OperationMethod<
   CreateConnectorResponse,
   CreateConnectorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateConnectorRequest,
   output: CreateConnectorResponse,
   errors: [
@@ -1978,7 +1978,7 @@ export const getConnector: API.OperationMethod<
   GetConnectorResponse,
   GetConnectorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConnectorRequest,
   output: GetConnectorResponse,
   errors: [
@@ -2009,7 +2009,7 @@ export const deleteConnector: API.OperationMethod<
   DeleteConnectorResponse,
   DeleteConnectorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConnectorRequest,
   output: DeleteConnectorResponse,
   errors: [
@@ -2050,7 +2050,7 @@ export const listConnectors: API.OperationMethod<
     ListConnectorsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConnectorsRequest,
   output: ListConnectorsResponse,
   errors: [
@@ -2083,7 +2083,7 @@ export const createDirectoryRegistration: API.OperationMethod<
   CreateDirectoryRegistrationResponse,
   CreateDirectoryRegistrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDirectoryRegistrationRequest,
   output: CreateDirectoryRegistrationResponse,
   errors: [
@@ -2110,7 +2110,7 @@ export const getDirectoryRegistration: API.OperationMethod<
   GetDirectoryRegistrationResponse,
   GetDirectoryRegistrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDirectoryRegistrationRequest,
   output: GetDirectoryRegistrationResponse,
   errors: [
@@ -2137,7 +2137,7 @@ export const deleteDirectoryRegistration: API.OperationMethod<
   DeleteDirectoryRegistrationResponse,
   DeleteDirectoryRegistrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDirectoryRegistrationRequest,
   output: DeleteDirectoryRegistrationResponse,
   errors: [
@@ -2178,7 +2178,7 @@ export const listDirectoryRegistrations: API.OperationMethod<
     ListDirectoryRegistrationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDirectoryRegistrationsRequest,
   output: ListDirectoryRegistrationsResponse,
   errors: [
@@ -2212,7 +2212,7 @@ export const createServicePrincipalName: API.OperationMethod<
   CreateServicePrincipalNameResponse,
   CreateServicePrincipalNameError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateServicePrincipalNameRequest,
   output: CreateServicePrincipalNameResponse,
   errors: [
@@ -2240,7 +2240,7 @@ export const getServicePrincipalName: API.OperationMethod<
   GetServicePrincipalNameResponse,
   GetServicePrincipalNameError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetServicePrincipalNameRequest,
   output: GetServicePrincipalNameResponse,
   errors: [
@@ -2267,7 +2267,7 @@ export const deleteServicePrincipalName: API.OperationMethod<
   DeleteServicePrincipalNameResponse,
   DeleteServicePrincipalNameError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteServicePrincipalNameRequest,
   output: DeleteServicePrincipalNameResponse,
   errors: [
@@ -2309,7 +2309,7 @@ export const listServicePrincipalNames: API.OperationMethod<
     ListServicePrincipalNamesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicePrincipalNamesRequest,
   output: ListServicePrincipalNamesResponse,
   errors: [
@@ -2344,7 +2344,7 @@ export const createTemplateGroupAccessControlEntry: API.OperationMethod<
   CreateTemplateGroupAccessControlEntryResponse,
   CreateTemplateGroupAccessControlEntryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTemplateGroupAccessControlEntryRequest,
   output: CreateTemplateGroupAccessControlEntryResponse,
   errors: [
@@ -2372,7 +2372,7 @@ export const getTemplateGroupAccessControlEntry: API.OperationMethod<
   GetTemplateGroupAccessControlEntryResponse,
   GetTemplateGroupAccessControlEntryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTemplateGroupAccessControlEntryRequest,
   output: GetTemplateGroupAccessControlEntryResponse,
   errors: [
@@ -2399,7 +2399,7 @@ export const updateTemplateGroupAccessControlEntry: API.OperationMethod<
   UpdateTemplateGroupAccessControlEntryResponse,
   UpdateTemplateGroupAccessControlEntryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTemplateGroupAccessControlEntryRequest,
   output: UpdateTemplateGroupAccessControlEntryResponse,
   errors: [
@@ -2427,7 +2427,7 @@ export const deleteTemplateGroupAccessControlEntry: API.OperationMethod<
   DeleteTemplateGroupAccessControlEntryResponse,
   DeleteTemplateGroupAccessControlEntryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTemplateGroupAccessControlEntryRequest,
   output: DeleteTemplateGroupAccessControlEntryResponse,
   errors: [
@@ -2469,7 +2469,7 @@ export const listTemplateGroupAccessControlEntries: API.OperationMethod<
     ListTemplateGroupAccessControlEntriesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTemplateGroupAccessControlEntriesRequest,
   output: ListTemplateGroupAccessControlEntriesResponse,
   errors: [
@@ -2504,7 +2504,7 @@ export const createTemplate: API.OperationMethod<
   CreateTemplateResponse,
   CreateTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTemplateRequest,
   output: CreateTemplateResponse,
   errors: [
@@ -2533,7 +2533,7 @@ export const getTemplate: API.OperationMethod<
   GetTemplateResponse,
   GetTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTemplateRequest,
   output: GetTemplateResponse,
   errors: [
@@ -2560,7 +2560,7 @@ export const updateTemplate: API.OperationMethod<
   UpdateTemplateResponse,
   UpdateTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTemplateRequest,
   output: UpdateTemplateResponse,
   errors: [
@@ -2589,7 +2589,7 @@ export const deleteTemplate: API.OperationMethod<
   DeleteTemplateResponse,
   DeleteTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTemplateRequest,
   output: DeleteTemplateResponse,
   errors: [
@@ -2631,7 +2631,7 @@ export const listTemplates: API.OperationMethod<
     ListTemplatesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTemplatesRequest,
   output: ListTemplatesResponse,
   errors: [

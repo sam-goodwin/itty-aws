@@ -568,7 +568,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceOutput,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceOutput,
   errors: [
@@ -602,7 +602,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -630,7 +630,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -675,7 +675,7 @@ export const createInvestigationGroup: API.OperationMethod<
   CreateInvestigationGroupOutput,
   CreateInvestigationGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateInvestigationGroupInput,
   output: CreateInvestigationGroupOutput,
   errors: [
@@ -702,7 +702,7 @@ export const getInvestigationGroup: API.OperationMethod<
   GetInvestigationGroupResponse,
   GetInvestigationGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInvestigationGroupRequest,
   output: GetInvestigationGroupResponse,
   errors: [
@@ -728,7 +728,7 @@ export const updateInvestigationGroup: API.OperationMethod<
   UpdateInvestigationGroupOutput,
   UpdateInvestigationGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateInvestigationGroupRequest,
   output: UpdateInvestigationGroupOutput,
   errors: [
@@ -754,7 +754,7 @@ export const deleteInvestigationGroup: API.OperationMethod<
   DeleteInvestigationGroupResponse,
   DeleteInvestigationGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteInvestigationGroupRequest,
   output: DeleteInvestigationGroupResponse,
   errors: [
@@ -792,7 +792,7 @@ export const listInvestigationGroups: API.OperationMethod<
     ListInvestigationGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInvestigationGroupsInput,
   output: ListInvestigationGroupsOutput,
   errors: [AccessDeniedException, InternalServerException, ThrottlingException],
@@ -823,7 +823,7 @@ export const putInvestigationGroupPolicy: API.OperationMethod<
   PutInvestigationGroupPolicyResponse,
   PutInvestigationGroupPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutInvestigationGroupPolicyRequest,
   output: PutInvestigationGroupPolicyResponse,
   errors: [
@@ -850,7 +850,7 @@ export const getInvestigationGroupPolicy: API.OperationMethod<
   GetInvestigationGroupPolicyResponse,
   GetInvestigationGroupPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInvestigationGroupPolicyRequest,
   output: GetInvestigationGroupPolicyResponse,
   errors: [
@@ -876,7 +876,7 @@ export const deleteInvestigationGroupPolicy: API.OperationMethod<
   DeleteInvestigationGroupPolicyOutput,
   DeleteInvestigationGroupPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteInvestigationGroupPolicyRequest,
   output: DeleteInvestigationGroupPolicyOutput,
   errors: [

@@ -383,7 +383,7 @@ export const describeServices: API.OperationMethod<
     DescribeServicesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeServicesRequest,
   output: DescribeServicesResponse,
   errors: [
@@ -434,7 +434,7 @@ export const getAttributeValues: API.OperationMethod<
     GetAttributeValuesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetAttributeValuesRequest,
   output: GetAttributeValuesResponse,
   errors: [
@@ -471,7 +471,7 @@ export const getPriceListFileUrl: API.OperationMethod<
   GetPriceListFileUrlResponse,
   GetPriceListFileUrlError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPriceListFileUrlRequest,
   output: GetPriceListFileUrlResponse,
   errors: [
@@ -515,7 +515,7 @@ export const getProducts: API.OperationMethod<
     GetProductsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetProductsRequest,
   output: GetProductsResponse,
   errors: [
@@ -569,7 +569,7 @@ export const listPriceLists: API.OperationMethod<
     ListPriceListsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPriceListsRequest,
   output: ListPriceListsResponse,
   errors: [

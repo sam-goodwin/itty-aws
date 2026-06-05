@@ -760,7 +760,7 @@ export const createFHIRDatastore: API.OperationMethod<
   CreateFHIRDatastoreResponse,
   CreateFHIRDatastoreError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFHIRDatastoreRequest,
   output: CreateFHIRDatastoreResponse,
   errors: [
@@ -786,7 +786,7 @@ export const deleteFHIRDatastore: API.OperationMethod<
   DeleteFHIRDatastoreResponse,
   DeleteFHIRDatastoreError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFHIRDatastoreRequest,
   output: DeleteFHIRDatastoreResponse,
   errors: [
@@ -812,7 +812,7 @@ export const describeFHIRDatastore: API.OperationMethod<
   DescribeFHIRDatastoreResponse,
   DescribeFHIRDatastoreError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeFHIRDatastoreRequest,
   output: DescribeFHIRDatastoreResponse,
   errors: [
@@ -836,7 +836,7 @@ export const describeFHIRExportJob: API.OperationMethod<
   DescribeFHIRExportJobResponse,
   DescribeFHIRExportJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeFHIRExportJobRequest,
   output: DescribeFHIRExportJobResponse,
   errors: [
@@ -860,7 +860,7 @@ export const describeFHIRImportJob: API.OperationMethod<
   DescribeFHIRImportJobResponse,
   DescribeFHIRImportJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeFHIRImportJobRequest,
   output: DescribeFHIRImportJobResponse,
   errors: [
@@ -899,7 +899,7 @@ export const listFHIRDatastores: API.OperationMethod<
     ListFHIRDatastoresError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFHIRDatastoresRequest,
   output: ListFHIRDatastoresResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
@@ -939,7 +939,7 @@ export const listFHIRExportJobs: API.OperationMethod<
     ListFHIRExportJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFHIRExportJobsRequest,
   output: ListFHIRExportJobsResponse,
   errors: [
@@ -985,7 +985,7 @@ export const listFHIRImportJobs: API.OperationMethod<
     ListFHIRImportJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFHIRImportJobsRequest,
   output: ListFHIRImportJobsResponse,
   errors: [
@@ -1013,7 +1013,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException, ValidationException],
@@ -1033,7 +1033,7 @@ export const startFHIRExportJob: API.OperationMethod<
   StartFHIRExportJobResponse,
   StartFHIRExportJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartFHIRExportJobRequest,
   output: StartFHIRExportJobResponse,
   errors: [
@@ -1061,7 +1061,7 @@ export const startFHIRImportJob: API.OperationMethod<
   StartFHIRImportJobResponse,
   StartFHIRImportJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartFHIRImportJobRequest,
   output: StartFHIRImportJobResponse,
   errors: [
@@ -1084,7 +1084,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [ResourceNotFoundException, ValidationException],
@@ -1101,7 +1101,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException, ValidationException],

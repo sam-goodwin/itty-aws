@@ -452,7 +452,7 @@ export const deleteKey: API.OperationMethod<
   DeleteKeyResponse,
   DeleteKeyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteKeyRequest,
   output: DeleteKeyResponse,
   errors: [
@@ -478,7 +478,7 @@ export const describeKeyValueStore: API.OperationMethod<
   DescribeKeyValueStoreResponse,
   DescribeKeyValueStoreError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeKeyValueStoreRequest,
   output: DescribeKeyValueStoreResponse,
   errors: [
@@ -502,7 +502,7 @@ export const getKey: API.OperationMethod<
   GetKeyResponse,
   GetKeyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetKeyRequest,
   output: GetKeyResponse,
   errors: [
@@ -542,7 +542,7 @@ export const listKeys: API.OperationMethod<
     ListKeysError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListKeysRequest,
   output: ListKeysResponse,
   errors: [
@@ -575,7 +575,7 @@ export const putKey: API.OperationMethod<
   PutKeyResponse,
   PutKeyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutKeyRequest,
   output: PutKeyResponse,
   errors: [
@@ -603,7 +603,7 @@ export const updateKeys: API.OperationMethod<
   UpdateKeysResponse,
   UpdateKeysError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateKeysRequest,
   output: UpdateKeysResponse,
   errors: [

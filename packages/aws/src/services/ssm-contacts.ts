@@ -1598,7 +1598,7 @@ export const acceptPage: API.OperationMethod<
   AcceptPageResult,
   AcceptPageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AcceptPageRequest,
   output: AcceptPageResult,
   errors: [
@@ -1625,7 +1625,7 @@ export const activateContactChannel: API.OperationMethod<
   ActivateContactChannelResult,
   ActivateContactChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ActivateContactChannelRequest,
   output: ActivateContactChannelResult,
   errors: [
@@ -1655,7 +1655,7 @@ export const createContact: API.OperationMethod<
   CreateContactResult,
   CreateContactError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateContactRequest,
   output: CreateContactResult,
   errors: [
@@ -1684,7 +1684,7 @@ export const createContactChannel: API.OperationMethod<
   CreateContactChannelResult,
   CreateContactChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateContactChannelRequest,
   output: CreateContactChannelResult,
   errors: [
@@ -1712,7 +1712,7 @@ export const createRotation: API.OperationMethod<
   CreateRotationResult,
   CreateRotationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRotationRequest,
   output: CreateRotationResult,
   errors: [
@@ -1740,7 +1740,7 @@ export const createRotationOverride: API.OperationMethod<
   CreateRotationOverrideResult,
   CreateRotationOverrideError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRotationOverrideRequest,
   output: CreateRotationOverrideResult,
   errors: [
@@ -1768,7 +1768,7 @@ export const deactivateContactChannel: API.OperationMethod<
   DeactivateContactChannelResult,
   DeactivateContactChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeactivateContactChannelRequest,
   output: DeactivateContactChannelResult,
   errors: [
@@ -1799,7 +1799,7 @@ export const deleteContact: API.OperationMethod<
   DeleteContactResult,
   DeleteContactError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteContactRequest,
   output: DeleteContactResult,
   errors: [
@@ -1830,7 +1830,7 @@ export const deleteContactChannel: API.OperationMethod<
   DeleteContactChannelResult,
   DeleteContactChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteContactChannelRequest,
   output: DeleteContactChannelResult,
   errors: [
@@ -1858,7 +1858,7 @@ export const deleteRotation: API.OperationMethod<
   DeleteRotationResult,
   DeleteRotationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRotationRequest,
   output: DeleteRotationResult,
   errors: [
@@ -1885,7 +1885,7 @@ export const deleteRotationOverride: API.OperationMethod<
   DeleteRotationOverrideResult,
   DeleteRotationOverrideError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRotationOverrideRequest,
   output: DeleteRotationOverrideResult,
   errors: [
@@ -1913,7 +1913,7 @@ export const describeEngagement: API.OperationMethod<
   DescribeEngagementResult,
   DescribeEngagementError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeEngagementRequest,
   output: DescribeEngagementResult,
   errors: [
@@ -1941,7 +1941,7 @@ export const describePage: API.OperationMethod<
   DescribePageResult,
   DescribePageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribePageRequest,
   output: DescribePageResult,
   errors: [
@@ -1969,7 +1969,7 @@ export const getContact: API.OperationMethod<
   GetContactResult,
   GetContactError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetContactRequest,
   output: GetContactResult,
   errors: [
@@ -1997,7 +1997,7 @@ export const getContactChannel: API.OperationMethod<
   GetContactChannelResult,
   GetContactChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetContactChannelRequest,
   output: GetContactChannelResult,
   errors: [
@@ -2025,7 +2025,7 @@ export const getContactPolicy: API.OperationMethod<
   GetContactPolicyResult,
   GetContactPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetContactPolicyRequest,
   output: GetContactPolicyResult,
   errors: [
@@ -2051,7 +2051,7 @@ export const getRotation: API.OperationMethod<
   GetRotationResult,
   GetRotationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRotationRequest,
   output: GetRotationResult,
   errors: [
@@ -2077,7 +2077,7 @@ export const getRotationOverride: API.OperationMethod<
   GetRotationOverrideResult,
   GetRotationOverrideError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRotationOverrideRequest,
   output: GetRotationOverrideResult,
   errors: [
@@ -2119,7 +2119,7 @@ export const listContactChannels: API.OperationMethod<
     ListContactChannelsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListContactChannelsRequest,
   output: ListContactChannelsResult,
   errors: [
@@ -2166,7 +2166,7 @@ export const listContacts: API.OperationMethod<
     ListContactsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListContactsRequest,
   output: ListContactsResult,
   errors: [
@@ -2211,7 +2211,7 @@ export const listEngagements: API.OperationMethod<
     ListEngagementsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEngagementsRequest,
   output: ListEngagementsResult,
   errors: [
@@ -2257,7 +2257,7 @@ export const listPageReceipts: API.OperationMethod<
     ListPageReceiptsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPageReceiptsRequest,
   output: ListPageReceiptsResult,
   errors: [
@@ -2308,7 +2308,7 @@ export const listPageResolutions: API.OperationMethod<
     ListPageResolutionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPageResolutionsRequest,
   output: ListPageResolutionsResult,
   errors: [
@@ -2354,7 +2354,7 @@ export const listPagesByContact: API.OperationMethod<
     ListPagesByContactError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPagesByContactRequest,
   output: ListPagesByContactResult,
   errors: [
@@ -2401,7 +2401,7 @@ export const listPagesByEngagement: API.OperationMethod<
     ListPagesByEngagementError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPagesByEngagementRequest,
   output: ListPagesByEngagementResult,
   errors: [
@@ -2449,7 +2449,7 @@ export const listPreviewRotationShifts: API.OperationMethod<
     ListPreviewRotationShiftsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPreviewRotationShiftsRequest,
   output: ListPreviewRotationShiftsResult,
   errors: [
@@ -2495,7 +2495,7 @@ export const listRotationOverrides: API.OperationMethod<
     ListRotationOverridesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRotationOverridesRequest,
   output: ListRotationOverridesResult,
   errors: [
@@ -2542,7 +2542,7 @@ export const listRotations: API.OperationMethod<
     ListRotationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRotationsRequest,
   output: ListRotationsResult,
   errors: [
@@ -2590,7 +2590,7 @@ export const listRotationShifts: API.OperationMethod<
     ListRotationShiftsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRotationShiftsRequest,
   output: ListRotationShiftsResult,
   errors: [
@@ -2623,7 +2623,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResult,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResult,
   errors: [
@@ -2652,7 +2652,7 @@ export const putContactPolicy: API.OperationMethod<
   PutContactPolicyResult,
   PutContactPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutContactPolicyRequest,
   output: PutContactPolicyResult,
   errors: [
@@ -2683,7 +2683,7 @@ export const sendActivationCode: API.OperationMethod<
   SendActivationCodeResult,
   SendActivationCodeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendActivationCodeRequest,
   output: SendActivationCodeResult,
   errors: [
@@ -2713,7 +2713,7 @@ export const startEngagement: API.OperationMethod<
   StartEngagementResult,
   StartEngagementError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartEngagementRequest,
   output: StartEngagementResult,
   errors: [
@@ -2741,7 +2741,7 @@ export const stopEngagement: API.OperationMethod<
   StopEngagementResult,
   StopEngagementError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopEngagementRequest,
   output: StopEngagementResult,
   errors: [
@@ -2769,7 +2769,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResult,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResult,
   errors: [
@@ -2796,7 +2796,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResult,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResult,
   errors: [
@@ -2824,7 +2824,7 @@ export const updateContact: API.OperationMethod<
   UpdateContactResult,
   UpdateContactError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateContactRequest,
   output: UpdateContactResult,
   errors: [
@@ -2854,7 +2854,7 @@ export const updateContactChannel: API.OperationMethod<
   UpdateContactChannelResult,
   UpdateContactChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateContactChannelRequest,
   output: UpdateContactChannelResult,
   errors: [
@@ -2883,7 +2883,7 @@ export const updateRotation: API.OperationMethod<
   UpdateRotationResult,
   UpdateRotationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRotationRequest,
   output: UpdateRotationResult,
   errors: [

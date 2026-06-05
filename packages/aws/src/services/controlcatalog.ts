@@ -701,7 +701,7 @@ export const listControlMappings: API.OperationMethod<
     ListControlMappingsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListControlMappingsRequest,
   output: ListControlMappingsResponse,
   errors: [
@@ -748,7 +748,7 @@ export const listCommonControls: API.OperationMethod<
     ListCommonControlsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCommonControlsRequest,
   output: ListCommonControlsResponse,
   errors: [
@@ -781,7 +781,7 @@ export const getControl: API.OperationMethod<
   GetControlResponse,
   GetControlError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetControlRequest,
   output: GetControlResponse,
   errors: [
@@ -821,7 +821,7 @@ export const listControls: API.OperationMethod<
     ListControlsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListControlsRequest,
   output: ListControlsResponse,
   errors: [
@@ -866,7 +866,7 @@ export const listDomains: API.OperationMethod<
     ListDomainsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDomainsRequest,
   output: ListDomainsResponse,
   errors: [
@@ -913,7 +913,7 @@ export const listObjectives: API.OperationMethod<
     ListObjectivesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListObjectivesRequest,
   output: ListObjectivesResponse,
   errors: [

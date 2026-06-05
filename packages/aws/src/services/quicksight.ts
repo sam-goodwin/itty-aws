@@ -29565,7 +29565,7 @@ export const batchCreateTopicReviewedAnswer: API.OperationMethod<
   BatchCreateTopicReviewedAnswerResponse,
   BatchCreateTopicReviewedAnswerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchCreateTopicReviewedAnswerRequest,
   output: BatchCreateTopicReviewedAnswerResponse,
   errors: [
@@ -29592,7 +29592,7 @@ export const batchDeleteTopicReviewedAnswer: API.OperationMethod<
   BatchDeleteTopicReviewedAnswerResponse,
   BatchDeleteTopicReviewedAnswerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchDeleteTopicReviewedAnswerRequest,
   output: BatchDeleteTopicReviewedAnswerResponse,
   errors: [
@@ -29620,7 +29620,7 @@ export const cancelIngestion: API.OperationMethod<
   CancelIngestionResponse,
   CancelIngestionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelIngestionRequest,
   output: CancelIngestionResponse,
   errors: [
@@ -29673,7 +29673,7 @@ export const createAccountCustomization: API.OperationMethod<
   CreateAccountCustomizationResponse,
   CreateAccountCustomizationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccountCustomizationRequest,
   output: CreateAccountCustomizationResponse,
   errors: [
@@ -29732,7 +29732,7 @@ export const createAccountSubscription: API.OperationMethod<
   CreateAccountSubscriptionResponse,
   CreateAccountSubscriptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccountSubscriptionRequest,
   output: CreateAccountSubscriptionResponse,
   errors: [
@@ -29765,7 +29765,7 @@ export const createActionConnector: API.OperationMethod<
   CreateActionConnectorResponse,
   CreateActionConnectorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateActionConnectorRequest,
   output: CreateActionConnectorResponse,
   errors: [
@@ -29795,7 +29795,7 @@ export const createAnalysis: API.OperationMethod<
   CreateAnalysisResponse,
   CreateAnalysisError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAnalysisRequest,
   output: CreateAnalysisResponse,
   errors: [
@@ -29825,7 +29825,7 @@ export const createBrand: API.OperationMethod<
   CreateBrandResponse,
   CreateBrandError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateBrandRequest,
   output: CreateBrandResponse,
   errors: [
@@ -29857,7 +29857,7 @@ export const createCustomPermissions: API.OperationMethod<
   CreateCustomPermissionsResponse,
   CreateCustomPermissionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCustomPermissionsRequest,
   output: CreateCustomPermissionsResponse,
   errors: [
@@ -29900,7 +29900,7 @@ export const createDashboard: API.OperationMethod<
   CreateDashboardResponse,
   CreateDashboardError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDashboardRequest,
   output: CreateDashboardResponse,
   errors: [
@@ -29935,7 +29935,7 @@ export const createDataSet: API.OperationMethod<
   CreateDataSetResponse,
   CreateDataSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDataSetRequest,
   output: CreateDataSetResponse,
   errors: [
@@ -29970,7 +29970,7 @@ export const createDataSource: API.OperationMethod<
   CreateDataSourceResponse,
   CreateDataSourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDataSourceRequest,
   output: CreateDataSourceResponse,
   errors: [
@@ -30004,7 +30004,7 @@ export const createFolder: API.OperationMethod<
   CreateFolderResponse,
   CreateFolderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFolderRequest,
   output: CreateFolderResponse,
   errors: [
@@ -30037,7 +30037,7 @@ export const createFolderMembership: API.OperationMethod<
   CreateFolderMembershipResponse,
   CreateFolderMembershipError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFolderMembershipRequest,
   output: CreateFolderMembershipResponse,
   errors: [
@@ -30076,7 +30076,7 @@ export const createGroup: API.OperationMethod<
   CreateGroupResponse,
   CreateGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateGroupRequest,
   output: CreateGroupResponse,
   errors: [
@@ -30108,7 +30108,7 @@ export const createGroupMembership: API.OperationMethod<
   CreateGroupMembershipResponse,
   CreateGroupMembershipError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateGroupMembershipRequest,
   output: CreateGroupMembershipResponse,
   errors: [
@@ -30142,7 +30142,7 @@ export const createIAMPolicyAssignment: API.OperationMethod<
   CreateIAMPolicyAssignmentResponse,
   CreateIAMPolicyAssignmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateIAMPolicyAssignmentRequest,
   output: CreateIAMPolicyAssignmentResponse,
   errors: [
@@ -30179,7 +30179,7 @@ export const createIngestion: API.OperationMethod<
   CreateIngestionResponse,
   CreateIngestionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateIngestionRequest,
   output: CreateIngestionResponse,
   errors: [
@@ -30220,7 +30220,7 @@ export const createNamespace: API.OperationMethod<
   CreateNamespaceResponse,
   CreateNamespaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateNamespaceRequest,
   output: CreateNamespaceResponse,
   errors: [
@@ -30254,7 +30254,7 @@ export const createRefreshSchedule: API.OperationMethod<
   CreateRefreshScheduleResponse,
   CreateRefreshScheduleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRefreshScheduleRequest,
   output: CreateRefreshScheduleResponse,
   errors: [
@@ -30285,7 +30285,7 @@ export const createRoleMembership: API.OperationMethod<
   CreateRoleMembershipResponse,
   CreateRoleMembershipError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRoleMembershipRequest,
   output: CreateRoleMembershipResponse,
   errors: [
@@ -30325,7 +30325,7 @@ export const createTemplate: API.OperationMethod<
   CreateTemplateResponse,
   CreateTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTemplateRequest,
   output: CreateTemplateResponse,
   errors: [
@@ -30357,7 +30357,7 @@ export const createTemplateAlias: API.OperationMethod<
   CreateTemplateAliasResponse,
   CreateTemplateAliasError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTemplateAliasRequest,
   output: CreateTemplateAliasResponse,
   errors: [
@@ -30392,7 +30392,7 @@ export const createTheme: API.OperationMethod<
   CreateThemeResponse,
   CreateThemeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateThemeRequest,
   output: CreateThemeResponse,
   errors: [
@@ -30424,7 +30424,7 @@ export const createThemeAlias: API.OperationMethod<
   CreateThemeAliasResponse,
   CreateThemeAliasError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateThemeAliasRequest,
   output: CreateThemeAliasResponse,
   errors: [
@@ -30456,7 +30456,7 @@ export const createTopic: API.OperationMethod<
   CreateTopicResponse,
   CreateTopicError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTopicRequest,
   output: CreateTopicResponse,
   errors: [
@@ -30488,7 +30488,7 @@ export const createTopicRefreshSchedule: API.OperationMethod<
   CreateTopicRefreshScheduleResponse,
   CreateTopicRefreshScheduleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTopicRefreshScheduleRequest,
   output: CreateTopicRefreshScheduleResponse,
   errors: [
@@ -30520,7 +30520,7 @@ export const createVPCConnection: API.OperationMethod<
   CreateVPCConnectionResponse,
   CreateVPCConnectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateVPCConnectionRequest,
   output: CreateVPCConnectionResponse,
   errors: [
@@ -30563,7 +30563,7 @@ export const deleteAccountCustomization: API.OperationMethod<
   DeleteAccountCustomizationResponse,
   DeleteAccountCustomizationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccountCustomizationRequest,
   output: DeleteAccountCustomizationResponse,
   errors: [
@@ -30593,7 +30593,7 @@ export const deleteAccountCustomPermission: API.OperationMethod<
   DeleteAccountCustomPermissionResponse,
   DeleteAccountCustomPermissionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccountCustomPermissionRequest,
   output: DeleteAccountCustomPermissionResponse,
   errors: [
@@ -30637,7 +30637,7 @@ export const deleteAccountSubscription: API.OperationMethod<
   DeleteAccountSubscriptionResponse,
   DeleteAccountSubscriptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccountSubscriptionRequest,
   output: DeleteAccountSubscriptionResponse,
   errors: [
@@ -30665,7 +30665,7 @@ export const deleteActionConnector: API.OperationMethod<
   DeleteActionConnectorResponse,
   DeleteActionConnectorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteActionConnectorRequest,
   output: DeleteActionConnectorResponse,
   errors: [
@@ -30705,7 +30705,7 @@ export const deleteAnalysis: API.OperationMethod<
   DeleteAnalysisResponse,
   DeleteAnalysisError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAnalysisRequest,
   output: DeleteAnalysisResponse,
   errors: [
@@ -30743,7 +30743,7 @@ export const deleteBrand: API.OperationMethod<
   DeleteBrandResponse,
   DeleteBrandError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteBrandRequest,
   output: DeleteBrandResponse,
   errors: [
@@ -30771,7 +30771,7 @@ export const deleteBrandAssignment: API.OperationMethod<
   DeleteBrandAssignmentResponse,
   DeleteBrandAssignmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteBrandAssignmentRequest,
   output: DeleteBrandAssignmentResponse,
   errors: [
@@ -30802,7 +30802,7 @@ export const deleteCustomPermissions: API.OperationMethod<
   DeleteCustomPermissionsResponse,
   DeleteCustomPermissionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCustomPermissionsRequest,
   output: DeleteCustomPermissionsResponse,
   errors: [
@@ -30833,7 +30833,7 @@ export const deleteDashboard: API.OperationMethod<
   DeleteDashboardResponse,
   DeleteDashboardError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDashboardRequest,
   output: DeleteDashboardResponse,
   errors: [
@@ -30860,7 +30860,7 @@ export const deleteDataSet: API.OperationMethod<
   DeleteDataSetResponse,
   DeleteDataSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDataSetRequest,
   output: DeleteDataSetResponse,
   errors: [
@@ -30888,7 +30888,7 @@ export const deleteDataSetRefreshProperties: API.OperationMethod<
   DeleteDataSetRefreshPropertiesResponse,
   DeleteDataSetRefreshPropertiesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDataSetRefreshPropertiesRequest,
   output: DeleteDataSetRefreshPropertiesResponse,
   errors: [
@@ -30917,7 +30917,7 @@ export const deleteDataSource: API.OperationMethod<
   DeleteDataSourceResponse,
   DeleteDataSourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDataSourceRequest,
   output: DeleteDataSourceResponse,
   errors: [
@@ -30943,7 +30943,7 @@ export const deleteDefaultQBusinessApplication: API.OperationMethod<
   DeleteDefaultQBusinessApplicationResponse,
   DeleteDefaultQBusinessApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDefaultQBusinessApplicationRequest,
   output: DeleteDefaultQBusinessApplicationResponse,
   errors: [
@@ -30972,7 +30972,7 @@ export const deleteFolder: API.OperationMethod<
   DeleteFolderResponse,
   DeleteFolderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFolderRequest,
   output: DeleteFolderResponse,
   errors: [
@@ -31002,7 +31002,7 @@ export const deleteFolderMembership: API.OperationMethod<
   DeleteFolderMembershipResponse,
   DeleteFolderMembershipError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFolderMembershipRequest,
   output: DeleteFolderMembershipResponse,
   errors: [
@@ -31031,7 +31031,7 @@ export const deleteGroup: API.OperationMethod<
   DeleteGroupResponse,
   DeleteGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteGroupRequest,
   output: DeleteGroupResponse,
   errors: [
@@ -31061,7 +31061,7 @@ export const deleteGroupMembership: API.OperationMethod<
   DeleteGroupMembershipResponse,
   DeleteGroupMembershipError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteGroupMembershipRequest,
   output: DeleteGroupMembershipResponse,
   errors: [
@@ -31091,7 +31091,7 @@ export const deleteIAMPolicyAssignment: API.OperationMethod<
   DeleteIAMPolicyAssignmentResponse,
   DeleteIAMPolicyAssignmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteIAMPolicyAssignmentRequest,
   output: DeleteIAMPolicyAssignmentResponse,
   errors: [
@@ -31121,7 +31121,7 @@ export const deleteIdentityPropagationConfig: API.OperationMethod<
   DeleteIdentityPropagationConfigResponse,
   DeleteIdentityPropagationConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteIdentityPropagationConfigRequest,
   output: DeleteIdentityPropagationConfigResponse,
   errors: [
@@ -31151,7 +31151,7 @@ export const deleteNamespace: API.OperationMethod<
   DeleteNamespaceResponse,
   DeleteNamespaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteNamespaceRequest,
   output: DeleteNamespaceResponse,
   errors: [
@@ -31180,7 +31180,7 @@ export const deleteRefreshSchedule: API.OperationMethod<
   DeleteRefreshScheduleResponse,
   DeleteRefreshScheduleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRefreshScheduleRequest,
   output: DeleteRefreshScheduleResponse,
   errors: [
@@ -31209,7 +31209,7 @@ export const deleteRoleCustomPermission: API.OperationMethod<
   DeleteRoleCustomPermissionResponse,
   DeleteRoleCustomPermissionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRoleCustomPermissionRequest,
   output: DeleteRoleCustomPermissionResponse,
   errors: [
@@ -31239,7 +31239,7 @@ export const deleteRoleMembership: API.OperationMethod<
   DeleteRoleMembershipResponse,
   DeleteRoleMembershipError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRoleMembershipRequest,
   output: DeleteRoleMembershipResponse,
   errors: [
@@ -31269,7 +31269,7 @@ export const deleteTemplate: API.OperationMethod<
   DeleteTemplateResponse,
   DeleteTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTemplateRequest,
   output: DeleteTemplateResponse,
   errors: [
@@ -31298,7 +31298,7 @@ export const deleteTemplateAlias: API.OperationMethod<
   DeleteTemplateAliasResponse,
   DeleteTemplateAliasError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTemplateAliasRequest,
   output: DeleteTemplateAliasResponse,
   errors: [
@@ -31326,7 +31326,7 @@ export const deleteTheme: API.OperationMethod<
   DeleteThemeResponse,
   DeleteThemeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteThemeRequest,
   output: DeleteThemeResponse,
   errors: [
@@ -31357,7 +31357,7 @@ export const deleteThemeAlias: API.OperationMethod<
   DeleteThemeAliasResponse,
   DeleteThemeAliasError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteThemeAliasRequest,
   output: DeleteThemeAliasResponse,
   errors: [
@@ -31385,7 +31385,7 @@ export const deleteTopic: API.OperationMethod<
   DeleteTopicResponse,
   DeleteTopicError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTopicRequest,
   output: DeleteTopicResponse,
   errors: [
@@ -31415,7 +31415,7 @@ export const deleteTopicRefreshSchedule: API.OperationMethod<
   DeleteTopicRefreshScheduleResponse,
   DeleteTopicRefreshScheduleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTopicRefreshScheduleRequest,
   output: DeleteTopicRefreshScheduleResponse,
   errors: [
@@ -31448,7 +31448,7 @@ export const deleteUser: API.OperationMethod<
   DeleteUserResponse,
   DeleteUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteUserRequest,
   output: DeleteUserResponse,
   errors: [
@@ -31478,7 +31478,7 @@ export const deleteUserByPrincipalId: API.OperationMethod<
   DeleteUserByPrincipalIdResponse,
   DeleteUserByPrincipalIdError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteUserByPrincipalIdRequest,
   output: DeleteUserByPrincipalIdResponse,
   errors: [
@@ -31509,7 +31509,7 @@ export const deleteUserCustomPermission: API.OperationMethod<
   DeleteUserCustomPermissionResponse,
   DeleteUserCustomPermissionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteUserCustomPermissionRequest,
   output: DeleteUserCustomPermissionResponse,
   errors: [
@@ -31540,7 +31540,7 @@ export const deleteVPCConnection: API.OperationMethod<
   DeleteVPCConnectionResponse,
   DeleteVPCConnectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteVPCConnectionRequest,
   output: DeleteVPCConnectionResponse,
   errors: [
@@ -31608,7 +31608,7 @@ export const describeAccountCustomization: API.OperationMethod<
   DescribeAccountCustomizationResponse,
   DescribeAccountCustomizationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAccountCustomizationRequest,
   output: DescribeAccountCustomizationResponse,
   errors: [
@@ -31635,7 +31635,7 @@ export const describeAccountCustomPermission: API.OperationMethod<
   DescribeAccountCustomPermissionResponse,
   DescribeAccountCustomPermissionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAccountCustomPermissionRequest,
   output: DescribeAccountCustomPermissionResponse,
   errors: [
@@ -31663,7 +31663,7 @@ export const describeAccountSettings: API.OperationMethod<
   DescribeAccountSettingsResponse,
   DescribeAccountSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAccountSettingsRequest,
   output: DescribeAccountSettingsResponse,
   errors: [
@@ -31691,7 +31691,7 @@ export const describeAccountSubscription: API.OperationMethod<
   DescribeAccountSubscriptionResponse,
   DescribeAccountSubscriptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAccountSubscriptionRequest,
   output: DescribeAccountSubscriptionResponse,
   errors: [
@@ -31718,7 +31718,7 @@ export const describeActionConnector: API.OperationMethod<
   DescribeActionConnectorResponse,
   DescribeActionConnectorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeActionConnectorRequest,
   output: DescribeActionConnectorResponse,
   errors: [
@@ -31744,7 +31744,7 @@ export const describeActionConnectorPermissions: API.OperationMethod<
   DescribeActionConnectorPermissionsResponse,
   DescribeActionConnectorPermissionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeActionConnectorPermissionsRequest,
   output: DescribeActionConnectorPermissionsResponse,
   errors: [
@@ -31771,7 +31771,7 @@ export const describeAnalysis: API.OperationMethod<
   DescribeAnalysisResponse,
   DescribeAnalysisError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAnalysisRequest,
   output: DescribeAnalysisResponse,
   errors: [
@@ -31807,7 +31807,7 @@ export const describeAnalysisDefinition: API.OperationMethod<
   DescribeAnalysisDefinitionResponse,
   DescribeAnalysisDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAnalysisDefinitionRequest,
   output: DescribeAnalysisDefinitionResponse,
   errors: [
@@ -31836,7 +31836,7 @@ export const describeAnalysisPermissions: API.OperationMethod<
   DescribeAnalysisPermissionsResponse,
   DescribeAnalysisPermissionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAnalysisPermissionsRequest,
   output: DescribeAnalysisPermissionsResponse,
   errors: [
@@ -31867,7 +31867,7 @@ export const describeAssetBundleExportJob: API.OperationMethod<
   DescribeAssetBundleExportJobResponse,
   DescribeAssetBundleExportJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAssetBundleExportJobRequest,
   output: DescribeAssetBundleExportJobResponse,
   errors: [
@@ -31892,7 +31892,7 @@ export const describeAssetBundleImportJob: API.OperationMethod<
   DescribeAssetBundleImportJobResponse,
   DescribeAssetBundleImportJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAssetBundleImportJobRequest,
   output: DescribeAssetBundleImportJobResponse,
   errors: [
@@ -31916,7 +31916,7 @@ export const describeAutomationJob: API.OperationMethod<
   DescribeAutomationJobResponse,
   DescribeAutomationJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAutomationJobRequest,
   output: DescribeAutomationJobResponse,
   errors: [
@@ -31943,7 +31943,7 @@ export const describeBrand: API.OperationMethod<
   DescribeBrandResponse,
   DescribeBrandError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeBrandRequest,
   output: DescribeBrandResponse,
   errors: [
@@ -31971,7 +31971,7 @@ export const describeBrandAssignment: API.OperationMethod<
   DescribeBrandAssignmentResponse,
   DescribeBrandAssignmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeBrandAssignmentRequest,
   output: DescribeBrandAssignmentResponse,
   errors: [
@@ -31999,7 +31999,7 @@ export const describeBrandPublishedVersion: API.OperationMethod<
   DescribeBrandPublishedVersionResponse,
   DescribeBrandPublishedVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeBrandPublishedVersionRequest,
   output: DescribeBrandPublishedVersionResponse,
   errors: [
@@ -32028,7 +32028,7 @@ export const describeCustomPermissions: API.OperationMethod<
   DescribeCustomPermissionsResponse,
   DescribeCustomPermissionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeCustomPermissionsRequest,
   output: DescribeCustomPermissionsResponse,
   errors: [
@@ -32057,7 +32057,7 @@ export const describeDashboard: API.OperationMethod<
   DescribeDashboardResponse,
   DescribeDashboardError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDashboardRequest,
   output: DescribeDashboardResponse,
   errors: [
@@ -32093,7 +32093,7 @@ export const describeDashboardDefinition: API.OperationMethod<
   DescribeDashboardDefinitionResponse,
   DescribeDashboardDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDashboardDefinitionRequest,
   output: DescribeDashboardDefinitionResponse,
   errors: [
@@ -32122,7 +32122,7 @@ export const describeDashboardPermissions: API.OperationMethod<
   DescribeDashboardPermissionsResponse,
   DescribeDashboardPermissionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDashboardPermissionsRequest,
   output: DescribeDashboardPermissionsResponse,
   errors: [
@@ -32164,7 +32164,7 @@ export const describeDashboardSnapshotJob: API.OperationMethod<
   DescribeDashboardSnapshotJobResponse,
   DescribeDashboardSnapshotJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDashboardSnapshotJobRequest,
   output: DescribeDashboardSnapshotJobResponse,
   errors: [
@@ -32226,7 +32226,7 @@ export const describeDashboardSnapshotJobResult: API.OperationMethod<
   DescribeDashboardSnapshotJobResultResponse,
   DescribeDashboardSnapshotJobResultError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDashboardSnapshotJobResultRequest,
   output: DescribeDashboardSnapshotJobResultResponse,
   errors: [
@@ -32255,7 +32255,7 @@ export const describeDashboardsQAConfiguration: API.OperationMethod<
   DescribeDashboardsQAConfigurationResponse,
   DescribeDashboardsQAConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDashboardsQAConfigurationRequest,
   output: DescribeDashboardsQAConfigurationResponse,
   errors: [
@@ -32283,7 +32283,7 @@ export const describeDataSet: API.OperationMethod<
   DescribeDataSetResponse,
   DescribeDataSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDataSetRequest,
   output: DescribeDataSetResponse,
   errors: [
@@ -32312,7 +32312,7 @@ export const describeDataSetPermissions: API.OperationMethod<
   DescribeDataSetPermissionsResponse,
   DescribeDataSetPermissionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDataSetPermissionsRequest,
   output: DescribeDataSetPermissionsResponse,
   errors: [
@@ -32340,7 +32340,7 @@ export const describeDataSetRefreshProperties: API.OperationMethod<
   DescribeDataSetRefreshPropertiesResponse,
   DescribeDataSetRefreshPropertiesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDataSetRefreshPropertiesRequest,
   output: DescribeDataSetRefreshPropertiesResponse,
   errors: [
@@ -32368,7 +32368,7 @@ export const describeDataSource: API.OperationMethod<
   DescribeDataSourceResponse,
   DescribeDataSourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDataSourceRequest,
   output: DescribeDataSourceResponse,
   errors: [
@@ -32394,7 +32394,7 @@ export const describeDataSourcePermissions: API.OperationMethod<
   DescribeDataSourcePermissionsResponse,
   DescribeDataSourcePermissionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDataSourcePermissionsRequest,
   output: DescribeDataSourcePermissionsResponse,
   errors: [
@@ -32420,7 +32420,7 @@ export const describeDefaultQBusinessApplication: API.OperationMethod<
   DescribeDefaultQBusinessApplicationResponse,
   DescribeDefaultQBusinessApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDefaultQBusinessApplicationRequest,
   output: DescribeDefaultQBusinessApplicationResponse,
   errors: [
@@ -32447,7 +32447,7 @@ export const describeFolder: API.OperationMethod<
   DescribeFolderResponse,
   DescribeFolderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeFolderRequest,
   output: DescribeFolderResponse,
   errors: [
@@ -32491,7 +32491,7 @@ export const describeFolderPermissions: API.OperationMethod<
     DescribeFolderPermissionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFolderPermissionsRequest,
   output: DescribeFolderPermissionsResponse,
   errors: [
@@ -32542,7 +32542,7 @@ export const describeFolderResolvedPermissions: API.OperationMethod<
     DescribeFolderResolvedPermissionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFolderResolvedPermissionsRequest,
   output: DescribeFolderResolvedPermissionsResponse,
   errors: [
@@ -32578,7 +32578,7 @@ export const describeGroup: API.OperationMethod<
   DescribeGroupResponse,
   DescribeGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeGroupRequest,
   output: DescribeGroupResponse,
   errors: [
@@ -32610,7 +32610,7 @@ export const describeGroupMembership: API.OperationMethod<
   DescribeGroupMembershipResponse,
   DescribeGroupMembershipError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeGroupMembershipRequest,
   output: DescribeGroupMembershipResponse,
   errors: [
@@ -32640,7 +32640,7 @@ export const describeIAMPolicyAssignment: API.OperationMethod<
   DescribeIAMPolicyAssignmentResponse,
   DescribeIAMPolicyAssignmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeIAMPolicyAssignmentRequest,
   output: DescribeIAMPolicyAssignmentResponse,
   errors: [
@@ -32668,7 +32668,7 @@ export const describeIngestion: API.OperationMethod<
   DescribeIngestionResponse,
   DescribeIngestionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeIngestionRequest,
   output: DescribeIngestionResponse,
   errors: [
@@ -32695,7 +32695,7 @@ export const describeIpRestriction: API.OperationMethod<
   DescribeIpRestrictionResponse,
   DescribeIpRestrictionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeIpRestrictionRequest,
   output: DescribeIpRestrictionResponse,
   errors: [
@@ -32720,7 +32720,7 @@ export const describeKeyRegistration: API.OperationMethod<
   DescribeKeyRegistrationResponse,
   DescribeKeyRegistrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeKeyRegistrationRequest,
   output: DescribeKeyRegistrationResponse,
   errors: [
@@ -32746,7 +32746,7 @@ export const describeNamespace: API.OperationMethod<
   DescribeNamespaceResponse,
   DescribeNamespaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeNamespaceRequest,
   output: DescribeNamespaceResponse,
   errors: [
@@ -32774,7 +32774,7 @@ export const describeQPersonalizationConfiguration: API.OperationMethod<
   DescribeQPersonalizationConfigurationResponse,
   DescribeQPersonalizationConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeQPersonalizationConfigurationRequest,
   output: DescribeQPersonalizationConfigurationResponse,
   errors: [
@@ -32802,7 +32802,7 @@ export const describeQuickSightQSearchConfiguration: API.OperationMethod<
   DescribeQuickSightQSearchConfigurationResponse,
   DescribeQuickSightQSearchConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeQuickSightQSearchConfigurationRequest,
   output: DescribeQuickSightQSearchConfigurationResponse,
   errors: [
@@ -32830,7 +32830,7 @@ export const describeRefreshSchedule: API.OperationMethod<
   DescribeRefreshScheduleResponse,
   DescribeRefreshScheduleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeRefreshScheduleRequest,
   output: DescribeRefreshScheduleResponse,
   errors: [
@@ -32859,7 +32859,7 @@ export const describeRoleCustomPermission: API.OperationMethod<
   DescribeRoleCustomPermissionResponse,
   DescribeRoleCustomPermissionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeRoleCustomPermissionRequest,
   output: DescribeRoleCustomPermissionResponse,
   errors: [
@@ -32890,7 +32890,7 @@ export const describeSelfUpgradeConfiguration: API.OperationMethod<
   DescribeSelfUpgradeConfigurationResponse,
   DescribeSelfUpgradeConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeSelfUpgradeConfigurationRequest,
   output: DescribeSelfUpgradeConfigurationResponse,
   errors: [
@@ -32922,7 +32922,7 @@ export const describeTemplate: API.OperationMethod<
   DescribeTemplateResponse,
   DescribeTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeTemplateRequest,
   output: DescribeTemplateResponse,
   errors: [
@@ -32950,7 +32950,7 @@ export const describeTemplateAlias: API.OperationMethod<
   DescribeTemplateAliasResponse,
   DescribeTemplateAliasError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeTemplateAliasRequest,
   output: DescribeTemplateAliasResponse,
   errors: [
@@ -32984,7 +32984,7 @@ export const describeTemplateDefinition: API.OperationMethod<
   DescribeTemplateDefinitionResponse,
   DescribeTemplateDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeTemplateDefinitionRequest,
   output: DescribeTemplateDefinitionResponse,
   errors: [
@@ -33014,7 +33014,7 @@ export const describeTemplatePermissions: API.OperationMethod<
   DescribeTemplatePermissionsResponse,
   DescribeTemplatePermissionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeTemplatePermissionsRequest,
   output: DescribeTemplatePermissionsResponse,
   errors: [
@@ -33043,7 +33043,7 @@ export const describeTheme: API.OperationMethod<
   DescribeThemeResponse,
   DescribeThemeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeThemeRequest,
   output: DescribeThemeResponse,
   errors: [
@@ -33072,7 +33072,7 @@ export const describeThemeAlias: API.OperationMethod<
   DescribeThemeAliasResponse,
   DescribeThemeAliasError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeThemeAliasRequest,
   output: DescribeThemeAliasResponse,
   errors: [
@@ -33100,7 +33100,7 @@ export const describeThemePermissions: API.OperationMethod<
   DescribeThemePermissionsResponse,
   DescribeThemePermissionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeThemePermissionsRequest,
   output: DescribeThemePermissionsResponse,
   errors: [
@@ -33127,7 +33127,7 @@ export const describeTopic: API.OperationMethod<
   DescribeTopicResponse,
   DescribeTopicError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeTopicRequest,
   output: DescribeTopicResponse,
   errors: [
@@ -33153,7 +33153,7 @@ export const describeTopicPermissions: API.OperationMethod<
   DescribeTopicPermissionsResponse,
   DescribeTopicPermissionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeTopicPermissionsRequest,
   output: DescribeTopicPermissionsResponse,
   errors: [
@@ -33179,7 +33179,7 @@ export const describeTopicRefresh: API.OperationMethod<
   DescribeTopicRefreshResponse,
   DescribeTopicRefreshError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeTopicRefreshRequest,
   output: DescribeTopicRefreshResponse,
   errors: [
@@ -33208,7 +33208,7 @@ export const describeTopicRefreshSchedule: API.OperationMethod<
   DescribeTopicRefreshScheduleResponse,
   DescribeTopicRefreshScheduleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeTopicRefreshScheduleRequest,
   output: DescribeTopicRefreshScheduleResponse,
   errors: [
@@ -33239,7 +33239,7 @@ export const describeUser: API.OperationMethod<
   DescribeUserResponse,
   DescribeUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeUserRequest,
   output: DescribeUserResponse,
   errors: [
@@ -33268,7 +33268,7 @@ export const describeVPCConnection: API.OperationMethod<
   DescribeVPCConnectionResponse,
   DescribeVPCConnectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeVPCConnectionRequest,
   output: DescribeVPCConnectionResponse,
   errors: [
@@ -33321,7 +33321,7 @@ export const generateEmbedUrlForAnonymousUser: API.OperationMethod<
   GenerateEmbedUrlForAnonymousUserResponse,
   GenerateEmbedUrlForAnonymousUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GenerateEmbedUrlForAnonymousUserRequest,
   output: GenerateEmbedUrlForAnonymousUserResponse,
   errors: [
@@ -33378,7 +33378,7 @@ export const generateEmbedUrlForRegisteredUser: API.OperationMethod<
   GenerateEmbedUrlForRegisteredUserResponse,
   GenerateEmbedUrlForRegisteredUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GenerateEmbedUrlForRegisteredUserRequest,
   output: GenerateEmbedUrlForRegisteredUserResponse,
   errors: [
@@ -33423,7 +33423,7 @@ export const generateEmbedUrlForRegisteredUserWithIdentity: API.OperationMethod<
   GenerateEmbedUrlForRegisteredUserWithIdentityResponse,
   GenerateEmbedUrlForRegisteredUserWithIdentityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GenerateEmbedUrlForRegisteredUserWithIdentityRequest,
   output: GenerateEmbedUrlForRegisteredUserWithIdentityResponse,
   errors: [
@@ -33486,7 +33486,7 @@ export const getDashboardEmbedUrl: API.OperationMethod<
   GetDashboardEmbedUrlResponse,
   GetDashboardEmbedUrlError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDashboardEmbedUrlRequest,
   output: GetDashboardEmbedUrlResponse,
   errors: [
@@ -33518,7 +33518,7 @@ export const getFlowMetadata: API.OperationMethod<
   GetFlowMetadataOutput,
   GetFlowMetadataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFlowMetadataInput,
   output: GetFlowMetadataOutput,
   errors: [
@@ -33542,7 +33542,7 @@ export const getFlowPermissions: API.OperationMethod<
   GetFlowPermissionsOutput,
   GetFlowPermissionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFlowPermissionsInput,
   output: GetFlowPermissionsOutput,
   errors: [
@@ -33606,7 +33606,7 @@ export const getIdentityContext: API.OperationMethod<
   GetIdentityContextResponse,
   GetIdentityContextError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIdentityContextRequest,
   output: GetIdentityContextResponse,
   errors: [
@@ -33654,7 +33654,7 @@ export const getSessionEmbedUrl: API.OperationMethod<
   GetSessionEmbedUrlResponse,
   GetSessionEmbedUrlError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSessionEmbedUrlRequest,
   output: GetSessionEmbedUrlResponse,
   errors: [
@@ -33699,7 +33699,7 @@ export const listActionConnectors: API.OperationMethod<
     ListActionConnectorsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListActionConnectorsRequest,
   output: ListActionConnectorsResponse,
   errors: [
@@ -33745,7 +33745,7 @@ export const listAnalyses: API.OperationMethod<
     ListAnalysesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAnalysesRequest,
   output: ListAnalysesResponse,
   errors: [
@@ -33794,7 +33794,7 @@ export const listAssetBundleExportJobs: API.OperationMethod<
     ListAssetBundleExportJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssetBundleExportJobsRequest,
   output: ListAssetBundleExportJobsResponse,
   errors: [
@@ -33844,7 +33844,7 @@ export const listAssetBundleImportJobs: API.OperationMethod<
     ListAssetBundleImportJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssetBundleImportJobsRequest,
   output: ListAssetBundleImportJobsResponse,
   errors: [
@@ -33890,7 +33890,7 @@ export const listBrands: API.OperationMethod<
     ListBrandsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBrandsRequest,
   output: ListBrandsResponse,
   errors: [
@@ -33938,7 +33938,7 @@ export const listCustomPermissions: API.OperationMethod<
     ListCustomPermissionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomPermissionsRequest,
   output: ListCustomPermissionsResponse,
   errors: [
@@ -33986,7 +33986,7 @@ export const listDashboards: API.OperationMethod<
     ListDashboardsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDashboardsRequest,
   output: ListDashboardsResponse,
   errors: [
@@ -34033,7 +34033,7 @@ export const listDashboardVersions: API.OperationMethod<
     ListDashboardVersionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDashboardVersionsRequest,
   output: ListDashboardVersionsResponse,
   errors: [
@@ -34085,7 +34085,7 @@ export const listDataSets: API.OperationMethod<
     ListDataSetsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataSetsRequest,
   output: ListDataSetsResponse,
   errors: [
@@ -34132,7 +34132,7 @@ export const listDataSources: API.OperationMethod<
     ListDataSourcesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataSourcesRequest,
   output: ListDataSourcesResponse,
   errors: [
@@ -34178,7 +34178,7 @@ export const listFlows: API.OperationMethod<
     ListFlowsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFlowsInput,
   output: ListFlowsOutput,
   errors: [
@@ -34226,7 +34226,7 @@ export const listFolderMembers: API.OperationMethod<
     ListFolderMembersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFolderMembersRequest,
   output: ListFolderMembersResponse,
   errors: [
@@ -34277,7 +34277,7 @@ export const listFolders: API.OperationMethod<
     ListFoldersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersRequest,
   output: ListFoldersResponse,
   errors: [
@@ -34328,7 +34328,7 @@ export const listFoldersForResource: API.OperationMethod<
     ListFoldersForResourceError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersForResourceRequest,
   output: ListFoldersForResourceResponse,
   errors: [
@@ -34380,7 +34380,7 @@ export const listGroupMemberships: API.OperationMethod<
     ListGroupMembershipsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGroupMembershipsRequest,
   output: ListGroupMembershipsResponse,
   errors: [
@@ -34433,7 +34433,7 @@ export const listGroups: API.OperationMethod<
     ListGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGroupsRequest,
   output: ListGroupsResponse,
   errors: [
@@ -34486,7 +34486,7 @@ export const listIAMPolicyAssignments: API.OperationMethod<
     ListIAMPolicyAssignmentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIAMPolicyAssignmentsRequest,
   output: ListIAMPolicyAssignmentsResponse,
   errors: [
@@ -34542,7 +34542,7 @@ export const listIAMPolicyAssignmentsForUser: API.OperationMethod<
     ListIAMPolicyAssignmentsForUserError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIAMPolicyAssignmentsForUserRequest,
   output: ListIAMPolicyAssignmentsForUserResponse,
   errors: [
@@ -34578,7 +34578,7 @@ export const listIdentityPropagationConfigs: API.OperationMethod<
   ListIdentityPropagationConfigsResponse,
   ListIdentityPropagationConfigsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListIdentityPropagationConfigsRequest,
   output: ListIdentityPropagationConfigsResponse,
   errors: [
@@ -34621,7 +34621,7 @@ export const listIngestions: API.OperationMethod<
     ListIngestionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIngestionsRequest,
   output: ListIngestionsResponse,
   errors: [
@@ -34673,7 +34673,7 @@ export const listNamespaces: API.OperationMethod<
     ListNamespacesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNamespacesRequest,
   output: ListNamespacesResponse,
   errors: [
@@ -34709,7 +34709,7 @@ export const listRefreshSchedules: API.OperationMethod<
   ListRefreshSchedulesResponse,
   ListRefreshSchedulesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListRefreshSchedulesRequest,
   output: ListRefreshSchedulesResponse,
   errors: [
@@ -34755,7 +34755,7 @@ export const listRoleMemberships: API.OperationMethod<
     ListRoleMembershipsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRoleMembershipsRequest,
   output: ListRoleMembershipsResponse,
   errors: [
@@ -34795,7 +34795,7 @@ export const listSelfUpgrades: API.OperationMethod<
   ListSelfUpgradesResponse,
   ListSelfUpgradesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListSelfUpgradesRequest,
   output: ListSelfUpgradesResponse,
   errors: [
@@ -34825,7 +34825,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -34866,7 +34866,7 @@ export const listTemplateAliases: API.OperationMethod<
     ListTemplateAliasesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTemplateAliasesRequest,
   output: ListTemplateAliasesResponse,
   errors: [
@@ -34914,7 +34914,7 @@ export const listTemplates: API.OperationMethod<
     ListTemplatesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTemplatesRequest,
   output: ListTemplatesResponse,
   errors: [
@@ -34963,7 +34963,7 @@ export const listTemplateVersions: API.OperationMethod<
     ListTemplateVersionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTemplateVersionsRequest,
   output: ListTemplateVersionsResponse,
   errors: [
@@ -34998,7 +34998,7 @@ export const listThemeAliases: API.OperationMethod<
   ListThemeAliasesResponse,
   ListThemeAliasesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListThemeAliasesRequest,
   output: ListThemeAliasesResponse,
   errors: [
@@ -35043,7 +35043,7 @@ export const listThemes: API.OperationMethod<
     ListThemesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListThemesRequest,
   output: ListThemesResponse,
   errors: [
@@ -35094,7 +35094,7 @@ export const listThemeVersions: API.OperationMethod<
     ListThemeVersionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListThemeVersionsRequest,
   output: ListThemeVersionsResponse,
   errors: [
@@ -35131,7 +35131,7 @@ export const listTopicRefreshSchedules: API.OperationMethod<
   ListTopicRefreshSchedulesResponse,
   ListTopicRefreshSchedulesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTopicRefreshSchedulesRequest,
   output: ListTopicRefreshSchedulesResponse,
   errors: [
@@ -35160,7 +35160,7 @@ export const listTopicReviewedAnswers: API.OperationMethod<
   ListTopicReviewedAnswersResponse,
   ListTopicReviewedAnswersError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTopicReviewedAnswersRequest,
   output: ListTopicReviewedAnswersResponse,
   errors: [
@@ -35201,7 +35201,7 @@ export const listTopics: API.OperationMethod<
     ListTopicsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTopicsRequest,
   output: ListTopicsResponse,
   errors: [
@@ -35249,7 +35249,7 @@ export const listUserGroups: API.OperationMethod<
     ListUserGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUserGroupsRequest,
   output: ListUserGroupsResponse,
   errors: [
@@ -35301,7 +35301,7 @@ export const listUsers: API.OperationMethod<
     ListUsersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsersRequest,
   output: ListUsersResponse,
   errors: [
@@ -35353,7 +35353,7 @@ export const listVPCConnections: API.OperationMethod<
     ListVPCConnectionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVPCConnectionsRequest,
   output: ListVPCConnectionsResponse,
   errors: [
@@ -35388,7 +35388,7 @@ export const predictQAResults: API.OperationMethod<
   PredictQAResultsResponse,
   PredictQAResultsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PredictQAResultsRequest,
   output: PredictQAResultsResponse,
   errors: [
@@ -35416,7 +35416,7 @@ export const putDataSetRefreshProperties: API.OperationMethod<
   PutDataSetRefreshPropertiesResponse,
   PutDataSetRefreshPropertiesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutDataSetRefreshPropertiesRequest,
   output: PutDataSetRefreshPropertiesResponse,
   errors: [
@@ -35449,7 +35449,7 @@ export const registerUser: API.OperationMethod<
   RegisterUserResponse,
   RegisterUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterUserRequest,
   output: RegisterUserResponse,
   errors: [
@@ -35482,7 +35482,7 @@ export const restoreAnalysis: API.OperationMethod<
   RestoreAnalysisResponse,
   RestoreAnalysisError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RestoreAnalysisRequest,
   output: RestoreAnalysisResponse,
   errors: [
@@ -35525,7 +35525,7 @@ export const searchActionConnectors: API.OperationMethod<
     SearchActionConnectorsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchActionConnectorsRequest,
   output: SearchActionConnectorsResponse,
   errors: [
@@ -35574,7 +35574,7 @@ export const searchAnalyses: API.OperationMethod<
     SearchAnalysesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchAnalysesRequest,
   output: SearchAnalysesResponse,
   errors: [
@@ -35626,7 +35626,7 @@ export const searchDashboards: API.OperationMethod<
     SearchDashboardsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchDashboardsRequest,
   output: SearchDashboardsResponse,
   errors: [
@@ -35676,7 +35676,7 @@ export const searchDataSets: API.OperationMethod<
     SearchDataSetsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchDataSetsRequest,
   output: SearchDataSetsResponse,
   errors: [
@@ -35726,7 +35726,7 @@ export const searchDataSources: API.OperationMethod<
     SearchDataSourcesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchDataSourcesRequest,
   output: SearchDataSourcesResponse,
   errors: [
@@ -35773,7 +35773,7 @@ export const searchFlows: API.OperationMethod<
     SearchFlowsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchFlowsInput,
   output: SearchFlowsOutput,
   errors: [
@@ -35822,7 +35822,7 @@ export const searchFolders: API.OperationMethod<
     SearchFoldersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchFoldersRequest,
   output: SearchFoldersResponse,
   errors: [
@@ -35875,7 +35875,7 @@ export const searchGroups: API.OperationMethod<
     SearchGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchGroupsRequest,
   output: SearchGroupsResponse,
   errors: [
@@ -35926,7 +35926,7 @@ export const searchTopics: API.OperationMethod<
     SearchTopicsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchTopicsRequest,
   output: SearchTopicsResponse,
   errors: [
@@ -35972,7 +35972,7 @@ export const startAssetBundleExportJob: API.OperationMethod<
   StartAssetBundleExportJobResponse,
   StartAssetBundleExportJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartAssetBundleExportJobRequest,
   output: StartAssetBundleExportJobResponse,
   errors: [
@@ -36013,7 +36013,7 @@ export const startAssetBundleImportJob: API.OperationMethod<
   StartAssetBundleImportJobResponse,
   StartAssetBundleImportJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartAssetBundleImportJobRequest,
   output: StartAssetBundleImportJobResponse,
   errors: [
@@ -36042,7 +36042,7 @@ export const startAutomationJob: API.OperationMethod<
   StartAutomationJobResponse,
   StartAutomationJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartAutomationJobRequest,
   output: StartAutomationJobResponse,
   errors: [
@@ -36159,7 +36159,7 @@ export const startDashboardSnapshotJob: API.OperationMethod<
   StartDashboardSnapshotJobResponse,
   StartDashboardSnapshotJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartDashboardSnapshotJobRequest,
   output: StartDashboardSnapshotJobResponse,
   errors: [
@@ -36195,7 +36195,7 @@ export const startDashboardSnapshotJobSchedule: API.OperationMethod<
   StartDashboardSnapshotJobScheduleResponse,
   StartDashboardSnapshotJobScheduleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartDashboardSnapshotJobScheduleRequest,
   output: StartDashboardSnapshotJobScheduleResponse,
   errors: [
@@ -36244,7 +36244,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -36271,7 +36271,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -36304,7 +36304,7 @@ export const updateAccountCustomization: API.OperationMethod<
   UpdateAccountCustomizationResponse,
   UpdateAccountCustomizationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccountCustomizationRequest,
   output: UpdateAccountCustomizationResponse,
   errors: [
@@ -36332,7 +36332,7 @@ export const updateAccountCustomPermission: API.OperationMethod<
   UpdateAccountCustomPermissionResponse,
   UpdateAccountCustomPermissionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccountCustomPermissionRequest,
   output: UpdateAccountCustomPermissionResponse,
   errors: [
@@ -36359,7 +36359,7 @@ export const updateAccountSettings: API.OperationMethod<
   UpdateAccountSettingsResponse,
   UpdateAccountSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccountSettingsRequest,
   output: UpdateAccountSettingsResponse,
   errors: [
@@ -36389,7 +36389,7 @@ export const updateActionConnector: API.OperationMethod<
   UpdateActionConnectorResponse,
   UpdateActionConnectorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateActionConnectorRequest,
   output: UpdateActionConnectorResponse,
   errors: [
@@ -36419,7 +36419,7 @@ export const updateActionConnectorPermissions: API.OperationMethod<
   UpdateActionConnectorPermissionsResponse,
   UpdateActionConnectorPermissionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateActionConnectorPermissionsRequest,
   output: UpdateActionConnectorPermissionsResponse,
   errors: [
@@ -36450,7 +36450,7 @@ export const updateAnalysis: API.OperationMethod<
   UpdateAnalysisResponse,
   UpdateAnalysisError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAnalysisRequest,
   output: UpdateAnalysisResponse,
   errors: [
@@ -36480,7 +36480,7 @@ export const updateAnalysisPermissions: API.OperationMethod<
   UpdateAnalysisPermissionsResponse,
   UpdateAnalysisPermissionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAnalysisPermissionsRequest,
   output: UpdateAnalysisPermissionsResponse,
   errors: [
@@ -36510,7 +36510,7 @@ export const updateApplicationWithTokenExchangeGrant: API.OperationMethod<
   UpdateApplicationWithTokenExchangeGrantResponse,
   UpdateApplicationWithTokenExchangeGrantError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateApplicationWithTokenExchangeGrantRequest,
   output: UpdateApplicationWithTokenExchangeGrantResponse,
   errors: [
@@ -36539,7 +36539,7 @@ export const updateBrand: API.OperationMethod<
   UpdateBrandResponse,
   UpdateBrandError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateBrandRequest,
   output: UpdateBrandResponse,
   errors: [
@@ -36567,7 +36567,7 @@ export const updateBrandAssignment: API.OperationMethod<
   UpdateBrandAssignmentResponse,
   UpdateBrandAssignmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateBrandAssignmentRequest,
   output: UpdateBrandAssignmentResponse,
   errors: [
@@ -36595,7 +36595,7 @@ export const updateBrandPublishedVersion: API.OperationMethod<
   UpdateBrandPublishedVersionResponse,
   UpdateBrandPublishedVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateBrandPublishedVersionRequest,
   output: UpdateBrandPublishedVersionResponse,
   errors: [
@@ -36625,7 +36625,7 @@ export const updateCustomPermissions: API.OperationMethod<
   UpdateCustomPermissionsResponse,
   UpdateCustomPermissionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCustomPermissionsRequest,
   output: UpdateCustomPermissionsResponse,
   errors: [
@@ -36662,7 +36662,7 @@ export const updateDashboard: API.OperationMethod<
   UpdateDashboardResponse,
   UpdateDashboardError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDashboardRequest,
   output: UpdateDashboardResponse,
   errors: [
@@ -36692,7 +36692,7 @@ export const updateDashboardLinks: API.OperationMethod<
   UpdateDashboardLinksResponse,
   UpdateDashboardLinksError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDashboardLinksRequest,
   output: UpdateDashboardLinksResponse,
   errors: [
@@ -36722,7 +36722,7 @@ export const updateDashboardPermissions: API.OperationMethod<
   UpdateDashboardPermissionsResponse,
   UpdateDashboardPermissionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDashboardPermissionsRequest,
   output: UpdateDashboardPermissionsResponse,
   errors: [
@@ -36751,7 +36751,7 @@ export const updateDashboardPublishedVersion: API.OperationMethod<
   UpdateDashboardPublishedVersionResponse,
   UpdateDashboardPublishedVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDashboardPublishedVersionRequest,
   output: UpdateDashboardPublishedVersionResponse,
   errors: [
@@ -36779,7 +36779,7 @@ export const updateDashboardsQAConfiguration: API.OperationMethod<
   UpdateDashboardsQAConfigurationResponse,
   UpdateDashboardsQAConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDashboardsQAConfigurationRequest,
   output: UpdateDashboardsQAConfigurationResponse,
   errors: [
@@ -36811,7 +36811,7 @@ export const updateDataSet: API.OperationMethod<
   UpdateDataSetResponse,
   UpdateDataSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDataSetRequest,
   output: UpdateDataSetResponse,
   errors: [
@@ -36845,7 +36845,7 @@ export const updateDataSetPermissions: API.OperationMethod<
   UpdateDataSetPermissionsResponse,
   UpdateDataSetPermissionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDataSetPermissionsRequest,
   output: UpdateDataSetPermissionsResponse,
   errors: [
@@ -36874,7 +36874,7 @@ export const updateDataSource: API.OperationMethod<
   UpdateDataSourceResponse,
   UpdateDataSourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDataSourceRequest,
   output: UpdateDataSourceResponse,
   errors: [
@@ -36903,7 +36903,7 @@ export const updateDataSourcePermissions: API.OperationMethod<
   UpdateDataSourcePermissionsResponse,
   UpdateDataSourcePermissionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDataSourcePermissionsRequest,
   output: UpdateDataSourcePermissionsResponse,
   errors: [
@@ -36931,7 +36931,7 @@ export const updateDefaultQBusinessApplication: API.OperationMethod<
   UpdateDefaultQBusinessApplicationResponse,
   UpdateDefaultQBusinessApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDefaultQBusinessApplicationRequest,
   output: UpdateDefaultQBusinessApplicationResponse,
   errors: [
@@ -36957,7 +36957,7 @@ export const updateFlowPermissions: API.OperationMethod<
   UpdateFlowPermissionsOutput,
   UpdateFlowPermissionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateFlowPermissionsInput,
   output: UpdateFlowPermissionsOutput,
   errors: [
@@ -36985,7 +36985,7 @@ export const updateFolder: API.OperationMethod<
   UpdateFolderResponse,
   UpdateFolderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateFolderRequest,
   output: UpdateFolderResponse,
   errors: [
@@ -37016,7 +37016,7 @@ export const updateFolderPermissions: API.OperationMethod<
   UpdateFolderPermissionsResponse,
   UpdateFolderPermissionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateFolderPermissionsRequest,
   output: UpdateFolderPermissionsResponse,
   errors: [
@@ -37046,7 +37046,7 @@ export const updateGroup: API.OperationMethod<
   UpdateGroupResponse,
   UpdateGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateGroupRequest,
   output: UpdateGroupResponse,
   errors: [
@@ -37078,7 +37078,7 @@ export const updateIAMPolicyAssignment: API.OperationMethod<
   UpdateIAMPolicyAssignmentResponse,
   UpdateIAMPolicyAssignmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateIAMPolicyAssignmentRequest,
   output: UpdateIAMPolicyAssignmentResponse,
   errors: [
@@ -37108,7 +37108,7 @@ export const updateIdentityPropagationConfig: API.OperationMethod<
   UpdateIdentityPropagationConfigResponse,
   UpdateIdentityPropagationConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateIdentityPropagationConfigRequest,
   output: UpdateIdentityPropagationConfigResponse,
   errors: [
@@ -37135,7 +37135,7 @@ export const updateIpRestriction: API.OperationMethod<
   UpdateIpRestrictionResponse,
   UpdateIpRestrictionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateIpRestrictionRequest,
   output: UpdateIpRestrictionResponse,
   errors: [
@@ -37161,7 +37161,7 @@ export const updateKeyRegistration: API.OperationMethod<
   UpdateKeyRegistrationResponse,
   UpdateKeyRegistrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateKeyRegistrationRequest,
   output: UpdateKeyRegistrationResponse,
   errors: [
@@ -37208,7 +37208,7 @@ export const updatePublicSharingSettings: API.OperationMethod<
   UpdatePublicSharingSettingsResponse,
   UpdatePublicSharingSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePublicSharingSettingsRequest,
   output: UpdatePublicSharingSettingsResponse,
   errors: [
@@ -37237,7 +37237,7 @@ export const updateQPersonalizationConfiguration: API.OperationMethod<
   UpdateQPersonalizationConfigurationResponse,
   UpdateQPersonalizationConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateQPersonalizationConfigurationRequest,
   output: UpdateQPersonalizationConfigurationResponse,
   errors: [
@@ -37266,7 +37266,7 @@ export const updateQuickSightQSearchConfiguration: API.OperationMethod<
   UpdateQuickSightQSearchConfigurationResponse,
   UpdateQuickSightQSearchConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateQuickSightQSearchConfigurationRequest,
   output: UpdateQuickSightQSearchConfigurationResponse,
   errors: [
@@ -37295,7 +37295,7 @@ export const updateRefreshSchedule: API.OperationMethod<
   UpdateRefreshScheduleResponse,
   UpdateRefreshScheduleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRefreshScheduleRequest,
   output: UpdateRefreshScheduleResponse,
   errors: [
@@ -37325,7 +37325,7 @@ export const updateRoleCustomPermission: API.OperationMethod<
   UpdateRoleCustomPermissionResponse,
   UpdateRoleCustomPermissionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRoleCustomPermissionRequest,
   output: UpdateRoleCustomPermissionResponse,
   errors: [
@@ -37357,7 +37357,7 @@ export const updateSelfUpgrade: API.OperationMethod<
   UpdateSelfUpgradeResponse,
   UpdateSelfUpgradeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSelfUpgradeRequest,
   output: UpdateSelfUpgradeResponse,
   errors: [
@@ -37390,7 +37390,7 @@ export const updateSelfUpgradeConfiguration: API.OperationMethod<
   UpdateSelfUpgradeConfigurationResponse,
   UpdateSelfUpgradeConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSelfUpgradeConfigurationRequest,
   output: UpdateSelfUpgradeConfigurationResponse,
   errors: [
@@ -37419,7 +37419,7 @@ export const updateSPICECapacityConfiguration: API.OperationMethod<
   UpdateSPICECapacityConfigurationResponse,
   UpdateSPICECapacityConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSPICECapacityConfigurationRequest,
   output: UpdateSPICECapacityConfigurationResponse,
   errors: [
@@ -37448,7 +37448,7 @@ export const updateTemplate: API.OperationMethod<
   UpdateTemplateResponse,
   UpdateTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTemplateRequest,
   output: UpdateTemplateResponse,
   errors: [
@@ -37477,7 +37477,7 @@ export const updateTemplateAlias: API.OperationMethod<
   UpdateTemplateAliasResponse,
   UpdateTemplateAliasError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTemplateAliasRequest,
   output: UpdateTemplateAliasResponse,
   errors: [
@@ -37505,7 +37505,7 @@ export const updateTemplatePermissions: API.OperationMethod<
   UpdateTemplatePermissionsResponse,
   UpdateTemplatePermissionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTemplatePermissionsRequest,
   output: UpdateTemplatePermissionsResponse,
   errors: [
@@ -37536,7 +37536,7 @@ export const updateTheme: API.OperationMethod<
   UpdateThemeResponse,
   UpdateThemeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateThemeRequest,
   output: UpdateThemeResponse,
   errors: [
@@ -37567,7 +37567,7 @@ export const updateThemeAlias: API.OperationMethod<
   UpdateThemeAliasResponse,
   UpdateThemeAliasError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateThemeAliasRequest,
   output: UpdateThemeAliasResponse,
   errors: [
@@ -37637,7 +37637,7 @@ export const updateThemePermissions: API.OperationMethod<
   UpdateThemePermissionsResponse,
   UpdateThemePermissionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateThemePermissionsRequest,
   output: UpdateThemePermissionsResponse,
   errors: [
@@ -37668,7 +37668,7 @@ export const updateTopic: API.OperationMethod<
   UpdateTopicResponse,
   UpdateTopicError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTopicRequest,
   output: UpdateTopicResponse,
   errors: [
@@ -37700,7 +37700,7 @@ export const updateTopicPermissions: API.OperationMethod<
   UpdateTopicPermissionsResponse,
   UpdateTopicPermissionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTopicPermissionsRequest,
   output: UpdateTopicPermissionsResponse,
   errors: [
@@ -37732,7 +37732,7 @@ export const updateTopicRefreshSchedule: API.OperationMethod<
   UpdateTopicRefreshScheduleResponse,
   UpdateTopicRefreshScheduleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTopicRefreshScheduleRequest,
   output: UpdateTopicRefreshScheduleResponse,
   errors: [
@@ -37763,7 +37763,7 @@ export const updateUser: API.OperationMethod<
   UpdateUserResponse,
   UpdateUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateUserRequest,
   output: UpdateUserResponse,
   errors: [
@@ -37794,7 +37794,7 @@ export const updateUserCustomPermission: API.OperationMethod<
   UpdateUserCustomPermissionResponse,
   UpdateUserCustomPermissionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateUserCustomPermissionRequest,
   output: UpdateUserCustomPermissionResponse,
   errors: [
@@ -37826,7 +37826,7 @@ export const updateVPCConnection: API.OperationMethod<
   UpdateVPCConnectionResponse,
   UpdateVPCConnectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateVPCConnectionRequest,
   output: UpdateVPCConnectionResponse,
   errors: [

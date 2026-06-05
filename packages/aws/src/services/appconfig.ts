@@ -2110,7 +2110,7 @@ export const createApplication: API.OperationMethod<
   Application,
   CreateApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateApplicationRequest,
   output: Application,
   errors: [
@@ -2161,7 +2161,7 @@ export const createConfigurationProfile: API.OperationMethod<
   ConfigurationProfile,
   CreateConfigurationProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateConfigurationProfileRequest,
   output: ConfigurationProfile,
   errors: [
@@ -2187,7 +2187,7 @@ export const createDeploymentStrategy: API.OperationMethod<
   DeploymentStrategy,
   CreateDeploymentStrategyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDeploymentStrategyRequest,
   output: DeploymentStrategy,
   errors: [
@@ -2217,7 +2217,7 @@ export const createEnvironment: API.OperationMethod<
   Environment,
   CreateEnvironmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEnvironmentRequest,
   output: Environment,
   errors: [
@@ -2261,7 +2261,7 @@ export const createExtension: API.OperationMethod<
   Extension,
   CreateExtensionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateExtensionRequest,
   output: Extension,
   errors: [
@@ -2296,7 +2296,7 @@ export const createExtensionAssociation: API.OperationMethod<
   ExtensionAssociation,
   CreateExtensionAssociationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateExtensionAssociationRequest,
   output: ExtensionAssociation,
   errors: [
@@ -2325,7 +2325,7 @@ export const createHostedConfigurationVersion: API.OperationMethod<
   HostedConfigurationVersion,
   CreateHostedConfigurationVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateHostedConfigurationVersionRequest,
   output: HostedConfigurationVersion,
   errors: [
@@ -2350,7 +2350,7 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationResponse,
   DeleteApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteApplicationRequest,
   output: DeleteApplicationResponse,
   errors: [
@@ -2377,7 +2377,7 @@ export const deleteConfigurationProfile: API.OperationMethod<
   DeleteConfigurationProfileResponse,
   DeleteConfigurationProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConfigurationProfileRequest,
   output: DeleteConfigurationProfileResponse,
   errors: [
@@ -2400,7 +2400,7 @@ export const deleteDeploymentStrategy: API.OperationMethod<
   DeleteDeploymentStrategyResponse,
   DeleteDeploymentStrategyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDeploymentStrategyRequest,
   output: DeleteDeploymentStrategyResponse,
   errors: [
@@ -2426,7 +2426,7 @@ export const deleteEnvironment: API.OperationMethod<
   DeleteEnvironmentResponse,
   DeleteEnvironmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEnvironmentRequest,
   output: DeleteEnvironmentResponse,
   errors: [
@@ -2450,7 +2450,7 @@ export const deleteExtension: API.OperationMethod<
   DeleteExtensionResponse,
   DeleteExtensionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteExtensionRequest,
   output: DeleteExtensionResponse,
   errors: [
@@ -2473,7 +2473,7 @@ export const deleteExtensionAssociation: API.OperationMethod<
   DeleteExtensionAssociationResponse,
   DeleteExtensionAssociationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteExtensionAssociationRequest,
   output: DeleteExtensionAssociationResponse,
   errors: [
@@ -2496,7 +2496,7 @@ export const deleteHostedConfigurationVersion: API.OperationMethod<
   DeleteHostedConfigurationVersionResponse,
   DeleteHostedConfigurationVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteHostedConfigurationVersionRequest,
   output: DeleteHostedConfigurationVersionResponse,
   errors: [
@@ -2518,7 +2518,7 @@ export const getAccountSettings: API.OperationMethod<
   AccountSettings,
   GetAccountSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountSettingsRequest,
   output: AccountSettings,
   errors: [BadRequestException, InternalServerException],
@@ -2536,7 +2536,7 @@ export const getApplication: API.OperationMethod<
   Application,
   GetApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetApplicationRequest,
   output: Application,
   errors: [
@@ -2566,7 +2566,7 @@ export const getConfiguration: API.OperationMethod<
   Configuration,
   GetConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConfigurationRequest,
   output: Configuration,
   errors: [
@@ -2588,7 +2588,7 @@ export const getConfigurationProfile: API.OperationMethod<
   ConfigurationProfile,
   GetConfigurationProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConfigurationProfileRequest,
   output: ConfigurationProfile,
   errors: [
@@ -2610,7 +2610,7 @@ export const getDeployment: API.OperationMethod<
   Deployment,
   GetDeploymentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDeploymentRequest,
   output: Deployment,
   errors: [
@@ -2636,7 +2636,7 @@ export const getDeploymentStrategy: API.OperationMethod<
   DeploymentStrategy,
   GetDeploymentStrategyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDeploymentStrategyRequest,
   output: DeploymentStrategy,
   errors: [
@@ -2663,7 +2663,7 @@ export const getEnvironment: API.OperationMethod<
   Environment,
   GetEnvironmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEnvironmentRequest,
   output: Environment,
   errors: [
@@ -2685,7 +2685,7 @@ export const getExtension: API.OperationMethod<
   Extension,
   GetExtensionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetExtensionRequest,
   output: Extension,
   errors: [
@@ -2709,7 +2709,7 @@ export const getExtensionAssociation: API.OperationMethod<
   ExtensionAssociation,
   GetExtensionAssociationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetExtensionAssociationRequest,
   output: ExtensionAssociation,
   errors: [
@@ -2731,7 +2731,7 @@ export const getHostedConfigurationVersion: API.OperationMethod<
   HostedConfigurationVersion,
   GetHostedConfigurationVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetHostedConfigurationVersionRequest,
   output: HostedConfigurationVersion,
   errors: [
@@ -2767,7 +2767,7 @@ export const listApplications: API.OperationMethod<
     ListApplicationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationsRequest,
   output: Applications,
   errors: [BadRequestException, InternalServerException],
@@ -2806,7 +2806,7 @@ export const listConfigurationProfiles: API.OperationMethod<
     ListConfigurationProfilesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfigurationProfilesRequest,
   output: ConfigurationProfiles,
   errors: [
@@ -2849,7 +2849,7 @@ export const listDeployments: API.OperationMethod<
     ListDeploymentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDeploymentsRequest,
   output: Deployments,
   errors: [
@@ -2891,7 +2891,7 @@ export const listDeploymentStrategies: API.OperationMethod<
     ListDeploymentStrategiesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDeploymentStrategiesRequest,
   output: DeploymentStrategies,
   errors: [BadRequestException, InternalServerException],
@@ -2930,7 +2930,7 @@ export const listEnvironments: API.OperationMethod<
     ListEnvironmentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnvironmentsRequest,
   output: Environments,
   errors: [
@@ -2974,7 +2974,7 @@ export const listExtensionAssociations: API.OperationMethod<
     ListExtensionAssociationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExtensionAssociationsRequest,
   output: ExtensionAssociations,
   errors: [BadRequestException, InternalServerException],
@@ -3014,7 +3014,7 @@ export const listExtensions: API.OperationMethod<
     ListExtensionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExtensionsRequest,
   output: Extensions,
   errors: [BadRequestException, InternalServerException],
@@ -3054,7 +3054,7 @@ export const listHostedConfigurationVersions: API.OperationMethod<
     ListHostedConfigurationVersionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListHostedConfigurationVersionsRequest,
   output: HostedConfigurationVersions,
   errors: [
@@ -3082,7 +3082,7 @@ export const listTagsForResource: API.OperationMethod<
   ResourceTags,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ResourceTags,
   errors: [
@@ -3105,7 +3105,7 @@ export const startDeployment: API.OperationMethod<
   Deployment,
   StartDeploymentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartDeploymentRequest,
   output: Deployment,
   errors: [
@@ -3133,7 +3133,7 @@ export const stopDeployment: API.OperationMethod<
   Deployment,
   StopDeploymentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopDeploymentRequest,
   output: Deployment,
   errors: [
@@ -3157,7 +3157,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -3179,7 +3179,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -3200,7 +3200,7 @@ export const updateAccountSettings: API.OperationMethod<
   AccountSettings,
   UpdateAccountSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccountSettingsRequest,
   output: AccountSettings,
   errors: [BadRequestException, InternalServerException],
@@ -3218,7 +3218,7 @@ export const updateApplication: API.OperationMethod<
   Application,
   UpdateApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateApplicationRequest,
   output: Application,
   errors: [
@@ -3240,7 +3240,7 @@ export const updateConfigurationProfile: API.OperationMethod<
   ConfigurationProfile,
   UpdateConfigurationProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateConfigurationProfileRequest,
   output: ConfigurationProfile,
   errors: [
@@ -3262,7 +3262,7 @@ export const updateDeploymentStrategy: API.OperationMethod<
   DeploymentStrategy,
   UpdateDeploymentStrategyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDeploymentStrategyRequest,
   output: DeploymentStrategy,
   errors: [
@@ -3284,7 +3284,7 @@ export const updateEnvironment: API.OperationMethod<
   Environment,
   UpdateEnvironmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEnvironmentRequest,
   output: Environment,
   errors: [
@@ -3309,7 +3309,7 @@ export const updateExtension: API.OperationMethod<
   Extension,
   UpdateExtensionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateExtensionRequest,
   output: Extension,
   errors: [
@@ -3334,7 +3334,7 @@ export const updateExtensionAssociation: API.OperationMethod<
   ExtensionAssociation,
   UpdateExtensionAssociationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateExtensionAssociationRequest,
   output: ExtensionAssociation,
   errors: [
@@ -3356,7 +3356,7 @@ export const validateConfiguration: API.OperationMethod<
   ValidateConfigurationResponse,
   ValidateConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ValidateConfigurationRequest,
   output: ValidateConfigurationResponse,
   errors: [

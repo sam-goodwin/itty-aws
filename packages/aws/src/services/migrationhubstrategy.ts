@@ -1794,7 +1794,7 @@ export const getApplicationComponentDetails: API.OperationMethod<
   GetApplicationComponentDetailsResponse,
   GetApplicationComponentDetailsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetApplicationComponentDetailsRequest,
   output: GetApplicationComponentDetailsResponse,
   errors: [
@@ -1817,7 +1817,7 @@ export const getApplicationComponentStrategies: API.OperationMethod<
   GetApplicationComponentStrategiesResponse,
   GetApplicationComponentStrategiesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetApplicationComponentStrategiesRequest,
   output: GetApplicationComponentStrategiesResponse,
   errors: [
@@ -1840,7 +1840,7 @@ export const getAssessment: API.OperationMethod<
   GetAssessmentResponse,
   GetAssessmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAssessmentRequest,
   output: GetAssessmentResponse,
   errors: [
@@ -1865,7 +1865,7 @@ export const getImportFileTask: API.OperationMethod<
   GetImportFileTaskResponse,
   GetImportFileTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetImportFileTaskRequest,
   output: GetImportFileTaskResponse,
   errors: [
@@ -1890,7 +1890,7 @@ export const getLatestAssessmentId: API.OperationMethod<
   GetLatestAssessmentIdResponse,
   GetLatestAssessmentIdError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLatestAssessmentIdRequest,
   output: GetLatestAssessmentIdResponse,
   errors: [
@@ -1914,7 +1914,7 @@ export const getPortfolioPreferences: API.OperationMethod<
   GetPortfolioPreferencesResponse,
   GetPortfolioPreferencesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPortfolioPreferencesRequest,
   output: GetPortfolioPreferencesResponse,
   errors: [
@@ -1938,7 +1938,7 @@ export const getPortfolioSummary: API.OperationMethod<
   GetPortfolioSummaryResponse,
   GetPortfolioSummaryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPortfolioSummaryRequest,
   output: GetPortfolioSummaryResponse,
   errors: [AccessDeniedException, InternalServerException, ThrottlingException],
@@ -1958,7 +1958,7 @@ export const getRecommendationReportDetails: API.OperationMethod<
   GetRecommendationReportDetailsResponse,
   GetRecommendationReportDetailsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRecommendationReportDetailsRequest,
   output: GetRecommendationReportDetailsResponse,
   errors: [
@@ -1999,7 +1999,7 @@ export const getServerDetails: API.OperationMethod<
     GetServerDetailsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetServerDetailsRequest,
   output: GetServerDetailsResponse,
   errors: [
@@ -2031,7 +2031,7 @@ export const getServerStrategies: API.OperationMethod<
   GetServerStrategiesResponse,
   GetServerStrategiesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetServerStrategiesRequest,
   output: GetServerStrategiesResponse,
   errors: [
@@ -2071,7 +2071,7 @@ export const listAnalyzableServers: API.OperationMethod<
     ListAnalyzableServersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAnalyzableServersRequest,
   output: ListAnalyzableServersResponse,
   errors: [
@@ -2116,7 +2116,7 @@ export const listApplicationComponents: API.OperationMethod<
     ListApplicationComponentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationComponentsRequest,
   output: ListApplicationComponentsResponse,
   errors: [
@@ -2161,7 +2161,7 @@ export const listCollectors: API.OperationMethod<
     ListCollectorsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCollectorsRequest,
   output: ListCollectorsResponse,
   errors: [
@@ -2206,7 +2206,7 @@ export const listImportFileTask: API.OperationMethod<
     ListImportFileTaskError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImportFileTaskRequest,
   output: ListImportFileTaskResponse,
   errors: [
@@ -2251,7 +2251,7 @@ export const listServers: API.OperationMethod<
     ListServersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServersRequest,
   output: ListServersResponse,
   errors: [
@@ -2282,7 +2282,7 @@ export const putPortfolioPreferences: API.OperationMethod<
   PutPortfolioPreferencesResponse,
   PutPortfolioPreferencesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutPortfolioPreferencesRequest,
   output: PutPortfolioPreferencesResponse,
   errors: [
@@ -2307,7 +2307,7 @@ export const startAssessment: API.OperationMethod<
   StartAssessmentResponse,
   StartAssessmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartAssessmentRequest,
   output: StartAssessmentResponse,
   errors: [
@@ -2332,7 +2332,7 @@ export const startImportFileTask: API.OperationMethod<
   StartImportFileTaskResponse,
   StartImportFileTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartImportFileTaskRequest,
   output: StartImportFileTaskResponse,
   errors: [
@@ -2358,7 +2358,7 @@ export const startRecommendationReportGeneration: API.OperationMethod<
   StartRecommendationReportGenerationResponse,
   StartRecommendationReportGenerationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartRecommendationReportGenerationRequest,
   output: StartRecommendationReportGenerationResponse,
   errors: [
@@ -2383,7 +2383,7 @@ export const stopAssessment: API.OperationMethod<
   StopAssessmentResponse,
   StopAssessmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopAssessmentRequest,
   output: StopAssessmentResponse,
   errors: [
@@ -2407,7 +2407,7 @@ export const updateApplicationComponentConfig: API.OperationMethod<
   UpdateApplicationComponentConfigResponse,
   UpdateApplicationComponentConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateApplicationComponentConfigRequest,
   output: UpdateApplicationComponentConfigResponse,
   errors: [
@@ -2431,7 +2431,7 @@ export const updateServerConfig: API.OperationMethod<
   UpdateServerConfigResponse,
   UpdateServerConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateServerConfigRequest,
   output: UpdateServerConfigResponse,
   errors: [

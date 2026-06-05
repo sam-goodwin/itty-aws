@@ -1954,7 +1954,7 @@ export const batchGetServiceLevelObjectiveBudgetReport: API.OperationMethod<
   BatchGetServiceLevelObjectiveBudgetReportOutput,
   BatchGetServiceLevelObjectiveBudgetReportError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetServiceLevelObjectiveBudgetReportInput,
   output: BatchGetServiceLevelObjectiveBudgetReportOutput,
   errors: [ThrottlingException, ValidationException],
@@ -1972,7 +1972,7 @@ export const batchUpdateExclusionWindows: API.OperationMethod<
   BatchUpdateExclusionWindowsOutput,
   BatchUpdateExclusionWindowsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchUpdateExclusionWindowsInput,
   output: BatchUpdateExclusionWindowsOutput,
   errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
@@ -1990,7 +1990,7 @@ export const deleteGroupingConfiguration: API.OperationMethod<
   DeleteGroupingConfigurationOutput,
   DeleteGroupingConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteGroupingConfigurationRequest,
   output: DeleteGroupingConfigurationOutput,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
@@ -2007,7 +2007,7 @@ export const getService: API.OperationMethod<
   GetServiceOutput,
   GetServiceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetServiceInput,
   output: GetServiceOutput,
   errors: [ThrottlingException, ValidationException],
@@ -2024,7 +2024,7 @@ export const listAuditFindings: API.OperationMethod<
   ListAuditFindingsOutput,
   ListAuditFindingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListAuditFindingsInput,
   output: ListAuditFindingsOutput,
   errors: [ThrottlingException, ValidationException],
@@ -2056,7 +2056,7 @@ export const listEntityEvents: API.OperationMethod<
     ListEntityEventsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEntityEventsInput,
   output: ListEntityEventsOutput,
   errors: [ThrottlingException, ValidationException],
@@ -2080,7 +2080,7 @@ export const listGroupingAttributeDefinitions: API.OperationMethod<
   ListGroupingAttributeDefinitionsOutput,
   ListGroupingAttributeDefinitionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListGroupingAttributeDefinitionsInput,
   output: ListGroupingAttributeDefinitionsOutput,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
@@ -2112,7 +2112,7 @@ export const listServiceDependencies: API.OperationMethod<
     ListServiceDependenciesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServiceDependenciesInput,
   output: ListServiceDependenciesOutput,
   errors: [ThrottlingException, ValidationException],
@@ -2150,7 +2150,7 @@ export const listServiceDependents: API.OperationMethod<
     ListServiceDependentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServiceDependentsInput,
   output: ListServiceDependentsOutput,
   errors: [ThrottlingException, ValidationException],
@@ -2189,7 +2189,7 @@ export const listServiceLevelObjectiveExclusionWindows: API.OperationMethod<
     ListServiceLevelObjectiveExclusionWindowsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServiceLevelObjectiveExclusionWindowsInput,
   output: ListServiceLevelObjectiveExclusionWindowsOutput,
   errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
@@ -2227,7 +2227,7 @@ export const listServiceOperations: API.OperationMethod<
     ListServiceOperationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServiceOperationsInput,
   output: ListServiceOperationsOutput,
   errors: [ThrottlingException, ValidationException],
@@ -2265,7 +2265,7 @@ export const listServices: API.OperationMethod<
     ListServicesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicesInput,
   output: ListServicesOutput,
   errors: [ThrottlingException, ValidationException],
@@ -2303,7 +2303,7 @@ export const listServiceStates: API.OperationMethod<
     ListServiceStatesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServiceStatesInput,
   output: ListServiceStatesOutput,
   errors: [ThrottlingException, ValidationException],
@@ -2326,7 +2326,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException, ThrottlingException],
@@ -2344,7 +2344,7 @@ export const putGroupingConfiguration: API.OperationMethod<
   PutGroupingConfigurationOutput,
   PutGroupingConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutGroupingConfigurationInput,
   output: PutGroupingConfigurationOutput,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
@@ -2380,7 +2380,7 @@ export const startDiscovery: API.OperationMethod<
   StartDiscoveryOutput,
   StartDiscoveryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartDiscoveryInput,
   output: StartDiscoveryOutput,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
@@ -2406,7 +2406,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -2427,7 +2427,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException, ThrottlingException],
@@ -2489,7 +2489,7 @@ export const createServiceLevelObjective: API.OperationMethod<
   CreateServiceLevelObjectiveOutput,
   CreateServiceLevelObjectiveError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateServiceLevelObjectiveInput,
   output: CreateServiceLevelObjectiveOutput,
   errors: [
@@ -2513,7 +2513,7 @@ export const getServiceLevelObjective: API.OperationMethod<
   GetServiceLevelObjectiveOutput,
   GetServiceLevelObjectiveError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetServiceLevelObjectiveInput,
   output: GetServiceLevelObjectiveOutput,
   errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
@@ -2533,7 +2533,7 @@ export const updateServiceLevelObjective: API.OperationMethod<
   UpdateServiceLevelObjectiveOutput,
   UpdateServiceLevelObjectiveError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateServiceLevelObjectiveInput,
   output: UpdateServiceLevelObjectiveOutput,
   errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
@@ -2551,7 +2551,7 @@ export const deleteServiceLevelObjective: API.OperationMethod<
   DeleteServiceLevelObjectiveOutput,
   DeleteServiceLevelObjectiveError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteServiceLevelObjectiveInput,
   output: DeleteServiceLevelObjectiveOutput,
   errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
@@ -2583,7 +2583,7 @@ export const listServiceLevelObjectives: API.OperationMethod<
     ListServiceLevelObjectivesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServiceLevelObjectivesInput,
   output: ListServiceLevelObjectivesOutput,
   errors: [ThrottlingException, ValidationException],

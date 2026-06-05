@@ -11829,7 +11829,7 @@ export const createApp: API.OperationMethod<
   CreateAppResponse,
   CreateAppError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAppRequest,
   output: CreateAppResponse,
   errors: [
@@ -11859,7 +11859,7 @@ export const createCampaign: API.OperationMethod<
   CreateCampaignResponse,
   CreateCampaignError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCampaignRequest,
   output: CreateCampaignResponse,
   errors: [
@@ -11887,7 +11887,7 @@ export const createEmailTemplate: API.OperationMethod<
   CreateEmailTemplateResponse,
   CreateEmailTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEmailTemplateRequest,
   output: CreateEmailTemplateResponse,
   errors: [
@@ -11915,7 +11915,7 @@ export const createExportJob: API.OperationMethod<
   CreateExportJobResponse,
   CreateExportJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateExportJobRequest,
   output: CreateExportJobResponse,
   errors: [
@@ -11945,7 +11945,7 @@ export const createImportJob: API.OperationMethod<
   CreateImportJobResponse,
   CreateImportJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateImportJobRequest,
   output: CreateImportJobResponse,
   errors: [
@@ -11973,7 +11973,7 @@ export const createInAppTemplate: API.OperationMethod<
   CreateInAppTemplateResponse,
   CreateInAppTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateInAppTemplateRequest,
   output: CreateInAppTemplateResponse,
   errors: [
@@ -12001,7 +12001,7 @@ export const createJourney: API.OperationMethod<
   CreateJourneyResponse,
   CreateJourneyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateJourneyRequest,
   output: CreateJourneyResponse,
   errors: [
@@ -12029,7 +12029,7 @@ export const createPushTemplate: API.OperationMethod<
   CreatePushTemplateResponse,
   CreatePushTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePushTemplateRequest,
   output: CreatePushTemplateResponse,
   errors: [
@@ -12057,7 +12057,7 @@ export const createRecommenderConfiguration: API.OperationMethod<
   CreateRecommenderConfigurationResponse,
   CreateRecommenderConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRecommenderConfigurationRequest,
   output: CreateRecommenderConfigurationResponse,
   errors: [
@@ -12087,7 +12087,7 @@ export const createSegment: API.OperationMethod<
   CreateSegmentResponse,
   CreateSegmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSegmentRequest,
   output: CreateSegmentResponse,
   errors: [
@@ -12115,7 +12115,7 @@ export const createSmsTemplate: API.OperationMethod<
   CreateSmsTemplateResponse,
   CreateSmsTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSmsTemplateRequest,
   output: CreateSmsTemplateResponse,
   errors: [
@@ -12141,7 +12141,7 @@ export const createVoiceTemplate: API.OperationMethod<
   CreateVoiceTemplateResponse,
   CreateVoiceTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateVoiceTemplateRequest,
   output: CreateVoiceTemplateResponse,
   errors: [
@@ -12169,7 +12169,7 @@ export const deleteAdmChannel: API.OperationMethod<
   DeleteAdmChannelResponse,
   DeleteAdmChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAdmChannelRequest,
   output: DeleteAdmChannelResponse,
   errors: [
@@ -12199,7 +12199,7 @@ export const deleteApnsChannel: API.OperationMethod<
   DeleteApnsChannelResponse,
   DeleteApnsChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteApnsChannelRequest,
   output: DeleteApnsChannelResponse,
   errors: [
@@ -12229,7 +12229,7 @@ export const deleteApnsSandboxChannel: API.OperationMethod<
   DeleteApnsSandboxChannelResponse,
   DeleteApnsSandboxChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteApnsSandboxChannelRequest,
   output: DeleteApnsSandboxChannelResponse,
   errors: [
@@ -12259,7 +12259,7 @@ export const deleteApnsVoipChannel: API.OperationMethod<
   DeleteApnsVoipChannelResponse,
   DeleteApnsVoipChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteApnsVoipChannelRequest,
   output: DeleteApnsVoipChannelResponse,
   errors: [
@@ -12289,7 +12289,7 @@ export const deleteApnsVoipSandboxChannel: API.OperationMethod<
   DeleteApnsVoipSandboxChannelResponse,
   DeleteApnsVoipSandboxChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteApnsVoipSandboxChannelRequest,
   output: DeleteApnsVoipSandboxChannelResponse,
   errors: [
@@ -12319,7 +12319,7 @@ export const deleteApp: API.OperationMethod<
   DeleteAppResponse,
   DeleteAppError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAppRequest,
   output: DeleteAppResponse,
   errors: [
@@ -12349,7 +12349,7 @@ export const deleteBaiduChannel: API.OperationMethod<
   DeleteBaiduChannelResponse,
   DeleteBaiduChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteBaiduChannelRequest,
   output: DeleteBaiduChannelResponse,
   errors: [
@@ -12379,7 +12379,7 @@ export const deleteCampaign: API.OperationMethod<
   DeleteCampaignResponse,
   DeleteCampaignError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCampaignRequest,
   output: DeleteCampaignResponse,
   errors: [
@@ -12409,7 +12409,7 @@ export const deleteEmailChannel: API.OperationMethod<
   DeleteEmailChannelResponse,
   DeleteEmailChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEmailChannelRequest,
   output: DeleteEmailChannelResponse,
   errors: [
@@ -12439,7 +12439,7 @@ export const deleteEmailTemplate: API.OperationMethod<
   DeleteEmailTemplateResponse,
   DeleteEmailTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEmailTemplateRequest,
   output: DeleteEmailTemplateResponse,
   errors: [
@@ -12469,7 +12469,7 @@ export const deleteEndpoint: API.OperationMethod<
   DeleteEndpointResponse,
   DeleteEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEndpointRequest,
   output: DeleteEndpointResponse,
   errors: [
@@ -12499,7 +12499,7 @@ export const deleteEventStream: API.OperationMethod<
   DeleteEventStreamResponse,
   DeleteEventStreamError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEventStreamRequest,
   output: DeleteEventStreamResponse,
   errors: [
@@ -12529,7 +12529,7 @@ export const deleteGcmChannel: API.OperationMethod<
   DeleteGcmChannelResponse,
   DeleteGcmChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteGcmChannelRequest,
   output: DeleteGcmChannelResponse,
   errors: [
@@ -12559,7 +12559,7 @@ export const deleteInAppTemplate: API.OperationMethod<
   DeleteInAppTemplateResponse,
   DeleteInAppTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteInAppTemplateRequest,
   output: DeleteInAppTemplateResponse,
   errors: [
@@ -12589,7 +12589,7 @@ export const deleteJourney: API.OperationMethod<
   DeleteJourneyResponse,
   DeleteJourneyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteJourneyRequest,
   output: DeleteJourneyResponse,
   errors: [
@@ -12619,7 +12619,7 @@ export const deletePushTemplate: API.OperationMethod<
   DeletePushTemplateResponse,
   DeletePushTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePushTemplateRequest,
   output: DeletePushTemplateResponse,
   errors: [
@@ -12649,7 +12649,7 @@ export const deleteRecommenderConfiguration: API.OperationMethod<
   DeleteRecommenderConfigurationResponse,
   DeleteRecommenderConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRecommenderConfigurationRequest,
   output: DeleteRecommenderConfigurationResponse,
   errors: [
@@ -12679,7 +12679,7 @@ export const deleteSegment: API.OperationMethod<
   DeleteSegmentResponse,
   DeleteSegmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSegmentRequest,
   output: DeleteSegmentResponse,
   errors: [
@@ -12709,7 +12709,7 @@ export const deleteSmsChannel: API.OperationMethod<
   DeleteSmsChannelResponse,
   DeleteSmsChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSmsChannelRequest,
   output: DeleteSmsChannelResponse,
   errors: [
@@ -12739,7 +12739,7 @@ export const deleteSmsTemplate: API.OperationMethod<
   DeleteSmsTemplateResponse,
   DeleteSmsTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSmsTemplateRequest,
   output: DeleteSmsTemplateResponse,
   errors: [
@@ -12769,7 +12769,7 @@ export const deleteUserEndpoints: API.OperationMethod<
   DeleteUserEndpointsResponse,
   DeleteUserEndpointsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteUserEndpointsRequest,
   output: DeleteUserEndpointsResponse,
   errors: [
@@ -12799,7 +12799,7 @@ export const deleteVoiceChannel: API.OperationMethod<
   DeleteVoiceChannelResponse,
   DeleteVoiceChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteVoiceChannelRequest,
   output: DeleteVoiceChannelResponse,
   errors: [
@@ -12829,7 +12829,7 @@ export const deleteVoiceTemplate: API.OperationMethod<
   DeleteVoiceTemplateResponse,
   DeleteVoiceTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteVoiceTemplateRequest,
   output: DeleteVoiceTemplateResponse,
   errors: [
@@ -12859,7 +12859,7 @@ export const getAdmChannel: API.OperationMethod<
   GetAdmChannelResponse,
   GetAdmChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAdmChannelRequest,
   output: GetAdmChannelResponse,
   errors: [
@@ -12889,7 +12889,7 @@ export const getApnsChannel: API.OperationMethod<
   GetApnsChannelResponse,
   GetApnsChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetApnsChannelRequest,
   output: GetApnsChannelResponse,
   errors: [
@@ -12919,7 +12919,7 @@ export const getApnsSandboxChannel: API.OperationMethod<
   GetApnsSandboxChannelResponse,
   GetApnsSandboxChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetApnsSandboxChannelRequest,
   output: GetApnsSandboxChannelResponse,
   errors: [
@@ -12949,7 +12949,7 @@ export const getApnsVoipChannel: API.OperationMethod<
   GetApnsVoipChannelResponse,
   GetApnsVoipChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetApnsVoipChannelRequest,
   output: GetApnsVoipChannelResponse,
   errors: [
@@ -12979,7 +12979,7 @@ export const getApnsVoipSandboxChannel: API.OperationMethod<
   GetApnsVoipSandboxChannelResponse,
   GetApnsVoipSandboxChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetApnsVoipSandboxChannelRequest,
   output: GetApnsVoipSandboxChannelResponse,
   errors: [
@@ -13009,7 +13009,7 @@ export const getApp: API.OperationMethod<
   GetAppResponse,
   GetAppError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAppRequest,
   output: GetAppResponse,
   errors: [
@@ -13039,7 +13039,7 @@ export const getApplicationDateRangeKpi: API.OperationMethod<
   GetApplicationDateRangeKpiResponse,
   GetApplicationDateRangeKpiError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetApplicationDateRangeKpiRequest,
   output: GetApplicationDateRangeKpiResponse,
   errors: [
@@ -13069,7 +13069,7 @@ export const getApplicationSettings: API.OperationMethod<
   GetApplicationSettingsResponse,
   GetApplicationSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetApplicationSettingsRequest,
   output: GetApplicationSettingsResponse,
   errors: [
@@ -13099,7 +13099,7 @@ export const getApps: API.OperationMethod<
   GetAppsResponse,
   GetAppsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAppsRequest,
   output: GetAppsResponse,
   errors: [
@@ -13129,7 +13129,7 @@ export const getBaiduChannel: API.OperationMethod<
   GetBaiduChannelResponse,
   GetBaiduChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetBaiduChannelRequest,
   output: GetBaiduChannelResponse,
   errors: [
@@ -13159,7 +13159,7 @@ export const getCampaign: API.OperationMethod<
   GetCampaignResponse,
   GetCampaignError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCampaignRequest,
   output: GetCampaignResponse,
   errors: [
@@ -13189,7 +13189,7 @@ export const getCampaignActivities: API.OperationMethod<
   GetCampaignActivitiesResponse,
   GetCampaignActivitiesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCampaignActivitiesRequest,
   output: GetCampaignActivitiesResponse,
   errors: [
@@ -13219,7 +13219,7 @@ export const getCampaignDateRangeKpi: API.OperationMethod<
   GetCampaignDateRangeKpiResponse,
   GetCampaignDateRangeKpiError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCampaignDateRangeKpiRequest,
   output: GetCampaignDateRangeKpiResponse,
   errors: [
@@ -13249,7 +13249,7 @@ export const getCampaigns: API.OperationMethod<
   GetCampaignsResponse,
   GetCampaignsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCampaignsRequest,
   output: GetCampaignsResponse,
   errors: [
@@ -13279,7 +13279,7 @@ export const getCampaignVersion: API.OperationMethod<
   GetCampaignVersionResponse,
   GetCampaignVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCampaignVersionRequest,
   output: GetCampaignVersionResponse,
   errors: [
@@ -13309,7 +13309,7 @@ export const getCampaignVersions: API.OperationMethod<
   GetCampaignVersionsResponse,
   GetCampaignVersionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCampaignVersionsRequest,
   output: GetCampaignVersionsResponse,
   errors: [
@@ -13339,7 +13339,7 @@ export const getChannels: API.OperationMethod<
   GetChannelsResponse,
   GetChannelsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetChannelsRequest,
   output: GetChannelsResponse,
   errors: [
@@ -13369,7 +13369,7 @@ export const getEmailChannel: API.OperationMethod<
   GetEmailChannelResponse,
   GetEmailChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEmailChannelRequest,
   output: GetEmailChannelResponse,
   errors: [
@@ -13399,7 +13399,7 @@ export const getEmailTemplate: API.OperationMethod<
   GetEmailTemplateResponse,
   GetEmailTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEmailTemplateRequest,
   output: GetEmailTemplateResponse,
   errors: [
@@ -13429,7 +13429,7 @@ export const getEndpoint: API.OperationMethod<
   GetEndpointResponse,
   GetEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEndpointRequest,
   output: GetEndpointResponse,
   errors: [
@@ -13459,7 +13459,7 @@ export const getEventStream: API.OperationMethod<
   GetEventStreamResponse,
   GetEventStreamError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEventStreamRequest,
   output: GetEventStreamResponse,
   errors: [
@@ -13489,7 +13489,7 @@ export const getExportJob: API.OperationMethod<
   GetExportJobResponse,
   GetExportJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetExportJobRequest,
   output: GetExportJobResponse,
   errors: [
@@ -13519,7 +13519,7 @@ export const getExportJobs: API.OperationMethod<
   GetExportJobsResponse,
   GetExportJobsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetExportJobsRequest,
   output: GetExportJobsResponse,
   errors: [
@@ -13549,7 +13549,7 @@ export const getGcmChannel: API.OperationMethod<
   GetGcmChannelResponse,
   GetGcmChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetGcmChannelRequest,
   output: GetGcmChannelResponse,
   errors: [
@@ -13579,7 +13579,7 @@ export const getImportJob: API.OperationMethod<
   GetImportJobResponse,
   GetImportJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetImportJobRequest,
   output: GetImportJobResponse,
   errors: [
@@ -13609,7 +13609,7 @@ export const getImportJobs: API.OperationMethod<
   GetImportJobsResponse,
   GetImportJobsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetImportJobsRequest,
   output: GetImportJobsResponse,
   errors: [
@@ -13639,7 +13639,7 @@ export const getInAppMessages: API.OperationMethod<
   GetInAppMessagesResponse,
   GetInAppMessagesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInAppMessagesRequest,
   output: GetInAppMessagesResponse,
   errors: [
@@ -13669,7 +13669,7 @@ export const getInAppTemplate: API.OperationMethod<
   GetInAppTemplateResponse,
   GetInAppTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInAppTemplateRequest,
   output: GetInAppTemplateResponse,
   errors: [
@@ -13699,7 +13699,7 @@ export const getJourney: API.OperationMethod<
   GetJourneyResponse,
   GetJourneyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetJourneyRequest,
   output: GetJourneyResponse,
   errors: [
@@ -13729,7 +13729,7 @@ export const getJourneyDateRangeKpi: API.OperationMethod<
   GetJourneyDateRangeKpiResponse,
   GetJourneyDateRangeKpiError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetJourneyDateRangeKpiRequest,
   output: GetJourneyDateRangeKpiResponse,
   errors: [
@@ -13759,7 +13759,7 @@ export const getJourneyExecutionActivityMetrics: API.OperationMethod<
   GetJourneyExecutionActivityMetricsResponse,
   GetJourneyExecutionActivityMetricsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetJourneyExecutionActivityMetricsRequest,
   output: GetJourneyExecutionActivityMetricsResponse,
   errors: [
@@ -13789,7 +13789,7 @@ export const getJourneyExecutionMetrics: API.OperationMethod<
   GetJourneyExecutionMetricsResponse,
   GetJourneyExecutionMetricsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetJourneyExecutionMetricsRequest,
   output: GetJourneyExecutionMetricsResponse,
   errors: [
@@ -13819,7 +13819,7 @@ export const getJourneyRunExecutionActivityMetrics: API.OperationMethod<
   GetJourneyRunExecutionActivityMetricsResponse,
   GetJourneyRunExecutionActivityMetricsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetJourneyRunExecutionActivityMetricsRequest,
   output: GetJourneyRunExecutionActivityMetricsResponse,
   errors: [
@@ -13849,7 +13849,7 @@ export const getJourneyRunExecutionMetrics: API.OperationMethod<
   GetJourneyRunExecutionMetricsResponse,
   GetJourneyRunExecutionMetricsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetJourneyRunExecutionMetricsRequest,
   output: GetJourneyRunExecutionMetricsResponse,
   errors: [
@@ -13879,7 +13879,7 @@ export const getJourneyRuns: API.OperationMethod<
   GetJourneyRunsResponse,
   GetJourneyRunsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetJourneyRunsRequest,
   output: GetJourneyRunsResponse,
   errors: [
@@ -13909,7 +13909,7 @@ export const getPushTemplate: API.OperationMethod<
   GetPushTemplateResponse,
   GetPushTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPushTemplateRequest,
   output: GetPushTemplateResponse,
   errors: [
@@ -13939,7 +13939,7 @@ export const getRecommenderConfiguration: API.OperationMethod<
   GetRecommenderConfigurationResponse,
   GetRecommenderConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRecommenderConfigurationRequest,
   output: GetRecommenderConfigurationResponse,
   errors: [
@@ -13969,7 +13969,7 @@ export const getRecommenderConfigurations: API.OperationMethod<
   GetRecommenderConfigurationsResponse,
   GetRecommenderConfigurationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRecommenderConfigurationsRequest,
   output: GetRecommenderConfigurationsResponse,
   errors: [
@@ -13999,7 +13999,7 @@ export const getSegment: API.OperationMethod<
   GetSegmentResponse,
   GetSegmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSegmentRequest,
   output: GetSegmentResponse,
   errors: [
@@ -14029,7 +14029,7 @@ export const getSegmentExportJobs: API.OperationMethod<
   GetSegmentExportJobsResponse,
   GetSegmentExportJobsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSegmentExportJobsRequest,
   output: GetSegmentExportJobsResponse,
   errors: [
@@ -14059,7 +14059,7 @@ export const getSegmentImportJobs: API.OperationMethod<
   GetSegmentImportJobsResponse,
   GetSegmentImportJobsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSegmentImportJobsRequest,
   output: GetSegmentImportJobsResponse,
   errors: [
@@ -14089,7 +14089,7 @@ export const getSegments: API.OperationMethod<
   GetSegmentsResponse,
   GetSegmentsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSegmentsRequest,
   output: GetSegmentsResponse,
   errors: [
@@ -14119,7 +14119,7 @@ export const getSegmentVersion: API.OperationMethod<
   GetSegmentVersionResponse,
   GetSegmentVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSegmentVersionRequest,
   output: GetSegmentVersionResponse,
   errors: [
@@ -14149,7 +14149,7 @@ export const getSegmentVersions: API.OperationMethod<
   GetSegmentVersionsResponse,
   GetSegmentVersionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSegmentVersionsRequest,
   output: GetSegmentVersionsResponse,
   errors: [
@@ -14179,7 +14179,7 @@ export const getSmsChannel: API.OperationMethod<
   GetSmsChannelResponse,
   GetSmsChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSmsChannelRequest,
   output: GetSmsChannelResponse,
   errors: [
@@ -14209,7 +14209,7 @@ export const getSmsTemplate: API.OperationMethod<
   GetSmsTemplateResponse,
   GetSmsTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSmsTemplateRequest,
   output: GetSmsTemplateResponse,
   errors: [
@@ -14239,7 +14239,7 @@ export const getUserEndpoints: API.OperationMethod<
   GetUserEndpointsResponse,
   GetUserEndpointsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUserEndpointsRequest,
   output: GetUserEndpointsResponse,
   errors: [
@@ -14269,7 +14269,7 @@ export const getVoiceChannel: API.OperationMethod<
   GetVoiceChannelResponse,
   GetVoiceChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetVoiceChannelRequest,
   output: GetVoiceChannelResponse,
   errors: [
@@ -14299,7 +14299,7 @@ export const getVoiceTemplate: API.OperationMethod<
   GetVoiceTemplateResponse,
   GetVoiceTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetVoiceTemplateRequest,
   output: GetVoiceTemplateResponse,
   errors: [
@@ -14329,7 +14329,7 @@ export const listJourneys: API.OperationMethod<
   ListJourneysResponse,
   ListJourneysError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListJourneysRequest,
   output: ListJourneysResponse,
   errors: [
@@ -14351,7 +14351,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [],
@@ -14371,7 +14371,7 @@ export const listTemplates: API.OperationMethod<
   ListTemplatesResponse,
   ListTemplatesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTemplatesRequest,
   output: ListTemplatesResponse,
   errors: [
@@ -14399,7 +14399,7 @@ export const listTemplateVersions: API.OperationMethod<
   ListTemplateVersionsResponse,
   ListTemplateVersionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTemplateVersionsRequest,
   output: ListTemplateVersionsResponse,
   errors: [
@@ -14429,7 +14429,7 @@ export const phoneNumberValidate: API.OperationMethod<
   PhoneNumberValidateResponse,
   PhoneNumberValidateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PhoneNumberValidateRequest,
   output: PhoneNumberValidateResponse,
   errors: [
@@ -14459,7 +14459,7 @@ export const putEvents: API.OperationMethod<
   PutEventsResponse,
   PutEventsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutEventsRequest,
   output: PutEventsResponse,
   errors: [
@@ -14489,7 +14489,7 @@ export const putEventStream: API.OperationMethod<
   PutEventStreamResponse,
   PutEventStreamError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutEventStreamRequest,
   output: PutEventStreamResponse,
   errors: [
@@ -14519,7 +14519,7 @@ export const removeAttributes: API.OperationMethod<
   RemoveAttributesResponse,
   RemoveAttributesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveAttributesRequest,
   output: RemoveAttributesResponse,
   errors: [
@@ -14549,7 +14549,7 @@ export const sendMessages: API.OperationMethod<
   SendMessagesResponse,
   SendMessagesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendMessagesRequest,
   output: SendMessagesResponse,
   errors: [
@@ -14579,7 +14579,7 @@ export const sendOTPMessage: API.OperationMethod<
   SendOTPMessageResponse,
   SendOTPMessageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendOTPMessageRequest,
   output: SendOTPMessageResponse,
   errors: [
@@ -14609,7 +14609,7 @@ export const sendUsersMessages: API.OperationMethod<
   SendUsersMessagesResponse,
   SendUsersMessagesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendUsersMessagesRequest,
   output: SendUsersMessagesResponse,
   errors: [
@@ -14631,7 +14631,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [],
@@ -14645,7 +14645,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [],
@@ -14667,7 +14667,7 @@ export const updateAdmChannel: API.OperationMethod<
   UpdateAdmChannelResponse,
   UpdateAdmChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAdmChannelRequest,
   output: UpdateAdmChannelResponse,
   errors: [
@@ -14697,7 +14697,7 @@ export const updateApnsChannel: API.OperationMethod<
   UpdateApnsChannelResponse,
   UpdateApnsChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateApnsChannelRequest,
   output: UpdateApnsChannelResponse,
   errors: [
@@ -14727,7 +14727,7 @@ export const updateApnsSandboxChannel: API.OperationMethod<
   UpdateApnsSandboxChannelResponse,
   UpdateApnsSandboxChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateApnsSandboxChannelRequest,
   output: UpdateApnsSandboxChannelResponse,
   errors: [
@@ -14757,7 +14757,7 @@ export const updateApnsVoipChannel: API.OperationMethod<
   UpdateApnsVoipChannelResponse,
   UpdateApnsVoipChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateApnsVoipChannelRequest,
   output: UpdateApnsVoipChannelResponse,
   errors: [
@@ -14787,7 +14787,7 @@ export const updateApnsVoipSandboxChannel: API.OperationMethod<
   UpdateApnsVoipSandboxChannelResponse,
   UpdateApnsVoipSandboxChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateApnsVoipSandboxChannelRequest,
   output: UpdateApnsVoipSandboxChannelResponse,
   errors: [
@@ -14817,7 +14817,7 @@ export const updateApplicationSettings: API.OperationMethod<
   UpdateApplicationSettingsResponse,
   UpdateApplicationSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateApplicationSettingsRequest,
   output: UpdateApplicationSettingsResponse,
   errors: [
@@ -14847,7 +14847,7 @@ export const updateBaiduChannel: API.OperationMethod<
   UpdateBaiduChannelResponse,
   UpdateBaiduChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateBaiduChannelRequest,
   output: UpdateBaiduChannelResponse,
   errors: [
@@ -14877,7 +14877,7 @@ export const updateCampaign: API.OperationMethod<
   UpdateCampaignResponse,
   UpdateCampaignError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCampaignRequest,
   output: UpdateCampaignResponse,
   errors: [
@@ -14907,7 +14907,7 @@ export const updateEmailChannel: API.OperationMethod<
   UpdateEmailChannelResponse,
   UpdateEmailChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEmailChannelRequest,
   output: UpdateEmailChannelResponse,
   errors: [
@@ -14937,7 +14937,7 @@ export const updateEmailTemplate: API.OperationMethod<
   UpdateEmailTemplateResponse,
   UpdateEmailTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEmailTemplateRequest,
   output: UpdateEmailTemplateResponse,
   errors: [
@@ -14967,7 +14967,7 @@ export const updateEndpoint: API.OperationMethod<
   UpdateEndpointResponse,
   UpdateEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEndpointRequest,
   output: UpdateEndpointResponse,
   errors: [
@@ -14997,7 +14997,7 @@ export const updateEndpointsBatch: API.OperationMethod<
   UpdateEndpointsBatchResponse,
   UpdateEndpointsBatchError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEndpointsBatchRequest,
   output: UpdateEndpointsBatchResponse,
   errors: [
@@ -15027,7 +15027,7 @@ export const updateGcmChannel: API.OperationMethod<
   UpdateGcmChannelResponse,
   UpdateGcmChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateGcmChannelRequest,
   output: UpdateGcmChannelResponse,
   errors: [
@@ -15057,7 +15057,7 @@ export const updateInAppTemplate: API.OperationMethod<
   UpdateInAppTemplateResponse,
   UpdateInAppTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateInAppTemplateRequest,
   output: UpdateInAppTemplateResponse,
   errors: [
@@ -15088,7 +15088,7 @@ export const updateJourney: API.OperationMethod<
   UpdateJourneyResponse,
   UpdateJourneyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateJourneyRequest,
   output: UpdateJourneyResponse,
   errors: [
@@ -15119,7 +15119,7 @@ export const updateJourneyState: API.OperationMethod<
   UpdateJourneyStateResponse,
   UpdateJourneyStateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateJourneyStateRequest,
   output: UpdateJourneyStateResponse,
   errors: [
@@ -15149,7 +15149,7 @@ export const updatePushTemplate: API.OperationMethod<
   UpdatePushTemplateResponse,
   UpdatePushTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePushTemplateRequest,
   output: UpdatePushTemplateResponse,
   errors: [
@@ -15179,7 +15179,7 @@ export const updateRecommenderConfiguration: API.OperationMethod<
   UpdateRecommenderConfigurationResponse,
   UpdateRecommenderConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRecommenderConfigurationRequest,
   output: UpdateRecommenderConfigurationResponse,
   errors: [
@@ -15209,7 +15209,7 @@ export const updateSegment: API.OperationMethod<
   UpdateSegmentResponse,
   UpdateSegmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSegmentRequest,
   output: UpdateSegmentResponse,
   errors: [
@@ -15239,7 +15239,7 @@ export const updateSmsChannel: API.OperationMethod<
   UpdateSmsChannelResponse,
   UpdateSmsChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSmsChannelRequest,
   output: UpdateSmsChannelResponse,
   errors: [
@@ -15269,7 +15269,7 @@ export const updateSmsTemplate: API.OperationMethod<
   UpdateSmsTemplateResponse,
   UpdateSmsTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSmsTemplateRequest,
   output: UpdateSmsTemplateResponse,
   errors: [
@@ -15299,7 +15299,7 @@ export const updateTemplateActiveVersion: API.OperationMethod<
   UpdateTemplateActiveVersionResponse,
   UpdateTemplateActiveVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTemplateActiveVersionRequest,
   output: UpdateTemplateActiveVersionResponse,
   errors: [
@@ -15329,7 +15329,7 @@ export const updateVoiceChannel: API.OperationMethod<
   UpdateVoiceChannelResponse,
   UpdateVoiceChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateVoiceChannelRequest,
   output: UpdateVoiceChannelResponse,
   errors: [
@@ -15359,7 +15359,7 @@ export const updateVoiceTemplate: API.OperationMethod<
   UpdateVoiceTemplateResponse,
   UpdateVoiceTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateVoiceTemplateRequest,
   output: UpdateVoiceTemplateResponse,
   errors: [
@@ -15389,7 +15389,7 @@ export const verifyOTPMessage: API.OperationMethod<
   VerifyOTPMessageResponse,
   VerifyOTPMessageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: VerifyOTPMessageRequest,
   output: VerifyOTPMessageResponse,
   errors: [

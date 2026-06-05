@@ -3905,7 +3905,7 @@ export const batchCreateVariable: API.OperationMethod<
   BatchCreateVariableResult,
   BatchCreateVariableError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchCreateVariableRequest,
   output: BatchCreateVariableResult,
   errors: [
@@ -3929,7 +3929,7 @@ export const batchGetVariable: API.OperationMethod<
   BatchGetVariableResult,
   BatchGetVariableError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetVariableRequest,
   output: BatchGetVariableResult,
   errors: [
@@ -3954,7 +3954,7 @@ export const cancelBatchImportJob: API.OperationMethod<
   CancelBatchImportJobResult,
   CancelBatchImportJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelBatchImportJobRequest,
   output: CancelBatchImportJobResult,
   errors: [
@@ -3980,7 +3980,7 @@ export const cancelBatchPredictionJob: API.OperationMethod<
   CancelBatchPredictionJobResult,
   CancelBatchPredictionJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelBatchPredictionJobRequest,
   output: CancelBatchPredictionJobResult,
   errors: [
@@ -4006,7 +4006,7 @@ export const createBatchImportJob: API.OperationMethod<
   CreateBatchImportJobResult,
   CreateBatchImportJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateBatchImportJobRequest,
   output: CreateBatchImportJobResult,
   errors: [
@@ -4032,7 +4032,7 @@ export const createBatchPredictionJob: API.OperationMethod<
   CreateBatchPredictionJobResult,
   CreateBatchPredictionJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateBatchPredictionJobRequest,
   output: CreateBatchPredictionJobResult,
   errors: [
@@ -4058,7 +4058,7 @@ export const createDetectorVersion: API.OperationMethod<
   CreateDetectorVersionResult,
   CreateDetectorVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDetectorVersionRequest,
   output: CreateDetectorVersionResult,
   errors: [
@@ -4086,7 +4086,7 @@ export const createList: API.OperationMethod<
   CreateListResult,
   CreateListError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateListRequest,
   output: CreateListResult,
   errors: [
@@ -4110,7 +4110,7 @@ export const createModel: API.OperationMethod<
   CreateModelResult,
   CreateModelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateModelRequest,
   output: CreateModelResult,
   errors: [
@@ -4135,7 +4135,7 @@ export const createModelVersion: API.OperationMethod<
   CreateModelVersionResult,
   CreateModelVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateModelVersionRequest,
   output: CreateModelVersionResult,
   errors: [
@@ -4160,7 +4160,7 @@ export const createRule: API.OperationMethod<
   CreateRuleResult,
   CreateRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRuleRequest,
   output: CreateRuleResult,
   errors: [
@@ -4184,7 +4184,7 @@ export const createVariable: API.OperationMethod<
   CreateVariableResult,
   CreateVariableError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateVariableRequest,
   output: CreateVariableResult,
   errors: [
@@ -4208,7 +4208,7 @@ export const deleteBatchImportJob: API.OperationMethod<
   DeleteBatchImportJobResult,
   DeleteBatchImportJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteBatchImportJobRequest,
   output: DeleteBatchImportJobResult,
   errors: [
@@ -4232,7 +4232,7 @@ export const deleteBatchPredictionJob: API.OperationMethod<
   DeleteBatchPredictionJobResult,
   DeleteBatchPredictionJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteBatchPredictionJobRequest,
   output: DeleteBatchPredictionJobResult,
   errors: [
@@ -4259,7 +4259,7 @@ export const deleteDetector: API.OperationMethod<
   DeleteDetectorResult,
   DeleteDetectorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDetectorRequest,
   output: DeleteDetectorResult,
   errors: [
@@ -4288,7 +4288,7 @@ export const deleteDetectorVersion: API.OperationMethod<
   DeleteDetectorVersionResult,
   DeleteDetectorVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDetectorVersionRequest,
   output: DeleteDetectorVersionResult,
   errors: [
@@ -4319,7 +4319,7 @@ export const deleteEntityType: API.OperationMethod<
   DeleteEntityTypeResult,
   DeleteEntityTypeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEntityTypeRequest,
   output: DeleteEntityTypeResult,
   errors: [
@@ -4347,7 +4347,7 @@ export const deleteEvent: API.OperationMethod<
   DeleteEventResult,
   DeleteEventError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEventRequest,
   output: DeleteEventResult,
   errors: [
@@ -4373,7 +4373,7 @@ export const deleteEventsByEventType: API.OperationMethod<
   DeleteEventsByEventTypeResult,
   DeleteEventsByEventTypeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEventsByEventTypeRequest,
   output: DeleteEventsByEventTypeResult,
   errors: [
@@ -4404,7 +4404,7 @@ export const deleteEventType: API.OperationMethod<
   DeleteEventTypeResult,
   DeleteEventTypeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEventTypeRequest,
   output: DeleteEventTypeResult,
   errors: [
@@ -4432,7 +4432,7 @@ export const deleteExternalModel: API.OperationMethod<
   DeleteExternalModelResult,
   DeleteExternalModelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteExternalModelRequest,
   output: DeleteExternalModelResult,
   errors: [
@@ -4463,7 +4463,7 @@ export const deleteLabel: API.OperationMethod<
   DeleteLabelResult,
   DeleteLabelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLabelRequest,
   output: DeleteLabelResult,
   errors: [
@@ -4490,7 +4490,7 @@ export const deleteList: API.OperationMethod<
   DeleteListResult,
   DeleteListError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteListRequest,
   output: DeleteListResult,
   errors: [
@@ -4520,7 +4520,7 @@ export const deleteModel: API.OperationMethod<
   DeleteModelResult,
   DeleteModelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteModelRequest,
   output: DeleteModelResult,
   errors: [
@@ -4550,7 +4550,7 @@ export const deleteModelVersion: API.OperationMethod<
   DeleteModelVersionResult,
   DeleteModelVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteModelVersionRequest,
   output: DeleteModelVersionResult,
   errors: [
@@ -4580,7 +4580,7 @@ export const deleteOutcome: API.OperationMethod<
   DeleteOutcomeResult,
   DeleteOutcomeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOutcomeRequest,
   output: DeleteOutcomeResult,
   errors: [
@@ -4608,7 +4608,7 @@ export const deleteRule: API.OperationMethod<
   DeleteRuleResult,
   DeleteRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRuleRequest,
   output: DeleteRuleResult,
   errors: [
@@ -4640,7 +4640,7 @@ export const deleteVariable: API.OperationMethod<
   DeleteVariableResult,
   DeleteVariableError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteVariableRequest,
   output: DeleteVariableResult,
   errors: [
@@ -4666,7 +4666,7 @@ export const describeDetector: API.OperationMethod<
   DescribeDetectorResult,
   DescribeDetectorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDetectorRequest,
   output: DescribeDetectorResult,
   errors: [
@@ -4707,7 +4707,7 @@ export const describeModelVersions: API.OperationMethod<
     DescribeModelVersionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeModelVersionsRequest,
   output: DescribeModelVersionsResult,
   errors: [
@@ -4756,7 +4756,7 @@ export const getBatchImportJobs: API.OperationMethod<
     GetBatchImportJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetBatchImportJobsRequest,
   output: GetBatchImportJobsResult,
   errors: [
@@ -4802,7 +4802,7 @@ export const getBatchPredictionJobs: API.OperationMethod<
     GetBatchPredictionJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetBatchPredictionJobsRequest,
   output: GetBatchPredictionJobsResult,
   errors: [
@@ -4833,7 +4833,7 @@ export const getDeleteEventsByEventTypeStatus: API.OperationMethod<
   GetDeleteEventsByEventTypeStatusResult,
   GetDeleteEventsByEventTypeStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDeleteEventsByEventTypeStatusRequest,
   output: GetDeleteEventsByEventTypeStatusResult,
   errors: [
@@ -4879,7 +4879,7 @@ export const getDetectors: API.OperationMethod<
     GetDetectorsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetDetectorsRequest,
   output: GetDetectorsResult,
   errors: [
@@ -4910,7 +4910,7 @@ export const getDetectorVersion: API.OperationMethod<
   GetDetectorVersionResult,
   GetDetectorVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDetectorVersionRequest,
   output: GetDetectorVersionResult,
   errors: [
@@ -4956,7 +4956,7 @@ export const getEntityTypes: API.OperationMethod<
     GetEntityTypesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetEntityTypesRequest,
   output: GetEntityTypesResult,
   errors: [
@@ -4987,7 +4987,7 @@ export const getEvent: API.OperationMethod<
   GetEventResult,
   GetEventError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEventRequest,
   output: GetEventResult,
   errors: [
@@ -5015,7 +5015,7 @@ export const getEventPrediction: API.OperationMethod<
   GetEventPredictionResult,
   GetEventPredictionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEventPredictionRequest,
   output: GetEventPredictionResult,
   errors: [
@@ -5043,7 +5043,7 @@ export const getEventPredictionMetadata: API.OperationMethod<
   GetEventPredictionMetadataResult,
   GetEventPredictionMetadataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEventPredictionMetadataRequest,
   output: GetEventPredictionMetadataResult,
   errors: [
@@ -5089,7 +5089,7 @@ export const getEventTypes: API.OperationMethod<
     GetEventTypesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetEventTypesRequest,
   output: GetEventTypesResult,
   errors: [
@@ -5140,7 +5140,7 @@ export const getExternalModels: API.OperationMethod<
     GetExternalModelsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetExternalModelsRequest,
   output: GetExternalModelsResult,
   errors: [
@@ -5170,7 +5170,7 @@ export const getKMSEncryptionKey: API.OperationMethod<
   GetKMSEncryptionKeyResult,
   GetKMSEncryptionKeyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetKMSEncryptionKeyRequest,
   output: GetKMSEncryptionKeyResult,
   errors: [
@@ -5215,7 +5215,7 @@ export const getLabels: API.OperationMethod<
     GetLabelsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetLabelsRequest,
   output: GetLabelsResult,
   errors: [
@@ -5261,7 +5261,7 @@ export const getListElements: API.OperationMethod<
     GetListElementsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetListElementsRequest,
   output: GetListElementsResult,
   errors: [
@@ -5307,7 +5307,7 @@ export const getListsMetadata: API.OperationMethod<
     GetListsMetadataError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetListsMetadataRequest,
   output: GetListsMetadataResult,
   errors: [
@@ -5360,7 +5360,7 @@ export const getModels: API.OperationMethod<
     GetModelsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetModelsRequest,
   output: GetModelsResult,
   errors: [
@@ -5391,7 +5391,7 @@ export const getModelVersion: API.OperationMethod<
   GetModelVersionResult,
   GetModelVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetModelVersionRequest,
   output: GetModelVersionResult,
   errors: [
@@ -5437,7 +5437,7 @@ export const getOutcomes: API.OperationMethod<
     GetOutcomesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetOutcomesRequest,
   output: GetOutcomesResult,
   errors: [
@@ -5485,7 +5485,7 @@ export const getRules: API.OperationMethod<
     GetRulesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetRulesRequest,
   output: GetRulesResult,
   errors: [
@@ -5536,7 +5536,7 @@ export const getVariables: API.OperationMethod<
     GetVariablesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetVariablesRequest,
   output: GetVariablesResult,
   errors: [
@@ -5592,7 +5592,7 @@ export const listEventPredictions: API.OperationMethod<
     ListEventPredictionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEventPredictionsRequest,
   output: ListEventPredictionsResult,
   errors: [
@@ -5638,7 +5638,7 @@ export const listTagsForResource: API.OperationMethod<
     ListTagsForResourceError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResult,
   errors: [
@@ -5668,7 +5668,7 @@ export const putDetector: API.OperationMethod<
   PutDetectorResult,
   PutDetectorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutDetectorRequest,
   output: PutDetectorResult,
   errors: [
@@ -5694,7 +5694,7 @@ export const putEntityType: API.OperationMethod<
   PutEntityTypeResult,
   PutEntityTypeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutEntityTypeRequest,
   output: PutEntityTypeResult,
   errors: [
@@ -5720,7 +5720,7 @@ export const putEventType: API.OperationMethod<
   PutEventTypeResult,
   PutEventTypeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutEventTypeRequest,
   output: PutEventTypeResult,
   errors: [
@@ -5746,7 +5746,7 @@ export const putExternalModel: API.OperationMethod<
   PutExternalModelResult,
   PutExternalModelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutExternalModelRequest,
   output: PutExternalModelResult,
   errors: [
@@ -5773,7 +5773,7 @@ export const putKMSEncryptionKey: API.OperationMethod<
   PutKMSEncryptionKeyResult,
   PutKMSEncryptionKeyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutKMSEncryptionKeyRequest,
   output: PutKMSEncryptionKeyResult,
   errors: [
@@ -5800,7 +5800,7 @@ export const putLabel: API.OperationMethod<
   PutLabelResult,
   PutLabelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutLabelRequest,
   output: PutLabelResult,
   errors: [
@@ -5826,7 +5826,7 @@ export const putOutcome: API.OperationMethod<
   PutOutcomeResult,
   PutOutcomeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutOutcomeRequest,
   output: PutOutcomeResult,
   errors: [
@@ -5853,7 +5853,7 @@ export const sendEvent: API.OperationMethod<
   SendEventResult,
   SendEventError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendEventRequest,
   output: SendEventResult,
   errors: [
@@ -5879,7 +5879,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResult,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResult,
   errors: [
@@ -5903,7 +5903,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResult,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResult,
   errors: [
@@ -5929,7 +5929,7 @@ export const updateDetectorVersion: API.OperationMethod<
   UpdateDetectorVersionResult,
   UpdateDetectorVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDetectorVersionRequest,
   output: UpdateDetectorVersionResult,
   errors: [
@@ -5957,7 +5957,7 @@ export const updateDetectorVersionMetadata: API.OperationMethod<
   UpdateDetectorVersionMetadataResult,
   UpdateDetectorVersionMetadataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDetectorVersionMetadataRequest,
   output: UpdateDetectorVersionMetadataResult,
   errors: [
@@ -5985,7 +5985,7 @@ export const updateDetectorVersionStatus: API.OperationMethod<
   UpdateDetectorVersionStatusResult,
   UpdateDetectorVersionStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDetectorVersionStatusRequest,
   output: UpdateDetectorVersionStatusResult,
   errors: [
@@ -6013,7 +6013,7 @@ export const updateEventLabel: API.OperationMethod<
   UpdateEventLabelResult,
   UpdateEventLabelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEventLabelRequest,
   output: UpdateEventLabelResult,
   errors: [
@@ -6041,7 +6041,7 @@ export const updateList: API.OperationMethod<
   UpdateListResult,
   UpdateListError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateListRequest,
   output: UpdateListResult,
   errors: [
@@ -6069,7 +6069,7 @@ export const updateModel: API.OperationMethod<
   UpdateModelResult,
   UpdateModelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateModelRequest,
   output: UpdateModelResult,
   errors: [
@@ -6097,7 +6097,7 @@ export const updateModelVersion: API.OperationMethod<
   UpdateModelVersionResult,
   UpdateModelVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateModelVersionRequest,
   output: UpdateModelVersionResult,
   errors: [
@@ -6133,7 +6133,7 @@ export const updateModelVersionStatus: API.OperationMethod<
   UpdateModelVersionStatusResult,
   UpdateModelVersionStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateModelVersionStatusRequest,
   output: UpdateModelVersionStatusResult,
   errors: [
@@ -6161,7 +6161,7 @@ export const updateRuleMetadata: API.OperationMethod<
   UpdateRuleMetadataResult,
   UpdateRuleMetadataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRuleMetadataRequest,
   output: UpdateRuleMetadataResult,
   errors: [
@@ -6189,7 +6189,7 @@ export const updateRuleVersion: API.OperationMethod<
   UpdateRuleVersionResult,
   UpdateRuleVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRuleVersionRequest,
   output: UpdateRuleVersionResult,
   errors: [
@@ -6217,7 +6217,7 @@ export const updateVariable: API.OperationMethod<
   UpdateVariableResult,
   UpdateVariableError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateVariableRequest,
   output: UpdateVariableResult,
   errors: [

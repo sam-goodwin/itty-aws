@@ -1273,9 +1273,7 @@ function typeInfoToTsType(
         values.length > 0 &&
         values.every(
           (v) =>
-            v.kind === "literal" &&
-            v.value !== "true" &&
-            v.value !== "false",
+            v.kind === "literal" && v.value !== "true" && v.value !== "false",
         );
       if (allStringLiterals) {
         uniqueTsTypes.push("(string & {})");
@@ -1542,9 +1540,7 @@ function generateOperationSchemaAst(
   // Convert URL template to OpenAPI style
   const openApiPath = op.urlTemplate.replace(/\{(\w+)\}/g, "{$1}");
 
-  lines.push(
-    `export const ${requestTypeName} = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({`,
-  );
+  lines.push(`export const ${requestTypeName} = /*@__PURE__*/ Schema.Struct({`);
   if (requestProps.length > 0) {
     lines.push(requestProps.join(",\n"));
   }
@@ -1651,7 +1647,7 @@ function generateOperationSchemaAst(
     lines.push(`export type ${responseTypeName} = ${tsType};`);
     lines.push("");
     lines.push(
-      `export const ${responseTypeName} = /*@__PURE__*/ /*#__PURE__*/ ${schema}${responsePathPipe} as unknown as Schema.Schema<${responseTypeName}>;`,
+      `export const ${responseTypeName} = /*@__PURE__*/ ${schema}${responsePathPipe} as unknown as Schema.Schema<${responseTypeName}>;`,
     );
     lines.push("");
   } else if (
@@ -1714,7 +1710,7 @@ function generateOperationSchemaAst(
       : "";
 
     lines.push(
-      `export const ${responseTypeName} = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({`,
+      `export const ${responseTypeName} = /*@__PURE__*/ Schema.Struct({`,
     );
     if (responseProps.length > 0) {
       lines.push(responseProps.join(",\n"));
@@ -1728,7 +1724,7 @@ function generateOperationSchemaAst(
     lines.push(`export type ${responseTypeName} = unknown;`);
     lines.push("");
     lines.push(
-      `export const ${responseTypeName} = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<${responseTypeName}>;`,
+      `export const ${responseTypeName} = /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<${responseTypeName}>;`,
     );
     lines.push("");
   }
@@ -1754,7 +1750,7 @@ function generateOperationSchemaAst(
     lines.push(`  ${responseTypeName},`);
     lines.push(`  ${errorTypeName},`);
     lines.push(`  Credentials | HttpClient.HttpClient`);
-    lines.push(`> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({`);
+    lines.push(`> = /*@__PURE__*/ API.makePaginated(() => ({`);
     lines.push(`  input: ${requestTypeName},`);
     lines.push(`  output: ${responseTypeName},`);
     lines.push(`  errors: ${errorsArray},`);
@@ -1778,7 +1774,7 @@ function generateOperationSchemaAst(
     lines.push(`  ${responseTypeName},`);
     lines.push(`  ${errorTypeName},`);
     lines.push(`  Credentials | HttpClient.HttpClient`);
-    lines.push(`> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({`);
+    lines.push(`> = /*@__PURE__*/ API.make(() => ({`);
     lines.push(`  input: ${requestTypeName},`);
     lines.push(`  output: ${responseTypeName},`);
     lines.push(`  errors: ${errorsArray},`);
@@ -2042,7 +2038,7 @@ function generateAccountOrZoneOperationSchema(
 
   // ---- emit Request schemas ----
   lines.push(
-    `export const ${accountRequestType} = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({`,
+    `export const ${accountRequestType} = /*@__PURE__*/ Schema.Struct({`,
   );
   lines.push(`  accountId: Schema.String.pipe(T.HttpPath("account_id")),`);
   lines.push(`  ...${baseFieldsConstName},`);
@@ -2052,9 +2048,7 @@ function generateAccountOrZoneOperationSchema(
   );
   lines.push("");
 
-  lines.push(
-    `export const ${zoneRequestType} = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({`,
-  );
+  lines.push(`export const ${zoneRequestType} = /*@__PURE__*/ Schema.Struct({`);
   lines.push(`  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),`);
   lines.push(`  ...${baseFieldsConstName},`);
   lines.push(`})`);
@@ -2079,7 +2073,7 @@ function generateAccountOrZoneOperationSchema(
     lines.push(`export type ${responseTypeName} = ${tsType};`);
     lines.push("");
     lines.push(
-      `export const ${responseTypeName} = /*@__PURE__*/ /*#__PURE__*/ ${schema}${responsePathPipe} as unknown as Schema.Schema<${responseTypeName}>;`,
+      `export const ${responseTypeName} = /*@__PURE__*/ ${schema}${responsePathPipe} as unknown as Schema.Schema<${responseTypeName}>;`,
     );
     lines.push("");
   } else if (
@@ -2135,7 +2129,7 @@ function generateAccountOrZoneOperationSchema(
       : "";
 
     lines.push(
-      `export const ${responseTypeName} = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({`,
+      `export const ${responseTypeName} = /*@__PURE__*/ Schema.Struct({`,
     );
     if (responseProps.length > 0) {
       lines.push(responseProps.join(",\n"));
@@ -2151,7 +2145,7 @@ function generateAccountOrZoneOperationSchema(
     lines.push(`export type ${responseTypeName} = unknown;`);
     lines.push("");
     lines.push(
-      `export const ${responseTypeName} = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown${responsePathPipe} as unknown as Schema.Schema<${responseTypeName}>;`,
+      `export const ${responseTypeName} = /*@__PURE__*/ Schema.Unknown${responsePathPipe} as unknown as Schema.Schema<${responseTypeName}>;`,
     );
     lines.push("");
   }
@@ -2179,7 +2173,7 @@ function generateAccountOrZoneOperationSchema(
       lines.push(`  ${responseTypeName},`);
       lines.push(`  ${errorTypeName},`);
       lines.push(`  Credentials | HttpClient.HttpClient`);
-      lines.push(`> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({`);
+      lines.push(`> = /*@__PURE__*/ API.makePaginated(() => ({`);
       lines.push(`  input: ${requestType},`);
       lines.push(`  output: ${responseTypeName},`);
       lines.push(`  errors: ${errorsArray},`);
@@ -2203,7 +2197,7 @@ function generateAccountOrZoneOperationSchema(
       lines.push(`  ${responseTypeName},`);
       lines.push(`  ${errorTypeName},`);
       lines.push(`  Credentials | HttpClient.HttpClient`);
-      lines.push(`> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({`);
+      lines.push(`> = /*@__PURE__*/ API.make(() => ({`);
       lines.push(`  input: ${requestType},`);
       lines.push(`  output: ${responseTypeName},`);
       lines.push(`  errors: ${errorsArray},`);
@@ -2323,9 +2317,7 @@ function generateOperationSchema(
   }
 
   const openApiPath = op.urlTemplate.replace(/\{(\w+)\}/g, "{$1}");
-  lines.push(
-    `export const ${requestTypeName} = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({`,
-  );
+  lines.push(`export const ${requestTypeName} = /*@__PURE__*/ Schema.Struct({`);
   if (requestProps.length > 0) {
     lines.push(requestProps.join(",\n"));
   }
@@ -2376,7 +2368,7 @@ function generateOperationSchema(
     lines.push(`export type ${responseTypeName} = ${tsType};`);
     lines.push("");
     lines.push(
-      `export const ${responseTypeName} = /*@__PURE__*/ /*#__PURE__*/ ${schema}${responsePathPipe} as unknown as Schema.Schema<${responseTypeName}>;`,
+      `export const ${responseTypeName} = /*@__PURE__*/ ${schema}${responsePathPipe} as unknown as Schema.Schema<${responseTypeName}>;`,
     );
     lines.push("");
   } else if (
@@ -2432,7 +2424,7 @@ function generateOperationSchema(
       : "";
 
     lines.push(
-      `export const ${responseTypeName} = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({`,
+      `export const ${responseTypeName} = /*@__PURE__*/ Schema.Struct({`,
     );
     if (responseProps.length > 0) {
       lines.push(responseProps.join(",\n"));
@@ -2448,7 +2440,7 @@ function generateOperationSchema(
     lines.push(`export type ${responseTypeName} = unknown;`);
     lines.push("");
     lines.push(
-      `export const ${responseTypeName} = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown${responsePathPipe} as unknown as Schema.Schema<${responseTypeName}>;`,
+      `export const ${responseTypeName} = /*@__PURE__*/ Schema.Unknown${responsePathPipe} as unknown as Schema.Schema<${responseTypeName}>;`,
     );
     lines.push("");
   }
@@ -2473,7 +2465,7 @@ function generateOperationSchema(
     lines.push(`  ${responseTypeName},`);
     lines.push(`  ${errorTypeName},`);
     lines.push(`  Credentials | HttpClient.HttpClient`);
-    lines.push(`> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({`);
+    lines.push(`> = /*@__PURE__*/ API.makePaginated(() => ({`);
     lines.push(`  input: ${requestTypeName},`);
     lines.push(`  output: ${responseTypeName},`);
     lines.push(`  errors: ${errorsArray},`);
@@ -2497,7 +2489,7 @@ function generateOperationSchema(
     lines.push(`  ${responseTypeName},`);
     lines.push(`  ${errorTypeName},`);
     lines.push(`  Credentials | HttpClient.HttpClient`);
-    lines.push(`> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({`);
+    lines.push(`> = /*@__PURE__*/ API.make(() => ({`);
     lines.push(`  input: ${requestTypeName},`);
     lines.push(`  output: ${responseTypeName},`);
     lines.push(`  errors: ${errorsArray},`);
@@ -2990,7 +2982,7 @@ function emitBinaryResponse(
 
   // Schema
   lines.push(
-    `export const ${responseTypeName} = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({`,
+    `export const ${responseTypeName} = /*@__PURE__*/ Schema.Struct({`,
   );
   lines.push(
     `  body: BinaryStreamResponseSchema.pipe(T.BinaryResponseBody()),`,

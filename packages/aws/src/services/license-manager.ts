@@ -3636,7 +3636,7 @@ export const acceptGrant: API.OperationMethod<
   AcceptGrantResponse,
   AcceptGrantError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AcceptGrantRequest,
   output: AcceptGrantResponse,
   errors: [
@@ -3667,7 +3667,7 @@ export const checkInLicense: API.OperationMethod<
   CheckInLicenseResponse,
   CheckInLicenseError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CheckInLicenseRequest,
   output: CheckInLicenseResponse,
   errors: [
@@ -3702,7 +3702,7 @@ export const checkoutBorrowLicense: API.OperationMethod<
   CheckoutBorrowLicenseResponse,
   CheckoutBorrowLicenseError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CheckoutBorrowLicenseRequest,
   output: CheckoutBorrowLicenseResponse,
   errors: [
@@ -3742,7 +3742,7 @@ export const checkoutLicense: API.OperationMethod<
   CheckoutLicenseResponse,
   CheckoutLicenseError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CheckoutLicenseRequest,
   output: CheckoutLicenseResponse,
   errors: [
@@ -3777,7 +3777,7 @@ export const createGrant: API.OperationMethod<
   CreateGrantResponse,
   CreateGrantError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateGrantRequest,
   output: CreateGrantResponse,
   errors: [
@@ -3808,7 +3808,7 @@ export const createGrantVersion: API.OperationMethod<
   CreateGrantVersionResponse,
   CreateGrantVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateGrantVersionRequest,
   output: CreateGrantVersionResponse,
   errors: [
@@ -3838,7 +3838,7 @@ export const createLicense: API.OperationMethod<
   CreateLicenseResponse,
   CreateLicenseError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLicenseRequest,
   output: CreateLicenseResponse,
   errors: [
@@ -3867,7 +3867,7 @@ export const createLicenseAssetGroup: API.OperationMethod<
   CreateLicenseAssetGroupResponse,
   CreateLicenseAssetGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLicenseAssetGroupRequest,
   output: CreateLicenseAssetGroupResponse,
   errors: [
@@ -3895,7 +3895,7 @@ export const createLicenseAssetRuleset: API.OperationMethod<
   CreateLicenseAssetRulesetResponse,
   CreateLicenseAssetRulesetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLicenseAssetRulesetRequest,
   output: CreateLicenseAssetRulesetResponse,
   errors: [
@@ -3929,7 +3929,7 @@ export const createLicenseConfiguration: API.OperationMethod<
   CreateLicenseConfigurationResponse,
   CreateLicenseConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLicenseConfigurationRequest,
   output: CreateLicenseConfigurationResponse,
   errors: [
@@ -3957,7 +3957,7 @@ export const createLicenseConversionTaskForResource: API.OperationMethod<
   CreateLicenseConversionTaskForResourceResponse,
   CreateLicenseConversionTaskForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLicenseConversionTaskForResourceRequest,
   output: CreateLicenseConversionTaskForResourceResponse,
   errors: [
@@ -3987,7 +3987,7 @@ export const createLicenseManagerReportGenerator: API.OperationMethod<
   CreateLicenseManagerReportGeneratorResponse,
   CreateLicenseManagerReportGeneratorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLicenseManagerReportGeneratorRequest,
   output: CreateLicenseManagerReportGeneratorResponse,
   errors: [
@@ -4019,7 +4019,7 @@ export const createLicenseVersion: API.OperationMethod<
   CreateLicenseVersionResponse,
   CreateLicenseVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLicenseVersionRequest,
   output: CreateLicenseVersionResponse,
   errors: [
@@ -4055,7 +4055,7 @@ export const createToken: API.OperationMethod<
   CreateTokenResponse,
   CreateTokenError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTokenRequest,
   output: CreateTokenResponse,
   errors: [
@@ -4086,7 +4086,7 @@ export const deleteGrant: API.OperationMethod<
   DeleteGrantResponse,
   DeleteGrantError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteGrantRequest,
   output: DeleteGrantResponse,
   errors: [
@@ -4117,7 +4117,7 @@ export const deleteLicense: API.OperationMethod<
   DeleteLicenseResponse,
   DeleteLicenseError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLicenseRequest,
   output: DeleteLicenseResponse,
   errors: [
@@ -4147,7 +4147,7 @@ export const deleteLicenseAssetGroup: API.OperationMethod<
   DeleteLicenseAssetGroupResponse,
   DeleteLicenseAssetGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLicenseAssetGroupRequest,
   output: DeleteLicenseAssetGroupResponse,
   errors: [
@@ -4175,7 +4175,7 @@ export const deleteLicenseAssetRuleset: API.OperationMethod<
   DeleteLicenseAssetRulesetResponse,
   DeleteLicenseAssetRulesetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLicenseAssetRulesetRequest,
   output: DeleteLicenseAssetRulesetResponse,
   errors: [
@@ -4204,7 +4204,7 @@ export const deleteLicenseConfiguration: API.OperationMethod<
   DeleteLicenseConfigurationResponse,
   DeleteLicenseConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLicenseConfigurationRequest,
   output: DeleteLicenseConfigurationResponse,
   errors: [
@@ -4236,7 +4236,7 @@ export const deleteLicenseManagerReportGenerator: API.OperationMethod<
   DeleteLicenseManagerReportGeneratorResponse,
   DeleteLicenseManagerReportGeneratorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLicenseManagerReportGeneratorRequest,
   output: DeleteLicenseManagerReportGeneratorResponse,
   errors: [
@@ -4267,7 +4267,7 @@ export const deleteToken: API.OperationMethod<
   DeleteTokenResponse,
   DeleteTokenError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTokenRequest,
   output: DeleteTokenResponse,
   errors: [
@@ -4297,7 +4297,7 @@ export const extendLicenseConsumption: API.OperationMethod<
   ExtendLicenseConsumptionResponse,
   ExtendLicenseConsumptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExtendLicenseConsumptionRequest,
   output: ExtendLicenseConsumptionResponse,
   errors: [
@@ -4326,7 +4326,7 @@ export const getAccessToken: API.OperationMethod<
   GetAccessTokenResponse,
   GetAccessTokenError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccessTokenRequest,
   output: GetAccessTokenResponse,
   errors: [
@@ -4354,7 +4354,7 @@ export const getGrant: API.OperationMethod<
   GetGrantResponse,
   GetGrantError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetGrantRequest,
   output: GetGrantResponse,
   errors: [
@@ -4383,7 +4383,7 @@ export const getLicense: API.OperationMethod<
   GetLicenseResponse,
   GetLicenseError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLicenseRequest,
   output: GetLicenseResponse,
   errors: [
@@ -4411,7 +4411,7 @@ export const getLicenseAssetGroup: API.OperationMethod<
   GetLicenseAssetGroupResponse,
   GetLicenseAssetGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLicenseAssetGroupRequest,
   output: GetLicenseAssetGroupResponse,
   errors: [
@@ -4439,7 +4439,7 @@ export const getLicenseAssetRuleset: API.OperationMethod<
   GetLicenseAssetRulesetResponse,
   GetLicenseAssetRulesetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLicenseAssetRulesetRequest,
   output: GetLicenseAssetRulesetResponse,
   errors: [
@@ -4466,7 +4466,7 @@ export const getLicenseConfiguration: API.OperationMethod<
   GetLicenseConfigurationResponse,
   GetLicenseConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLicenseConfigurationRequest,
   output: GetLicenseConfigurationResponse,
   errors: [
@@ -4492,7 +4492,7 @@ export const getLicenseConversionTask: API.OperationMethod<
   GetLicenseConversionTaskResponse,
   GetLicenseConversionTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLicenseConversionTaskRequest,
   output: GetLicenseConversionTaskResponse,
   errors: [
@@ -4521,7 +4521,7 @@ export const getLicenseManagerReportGenerator: API.OperationMethod<
   GetLicenseManagerReportGeneratorResponse,
   GetLicenseManagerReportGeneratorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLicenseManagerReportGeneratorRequest,
   output: GetLicenseManagerReportGeneratorResponse,
   errors: [
@@ -4551,7 +4551,7 @@ export const getLicenseUsage: API.OperationMethod<
   GetLicenseUsageResponse,
   GetLicenseUsageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLicenseUsageRequest,
   output: GetLicenseUsageResponse,
   errors: [
@@ -4577,7 +4577,7 @@ export const getServiceSettings: API.OperationMethod<
   GetServiceSettingsResponse,
   GetServiceSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetServiceSettingsRequest,
   output: GetServiceSettingsResponse,
   errors: [
@@ -4603,7 +4603,7 @@ export const listAssetsForLicenseAssetGroup: API.OperationMethod<
   ListAssetsForLicenseAssetGroupResponse,
   ListAssetsForLicenseAssetGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListAssetsForLicenseAssetGroupRequest,
   output: ListAssetsForLicenseAssetGroupResponse,
   errors: [
@@ -4635,7 +4635,7 @@ export const listAssociationsForLicenseConfiguration: API.OperationMethod<
   ListAssociationsForLicenseConfigurationResponse,
   ListAssociationsForLicenseConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListAssociationsForLicenseConfigurationRequest,
   output: ListAssociationsForLicenseConfigurationResponse,
   errors: [
@@ -4664,7 +4664,7 @@ export const listDistributedGrants: API.OperationMethod<
   ListDistributedGrantsResponse,
   ListDistributedGrantsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListDistributedGrantsRequest,
   output: ListDistributedGrantsResponse,
   errors: [
@@ -4692,7 +4692,7 @@ export const listFailuresForLicenseConfigurationOperations: API.OperationMethod<
   ListFailuresForLicenseConfigurationOperationsResponse,
   ListFailuresForLicenseConfigurationOperationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListFailuresForLicenseConfigurationOperationsRequest,
   output: ListFailuresForLicenseConfigurationOperationsResponse,
   errors: [
@@ -4719,7 +4719,7 @@ export const listLicenseAssetGroups: API.OperationMethod<
   ListLicenseAssetGroupsResponse,
   ListLicenseAssetGroupsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListLicenseAssetGroupsRequest,
   output: ListLicenseAssetGroupsResponse,
   errors: [
@@ -4747,7 +4747,7 @@ export const listLicenseAssetRulesets: API.OperationMethod<
   ListLicenseAssetRulesetsResponse,
   ListLicenseAssetRulesetsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListLicenseAssetRulesetsRequest,
   output: ListLicenseAssetRulesetsResponse,
   errors: [
@@ -4775,7 +4775,7 @@ export const listLicenseConfigurations: API.OperationMethod<
   ListLicenseConfigurationsResponse,
   ListLicenseConfigurationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListLicenseConfigurationsRequest,
   output: ListLicenseConfigurationsResponse,
   errors: [
@@ -4803,7 +4803,7 @@ export const listLicenseConfigurationsForOrganization: API.OperationMethod<
   ListLicenseConfigurationsForOrganizationResponse,
   ListLicenseConfigurationsForOrganizationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListLicenseConfigurationsForOrganizationRequest,
   output: ListLicenseConfigurationsForOrganizationResponse,
   errors: [
@@ -4830,7 +4830,7 @@ export const listLicenseConversionTasks: API.OperationMethod<
   ListLicenseConversionTasksResponse,
   ListLicenseConversionTasksError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListLicenseConversionTasksRequest,
   output: ListLicenseConversionTasksResponse,
   errors: [
@@ -4859,7 +4859,7 @@ export const listLicenseManagerReportGenerators: API.OperationMethod<
   ListLicenseManagerReportGeneratorsResponse,
   ListLicenseManagerReportGeneratorsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListLicenseManagerReportGeneratorsRequest,
   output: ListLicenseManagerReportGeneratorsResponse,
   errors: [
@@ -4889,7 +4889,7 @@ export const listLicenses: API.OperationMethod<
   ListLicensesResponse,
   ListLicensesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListLicensesRequest,
   output: ListLicensesResponse,
   errors: [
@@ -4916,7 +4916,7 @@ export const listLicenseSpecificationsForResource: API.OperationMethod<
   ListLicenseSpecificationsForResourceResponse,
   ListLicenseSpecificationsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListLicenseSpecificationsForResourceRequest,
   output: ListLicenseSpecificationsForResourceResponse,
   errors: [
@@ -4942,7 +4942,7 @@ export const listLicenseVersions: API.OperationMethod<
   ListLicenseVersionsResponse,
   ListLicenseVersionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListLicenseVersionsRequest,
   output: ListLicenseVersionsResponse,
   errors: [
@@ -4972,7 +4972,7 @@ export const listReceivedGrants: API.OperationMethod<
   ListReceivedGrantsResponse,
   ListReceivedGrantsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListReceivedGrantsRequest,
   output: ListReceivedGrantsResponse,
   errors: [
@@ -5002,7 +5002,7 @@ export const listReceivedGrantsForOrganization: API.OperationMethod<
   ListReceivedGrantsForOrganizationResponse,
   ListReceivedGrantsForOrganizationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListReceivedGrantsForOrganizationRequest,
   output: ListReceivedGrantsForOrganizationResponse,
   errors: [
@@ -5032,7 +5032,7 @@ export const listReceivedLicenses: API.OperationMethod<
   ListReceivedLicensesResponse,
   ListReceivedLicensesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListReceivedLicensesRequest,
   output: ListReceivedLicensesResponse,
   errors: [
@@ -5062,7 +5062,7 @@ export const listReceivedLicensesForOrganization: API.OperationMethod<
   ListReceivedLicensesForOrganizationResponse,
   ListReceivedLicensesForOrganizationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListReceivedLicensesForOrganizationRequest,
   output: ListReceivedLicensesForOrganizationResponse,
   errors: [
@@ -5092,7 +5092,7 @@ export const listResourceInventory: API.OperationMethod<
   ListResourceInventoryResponse,
   ListResourceInventoryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListResourceInventoryRequest,
   output: ListResourceInventoryResponse,
   errors: [
@@ -5122,7 +5122,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -5149,7 +5149,7 @@ export const listTokens: API.OperationMethod<
   ListTokensResponse,
   ListTokensError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTokensRequest,
   output: ListTokensResponse,
   errors: [
@@ -5178,7 +5178,7 @@ export const listUsageForLicenseConfiguration: API.OperationMethod<
   ListUsageForLicenseConfigurationResponse,
   ListUsageForLicenseConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListUsageForLicenseConfigurationRequest,
   output: ListUsageForLicenseConfigurationResponse,
   errors: [
@@ -5207,7 +5207,7 @@ export const rejectGrant: API.OperationMethod<
   RejectGrantResponse,
   RejectGrantError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RejectGrantRequest,
   output: RejectGrantResponse,
   errors: [
@@ -5245,7 +5245,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -5273,7 +5273,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -5301,7 +5301,7 @@ export const updateLicenseAssetGroup: API.OperationMethod<
   UpdateLicenseAssetGroupResponse,
   UpdateLicenseAssetGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateLicenseAssetGroupRequest,
   output: UpdateLicenseAssetGroupResponse,
   errors: [
@@ -5329,7 +5329,7 @@ export const updateLicenseAssetRuleset: API.OperationMethod<
   UpdateLicenseAssetRulesetResponse,
   UpdateLicenseAssetRulesetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateLicenseAssetRulesetRequest,
   output: UpdateLicenseAssetRulesetResponse,
   errors: [
@@ -5358,7 +5358,7 @@ export const updateLicenseConfiguration: API.OperationMethod<
   UpdateLicenseConfigurationResponse,
   UpdateLicenseConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateLicenseConfigurationRequest,
   output: UpdateLicenseConfigurationResponse,
   errors: [
@@ -5391,7 +5391,7 @@ export const updateLicenseManagerReportGenerator: API.OperationMethod<
   UpdateLicenseManagerReportGeneratorResponse,
   UpdateLicenseManagerReportGeneratorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateLicenseManagerReportGeneratorRequest,
   output: UpdateLicenseManagerReportGeneratorResponse,
   errors: [
@@ -5427,7 +5427,7 @@ export const updateLicenseSpecificationsForResource: API.OperationMethod<
   UpdateLicenseSpecificationsForResourceResponse,
   UpdateLicenseSpecificationsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateLicenseSpecificationsForResourceRequest,
   output: UpdateLicenseSpecificationsForResourceResponse,
   errors: [
@@ -5458,7 +5458,7 @@ export const updateServiceSettings: API.OperationMethod<
   UpdateServiceSettingsResponse,
   UpdateServiceSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateServiceSettingsRequest,
   output: UpdateServiceSettingsResponse,
   errors: [

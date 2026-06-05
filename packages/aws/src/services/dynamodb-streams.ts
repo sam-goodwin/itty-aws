@@ -674,7 +674,7 @@ export const describeStream: API.OperationMethod<
   DescribeStreamOutput,
   DescribeStreamError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeStreamInput,
   output: DescribeStreamOutput,
   errors: [InternalServerError, ResourceNotFoundException],
@@ -703,7 +703,7 @@ export const getRecords: API.OperationMethod<
   GetRecordsOutput,
   GetRecordsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRecordsInput,
   output: GetRecordsOutput,
   errors: [
@@ -733,7 +733,7 @@ export const getShardIterator: API.OperationMethod<
   GetShardIteratorOutput,
   GetShardIteratorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetShardIteratorInput,
   output: GetShardIteratorOutput,
   errors: [
@@ -758,7 +758,7 @@ export const listStreams: API.OperationMethod<
   ListStreamsOutput,
   ListStreamsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListStreamsInput,
   output: ListStreamsOutput,
   errors: [InternalServerError, ResourceNotFoundException],

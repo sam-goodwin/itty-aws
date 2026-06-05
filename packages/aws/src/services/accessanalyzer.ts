@@ -3141,7 +3141,7 @@ export const applyArchiveRule: API.OperationMethod<
   ApplyArchiveRuleResponse,
   ApplyArchiveRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ApplyArchiveRuleRequest,
   output: ApplyArchiveRuleResponse,
   errors: [
@@ -3166,7 +3166,7 @@ export const cancelPolicyGeneration: API.OperationMethod<
   CancelPolicyGenerationResponse,
   CancelPolicyGenerationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelPolicyGenerationRequest,
   output: CancelPolicyGenerationResponse,
   errors: [
@@ -3192,7 +3192,7 @@ export const checkAccessNotGranted: API.OperationMethod<
   CheckAccessNotGrantedResponse,
   CheckAccessNotGrantedError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CheckAccessNotGrantedRequest,
   output: CheckAccessNotGrantedResponse,
   errors: [
@@ -3222,7 +3222,7 @@ export const checkNoNewAccess: API.OperationMethod<
   CheckNoNewAccessResponse,
   CheckNoNewAccessError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CheckNoNewAccessRequest,
   output: CheckNoNewAccessResponse,
   errors: [
@@ -3250,7 +3250,7 @@ export const checkNoPublicAccess: API.OperationMethod<
   CheckNoPublicAccessResponse,
   CheckNoPublicAccessError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CheckNoPublicAccessRequest,
   output: CheckNoPublicAccessResponse,
   errors: [
@@ -3279,7 +3279,7 @@ export const createAccessPreview: API.OperationMethod<
   CreateAccessPreviewResponse,
   CreateAccessPreviewError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessPreviewRequest,
   output: CreateAccessPreviewResponse,
   errors: [
@@ -3306,7 +3306,7 @@ export const generateFindingRecommendation: API.OperationMethod<
   GenerateFindingRecommendationResponse,
   GenerateFindingRecommendationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GenerateFindingRecommendationRequest,
   output: GenerateFindingRecommendationResponse,
   errors: [
@@ -3331,7 +3331,7 @@ export const getAccessPreview: API.OperationMethod<
   GetAccessPreviewResponse,
   GetAccessPreviewError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccessPreviewRequest,
   output: GetAccessPreviewResponse,
   errors: [
@@ -3359,7 +3359,7 @@ export const getAnalyzedResource: API.OperationMethod<
   GetAnalyzedResourceResponse,
   GetAnalyzedResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAnalyzedResourceRequest,
   output: GetAnalyzedResourceResponse,
   errors: [
@@ -3387,7 +3387,7 @@ export const getFinding: API.OperationMethod<
   GetFindingResponse,
   GetFindingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFindingRequest,
   output: GetFindingResponse,
   errors: [
@@ -3428,7 +3428,7 @@ export const getFindingRecommendation: API.OperationMethod<
     GetFindingRecommendationError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetFindingRecommendationRequest,
   output: GetFindingRecommendationResponse,
   errors: [
@@ -3460,7 +3460,7 @@ export const getFindingsStatistics: API.OperationMethod<
   GetFindingsStatisticsResponse,
   GetFindingsStatisticsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFindingsStatisticsRequest,
   output: GetFindingsStatisticsResponse,
   errors: [
@@ -3501,7 +3501,7 @@ export const getFindingV2: API.OperationMethod<
     GetFindingV2Error,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetFindingV2Request,
   output: GetFindingV2Response,
   errors: [
@@ -3532,7 +3532,7 @@ export const getGeneratedPolicy: API.OperationMethod<
   GetGeneratedPolicyResponse,
   GetGeneratedPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetGeneratedPolicyRequest,
   output: GetGeneratedPolicyResponse,
   errors: [
@@ -3573,7 +3573,7 @@ export const listAccessPreviewFindings: API.OperationMethod<
     ListAccessPreviewFindingsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessPreviewFindingsRequest,
   output: ListAccessPreviewFindingsResponse,
   errors: [
@@ -3621,7 +3621,7 @@ export const listAccessPreviews: API.OperationMethod<
     ListAccessPreviewsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessPreviewsRequest,
   output: ListAccessPreviewsResponse,
   errors: [
@@ -3668,7 +3668,7 @@ export const listAnalyzedResources: API.OperationMethod<
     ListAnalyzedResourcesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAnalyzedResourcesRequest,
   output: ListAnalyzedResourcesResponse,
   errors: [
@@ -3719,7 +3719,7 @@ export const listFindings: API.OperationMethod<
     ListFindingsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFindingsRequest,
   output: ListFindingsResponse,
   errors: [
@@ -3768,7 +3768,7 @@ export const listFindingsV2: API.OperationMethod<
     ListFindingsV2Error,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFindingsV2Request,
   output: ListFindingsV2Response,
   errors: [
@@ -3814,7 +3814,7 @@ export const listPolicyGenerations: API.OperationMethod<
     ListPolicyGenerationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPolicyGenerationsRequest,
   output: ListPolicyGenerationsResponse,
   errors: [
@@ -3845,7 +3845,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -3872,7 +3872,7 @@ export const startPolicyGeneration: API.OperationMethod<
   StartPolicyGenerationResponse,
   StartPolicyGenerationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartPolicyGenerationRequest,
   output: StartPolicyGenerationResponse,
   errors: [
@@ -3901,7 +3901,7 @@ export const startResourceScan: API.OperationMethod<
   StartResourceScanResponse,
   StartResourceScanError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartResourceScanRequest,
   output: StartResourceScanResponse,
   errors: [
@@ -3927,7 +3927,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -3953,7 +3953,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -3979,7 +3979,7 @@ export const updateFindings: API.OperationMethod<
   UpdateFindingsResponse,
   UpdateFindingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateFindingsRequest,
   output: UpdateFindingsResponse,
   errors: [
@@ -4019,7 +4019,7 @@ export const validatePolicy: API.OperationMethod<
     ValidatePolicyError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ValidatePolicyRequest,
   output: ValidatePolicyResponse,
   errors: [
@@ -4051,7 +4051,7 @@ export const createAnalyzer: API.OperationMethod<
   CreateAnalyzerResponse,
   CreateAnalyzerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAnalyzerRequest,
   output: CreateAnalyzerResponse,
   errors: [
@@ -4078,7 +4078,7 @@ export const getAnalyzer: API.OperationMethod<
   GetAnalyzerResponse,
   GetAnalyzerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAnalyzerRequest,
   output: GetAnalyzerResponse,
   errors: [
@@ -4107,7 +4107,7 @@ export const updateAnalyzer: API.OperationMethod<
   UpdateAnalyzerResponse,
   UpdateAnalyzerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAnalyzerRequest,
   output: UpdateAnalyzerResponse,
   errors: [
@@ -4134,7 +4134,7 @@ export const deleteAnalyzer: API.OperationMethod<
   DeleteAnalyzerResponse,
   DeleteAnalyzerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAnalyzerRequest,
   output: DeleteAnalyzerResponse,
   errors: [
@@ -4174,7 +4174,7 @@ export const listAnalyzers: API.OperationMethod<
     ListAnalyzersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAnalyzersRequest,
   output: ListAnalyzersResponse,
   errors: [
@@ -4209,7 +4209,7 @@ export const createArchiveRule: API.OperationMethod<
   CreateArchiveRuleResponse,
   CreateArchiveRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateArchiveRuleRequest,
   output: CreateArchiveRuleResponse,
   errors: [
@@ -4239,7 +4239,7 @@ export const getArchiveRule: API.OperationMethod<
   GetArchiveRuleResponse,
   GetArchiveRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetArchiveRuleRequest,
   output: GetArchiveRuleResponse,
   errors: [
@@ -4265,7 +4265,7 @@ export const updateArchiveRule: API.OperationMethod<
   UpdateArchiveRuleResponse,
   UpdateArchiveRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateArchiveRuleRequest,
   output: UpdateArchiveRuleResponse,
   errors: [
@@ -4291,7 +4291,7 @@ export const deleteArchiveRule: API.OperationMethod<
   DeleteArchiveRuleResponse,
   DeleteArchiveRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteArchiveRuleRequest,
   output: DeleteArchiveRuleResponse,
   errors: [
@@ -4331,7 +4331,7 @@ export const listArchiveRules: API.OperationMethod<
     ListArchiveRulesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListArchiveRulesRequest,
   output: ListArchiveRulesResponse,
   errors: [

@@ -1765,7 +1765,7 @@ export const autocomplete: API.OperationMethod<
   AutocompleteResponse,
   AutocompleteError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AutocompleteRequest,
   output: AutocompleteResponse,
   errors: [
@@ -1791,7 +1791,7 @@ export const geocode: API.OperationMethod<
   GeocodeResponse,
   GeocodeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GeocodeRequest,
   output: GeocodeResponse,
   errors: [
@@ -1817,7 +1817,7 @@ export const getPlace: API.OperationMethod<
   GetPlaceResponse,
   GetPlaceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPlaceRequest,
   output: GetPlaceResponse,
   errors: [
@@ -1843,7 +1843,7 @@ export const reverseGeocode: API.OperationMethod<
   ReverseGeocodeResponse,
   ReverseGeocodeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReverseGeocodeRequest,
   output: ReverseGeocodeResponse,
   errors: [
@@ -1869,7 +1869,7 @@ export const searchNearby: API.OperationMethod<
   SearchNearbyResponse,
   SearchNearbyError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SearchNearbyRequest,
   output: SearchNearbyResponse,
   errors: [
@@ -1895,7 +1895,7 @@ export const searchText: API.OperationMethod<
   SearchTextResponse,
   SearchTextError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SearchTextRequest,
   output: SearchTextResponse,
   errors: [
@@ -1921,7 +1921,7 @@ export const suggest: API.OperationMethod<
   SuggestResponse,
   SuggestError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SuggestRequest,
   output: SuggestResponse,
   errors: [

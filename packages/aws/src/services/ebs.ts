@@ -554,7 +554,7 @@ export const completeSnapshot: API.OperationMethod<
   CompleteSnapshotResponse,
   CompleteSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CompleteSnapshotRequest,
   output: CompleteSnapshotResponse,
   errors: [
@@ -588,7 +588,7 @@ export const getSnapshotBlock: API.OperationMethod<
   GetSnapshotBlockResponse,
   GetSnapshotBlockError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSnapshotBlockRequest,
   output: GetSnapshotBlockResponse,
   errors: [
@@ -637,7 +637,7 @@ export const listChangedBlocks: API.OperationMethod<
     ListChangedBlocksError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChangedBlocksRequest,
   output: ListChangedBlocksResponse,
   errors: [
@@ -690,7 +690,7 @@ export const listSnapshotBlocks: API.OperationMethod<
     ListSnapshotBlocksError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSnapshotBlocksRequest,
   output: ListSnapshotBlocksResponse,
   errors: [
@@ -733,7 +733,7 @@ export const putSnapshotBlock: API.OperationMethod<
   PutSnapshotBlockResponse,
   PutSnapshotBlockError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutSnapshotBlockRequest,
   output: PutSnapshotBlockResponse,
   errors: [
@@ -773,7 +773,7 @@ export const startSnapshot: API.OperationMethod<
   StartSnapshotResponse,
   StartSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartSnapshotRequest,
   output: StartSnapshotResponse,
   errors: [

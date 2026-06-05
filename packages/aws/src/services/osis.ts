@@ -1270,7 +1270,7 @@ export const createPipeline: API.OperationMethod<
   CreatePipelineResponse,
   CreatePipelineError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePipelineRequest,
   output: CreatePipelineResponse,
   errors: [
@@ -1300,7 +1300,7 @@ export const createPipelineEndpoint: API.OperationMethod<
   CreatePipelineEndpointResponse,
   CreatePipelineEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePipelineEndpointRequest,
   output: CreatePipelineEndpointResponse,
   errors: [
@@ -1329,7 +1329,7 @@ export const deletePipeline: API.OperationMethod<
   DeletePipelineResponse,
   DeletePipelineError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePipelineRequest,
   output: DeletePipelineResponse,
   errors: [
@@ -1355,7 +1355,7 @@ export const deletePipelineEndpoint: API.OperationMethod<
   DeletePipelineEndpointResponse,
   DeletePipelineEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePipelineEndpointRequest,
   output: DeletePipelineEndpointResponse,
   errors: [
@@ -1381,7 +1381,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyResponse,
   DeleteResourcePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourcePolicyRequest,
   output: DeleteResourcePolicyResponse,
   errors: [
@@ -1408,7 +1408,7 @@ export const getPipeline: API.OperationMethod<
   GetPipelineResponse,
   GetPipelineError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPipelineRequest,
   output: GetPipelineResponse,
   errors: [
@@ -1437,7 +1437,7 @@ export const getPipelineBlueprint: API.OperationMethod<
   GetPipelineBlueprintResponse,
   GetPipelineBlueprintError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPipelineBlueprintRequest,
   output: GetPipelineBlueprintResponse,
   errors: [
@@ -1467,7 +1467,7 @@ export const getPipelineChangeProgress: API.OperationMethod<
   GetPipelineChangeProgressResponse,
   GetPipelineChangeProgressError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPipelineChangeProgressRequest,
   output: GetPipelineChangeProgressResponse,
   errors: [
@@ -1494,7 +1494,7 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyResponse,
   GetResourcePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResourcePolicyRequest,
   output: GetResourcePolicyResponse,
   errors: [
@@ -1523,7 +1523,7 @@ export const listPipelineBlueprints: API.OperationMethod<
   ListPipelineBlueprintsResponse,
   ListPipelineBlueprintsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListPipelineBlueprintsRequest,
   output: ListPipelineBlueprintsResponse,
   errors: [
@@ -1564,7 +1564,7 @@ export const listPipelineEndpointConnections: API.OperationMethod<
     ListPipelineEndpointConnectionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPipelineEndpointConnectionsRequest,
   output: ListPipelineEndpointConnectionsResponse,
   errors: [
@@ -1611,7 +1611,7 @@ export const listPipelineEndpoints: API.OperationMethod<
     ListPipelineEndpointsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPipelineEndpointsRequest,
   output: ListPipelineEndpointsResponse,
   errors: [
@@ -1660,7 +1660,7 @@ export const listPipelines: API.OperationMethod<
     ListPipelinesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPipelinesRequest,
   output: ListPipelinesResponse,
   errors: [
@@ -1692,7 +1692,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -1720,7 +1720,7 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyResponse,
   PutResourcePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutResourcePolicyRequest,
   output: PutResourcePolicyResponse,
   errors: [
@@ -1747,7 +1747,7 @@ export const revokePipelineEndpointConnections: API.OperationMethod<
   RevokePipelineEndpointConnectionsResponse,
   RevokePipelineEndpointConnectionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RevokePipelineEndpointConnectionsRequest,
   output: RevokePipelineEndpointConnectionsResponse,
   errors: [
@@ -1774,7 +1774,7 @@ export const startPipeline: API.OperationMethod<
   StartPipelineResponse,
   StartPipelineError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartPipelineRequest,
   output: StartPipelineResponse,
   errors: [
@@ -1803,7 +1803,7 @@ export const stopPipeline: API.OperationMethod<
   StopPipelineResponse,
   StopPipelineError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopPipelineRequest,
   output: StopPipelineResponse,
   errors: [
@@ -1832,7 +1832,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -1860,7 +1860,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -1888,7 +1888,7 @@ export const updatePipeline: API.OperationMethod<
   UpdatePipelineResponse,
   UpdatePipelineError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePipelineRequest,
   output: UpdatePipelineResponse,
   errors: [
@@ -1916,7 +1916,7 @@ export const validatePipeline: API.OperationMethod<
   ValidatePipelineResponse,
   ValidatePipelineError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ValidatePipelineRequest,
   output: ValidatePipelineResponse,
   errors: [

@@ -7661,7 +7661,7 @@ export const acceptMatch: API.OperationMethod<
   AcceptMatchOutput,
   AcceptMatchError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AcceptMatchInput,
   output: AcceptMatchOutput,
   errors: [
@@ -7724,7 +7724,7 @@ export const claimGameServer: API.OperationMethod<
   ClaimGameServerOutput,
   ClaimGameServerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ClaimGameServerInput,
   output: ClaimGameServerOutput,
   errors: [
@@ -7773,7 +7773,7 @@ export const createAlias: API.OperationMethod<
   CreateAliasOutput,
   CreateAliasError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAliasInput,
   output: CreateAliasOutput,
   errors: [
@@ -7837,7 +7837,7 @@ export const createBuild: API.OperationMethod<
   CreateBuildOutput,
   CreateBuildError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateBuildInput,
   output: CreateBuildOutput,
   errors: [
@@ -7939,7 +7939,7 @@ export const createContainerFleet: API.OperationMethod<
   CreateContainerFleetOutput,
   CreateContainerFleetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateContainerFleetInput,
   output: CreateContainerFleetOutput,
   errors: [
@@ -8061,7 +8061,7 @@ export const createContainerGroupDefinition: API.OperationMethod<
   CreateContainerGroupDefinitionOutput,
   CreateContainerGroupDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateContainerGroupDefinitionInput,
   output: CreateContainerGroupDefinitionOutput,
   errors: [
@@ -8166,7 +8166,7 @@ export const createFleet: API.OperationMethod<
   CreateFleetOutput,
   CreateFleetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFleetInput,
   output: CreateFleetOutput,
   errors: [
@@ -8225,7 +8225,7 @@ export const createFleetLocations: API.OperationMethod<
   CreateFleetLocationsOutput,
   CreateFleetLocationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFleetLocationsInput,
   output: CreateFleetLocationsOutput,
   errors: [
@@ -8292,7 +8292,7 @@ export const createGameServerGroup: API.OperationMethod<
   CreateGameServerGroupOutput,
   CreateGameServerGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateGameServerGroupInput,
   output: CreateGameServerGroupOutput,
   errors: [
@@ -8364,7 +8364,7 @@ export const createGameSession: API.OperationMethod<
   CreateGameSessionOutput,
   CreateGameSessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateGameSessionInput,
   output: CreateGameSessionOutput,
   errors: [
@@ -8471,7 +8471,7 @@ export const createGameSessionQueue: API.OperationMethod<
   CreateGameSessionQueueOutput,
   CreateGameSessionQueueError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateGameSessionQueueInput,
   output: CreateGameSessionQueueOutput,
   errors: [
@@ -8501,7 +8501,7 @@ export const createLocation: API.OperationMethod<
   CreateLocationOutput,
   CreateLocationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLocationInput,
   output: CreateLocationOutput,
   errors: [
@@ -8555,7 +8555,7 @@ export const createMatchmakingConfiguration: API.OperationMethod<
   CreateMatchmakingConfigurationOutput,
   CreateMatchmakingConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMatchmakingConfigurationInput,
   output: CreateMatchmakingConfigurationOutput,
   errors: [
@@ -8604,7 +8604,7 @@ export const createMatchmakingRuleSet: API.OperationMethod<
   CreateMatchmakingRuleSetOutput,
   CreateMatchmakingRuleSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMatchmakingRuleSetInput,
   output: CreateMatchmakingRuleSetOutput,
   errors: [
@@ -8652,7 +8652,7 @@ export const createPlayerSession: API.OperationMethod<
   CreatePlayerSessionOutput,
   CreatePlayerSessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePlayerSessionInput,
   output: CreatePlayerSessionOutput,
   errors: [
@@ -8702,7 +8702,7 @@ export const createPlayerSessions: API.OperationMethod<
   CreatePlayerSessionsOutput,
   CreatePlayerSessionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePlayerSessionsInput,
   output: CreatePlayerSessionsOutput,
   errors: [
@@ -8763,7 +8763,7 @@ export const createScript: API.OperationMethod<
   CreateScriptOutput,
   CreateScriptError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateScriptInput,
   output: CreateScriptOutput,
   errors: [
@@ -8818,7 +8818,7 @@ export const createVpcPeeringAuthorization: API.OperationMethod<
   CreateVpcPeeringAuthorizationOutput,
   CreateVpcPeeringAuthorizationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateVpcPeeringAuthorizationInput,
   output: CreateVpcPeeringAuthorizationOutput,
   errors: [
@@ -8867,7 +8867,7 @@ export const createVpcPeeringConnection: API.OperationMethod<
   CreateVpcPeeringConnectionOutput,
   CreateVpcPeeringConnectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateVpcPeeringConnectionInput,
   output: CreateVpcPeeringConnectionOutput,
   errors: [
@@ -8900,7 +8900,7 @@ export const deleteAlias: API.OperationMethod<
   DeleteAliasResponse,
   DeleteAliasError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAliasInput,
   output: DeleteAliasResponse,
   errors: [
@@ -8939,7 +8939,7 @@ export const deleteBuild: API.OperationMethod<
   DeleteBuildResponse,
   DeleteBuildError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteBuildInput,
   output: DeleteBuildResponse,
   errors: [
@@ -8978,7 +8978,7 @@ export const deleteContainerFleet: API.OperationMethod<
   DeleteContainerFleetOutput,
   DeleteContainerFleetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteContainerFleetInput,
   output: DeleteContainerFleetOutput,
   errors: [
@@ -9036,7 +9036,7 @@ export const deleteContainerGroupDefinition: API.OperationMethod<
   DeleteContainerGroupDefinitionOutput,
   DeleteContainerGroupDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteContainerGroupDefinitionInput,
   output: DeleteContainerGroupDefinitionOutput,
   errors: [
@@ -9081,7 +9081,7 @@ export const deleteFleet: API.OperationMethod<
   DeleteFleetResponse,
   DeleteFleetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFleetInput,
   output: DeleteFleetResponse,
   errors: [
@@ -9123,7 +9123,7 @@ export const deleteFleetLocations: API.OperationMethod<
   DeleteFleetLocationsOutput,
   DeleteFleetLocationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFleetLocationsInput,
   output: DeleteFleetLocationsOutput,
   errors: [
@@ -9177,7 +9177,7 @@ export const deleteGameServerGroup: API.OperationMethod<
   DeleteGameServerGroupOutput,
   DeleteGameServerGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteGameServerGroupInput,
   output: DeleteGameServerGroupOutput,
   errors: [
@@ -9205,7 +9205,7 @@ export const deleteGameSessionQueue: API.OperationMethod<
   DeleteGameSessionQueueOutput,
   DeleteGameSessionQueueError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteGameSessionQueueInput,
   output: DeleteGameSessionQueueOutput,
   errors: [
@@ -9235,7 +9235,7 @@ export const deleteLocation: API.OperationMethod<
   DeleteLocationOutput,
   DeleteLocationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLocationInput,
   output: DeleteLocationOutput,
   errors: [
@@ -9264,7 +9264,7 @@ export const deleteMatchmakingConfiguration: API.OperationMethod<
   DeleteMatchmakingConfigurationOutput,
   DeleteMatchmakingConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMatchmakingConfigurationInput,
   output: DeleteMatchmakingConfigurationOutput,
   errors: [
@@ -9299,7 +9299,7 @@ export const deleteMatchmakingRuleSet: API.OperationMethod<
   DeleteMatchmakingRuleSetOutput,
   DeleteMatchmakingRuleSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMatchmakingRuleSetInput,
   output: DeleteMatchmakingRuleSetOutput,
   errors: [
@@ -9332,7 +9332,7 @@ export const deleteScalingPolicy: API.OperationMethod<
   DeleteScalingPolicyResponse,
   DeleteScalingPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteScalingPolicyInput,
   output: DeleteScalingPolicyResponse,
   errors: [
@@ -9375,7 +9375,7 @@ export const deleteScript: API.OperationMethod<
   DeleteScriptResponse,
   DeleteScriptError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteScriptInput,
   output: DeleteScriptResponse,
   errors: [
@@ -9407,7 +9407,7 @@ export const deleteVpcPeeringAuthorization: API.OperationMethod<
   DeleteVpcPeeringAuthorizationOutput,
   DeleteVpcPeeringAuthorizationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteVpcPeeringAuthorizationInput,
   output: DeleteVpcPeeringAuthorizationOutput,
   errors: [
@@ -9442,7 +9442,7 @@ export const deleteVpcPeeringConnection: API.OperationMethod<
   DeleteVpcPeeringConnectionOutput,
   DeleteVpcPeeringConnectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteVpcPeeringConnectionInput,
   output: DeleteVpcPeeringConnectionOutput,
   errors: [
@@ -9474,7 +9474,7 @@ export const deregisterCompute: API.OperationMethod<
   DeregisterComputeOutput,
   DeregisterComputeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeregisterComputeInput,
   output: DeregisterComputeOutput,
   errors: [
@@ -9511,7 +9511,7 @@ export const deregisterGameServer: API.OperationMethod<
   DeregisterGameServerResponse,
   DeregisterGameServerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeregisterGameServerInput,
   output: DeregisterGameServerResponse,
   errors: [
@@ -9545,7 +9545,7 @@ export const describeAlias: API.OperationMethod<
   DescribeAliasOutput,
   DescribeAliasError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAliasInput,
   output: DescribeAliasOutput,
   errors: [
@@ -9579,7 +9579,7 @@ export const describeBuild: API.OperationMethod<
   DescribeBuildOutput,
   DescribeBuildError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeBuildInput,
   output: DescribeBuildOutput,
   errors: [
@@ -9634,7 +9634,7 @@ export const describeCompute: API.OperationMethod<
   DescribeComputeOutput,
   DescribeComputeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeComputeInput,
   output: DescribeComputeOutput,
   errors: [
@@ -9677,7 +9677,7 @@ export const describeContainerFleet: API.OperationMethod<
   DescribeContainerFleetOutput,
   DescribeContainerFleetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeContainerFleetInput,
   output: DescribeContainerFleetOutput,
   errors: [
@@ -9723,7 +9723,7 @@ export const describeContainerGroupDefinition: API.OperationMethod<
   DescribeContainerGroupDefinitionOutput,
   DescribeContainerGroupDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeContainerGroupDefinitionInput,
   output: DescribeContainerGroupDefinitionOutput,
   errors: [
@@ -9796,7 +9796,7 @@ export const describeEC2InstanceLimits: API.OperationMethod<
   DescribeEC2InstanceLimitsOutput,
   DescribeEC2InstanceLimitsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeEC2InstanceLimitsInput,
   output: DescribeEC2InstanceLimitsOutput,
   errors: [
@@ -9859,7 +9859,7 @@ export const describeFleetAttributes: API.OperationMethod<
     DescribeFleetAttributesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFleetAttributesInput,
   output: DescribeFleetAttributesOutput,
   errors: [
@@ -9938,7 +9938,7 @@ export const describeFleetCapacity: API.OperationMethod<
     DescribeFleetCapacityError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFleetCapacityInput,
   output: DescribeFleetCapacityOutput,
   errors: [
@@ -9984,7 +9984,7 @@ export const describeFleetDeployment: API.OperationMethod<
   DescribeFleetDeploymentOutput,
   DescribeFleetDeploymentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeFleetDeploymentInput,
   output: DescribeFleetDeploymentOutput,
   errors: [
@@ -10040,7 +10040,7 @@ export const describeFleetEvents: API.OperationMethod<
     DescribeFleetEventsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFleetEventsInput,
   output: DescribeFleetEventsOutput,
   errors: [
@@ -10113,7 +10113,7 @@ export const describeFleetLocationAttributes: API.OperationMethod<
     DescribeFleetLocationAttributesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFleetLocationAttributesInput,
   output: DescribeFleetLocationAttributesOutput,
   errors: [
@@ -10167,7 +10167,7 @@ export const describeFleetLocationCapacity: API.OperationMethod<
   DescribeFleetLocationCapacityOutput,
   DescribeFleetLocationCapacityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeFleetLocationCapacityInput,
   output: DescribeFleetLocationCapacityOutput,
   errors: [
@@ -10213,7 +10213,7 @@ export const describeFleetLocationUtilization: API.OperationMethod<
   DescribeFleetLocationUtilizationOutput,
   DescribeFleetLocationUtilizationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeFleetLocationUtilizationInput,
   output: DescribeFleetLocationUtilizationOutput,
   errors: [
@@ -10262,7 +10262,7 @@ export const describeFleetPortSettings: API.OperationMethod<
   DescribeFleetPortSettingsOutput,
   DescribeFleetPortSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeFleetPortSettingsInput,
   output: DescribeFleetPortSettingsOutput,
   errors: [
@@ -10333,7 +10333,7 @@ export const describeFleetUtilization: API.OperationMethod<
     DescribeFleetUtilizationError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFleetUtilizationInput,
   output: DescribeFleetUtilizationOutput,
   errors: [
@@ -10375,7 +10375,7 @@ export const describeGameServer: API.OperationMethod<
   DescribeGameServerOutput,
   DescribeGameServerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeGameServerInput,
   output: DescribeGameServerOutput,
   errors: [
@@ -10413,7 +10413,7 @@ export const describeGameServerGroup: API.OperationMethod<
   DescribeGameServerGroupOutput,
   DescribeGameServerGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeGameServerGroupInput,
   output: DescribeGameServerGroupOutput,
   errors: [
@@ -10473,7 +10473,7 @@ export const describeGameServerInstances: API.OperationMethod<
     DescribeGameServerInstancesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeGameServerInstancesInput,
   output: DescribeGameServerInstancesOutput,
   errors: [
@@ -10551,7 +10551,7 @@ export const describeGameSessionDetails: API.OperationMethod<
     DescribeGameSessionDetailsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeGameSessionDetailsInput,
   output: DescribeGameSessionDetailsOutput,
   errors: [
@@ -10596,7 +10596,7 @@ export const describeGameSessionPlacement: API.OperationMethod<
   DescribeGameSessionPlacementOutput,
   DescribeGameSessionPlacementError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeGameSessionPlacementInput,
   output: DescribeGameSessionPlacementOutput,
   errors: [
@@ -10644,7 +10644,7 @@ export const describeGameSessionQueues: API.OperationMethod<
     DescribeGameSessionQueuesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeGameSessionQueuesInput,
   output: DescribeGameSessionQueuesOutput,
   errors: [
@@ -10729,7 +10729,7 @@ export const describeGameSessions: API.OperationMethod<
     DescribeGameSessionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeGameSessionsInput,
   output: DescribeGameSessionsOutput,
   errors: [
@@ -10812,7 +10812,7 @@ export const describeInstances: API.OperationMethod<
     DescribeInstancesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstancesInput,
   output: DescribeInstancesOutput,
   errors: [
@@ -10862,7 +10862,7 @@ export const describeMatchmaking: API.OperationMethod<
   DescribeMatchmakingOutput,
   DescribeMatchmakingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeMatchmakingInput,
   output: DescribeMatchmakingOutput,
   errors: [
@@ -10913,7 +10913,7 @@ export const describeMatchmakingConfigurations: API.OperationMethod<
     DescribeMatchmakingConfigurationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMatchmakingConfigurationsInput,
   output: DescribeMatchmakingConfigurationsOutput,
   errors: [
@@ -10967,7 +10967,7 @@ export const describeMatchmakingRuleSets: API.OperationMethod<
     DescribeMatchmakingRuleSetsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMatchmakingRuleSetsInput,
   output: DescribeMatchmakingRuleSetsOutput,
   errors: [
@@ -11037,7 +11037,7 @@ export const describePlayerSessions: API.OperationMethod<
     DescribePlayerSessionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribePlayerSessionsInput,
   output: DescribePlayerSessionsOutput,
   errors: [
@@ -11087,7 +11087,7 @@ export const describeRuntimeConfiguration: API.OperationMethod<
   DescribeRuntimeConfigurationOutput,
   DescribeRuntimeConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeRuntimeConfigurationInput,
   output: DescribeRuntimeConfigurationOutput,
   errors: [
@@ -11137,7 +11137,7 @@ export const describeScalingPolicies: API.OperationMethod<
     DescribeScalingPoliciesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeScalingPoliciesInput,
   output: DescribeScalingPoliciesOutput,
   errors: [
@@ -11181,7 +11181,7 @@ export const describeScript: API.OperationMethod<
   DescribeScriptOutput,
   DescribeScriptError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeScriptInput,
   output: DescribeScriptOutput,
   errors: [
@@ -11212,7 +11212,7 @@ export const describeVpcPeeringAuthorizations: API.OperationMethod<
   DescribeVpcPeeringAuthorizationsOutput,
   DescribeVpcPeeringAuthorizationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeVpcPeeringAuthorizationsInput,
   output: DescribeVpcPeeringAuthorizationsOutput,
   errors: [
@@ -11248,7 +11248,7 @@ export const describeVpcPeeringConnections: API.OperationMethod<
   DescribeVpcPeeringConnectionsOutput,
   DescribeVpcPeeringConnectionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeVpcPeeringConnectionsInput,
   output: DescribeVpcPeeringConnectionsOutput,
   errors: [
@@ -11298,7 +11298,7 @@ export const getComputeAccess: API.OperationMethod<
   GetComputeAccessOutput,
   GetComputeAccessError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetComputeAccessInput,
   output: GetComputeAccessOutput,
   errors: [
@@ -11353,7 +11353,7 @@ export const getComputeAuthToken: API.OperationMethod<
   GetComputeAuthTokenOutput,
   GetComputeAuthTokenError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetComputeAuthTokenInput,
   output: GetComputeAuthTokenOutput,
   errors: [
@@ -11388,7 +11388,7 @@ export const getGameSessionLogUrl: API.OperationMethod<
   GetGameSessionLogUrlOutput,
   GetGameSessionLogUrlError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetGameSessionLogUrlInput,
   output: GetGameSessionLogUrlOutput,
   errors: [
@@ -11443,7 +11443,7 @@ export const getInstanceAccess: API.OperationMethod<
   GetInstanceAccessOutput,
   GetInstanceAccessError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInstanceAccessInput,
   output: GetInstanceAccessOutput,
   errors: [
@@ -11482,7 +11482,7 @@ export const getPlayerConnectionDetails: API.OperationMethod<
   GetPlayerConnectionDetailsOutput,
   GetPlayerConnectionDetailsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPlayerConnectionDetailsInput,
   output: GetPlayerConnectionDetailsOutput,
   errors: [
@@ -11533,7 +11533,7 @@ export const listAliases: API.OperationMethod<
     ListAliasesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAliasesInput,
   output: ListAliasesOutput,
   errors: [
@@ -11589,7 +11589,7 @@ export const listBuilds: API.OperationMethod<
     ListBuildsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBuildsInput,
   output: ListBuildsOutput,
   errors: [
@@ -11658,7 +11658,7 @@ export const listCompute: API.OperationMethod<
     ListComputeError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListComputeInput,
   output: ListComputeOutput,
   errors: [
@@ -11726,7 +11726,7 @@ export const listContainerFleets: API.OperationMethod<
     ListContainerFleetsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListContainerFleetsInput,
   output: ListContainerFleetsOutput,
   errors: [
@@ -11791,7 +11791,7 @@ export const listContainerGroupDefinitions: API.OperationMethod<
     ListContainerGroupDefinitionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListContainerGroupDefinitionsInput,
   output: ListContainerGroupDefinitionsOutput,
   errors: [
@@ -11858,7 +11858,7 @@ export const listContainerGroupDefinitionVersions: API.OperationMethod<
     ListContainerGroupDefinitionVersionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListContainerGroupDefinitionVersionsInput,
   output: ListContainerGroupDefinitionVersionsOutput,
   errors: [
@@ -11922,7 +11922,7 @@ export const listFleetDeployments: API.OperationMethod<
     ListFleetDeploymentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFleetDeploymentsInput,
   output: ListFleetDeploymentsOutput,
   errors: [
@@ -11992,7 +11992,7 @@ export const listFleets: API.OperationMethod<
     ListFleetsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFleetsInput,
   output: ListFleetsOutput,
   errors: [
@@ -12038,7 +12038,7 @@ export const listGameServerGroups: API.OperationMethod<
     ListGameServerGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGameServerGroupsInput,
   output: ListGameServerGroupsOutput,
   errors: [
@@ -12091,7 +12091,7 @@ export const listGameServers: API.OperationMethod<
     ListGameServersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGameServersInput,
   output: ListGameServersOutput,
   errors: [
@@ -12143,7 +12143,7 @@ export const listLocations: API.OperationMethod<
     ListLocationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLocationsInput,
   output: ListLocationsOutput,
   errors: [
@@ -12197,7 +12197,7 @@ export const listScripts: API.OperationMethod<
     ListScriptsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListScriptsInput,
   output: ListScriptsOutput,
   errors: [
@@ -12244,7 +12244,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -12339,7 +12339,7 @@ export const putScalingPolicy: API.OperationMethod<
   PutScalingPolicyOutput,
   PutScalingPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutScalingPolicyInput,
   output: PutScalingPolicyOutput,
   errors: [
@@ -12395,7 +12395,7 @@ export const registerCompute: API.OperationMethod<
   RegisterComputeOutput,
   RegisterComputeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterComputeInput,
   output: RegisterComputeOutput,
   errors: [
@@ -12443,7 +12443,7 @@ export const registerGameServer: API.OperationMethod<
   RegisterGameServerOutput,
   RegisterGameServerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterGameServerInput,
   output: RegisterGameServerOutput,
   errors: [
@@ -12482,7 +12482,7 @@ export const requestUploadCredentials: API.OperationMethod<
   RequestUploadCredentialsOutput,
   RequestUploadCredentialsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RequestUploadCredentialsInput,
   output: RequestUploadCredentialsOutput,
   errors: [
@@ -12518,7 +12518,7 @@ export const resolveAlias: API.OperationMethod<
   ResolveAliasOutput,
   ResolveAliasError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResolveAliasInput,
   output: ResolveAliasOutput,
   errors: [
@@ -12560,7 +12560,7 @@ export const resumeGameServerGroup: API.OperationMethod<
   ResumeGameServerGroupOutput,
   ResumeGameServerGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResumeGameServerGroupInput,
   output: ResumeGameServerGroupOutput,
   errors: [
@@ -12671,7 +12671,7 @@ export const searchGameSessions: API.OperationMethod<
     SearchGameSessionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchGameSessionsInput,
   output: SearchGameSessionsOutput,
   errors: [
@@ -12725,7 +12725,7 @@ export const startFleetActions: API.OperationMethod<
   StartFleetActionsOutput,
   StartFleetActionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartFleetActionsInput,
   output: StartFleetActionsOutput,
   errors: [
@@ -12828,7 +12828,7 @@ export const startGameSessionPlacement: API.OperationMethod<
   StartGameSessionPlacementOutput,
   StartGameSessionPlacementError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartGameSessionPlacementInput,
   output: StartGameSessionPlacementOutput,
   errors: [
@@ -12890,7 +12890,7 @@ export const startMatchBackfill: API.OperationMethod<
   StartMatchBackfillOutput,
   StartMatchBackfillError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartMatchBackfillInput,
   output: StartMatchBackfillOutput,
   errors: [
@@ -12941,7 +12941,7 @@ export const startMatchmaking: API.OperationMethod<
   StartMatchmakingOutput,
   StartMatchmakingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartMatchmakingInput,
   output: StartMatchmakingOutput,
   errors: [
@@ -12992,7 +12992,7 @@ export const stopFleetActions: API.OperationMethod<
   StopFleetActionsOutput,
   StopFleetActionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopFleetActionsInput,
   output: StopFleetActionsOutput,
   errors: [
@@ -13029,7 +13029,7 @@ export const stopGameSessionPlacement: API.OperationMethod<
   StopGameSessionPlacementOutput,
   StopGameSessionPlacementError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopGameSessionPlacementInput,
   output: StopGameSessionPlacementOutput,
   errors: [
@@ -13070,7 +13070,7 @@ export const stopMatchmaking: API.OperationMethod<
   StopMatchmakingOutput,
   StopMatchmakingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopMatchmakingInput,
   output: StopMatchmakingOutput,
   errors: [
@@ -13117,7 +13117,7 @@ export const suspendGameServerGroup: API.OperationMethod<
   SuspendGameServerGroupOutput,
   SuspendGameServerGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SuspendGameServerGroupInput,
   output: SuspendGameServerGroupOutput,
   errors: [
@@ -13162,7 +13162,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -13233,7 +13233,7 @@ export const terminateGameSession: API.OperationMethod<
   TerminateGameSessionOutput,
   TerminateGameSessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TerminateGameSessionInput,
   output: TerminateGameSessionOutput,
   errors: [
@@ -13279,7 +13279,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -13314,7 +13314,7 @@ export const updateAlias: API.OperationMethod<
   UpdateAliasOutput,
   UpdateAliasError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAliasInput,
   output: UpdateAliasOutput,
   errors: [
@@ -13349,7 +13349,7 @@ export const updateBuild: API.OperationMethod<
   UpdateBuildOutput,
   UpdateBuildError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateBuildInput,
   output: UpdateBuildOutput,
   errors: [
@@ -13425,7 +13425,7 @@ export const updateContainerFleet: API.OperationMethod<
   UpdateContainerFleetOutput,
   UpdateContainerFleetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateContainerFleetInput,
   output: UpdateContainerFleetOutput,
   errors: [
@@ -13491,7 +13491,7 @@ export const updateContainerGroupDefinition: API.OperationMethod<
   UpdateContainerGroupDefinitionOutput,
   UpdateContainerGroupDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateContainerGroupDefinitionInput,
   output: UpdateContainerGroupDefinitionOutput,
   errors: [
@@ -13538,7 +13538,7 @@ export const updateFleetAttributes: API.OperationMethod<
   UpdateFleetAttributesOutput,
   UpdateFleetAttributesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateFleetAttributesInput,
   output: UpdateFleetAttributesOutput,
   errors: [
@@ -13619,7 +13619,7 @@ export const updateFleetCapacity: API.OperationMethod<
   UpdateFleetCapacityOutput,
   UpdateFleetCapacityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateFleetCapacityInput,
   output: UpdateFleetCapacityOutput,
   errors: [
@@ -13669,7 +13669,7 @@ export const updateFleetPortSettings: API.OperationMethod<
   UpdateFleetPortSettingsOutput,
   UpdateFleetPortSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateFleetPortSettingsInput,
   output: UpdateFleetPortSettingsOutput,
   errors: [
@@ -13726,7 +13726,7 @@ export const updateGameServer: API.OperationMethod<
   UpdateGameServerOutput,
   UpdateGameServerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateGameServerInput,
   output: UpdateGameServerOutput,
   errors: [
@@ -13765,7 +13765,7 @@ export const updateGameServerGroup: API.OperationMethod<
   UpdateGameServerGroupOutput,
   UpdateGameServerGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateGameServerGroupInput,
   output: UpdateGameServerGroupOutput,
   errors: [
@@ -13801,7 +13801,7 @@ export const updateGameSession: API.OperationMethod<
   UpdateGameSessionOutput,
   UpdateGameSessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateGameSessionInput,
   output: UpdateGameSessionOutput,
   errors: [
@@ -13837,7 +13837,7 @@ export const updateGameSessionQueue: API.OperationMethod<
   UpdateGameSessionQueueOutput,
   UpdateGameSessionQueueError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateGameSessionQueueInput,
   output: UpdateGameSessionQueueOutput,
   errors: [
@@ -13870,7 +13870,7 @@ export const updateMatchmakingConfiguration: API.OperationMethod<
   UpdateMatchmakingConfigurationOutput,
   UpdateMatchmakingConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateMatchmakingConfigurationInput,
   output: UpdateMatchmakingConfigurationOutput,
   errors: [
@@ -13917,7 +13917,7 @@ export const updateRuntimeConfiguration: API.OperationMethod<
   UpdateRuntimeConfigurationOutput,
   UpdateRuntimeConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRuntimeConfigurationInput,
   output: UpdateRuntimeConfigurationOutput,
   errors: [
@@ -13965,7 +13965,7 @@ export const updateScript: API.OperationMethod<
   UpdateScriptOutput,
   UpdateScriptError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateScriptInput,
   output: UpdateScriptOutput,
   errors: [
@@ -13997,7 +13997,7 @@ export const validateMatchmakingRuleSet: API.OperationMethod<
   ValidateMatchmakingRuleSetOutput,
   ValidateMatchmakingRuleSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ValidateMatchmakingRuleSetInput,
   output: ValidateMatchmakingRuleSetOutput,
   errors: [

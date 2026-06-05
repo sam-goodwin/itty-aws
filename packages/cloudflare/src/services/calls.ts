@@ -22,7 +22,7 @@ export interface GetSfuRequest {
   accountId: string;
 }
 
-export const GetSfuRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetSfuRequest = /*@__PURE__*/ Schema.Struct({
   appId: Schema.String.pipe(T.HttpPath("appId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -40,7 +40,7 @@ export interface GetSfuResponse {
   uid?: string | null;
 }
 
-export const GetSfuResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetSfuResponse = /*@__PURE__*/ Schema.Struct({
   created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -54,7 +54,7 @@ export const getSfu: API.OperationMethod<
   GetSfuResponse,
   GetSfuError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSfuRequest,
   output: GetSfuResponse,
   errors: [],
@@ -67,7 +67,7 @@ export interface CreateSfuRequest {
   name?: string;
 }
 
-export const CreateSfuRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateSfuRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   name: Schema.optional(Schema.String),
 }).pipe(
@@ -87,7 +87,7 @@ export interface CreateSfuResponse {
   uid?: string | null;
 }
 
-export const CreateSfuResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateSfuResponse = /*@__PURE__*/ Schema.Struct({
   created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -104,7 +104,7 @@ export const createSfu: API.OperationMethod<
   CreateSfuResponse,
   CreateSfuError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSfuRequest,
   output: CreateSfuResponse,
   errors: [],
@@ -118,7 +118,7 @@ export interface UpdateSfuRequest {
   name?: string;
 }
 
-export const UpdateSfuRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateSfuRequest = /*@__PURE__*/ Schema.Struct({
   appId: Schema.String.pipe(T.HttpPath("appId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   name: Schema.optional(Schema.String),
@@ -137,7 +137,7 @@ export interface UpdateSfuResponse {
   uid?: string | null;
 }
 
-export const UpdateSfuResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateSfuResponse = /*@__PURE__*/ Schema.Struct({
   created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -153,7 +153,7 @@ export const updateSfu: API.OperationMethod<
   UpdateSfuResponse,
   UpdateSfuError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSfuRequest,
   output: UpdateSfuResponse,
   errors: [],
@@ -165,7 +165,7 @@ export interface DeleteSfuRequest {
   accountId: string;
 }
 
-export const DeleteSfuRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteSfuRequest = /*@__PURE__*/ Schema.Struct({
   appId: Schema.String.pipe(T.HttpPath("appId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -186,7 +186,7 @@ export interface DeleteSfuResponse {
   uid?: string | null;
 }
 
-export const DeleteSfuResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteSfuResponse = /*@__PURE__*/ Schema.Struct({
   created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -202,7 +202,7 @@ export const deleteSfu: API.OperationMethod<
   DeleteSfuResponse,
   DeleteSfuError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSfuRequest,
   output: DeleteSfuResponse,
   errors: [],
@@ -217,7 +217,7 @@ export interface ListSfusRequest {
   accountId: string;
 }
 
-export const ListSfusRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListSfusRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
   T.Http({ method: "GET", path: "/accounts/{account_id}/calls/apps" }),
@@ -232,7 +232,7 @@ export interface ListSfusResponse {
   }[];
 }
 
-export const ListSfusResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListSfusResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -250,7 +250,7 @@ export const listSfus: API.PaginatedOperationMethod<
   ListSfusResponse,
   ListSfusError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSfusRequest,
   output: ListSfusResponse,
   errors: [],
@@ -270,7 +270,7 @@ export interface GetTurnRequest {
   accountId: string;
 }
 
-export const GetTurnRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetTurnRequest = /*@__PURE__*/ Schema.Struct({
   keyId: Schema.String.pipe(T.HttpPath("keyId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -291,7 +291,7 @@ export interface GetTurnResponse {
   uid?: string | null;
 }
 
-export const GetTurnResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetTurnResponse = /*@__PURE__*/ Schema.Struct({
   created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -305,7 +305,7 @@ export const getTurn: API.OperationMethod<
   GetTurnResponse,
   GetTurnError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTurnRequest,
   output: GetTurnResponse,
   errors: [],
@@ -316,7 +316,7 @@ export interface ListTurnsRequest {
   accountId: string;
 }
 
-export const ListTurnsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListTurnsRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
   T.Http({ method: "GET", path: "/accounts/{account_id}/calls/turn_keys" }),
@@ -331,7 +331,7 @@ export interface ListTurnsResponse {
   }[];
 }
 
-export const ListTurnsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListTurnsResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -349,7 +349,7 @@ export const listTurns: API.PaginatedOperationMethod<
   ListTurnsResponse,
   ListTurnsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTurnsRequest,
   output: ListTurnsResponse,
   errors: [],
@@ -366,7 +366,7 @@ export interface CreateTurnRequest {
   name?: string;
 }
 
-export const CreateTurnRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateTurnRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   name: Schema.optional(Schema.String),
 }).pipe(
@@ -386,7 +386,7 @@ export interface CreateTurnResponse {
   uid?: string | null;
 }
 
-export const CreateTurnResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateTurnResponse = /*@__PURE__*/ Schema.Struct({
   created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   key: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -403,7 +403,7 @@ export const createTurn: API.OperationMethod<
   CreateTurnResponse,
   CreateTurnError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTurnRequest,
   output: CreateTurnResponse,
   errors: [],
@@ -417,7 +417,7 @@ export interface UpdateTurnRequest {
   name?: string;
 }
 
-export const UpdateTurnRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateTurnRequest = /*@__PURE__*/ Schema.Struct({
   keyId: Schema.String.pipe(T.HttpPath("keyId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   name: Schema.optional(Schema.String),
@@ -439,7 +439,7 @@ export interface UpdateTurnResponse {
   uid?: string | null;
 }
 
-export const UpdateTurnResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateTurnResponse = /*@__PURE__*/ Schema.Struct({
   created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -455,7 +455,7 @@ export const updateTurn: API.OperationMethod<
   UpdateTurnResponse,
   UpdateTurnError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTurnRequest,
   output: UpdateTurnResponse,
   errors: [],
@@ -467,7 +467,7 @@ export interface DeleteTurnRequest {
   accountId: string;
 }
 
-export const DeleteTurnRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteTurnRequest = /*@__PURE__*/ Schema.Struct({
   keyId: Schema.String.pipe(T.HttpPath("keyId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -488,7 +488,7 @@ export interface DeleteTurnResponse {
   uid?: string | null;
 }
 
-export const DeleteTurnResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteTurnResponse = /*@__PURE__*/ Schema.Struct({
   created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -504,7 +504,7 @@ export const deleteTurn: API.OperationMethod<
   DeleteTurnResponse,
   DeleteTurnError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTurnRequest,
   output: DeleteTurnResponse,
   errors: [],

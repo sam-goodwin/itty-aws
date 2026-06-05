@@ -3523,7 +3523,7 @@ export const associateAssessmentReportEvidenceFolder: API.OperationMethod<
   AssociateAssessmentReportEvidenceFolderResponse,
   AssociateAssessmentReportEvidenceFolderError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateAssessmentReportEvidenceFolderRequest,
   output: AssociateAssessmentReportEvidenceFolderResponse,
   errors: [
@@ -3548,7 +3548,7 @@ export const batchAssociateAssessmentReportEvidence: API.OperationMethod<
   BatchAssociateAssessmentReportEvidenceResponse,
   BatchAssociateAssessmentReportEvidenceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchAssociateAssessmentReportEvidenceRequest,
   output: BatchAssociateAssessmentReportEvidenceResponse,
   errors: [
@@ -3572,7 +3572,7 @@ export const batchCreateDelegationByAssessment: API.OperationMethod<
   BatchCreateDelegationByAssessmentResponse,
   BatchCreateDelegationByAssessmentError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchCreateDelegationByAssessmentRequest,
   output: BatchCreateDelegationByAssessmentResponse,
   errors: [
@@ -3596,7 +3596,7 @@ export const batchDeleteDelegationByAssessment: API.OperationMethod<
   BatchDeleteDelegationByAssessmentResponse,
   BatchDeleteDelegationByAssessmentError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchDeleteDelegationByAssessmentRequest,
   output: BatchDeleteDelegationByAssessmentResponse,
   errors: [
@@ -3620,7 +3620,7 @@ export const batchDisassociateAssessmentReportEvidence: API.OperationMethod<
   BatchDisassociateAssessmentReportEvidenceResponse,
   BatchDisassociateAssessmentReportEvidenceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchDisassociateAssessmentReportEvidenceRequest,
   output: BatchDisassociateAssessmentReportEvidenceResponse,
   errors: [
@@ -3664,7 +3664,7 @@ export const batchImportEvidenceToAssessmentControl: API.OperationMethod<
   BatchImportEvidenceToAssessmentControlResponse,
   BatchImportEvidenceToAssessmentControlError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchImportEvidenceToAssessmentControlRequest,
   output: BatchImportEvidenceToAssessmentControlResponse,
   errors: [
@@ -3691,7 +3691,7 @@ export const createAssessment: API.OperationMethod<
   CreateAssessmentResponse,
   CreateAssessmentError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAssessmentRequest,
   output: CreateAssessmentResponse,
   errors: [
@@ -3718,7 +3718,7 @@ export const createAssessmentFramework: API.OperationMethod<
   CreateAssessmentFrameworkResponse,
   CreateAssessmentFrameworkError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAssessmentFrameworkRequest,
   output: CreateAssessmentFrameworkResponse,
   errors: [
@@ -3743,7 +3743,7 @@ export const createAssessmentReport: API.OperationMethod<
   CreateAssessmentReportResponse,
   CreateAssessmentReportError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAssessmentReportRequest,
   output: CreateAssessmentReportResponse,
   errors: [
@@ -3768,7 +3768,7 @@ export const createControl: API.OperationMethod<
   CreateControlResponse,
   CreateControlError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateControlRequest,
   output: CreateControlResponse,
   errors: [
@@ -3793,7 +3793,7 @@ export const deleteAssessment: API.OperationMethod<
   DeleteAssessmentResponse,
   DeleteAssessmentError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAssessmentRequest,
   output: DeleteAssessmentResponse,
   errors: [
@@ -3817,7 +3817,7 @@ export const deleteAssessmentFramework: API.OperationMethod<
   DeleteAssessmentFrameworkResponse,
   DeleteAssessmentFrameworkError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAssessmentFrameworkRequest,
   output: DeleteAssessmentFrameworkResponse,
   errors: [
@@ -3841,7 +3841,7 @@ export const deleteAssessmentFrameworkShare: API.OperationMethod<
   DeleteAssessmentFrameworkShareResponse,
   DeleteAssessmentFrameworkShareError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAssessmentFrameworkShareRequest,
   output: DeleteAssessmentFrameworkShareResponse,
   errors: [
@@ -3885,7 +3885,7 @@ export const deleteAssessmentReport: API.OperationMethod<
   DeleteAssessmentReportResponse,
   DeleteAssessmentReportError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAssessmentReportRequest,
   output: DeleteAssessmentReportResponse,
   errors: [
@@ -3914,7 +3914,7 @@ export const deleteControl: API.OperationMethod<
   DeleteControlResponse,
   DeleteControlError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteControlRequest,
   output: DeleteControlResponse,
   errors: [
@@ -3946,7 +3946,7 @@ export const deregisterAccount: API.OperationMethod<
   DeregisterAccountResponse,
   DeregisterAccountError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeregisterAccountRequest,
   output: DeregisterAccountResponse,
   errors: [
@@ -4022,7 +4022,7 @@ export const deregisterOrganizationAdminAccount: API.OperationMethod<
   DeregisterOrganizationAdminAccountResponse,
   DeregisterOrganizationAdminAccountError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeregisterOrganizationAdminAccountRequest,
   output: DeregisterOrganizationAdminAccountResponse,
   errors: [
@@ -4046,7 +4046,7 @@ export const disassociateAssessmentReportEvidenceFolder: API.OperationMethod<
   DisassociateAssessmentReportEvidenceFolderResponse,
   DisassociateAssessmentReportEvidenceFolderError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateAssessmentReportEvidenceFolderRequest,
   output: DisassociateAssessmentReportEvidenceFolderResponse,
   errors: [
@@ -4065,7 +4065,7 @@ export const getAccountStatus: API.OperationMethod<
   GetAccountStatusResponse,
   GetAccountStatusError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountStatusRequest,
   output: GetAccountStatusResponse,
   errors: [InternalServerException],
@@ -4084,7 +4084,7 @@ export const getAssessment: API.OperationMethod<
   GetAssessmentResponse,
   GetAssessmentError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAssessmentRequest,
   output: GetAssessmentResponse,
   errors: [
@@ -4108,7 +4108,7 @@ export const getAssessmentFramework: API.OperationMethod<
   GetAssessmentFrameworkResponse,
   GetAssessmentFrameworkError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAssessmentFrameworkRequest,
   output: GetAssessmentFrameworkResponse,
   errors: [
@@ -4132,7 +4132,7 @@ export const getAssessmentReportUrl: API.OperationMethod<
   GetAssessmentReportUrlResponse,
   GetAssessmentReportUrlError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAssessmentReportUrlRequest,
   output: GetAssessmentReportUrlResponse,
   errors: [
@@ -4171,7 +4171,7 @@ export const getChangeLogs: API.OperationMethod<
     GetChangeLogsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetChangeLogsRequest,
   output: GetChangeLogsResponse,
   errors: [
@@ -4200,7 +4200,7 @@ export const getControl: API.OperationMethod<
   GetControlResponse,
   GetControlError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetControlRequest,
   output: GetControlResponse,
   errors: [
@@ -4238,7 +4238,7 @@ export const getDelegations: API.OperationMethod<
     GetDelegationsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetDelegationsRequest,
   output: GetDelegationsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
@@ -4262,7 +4262,7 @@ export const getEvidence: API.OperationMethod<
   GetEvidenceResponse,
   GetEvidenceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEvidenceRequest,
   output: GetEvidenceResponse,
   errors: [
@@ -4301,7 +4301,7 @@ export const getEvidenceByEvidenceFolder: API.OperationMethod<
     GetEvidenceByEvidenceFolderError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetEvidenceByEvidenceFolderRequest,
   output: GetEvidenceByEvidenceFolderResponse,
   errors: [
@@ -4343,7 +4343,7 @@ export const getEvidenceFileUploadUrl: API.OperationMethod<
   GetEvidenceFileUploadUrlResponse,
   GetEvidenceFileUploadUrlError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEvidenceFileUploadUrlRequest,
   output: GetEvidenceFileUploadUrlResponse,
   errors: [
@@ -4367,7 +4367,7 @@ export const getEvidenceFolder: API.OperationMethod<
   GetEvidenceFolderResponse,
   GetEvidenceFolderError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEvidenceFolderRequest,
   output: GetEvidenceFolderResponse,
   errors: [
@@ -4406,7 +4406,7 @@ export const getEvidenceFoldersByAssessment: API.OperationMethod<
     GetEvidenceFoldersByAssessmentError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetEvidenceFoldersByAssessmentRequest,
   output: GetEvidenceFoldersByAssessmentResponse,
   errors: [
@@ -4451,7 +4451,7 @@ export const getEvidenceFoldersByAssessmentControl: API.OperationMethod<
     GetEvidenceFoldersByAssessmentControlError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetEvidenceFoldersByAssessmentControlRequest,
   output: GetEvidenceFoldersByAssessmentControlResponse,
   errors: [
@@ -4478,7 +4478,7 @@ export const getInsights: API.OperationMethod<
   GetInsightsResponse,
   GetInsightsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInsightsRequest,
   output: GetInsightsResponse,
   errors: [AccessDeniedException, InternalServerException],
@@ -4497,7 +4497,7 @@ export const getInsightsByAssessment: API.OperationMethod<
   GetInsightsByAssessmentResponse,
   GetInsightsByAssessmentError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInsightsByAssessmentRequest,
   output: GetInsightsByAssessmentResponse,
   errors: [
@@ -4522,7 +4522,7 @@ export const getOrganizationAdminAccount: API.OperationMethod<
   GetOrganizationAdminAccountResponse,
   GetOrganizationAdminAccountError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationAdminAccountRequest,
   output: GetOrganizationAdminAccountResponse,
   errors: [
@@ -4556,7 +4556,7 @@ export const getServicesInScope: API.OperationMethod<
   GetServicesInScopeResponse,
   GetServicesInScopeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetServicesInScopeRequest,
   output: GetServicesInScopeResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
@@ -4573,7 +4573,7 @@ export const getSettings: API.OperationMethod<
   GetSettingsResponse,
   GetSettingsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSettingsRequest,
   output: GetSettingsResponse,
   errors: [AccessDeniedException, InternalServerException],
@@ -4613,7 +4613,7 @@ export const listAssessmentControlInsightsByControlDomain: API.OperationMethod<
     ListAssessmentControlInsightsByControlDomainError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssessmentControlInsightsByControlDomainRequest,
   output: ListAssessmentControlInsightsByControlDomainResponse,
   errors: [
@@ -4657,7 +4657,7 @@ export const listAssessmentFrameworks: API.OperationMethod<
     ListAssessmentFrameworksError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssessmentFrameworksRequest,
   output: ListAssessmentFrameworksResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
@@ -4695,7 +4695,7 @@ export const listAssessmentFrameworkShareRequests: API.OperationMethod<
     ListAssessmentFrameworkShareRequestsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssessmentFrameworkShareRequestsRequest,
   output: ListAssessmentFrameworkShareRequestsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
@@ -4733,7 +4733,7 @@ export const listAssessmentReports: API.OperationMethod<
     ListAssessmentReportsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssessmentReportsRequest,
   output: ListAssessmentReportsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
@@ -4771,7 +4771,7 @@ export const listAssessments: API.OperationMethod<
     ListAssessmentsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssessmentsRequest,
   output: ListAssessmentsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
@@ -4823,7 +4823,7 @@ export const listControlDomainInsights: API.OperationMethod<
     ListControlDomainInsightsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListControlDomainInsightsRequest,
   output: ListControlDomainInsightsResponse,
   errors: [
@@ -4879,7 +4879,7 @@ export const listControlDomainInsightsByAssessment: API.OperationMethod<
     ListControlDomainInsightsByAssessmentError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListControlDomainInsightsByAssessmentRequest,
   output: ListControlDomainInsightsByAssessmentResponse,
   errors: [
@@ -4929,7 +4929,7 @@ export const listControlInsightsByControlDomain: API.OperationMethod<
     ListControlInsightsByControlDomainError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListControlInsightsByControlDomainRequest,
   output: ListControlInsightsByControlDomainResponse,
   errors: [
@@ -4972,7 +4972,7 @@ export const listControls: API.OperationMethod<
     ListControlsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListControlsRequest,
   output: ListControlsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
@@ -5011,7 +5011,7 @@ export const listKeywordsForDataSource: API.OperationMethod<
     ListKeywordsForDataSourceError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListKeywordsForDataSourceRequest,
   output: ListKeywordsForDataSourceResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
@@ -5049,7 +5049,7 @@ export const listNotifications: API.OperationMethod<
     ListNotificationsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNotificationsRequest,
   output: ListNotificationsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
@@ -5072,7 +5072,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -5096,7 +5096,7 @@ export const registerAccount: API.OperationMethod<
   RegisterAccountResponse,
   RegisterAccountError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterAccountRequest,
   output: RegisterAccountResponse,
   errors: [
@@ -5123,7 +5123,7 @@ export const registerOrganizationAdminAccount: API.OperationMethod<
   RegisterOrganizationAdminAccountResponse,
   RegisterOrganizationAdminAccountError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterOrganizationAdminAccountRequest,
   output: RegisterOrganizationAdminAccountResponse,
   errors: [
@@ -5182,7 +5182,7 @@ export const startAssessmentFrameworkShare: API.OperationMethod<
   StartAssessmentFrameworkShareResponse,
   StartAssessmentFrameworkShareError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartAssessmentFrameworkShareRequest,
   output: StartAssessmentFrameworkShareResponse,
   errors: [
@@ -5205,7 +5205,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -5227,7 +5227,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -5252,7 +5252,7 @@ export const updateAssessment: API.OperationMethod<
   UpdateAssessmentResponse,
   UpdateAssessmentError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAssessmentRequest,
   output: UpdateAssessmentResponse,
   errors: [
@@ -5278,7 +5278,7 @@ export const updateAssessmentControl: API.OperationMethod<
   UpdateAssessmentControlResponse,
   UpdateAssessmentControlError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAssessmentControlRequest,
   output: UpdateAssessmentControlResponse,
   errors: [
@@ -5302,7 +5302,7 @@ export const updateAssessmentControlSetStatus: API.OperationMethod<
   UpdateAssessmentControlSetStatusResponse,
   UpdateAssessmentControlSetStatusError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAssessmentControlSetStatusRequest,
   output: UpdateAssessmentControlSetStatusResponse,
   errors: [
@@ -5327,7 +5327,7 @@ export const updateAssessmentFramework: API.OperationMethod<
   UpdateAssessmentFrameworkResponse,
   UpdateAssessmentFrameworkError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAssessmentFrameworkRequest,
   output: UpdateAssessmentFrameworkResponse,
   errors: [
@@ -5353,7 +5353,7 @@ export const updateAssessmentFrameworkShare: API.OperationMethod<
   UpdateAssessmentFrameworkShareResponse,
   UpdateAssessmentFrameworkShareError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAssessmentFrameworkShareRequest,
   output: UpdateAssessmentFrameworkShareResponse,
   errors: [
@@ -5379,7 +5379,7 @@ export const updateAssessmentStatus: API.OperationMethod<
   UpdateAssessmentStatusResponse,
   UpdateAssessmentStatusError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAssessmentStatusRequest,
   output: UpdateAssessmentStatusResponse,
   errors: [
@@ -5404,7 +5404,7 @@ export const updateControl: API.OperationMethod<
   UpdateControlResponse,
   UpdateControlError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateControlRequest,
   output: UpdateControlResponse,
   errors: [
@@ -5427,7 +5427,7 @@ export const updateSettings: API.OperationMethod<
   UpdateSettingsResponse,
   UpdateSettingsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSettingsRequest,
   output: UpdateSettingsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
@@ -5446,7 +5446,7 @@ export const validateAssessmentReportIntegrity: API.OperationMethod<
   ValidateAssessmentReportIntegrityResponse,
   ValidateAssessmentReportIntegrityError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ValidateAssessmentReportIntegrityRequest,
   output: ValidateAssessmentReportIntegrityResponse,
   errors: [

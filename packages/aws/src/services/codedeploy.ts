@@ -3251,7 +3251,7 @@ export const addTagsToOnPremisesInstances: API.OperationMethod<
   AddTagsToOnPremisesInstancesResponse,
   AddTagsToOnPremisesInstancesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddTagsToOnPremisesInstancesInput,
   output: AddTagsToOnPremisesInstancesResponse,
   errors: [
@@ -3281,7 +3281,7 @@ export const batchGetApplicationRevisions: API.OperationMethod<
   BatchGetApplicationRevisionsOutput,
   BatchGetApplicationRevisionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetApplicationRevisionsInput,
   output: BatchGetApplicationRevisionsOutput,
   errors: [
@@ -3308,7 +3308,7 @@ export const batchGetApplications: API.OperationMethod<
   BatchGetApplicationsOutput,
   BatchGetApplicationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetApplicationsInput,
   output: BatchGetApplicationsOutput,
   errors: [
@@ -3335,7 +3335,7 @@ export const batchGetDeploymentGroups: API.OperationMethod<
   BatchGetDeploymentGroupsOutput,
   BatchGetDeploymentGroupsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetDeploymentGroupsInput,
   output: BatchGetDeploymentGroupsOutput,
   errors: [
@@ -3371,7 +3371,7 @@ export const batchGetDeploymentInstances: API.OperationMethod<
   BatchGetDeploymentInstancesOutput,
   BatchGetDeploymentInstancesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetDeploymentInstancesInput,
   output: BatchGetDeploymentInstancesOutput,
   errors: [
@@ -3398,7 +3398,7 @@ export const batchGetDeployments: API.OperationMethod<
   BatchGetDeploymentsOutput,
   BatchGetDeploymentsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetDeploymentsInput,
   output: BatchGetDeploymentsOutput,
   errors: [
@@ -3443,7 +3443,7 @@ export const batchGetDeploymentTargets: API.OperationMethod<
   BatchGetDeploymentTargetsOutput,
   BatchGetDeploymentTargetsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetDeploymentTargetsInput,
   output: BatchGetDeploymentTargetsOutput,
   errors: [
@@ -3472,7 +3472,7 @@ export const batchGetOnPremisesInstances: API.OperationMethod<
   BatchGetOnPremisesInstancesOutput,
   BatchGetOnPremisesInstancesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetOnPremisesInstancesInput,
   output: BatchGetOnPremisesInstancesOutput,
   errors: [
@@ -3503,7 +3503,7 @@ export const continueDeployment: API.OperationMethod<
   ContinueDeploymentResponse,
   ContinueDeploymentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ContinueDeploymentInput,
   output: ContinueDeploymentResponse,
   errors: [
@@ -3533,7 +3533,7 @@ export const createApplication: API.OperationMethod<
   CreateApplicationOutput,
   CreateApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateApplicationInput,
   output: CreateApplicationOutput,
   errors: [
@@ -3581,7 +3581,7 @@ export const createDeployment: API.OperationMethod<
   CreateDeploymentOutput,
   CreateDeploymentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDeploymentInput,
   output: CreateDeploymentOutput,
   errors: [
@@ -3631,7 +3631,7 @@ export const createDeploymentConfig: API.OperationMethod<
   CreateDeploymentConfigOutput,
   CreateDeploymentConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDeploymentConfigInput,
   output: CreateDeploymentConfigOutput,
   errors: [
@@ -3688,7 +3688,7 @@ export const createDeploymentGroup: API.OperationMethod<
   CreateDeploymentGroupOutput,
   CreateDeploymentGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDeploymentGroupInput,
   output: CreateDeploymentGroupOutput,
   errors: [
@@ -3740,7 +3740,7 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationResponse,
   DeleteApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteApplicationInput,
   output: DeleteApplicationResponse,
   errors: [
@@ -3766,7 +3766,7 @@ export const deleteDeploymentConfig: API.OperationMethod<
   DeleteDeploymentConfigResponse,
   DeleteDeploymentConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDeploymentConfigInput,
   output: DeleteDeploymentConfigResponse,
   errors: [
@@ -3791,7 +3791,7 @@ export const deleteDeploymentGroup: API.OperationMethod<
   DeleteDeploymentGroupOutput,
   DeleteDeploymentGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDeploymentGroupInput,
   output: DeleteDeploymentGroupOutput,
   errors: [
@@ -3817,7 +3817,7 @@ export const deleteGitHubAccountToken: API.OperationMethod<
   DeleteGitHubAccountTokenOutput,
   DeleteGitHubAccountTokenError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteGitHubAccountTokenInput,
   output: DeleteGitHubAccountTokenOutput,
   errors: [
@@ -3843,7 +3843,7 @@ export const deleteResourcesByExternalId: API.OperationMethod<
   DeleteResourcesByExternalIdOutput,
   DeleteResourcesByExternalIdError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourcesByExternalIdInput,
   output: DeleteResourcesByExternalIdOutput,
   errors: [],
@@ -3860,7 +3860,7 @@ export const deregisterOnPremisesInstance: API.OperationMethod<
   DeregisterOnPremisesInstanceResponse,
   DeregisterOnPremisesInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeregisterOnPremisesInstanceInput,
   output: DeregisterOnPremisesInstanceResponse,
   errors: [InstanceNameRequiredException, InvalidInstanceNameException],
@@ -3878,7 +3878,7 @@ export const getApplication: API.OperationMethod<
   GetApplicationOutput,
   GetApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetApplicationInput,
   output: GetApplicationOutput,
   errors: [
@@ -3903,7 +3903,7 @@ export const getApplicationRevision: API.OperationMethod<
   GetApplicationRevisionOutput,
   GetApplicationRevisionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetApplicationRevisionInput,
   output: GetApplicationRevisionOutput,
   errors: [
@@ -3933,7 +3933,7 @@ export const getDeployment: API.OperationMethod<
   GetDeploymentOutput,
   GetDeploymentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDeploymentInput,
   output: GetDeploymentOutput,
   errors: [
@@ -3956,7 +3956,7 @@ export const getDeploymentConfig: API.OperationMethod<
   GetDeploymentConfigOutput,
   GetDeploymentConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDeploymentConfigInput,
   output: GetDeploymentConfigOutput,
   errors: [
@@ -3983,7 +3983,7 @@ export const getDeploymentGroup: API.OperationMethod<
   GetDeploymentGroupOutput,
   GetDeploymentGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDeploymentGroupInput,
   output: GetDeploymentGroupOutput,
   errors: [
@@ -4013,7 +4013,7 @@ export const getDeploymentInstance: API.OperationMethod<
   GetDeploymentInstanceOutput,
   GetDeploymentInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDeploymentInstanceInput,
   output: GetDeploymentInstanceOutput,
   errors: [
@@ -4044,7 +4044,7 @@ export const getDeploymentTarget: API.OperationMethod<
   GetDeploymentTargetOutput,
   GetDeploymentTargetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDeploymentTargetInput,
   output: GetDeploymentTargetOutput,
   errors: [
@@ -4071,7 +4071,7 @@ export const getOnPremisesInstance: API.OperationMethod<
   GetOnPremisesInstanceOutput,
   GetOnPremisesInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOnPremisesInstanceInput,
   output: GetOnPremisesInstanceOutput,
   errors: [
@@ -4115,7 +4115,7 @@ export const listApplicationRevisions: API.OperationMethod<
     ListApplicationRevisionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationRevisionsInput,
   output: ListApplicationRevisionsOutput,
   errors: [
@@ -4160,7 +4160,7 @@ export const listApplications: API.OperationMethod<
     ListApplicationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationsInput,
   output: ListApplicationsOutput,
   errors: [InvalidNextTokenException],
@@ -4196,7 +4196,7 @@ export const listDeploymentConfigs: API.OperationMethod<
     ListDeploymentConfigsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDeploymentConfigsInput,
   output: ListDeploymentConfigsOutput,
   errors: [InvalidNextTokenException],
@@ -4236,7 +4236,7 @@ export const listDeploymentGroups: API.OperationMethod<
     ListDeploymentGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDeploymentGroupsInput,
   output: ListDeploymentGroupsOutput,
   errors: [
@@ -4291,7 +4291,7 @@ export const listDeploymentInstances: API.OperationMethod<
     ListDeploymentInstancesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDeploymentInstancesInput,
   output: ListDeploymentInstancesOutput,
   errors: [
@@ -4349,7 +4349,7 @@ export const listDeployments: API.OperationMethod<
     ListDeploymentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDeploymentsInput,
   output: ListDeploymentsOutput,
   errors: [
@@ -4390,7 +4390,7 @@ export const listDeploymentTargets: API.OperationMethod<
   ListDeploymentTargetsOutput,
   ListDeploymentTargetsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListDeploymentTargetsInput,
   output: ListDeploymentTargetsOutput,
   errors: [
@@ -4418,7 +4418,7 @@ export const listGitHubAccountTokenNames: API.OperationMethod<
   ListGitHubAccountTokenNamesOutput,
   ListGitHubAccountTokenNamesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListGitHubAccountTokenNamesInput,
   output: ListGitHubAccountTokenNamesOutput,
   errors: [
@@ -4444,7 +4444,7 @@ export const listOnPremisesInstances: API.OperationMethod<
   ListOnPremisesInstancesOutput,
   ListOnPremisesInstancesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListOnPremisesInstancesInput,
   output: ListOnPremisesInstancesOutput,
   errors: [
@@ -4467,7 +4467,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceOutput,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [
@@ -4501,7 +4501,7 @@ export const putLifecycleEventHookExecutionStatus: API.OperationMethod<
   PutLifecycleEventHookExecutionStatusOutput,
   PutLifecycleEventHookExecutionStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutLifecycleEventHookExecutionStatusInput,
   output: PutLifecycleEventHookExecutionStatusOutput,
   errors: [
@@ -4530,7 +4530,7 @@ export const registerApplicationRevision: API.OperationMethod<
   RegisterApplicationRevisionResponse,
   RegisterApplicationRevisionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterApplicationRevisionInput,
   output: RegisterApplicationRevisionResponse,
   errors: [
@@ -4564,7 +4564,7 @@ export const registerOnPremisesInstance: API.OperationMethod<
   RegisterOnPremisesInstanceResponse,
   RegisterOnPremisesInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterOnPremisesInstanceInput,
   output: RegisterOnPremisesInstanceResponse,
   errors: [
@@ -4597,7 +4597,7 @@ export const removeTagsFromOnPremisesInstances: API.OperationMethod<
   RemoveTagsFromOnPremisesInstancesResponse,
   RemoveTagsFromOnPremisesInstancesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveTagsFromOnPremisesInstancesInput,
   output: RemoveTagsFromOnPremisesInstancesResponse,
   errors: [
@@ -4627,7 +4627,7 @@ export const skipWaitTimeForInstanceTermination: API.OperationMethod<
   SkipWaitTimeForInstanceTerminationResponse,
   SkipWaitTimeForInstanceTerminationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SkipWaitTimeForInstanceTerminationInput,
   output: SkipWaitTimeForInstanceTerminationResponse,
   errors: [
@@ -4655,7 +4655,7 @@ export const stopDeployment: API.OperationMethod<
   StopDeploymentOutput,
   StopDeploymentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopDeploymentInput,
   output: StopDeploymentOutput,
   errors: [
@@ -4686,7 +4686,7 @@ export const tagResource: API.OperationMethod<
   TagResourceOutput,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
   errors: [
@@ -4720,7 +4720,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceOutput,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
   errors: [
@@ -4748,7 +4748,7 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationResponse,
   UpdateApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateApplicationInput,
   output: UpdateApplicationResponse,
   errors: [
@@ -4799,7 +4799,7 @@ export const updateDeploymentGroup: API.OperationMethod<
   UpdateDeploymentGroupOutput,
   UpdateDeploymentGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDeploymentGroupInput,
   output: UpdateDeploymentGroupOutput,
   errors: [

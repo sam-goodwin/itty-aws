@@ -2955,7 +2955,7 @@ export const associateAdminAccount: API.OperationMethod<
   AssociateAdminAccountResponse,
   AssociateAdminAccountError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateAdminAccountRequest,
   output: AssociateAdminAccountResponse,
   errors: [
@@ -2980,7 +2980,7 @@ export const associateThirdPartyFirewall: API.OperationMethod<
   AssociateThirdPartyFirewallResponse,
   AssociateThirdPartyFirewallError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateThirdPartyFirewallRequest,
   output: AssociateThirdPartyFirewallResponse,
   errors: [
@@ -3005,7 +3005,7 @@ export const batchAssociateResource: API.OperationMethod<
   BatchAssociateResourceResponse,
   BatchAssociateResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchAssociateResourceRequest,
   output: BatchAssociateResourceResponse,
   errors: [
@@ -3030,7 +3030,7 @@ export const batchDisassociateResource: API.OperationMethod<
   BatchDisassociateResourceResponse,
   BatchDisassociateResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchDisassociateResourceRequest,
   output: BatchDisassociateResourceResponse,
   errors: [
@@ -3053,7 +3053,7 @@ export const deleteAppsList: API.OperationMethod<
   DeleteAppsListResponse,
   DeleteAppsListError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAppsListRequest,
   output: DeleteAppsListResponse,
   errors: [
@@ -3076,7 +3076,7 @@ export const deleteNotificationChannel: API.OperationMethod<
   DeleteNotificationChannelResponse,
   DeleteNotificationChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteNotificationChannelRequest,
   output: DeleteNotificationChannelResponse,
   errors: [
@@ -3100,7 +3100,7 @@ export const deletePolicy: API.OperationMethod<
   DeletePolicyResponse,
   DeletePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePolicyRequest,
   output: DeletePolicyResponse,
   errors: [
@@ -3124,7 +3124,7 @@ export const deleteProtocolsList: API.OperationMethod<
   DeleteProtocolsListResponse,
   DeleteProtocolsListError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProtocolsListRequest,
   output: DeleteProtocolsListResponse,
   errors: [
@@ -3147,7 +3147,7 @@ export const deleteResourceSet: API.OperationMethod<
   DeleteResourceSetResponse,
   DeleteResourceSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourceSetRequest,
   output: DeleteResourceSetResponse,
   errors: [
@@ -3172,7 +3172,7 @@ export const disassociateAdminAccount: API.OperationMethod<
   DisassociateAdminAccountResponse,
   DisassociateAdminAccountError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateAdminAccountRequest,
   output: DisassociateAdminAccountResponse,
   errors: [
@@ -3195,7 +3195,7 @@ export const disassociateThirdPartyFirewall: API.OperationMethod<
   DisassociateThirdPartyFirewallResponse,
   DisassociateThirdPartyFirewallError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateThirdPartyFirewallRequest,
   output: DisassociateThirdPartyFirewallResponse,
   errors: [
@@ -3219,7 +3219,7 @@ export const getAdminAccount: API.OperationMethod<
   GetAdminAccountResponse,
   GetAdminAccountError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAdminAccountRequest,
   output: GetAdminAccountResponse,
   errors: [
@@ -3243,7 +3243,7 @@ export const getAdminScope: API.OperationMethod<
   GetAdminScopeResponse,
   GetAdminScopeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAdminScopeRequest,
   output: GetAdminScopeResponse,
   errors: [
@@ -3267,7 +3267,7 @@ export const getAppsList: API.OperationMethod<
   GetAppsListResponse,
   GetAppsListError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAppsListRequest,
   output: GetAppsListResponse,
   errors: [
@@ -3293,7 +3293,7 @@ export const getComplianceDetail: API.OperationMethod<
   GetComplianceDetailResponse,
   GetComplianceDetailError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetComplianceDetailRequest,
   output: GetComplianceDetailResponse,
   errors: [
@@ -3318,7 +3318,7 @@ export const getNotificationChannel: API.OperationMethod<
   GetNotificationChannelResponse,
   GetNotificationChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetNotificationChannelRequest,
   output: GetNotificationChannelResponse,
   errors: [
@@ -3341,7 +3341,7 @@ export const getPolicy: API.OperationMethod<
   GetPolicyResponse,
   GetPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPolicyRequest,
   output: GetPolicyResponse,
   errors: [
@@ -3365,7 +3365,7 @@ export const getProtectionStatus: API.OperationMethod<
   GetProtectionStatusResponse,
   GetProtectionStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProtectionStatusRequest,
   output: GetProtectionStatusResponse,
   errors: [
@@ -3387,7 +3387,7 @@ export const getProtocolsList: API.OperationMethod<
   GetProtocolsListResponse,
   GetProtocolsListError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProtocolsListRequest,
   output: GetProtocolsListResponse,
   errors: [
@@ -3410,7 +3410,7 @@ export const getResourceSet: API.OperationMethod<
   GetResourceSetResponse,
   GetResourceSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResourceSetRequest,
   output: GetResourceSetResponse,
   errors: [
@@ -3434,7 +3434,7 @@ export const getThirdPartyFirewallAssociationStatus: API.OperationMethod<
   GetThirdPartyFirewallAssociationStatusResponse,
   GetThirdPartyFirewallAssociationStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetThirdPartyFirewallAssociationStatusRequest,
   output: GetThirdPartyFirewallAssociationStatusResponse,
   errors: [
@@ -3457,7 +3457,7 @@ export const getViolationDetails: API.OperationMethod<
   GetViolationDetailsResponse,
   GetViolationDetailsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetViolationDetailsRequest,
   output: GetViolationDetailsResponse,
   errors: [
@@ -3497,7 +3497,7 @@ export const listAdminAccountsForOrganization: API.OperationMethod<
     ListAdminAccountsForOrganizationError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAdminAccountsForOrganizationRequest,
   output: ListAdminAccountsForOrganizationResponse,
   errors: [
@@ -3541,7 +3541,7 @@ export const listAdminsManagingAccount: API.OperationMethod<
     ListAdminsManagingAccountError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAdminsManagingAccountRequest,
   output: ListAdminsManagingAccountResponse,
   errors: [
@@ -3585,7 +3585,7 @@ export const listAppsLists: API.OperationMethod<
     ListAppsListsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppsListsRequest,
   output: ListAppsListsResponse,
   errors: [
@@ -3630,7 +3630,7 @@ export const listComplianceStatus: API.OperationMethod<
     ListComplianceStatusError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListComplianceStatusRequest,
   output: ListComplianceStatusResponse,
   errors: [InternalErrorException, ResourceNotFoundException],
@@ -3654,7 +3654,7 @@ export const listDiscoveredResources: API.OperationMethod<
   ListDiscoveredResourcesResponse,
   ListDiscoveredResourcesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListDiscoveredResourcesRequest,
   output: ListDiscoveredResourcesResponse,
   errors: [
@@ -3693,7 +3693,7 @@ export const listMemberAccounts: API.OperationMethod<
     ListMemberAccountsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMemberAccountsRequest,
   output: ListMemberAccountsResponse,
   errors: [InternalErrorException, ResourceNotFoundException],
@@ -3733,7 +3733,7 @@ export const listPolicies: API.OperationMethod<
     ListPoliciesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPoliciesRequest,
   output: ListPoliciesResponse,
   errors: [
@@ -3777,7 +3777,7 @@ export const listProtocolsLists: API.OperationMethod<
     ListProtocolsListsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProtocolsListsRequest,
   output: ListProtocolsListsResponse,
   errors: [
@@ -3806,7 +3806,7 @@ export const listResourceSetResources: API.OperationMethod<
   ListResourceSetResourcesResponse,
   ListResourceSetResourcesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListResourceSetResourcesRequest,
   output: ListResourceSetResourcesResponse,
   errors: [
@@ -3829,7 +3829,7 @@ export const listResourceSets: API.OperationMethod<
   ListResourceSetsResponse,
   ListResourceSetsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListResourceSetsRequest,
   output: ListResourceSetsResponse,
   errors: [
@@ -3852,7 +3852,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -3891,7 +3891,7 @@ export const listThirdPartyFirewallFirewallPolicies: API.OperationMethod<
     ListThirdPartyFirewallFirewallPoliciesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListThirdPartyFirewallFirewallPoliciesRequest,
   output: ListThirdPartyFirewallFirewallPoliciesResponse,
   errors: [
@@ -3922,7 +3922,7 @@ export const putAdminAccount: API.OperationMethod<
   PutAdminAccountResponse,
   PutAdminAccountError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutAdminAccountRequest,
   output: PutAdminAccountResponse,
   errors: [
@@ -3947,7 +3947,7 @@ export const putAppsList: API.OperationMethod<
   PutAppsListResponse,
   PutAppsListError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutAppsListRequest,
   output: PutAppsListResponse,
   errors: [
@@ -3975,7 +3975,7 @@ export const putNotificationChannel: API.OperationMethod<
   PutNotificationChannelResponse,
   PutNotificationChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutNotificationChannelRequest,
   output: PutNotificationChannelResponse,
   errors: [
@@ -4037,7 +4037,7 @@ export const putPolicy: API.OperationMethod<
   PutPolicyResponse,
   PutPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutPolicyRequest,
   output: PutPolicyResponse,
   errors: [
@@ -4064,7 +4064,7 @@ export const putProtocolsList: API.OperationMethod<
   PutProtocolsListResponse,
   PutProtocolsListError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutProtocolsListRequest,
   output: PutProtocolsListResponse,
   errors: [
@@ -4091,7 +4091,7 @@ export const putResourceSet: API.OperationMethod<
   PutResourceSetResponse,
   PutResourceSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutResourceSetRequest,
   output: PutResourceSetResponse,
   errors: [
@@ -4116,7 +4116,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -4141,7 +4141,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [

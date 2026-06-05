@@ -1178,7 +1178,7 @@ export const createConnection: API.OperationMethod<
   CreateConnectionOutput,
   CreateConnectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateConnectionInput,
   output: CreateConnectionOutput,
   errors: [
@@ -1202,7 +1202,7 @@ export const createHost: API.OperationMethod<
   CreateHostOutput,
   CreateHostError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateHostInput,
   output: CreateHostOutput,
   errors: [LimitExceededException],
@@ -1224,7 +1224,7 @@ export const createRepositoryLink: API.OperationMethod<
   CreateRepositoryLinkOutput,
   CreateRepositoryLinkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRepositoryLinkInput,
   output: CreateRepositoryLinkOutput,
   errors: [
@@ -1256,7 +1256,7 @@ export const createSyncConfiguration: API.OperationMethod<
   CreateSyncConfigurationOutput,
   CreateSyncConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSyncConfigurationInput,
   output: CreateSyncConfigurationOutput,
   errors: [
@@ -1278,7 +1278,7 @@ export const deleteConnection: API.OperationMethod<
   DeleteConnectionOutput,
   DeleteConnectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConnectionInput,
   output: DeleteConnectionOutput,
   errors: [ResourceNotFoundException],
@@ -1297,7 +1297,7 @@ export const deleteHost: API.OperationMethod<
   DeleteHostOutput,
   DeleteHostError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteHostInput,
   output: DeleteHostOutput,
   errors: [ResourceNotFoundException, ResourceUnavailableException],
@@ -1320,7 +1320,7 @@ export const deleteRepositoryLink: API.OperationMethod<
   DeleteRepositoryLinkOutput,
   DeleteRepositoryLinkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRepositoryLinkInput,
   output: DeleteRepositoryLinkOutput,
   errors: [
@@ -1350,7 +1350,7 @@ export const deleteSyncConfiguration: API.OperationMethod<
   DeleteSyncConfigurationOutput,
   DeleteSyncConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSyncConfigurationInput,
   output: DeleteSyncConfigurationOutput,
   errors: [
@@ -1374,7 +1374,7 @@ export const getConnection: API.OperationMethod<
   GetConnectionOutput,
   GetConnectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConnectionInput,
   output: GetConnectionOutput,
   errors: [ResourceNotFoundException, ResourceUnavailableException],
@@ -1392,7 +1392,7 @@ export const getHost: API.OperationMethod<
   GetHostOutput,
   GetHostError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetHostInput,
   output: GetHostOutput,
   errors: [ResourceNotFoundException, ResourceUnavailableException],
@@ -1414,7 +1414,7 @@ export const getRepositoryLink: API.OperationMethod<
   GetRepositoryLinkOutput,
   GetRepositoryLinkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRepositoryLinkInput,
   output: GetRepositoryLinkOutput,
   errors: [
@@ -1442,7 +1442,7 @@ export const getRepositorySyncStatus: API.OperationMethod<
   GetRepositorySyncStatusOutput,
   GetRepositorySyncStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRepositorySyncStatusInput,
   output: GetRepositorySyncStatusOutput,
   errors: [
@@ -1469,7 +1469,7 @@ export const getResourceSyncStatus: API.OperationMethod<
   GetResourceSyncStatusOutput,
   GetResourceSyncStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResourceSyncStatusInput,
   output: GetResourceSyncStatusOutput,
   errors: [
@@ -1495,7 +1495,7 @@ export const getSyncBlockerSummary: API.OperationMethod<
   GetSyncBlockerSummaryOutput,
   GetSyncBlockerSummaryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSyncBlockerSummaryInput,
   output: GetSyncBlockerSummaryOutput,
   errors: [
@@ -1521,7 +1521,7 @@ export const getSyncConfiguration: API.OperationMethod<
   GetSyncConfigurationOutput,
   GetSyncConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSyncConfigurationInput,
   output: GetSyncConfigurationOutput,
   errors: [
@@ -1556,7 +1556,7 @@ export const listConnections: API.OperationMethod<
     ListConnectionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConnectionsInput,
   output: ListConnectionsOutput,
   errors: [ResourceNotFoundException],
@@ -1590,7 +1590,7 @@ export const listHosts: API.OperationMethod<
     ListHostsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListHostsInput,
   output: ListHostsOutput,
   errors: [],
@@ -1631,7 +1631,7 @@ export const listRepositoryLinks: API.OperationMethod<
     ListRepositoryLinksError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRepositoryLinksInput,
   output: ListRepositoryLinksOutput,
   errors: [
@@ -1663,7 +1663,7 @@ export const listRepositorySyncDefinitions: API.OperationMethod<
   ListRepositorySyncDefinitionsOutput,
   ListRepositorySyncDefinitionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListRepositorySyncDefinitionsInput,
   output: ListRepositorySyncDefinitionsOutput,
   errors: [
@@ -1704,7 +1704,7 @@ export const listSyncConfigurations: API.OperationMethod<
     ListSyncConfigurationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSyncConfigurationsInput,
   output: ListSyncConfigurationsOutput,
   errors: [
@@ -1729,7 +1729,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceOutput,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [ResourceNotFoundException],
@@ -1747,7 +1747,7 @@ export const tagResource: API.OperationMethod<
   TagResourceOutput,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
   errors: [LimitExceededException, ResourceNotFoundException],
@@ -1761,7 +1761,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceOutput,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
   errors: [ResourceNotFoundException],
@@ -1780,7 +1780,7 @@ export const updateHost: API.OperationMethod<
   UpdateHostOutput,
   UpdateHostError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateHostInput,
   output: UpdateHostOutput,
   errors: [
@@ -1809,7 +1809,7 @@ export const updateRepositoryLink: API.OperationMethod<
   UpdateRepositoryLinkOutput,
   UpdateRepositoryLinkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRepositoryLinkInput,
   output: UpdateRepositoryLinkOutput,
   errors: [
@@ -1839,7 +1839,7 @@ export const updateSyncBlocker: API.OperationMethod<
   UpdateSyncBlockerOutput,
   UpdateSyncBlockerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSyncBlockerInput,
   output: UpdateSyncBlockerOutput,
   errors: [
@@ -1869,7 +1869,7 @@ export const updateSyncConfiguration: API.OperationMethod<
   UpdateSyncConfigurationOutput,
   UpdateSyncConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSyncConfigurationInput,
   output: UpdateSyncConfigurationOutput,
   errors: [

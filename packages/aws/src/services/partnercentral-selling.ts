@@ -4157,7 +4157,7 @@ export const createEngagementContext: API.OperationMethod<
   CreateEngagementContextResponse,
   CreateEngagementContextError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEngagementContextRequest,
   output: CreateEngagementContextResponse,
   errors: [
@@ -4185,7 +4185,7 @@ export const getSellingSystemSettings: API.OperationMethod<
   GetSellingSystemSettingsResponse,
   GetSellingSystemSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSellingSystemSettingsRequest,
   output: GetSellingSystemSettingsResponse,
   errors: [
@@ -4211,7 +4211,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -4237,7 +4237,7 @@ export const putSellingSystemSettings: API.OperationMethod<
   PutSellingSystemSettingsResponse,
   PutSellingSystemSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutSellingSystemSettingsRequest,
   output: PutSellingSystemSettingsResponse,
   errors: [
@@ -4264,7 +4264,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -4292,7 +4292,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -4321,7 +4321,7 @@ export const updateEngagementContext: API.OperationMethod<
   UpdateEngagementContextResponse,
   UpdateEngagementContextError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEngagementContextRequest,
   output: UpdateEngagementContextResponse,
   errors: [
@@ -4351,7 +4351,7 @@ export const createEngagement: API.OperationMethod<
   CreateEngagementResponse,
   CreateEngagementError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEngagementRequest,
   output: CreateEngagementResponse,
   errors: [
@@ -4379,7 +4379,7 @@ export const getEngagement: API.OperationMethod<
   GetEngagementResponse,
   GetEngagementError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEngagementRequest,
   output: GetEngagementResponse,
   errors: [
@@ -4420,7 +4420,7 @@ export const listEngagements: API.OperationMethod<
     ListEngagementsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEngagementsRequest,
   output: ListEngagementsResponse,
   errors: [
@@ -4467,7 +4467,7 @@ export const listEngagementMembers: API.OperationMethod<
     ListEngagementMembersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEngagementMembersRequest,
   output: ListEngagementMembersResponse,
   errors: [
@@ -4501,7 +4501,7 @@ export const startEngagementByAcceptingInvitationTask: API.OperationMethod<
   StartEngagementByAcceptingInvitationTaskResponse,
   StartEngagementByAcceptingInvitationTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartEngagementByAcceptingInvitationTaskRequest,
   output: StartEngagementByAcceptingInvitationTaskResponse,
   errors: [
@@ -4544,7 +4544,7 @@ export const listEngagementByAcceptingInvitationTasks: API.OperationMethod<
     ListEngagementByAcceptingInvitationTasksError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEngagementByAcceptingInvitationTasksRequest,
   output: ListEngagementByAcceptingInvitationTasksResponse,
   errors: [
@@ -4578,7 +4578,7 @@ export const startEngagementFromOpportunityTask: API.OperationMethod<
   StartEngagementFromOpportunityTaskResponse,
   StartEngagementFromOpportunityTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartEngagementFromOpportunityTaskRequest,
   output: StartEngagementFromOpportunityTaskResponse,
   errors: [
@@ -4621,7 +4621,7 @@ export const listEngagementFromOpportunityTasks: API.OperationMethod<
     ListEngagementFromOpportunityTasksError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEngagementFromOpportunityTasksRequest,
   output: ListEngagementFromOpportunityTasksResponse,
   errors: [
@@ -4655,7 +4655,7 @@ export const createEngagementInvitation: API.OperationMethod<
   CreateEngagementInvitationResponse,
   CreateEngagementInvitationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEngagementInvitationRequest,
   output: CreateEngagementInvitationResponse,
   errors: [
@@ -4683,7 +4683,7 @@ export const getEngagementInvitation: API.OperationMethod<
   GetEngagementInvitationResponse,
   GetEngagementInvitationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEngagementInvitationRequest,
   output: GetEngagementInvitationResponse,
   errors: [
@@ -4724,7 +4724,7 @@ export const listEngagementInvitations: API.OperationMethod<
     ListEngagementInvitationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEngagementInvitationsRequest,
   output: ListEngagementInvitationsResponse,
   errors: [
@@ -4757,7 +4757,7 @@ export const acceptEngagementInvitation: API.OperationMethod<
   AcceptEngagementInvitationResponse,
   AcceptEngagementInvitationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AcceptEngagementInvitationRequest,
   output: AcceptEngagementInvitationResponse,
   errors: [
@@ -4785,7 +4785,7 @@ export const rejectEngagementInvitation: API.OperationMethod<
   RejectEngagementInvitationResponse,
   RejectEngagementInvitationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RejectEngagementInvitationRequest,
   output: RejectEngagementInvitationResponse,
   errors: [
@@ -4825,7 +4825,7 @@ export const createOpportunity: API.OperationMethod<
   CreateOpportunityResponse,
   CreateOpportunityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOpportunityRequest,
   output: CreateOpportunityResponse,
   errors: [
@@ -4854,7 +4854,7 @@ export const getOpportunity: API.OperationMethod<
   GetOpportunityResponse,
   GetOpportunityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOpportunityRequest,
   output: GetOpportunityResponse,
   errors: [
@@ -4883,7 +4883,7 @@ export const updateOpportunity: API.OperationMethod<
   UpdateOpportunityResponse,
   UpdateOpportunityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateOpportunityRequest,
   output: UpdateOpportunityResponse,
   errors: [
@@ -4935,7 +4935,7 @@ export const listOpportunities: API.OperationMethod<
     ListOpportunitiesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOpportunitiesRequest,
   output: ListOpportunitiesResponse,
   errors: [
@@ -4969,7 +4969,7 @@ export const assignOpportunity: API.OperationMethod<
   AssignOpportunityResponse,
   AssignOpportunityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssignOpportunityRequest,
   output: AssignOpportunityResponse,
   errors: [
@@ -5009,7 +5009,7 @@ export const associateOpportunity: API.OperationMethod<
   AssociateOpportunityResponse,
   AssociateOpportunityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateOpportunityRequest,
   output: AssociateOpportunityResponse,
   errors: [
@@ -5037,7 +5037,7 @@ export const disassociateOpportunity: API.OperationMethod<
   DisassociateOpportunityResponse,
   DisassociateOpportunityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateOpportunityRequest,
   output: DisassociateOpportunityResponse,
   errors: [
@@ -5063,7 +5063,7 @@ export const getAwsOpportunitySummary: API.OperationMethod<
   GetAwsOpportunitySummaryResponse,
   GetAwsOpportunitySummaryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAwsOpportunitySummaryRequest,
   output: GetAwsOpportunitySummaryResponse,
   errors: [
@@ -5089,7 +5089,7 @@ export const submitOpportunity: API.OperationMethod<
   SubmitOpportunityResponse,
   SubmitOpportunityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SubmitOpportunityRequest,
   output: SubmitOpportunityResponse,
   errors: [
@@ -5117,7 +5117,7 @@ export const startOpportunityFromEngagementTask: API.OperationMethod<
   StartOpportunityFromEngagementTaskResponse,
   StartOpportunityFromEngagementTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartOpportunityFromEngagementTaskRequest,
   output: StartOpportunityFromEngagementTaskResponse,
   errors: [
@@ -5160,7 +5160,7 @@ export const listOpportunityFromEngagementTasks: API.OperationMethod<
     ListOpportunityFromEngagementTasksError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOpportunityFromEngagementTasksRequest,
   output: ListOpportunityFromEngagementTasksResponse,
   errors: [
@@ -5194,7 +5194,7 @@ export const createResourceSnapshot: API.OperationMethod<
   CreateResourceSnapshotResponse,
   CreateResourceSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateResourceSnapshotRequest,
   output: CreateResourceSnapshotResponse,
   errors: [
@@ -5222,7 +5222,7 @@ export const getResourceSnapshot: API.OperationMethod<
   GetResourceSnapshotResponse,
   GetResourceSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResourceSnapshotRequest,
   output: GetResourceSnapshotResponse,
   errors: [
@@ -5263,7 +5263,7 @@ export const listEngagementResourceAssociations: API.OperationMethod<
     ListEngagementResourceAssociationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEngagementResourceAssociationsRequest,
   output: ListEngagementResourceAssociationsResponse,
   errors: [
@@ -5320,7 +5320,7 @@ export const listResourceSnapshots: API.OperationMethod<
     ListResourceSnapshotsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceSnapshotsRequest,
   output: ListResourceSnapshotsResponse,
   errors: [
@@ -5354,7 +5354,7 @@ export const createResourceSnapshotJob: API.OperationMethod<
   CreateResourceSnapshotJobResponse,
   CreateResourceSnapshotJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateResourceSnapshotJobRequest,
   output: CreateResourceSnapshotJobResponse,
   errors: [
@@ -5382,7 +5382,7 @@ export const getResourceSnapshotJob: API.OperationMethod<
   GetResourceSnapshotJobResponse,
   GetResourceSnapshotJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResourceSnapshotJobRequest,
   output: GetResourceSnapshotJobResponse,
   errors: [
@@ -5409,7 +5409,7 @@ export const deleteResourceSnapshotJob: API.OperationMethod<
   DeleteResourceSnapshotJobResponse,
   DeleteResourceSnapshotJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourceSnapshotJobRequest,
   output: DeleteResourceSnapshotJobResponse,
   errors: [
@@ -5451,7 +5451,7 @@ export const listResourceSnapshotJobs: API.OperationMethod<
     ListResourceSnapshotJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceSnapshotJobsRequest,
   output: ListResourceSnapshotJobsResponse,
   errors: [
@@ -5483,7 +5483,7 @@ export const startResourceSnapshotJob: API.OperationMethod<
   StartResourceSnapshotJobResponse,
   StartResourceSnapshotJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartResourceSnapshotJobRequest,
   output: StartResourceSnapshotJobResponse,
   errors: [
@@ -5509,7 +5509,7 @@ export const stopResourceSnapshotJob: API.OperationMethod<
   StopResourceSnapshotJobResponse,
   StopResourceSnapshotJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopResourceSnapshotJobRequest,
   output: StopResourceSnapshotJobResponse,
   errors: [
@@ -5550,7 +5550,7 @@ export const listSolutions: API.OperationMethod<
     ListSolutionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSolutionsRequest,
   output: ListSolutionsResponse,
   errors: [

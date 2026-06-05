@@ -1496,7 +1496,7 @@ export const addStreamGroupLocations: API.OperationMethod<
   AddStreamGroupLocationsOutput,
   AddStreamGroupLocationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddStreamGroupLocationsInput,
   output: AddStreamGroupLocationsOutput,
   errors: [
@@ -1526,7 +1526,7 @@ export const associateApplications: API.OperationMethod<
   AssociateApplicationsOutput,
   AssociateApplicationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateApplicationsInput,
   output: AssociateApplicationsOutput,
   errors: [
@@ -1580,7 +1580,7 @@ export const createStreamSessionConnection: API.OperationMethod<
   CreateStreamSessionConnectionOutput,
   CreateStreamSessionConnectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateStreamSessionConnectionInput,
   output: CreateStreamSessionConnectionOutput,
   errors: [
@@ -1609,7 +1609,7 @@ export const disassociateApplications: API.OperationMethod<
   DisassociateApplicationsOutput,
   DisassociateApplicationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateApplicationsInput,
   output: DisassociateApplicationsOutput,
   errors: [
@@ -1649,7 +1649,7 @@ export const exportStreamSessionFiles: API.OperationMethod<
   ExportStreamSessionFilesOutput,
   ExportStreamSessionFilesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExportStreamSessionFilesInput,
   output: ExportStreamSessionFilesOutput,
   errors: [
@@ -1675,7 +1675,7 @@ export const getStreamSession: API.OperationMethod<
   GetStreamSessionOutput,
   GetStreamSessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetStreamSessionInput,
   output: GetStreamSessionOutput,
   errors: [
@@ -1720,7 +1720,7 @@ export const listStreamSessions: API.OperationMethod<
     ListStreamSessionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStreamSessionsInput,
   output: ListStreamSessionsOutput,
   errors: [
@@ -1770,7 +1770,7 @@ export const listStreamSessionsByAccount: API.OperationMethod<
     ListStreamSessionsByAccountError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStreamSessionsByAccountInput,
   output: ListStreamSessionsByAccountOutput,
   errors: [
@@ -1806,7 +1806,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -1833,7 +1833,7 @@ export const removeStreamGroupLocations: API.OperationMethod<
   RemoveStreamGroupLocationsResponse,
   RemoveStreamGroupLocationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveStreamGroupLocationsInput,
   output: RemoveStreamGroupLocationsResponse,
   errors: [
@@ -1916,7 +1916,7 @@ export const startStreamSession: API.OperationMethod<
   StartStreamSessionOutput,
   StartStreamSessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartStreamSessionInput,
   output: StartStreamSessionOutput,
   errors: [
@@ -1952,7 +1952,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -1977,7 +1977,7 @@ export const terminateStreamSession: API.OperationMethod<
   TerminateStreamSessionResponse,
   TerminateStreamSessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TerminateStreamSessionInput,
   output: TerminateStreamSessionResponse,
   errors: [
@@ -2002,7 +2002,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -2034,7 +2034,7 @@ export const createApplication: API.OperationMethod<
   CreateApplicationOutput,
   CreateApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateApplicationInput,
   output: CreateApplicationOutput,
   errors: [
@@ -2061,7 +2061,7 @@ export const getApplication: API.OperationMethod<
   GetApplicationOutput,
   GetApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetApplicationInput,
   output: GetApplicationOutput,
   errors: [
@@ -2089,7 +2089,7 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationOutput,
   UpdateApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateApplicationInput,
   output: UpdateApplicationOutput,
   errors: [
@@ -2128,7 +2128,7 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationResponse,
   DeleteApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteApplicationInput,
   output: DeleteApplicationResponse,
   errors: [
@@ -2169,7 +2169,7 @@ export const listApplications: API.OperationMethod<
     ListApplicationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationsInput,
   output: ListApplicationsOutput,
   errors: [
@@ -2218,7 +2218,7 @@ export const createStreamGroup: API.OperationMethod<
   CreateStreamGroupOutput,
   CreateStreamGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateStreamGroupInput,
   output: CreateStreamGroupOutput,
   errors: [
@@ -2246,7 +2246,7 @@ export const getStreamGroup: API.OperationMethod<
   GetStreamGroupOutput,
   GetStreamGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetStreamGroupInput,
   output: GetStreamGroupOutput,
   errors: [
@@ -2286,7 +2286,7 @@ export const updateStreamGroup: API.OperationMethod<
   UpdateStreamGroupOutput,
   UpdateStreamGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateStreamGroupInput,
   output: UpdateStreamGroupOutput,
   errors: [
@@ -2315,7 +2315,7 @@ export const deleteStreamGroup: API.OperationMethod<
   DeleteStreamGroupResponse,
   DeleteStreamGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteStreamGroupInput,
   output: DeleteStreamGroupResponse,
   errors: [
@@ -2356,7 +2356,7 @@ export const listStreamGroups: API.OperationMethod<
     ListStreamGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStreamGroupsInput,
   output: ListStreamGroupsOutput,
   errors: [

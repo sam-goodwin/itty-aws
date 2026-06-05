@@ -1525,7 +1525,7 @@ export const addTags: API.OperationMethod<
   AddTagsOutput,
   AddTagsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddTagsInput,
   output: AddTagsOutput,
   errors: [
@@ -1550,7 +1550,7 @@ export const applySecurityGroupsToLoadBalancer: API.OperationMethod<
   ApplySecurityGroupsToLoadBalancerOutput,
   ApplySecurityGroupsToLoadBalancerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ApplySecurityGroupsToLoadBalancerInput,
   output: ApplySecurityGroupsToLoadBalancerOutput,
   errors: [
@@ -1577,7 +1577,7 @@ export const attachLoadBalancerToSubnets: API.OperationMethod<
   AttachLoadBalancerToSubnetsOutput,
   AttachLoadBalancerToSubnetsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AttachLoadBalancerToSubnetsInput,
   output: AttachLoadBalancerToSubnetsOutput,
   errors: [
@@ -1601,7 +1601,7 @@ export const configureHealthCheck: API.OperationMethod<
   ConfigureHealthCheckOutput,
   ConfigureHealthCheckError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ConfigureHealthCheckInput,
   output: ConfigureHealthCheckOutput,
   errors: [AccessPointNotFoundException],
@@ -1631,7 +1631,7 @@ export const createAppCookieStickinessPolicy: API.OperationMethod<
   CreateAppCookieStickinessPolicyOutput,
   CreateAppCookieStickinessPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAppCookieStickinessPolicyInput,
   output: CreateAppCookieStickinessPolicyOutput,
   errors: [
@@ -1663,7 +1663,7 @@ export const createLBCookieStickinessPolicy: API.OperationMethod<
   CreateLBCookieStickinessPolicyOutput,
   CreateLBCookieStickinessPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLBCookieStickinessPolicyInput,
   output: CreateLBCookieStickinessPolicyOutput,
   errors: [
@@ -1709,7 +1709,7 @@ export const createLoadBalancer: API.OperationMethod<
   CreateAccessPointOutput,
   CreateLoadBalancerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessPointInput,
   output: CreateAccessPointOutput,
   errors: [
@@ -1745,7 +1745,7 @@ export const createLoadBalancerListeners: API.OperationMethod<
   CreateLoadBalancerListenerOutput,
   CreateLoadBalancerListenersError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLoadBalancerListenerInput,
   output: CreateLoadBalancerListenerOutput,
   errors: [
@@ -1773,7 +1773,7 @@ export const createLoadBalancerPolicy: API.OperationMethod<
   CreateLoadBalancerPolicyOutput,
   CreateLoadBalancerPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLoadBalancerPolicyInput,
   output: CreateLoadBalancerPolicyOutput,
   errors: [
@@ -1798,7 +1798,7 @@ export const deleteLoadBalancer: API.OperationMethod<
   DeleteAccessPointOutput,
   DeleteLoadBalancerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessPointInput,
   output: DeleteAccessPointOutput,
   errors: [],
@@ -1814,7 +1814,7 @@ export const deleteLoadBalancerListeners: API.OperationMethod<
   DeleteLoadBalancerListenerOutput,
   DeleteLoadBalancerListenersError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLoadBalancerListenerInput,
   output: DeleteLoadBalancerListenerOutput,
   errors: [AccessPointNotFoundException],
@@ -1831,7 +1831,7 @@ export const deleteLoadBalancerPolicy: API.OperationMethod<
   DeleteLoadBalancerPolicyOutput,
   DeleteLoadBalancerPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLoadBalancerPolicyInput,
   output: DeleteLoadBalancerPolicyOutput,
   errors: [AccessPointNotFoundException, InvalidConfigurationRequestException],
@@ -1853,7 +1853,7 @@ export const deregisterInstancesFromLoadBalancer: API.OperationMethod<
   DeregisterEndPointsOutput,
   DeregisterInstancesFromLoadBalancerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeregisterEndPointsInput,
   output: DeregisterEndPointsOutput,
   errors: [AccessPointNotFoundException, InvalidEndPointException],
@@ -1870,7 +1870,7 @@ export const describeAccountLimits: API.OperationMethod<
   DescribeAccountLimitsOutput,
   DescribeAccountLimitsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAccountLimitsInput,
   output: DescribeAccountLimitsOutput,
   errors: [],
@@ -1887,7 +1887,7 @@ export const describeInstanceHealth: API.OperationMethod<
   DescribeEndPointStateOutput,
   DescribeInstanceHealthError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeEndPointStateInput,
   output: DescribeEndPointStateOutput,
   errors: [AccessPointNotFoundException, InvalidEndPointException],
@@ -1904,7 +1904,7 @@ export const describeLoadBalancerAttributes: API.OperationMethod<
   DescribeLoadBalancerAttributesOutput,
   DescribeLoadBalancerAttributesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeLoadBalancerAttributesInput,
   output: DescribeLoadBalancerAttributesOutput,
   errors: [
@@ -1929,7 +1929,7 @@ export const describeLoadBalancerPolicies: API.OperationMethod<
   DescribeLoadBalancerPoliciesOutput,
   DescribeLoadBalancerPoliciesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeLoadBalancerPoliciesInput,
   output: DescribeLoadBalancerPoliciesOutput,
   errors: [AccessPointNotFoundException, PolicyNotFoundException],
@@ -1954,7 +1954,7 @@ export const describeLoadBalancerPolicyTypes: API.OperationMethod<
   DescribeLoadBalancerPolicyTypesOutput,
   DescribeLoadBalancerPolicyTypesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeLoadBalancerPolicyTypesInput,
   output: DescribeLoadBalancerPolicyTypesOutput,
   errors: [PolicyTypeNotFoundException],
@@ -1986,7 +1986,7 @@ export const describeLoadBalancers: API.OperationMethod<
     DescribeLoadBalancersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAccessPointsInput,
   output: DescribeAccessPointsOutput,
   errors: [AccessPointNotFoundException, DependencyThrottleException],
@@ -2005,7 +2005,7 @@ export const describeTags: API.OperationMethod<
   DescribeTagsOutput,
   DescribeTagsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeTagsInput,
   output: DescribeTagsOutput,
   errors: [AccessPointNotFoundException],
@@ -2026,7 +2026,7 @@ export const detachLoadBalancerFromSubnets: API.OperationMethod<
   DetachLoadBalancerFromSubnetsOutput,
   DetachLoadBalancerFromSubnetsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetachLoadBalancerFromSubnetsInput,
   output: DetachLoadBalancerFromSubnetsOutput,
   errors: [AccessPointNotFoundException, InvalidConfigurationRequestException],
@@ -2054,7 +2054,7 @@ export const disableAvailabilityZonesForLoadBalancer: API.OperationMethod<
   RemoveAvailabilityZonesOutput,
   DisableAvailabilityZonesForLoadBalancerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveAvailabilityZonesInput,
   output: RemoveAvailabilityZonesOutput,
   errors: [AccessPointNotFoundException, InvalidConfigurationRequestException],
@@ -2077,7 +2077,7 @@ export const enableAvailabilityZonesForLoadBalancer: API.OperationMethod<
   AddAvailabilityZonesOutput,
   EnableAvailabilityZonesForLoadBalancerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddAvailabilityZonesInput,
   output: AddAvailabilityZonesOutput,
   errors: [AccessPointNotFoundException],
@@ -2109,7 +2109,7 @@ export const modifyLoadBalancerAttributes: API.OperationMethod<
   ModifyLoadBalancerAttributesOutput,
   ModifyLoadBalancerAttributesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyLoadBalancerAttributesInput,
   output: ModifyLoadBalancerAttributesOutput,
   errors: [
@@ -2148,7 +2148,7 @@ export const registerInstancesWithLoadBalancer: API.OperationMethod<
   RegisterEndPointsOutput,
   RegisterInstancesWithLoadBalancerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterEndPointsInput,
   output: RegisterEndPointsOutput,
   errors: [AccessPointNotFoundException, InvalidEndPointException],
@@ -2162,7 +2162,7 @@ export const removeTags: API.OperationMethod<
   RemoveTagsOutput,
   RemoveTagsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveTagsInput,
   output: RemoveTagsOutput,
   errors: [AccessPointNotFoundException],
@@ -2186,7 +2186,7 @@ export const setLoadBalancerListenerSSLCertificate: API.OperationMethod<
   SetLoadBalancerListenerSSLCertificateOutput,
   SetLoadBalancerListenerSSLCertificateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetLoadBalancerListenerSSLCertificateInput,
   output: SetLoadBalancerListenerSSLCertificateOutput,
   errors: [
@@ -2222,7 +2222,7 @@ export const setLoadBalancerPoliciesForBackendServer: API.OperationMethod<
   SetLoadBalancerPoliciesForBackendServerOutput,
   SetLoadBalancerPoliciesForBackendServerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetLoadBalancerPoliciesForBackendServerInput,
   output: SetLoadBalancerPoliciesForBackendServerOutput,
   errors: [
@@ -2253,7 +2253,7 @@ export const setLoadBalancerPoliciesOfListener: API.OperationMethod<
   SetLoadBalancerPoliciesOfListenerOutput,
   SetLoadBalancerPoliciesOfListenerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetLoadBalancerPoliciesOfListenerInput,
   output: SetLoadBalancerPoliciesOfListenerOutput,
   errors: [

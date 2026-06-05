@@ -1098,7 +1098,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceOutput,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [
@@ -1126,7 +1126,7 @@ export const tagResource: API.OperationMethod<
   TagResourceOutput,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
   errors: [
@@ -1152,7 +1152,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceOutput,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
   errors: [
@@ -1183,7 +1183,7 @@ export const getInternetEvent: API.OperationMethod<
   GetInternetEventOutput,
   GetInternetEventError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInternetEventInput,
   output: GetInternetEventOutput,
   errors: [
@@ -1231,7 +1231,7 @@ export const listInternetEvents: API.OperationMethod<
     ListInternetEventsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInternetEventsInput,
   output: ListInternetEventsOutput,
   errors: [
@@ -1272,7 +1272,7 @@ export const createMonitor: API.OperationMethod<
   CreateMonitorOutput,
   CreateMonitorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMonitorInput,
   output: CreateMonitorOutput,
   errors: [
@@ -1299,7 +1299,7 @@ export const getMonitor: API.OperationMethod<
   GetMonitorOutput,
   GetMonitorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMonitorInput,
   output: GetMonitorOutput,
   errors: [
@@ -1329,7 +1329,7 @@ export const updateMonitor: API.OperationMethod<
   UpdateMonitorOutput,
   UpdateMonitorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateMonitorInput,
   output: UpdateMonitorOutput,
   errors: [
@@ -1355,7 +1355,7 @@ export const deleteMonitor: API.OperationMethod<
   DeleteMonitorOutput,
   DeleteMonitorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMonitorInput,
   output: DeleteMonitorOutput,
   errors: [
@@ -1394,7 +1394,7 @@ export const listMonitors: API.OperationMethod<
     ListMonitorsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMonitorsInput,
   output: ListMonitorsOutput,
   errors: [
@@ -1445,7 +1445,7 @@ export const getQueryResults: API.OperationMethod<
     GetQueryResultsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetQueryResultsInput,
   output: GetQueryResultsOutput,
   errors: [
@@ -1487,7 +1487,7 @@ export const getQueryStatus: API.OperationMethod<
   GetQueryStatusOutput,
   GetQueryStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetQueryStatusInput,
   output: GetQueryStatusOutput,
   errors: [
@@ -1519,7 +1519,7 @@ export const startQuery: API.OperationMethod<
   StartQueryOutput,
   StartQueryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartQueryInput,
   output: StartQueryOutput,
   errors: [
@@ -1545,7 +1545,7 @@ export const stopQuery: API.OperationMethod<
   StopQueryOutput,
   StopQueryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopQueryInput,
   output: StopQueryOutput,
   errors: [
@@ -1576,7 +1576,7 @@ export const getHealthEvent: API.OperationMethod<
   GetHealthEventOutput,
   GetHealthEventError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetHealthEventInput,
   output: GetHealthEventOutput,
   errors: [
@@ -1618,7 +1618,7 @@ export const listHealthEvents: API.OperationMethod<
     ListHealthEventsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListHealthEventsInput,
   output: ListHealthEventsOutput,
   errors: [

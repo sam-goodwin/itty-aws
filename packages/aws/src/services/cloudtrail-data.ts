@@ -208,7 +208,7 @@ export const putAuditEvents: API.OperationMethod<
   PutAuditEventsResponse,
   PutAuditEventsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutAuditEventsRequest,
   output: PutAuditEventsResponse,
   errors: [

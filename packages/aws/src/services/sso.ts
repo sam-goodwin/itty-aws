@@ -301,7 +301,7 @@ export const getRoleCredentials: API.OperationMethod<
   GetRoleCredentialsResponse,
   GetRoleCredentialsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRoleCredentialsRequest,
   output: GetRoleCredentialsResponse,
   errors: [
@@ -340,7 +340,7 @@ export const listAccountRoles: API.OperationMethod<
     ListAccountRolesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountRolesRequest,
   output: ListAccountRolesResponse,
   errors: [
@@ -387,7 +387,7 @@ export const listAccounts: API.OperationMethod<
     ListAccountsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsRequest,
   output: ListAccountsResponse,
   errors: [
@@ -429,7 +429,7 @@ export const logout: API.OperationMethod<
   LogoutResponse,
   LogoutError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: LogoutRequest,
   output: LogoutResponse,
   errors: [

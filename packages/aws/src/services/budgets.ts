@@ -1592,7 +1592,7 @@ export const createBudget: API.OperationMethod<
   CreateBudgetResponse,
   CreateBudgetError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateBudgetRequest,
   output: CreateBudgetResponse,
   errors: [
@@ -1625,7 +1625,7 @@ export const createBudgetAction: API.OperationMethod<
   CreateBudgetActionResponse,
   CreateBudgetActionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateBudgetActionRequest,
   output: CreateBudgetActionResponse,
   errors: [
@@ -1656,7 +1656,7 @@ export const createNotification: API.OperationMethod<
   CreateNotificationResponse,
   CreateNotificationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateNotificationRequest,
   output: CreateNotificationResponse,
   errors: [
@@ -1686,7 +1686,7 @@ export const createSubscriber: API.OperationMethod<
   CreateSubscriberResponse,
   CreateSubscriberError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSubscriberRequest,
   output: CreateSubscriberResponse,
   errors: [
@@ -1716,7 +1716,7 @@ export const deleteBudget: API.OperationMethod<
   DeleteBudgetResponse,
   DeleteBudgetError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteBudgetRequest,
   output: DeleteBudgetResponse,
   errors: [
@@ -1743,7 +1743,7 @@ export const deleteBudgetAction: API.OperationMethod<
   DeleteBudgetActionResponse,
   DeleteBudgetActionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteBudgetActionRequest,
   output: DeleteBudgetActionResponse,
   errors: [
@@ -1772,7 +1772,7 @@ export const deleteNotification: API.OperationMethod<
   DeleteNotificationResponse,
   DeleteNotificationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteNotificationRequest,
   output: DeleteNotificationResponse,
   errors: [
@@ -1800,7 +1800,7 @@ export const deleteSubscriber: API.OperationMethod<
   DeleteSubscriberResponse,
   DeleteSubscriberError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSubscriberRequest,
   output: DeleteSubscriberResponse,
   errors: [
@@ -1829,7 +1829,7 @@ export const describeBudget: API.OperationMethod<
   DescribeBudgetResponse,
   DescribeBudgetError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeBudgetRequest,
   output: DescribeBudgetResponse,
   errors: [
@@ -1855,7 +1855,7 @@ export const describeBudgetAction: API.OperationMethod<
   DescribeBudgetActionResponse,
   DescribeBudgetActionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeBudgetActionRequest,
   output: DescribeBudgetActionResponse,
   errors: [
@@ -1897,7 +1897,7 @@ export const describeBudgetActionHistories: API.OperationMethod<
     DescribeBudgetActionHistoriesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeBudgetActionHistoriesRequest,
   output: DescribeBudgetActionHistoriesResponse,
   errors: [
@@ -1945,7 +1945,7 @@ export const describeBudgetActionsForAccount: API.OperationMethod<
     DescribeBudgetActionsForAccountError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeBudgetActionsForAccountRequest,
   output: DescribeBudgetActionsForAccountResponse,
   errors: [
@@ -1993,7 +1993,7 @@ export const describeBudgetActionsForBudget: API.OperationMethod<
     DescribeBudgetActionsForBudgetError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeBudgetActionsForBudgetRequest,
   output: DescribeBudgetActionsForBudgetResponse,
   errors: [
@@ -2043,7 +2043,7 @@ export const describeBudgetNotificationsForAccount: API.OperationMethod<
     DescribeBudgetNotificationsForAccountError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeBudgetNotificationsForAccountRequest,
   output: DescribeBudgetNotificationsForAccountResponse,
   errors: [
@@ -2095,7 +2095,7 @@ export const describeBudgetPerformanceHistory: API.OperationMethod<
     DescribeBudgetPerformanceHistoryError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeBudgetPerformanceHistoryRequest,
   output: DescribeBudgetPerformanceHistoryResponse,
   errors: [
@@ -2149,7 +2149,7 @@ export const describeBudgets: API.OperationMethod<
     DescribeBudgetsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeBudgetsRequest,
   output: DescribeBudgetsResponse,
   errors: [
@@ -2200,7 +2200,7 @@ export const describeNotificationsForBudget: API.OperationMethod<
     DescribeNotificationsForBudgetError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeNotificationsForBudgetRequest,
   output: DescribeNotificationsForBudgetResponse,
   errors: [
@@ -2251,7 +2251,7 @@ export const describeSubscribersForNotification: API.OperationMethod<
     DescribeSubscribersForNotificationError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSubscribersForNotificationRequest,
   output: DescribeSubscribersForNotificationResponse,
   errors: [
@@ -2286,7 +2286,7 @@ export const executeBudgetAction: API.OperationMethod<
   ExecuteBudgetActionResponse,
   ExecuteBudgetActionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExecuteBudgetActionRequest,
   output: ExecuteBudgetActionResponse,
   errors: [
@@ -2313,7 +2313,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -2340,7 +2340,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -2367,7 +2367,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -2407,7 +2407,7 @@ export const updateBudget: API.OperationMethod<
   UpdateBudgetResponse,
   UpdateBudgetError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateBudgetRequest,
   output: UpdateBudgetResponse,
   errors: [
@@ -2436,7 +2436,7 @@ export const updateBudgetAction: API.OperationMethod<
   UpdateBudgetActionResponse,
   UpdateBudgetActionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateBudgetActionRequest,
   output: UpdateBudgetActionResponse,
   errors: [
@@ -2464,7 +2464,7 @@ export const updateNotification: API.OperationMethod<
   UpdateNotificationResponse,
   UpdateNotificationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateNotificationRequest,
   output: UpdateNotificationResponse,
   errors: [
@@ -2492,7 +2492,7 @@ export const updateSubscriber: API.OperationMethod<
   UpdateSubscriberResponse,
   UpdateSubscriberError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSubscriberRequest,
   output: UpdateSubscriberResponse,
   errors: [

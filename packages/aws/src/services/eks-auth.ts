@@ -221,7 +221,7 @@ export const assumeRoleForPodIdentity: API.OperationMethod<
   AssumeRoleForPodIdentityResponse,
   AssumeRoleForPodIdentityError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssumeRoleForPodIdentityRequest,
   output: AssumeRoleForPodIdentityResponse,
   errors: [

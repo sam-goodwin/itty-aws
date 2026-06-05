@@ -1464,7 +1464,7 @@ export const buildSuggesters: API.OperationMethod<
   BuildSuggestersResponse,
   BuildSuggestersError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BuildSuggestersRequest,
   output: BuildSuggestersResponse,
   errors: [
@@ -1490,7 +1490,7 @@ export const createDomain: API.OperationMethod<
   CreateDomainResponse,
   CreateDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDomainRequest,
   output: CreateDomainResponse,
   errors: [
@@ -1517,7 +1517,7 @@ export const defineAnalysisScheme: API.OperationMethod<
   DefineAnalysisSchemeResponse,
   DefineAnalysisSchemeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DefineAnalysisSchemeRequest,
   output: DefineAnalysisSchemeResponse,
   errors: [
@@ -1545,7 +1545,7 @@ export const defineExpression: API.OperationMethod<
   DefineExpressionResponse,
   DefineExpressionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DefineExpressionRequest,
   output: DefineExpressionResponse,
   errors: [
@@ -1573,7 +1573,7 @@ export const defineIndexField: API.OperationMethod<
   DefineIndexFieldResponse,
   DefineIndexFieldError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DefineIndexFieldRequest,
   output: DefineIndexFieldResponse,
   errors: [
@@ -1601,7 +1601,7 @@ export const defineSuggester: API.OperationMethod<
   DefineSuggesterResponse,
   DefineSuggesterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DefineSuggesterRequest,
   output: DefineSuggesterResponse,
   errors: [
@@ -1628,7 +1628,7 @@ export const deleteAnalysisScheme: API.OperationMethod<
   DeleteAnalysisSchemeResponse,
   DeleteAnalysisSchemeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAnalysisSchemeRequest,
   output: DeleteAnalysisSchemeResponse,
   errors: [
@@ -1652,7 +1652,7 @@ export const deleteDomain: API.OperationMethod<
   DeleteDomainResponse,
   DeleteDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDomainRequest,
   output: DeleteDomainResponse,
   errors: [BaseException, InternalException],
@@ -1672,7 +1672,7 @@ export const deleteExpression: API.OperationMethod<
   DeleteExpressionResponse,
   DeleteExpressionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteExpressionRequest,
   output: DeleteExpressionResponse,
   errors: [
@@ -1698,7 +1698,7 @@ export const deleteIndexField: API.OperationMethod<
   DeleteIndexFieldResponse,
   DeleteIndexFieldError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteIndexFieldRequest,
   output: DeleteIndexFieldResponse,
   errors: [
@@ -1724,7 +1724,7 @@ export const deleteSuggester: API.OperationMethod<
   DeleteSuggesterResponse,
   DeleteSuggesterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSuggesterRequest,
   output: DeleteSuggesterResponse,
   errors: [
@@ -1748,7 +1748,7 @@ export const describeAnalysisSchemes: API.OperationMethod<
   DescribeAnalysisSchemesResponse,
   DescribeAnalysisSchemesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAnalysisSchemesRequest,
   output: DescribeAnalysisSchemesResponse,
   errors: [BaseException, InternalException, ResourceNotFoundException],
@@ -1769,7 +1769,7 @@ export const describeAvailabilityOptions: API.OperationMethod<
   DescribeAvailabilityOptionsResponse,
   DescribeAvailabilityOptionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAvailabilityOptionsRequest,
   output: DescribeAvailabilityOptionsResponse,
   errors: [
@@ -1796,7 +1796,7 @@ export const describeDomainEndpointOptions: API.OperationMethod<
   DescribeDomainEndpointOptionsResponse,
   DescribeDomainEndpointOptionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDomainEndpointOptionsRequest,
   output: DescribeDomainEndpointOptionsResponse,
   errors: [
@@ -1821,7 +1821,7 @@ export const describeDomains: API.OperationMethod<
   DescribeDomainsResponse,
   DescribeDomainsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDomainsRequest,
   output: DescribeDomainsResponse,
   errors: [BaseException, InternalException],
@@ -1839,7 +1839,7 @@ export const describeExpressions: API.OperationMethod<
   DescribeExpressionsResponse,
   DescribeExpressionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeExpressionsRequest,
   output: DescribeExpressionsResponse,
   errors: [BaseException, InternalException, ResourceNotFoundException],
@@ -1859,7 +1859,7 @@ export const describeIndexFields: API.OperationMethod<
   DescribeIndexFieldsResponse,
   DescribeIndexFieldsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeIndexFieldsRequest,
   output: DescribeIndexFieldsResponse,
   errors: [BaseException, InternalException, ResourceNotFoundException],
@@ -1877,7 +1877,7 @@ export const describeScalingParameters: API.OperationMethod<
   DescribeScalingParametersResponse,
   DescribeScalingParametersError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeScalingParametersRequest,
   output: DescribeScalingParametersResponse,
   errors: [BaseException, InternalException, ResourceNotFoundException],
@@ -1896,7 +1896,7 @@ export const describeServiceAccessPolicies: API.OperationMethod<
   DescribeServiceAccessPoliciesResponse,
   DescribeServiceAccessPoliciesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeServiceAccessPoliciesRequest,
   output: DescribeServiceAccessPoliciesResponse,
   errors: [BaseException, InternalException, ResourceNotFoundException],
@@ -1914,7 +1914,7 @@ export const describeSuggesters: API.OperationMethod<
   DescribeSuggestersResponse,
   DescribeSuggestersError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeSuggestersRequest,
   output: DescribeSuggestersResponse,
   errors: [BaseException, InternalException, ResourceNotFoundException],
@@ -1933,7 +1933,7 @@ export const indexDocuments: API.OperationMethod<
   IndexDocumentsResponse,
   IndexDocumentsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: IndexDocumentsRequest,
   output: IndexDocumentsResponse,
   errors: [
@@ -1952,7 +1952,7 @@ export const listDomainNames: API.OperationMethod<
   ListDomainNamesResponse,
   ListDomainNamesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListDomainNamesRequest,
   output: ListDomainNamesResponse,
   errors: [BaseException],
@@ -1974,7 +1974,7 @@ export const updateAvailabilityOptions: API.OperationMethod<
   UpdateAvailabilityOptionsResponse,
   UpdateAvailabilityOptionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAvailabilityOptionsRequest,
   output: UpdateAvailabilityOptionsResponse,
   errors: [
@@ -2004,7 +2004,7 @@ export const updateDomainEndpointOptions: API.OperationMethod<
   UpdateDomainEndpointOptionsResponse,
   UpdateDomainEndpointOptionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDomainEndpointOptionsRequest,
   output: UpdateDomainEndpointOptionsResponse,
   errors: [
@@ -2033,7 +2033,7 @@ export const updateScalingParameters: API.OperationMethod<
   UpdateScalingParametersResponse,
   UpdateScalingParametersError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateScalingParametersRequest,
   output: UpdateScalingParametersResponse,
   errors: [
@@ -2063,7 +2063,7 @@ export const updateServiceAccessPolicies: API.OperationMethod<
   UpdateServiceAccessPoliciesResponse,
   UpdateServiceAccessPoliciesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateServiceAccessPoliciesRequest,
   output: UpdateServiceAccessPoliciesResponse,
   errors: [

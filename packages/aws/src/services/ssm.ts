@@ -11815,7 +11815,7 @@ export const addTagsToResource: API.OperationMethod<
   AddTagsToResourceResult,
   AddTagsToResourceError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddTagsToResourceRequest,
   output: AddTagsToResourceResult,
   errors: [
@@ -11844,7 +11844,7 @@ export const associateOpsItemRelatedItem: API.OperationMethod<
   AssociateOpsItemRelatedItemResponse,
   AssociateOpsItemRelatedItemError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateOpsItemRelatedItemRequest,
   output: AssociateOpsItemRelatedItemResponse,
   errors: [
@@ -11871,7 +11871,7 @@ export const cancelCommand: API.OperationMethod<
   CancelCommandResult,
   CancelCommandError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelCommandRequest,
   output: CancelCommandResult,
   errors: [
@@ -11895,7 +11895,7 @@ export const cancelMaintenanceWindowExecution: API.OperationMethod<
   CancelMaintenanceWindowExecutionResult,
   CancelMaintenanceWindowExecutionError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelMaintenanceWindowExecutionRequest,
   output: CancelMaintenanceWindowExecutionResult,
   errors: [DoesNotExistException, InternalServerError],
@@ -11920,7 +11920,7 @@ export const createActivation: API.OperationMethod<
   CreateActivationResult,
   CreateActivationError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateActivationRequest,
   output: CreateActivationResult,
   errors: [InternalServerError, InvalidParameters],
@@ -11957,7 +11957,7 @@ export const createAssociation: API.OperationMethod<
   CreateAssociationResult,
   CreateAssociationError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAssociationRequest,
   output: CreateAssociationResult,
   errors: [
@@ -12006,7 +12006,7 @@ export const createAssociationBatch: API.OperationMethod<
   CreateAssociationBatchResult,
   CreateAssociationBatchError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAssociationBatchRequest,
   output: CreateAssociationBatchResult,
   errors: [
@@ -12045,7 +12045,7 @@ export const createDocument: API.OperationMethod<
   CreateDocumentResult,
   CreateDocumentError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDocumentRequest,
   output: CreateDocumentResult,
   errors: [
@@ -12079,7 +12079,7 @@ export const createMaintenanceWindow: API.OperationMethod<
   CreateMaintenanceWindowResult,
   CreateMaintenanceWindowError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMaintenanceWindowRequest,
   output: CreateMaintenanceWindowResult,
   errors: [
@@ -12109,7 +12109,7 @@ export const createOpsItem: API.OperationMethod<
   CreateOpsItemResponse,
   CreateOpsItemError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOpsItemRequest,
   output: CreateOpsItemResponse,
   errors: [
@@ -12136,7 +12136,7 @@ export const createOpsMetadata: API.OperationMethod<
   CreateOpsMetadataResult,
   CreateOpsMetadataError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOpsMetadataRequest,
   output: CreateOpsMetadataResult,
   errors: [
@@ -12163,7 +12163,7 @@ export const createPatchBaseline: API.OperationMethod<
   CreatePatchBaselineResult,
   CreatePatchBaselineError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePatchBaselineRequest,
   output: CreatePatchBaselineResult,
   errors: [
@@ -12208,7 +12208,7 @@ export const createResourceDataSync: API.OperationMethod<
   CreateResourceDataSyncResult,
   CreateResourceDataSyncError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateResourceDataSyncRequest,
   output: CreateResourceDataSyncResult,
   errors: [
@@ -12234,7 +12234,7 @@ export const deleteActivation: API.OperationMethod<
   DeleteActivationResult,
   DeleteActivationError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteActivationRequest,
   output: DeleteActivationResult,
   errors: [
@@ -12266,7 +12266,7 @@ export const deleteAssociation: API.OperationMethod<
   DeleteAssociationResult,
   DeleteAssociationError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAssociationRequest,
   output: DeleteAssociationResult,
   errors: [
@@ -12295,7 +12295,7 @@ export const deleteDocument: API.OperationMethod<
   DeleteDocumentResult,
   DeleteDocumentError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDocumentRequest,
   output: DeleteDocumentResult,
   errors: [
@@ -12322,7 +12322,7 @@ export const deleteInventory: API.OperationMethod<
   DeleteInventoryResult,
   DeleteInventoryError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteInventoryRequest,
   output: DeleteInventoryResult,
   errors: [
@@ -12342,7 +12342,7 @@ export const deleteMaintenanceWindow: API.OperationMethod<
   DeleteMaintenanceWindowResult,
   DeleteMaintenanceWindowError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMaintenanceWindowRequest,
   output: DeleteMaintenanceWindowResult,
   errors: [InternalServerError],
@@ -12379,7 +12379,7 @@ export const deleteOpsItem: API.OperationMethod<
   DeleteOpsItemResponse,
   DeleteOpsItemError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOpsItemRequest,
   output: DeleteOpsItemResponse,
   errors: [InternalServerError, OpsItemInvalidParameterException],
@@ -12397,7 +12397,7 @@ export const deleteOpsMetadata: API.OperationMethod<
   DeleteOpsMetadataResult,
   DeleteOpsMetadataError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOpsMetadataRequest,
   output: DeleteOpsMetadataResult,
   errors: [
@@ -12419,7 +12419,7 @@ export const deleteParameter: API.OperationMethod<
   DeleteParameterResult,
   DeleteParameterError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteParameterRequest,
   output: DeleteParameterResult,
   errors: [InternalServerError, ParameterNotFound],
@@ -12434,7 +12434,7 @@ export const deleteParameters: API.OperationMethod<
   DeleteParametersResult,
   DeleteParametersError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteParametersRequest,
   output: DeleteParametersResult,
   errors: [InternalServerError],
@@ -12451,7 +12451,7 @@ export const deletePatchBaseline: API.OperationMethod<
   DeletePatchBaselineResult,
   DeletePatchBaselineError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePatchBaselineRequest,
   output: DeletePatchBaselineResult,
   errors: [InternalServerError, ResourceInUseException],
@@ -12471,7 +12471,7 @@ export const deleteResourceDataSync: API.OperationMethod<
   DeleteResourceDataSyncResult,
   DeleteResourceDataSyncError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourceDataSyncRequest,
   output: DeleteResourceDataSyncResult,
   errors: [
@@ -12505,7 +12505,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyResponse,
   DeleteResourcePolicyError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourcePolicyRequest,
   output: DeleteResourcePolicyResponse,
   errors: [
@@ -12536,7 +12536,7 @@ export const deregisterManagedInstance: API.OperationMethod<
   DeregisterManagedInstanceResult,
   DeregisterManagedInstanceError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeregisterManagedInstanceRequest,
   output: DeregisterManagedInstanceResult,
   errors: [InternalServerError, InvalidInstanceId],
@@ -12553,7 +12553,7 @@ export const deregisterPatchBaselineForPatchGroup: API.OperationMethod<
   DeregisterPatchBaselineForPatchGroupResult,
   DeregisterPatchBaselineForPatchGroupError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeregisterPatchBaselineForPatchGroupRequest,
   output: DeregisterPatchBaselineForPatchGroupResult,
   errors: [InternalServerError, InvalidResourceId],
@@ -12571,7 +12571,7 @@ export const deregisterTargetFromMaintenanceWindow: API.OperationMethod<
   DeregisterTargetFromMaintenanceWindowResult,
   DeregisterTargetFromMaintenanceWindowError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeregisterTargetFromMaintenanceWindowRequest,
   output: DeregisterTargetFromMaintenanceWindowResult,
   errors: [DoesNotExistException, InternalServerError, TargetInUseException],
@@ -12588,7 +12588,7 @@ export const deregisterTaskFromMaintenanceWindow: API.OperationMethod<
   DeregisterTaskFromMaintenanceWindowResult,
   DeregisterTaskFromMaintenanceWindowError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeregisterTaskFromMaintenanceWindowRequest,
   output: DeregisterTaskFromMaintenanceWindowResult,
   errors: [DoesNotExistException, InternalServerError],
@@ -12624,7 +12624,7 @@ export const describeActivations: API.OperationMethod<
     DescribeActivationsError,
     Creds | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeActivationsRequest,
   output: DescribeActivationsResult,
   errors: [InternalServerError, InvalidFilter, InvalidNextToken],
@@ -12652,7 +12652,7 @@ export const describeAssociation: API.OperationMethod<
   DescribeAssociationResult,
   DescribeAssociationError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAssociationRequest,
   output: DescribeAssociationResult,
   errors: [
@@ -12691,7 +12691,7 @@ export const describeAssociationExecutions: API.OperationMethod<
     DescribeAssociationExecutionsError,
     Creds | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAssociationExecutionsRequest,
   output: DescribeAssociationExecutionsResult,
   errors: [AssociationDoesNotExist, InternalServerError, InvalidNextToken],
@@ -12731,7 +12731,7 @@ export const describeAssociationExecutionTargets: API.OperationMethod<
     DescribeAssociationExecutionTargetsError,
     Creds | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAssociationExecutionTargetsRequest,
   output: DescribeAssociationExecutionTargetsResult,
   errors: [
@@ -12776,7 +12776,7 @@ export const describeAutomationExecutions: API.OperationMethod<
     DescribeAutomationExecutionsError,
     Creds | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAutomationExecutionsRequest,
   output: DescribeAutomationExecutionsResult,
   errors: [
@@ -12823,7 +12823,7 @@ export const describeAutomationStepExecutions: API.OperationMethod<
     DescribeAutomationStepExecutionsError,
     Creds | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAutomationStepExecutionsRequest,
   output: DescribeAutomationStepExecutionsResult,
   errors: [
@@ -12867,7 +12867,7 @@ export const describeAvailablePatches: API.OperationMethod<
     DescribeAvailablePatchesError,
     Creds | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAvailablePatchesRequest,
   output: DescribeAvailablePatchesResult,
   errors: [InternalServerError],
@@ -12891,7 +12891,7 @@ export const describeDocument: API.OperationMethod<
   DescribeDocumentResult,
   DescribeDocumentError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDocumentRequest,
   output: DescribeDocumentResult,
   errors: [InternalServerError, InvalidDocument, InvalidDocumentVersion],
@@ -12913,7 +12913,7 @@ export const describeDocumentPermission: API.OperationMethod<
   DescribeDocumentPermissionResponse,
   DescribeDocumentPermissionError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDocumentPermissionRequest,
   output: DescribeDocumentPermissionResponse,
   errors: [
@@ -12952,7 +12952,7 @@ export const describeEffectiveInstanceAssociations: API.OperationMethod<
     DescribeEffectiveInstanceAssociationsError,
     Creds | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEffectiveInstanceAssociationsRequest,
   output: DescribeEffectiveInstanceAssociationsResult,
   errors: [InternalServerError, InvalidInstanceId, InvalidNextToken],
@@ -12993,7 +12993,7 @@ export const describeEffectivePatchesForPatchBaseline: API.OperationMethod<
     DescribeEffectivePatchesForPatchBaselineError,
     Creds | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEffectivePatchesForPatchBaselineRequest,
   output: DescribeEffectivePatchesForPatchBaselineResult,
   errors: [
@@ -13037,7 +13037,7 @@ export const describeInstanceAssociationsStatus: API.OperationMethod<
     DescribeInstanceAssociationsStatusError,
     Creds | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstanceAssociationsStatusRequest,
   output: DescribeInstanceAssociationsStatusResult,
   errors: [InternalServerError, InvalidInstanceId, InvalidNextToken],
@@ -13088,7 +13088,7 @@ export const describeInstanceInformation: API.OperationMethod<
     DescribeInstanceInformationError,
     Creds | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstanceInformationRequest,
   output: DescribeInstanceInformationResult,
   errors: [
@@ -13135,7 +13135,7 @@ export const describeInstancePatches: API.OperationMethod<
     DescribeInstancePatchesError,
     Creds | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstancePatchesRequest,
   output: DescribeInstancePatchesResult,
   errors: [
@@ -13178,7 +13178,7 @@ export const describeInstancePatchStates: API.OperationMethod<
     DescribeInstancePatchStatesError,
     Creds | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstancePatchStatesRequest,
   output: DescribeInstancePatchStatesResult,
   errors: [InternalServerError, InvalidNextToken],
@@ -13218,7 +13218,7 @@ export const describeInstancePatchStatesForPatchGroup: API.OperationMethod<
     DescribeInstancePatchStatesForPatchGroupError,
     Creds | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstancePatchStatesForPatchGroupRequest,
   output: DescribeInstancePatchStatesForPatchGroupResult,
   errors: [InternalServerError, InvalidFilter, InvalidNextToken],
@@ -13262,7 +13262,7 @@ export const describeInstanceProperties: API.OperationMethod<
     DescribeInstancePropertiesError,
     Creds | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstancePropertiesRequest,
   output: DescribeInstancePropertiesResult,
   errors: [
@@ -13309,7 +13309,7 @@ export const describeInventoryDeletions: API.OperationMethod<
     DescribeInventoryDeletionsError,
     Creds | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInventoryDeletionsRequest,
   output: DescribeInventoryDeletionsResult,
   errors: [InternalServerError, InvalidDeletionIdException, InvalidNextToken],
@@ -13348,7 +13348,7 @@ export const describeMaintenanceWindowExecutions: API.OperationMethod<
     DescribeMaintenanceWindowExecutionsError,
     Creds | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMaintenanceWindowExecutionsRequest,
   output: DescribeMaintenanceWindowExecutionsResult,
   errors: [InternalServerError],
@@ -13387,7 +13387,7 @@ export const describeMaintenanceWindowExecutionTaskInvocations: API.OperationMet
     DescribeMaintenanceWindowExecutionTaskInvocationsError,
     Creds | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMaintenanceWindowExecutionTaskInvocationsRequest,
   output: DescribeMaintenanceWindowExecutionTaskInvocationsResult,
   errors: [DoesNotExistException, InternalServerError],
@@ -13425,7 +13425,7 @@ export const describeMaintenanceWindowExecutionTasks: API.OperationMethod<
     DescribeMaintenanceWindowExecutionTasksError,
     Creds | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMaintenanceWindowExecutionTasksRequest,
   output: DescribeMaintenanceWindowExecutionTasksResult,
   errors: [DoesNotExistException, InternalServerError],
@@ -13462,7 +13462,7 @@ export const describeMaintenanceWindows: API.OperationMethod<
     DescribeMaintenanceWindowsError,
     Creds | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMaintenanceWindowsRequest,
   output: DescribeMaintenanceWindowsResult,
   errors: [InternalServerError],
@@ -13500,7 +13500,7 @@ export const describeMaintenanceWindowSchedule: API.OperationMethod<
     DescribeMaintenanceWindowScheduleError,
     Creds | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMaintenanceWindowScheduleRequest,
   output: DescribeMaintenanceWindowScheduleResult,
   errors: [DoesNotExistException, InternalServerError],
@@ -13538,7 +13538,7 @@ export const describeMaintenanceWindowsForTarget: API.OperationMethod<
     DescribeMaintenanceWindowsForTargetError,
     Creds | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMaintenanceWindowsForTargetRequest,
   output: DescribeMaintenanceWindowsForTargetResult,
   errors: [InternalServerError],
@@ -13576,7 +13576,7 @@ export const describeMaintenanceWindowTargets: API.OperationMethod<
     DescribeMaintenanceWindowTargetsError,
     Creds | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMaintenanceWindowTargetsRequest,
   output: DescribeMaintenanceWindowTargetsResult,
   errors: [DoesNotExistException, InternalServerError],
@@ -13619,7 +13619,7 @@ export const describeMaintenanceWindowTasks: API.OperationMethod<
     DescribeMaintenanceWindowTasksError,
     Creds | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMaintenanceWindowTasksRequest,
   output: DescribeMaintenanceWindowTasksResult,
   errors: [DoesNotExistException, InternalServerError],
@@ -13660,7 +13660,7 @@ export const describeOpsItems: API.OperationMethod<
     DescribeOpsItemsError,
     Creds | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeOpsItemsRequest,
   output: DescribeOpsItemsResponse,
   errors: [InternalServerError],
@@ -13718,7 +13718,7 @@ export const describeParameters: API.OperationMethod<
     DescribeParametersError,
     Creds | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeParametersRequest,
   output: DescribeParametersResult,
   errors: [
@@ -13758,7 +13758,7 @@ export const describePatchBaselines: API.OperationMethod<
     DescribePatchBaselinesError,
     Creds | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribePatchBaselinesRequest,
   output: DescribePatchBaselinesResult,
   errors: [InternalServerError],
@@ -13793,7 +13793,7 @@ export const describePatchGroups: API.OperationMethod<
     DescribePatchGroupsError,
     Creds | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribePatchGroupsRequest,
   output: DescribePatchGroupsResult,
   errors: [InternalServerError],
@@ -13816,7 +13816,7 @@ export const describePatchGroupState: API.OperationMethod<
   DescribePatchGroupStateResult,
   DescribePatchGroupStateError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribePatchGroupStateRequest,
   output: DescribePatchGroupStateResult,
   errors: [InternalServerError, InvalidNextToken],
@@ -13902,7 +13902,7 @@ export const describePatchProperties: API.OperationMethod<
     DescribePatchPropertiesError,
     Creds | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribePatchPropertiesRequest,
   output: DescribePatchPropertiesResult,
   errors: [InternalServerError],
@@ -13942,7 +13942,7 @@ export const describeSessions: API.OperationMethod<
     DescribeSessionsError,
     Creds | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSessionsRequest,
   output: DescribeSessionsResponse,
   errors: [InternalServerError, InvalidFilterKey, InvalidNextToken],
@@ -13970,7 +13970,7 @@ export const disassociateOpsItemRelatedItem: API.OperationMethod<
   DisassociateOpsItemRelatedItemResponse,
   DisassociateOpsItemRelatedItemError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateOpsItemRelatedItemRequest,
   output: DisassociateOpsItemRelatedItemResponse,
   errors: [
@@ -13996,7 +13996,7 @@ export const getAccessToken: API.OperationMethod<
   GetAccessTokenResponse,
   GetAccessTokenError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccessTokenRequest,
   output: GetAccessTokenResponse,
   errors: [
@@ -14019,7 +14019,7 @@ export const getAutomationExecution: API.OperationMethod<
   GetAutomationExecutionResult,
   GetAutomationExecutionError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAutomationExecutionRequest,
   output: GetAutomationExecutionResult,
   errors: [AutomationExecutionNotFoundException, InternalServerError],
@@ -14048,7 +14048,7 @@ export const getCalendarState: API.OperationMethod<
   GetCalendarStateResponse,
   GetCalendarStateError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCalendarStateRequest,
   output: GetCalendarStateResponse,
   errors: [
@@ -14082,7 +14082,7 @@ export const getCommandInvocation: API.OperationMethod<
   GetCommandInvocationResult,
   GetCommandInvocationError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCommandInvocationRequest,
   output: GetCommandInvocationResult,
   errors: [
@@ -14103,7 +14103,7 @@ export const getConnectionStatus: API.OperationMethod<
   GetConnectionStatusResponse,
   GetConnectionStatusError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConnectionStatusRequest,
   output: GetConnectionStatusResponse,
   errors: [InternalServerError],
@@ -14121,7 +14121,7 @@ export const getDefaultPatchBaseline: API.OperationMethod<
   GetDefaultPatchBaselineResult,
   GetDefaultPatchBaselineError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDefaultPatchBaselineRequest,
   output: GetDefaultPatchBaselineResult,
   errors: [InternalServerError],
@@ -14146,7 +14146,7 @@ export const getDeployablePatchSnapshotForInstance: API.OperationMethod<
   GetDeployablePatchSnapshotForInstanceResult,
   GetDeployablePatchSnapshotForInstanceError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDeployablePatchSnapshotForInstanceRequest,
   output: GetDeployablePatchSnapshotForInstanceResult,
   errors: [
@@ -14168,7 +14168,7 @@ export const getDocument: API.OperationMethod<
   GetDocumentResult,
   GetDocumentError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDocumentRequest,
   output: GetDocumentResult,
   errors: [InternalServerError, InvalidDocument, InvalidDocumentVersion],
@@ -14186,7 +14186,7 @@ export const getExecutionPreview: API.OperationMethod<
   GetExecutionPreviewResponse,
   GetExecutionPreviewError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetExecutionPreviewRequest,
   output: GetExecutionPreviewResponse,
   errors: [InternalServerError, ResourceNotFoundException],
@@ -14224,7 +14224,7 @@ export const getInventory: API.OperationMethod<
     GetInventoryError,
     Creds | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetInventoryRequest,
   output: GetInventoryResult,
   errors: [
@@ -14272,7 +14272,7 @@ export const getInventorySchema: API.OperationMethod<
     GetInventorySchemaError,
     Creds | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetInventorySchemaRequest,
   output: GetInventorySchemaResult,
   errors: [InternalServerError, InvalidNextToken, InvalidTypeNameException],
@@ -14295,7 +14295,7 @@ export const getMaintenanceWindow: API.OperationMethod<
   GetMaintenanceWindowResult,
   GetMaintenanceWindowError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMaintenanceWindowRequest,
   output: GetMaintenanceWindowResult,
   errors: [DoesNotExistException, InternalServerError],
@@ -14312,7 +14312,7 @@ export const getMaintenanceWindowExecution: API.OperationMethod<
   GetMaintenanceWindowExecutionResult,
   GetMaintenanceWindowExecutionError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMaintenanceWindowExecutionRequest,
   output: GetMaintenanceWindowExecutionResult,
   errors: [DoesNotExistException, InternalServerError],
@@ -14330,7 +14330,7 @@ export const getMaintenanceWindowExecutionTask: API.OperationMethod<
   GetMaintenanceWindowExecutionTaskResult,
   GetMaintenanceWindowExecutionTaskError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMaintenanceWindowExecutionTaskRequest,
   output: GetMaintenanceWindowExecutionTaskResult,
   errors: [DoesNotExistException, InternalServerError],
@@ -14347,7 +14347,7 @@ export const getMaintenanceWindowExecutionTaskInvocation: API.OperationMethod<
   GetMaintenanceWindowExecutionTaskInvocationResult,
   GetMaintenanceWindowExecutionTaskInvocationError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMaintenanceWindowExecutionTaskInvocationRequest,
   output: GetMaintenanceWindowExecutionTaskInvocationResult,
   errors: [DoesNotExistException, InternalServerError],
@@ -14371,7 +14371,7 @@ export const getMaintenanceWindowTask: API.OperationMethod<
   GetMaintenanceWindowTaskResult,
   GetMaintenanceWindowTaskError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMaintenanceWindowTaskRequest,
   output: GetMaintenanceWindowTaskResult,
   errors: [DoesNotExistException, InternalServerError],
@@ -14396,7 +14396,7 @@ export const getOpsItem: API.OperationMethod<
   GetOpsItemResponse,
   GetOpsItemError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOpsItemRequest,
   output: GetOpsItemResponse,
   errors: [
@@ -14418,7 +14418,7 @@ export const getOpsMetadata: API.OperationMethod<
   GetOpsMetadataResult,
   GetOpsMetadataError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOpsMetadataRequest,
   output: GetOpsMetadataResult,
   errors: [
@@ -14461,7 +14461,7 @@ export const getOpsSummary: API.OperationMethod<
     GetOpsSummaryError,
     Creds | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetOpsSummaryRequest,
   output: GetOpsSummaryResult,
   errors: [
@@ -14499,7 +14499,7 @@ export const getParameter: API.OperationMethod<
   GetParameterResult,
   GetParameterError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetParameterRequest,
   output: GetParameterResult,
   errors: [
@@ -14547,7 +14547,7 @@ export const getParameterHistory: API.OperationMethod<
     GetParameterHistoryError,
     Creds | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetParameterHistoryRequest,
   output: GetParameterHistoryResult,
   errors: [
@@ -14581,7 +14581,7 @@ export const getParameters: API.OperationMethod<
   GetParametersResult,
   GetParametersError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetParametersRequest,
   output: GetParametersResult,
   errors: [InternalServerError, InvalidKeyId],
@@ -14628,7 +14628,7 @@ export const getParametersByPath: API.OperationMethod<
     GetParametersByPathError,
     Creds | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetParametersByPathRequest,
   output: GetParametersByPathResult,
   errors: [
@@ -14658,7 +14658,7 @@ export const getPatchBaseline: API.OperationMethod<
   GetPatchBaselineResult,
   GetPatchBaselineError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPatchBaselineRequest,
   output: GetPatchBaselineResult,
   errors: [DoesNotExistException, InternalServerError, InvalidResourceId],
@@ -14674,7 +14674,7 @@ export const getPatchBaselineForPatchGroup: API.OperationMethod<
   GetPatchBaselineForPatchGroupResult,
   GetPatchBaselineForPatchGroupError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPatchBaselineForPatchGroupRequest,
   output: GetPatchBaselineForPatchGroupResult,
   errors: [InternalServerError],
@@ -14707,7 +14707,7 @@ export const getResourcePolicies: API.OperationMethod<
     GetResourcePoliciesError,
     Creds | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetResourcePoliciesRequest,
   output: GetResourcePoliciesResponse,
   errors: [
@@ -14748,7 +14748,7 @@ export const getServiceSetting: API.OperationMethod<
   GetServiceSettingResult,
   GetServiceSettingError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetServiceSettingRequest,
   output: GetServiceSettingResult,
   errors: [InternalServerError, ServiceSettingNotFound],
@@ -14799,7 +14799,7 @@ export const labelParameterVersion: API.OperationMethod<
   LabelParameterVersionResult,
   LabelParameterVersionError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: LabelParameterVersionRequest,
   output: LabelParameterVersionResult,
   errors: [
@@ -14839,7 +14839,7 @@ export const listAssociations: API.OperationMethod<
     ListAssociationsError,
     Creds | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssociationsRequest,
   output: ListAssociationsResult,
   errors: [InternalServerError, InvalidNextToken],
@@ -14878,7 +14878,7 @@ export const listAssociationVersions: API.OperationMethod<
     ListAssociationVersionsError,
     Creds | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssociationVersionsRequest,
   output: ListAssociationVersionsResult,
   errors: [AssociationDoesNotExist, InternalServerError, InvalidNextToken],
@@ -14923,7 +14923,7 @@ export const listCommandInvocations: API.OperationMethod<
     ListCommandInvocationsError,
     Creds | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCommandInvocationsRequest,
   output: ListCommandInvocationsResult,
   errors: [
@@ -14970,7 +14970,7 @@ export const listCommands: API.OperationMethod<
     ListCommandsError,
     Creds | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCommandsRequest,
   output: ListCommandsResult,
   errors: [
@@ -15019,7 +15019,7 @@ export const listComplianceItems: API.OperationMethod<
     ListComplianceItemsError,
     Creds | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListComplianceItemsRequest,
   output: ListComplianceItemsResult,
   errors: [
@@ -15066,7 +15066,7 @@ export const listComplianceSummaries: API.OperationMethod<
     ListComplianceSummariesError,
     Creds | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListComplianceSummariesRequest,
   output: ListComplianceSummariesResult,
   errors: [InternalServerError, InvalidFilter, InvalidNextToken],
@@ -15095,7 +15095,7 @@ export const listDocumentMetadataHistory: API.OperationMethod<
   ListDocumentMetadataHistoryResponse,
   ListDocumentMetadataHistoryError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListDocumentMetadataHistoryRequest,
   output: ListDocumentMetadataHistoryResponse,
   errors: [
@@ -15134,7 +15134,7 @@ export const listDocuments: API.OperationMethod<
     ListDocumentsError,
     Creds | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDocumentsRequest,
   output: ListDocumentsResult,
   errors: [InternalServerError, InvalidFilterKey, InvalidNextToken],
@@ -15173,7 +15173,7 @@ export const listDocumentVersions: API.OperationMethod<
     ListDocumentVersionsError,
     Creds | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDocumentVersionsRequest,
   output: ListDocumentVersionsResult,
   errors: [InternalServerError, InvalidDocument, InvalidNextToken],
@@ -15199,7 +15199,7 @@ export const listInventoryEntries: API.OperationMethod<
   ListInventoryEntriesResult,
   ListInventoryEntriesError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListInventoryEntriesRequest,
   output: ListInventoryEntriesResult,
   errors: [
@@ -15236,7 +15236,7 @@ export const listNodes: API.OperationMethod<
   items: (
     input: ListNodesRequest,
   ) => stream.Stream<Node, ListNodesError, Creds | Rgn | HttpClient.HttpClient>;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNodesRequest,
   output: ListNodesResult,
   errors: [
@@ -15285,7 +15285,7 @@ export const listNodesSummary: API.OperationMethod<
     ListNodesSummaryError,
     Creds | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNodesSummaryRequest,
   output: ListNodesSummaryResult,
   errors: [
@@ -15333,7 +15333,7 @@ export const listOpsItemEvents: API.OperationMethod<
     ListOpsItemEventsError,
     Creds | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOpsItemEventsRequest,
   output: ListOpsItemEventsResponse,
   errors: [
@@ -15377,7 +15377,7 @@ export const listOpsItemRelatedItems: API.OperationMethod<
     ListOpsItemRelatedItemsError,
     Creds | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOpsItemRelatedItemsRequest,
   output: ListOpsItemRelatedItemsResponse,
   errors: [InternalServerError, OpsItemInvalidParameterException],
@@ -15416,7 +15416,7 @@ export const listOpsMetadata: API.OperationMethod<
     ListOpsMetadataError,
     Creds | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOpsMetadataRequest,
   output: ListOpsMetadataResult,
   errors: [InternalServerError, OpsMetadataInvalidArgumentException],
@@ -15457,7 +15457,7 @@ export const listResourceComplianceSummaries: API.OperationMethod<
     ListResourceComplianceSummariesError,
     Creds | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceComplianceSummariesRequest,
   output: ListResourceComplianceSummariesResult,
   errors: [InternalServerError, InvalidFilter, InvalidNextToken],
@@ -15505,7 +15505,7 @@ export const listResourceDataSync: API.OperationMethod<
     ListResourceDataSyncError,
     Creds | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceDataSyncRequest,
   output: ListResourceDataSyncResult,
   errors: [
@@ -15535,7 +15535,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResult,
   ListTagsForResourceError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResult,
   errors: [InternalServerError, InvalidResourceId, InvalidResourceType],
@@ -15558,7 +15558,7 @@ export const modifyDocumentPermission: API.OperationMethod<
   ModifyDocumentPermissionResponse,
   ModifyDocumentPermissionError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyDocumentPermissionRequest,
   output: ModifyDocumentPermissionResponse,
   errors: [
@@ -15632,7 +15632,7 @@ export const putComplianceItems: API.OperationMethod<
   PutComplianceItemsResult,
   PutComplianceItemsError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutComplianceItemsRequest,
   output: PutComplianceItemsResult,
   errors: [
@@ -15669,7 +15669,7 @@ export const putInventory: API.OperationMethod<
   PutInventoryResult,
   PutInventoryError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutInventoryRequest,
   output: PutInventoryResult,
   errors: [
@@ -15712,7 +15712,7 @@ export const putParameter: API.OperationMethod<
   PutParameterResult,
   PutParameterError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutParameterRequest,
   output: PutParameterResult,
   errors: [
@@ -15776,7 +15776,7 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyResponse,
   PutResourcePolicyError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutResourcePolicyRequest,
   output: PutResourcePolicyResponse,
   errors: [
@@ -15807,7 +15807,7 @@ export const registerDefaultPatchBaseline: API.OperationMethod<
   RegisterDefaultPatchBaselineResult,
   RegisterDefaultPatchBaselineError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterDefaultPatchBaselineRequest,
   output: RegisterDefaultPatchBaselineResult,
   errors: [DoesNotExistException, InternalServerError, InvalidResourceId],
@@ -15827,7 +15827,7 @@ export const registerPatchBaselineForPatchGroup: API.OperationMethod<
   RegisterPatchBaselineForPatchGroupResult,
   RegisterPatchBaselineForPatchGroupError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterPatchBaselineForPatchGroupRequest,
   output: RegisterPatchBaselineForPatchGroupResult,
   errors: [
@@ -15852,7 +15852,7 @@ export const registerTargetWithMaintenanceWindow: API.OperationMethod<
   RegisterTargetWithMaintenanceWindowResult,
   RegisterTargetWithMaintenanceWindowError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterTargetWithMaintenanceWindowRequest,
   output: RegisterTargetWithMaintenanceWindowResult,
   errors: [
@@ -15877,7 +15877,7 @@ export const registerTaskWithMaintenanceWindow: API.OperationMethod<
   RegisterTaskWithMaintenanceWindowResult,
   RegisterTaskWithMaintenanceWindowError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterTaskWithMaintenanceWindowRequest,
   output: RegisterTaskWithMaintenanceWindowResult,
   errors: [
@@ -15902,7 +15902,7 @@ export const removeTagsFromResource: API.OperationMethod<
   RemoveTagsFromResourceResult,
   RemoveTagsFromResourceError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveTagsFromResourceRequest,
   output: RemoveTagsFromResourceResult,
   errors: [
@@ -15940,7 +15940,7 @@ export const resetServiceSetting: API.OperationMethod<
   ResetServiceSettingResult,
   ResetServiceSettingError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetServiceSettingRequest,
   output: ResetServiceSettingResult,
   errors: [InternalServerError, ServiceSettingNotFound, TooManyUpdates],
@@ -15961,7 +15961,7 @@ export const resumeSession: API.OperationMethod<
   ResumeSessionResponse,
   ResumeSessionError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResumeSessionRequest,
   output: ResumeSessionResponse,
   errors: [DoesNotExistException, InternalServerError],
@@ -15981,7 +15981,7 @@ export const sendAutomationSignal: API.OperationMethod<
   SendAutomationSignalResult,
   SendAutomationSignalError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendAutomationSignalRequest,
   output: SendAutomationSignalResult,
   errors: [
@@ -16012,7 +16012,7 @@ export const sendCommand: API.OperationMethod<
   SendCommandResult,
   SendCommandError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendCommandRequest,
   output: SendCommandResult,
   errors: [
@@ -16045,7 +16045,7 @@ export const startAccessRequest: API.OperationMethod<
   StartAccessRequestResponse,
   StartAccessRequestError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartAccessRequestRequest,
   output: StartAccessRequestResponse,
   errors: [
@@ -16070,7 +16070,7 @@ export const startAssociationsOnce: API.OperationMethod<
   StartAssociationsOnceResult,
   StartAssociationsOnceError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartAssociationsOnceRequest,
   output: StartAssociationsOnceResult,
   errors: [AssociationDoesNotExist, InvalidAssociation],
@@ -16092,7 +16092,7 @@ export const startAutomationExecution: API.OperationMethod<
   StartAutomationExecutionResult,
   StartAutomationExecutionError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartAutomationExecutionRequest,
   output: StartAutomationExecutionResult,
   errors: [
@@ -16129,7 +16129,7 @@ export const startChangeRequestExecution: API.OperationMethod<
   StartChangeRequestExecutionResult,
   StartChangeRequestExecutionError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartChangeRequestExecutionRequest,
   output: StartChangeRequestExecutionResult,
   errors: [
@@ -16156,7 +16156,7 @@ export const startExecutionPreview: API.OperationMethod<
   StartExecutionPreviewResponse,
   StartExecutionPreviewError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartExecutionPreviewRequest,
   output: StartExecutionPreviewResponse,
   errors: [InternalServerError, ValidationException],
@@ -16183,7 +16183,7 @@ export const startSession: API.OperationMethod<
   StartSessionResponse,
   StartSessionError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartSessionRequest,
   output: StartSessionResponse,
   errors: [InternalServerError, InvalidDocument, TargetNotConnected],
@@ -16201,7 +16201,7 @@ export const stopAutomationExecution: API.OperationMethod<
   StopAutomationExecutionResult,
   StopAutomationExecutionError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopAutomationExecutionRequest,
   output: StopAutomationExecutionResult,
   errors: [
@@ -16220,7 +16220,7 @@ export const terminateSession: API.OperationMethod<
   TerminateSessionResponse,
   TerminateSessionError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TerminateSessionRequest,
   output: TerminateSessionResponse,
   errors: [InternalServerError],
@@ -16243,7 +16243,7 @@ export const unlabelParameterVersion: API.OperationMethod<
   UnlabelParameterVersionResult,
   UnlabelParameterVersionError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UnlabelParameterVersionRequest,
   output: UnlabelParameterVersionResult,
   errors: [
@@ -16293,7 +16293,7 @@ export const updateAssociation: API.OperationMethod<
   UpdateAssociationResult,
   UpdateAssociationError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAssociationRequest,
   output: UpdateAssociationResult,
   errors: [
@@ -16333,7 +16333,7 @@ export const updateAssociationStatus: API.OperationMethod<
   UpdateAssociationStatusResult,
   UpdateAssociationStatusError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAssociationStatusRequest,
   output: UpdateAssociationStatusResult,
   errors: [
@@ -16365,7 +16365,7 @@ export const updateDocument: API.OperationMethod<
   UpdateDocumentResult,
   UpdateDocumentError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDocumentRequest,
   output: UpdateDocumentResult,
   errors: [
@@ -16399,7 +16399,7 @@ export const updateDocumentDefaultVersion: API.OperationMethod<
   UpdateDocumentDefaultVersionResult,
   UpdateDocumentDefaultVersionError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDocumentDefaultVersionRequest,
   output: UpdateDocumentDefaultVersionResult,
   errors: [
@@ -16429,7 +16429,7 @@ export const updateDocumentMetadata: API.OperationMethod<
   UpdateDocumentMetadataResponse,
   UpdateDocumentMetadataError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDocumentMetadataRequest,
   output: UpdateDocumentMetadataResponse,
   errors: [
@@ -16459,7 +16459,7 @@ export const updateMaintenanceWindow: API.OperationMethod<
   UpdateMaintenanceWindowResult,
   UpdateMaintenanceWindowError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateMaintenanceWindowRequest,
   output: UpdateMaintenanceWindowResult,
   errors: [DoesNotExistException, InternalServerError],
@@ -16492,7 +16492,7 @@ export const updateMaintenanceWindowTarget: API.OperationMethod<
   UpdateMaintenanceWindowTargetResult,
   UpdateMaintenanceWindowTargetError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateMaintenanceWindowTargetRequest,
   output: UpdateMaintenanceWindowTargetResult,
   errors: [DoesNotExistException, InternalServerError],
@@ -16544,7 +16544,7 @@ export const updateMaintenanceWindowTask: API.OperationMethod<
   UpdateMaintenanceWindowTaskResult,
   UpdateMaintenanceWindowTaskError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateMaintenanceWindowTaskRequest,
   output: UpdateMaintenanceWindowTaskResult,
   errors: [DoesNotExistException, InternalServerError],
@@ -16563,7 +16563,7 @@ export const updateManagedInstanceRole: API.OperationMethod<
   UpdateManagedInstanceRoleResult,
   UpdateManagedInstanceRoleError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateManagedInstanceRoleRequest,
   output: UpdateManagedInstanceRoleResult,
   errors: [InternalServerError, InvalidInstanceId],
@@ -16591,7 +16591,7 @@ export const updateOpsItem: API.OperationMethod<
   UpdateOpsItemResponse,
   UpdateOpsItemError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateOpsItemRequest,
   output: UpdateOpsItemResponse,
   errors: [
@@ -16619,7 +16619,7 @@ export const updateOpsMetadata: API.OperationMethod<
   UpdateOpsMetadataResult,
   UpdateOpsMetadataError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateOpsMetadataRequest,
   output: UpdateOpsMetadataResult,
   errors: [
@@ -16646,7 +16646,7 @@ export const updatePatchBaseline: API.OperationMethod<
   UpdatePatchBaselineResult,
   UpdatePatchBaselineError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePatchBaselineRequest,
   output: UpdatePatchBaselineResult,
   errors: [DoesNotExistException, InternalServerError],
@@ -16673,7 +16673,7 @@ export const updateResourceDataSync: API.OperationMethod<
   UpdateResourceDataSyncResult,
   UpdateResourceDataSyncError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateResourceDataSyncRequest,
   output: UpdateResourceDataSyncResult,
   errors: [
@@ -16710,7 +16710,7 @@ export const updateServiceSetting: API.OperationMethod<
   UpdateServiceSettingResult,
   UpdateServiceSettingError,
   Creds | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateServiceSettingRequest,
   output: UpdateServiceSettingResult,
   errors: [InternalServerError, ServiceSettingNotFound, TooManyUpdates],

@@ -1651,7 +1651,7 @@ export const cancelJobRun: API.OperationMethod<
   CancelJobRunResponse,
   CancelJobRunError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelJobRunRequest,
   output: CancelJobRunResponse,
   errors: [InternalServerException, ValidationException],
@@ -1672,7 +1672,7 @@ export const createJobTemplate: API.OperationMethod<
   CreateJobTemplateResponse,
   CreateJobTemplateError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateJobTemplateRequest,
   output: CreateJobTemplateResponse,
   errors: [
@@ -1695,7 +1695,7 @@ export const createManagedEndpoint: API.OperationMethod<
   CreateManagedEndpointResponse,
   CreateManagedEndpointError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateManagedEndpointRequest,
   output: CreateManagedEndpointResponse,
   errors: [
@@ -1719,7 +1719,7 @@ export const createSecurityConfiguration: API.OperationMethod<
   CreateSecurityConfigurationResponse,
   CreateSecurityConfigurationError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSecurityConfigurationRequest,
   output: CreateSecurityConfigurationResponse,
   errors: [InternalServerException, ValidationException],
@@ -1741,7 +1741,7 @@ export const createVirtualCluster: API.OperationMethod<
   CreateVirtualClusterResponse,
   CreateVirtualClusterError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateVirtualClusterRequest,
   output: CreateVirtualClusterResponse,
   errors: [
@@ -1766,7 +1766,7 @@ export const deleteJobTemplate: API.OperationMethod<
   DeleteJobTemplateResponse,
   DeleteJobTemplateError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteJobTemplateRequest,
   output: DeleteJobTemplateResponse,
   errors: [InternalServerException, ValidationException],
@@ -1784,7 +1784,7 @@ export const deleteManagedEndpoint: API.OperationMethod<
   DeleteManagedEndpointResponse,
   DeleteManagedEndpointError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteManagedEndpointRequest,
   output: DeleteManagedEndpointResponse,
   errors: [InternalServerException, ValidationException],
@@ -1804,7 +1804,7 @@ export const deleteVirtualCluster: API.OperationMethod<
   DeleteVirtualClusterResponse,
   DeleteVirtualClusterError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteVirtualClusterRequest,
   output: DeleteVirtualClusterResponse,
   errors: [InternalServerException, ValidationException],
@@ -1823,7 +1823,7 @@ export const describeJobRun: API.OperationMethod<
   DescribeJobRunResponse,
   DescribeJobRunError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeJobRunRequest,
   output: DescribeJobRunResponse,
   errors: [
@@ -1848,7 +1848,7 @@ export const describeJobTemplate: API.OperationMethod<
   DescribeJobTemplateResponse,
   DescribeJobTemplateError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeJobTemplateRequest,
   output: DescribeJobTemplateResponse,
   errors: [
@@ -1871,7 +1871,7 @@ export const describeManagedEndpoint: API.OperationMethod<
   DescribeManagedEndpointResponse,
   DescribeManagedEndpointError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeManagedEndpointRequest,
   output: DescribeManagedEndpointResponse,
   errors: [
@@ -1897,7 +1897,7 @@ export const describeSecurityConfiguration: API.OperationMethod<
   DescribeSecurityConfigurationResponse,
   DescribeSecurityConfigurationError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeSecurityConfigurationRequest,
   output: DescribeSecurityConfigurationResponse,
   errors: [
@@ -1924,7 +1924,7 @@ export const describeVirtualCluster: API.OperationMethod<
   DescribeVirtualClusterResponse,
   DescribeVirtualClusterError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeVirtualClusterRequest,
   output: DescribeVirtualClusterResponse,
   errors: [
@@ -1947,7 +1947,7 @@ export const getManagedEndpointSessionCredentials: API.OperationMethod<
   GetManagedEndpointSessionCredentialsResponse,
   GetManagedEndpointSessionCredentialsError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetManagedEndpointSessionCredentialsRequest,
   output: GetManagedEndpointSessionCredentialsResponse,
   errors: [
@@ -1985,7 +1985,7 @@ export const listJobRuns: API.OperationMethod<
     ListJobRunsError,
     Creds | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJobRunsRequest,
   output: ListJobRunsResponse,
   errors: [InternalServerException, ValidationException],
@@ -2026,7 +2026,7 @@ export const listJobTemplates: API.OperationMethod<
     ListJobTemplatesError,
     Creds | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJobTemplatesRequest,
   output: ListJobTemplatesResponse,
   errors: [InternalServerException, ValidationException],
@@ -2065,7 +2065,7 @@ export const listManagedEndpoints: API.OperationMethod<
     ListManagedEndpointsError,
     Creds | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedEndpointsRequest,
   output: ListManagedEndpointsResponse,
   errors: [InternalServerException, ValidationException],
@@ -2107,7 +2107,7 @@ export const listSecurityConfigurations: API.OperationMethod<
     ListSecurityConfigurationsError,
     Creds | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSecurityConfigurationsRequest,
   output: ListSecurityConfigurationsResponse,
   errors: [InternalServerException, ValidationException],
@@ -2131,7 +2131,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -2172,7 +2172,7 @@ export const listVirtualClusters: API.OperationMethod<
     ListVirtualClustersError,
     Creds | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVirtualClustersRequest,
   output: ListVirtualClustersResponse,
   errors: [InternalServerException, ValidationException],
@@ -2197,7 +2197,7 @@ export const startJobRun: API.OperationMethod<
   StartJobRunResponse,
   StartJobRunError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartJobRunRequest,
   output: StartJobRunResponse,
   errors: [
@@ -2227,7 +2227,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -2249,7 +2249,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [

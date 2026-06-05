@@ -60,7 +60,7 @@ export interface GetConfigRequest {
   accountId: string;
 }
 
-export const GetConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetConfigRequest = /*@__PURE__*/ Schema.Struct({
   hyperdriveId: Schema.String.pipe(T.HttpPath("hyperdriveId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -118,7 +118,7 @@ export interface GetConfigResponse {
   originConnectionLimit?: number | null;
 }
 
-export const GetConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetConfigResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   origin: Schema.Union([
@@ -247,7 +247,7 @@ export const getConfig: API.OperationMethod<
   GetConfigResponse,
   GetConfigError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConfigRequest,
   output: GetConfigResponse,
   errors: [
@@ -262,7 +262,7 @@ export interface ListConfigsRequest {
   accountId: string;
 }
 
-export const ListConfigsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListConfigsRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
   T.Http({ method: "GET", path: "/accounts/{account_id}/hyperdrive/configs" }),
@@ -312,7 +312,7 @@ export interface ListConfigsResponse {
   }[];
 }
 
-export const ListConfigsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListConfigsResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       id: Schema.String,
@@ -444,7 +444,7 @@ export const listConfigs: API.PaginatedOperationMethod<
   ListConfigsResponse,
   ListConfigsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfigsRequest,
   output: ListConfigsResponse,
   errors: [PrivateHostNotAllowed, InvalidObjectIdentifier],
@@ -499,7 +499,7 @@ export interface CreateConfigRequest {
   originConnectionLimit?: number;
 }
 
-export const CreateConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateConfigRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   name: Schema.String,
   origin: Schema.Union([
@@ -646,7 +646,7 @@ export interface CreateConfigResponse {
   originConnectionLimit?: number | null;
 }
 
-export const CreateConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateConfigResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   origin: Schema.Union([
@@ -775,7 +775,7 @@ export const createConfig: API.OperationMethod<
   CreateConfigResponse,
   CreateConfigError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateConfigRequest,
   output: CreateConfigResponse,
   errors: [
@@ -831,7 +831,7 @@ export interface UpdateConfigRequest {
   originConnectionLimit?: number;
 }
 
-export const UpdateConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateConfigRequest = /*@__PURE__*/ Schema.Struct({
   hyperdriveId: Schema.String.pipe(T.HttpPath("hyperdriveId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   name: Schema.String,
@@ -982,7 +982,7 @@ export interface UpdateConfigResponse {
   originConnectionLimit?: number | null;
 }
 
-export const UpdateConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateConfigResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   origin: Schema.Union([
@@ -1112,7 +1112,7 @@ export const updateConfig: API.OperationMethod<
   UpdateConfigResponse,
   UpdateConfigError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateConfigRequest,
   output: UpdateConfigResponse,
   errors: [
@@ -1154,7 +1154,7 @@ export interface PatchConfigRequest {
   originConnectionLimit?: number;
 }
 
-export const PatchConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PatchConfigRequest = /*@__PURE__*/ Schema.Struct({
   hyperdriveId: Schema.String.pipe(T.HttpPath("hyperdriveId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   caching: Schema.optional(
@@ -1285,7 +1285,7 @@ export interface PatchConfigResponse {
   originConnectionLimit?: number | null;
 }
 
-export const PatchConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PatchConfigResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   origin: Schema.Union([
@@ -1415,7 +1415,7 @@ export const patchConfig: API.OperationMethod<
   PatchConfigResponse,
   PatchConfigError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchConfigRequest,
   output: PatchConfigResponse,
   errors: [
@@ -1432,7 +1432,7 @@ export interface DeleteConfigRequest {
   accountId: string;
 }
 
-export const DeleteConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteConfigRequest = /*@__PURE__*/ Schema.Struct({
   hyperdriveId: Schema.String.pipe(T.HttpPath("hyperdriveId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -1444,10 +1444,9 @@ export const DeleteConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type DeleteConfigResponse = unknown;
 
-export const DeleteConfigResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<DeleteConfigResponse>;
+export const DeleteConfigResponse = /*@__PURE__*/ Schema.Unknown.pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<DeleteConfigResponse>;
 
 export type DeleteConfigError =
   | DefaultErrors
@@ -1461,7 +1460,7 @@ export const deleteConfig: API.OperationMethod<
   DeleteConfigResponse,
   DeleteConfigError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConfigRequest,
   output: DeleteConfigResponse,
   errors: [

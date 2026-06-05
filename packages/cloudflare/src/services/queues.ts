@@ -111,7 +111,7 @@ export interface GetConsumerRequest {
   accountId: string;
 }
 
-export const GetConsumerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetConsumerRequest = /*@__PURE__*/ Schema.Struct({
   queueId: Schema.String.pipe(T.HttpPath("queueId")),
   consumerId: Schema.String.pipe(T.HttpPath("consumerId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -152,7 +152,7 @@ export type GetConsumerResponse =
       type?: "http_pull" | null;
     };
 
-export const GetConsumerResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
+export const GetConsumerResponse = /*@__PURE__*/ Schema.Union([
   Schema.Struct({
     consumerId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -267,7 +267,7 @@ export const getConsumer: API.OperationMethod<
   GetConsumerResponse,
   GetConsumerError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConsumerRequest,
   output: GetConsumerResponse,
   errors: [InvalidRequestBody, QueueNotFound, ConsumerNotFound, InvalidRoute],
@@ -279,7 +279,7 @@ export interface ListConsumersRequest {
   accountId: string;
 }
 
-export const ListConsumersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListConsumersRequest = /*@__PURE__*/ Schema.Struct({
   queueId: Schema.String.pipe(T.HttpPath("queueId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -322,7 +322,7 @@ export interface ListConsumersResponse {
   )[];
 }
 
-export const ListConsumersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListConsumersResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Union([
       Schema.Struct({
@@ -438,7 +438,7 @@ export const listConsumers: API.PaginatedOperationMethod<
   ListConsumersResponse,
   ListConsumersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConsumersRequest,
   output: ListConsumersResponse,
   errors: [InvalidRequestBody, QueueNotFound, InvalidRoute],
@@ -469,7 +469,7 @@ export interface CreateConsumerRequest {
   };
 }
 
-export const CreateConsumerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateConsumerRequest = /*@__PURE__*/ Schema.Struct({
   queueId: Schema.String.pipe(T.HttpPath("queueId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   scriptName: Schema.optional(Schema.String),
@@ -537,7 +537,7 @@ export type CreateConsumerResponse =
       type?: "http_pull" | null;
     };
 
-export const CreateConsumerResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
+export const CreateConsumerResponse = /*@__PURE__*/ Schema.Union([
   Schema.Struct({
     consumerId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -654,7 +654,7 @@ export const createConsumer: API.OperationMethod<
   CreateConsumerResponse,
   CreateConsumerError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateConsumerRequest,
   output: CreateConsumerResponse,
   errors: [
@@ -689,7 +689,7 @@ export interface UpdateConsumerRequest {
   };
 }
 
-export const UpdateConsumerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateConsumerRequest = /*@__PURE__*/ Schema.Struct({
   queueId: Schema.String.pipe(T.HttpPath("queueId")),
   consumerId: Schema.String.pipe(T.HttpPath("consumerId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -758,7 +758,7 @@ export type UpdateConsumerResponse =
       type?: "http_pull" | null;
     };
 
-export const UpdateConsumerResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
+export const UpdateConsumerResponse = /*@__PURE__*/ Schema.Union([
   Schema.Struct({
     consumerId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -875,7 +875,7 @@ export const updateConsumer: API.OperationMethod<
   UpdateConsumerResponse,
   UpdateConsumerError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateConsumerRequest,
   output: UpdateConsumerResponse,
   errors: [
@@ -895,7 +895,7 @@ export interface DeleteConsumerRequest {
   accountId: string;
 }
 
-export const DeleteConsumerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteConsumerRequest = /*@__PURE__*/ Schema.Struct({
   queueId: Schema.String.pipe(T.HttpPath("queueId")),
   consumerId: Schema.String.pipe(T.HttpPath("consumerId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -920,45 +920,43 @@ export interface DeleteConsumerResponse {
   success?: true | null;
 }
 
-export const DeleteConsumerResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    errors: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            code: Schema.Number,
-            message: Schema.String,
-            documentationUrl: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            source: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  pointer: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }),
-                Schema.Null,
-              ]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              code: "code",
-              message: "message",
-              documentationUrl: "documentation_url",
-              source: "source",
-            }),
+export const DeleteConsumerResponse = /*@__PURE__*/ Schema.Struct({
+  errors: Schema.optional(
+    Schema.Union([
+      Schema.Array(
+        Schema.Struct({
+          code: Schema.Number,
+          message: Schema.String,
+          documentationUrl: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
           ),
+          source: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                pointer: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            code: "code",
+            message: "message",
+            documentationUrl: "documentation_url",
+            source: "source",
+          }),
         ),
-        Schema.Null,
-      ]),
-    ),
-    messages: Schema.optional(
-      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-    ),
-    success: Schema.optional(Schema.Union([Schema.Literal(true), Schema.Null])),
-  },
-) as unknown as Schema.Schema<DeleteConsumerResponse>;
+      ),
+      Schema.Null,
+    ]),
+  ),
+  messages: Schema.optional(
+    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+  ),
+  success: Schema.optional(Schema.Union([Schema.Literal(true), Schema.Null])),
+}) as unknown as Schema.Schema<DeleteConsumerResponse>;
 
 export type DeleteConsumerError =
   | DefaultErrors
@@ -972,7 +970,7 @@ export const deleteConsumer: API.OperationMethod<
   DeleteConsumerResponse,
   DeleteConsumerError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConsumerRequest,
   output: DeleteConsumerResponse,
   errors: [InvalidRequestBody, QueueNotFound, ConsumerNotFound, InvalidRoute],
@@ -995,46 +993,45 @@ export interface BulkPushMessagesRequest {
   )[];
 }
 
-export const BulkPushMessagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    queueId: Schema.String.pipe(T.HttpPath("queueId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    delaySeconds: Schema.optional(Schema.Number),
-    messages: Schema.optional(
-      Schema.Array(
-        Schema.Union([
-          Schema.Struct({
-            body: Schema.optional(Schema.String),
-            contentType: Schema.optional(Schema.Literal("text")),
-            delaySeconds: Schema.optional(Schema.Number),
-          }).pipe(
-            Schema.encodeKeys({
-              body: "body",
-              contentType: "content_type",
-              delaySeconds: "delay_seconds",
-            }),
-          ),
-          Schema.Struct({
-            body: Schema.optional(Schema.Unknown),
-            contentType: Schema.optional(Schema.Literal("json")),
-            delaySeconds: Schema.optional(Schema.Number),
-          }).pipe(
-            Schema.encodeKeys({
-              body: "body",
-              contentType: "content_type",
-              delaySeconds: "delay_seconds",
-            }),
-          ),
-        ]),
-      ),
+export const BulkPushMessagesRequest = /*@__PURE__*/ Schema.Struct({
+  queueId: Schema.String.pipe(T.HttpPath("queueId")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  delaySeconds: Schema.optional(Schema.Number),
+  messages: Schema.optional(
+    Schema.Array(
+      Schema.Union([
+        Schema.Struct({
+          body: Schema.optional(Schema.String),
+          contentType: Schema.optional(Schema.Literal("text")),
+          delaySeconds: Schema.optional(Schema.Number),
+        }).pipe(
+          Schema.encodeKeys({
+            body: "body",
+            contentType: "content_type",
+            delaySeconds: "delay_seconds",
+          }),
+        ),
+        Schema.Struct({
+          body: Schema.optional(Schema.Unknown),
+          contentType: Schema.optional(Schema.Literal("json")),
+          delaySeconds: Schema.optional(Schema.Number),
+        }).pipe(
+          Schema.encodeKeys({
+            body: "body",
+            contentType: "content_type",
+            delaySeconds: "delay_seconds",
+          }),
+        ),
+      ]),
     ),
-  }).pipe(
-    Schema.encodeKeys({ delaySeconds: "delay_seconds", messages: "messages" }),
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/queues/{queueId}/messages/batch",
-    }),
-  ) as unknown as Schema.Schema<BulkPushMessagesRequest>;
+  ),
+}).pipe(
+  Schema.encodeKeys({ delaySeconds: "delay_seconds", messages: "messages" }),
+  T.Http({
+    method: "POST",
+    path: "/accounts/{account_id}/queues/{queueId}/messages/batch",
+  }),
+) as unknown as Schema.Schema<BulkPushMessagesRequest>;
 
 export interface BulkPushMessagesResponse {
   metadata?: {
@@ -1046,34 +1043,33 @@ export interface BulkPushMessagesResponse {
   } | null;
 }
 
-export const BulkPushMessagesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    metadata: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          metrics: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                backlogBytes: Schema.Number,
-                backlogCount: Schema.Number,
-                oldestMessageTimestampMs: Schema.Number,
-              }).pipe(
-                Schema.encodeKeys({
-                  backlogBytes: "backlog_bytes",
-                  backlogCount: "backlog_count",
-                  oldestMessageTimestampMs: "oldest_message_timestamp_ms",
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Null,
-      ]),
-    ),
-  }).pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<BulkPushMessagesResponse>;
+export const BulkPushMessagesResponse = /*@__PURE__*/ Schema.Struct({
+  metadata: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        metrics: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              backlogBytes: Schema.Number,
+              backlogCount: Schema.Number,
+              oldestMessageTimestampMs: Schema.Number,
+            }).pipe(
+              Schema.encodeKeys({
+                backlogBytes: "backlog_bytes",
+                backlogCount: "backlog_count",
+                oldestMessageTimestampMs: "oldest_message_timestamp_ms",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+      }),
+      Schema.Null,
+    ]),
+  ),
+}).pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<BulkPushMessagesResponse>;
 
 export type BulkPushMessagesError =
   | DefaultErrors
@@ -1086,7 +1082,7 @@ export const bulkPushMessages: API.OperationMethod<
   BulkPushMessagesResponse,
   BulkPushMessagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BulkPushMessagesRequest,
   output: BulkPushMessagesResponse,
   errors: [InvalidMessageBody, InvalidQueueId, InvalidRoute],
@@ -1102,7 +1098,7 @@ export interface PullMessageRequest {
   visibilityTimeoutMs?: number;
 }
 
-export const PullMessageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PullMessageRequest = /*@__PURE__*/ Schema.Struct({
   queueId: Schema.String.pipe(T.HttpPath("queueId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   batchSize: Schema.optional(Schema.Number),
@@ -1140,7 +1136,7 @@ export interface PullMessageResponse {
   } | null;
 }
 
-export const PullMessageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PullMessageResponse = /*@__PURE__*/ Schema.Struct({
   messageBacklogCount: Schema.optional(
     Schema.Union([Schema.Number, Schema.Null]),
   ),
@@ -1219,7 +1215,7 @@ export const pullMessage: API.OperationMethod<
   PullMessageResponse,
   PullMessageError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PullMessageRequest,
   output: PullMessageResponse,
   errors: [InvalidRequestBody, InvalidQueueId, QueueNotFound, InvalidRoute],
@@ -1237,7 +1233,7 @@ export interface PushMessageRequest {
   delaySeconds?: number;
 }
 
-export const PushMessageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PushMessageRequest = /*@__PURE__*/ Schema.Struct({
   queueId: Schema.String.pipe(T.HttpPath("queueId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   body: Schema.optional(Schema.String),
@@ -1267,7 +1263,7 @@ export interface PushMessageResponse {
   } | null;
 }
 
-export const PushMessageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PushMessageResponse = /*@__PURE__*/ Schema.Struct({
   metadata: Schema.optional(
     Schema.Union([
       Schema.Struct({
@@ -1306,7 +1302,7 @@ export const pushMessage: API.OperationMethod<
   PushMessageResponse,
   PushMessageError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PushMessageRequest,
   output: PushMessageResponse,
   errors: [InvalidMessageBody, InvalidQueueId, InvalidRoute],
@@ -1322,7 +1318,7 @@ export interface AckMessageRequest {
   retries?: { delaySeconds?: number; leaseId?: string }[];
 }
 
-export const AckMessageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AckMessageRequest = /*@__PURE__*/ Schema.Struct({
   queueId: Schema.String.pipe(T.HttpPath("queueId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   acks: Schema.optional(
@@ -1361,7 +1357,7 @@ export interface AckMessageResponse {
   warnings?: Record<string, unknown> | null;
 }
 
-export const AckMessageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AckMessageResponse = /*@__PURE__*/ Schema.Struct({
   ackCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   retryCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   warnings: Schema.optional(
@@ -1383,7 +1379,7 @@ export const ackMessage: API.OperationMethod<
   AckMessageResponse,
   AckMessageError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AckMessageRequest,
   output: AckMessageResponse,
   errors: [InvalidRequestBody, InvalidQueueId, QueueNotFound, InvalidRoute],
@@ -1399,12 +1395,10 @@ export interface GetMetricsQueueRequest {
   accountId: string;
 }
 
-export const GetMetricsQueueRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    queueId: Schema.String.pipe(T.HttpPath("queueId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  },
-).pipe(
+export const GetMetricsQueueRequest = /*@__PURE__*/ Schema.Struct({
+  queueId: Schema.String.pipe(T.HttpPath("queueId")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/accounts/{account_id}/queues/{queueId}/metrics",
@@ -1420,22 +1414,21 @@ export interface GetMetricsQueueResponse {
   oldestMessageTimestampMs: number;
 }
 
-export const GetMetricsQueueResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    backlogBytes: Schema.Number,
-    backlogCount: Schema.Number,
-    oldestMessageTimestampMs: Schema.Number,
-  })
-    .pipe(
-      Schema.encodeKeys({
-        backlogBytes: "backlog_bytes",
-        backlogCount: "backlog_count",
-        oldestMessageTimestampMs: "oldest_message_timestamp_ms",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<GetMetricsQueueResponse>;
+export const GetMetricsQueueResponse = /*@__PURE__*/ Schema.Struct({
+  backlogBytes: Schema.Number,
+  backlogCount: Schema.Number,
+  oldestMessageTimestampMs: Schema.Number,
+})
+  .pipe(
+    Schema.encodeKeys({
+      backlogBytes: "backlog_bytes",
+      backlogCount: "backlog_count",
+      oldestMessageTimestampMs: "oldest_message_timestamp_ms",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<GetMetricsQueueResponse>;
 
 export type GetMetricsQueueError = DefaultErrors;
 
@@ -1444,7 +1437,7 @@ export const getMetricsQueue: API.OperationMethod<
   GetMetricsQueueResponse,
   GetMetricsQueueError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMetricsQueueRequest,
   output: GetMetricsQueueResponse,
   errors: [],
@@ -1462,7 +1455,7 @@ export interface StartPurgeRequest {
   deleteMessagesPermanently?: boolean;
 }
 
-export const StartPurgeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const StartPurgeRequest = /*@__PURE__*/ Schema.Struct({
   queueId: Schema.String.pipe(T.HttpPath("queueId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   deleteMessagesPermanently: Schema.optional(Schema.Boolean),
@@ -1528,7 +1521,7 @@ export interface StartPurgeResponse {
   } | null;
 }
 
-export const StartPurgeResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const StartPurgeResponse = /*@__PURE__*/ Schema.Struct({
   consumers: Schema.optional(
     Schema.Union([
       Schema.Array(
@@ -1732,7 +1725,7 @@ export const startPurge: API.OperationMethod<
   StartPurgeResponse,
   StartPurgeError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartPurgeRequest,
   output: StartPurgeResponse,
   errors: [InvalidQueueId, InvalidRoute],
@@ -1744,7 +1737,7 @@ export interface StatusPurgeRequest {
   accountId: string;
 }
 
-export const StatusPurgeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const StatusPurgeRequest = /*@__PURE__*/ Schema.Struct({
   queueId: Schema.String.pipe(T.HttpPath("queueId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -1761,7 +1754,7 @@ export interface StatusPurgeResponse {
   startedAt?: string | null;
 }
 
-export const StatusPurgeResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const StatusPurgeResponse = /*@__PURE__*/ Schema.Struct({
   completed: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   startedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
 })
@@ -1777,7 +1770,7 @@ export const statusPurge: API.OperationMethod<
   StatusPurgeResponse,
   StatusPurgeError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StatusPurgeRequest,
   output: StatusPurgeResponse,
   errors: [InvalidQueueId, InvalidRoute],
@@ -1793,7 +1786,7 @@ export interface GetQueueRequest {
   accountId: string;
 }
 
-export const GetQueueRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetQueueRequest = /*@__PURE__*/ Schema.Struct({
   queueId: Schema.String.pipe(T.HttpPath("queueId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -1852,7 +1845,7 @@ export interface GetQueueResponse {
   } | null;
 }
 
-export const GetQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetQueueResponse = /*@__PURE__*/ Schema.Struct({
   consumers: Schema.optional(
     Schema.Union([
       Schema.Array(
@@ -2054,7 +2047,7 @@ export const getQueue: API.OperationMethod<
   GetQueueResponse,
   GetQueueError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetQueueRequest,
   output: GetQueueResponse,
   errors: [QueueNotFound, InvalidRoute],
@@ -2065,7 +2058,7 @@ export interface ListQueuesRequest {
   accountId: string;
 }
 
-export const ListQueuesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListQueuesRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
   T.Http({ method: "GET", path: "/accounts/{account_id}/queues" }),
@@ -2125,7 +2118,7 @@ export interface ListQueuesResponse {
   }[];
 }
 
-export const ListQueuesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListQueuesResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       consumers: Schema.optional(
@@ -2331,7 +2324,7 @@ export const listQueues: API.PaginatedOperationMethod<
   ListQueuesResponse,
   ListQueuesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListQueuesRequest,
   output: ListQueuesResponse,
   errors: [InvalidRoute],
@@ -2348,7 +2341,7 @@ export interface CreateQueueRequest {
   queueName: string;
 }
 
-export const CreateQueueRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateQueueRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   queueName: Schema.String,
 }).pipe(
@@ -2408,7 +2401,7 @@ export interface CreateQueueResponse {
   } | null;
 }
 
-export const CreateQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateQueueResponse = /*@__PURE__*/ Schema.Struct({
   consumers: Schema.optional(
     Schema.Union([
       Schema.Array(
@@ -2616,7 +2609,7 @@ export const createQueue: API.OperationMethod<
   CreateQueueResponse,
   CreateQueueError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateQueueRequest,
   output: CreateQueueResponse,
   errors: [QueueAlreadyExists, InvalidQueueName, InvalidRoute],
@@ -2636,7 +2629,7 @@ export interface UpdateQueueRequest {
   };
 }
 
-export const UpdateQueueRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateQueueRequest = /*@__PURE__*/ Schema.Struct({
   queueId: Schema.String.pipe(T.HttpPath("queueId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   queueName: Schema.optional(Schema.String),
@@ -2710,7 +2703,7 @@ export interface UpdateQueueResponse {
   } | null;
 }
 
-export const UpdateQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateQueueResponse = /*@__PURE__*/ Schema.Struct({
   consumers: Schema.optional(
     Schema.Union([
       Schema.Array(
@@ -2918,7 +2911,7 @@ export const updateQueue: API.OperationMethod<
   UpdateQueueResponse,
   UpdateQueueError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateQueueRequest,
   output: UpdateQueueResponse,
   errors: [InvalidQueueName, QueueNotFound, InvalidRoute],
@@ -2938,7 +2931,7 @@ export interface PatchQueueRequest {
   };
 }
 
-export const PatchQueueRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PatchQueueRequest = /*@__PURE__*/ Schema.Struct({
   queueId: Schema.String.pipe(T.HttpPath("queueId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   queueName: Schema.optional(Schema.String),
@@ -3012,7 +3005,7 @@ export interface PatchQueueResponse {
   } | null;
 }
 
-export const PatchQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PatchQueueResponse = /*@__PURE__*/ Schema.Struct({
   consumers: Schema.optional(
     Schema.Union([
       Schema.Array(
@@ -3216,7 +3209,7 @@ export const patchQueue: API.OperationMethod<
   PatchQueueResponse,
   PatchQueueError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchQueueRequest,
   output: PatchQueueResponse,
   errors: [QueueNotFound, InvalidRoute],
@@ -3228,7 +3221,7 @@ export interface DeleteQueueRequest {
   accountId: string;
 }
 
-export const DeleteQueueRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteQueueRequest = /*@__PURE__*/ Schema.Struct({
   queueId: Schema.String.pipe(T.HttpPath("queueId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -3249,7 +3242,7 @@ export interface DeleteQueueResponse {
   success?: true | null;
 }
 
-export const DeleteQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteQueueResponse = /*@__PURE__*/ Schema.Struct({
   errors: Schema.optional(
     Schema.Union([
       Schema.Array(
@@ -3294,7 +3287,7 @@ export const deleteQueue: API.OperationMethod<
   DeleteQueueResponse,
   DeleteQueueError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteQueueRequest,
   output: DeleteQueueResponse,
   errors: [QueueNotFound, InvalidRoute],
@@ -3310,12 +3303,10 @@ export interface GetSubscriptionRequest {
   accountId: string;
 }
 
-export const GetSubscriptionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.HttpPath("subscriptionId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  },
-).pipe(
+export const GetSubscriptionRequest = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.HttpPath("subscriptionId")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/accounts/{account_id}/event_subscriptions/subscriptions/{subscriptionId}",
@@ -3349,83 +3340,74 @@ export interface GetSubscriptionResponse {
     | { type?: "workflows.workflow" | null; workflowName?: string | null };
 }
 
-export const GetSubscriptionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    createdAt: Schema.String,
-    destination: Schema.Struct({
-      queueId: Schema.String,
-      type: Schema.Literal("queues.queue"),
-    }).pipe(Schema.encodeKeys({ queueId: "queue_id", type: "type" })),
-    enabled: Schema.Boolean,
-    events: Schema.Array(Schema.String),
-    modifiedAt: Schema.String,
-    name: Schema.String,
-    source: Schema.Union([
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Union([Schema.Literal("images"), Schema.Null]),
-        ),
-      }),
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Union([Schema.Literal("kv"), Schema.Null]),
-        ),
-      }),
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Union([Schema.Literal("r2"), Schema.Null]),
-        ),
-      }),
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Union([Schema.Literal("superSlurper"), Schema.Null]),
-        ),
-      }),
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Union([Schema.Literal("vectorize"), Schema.Null]),
-        ),
-      }),
-      Schema.Struct({
-        modelName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        type: Schema.optional(
-          Schema.Union([Schema.Literal("workersAi.model"), Schema.Null]),
-        ),
-      }).pipe(Schema.encodeKeys({ modelName: "model_name", type: "type" })),
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Union([Schema.Literal("workersBuilds.worker"), Schema.Null]),
-        ),
-        workerName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }).pipe(Schema.encodeKeys({ type: "type", workerName: "worker_name" })),
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Union([Schema.Literal("workflows.workflow"), Schema.Null]),
-        ),
-        workflowName: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({ type: "type", workflowName: "workflow_name" }),
+export const GetSubscriptionResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  createdAt: Schema.String,
+  destination: Schema.Struct({
+    queueId: Schema.String,
+    type: Schema.Literal("queues.queue"),
+  }).pipe(Schema.encodeKeys({ queueId: "queue_id", type: "type" })),
+  enabled: Schema.Boolean,
+  events: Schema.Array(Schema.String),
+  modifiedAt: Schema.String,
+  name: Schema.String,
+  source: Schema.Union([
+    Schema.Struct({
+      type: Schema.optional(
+        Schema.Union([Schema.Literal("images"), Schema.Null]),
       ),
-    ]),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        createdAt: "created_at",
-        destination: "destination",
-        enabled: "enabled",
-        events: "events",
-        modifiedAt: "modified_at",
-        name: "name",
-        source: "source",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<GetSubscriptionResponse>;
+    }),
+    Schema.Struct({
+      type: Schema.optional(Schema.Union([Schema.Literal("kv"), Schema.Null])),
+    }),
+    Schema.Struct({
+      type: Schema.optional(Schema.Union([Schema.Literal("r2"), Schema.Null])),
+    }),
+    Schema.Struct({
+      type: Schema.optional(
+        Schema.Union([Schema.Literal("superSlurper"), Schema.Null]),
+      ),
+    }),
+    Schema.Struct({
+      type: Schema.optional(
+        Schema.Union([Schema.Literal("vectorize"), Schema.Null]),
+      ),
+    }),
+    Schema.Struct({
+      modelName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      type: Schema.optional(
+        Schema.Union([Schema.Literal("workersAi.model"), Schema.Null]),
+      ),
+    }).pipe(Schema.encodeKeys({ modelName: "model_name", type: "type" })),
+    Schema.Struct({
+      type: Schema.optional(
+        Schema.Union([Schema.Literal("workersBuilds.worker"), Schema.Null]),
+      ),
+      workerName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(Schema.encodeKeys({ type: "type", workerName: "worker_name" })),
+    Schema.Struct({
+      type: Schema.optional(
+        Schema.Union([Schema.Literal("workflows.workflow"), Schema.Null]),
+      ),
+      workflowName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(Schema.encodeKeys({ type: "type", workflowName: "workflow_name" })),
+  ]),
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      createdAt: "created_at",
+      destination: "destination",
+      enabled: "enabled",
+      events: "events",
+      modifiedAt: "modified_at",
+      name: "name",
+      source: "source",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<GetSubscriptionResponse>;
 
 export type GetSubscriptionError = DefaultErrors | UnrecognizedEventType;
 
@@ -3434,7 +3416,7 @@ export const getSubscription: API.OperationMethod<
   GetSubscriptionResponse,
   GetSubscriptionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSubscriptionRequest,
   output: GetSubscriptionResponse,
   errors: [UnrecognizedEventType],
@@ -3451,26 +3433,25 @@ export interface ListSubscriptionsRequest {
   order?: "created_at" | "name" | "enabled" | "source" | (string & {});
 }
 
-export const ListSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-    direction: Schema.optional(
-      Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
-    ).pipe(T.HttpQuery("direction")),
-    order: Schema.optional(
-      Schema.Union([
-        Schema.Literals(["created_at", "name", "enabled", "source"]),
-        Schema.String,
-      ]),
-    ).pipe(T.HttpQuery("order")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/event_subscriptions/subscriptions",
-    }),
-  ) as unknown as Schema.Schema<ListSubscriptionsRequest>;
+export const ListSubscriptionsRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+  direction: Schema.optional(
+    Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+  ).pipe(T.HttpQuery("direction")),
+  order: Schema.optional(
+    Schema.Union([
+      Schema.Literals(["created_at", "name", "enabled", "source"]),
+      Schema.String,
+    ]),
+  ).pipe(T.HttpQuery("order")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/event_subscriptions/subscriptions",
+  }),
+) as unknown as Schema.Schema<ListSubscriptionsRequest>;
 
 export interface ListSubscriptionsResponse {
   result: {
@@ -3499,114 +3480,106 @@ export interface ListSubscriptionsResponse {
   } | null;
 }
 
-export const ListSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        createdAt: Schema.String,
-        destination: Schema.Struct({
-          queueId: Schema.String,
-          type: Schema.Literal("queues.queue"),
-        }).pipe(Schema.encodeKeys({ queueId: "queue_id", type: "type" })),
-        enabled: Schema.Boolean,
-        events: Schema.Array(Schema.String),
-        modifiedAt: Schema.String,
-        name: Schema.String,
-        source: Schema.Union([
-          Schema.Struct({
-            type: Schema.optional(
-              Schema.Union([Schema.Literal("images"), Schema.Null]),
-            ),
-          }),
-          Schema.Struct({
-            type: Schema.optional(
-              Schema.Union([Schema.Literal("kv"), Schema.Null]),
-            ),
-          }),
-          Schema.Struct({
-            type: Schema.optional(
-              Schema.Union([Schema.Literal("r2"), Schema.Null]),
-            ),
-          }),
-          Schema.Struct({
-            type: Schema.optional(
-              Schema.Union([Schema.Literal("superSlurper"), Schema.Null]),
-            ),
-          }),
-          Schema.Struct({
-            type: Schema.optional(
-              Schema.Union([Schema.Literal("vectorize"), Schema.Null]),
-            ),
-          }),
-          Schema.Struct({
-            modelName: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            type: Schema.optional(
-              Schema.Union([Schema.Literal("workersAi.model"), Schema.Null]),
-            ),
-          }).pipe(Schema.encodeKeys({ modelName: "model_name", type: "type" })),
-          Schema.Struct({
-            type: Schema.optional(
-              Schema.Union([
-                Schema.Literal("workersBuilds.worker"),
-                Schema.Null,
-              ]),
-            ),
-            workerName: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({ type: "type", workerName: "worker_name" }),
-          ),
-          Schema.Struct({
-            type: Schema.optional(
-              Schema.Union([Schema.Literal("workflows.workflow"), Schema.Null]),
-            ),
-            workflowName: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({ type: "type", workflowName: "workflow_name" }),
-          ),
-        ]),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          createdAt: "created_at",
-          destination: "destination",
-          enabled: "enabled",
-          events: "events",
-          modifiedAt: "modified_at",
-          name: "name",
-          source: "source",
-        }),
-      ),
-    ),
-    resultInfo: Schema.optional(
-      Schema.Union([
+export const ListSubscriptionsResponse = /*@__PURE__*/ Schema.Struct({
+  result: Schema.Array(
+    Schema.Struct({
+      id: Schema.String,
+      createdAt: Schema.String,
+      destination: Schema.Struct({
+        queueId: Schema.String,
+        type: Schema.Literal("queues.queue"),
+      }).pipe(Schema.encodeKeys({ queueId: "queue_id", type: "type" })),
+      enabled: Schema.Boolean,
+      events: Schema.Array(Schema.String),
+      modifiedAt: Schema.String,
+      name: Schema.String,
+      source: Schema.Union([
         Schema.Struct({
-          count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          totalCount: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
+          type: Schema.optional(
+            Schema.Union([Schema.Literal("images"), Schema.Null]),
+          ),
+        }),
+        Schema.Struct({
+          type: Schema.optional(
+            Schema.Union([Schema.Literal("kv"), Schema.Null]),
+          ),
+        }),
+        Schema.Struct({
+          type: Schema.optional(
+            Schema.Union([Schema.Literal("r2"), Schema.Null]),
+          ),
+        }),
+        Schema.Struct({
+          type: Schema.optional(
+            Schema.Union([Schema.Literal("superSlurper"), Schema.Null]),
+          ),
+        }),
+        Schema.Struct({
+          type: Schema.optional(
+            Schema.Union([Schema.Literal("vectorize"), Schema.Null]),
+          ),
+        }),
+        Schema.Struct({
+          modelName: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          type: Schema.optional(
+            Schema.Union([Schema.Literal("workersAi.model"), Schema.Null]),
+          ),
+        }).pipe(Schema.encodeKeys({ modelName: "model_name", type: "type" })),
+        Schema.Struct({
+          type: Schema.optional(
+            Schema.Union([Schema.Literal("workersBuilds.worker"), Schema.Null]),
+          ),
+          workerName: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+        }).pipe(Schema.encodeKeys({ type: "type", workerName: "worker_name" })),
+        Schema.Struct({
+          type: Schema.optional(
+            Schema.Union([Schema.Literal("workflows.workflow"), Schema.Null]),
+          ),
+          workflowName: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
           ),
         }).pipe(
-          Schema.encodeKeys({
-            count: "count",
-            page: "page",
-            perPage: "per_page",
-            totalCount: "total_count",
-          }),
+          Schema.encodeKeys({ type: "type", workflowName: "workflow_name" }),
         ),
-        Schema.Null,
       ]),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdAt: "created_at",
+        destination: "destination",
+        enabled: "enabled",
+        events: "events",
+        modifiedAt: "modified_at",
+        name: "name",
+        source: "source",
+      }),
     ),
-  }).pipe(
-    Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
-  ) as unknown as Schema.Schema<ListSubscriptionsResponse>;
+  ),
+  resultInfo: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      }).pipe(
+        Schema.encodeKeys({
+          count: "count",
+          page: "page",
+          perPage: "per_page",
+          totalCount: "total_count",
+        }),
+      ),
+      Schema.Null,
+    ]),
+  ),
+}).pipe(
+  Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
+) as unknown as Schema.Schema<ListSubscriptionsResponse>;
 
 export type ListSubscriptionsError = DefaultErrors;
 
@@ -3615,7 +3588,7 @@ export const listSubscriptions: API.PaginatedOperationMethod<
   ListSubscriptionsResponse,
   ListSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSubscriptionsRequest,
   output: ListSubscriptionsResponse,
   errors: [],
@@ -3651,57 +3624,56 @@ export interface CreateSubscriptionRequest {
     | { type?: "workflows.workflow"; workflowName?: string };
 }
 
-export const CreateSubscriptionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    destination: Schema.optional(
+export const CreateSubscriptionRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  destination: Schema.optional(
+    Schema.Struct({
+      queueId: Schema.String,
+      type: Schema.Literal("queues.queue"),
+    }).pipe(Schema.encodeKeys({ queueId: "queue_id", type: "type" })),
+  ),
+  enabled: Schema.optional(Schema.Boolean),
+  events: Schema.optional(Schema.Array(Schema.String)),
+  name: Schema.optional(Schema.String),
+  source: Schema.optional(
+    Schema.Union([
       Schema.Struct({
-        queueId: Schema.String,
-        type: Schema.Literal("queues.queue"),
-      }).pipe(Schema.encodeKeys({ queueId: "queue_id", type: "type" })),
-    ),
-    enabled: Schema.optional(Schema.Boolean),
-    events: Schema.optional(Schema.Array(Schema.String)),
-    name: Schema.optional(Schema.String),
-    source: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          type: Schema.optional(Schema.Literal("images")),
-        }),
-        Schema.Struct({
-          type: Schema.optional(Schema.Literal("kv")),
-        }),
-        Schema.Struct({
-          type: Schema.optional(Schema.Literal("r2")),
-        }),
-        Schema.Struct({
-          type: Schema.optional(Schema.Literal("superSlurper")),
-        }),
-        Schema.Struct({
-          type: Schema.optional(Schema.Literal("vectorize")),
-        }),
-        Schema.Struct({
-          modelName: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.Literal("workersAi.model")),
-        }).pipe(Schema.encodeKeys({ modelName: "model_name", type: "type" })),
-        Schema.Struct({
-          type: Schema.optional(Schema.Literal("workersBuilds.worker")),
-          workerName: Schema.optional(Schema.String),
-        }).pipe(Schema.encodeKeys({ type: "type", workerName: "worker_name" })),
-        Schema.Struct({
-          type: Schema.optional(Schema.Literal("workflows.workflow")),
-          workflowName: Schema.optional(Schema.String),
-        }).pipe(
-          Schema.encodeKeys({ type: "type", workflowName: "workflow_name" }),
-        ),
-      ]),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/event_subscriptions/subscriptions",
-    }),
-  ) as unknown as Schema.Schema<CreateSubscriptionRequest>;
+        type: Schema.optional(Schema.Literal("images")),
+      }),
+      Schema.Struct({
+        type: Schema.optional(Schema.Literal("kv")),
+      }),
+      Schema.Struct({
+        type: Schema.optional(Schema.Literal("r2")),
+      }),
+      Schema.Struct({
+        type: Schema.optional(Schema.Literal("superSlurper")),
+      }),
+      Schema.Struct({
+        type: Schema.optional(Schema.Literal("vectorize")),
+      }),
+      Schema.Struct({
+        modelName: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.Literal("workersAi.model")),
+      }).pipe(Schema.encodeKeys({ modelName: "model_name", type: "type" })),
+      Schema.Struct({
+        type: Schema.optional(Schema.Literal("workersBuilds.worker")),
+        workerName: Schema.optional(Schema.String),
+      }).pipe(Schema.encodeKeys({ type: "type", workerName: "worker_name" })),
+      Schema.Struct({
+        type: Schema.optional(Schema.Literal("workflows.workflow")),
+        workflowName: Schema.optional(Schema.String),
+      }).pipe(
+        Schema.encodeKeys({ type: "type", workflowName: "workflow_name" }),
+      ),
+    ]),
+  ),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/accounts/{account_id}/event_subscriptions/subscriptions",
+  }),
+) as unknown as Schema.Schema<CreateSubscriptionRequest>;
 
 export interface CreateSubscriptionResponse {
   /** Unique identifier for the subscription */
@@ -3730,83 +3702,74 @@ export interface CreateSubscriptionResponse {
     | { type?: "workflows.workflow" | null; workflowName?: string | null };
 }
 
-export const CreateSubscriptionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    createdAt: Schema.String,
-    destination: Schema.Struct({
-      queueId: Schema.String,
-      type: Schema.Literal("queues.queue"),
-    }).pipe(Schema.encodeKeys({ queueId: "queue_id", type: "type" })),
-    enabled: Schema.Boolean,
-    events: Schema.Array(Schema.String),
-    modifiedAt: Schema.String,
-    name: Schema.String,
-    source: Schema.Union([
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Union([Schema.Literal("images"), Schema.Null]),
-        ),
-      }),
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Union([Schema.Literal("kv"), Schema.Null]),
-        ),
-      }),
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Union([Schema.Literal("r2"), Schema.Null]),
-        ),
-      }),
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Union([Schema.Literal("superSlurper"), Schema.Null]),
-        ),
-      }),
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Union([Schema.Literal("vectorize"), Schema.Null]),
-        ),
-      }),
-      Schema.Struct({
-        modelName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        type: Schema.optional(
-          Schema.Union([Schema.Literal("workersAi.model"), Schema.Null]),
-        ),
-      }).pipe(Schema.encodeKeys({ modelName: "model_name", type: "type" })),
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Union([Schema.Literal("workersBuilds.worker"), Schema.Null]),
-        ),
-        workerName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }).pipe(Schema.encodeKeys({ type: "type", workerName: "worker_name" })),
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Union([Schema.Literal("workflows.workflow"), Schema.Null]),
-        ),
-        workflowName: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({ type: "type", workflowName: "workflow_name" }),
+export const CreateSubscriptionResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  createdAt: Schema.String,
+  destination: Schema.Struct({
+    queueId: Schema.String,
+    type: Schema.Literal("queues.queue"),
+  }).pipe(Schema.encodeKeys({ queueId: "queue_id", type: "type" })),
+  enabled: Schema.Boolean,
+  events: Schema.Array(Schema.String),
+  modifiedAt: Schema.String,
+  name: Schema.String,
+  source: Schema.Union([
+    Schema.Struct({
+      type: Schema.optional(
+        Schema.Union([Schema.Literal("images"), Schema.Null]),
       ),
-    ]),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        createdAt: "created_at",
-        destination: "destination",
-        enabled: "enabled",
-        events: "events",
-        modifiedAt: "modified_at",
-        name: "name",
-        source: "source",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<CreateSubscriptionResponse>;
+    }),
+    Schema.Struct({
+      type: Schema.optional(Schema.Union([Schema.Literal("kv"), Schema.Null])),
+    }),
+    Schema.Struct({
+      type: Schema.optional(Schema.Union([Schema.Literal("r2"), Schema.Null])),
+    }),
+    Schema.Struct({
+      type: Schema.optional(
+        Schema.Union([Schema.Literal("superSlurper"), Schema.Null]),
+      ),
+    }),
+    Schema.Struct({
+      type: Schema.optional(
+        Schema.Union([Schema.Literal("vectorize"), Schema.Null]),
+      ),
+    }),
+    Schema.Struct({
+      modelName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      type: Schema.optional(
+        Schema.Union([Schema.Literal("workersAi.model"), Schema.Null]),
+      ),
+    }).pipe(Schema.encodeKeys({ modelName: "model_name", type: "type" })),
+    Schema.Struct({
+      type: Schema.optional(
+        Schema.Union([Schema.Literal("workersBuilds.worker"), Schema.Null]),
+      ),
+      workerName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(Schema.encodeKeys({ type: "type", workerName: "worker_name" })),
+    Schema.Struct({
+      type: Schema.optional(
+        Schema.Union([Schema.Literal("workflows.workflow"), Schema.Null]),
+      ),
+      workflowName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(Schema.encodeKeys({ type: "type", workflowName: "workflow_name" })),
+  ]),
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      createdAt: "created_at",
+      destination: "destination",
+      enabled: "enabled",
+      events: "events",
+      modifiedAt: "modified_at",
+      name: "name",
+      source: "source",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<CreateSubscriptionResponse>;
 
 export type CreateSubscriptionError = DefaultErrors | UnrecognizedEventType;
 
@@ -3815,7 +3778,7 @@ export const createSubscription: API.OperationMethod<
   CreateSubscriptionResponse,
   CreateSubscriptionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSubscriptionRequest,
   output: CreateSubscriptionResponse,
   errors: [UnrecognizedEventType],
@@ -3835,25 +3798,24 @@ export interface PatchSubscriptionRequest {
   name?: string;
 }
 
-export const PatchSubscriptionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.HttpPath("subscriptionId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    destination: Schema.optional(
-      Schema.Struct({
-        queueId: Schema.String,
-        type: Schema.Literal("queues.queue"),
-      }).pipe(Schema.encodeKeys({ queueId: "queue_id", type: "type" })),
-    ),
-    enabled: Schema.optional(Schema.Boolean),
-    events: Schema.optional(Schema.Array(Schema.String)),
-    name: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/accounts/{account_id}/event_subscriptions/subscriptions/{subscriptionId}",
-    }),
-  ) as unknown as Schema.Schema<PatchSubscriptionRequest>;
+export const PatchSubscriptionRequest = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.HttpPath("subscriptionId")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  destination: Schema.optional(
+    Schema.Struct({
+      queueId: Schema.String,
+      type: Schema.Literal("queues.queue"),
+    }).pipe(Schema.encodeKeys({ queueId: "queue_id", type: "type" })),
+  ),
+  enabled: Schema.optional(Schema.Boolean),
+  events: Schema.optional(Schema.Array(Schema.String)),
+  name: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/accounts/{account_id}/event_subscriptions/subscriptions/{subscriptionId}",
+  }),
+) as unknown as Schema.Schema<PatchSubscriptionRequest>;
 
 export interface PatchSubscriptionResponse {
   /** Unique identifier for the subscription */
@@ -3882,83 +3844,74 @@ export interface PatchSubscriptionResponse {
     | { type?: "workflows.workflow" | null; workflowName?: string | null };
 }
 
-export const PatchSubscriptionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    createdAt: Schema.String,
-    destination: Schema.Struct({
-      queueId: Schema.String,
-      type: Schema.Literal("queues.queue"),
-    }).pipe(Schema.encodeKeys({ queueId: "queue_id", type: "type" })),
-    enabled: Schema.Boolean,
-    events: Schema.Array(Schema.String),
-    modifiedAt: Schema.String,
-    name: Schema.String,
-    source: Schema.Union([
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Union([Schema.Literal("images"), Schema.Null]),
-        ),
-      }),
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Union([Schema.Literal("kv"), Schema.Null]),
-        ),
-      }),
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Union([Schema.Literal("r2"), Schema.Null]),
-        ),
-      }),
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Union([Schema.Literal("superSlurper"), Schema.Null]),
-        ),
-      }),
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Union([Schema.Literal("vectorize"), Schema.Null]),
-        ),
-      }),
-      Schema.Struct({
-        modelName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        type: Schema.optional(
-          Schema.Union([Schema.Literal("workersAi.model"), Schema.Null]),
-        ),
-      }).pipe(Schema.encodeKeys({ modelName: "model_name", type: "type" })),
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Union([Schema.Literal("workersBuilds.worker"), Schema.Null]),
-        ),
-        workerName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }).pipe(Schema.encodeKeys({ type: "type", workerName: "worker_name" })),
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Union([Schema.Literal("workflows.workflow"), Schema.Null]),
-        ),
-        workflowName: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({ type: "type", workflowName: "workflow_name" }),
+export const PatchSubscriptionResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  createdAt: Schema.String,
+  destination: Schema.Struct({
+    queueId: Schema.String,
+    type: Schema.Literal("queues.queue"),
+  }).pipe(Schema.encodeKeys({ queueId: "queue_id", type: "type" })),
+  enabled: Schema.Boolean,
+  events: Schema.Array(Schema.String),
+  modifiedAt: Schema.String,
+  name: Schema.String,
+  source: Schema.Union([
+    Schema.Struct({
+      type: Schema.optional(
+        Schema.Union([Schema.Literal("images"), Schema.Null]),
       ),
-    ]),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        createdAt: "created_at",
-        destination: "destination",
-        enabled: "enabled",
-        events: "events",
-        modifiedAt: "modified_at",
-        name: "name",
-        source: "source",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<PatchSubscriptionResponse>;
+    }),
+    Schema.Struct({
+      type: Schema.optional(Schema.Union([Schema.Literal("kv"), Schema.Null])),
+    }),
+    Schema.Struct({
+      type: Schema.optional(Schema.Union([Schema.Literal("r2"), Schema.Null])),
+    }),
+    Schema.Struct({
+      type: Schema.optional(
+        Schema.Union([Schema.Literal("superSlurper"), Schema.Null]),
+      ),
+    }),
+    Schema.Struct({
+      type: Schema.optional(
+        Schema.Union([Schema.Literal("vectorize"), Schema.Null]),
+      ),
+    }),
+    Schema.Struct({
+      modelName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      type: Schema.optional(
+        Schema.Union([Schema.Literal("workersAi.model"), Schema.Null]),
+      ),
+    }).pipe(Schema.encodeKeys({ modelName: "model_name", type: "type" })),
+    Schema.Struct({
+      type: Schema.optional(
+        Schema.Union([Schema.Literal("workersBuilds.worker"), Schema.Null]),
+      ),
+      workerName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(Schema.encodeKeys({ type: "type", workerName: "worker_name" })),
+    Schema.Struct({
+      type: Schema.optional(
+        Schema.Union([Schema.Literal("workflows.workflow"), Schema.Null]),
+      ),
+      workflowName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(Schema.encodeKeys({ type: "type", workflowName: "workflow_name" })),
+  ]),
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      createdAt: "created_at",
+      destination: "destination",
+      enabled: "enabled",
+      events: "events",
+      modifiedAt: "modified_at",
+      name: "name",
+      source: "source",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<PatchSubscriptionResponse>;
 
 export type PatchSubscriptionError = DefaultErrors | UnrecognizedEventType;
 
@@ -3967,7 +3920,7 @@ export const patchSubscription: API.OperationMethod<
   PatchSubscriptionResponse,
   PatchSubscriptionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchSubscriptionRequest,
   output: PatchSubscriptionResponse,
   errors: [UnrecognizedEventType],
@@ -3979,16 +3932,15 @@ export interface DeleteSubscriptionRequest {
   accountId: string;
 }
 
-export const DeleteSubscriptionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.HttpPath("subscriptionId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/accounts/{account_id}/event_subscriptions/subscriptions/{subscriptionId}",
-    }),
-  ) as unknown as Schema.Schema<DeleteSubscriptionRequest>;
+export const DeleteSubscriptionRequest = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.HttpPath("subscriptionId")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/accounts/{account_id}/event_subscriptions/subscriptions/{subscriptionId}",
+  }),
+) as unknown as Schema.Schema<DeleteSubscriptionRequest>;
 
 export interface DeleteSubscriptionResponse {
   /** Unique identifier for the subscription */
@@ -4017,83 +3969,74 @@ export interface DeleteSubscriptionResponse {
     | { type?: "workflows.workflow" | null; workflowName?: string | null };
 }
 
-export const DeleteSubscriptionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    createdAt: Schema.String,
-    destination: Schema.Struct({
-      queueId: Schema.String,
-      type: Schema.Literal("queues.queue"),
-    }).pipe(Schema.encodeKeys({ queueId: "queue_id", type: "type" })),
-    enabled: Schema.Boolean,
-    events: Schema.Array(Schema.String),
-    modifiedAt: Schema.String,
-    name: Schema.String,
-    source: Schema.Union([
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Union([Schema.Literal("images"), Schema.Null]),
-        ),
-      }),
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Union([Schema.Literal("kv"), Schema.Null]),
-        ),
-      }),
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Union([Schema.Literal("r2"), Schema.Null]),
-        ),
-      }),
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Union([Schema.Literal("superSlurper"), Schema.Null]),
-        ),
-      }),
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Union([Schema.Literal("vectorize"), Schema.Null]),
-        ),
-      }),
-      Schema.Struct({
-        modelName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        type: Schema.optional(
-          Schema.Union([Schema.Literal("workersAi.model"), Schema.Null]),
-        ),
-      }).pipe(Schema.encodeKeys({ modelName: "model_name", type: "type" })),
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Union([Schema.Literal("workersBuilds.worker"), Schema.Null]),
-        ),
-        workerName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }).pipe(Schema.encodeKeys({ type: "type", workerName: "worker_name" })),
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Union([Schema.Literal("workflows.workflow"), Schema.Null]),
-        ),
-        workflowName: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({ type: "type", workflowName: "workflow_name" }),
+export const DeleteSubscriptionResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  createdAt: Schema.String,
+  destination: Schema.Struct({
+    queueId: Schema.String,
+    type: Schema.Literal("queues.queue"),
+  }).pipe(Schema.encodeKeys({ queueId: "queue_id", type: "type" })),
+  enabled: Schema.Boolean,
+  events: Schema.Array(Schema.String),
+  modifiedAt: Schema.String,
+  name: Schema.String,
+  source: Schema.Union([
+    Schema.Struct({
+      type: Schema.optional(
+        Schema.Union([Schema.Literal("images"), Schema.Null]),
       ),
-    ]),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        createdAt: "created_at",
-        destination: "destination",
-        enabled: "enabled",
-        events: "events",
-        modifiedAt: "modified_at",
-        name: "name",
-        source: "source",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<DeleteSubscriptionResponse>;
+    }),
+    Schema.Struct({
+      type: Schema.optional(Schema.Union([Schema.Literal("kv"), Schema.Null])),
+    }),
+    Schema.Struct({
+      type: Schema.optional(Schema.Union([Schema.Literal("r2"), Schema.Null])),
+    }),
+    Schema.Struct({
+      type: Schema.optional(
+        Schema.Union([Schema.Literal("superSlurper"), Schema.Null]),
+      ),
+    }),
+    Schema.Struct({
+      type: Schema.optional(
+        Schema.Union([Schema.Literal("vectorize"), Schema.Null]),
+      ),
+    }),
+    Schema.Struct({
+      modelName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      type: Schema.optional(
+        Schema.Union([Schema.Literal("workersAi.model"), Schema.Null]),
+      ),
+    }).pipe(Schema.encodeKeys({ modelName: "model_name", type: "type" })),
+    Schema.Struct({
+      type: Schema.optional(
+        Schema.Union([Schema.Literal("workersBuilds.worker"), Schema.Null]),
+      ),
+      workerName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(Schema.encodeKeys({ type: "type", workerName: "worker_name" })),
+    Schema.Struct({
+      type: Schema.optional(
+        Schema.Union([Schema.Literal("workflows.workflow"), Schema.Null]),
+      ),
+      workflowName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(Schema.encodeKeys({ type: "type", workflowName: "workflow_name" })),
+  ]),
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      createdAt: "created_at",
+      destination: "destination",
+      enabled: "enabled",
+      events: "events",
+      modifiedAt: "modified_at",
+      name: "name",
+      source: "source",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<DeleteSubscriptionResponse>;
 
 export type DeleteSubscriptionError = DefaultErrors | UnrecognizedEventType;
 
@@ -4102,7 +4045,7 @@ export const deleteSubscription: API.OperationMethod<
   DeleteSubscriptionResponse,
   DeleteSubscriptionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSubscriptionRequest,
   output: DeleteSubscriptionResponse,
   errors: [UnrecognizedEventType],

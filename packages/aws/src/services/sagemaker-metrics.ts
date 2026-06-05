@@ -273,7 +273,7 @@ export const batchGetMetrics: API.OperationMethod<
   BatchGetMetricsResponse,
   BatchGetMetricsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetMetricsRequest,
   output: BatchGetMetricsResponse,
   errors: [],
@@ -287,7 +287,7 @@ export const batchPutMetrics: API.OperationMethod<
   BatchPutMetricsResponse,
   BatchPutMetricsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchPutMetricsRequest,
   output: BatchPutMetricsResponse,
   errors: [],

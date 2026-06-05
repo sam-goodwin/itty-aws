@@ -1490,7 +1490,7 @@ export const getPolicyVersion: API.OperationMethod<
   GetPolicyVersionResponse,
   GetPolicyVersionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPolicyVersionRequest,
   output: GetPolicyVersionResponse,
   errors: [
@@ -1516,7 +1516,7 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyResponse,
   GetResourcePolicyError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResourcePolicyRequest,
   output: GetResourcePolicyResponse,
   errors: [
@@ -1556,7 +1556,7 @@ export const listPolicies: API.OperationMethod<
     ListPoliciesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPoliciesRequest,
   output: ListPoliciesResponse,
   errors: [
@@ -1602,7 +1602,7 @@ export const listPolicyVersions: API.OperationMethod<
     ListPolicyVersionsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPolicyVersionsRequest,
   output: ListPolicyVersionsResponse,
   errors: [
@@ -1649,7 +1649,7 @@ export const listResourcePolicies: API.OperationMethod<
     ListResourcePoliciesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourcePoliciesRequest,
   output: ListResourcePoliciesResponse,
   errors: [
@@ -1681,7 +1681,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -1708,7 +1708,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -1735,7 +1735,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -1762,7 +1762,7 @@ export const createApprovalTeam: API.OperationMethod<
   CreateApprovalTeamResponse,
   CreateApprovalTeamError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateApprovalTeamRequest,
   output: CreateApprovalTeamResponse,
   errors: [
@@ -1789,7 +1789,7 @@ export const getApprovalTeam: API.OperationMethod<
   GetApprovalTeamResponse,
   GetApprovalTeamError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetApprovalTeamRequest,
   output: GetApprovalTeamResponse,
   errors: [
@@ -1821,7 +1821,7 @@ export const updateApprovalTeam: API.OperationMethod<
   UpdateApprovalTeamResponse,
   UpdateApprovalTeamError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateApprovalTeamRequest,
   output: UpdateApprovalTeamResponse,
   errors: [
@@ -1852,7 +1852,7 @@ export const deleteInactiveApprovalTeamVersion: API.OperationMethod<
   DeleteInactiveApprovalTeamVersionResponse,
   DeleteInactiveApprovalTeamVersionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteInactiveApprovalTeamVersionRequest,
   output: DeleteInactiveApprovalTeamVersionResponse,
   errors: [
@@ -1893,7 +1893,7 @@ export const listApprovalTeams: API.OperationMethod<
     ListApprovalTeamsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApprovalTeamsRequest,
   output: ListApprovalTeamsResponse,
   errors: [
@@ -1929,7 +1929,7 @@ export const startActiveApprovalTeamDeletion: API.OperationMethod<
   StartActiveApprovalTeamDeletionResponse,
   StartActiveApprovalTeamDeletionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartActiveApprovalTeamDeletionRequest,
   output: StartActiveApprovalTeamDeletionResponse,
   errors: [
@@ -1956,7 +1956,7 @@ export const startApprovalTeamBaseline: API.OperationMethod<
   StartApprovalTeamBaselineResponse,
   StartApprovalTeamBaselineError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartApprovalTeamBaselineRequest,
   output: StartApprovalTeamBaselineResponse,
   errors: [
@@ -1982,7 +1982,7 @@ export const createIdentitySource: API.OperationMethod<
   CreateIdentitySourceResponse,
   CreateIdentitySourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateIdentitySourceRequest,
   output: CreateIdentitySourceResponse,
   errors: [
@@ -2008,7 +2008,7 @@ export const getIdentitySource: API.OperationMethod<
   GetIdentitySourceResponse,
   GetIdentitySourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIdentitySourceRequest,
   output: GetIdentitySourceResponse,
   errors: [
@@ -2034,7 +2034,7 @@ export const deleteIdentitySource: API.OperationMethod<
   DeleteIdentitySourceResponse,
   DeleteIdentitySourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteIdentitySourceRequest,
   output: DeleteIdentitySourceResponse,
   errors: [
@@ -2074,7 +2074,7 @@ export const listIdentitySources: API.OperationMethod<
     ListIdentitySourcesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIdentitySourcesRequest,
   output: ListIdentitySourcesResponse,
   errors: [
@@ -2105,7 +2105,7 @@ export const getSession: API.OperationMethod<
   GetSessionResponse,
   GetSessionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSessionRequest,
   output: GetSessionResponse,
   errors: [
@@ -2132,7 +2132,7 @@ export const cancelSession: API.OperationMethod<
   CancelSessionResponse,
   CancelSessionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelSessionRequest,
   output: CancelSessionResponse,
   errors: [
@@ -2174,7 +2174,7 @@ export const listSessions: API.OperationMethod<
     ListSessionsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSessionsRequest,
   output: ListSessionsResponse,
   errors: [

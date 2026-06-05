@@ -915,7 +915,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceOutput,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [ResourceNotFoundException],
@@ -929,7 +929,7 @@ export const tagResource: API.OperationMethod<
   TagResourceOutput,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
   errors: [ResourceNotFoundException],
@@ -943,7 +943,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceOutput,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
   errors: [ResourceNotFoundException],
@@ -958,7 +958,7 @@ export const createGateway: API.OperationMethod<
   CreateGatewayOutput,
   CreateGatewayError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateGatewayInput,
   output: CreateGatewayOutput,
   errors: [],
@@ -973,7 +973,7 @@ export const getGateway: API.OperationMethod<
   GetGatewayOutput,
   GetGatewayError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetGatewayInput,
   output: GetGatewayOutput,
   errors: [ResourceNotFoundException],
@@ -991,7 +991,7 @@ export const updateGatewayInformation: API.OperationMethod<
   UpdateGatewayInformationOutput,
   UpdateGatewayInformationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateGatewayInformationInput,
   output: UpdateGatewayInformationOutput,
   errors: [ConflictException, ResourceNotFoundException],
@@ -1005,7 +1005,7 @@ export const deleteGateway: API.OperationMethod<
   DeleteGatewayOutput,
   DeleteGatewayError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteGatewayInput,
   output: DeleteGatewayOutput,
   errors: [ResourceNotFoundException],
@@ -1034,7 +1034,7 @@ export const listGateways: API.OperationMethod<
     ListGatewaysError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGatewaysInput,
   output: ListGatewaysOutput,
   errors: [],
@@ -1055,7 +1055,7 @@ export const associateGatewayToServer: API.OperationMethod<
   AssociateGatewayToServerOutput,
   AssociateGatewayToServerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateGatewayToServerInput,
   output: AssociateGatewayToServerOutput,
   errors: [ConflictException],
@@ -1073,7 +1073,7 @@ export const disassociateGatewayFromServer: API.OperationMethod<
   DisassociateGatewayFromServerOutput,
   DisassociateGatewayFromServerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateGatewayFromServerInput,
   output: DisassociateGatewayFromServerOutput,
   errors: [ConflictException, ResourceNotFoundException],
@@ -1090,7 +1090,7 @@ export const putMaintenanceStartTime: API.OperationMethod<
   PutMaintenanceStartTimeOutput,
   PutMaintenanceStartTimeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutMaintenanceStartTimeInput,
   output: PutMaintenanceStartTimeOutput,
   errors: [ConflictException, ResourceNotFoundException],
@@ -1108,7 +1108,7 @@ export const testHypervisorConfiguration: API.OperationMethod<
   TestHypervisorConfigurationOutput,
   TestHypervisorConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestHypervisorConfigurationInput,
   output: TestHypervisorConfigurationOutput,
   errors: [ConflictException, ResourceNotFoundException],
@@ -1129,7 +1129,7 @@ export const updateGatewaySoftwareNow: API.OperationMethod<
   UpdateGatewaySoftwareNowOutput,
   UpdateGatewaySoftwareNowError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateGatewaySoftwareNowInput,
   output: UpdateGatewaySoftwareNowOutput,
   errors: [ResourceNotFoundException],
@@ -1148,7 +1148,7 @@ export const putBandwidthRateLimitSchedule: API.OperationMethod<
   PutBandwidthRateLimitScheduleOutput,
   PutBandwidthRateLimitScheduleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutBandwidthRateLimitScheduleInput,
   output: PutBandwidthRateLimitScheduleOutput,
   errors: [ResourceNotFoundException],
@@ -1167,7 +1167,7 @@ export const getBandwidthRateLimitSchedule: API.OperationMethod<
   GetBandwidthRateLimitScheduleOutput,
   GetBandwidthRateLimitScheduleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetBandwidthRateLimitScheduleInput,
   output: GetBandwidthRateLimitScheduleOutput,
   errors: [ResourceNotFoundException],
@@ -1184,7 +1184,7 @@ export const importHypervisorConfiguration: API.OperationMethod<
   ImportHypervisorConfigurationOutput,
   ImportHypervisorConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportHypervisorConfigurationInput,
   output: ImportHypervisorConfigurationOutput,
   errors: [AccessDeniedException, ConflictException],
@@ -1200,7 +1200,7 @@ export const getHypervisor: API.OperationMethod<
   GetHypervisorOutput,
   GetHypervisorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetHypervisorInput,
   output: GetHypervisorOutput,
   errors: [ResourceNotFoundException],
@@ -1220,7 +1220,7 @@ export const updateHypervisor: API.OperationMethod<
   UpdateHypervisorOutput,
   UpdateHypervisorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateHypervisorInput,
   output: UpdateHypervisorOutput,
   errors: [AccessDeniedException, ConflictException, ResourceNotFoundException],
@@ -1238,7 +1238,7 @@ export const deleteHypervisor: API.OperationMethod<
   DeleteHypervisorOutput,
   DeleteHypervisorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteHypervisorInput,
   output: DeleteHypervisorOutput,
   errors: [AccessDeniedException, ConflictException, ResourceNotFoundException],
@@ -1267,7 +1267,7 @@ export const listHypervisors: API.OperationMethod<
     ListHypervisorsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListHypervisorsInput,
   output: ListHypervisorsOutput,
   errors: [],
@@ -1290,7 +1290,7 @@ export const startVirtualMachinesMetadataSync: API.OperationMethod<
   StartVirtualMachinesMetadataSyncOutput,
   StartVirtualMachinesMetadataSyncError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartVirtualMachinesMetadataSyncInput,
   output: StartVirtualMachinesMetadataSyncOutput,
   errors: [AccessDeniedException, ResourceNotFoundException],
@@ -1310,7 +1310,7 @@ export const putHypervisorPropertyMappings: API.OperationMethod<
   PutHypervisorPropertyMappingsOutput,
   PutHypervisorPropertyMappingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutHypervisorPropertyMappingsInput,
   output: PutHypervisorPropertyMappingsOutput,
   errors: [AccessDeniedException, ConflictException, ResourceNotFoundException],
@@ -1328,7 +1328,7 @@ export const getHypervisorPropertyMappings: API.OperationMethod<
   GetHypervisorPropertyMappingsOutput,
   GetHypervisorPropertyMappingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetHypervisorPropertyMappingsInput,
   output: GetHypervisorPropertyMappingsOutput,
   errors: [ResourceNotFoundException],
@@ -1342,7 +1342,7 @@ export const getVirtualMachine: API.OperationMethod<
   GetVirtualMachineOutput,
   GetVirtualMachineError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetVirtualMachineInput,
   output: GetVirtualMachineOutput,
   errors: [ResourceNotFoundException],
@@ -1371,7 +1371,7 @@ export const listVirtualMachines: API.OperationMethod<
     ListVirtualMachinesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVirtualMachinesInput,
   output: ListVirtualMachinesOutput,
   errors: [],

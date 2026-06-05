@@ -3708,7 +3708,7 @@ export const acknowledgeJob: API.OperationMethod<
   AcknowledgeJobOutput,
   AcknowledgeJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AcknowledgeJobInput,
   output: AcknowledgeJobOutput,
   errors: [InvalidNonceException, JobNotFoundException, ValidationException],
@@ -3728,7 +3728,7 @@ export const acknowledgeThirdPartyJob: API.OperationMethod<
   AcknowledgeThirdPartyJobOutput,
   AcknowledgeThirdPartyJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AcknowledgeThirdPartyJobInput,
   output: AcknowledgeThirdPartyJobOutput,
   errors: [
@@ -3754,7 +3754,7 @@ export const createCustomActionType: API.OperationMethod<
   CreateCustomActionTypeOutput,
   CreateCustomActionTypeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCustomActionTypeInput,
   output: CreateCustomActionTypeOutput,
   errors: [
@@ -3790,7 +3790,7 @@ export const createPipeline: API.OperationMethod<
   CreatePipelineOutput,
   CreatePipelineError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePipelineInput,
   output: CreatePipelineOutput,
   errors: [
@@ -3825,7 +3825,7 @@ export const deleteCustomActionType: API.OperationMethod<
   DeleteCustomActionTypeResponse,
   DeleteCustomActionTypeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCustomActionTypeInput,
   output: DeleteCustomActionTypeResponse,
   errors: [ConcurrentModificationException, ValidationException],
@@ -3842,7 +3842,7 @@ export const deletePipeline: API.OperationMethod<
   DeletePipelineResponse,
   DeletePipelineError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePipelineInput,
   output: DeletePipelineResponse,
   errors: [ConcurrentModificationException, ValidationException],
@@ -3862,7 +3862,7 @@ export const deleteWebhook: API.OperationMethod<
   DeleteWebhookOutput,
   DeleteWebhookError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteWebhookInput,
   output: DeleteWebhookOutput,
   errors: [ConcurrentModificationException, ValidationException],
@@ -3881,7 +3881,7 @@ export const deregisterWebhookWithThirdParty: API.OperationMethod<
   DeregisterWebhookWithThirdPartyOutput,
   DeregisterWebhookWithThirdPartyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeregisterWebhookWithThirdPartyInput,
   output: DeregisterWebhookWithThirdPartyOutput,
   errors: [ValidationException, WebhookNotFoundException],
@@ -3900,7 +3900,7 @@ export const disableStageTransition: API.OperationMethod<
   DisableStageTransitionResponse,
   DisableStageTransitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableStageTransitionInput,
   output: DisableStageTransitionResponse,
   errors: [
@@ -3922,7 +3922,7 @@ export const enableStageTransition: API.OperationMethod<
   EnableStageTransitionResponse,
   EnableStageTransitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableStageTransitionInput,
   output: EnableStageTransitionResponse,
   errors: [
@@ -3945,7 +3945,7 @@ export const getActionType: API.OperationMethod<
   GetActionTypeOutput,
   GetActionTypeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetActionTypeInput,
   output: GetActionTypeOutput,
   errors: [ActionTypeNotFoundException, ValidationException],
@@ -3967,7 +3967,7 @@ export const getJobDetails: API.OperationMethod<
   GetJobDetailsOutput,
   GetJobDetailsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetJobDetailsInput,
   output: GetJobDetailsOutput,
   errors: [JobNotFoundException, ValidationException],
@@ -3987,7 +3987,7 @@ export const getPipeline: API.OperationMethod<
   GetPipelineOutput,
   GetPipelineError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPipelineInput,
   output: GetPipelineOutput,
   errors: [
@@ -4011,7 +4011,7 @@ export const getPipelineExecution: API.OperationMethod<
   GetPipelineExecutionOutput,
   GetPipelineExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPipelineExecutionInput,
   output: GetPipelineExecutionOutput,
   errors: [
@@ -4037,7 +4037,7 @@ export const getPipelineState: API.OperationMethod<
   GetPipelineStateOutput,
   GetPipelineStateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPipelineStateInput,
   output: GetPipelineStateOutput,
   errors: [PipelineNotFoundException, ValidationException],
@@ -4062,7 +4062,7 @@ export const getThirdPartyJobDetails: API.OperationMethod<
   GetThirdPartyJobDetailsOutput,
   GetThirdPartyJobDetailsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetThirdPartyJobDetailsInput,
   output: GetThirdPartyJobDetailsOutput,
   errors: [
@@ -4101,7 +4101,7 @@ export const listActionExecutions: API.OperationMethod<
     ListActionExecutionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListActionExecutionsInput,
   output: ListActionExecutionsOutput,
   errors: [
@@ -4145,7 +4145,7 @@ export const listActionTypes: API.OperationMethod<
     ListActionTypesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListActionTypesInput,
   output: ListActionTypesOutput,
   errors: [InvalidNextTokenException, ValidationException],
@@ -4184,7 +4184,7 @@ export const listDeployActionExecutionTargets: API.OperationMethod<
     ListDeployActionExecutionTargetsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDeployActionExecutionTargetsInput,
   output: ListDeployActionExecutionTargetsOutput,
   errors: [
@@ -4232,7 +4232,7 @@ export const listPipelineExecutions: API.OperationMethod<
     ListPipelineExecutionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPipelineExecutionsInput,
   output: ListPipelineExecutionsOutput,
   errors: [
@@ -4274,7 +4274,7 @@ export const listPipelines: API.OperationMethod<
     ListPipelinesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPipelinesInput,
   output: ListPipelinesOutput,
   errors: [InvalidNextTokenException, ValidationException],
@@ -4315,7 +4315,7 @@ export const listRuleExecutions: API.OperationMethod<
     ListRuleExecutionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRuleExecutionsInput,
   output: ListRuleExecutionsOutput,
   errors: [
@@ -4345,7 +4345,7 @@ export const listRuleTypes: API.OperationMethod<
   ListRuleTypesOutput,
   ListRuleTypesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListRuleTypesInput,
   output: ListRuleTypesOutput,
   errors: [InvalidNextTokenException, ValidationException],
@@ -4380,7 +4380,7 @@ export const listTagsForResource: API.OperationMethod<
     ListTagsForResourceError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [
@@ -4427,7 +4427,7 @@ export const listWebhooks: API.OperationMethod<
     ListWebhooksError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWebhooksInput,
   output: ListWebhooksOutput,
   errors: [InvalidNextTokenException, ValidationException],
@@ -4457,7 +4457,7 @@ export const overrideStageCondition: API.OperationMethod<
   OverrideStageConditionResponse,
   OverrideStageConditionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: OverrideStageConditionInput,
   output: OverrideStageConditionResponse,
   errors: [
@@ -4490,7 +4490,7 @@ export const pollForJobs: API.OperationMethod<
   PollForJobsOutput,
   PollForJobsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PollForJobsInput,
   output: PollForJobsOutput,
   errors: [ActionTypeNotFoundException, ValidationException],
@@ -4512,7 +4512,7 @@ export const pollForThirdPartyJobs: API.OperationMethod<
   PollForThirdPartyJobsOutput,
   PollForThirdPartyJobsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PollForThirdPartyJobsInput,
   output: PollForThirdPartyJobsOutput,
   errors: [ActionTypeNotFoundException, ValidationException],
@@ -4533,7 +4533,7 @@ export const putActionRevision: API.OperationMethod<
   PutActionRevisionOutput,
   PutActionRevisionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutActionRevisionInput,
   output: PutActionRevisionOutput,
   errors: [
@@ -4561,7 +4561,7 @@ export const putApprovalResult: API.OperationMethod<
   PutApprovalResultOutput,
   PutApprovalResultError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutApprovalResultInput,
   output: PutApprovalResultOutput,
   errors: [
@@ -4587,7 +4587,7 @@ export const putJobFailureResult: API.OperationMethod<
   PutJobFailureResultResponse,
   PutJobFailureResultError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutJobFailureResultInput,
   output: PutJobFailureResultResponse,
   errors: [InvalidJobStateException, JobNotFoundException, ValidationException],
@@ -4607,7 +4607,7 @@ export const putJobSuccessResult: API.OperationMethod<
   PutJobSuccessResultResponse,
   PutJobSuccessResultError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutJobSuccessResultInput,
   output: PutJobSuccessResultResponse,
   errors: [
@@ -4632,7 +4632,7 @@ export const putThirdPartyJobFailureResult: API.OperationMethod<
   PutThirdPartyJobFailureResultResponse,
   PutThirdPartyJobFailureResultError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutThirdPartyJobFailureResultInput,
   output: PutThirdPartyJobFailureResultResponse,
   errors: [
@@ -4657,7 +4657,7 @@ export const putThirdPartyJobSuccessResult: API.OperationMethod<
   PutThirdPartyJobSuccessResultResponse,
   PutThirdPartyJobSuccessResultError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutThirdPartyJobSuccessResultInput,
   output: PutThirdPartyJobSuccessResultResponse,
   errors: [
@@ -4702,7 +4702,7 @@ export const putWebhook: API.OperationMethod<
   PutWebhookOutput,
   PutWebhookError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutWebhookInput,
   output: PutWebhookOutput,
   errors: [
@@ -4729,7 +4729,7 @@ export const registerWebhookWithThirdParty: API.OperationMethod<
   RegisterWebhookWithThirdPartyOutput,
   RegisterWebhookWithThirdPartyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterWebhookWithThirdPartyInput,
   output: RegisterWebhookWithThirdPartyOutput,
   errors: [ValidationException, WebhookNotFoundException],
@@ -4758,7 +4758,7 @@ export const retryStageExecution: API.OperationMethod<
   RetryStageExecutionOutput,
   RetryStageExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RetryStageExecutionInput,
   output: RetryStageExecutionOutput,
   errors: [
@@ -4788,7 +4788,7 @@ export const rollbackStage: API.OperationMethod<
   RollbackStageOutput,
   RollbackStageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RollbackStageInput,
   output: RollbackStageOutput,
   errors: [
@@ -4816,7 +4816,7 @@ export const startPipelineExecution: API.OperationMethod<
   StartPipelineExecutionOutput,
   StartPipelineExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartPipelineExecutionInput,
   output: StartPipelineExecutionOutput,
   errors: [
@@ -4846,7 +4846,7 @@ export const stopPipelineExecution: API.OperationMethod<
   StopPipelineExecutionOutput,
   StopPipelineExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopPipelineExecutionInput,
   output: StopPipelineExecutionOutput,
   errors: [
@@ -4874,7 +4874,7 @@ export const tagResource: API.OperationMethod<
   TagResourceOutput,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
   errors: [
@@ -4901,7 +4901,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceOutput,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
   errors: [
@@ -4928,7 +4928,7 @@ export const updateActionType: API.OperationMethod<
   UpdateActionTypeResponse,
   UpdateActionTypeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateActionTypeInput,
   output: UpdateActionTypeResponse,
   errors: [
@@ -4956,7 +4956,7 @@ export const updatePipeline: API.OperationMethod<
   UpdatePipelineOutput,
   UpdatePipelineError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePipelineInput,
   output: UpdatePipelineOutput,
   errors: [

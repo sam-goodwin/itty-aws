@@ -2604,7 +2604,7 @@ export const cancelTaskExecution: API.OperationMethod<
   CancelTaskExecutionResponse,
   CancelTaskExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelTaskExecutionRequest,
   output: CancelTaskExecutionResponse,
   errors: [InternalException, InvalidRequestException],
@@ -2625,7 +2625,7 @@ export const createAgent: API.OperationMethod<
   CreateAgentResponse,
   CreateAgentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAgentRequest,
   output: CreateAgentResponse,
   errors: [InternalException, InvalidRequestException],
@@ -2647,7 +2647,7 @@ export const createLocationAzureBlob: API.OperationMethod<
   CreateLocationAzureBlobResponse,
   CreateLocationAzureBlobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLocationAzureBlobRequest,
   output: CreateLocationAzureBlobResponse,
   errors: [InternalException, InvalidRequestException],
@@ -2670,7 +2670,7 @@ export const createLocationEfs: API.OperationMethod<
   CreateLocationEfsResponse,
   CreateLocationEfsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLocationEfsRequest,
   output: CreateLocationEfsResponse,
   errors: [InternalException, InvalidRequestException],
@@ -2692,7 +2692,7 @@ export const createLocationFsxLustre: API.OperationMethod<
   CreateLocationFsxLustreResponse,
   CreateLocationFsxLustreError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLocationFsxLustreRequest,
   output: CreateLocationFsxLustreResponse,
   errors: [InternalException, InvalidRequestException],
@@ -2714,7 +2714,7 @@ export const createLocationFsxOntap: API.OperationMethod<
   CreateLocationFsxOntapResponse,
   CreateLocationFsxOntapError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLocationFsxOntapRequest,
   output: CreateLocationFsxOntapResponse,
   errors: [InternalException, InvalidRequestException],
@@ -2740,7 +2740,7 @@ export const createLocationFsxOpenZfs: API.OperationMethod<
   CreateLocationFsxOpenZfsResponse,
   CreateLocationFsxOpenZfsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLocationFsxOpenZfsRequest,
   output: CreateLocationFsxOpenZfsResponse,
   errors: [InternalException, InvalidRequestException],
@@ -2763,7 +2763,7 @@ export const createLocationFsxWindows: API.OperationMethod<
   CreateLocationFsxWindowsResponse,
   CreateLocationFsxWindowsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLocationFsxWindowsRequest,
   output: CreateLocationFsxWindowsResponse,
   errors: [InternalException, InvalidRequestException],
@@ -2786,7 +2786,7 @@ export const createLocationHdfs: API.OperationMethod<
   CreateLocationHdfsResponse,
   CreateLocationHdfsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLocationHdfsRequest,
   output: CreateLocationHdfsResponse,
   errors: [InternalException, InvalidRequestException],
@@ -2809,7 +2809,7 @@ export const createLocationNfs: API.OperationMethod<
   CreateLocationNfsResponse,
   CreateLocationNfsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLocationNfsRequest,
   output: CreateLocationNfsResponse,
   errors: [InternalException, InvalidRequestException],
@@ -2830,7 +2830,7 @@ export const createLocationObjectStorage: API.OperationMethod<
   CreateLocationObjectStorageResponse,
   CreateLocationObjectStorageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLocationObjectStorageRequest,
   output: CreateLocationObjectStorageResponse,
   errors: [InternalException, InvalidRequestException],
@@ -2859,7 +2859,7 @@ export const createLocationS3: API.OperationMethod<
   CreateLocationS3Response,
   CreateLocationS3Error,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLocationS3Request,
   output: CreateLocationS3Response,
   errors: [InternalException, InvalidRequestException],
@@ -2881,7 +2881,7 @@ export const createLocationSmb: API.OperationMethod<
   CreateLocationSmbResponse,
   CreateLocationSmbError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLocationSmbRequest,
   output: CreateLocationSmbResponse,
   errors: [InternalException, InvalidRequestException],
@@ -2907,7 +2907,7 @@ export const createTask: API.OperationMethod<
   CreateTaskResponse,
   CreateTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTaskRequest,
   output: CreateTaskResponse,
   errors: [InternalException, InvalidRequestException],
@@ -2929,7 +2929,7 @@ export const deleteAgent: API.OperationMethod<
   DeleteAgentResponse,
   DeleteAgentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAgentRequest,
   output: DeleteAgentResponse,
   errors: [InternalException, InvalidRequestException],
@@ -2946,7 +2946,7 @@ export const deleteLocation: API.OperationMethod<
   DeleteLocationResponse,
   DeleteLocationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLocationRequest,
   output: DeleteLocationResponse,
   errors: [InternalException, InvalidRequestException],
@@ -2963,7 +2963,7 @@ export const deleteTask: API.OperationMethod<
   DeleteTaskResponse,
   DeleteTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTaskRequest,
   output: DeleteTaskResponse,
   errors: [InternalException, InvalidRequestException],
@@ -2981,7 +2981,7 @@ export const describeAgent: API.OperationMethod<
   DescribeAgentResponse,
   DescribeAgentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAgentRequest,
   output: DescribeAgentResponse,
   errors: [InternalException, InvalidRequestException],
@@ -2999,7 +2999,7 @@ export const describeLocationAzureBlob: API.OperationMethod<
   DescribeLocationAzureBlobResponse,
   DescribeLocationAzureBlobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeLocationAzureBlobRequest,
   output: DescribeLocationAzureBlobResponse,
   errors: [InternalException, InvalidRequestException],
@@ -3016,7 +3016,7 @@ export const describeLocationEfs: API.OperationMethod<
   DescribeLocationEfsResponse,
   DescribeLocationEfsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeLocationEfsRequest,
   output: DescribeLocationEfsResponse,
   errors: [InternalException, InvalidRequestException],
@@ -3033,7 +3033,7 @@ export const describeLocationFsxLustre: API.OperationMethod<
   DescribeLocationFsxLustreResponse,
   DescribeLocationFsxLustreError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeLocationFsxLustreRequest,
   output: DescribeLocationFsxLustreResponse,
   errors: [InternalException, InvalidRequestException],
@@ -3053,7 +3053,7 @@ export const describeLocationFsxOntap: API.OperationMethod<
   DescribeLocationFsxOntapResponse,
   DescribeLocationFsxOntapError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeLocationFsxOntapRequest,
   output: DescribeLocationFsxOntapResponse,
   errors: [InternalException, InvalidRequestException],
@@ -3073,7 +3073,7 @@ export const describeLocationFsxOpenZfs: API.OperationMethod<
   DescribeLocationFsxOpenZfsResponse,
   DescribeLocationFsxOpenZfsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeLocationFsxOpenZfsRequest,
   output: DescribeLocationFsxOpenZfsResponse,
   errors: [InternalException, InvalidRequestException],
@@ -3090,7 +3090,7 @@ export const describeLocationFsxWindows: API.OperationMethod<
   DescribeLocationFsxWindowsResponse,
   DescribeLocationFsxWindowsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeLocationFsxWindowsRequest,
   output: DescribeLocationFsxWindowsResponse,
   errors: [InternalException, InvalidRequestException],
@@ -3108,7 +3108,7 @@ export const describeLocationHdfs: API.OperationMethod<
   DescribeLocationHdfsResponse,
   DescribeLocationHdfsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeLocationHdfsRequest,
   output: DescribeLocationHdfsResponse,
   errors: [InternalException, InvalidRequestException],
@@ -3126,7 +3126,7 @@ export const describeLocationNfs: API.OperationMethod<
   DescribeLocationNfsResponse,
   DescribeLocationNfsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeLocationNfsRequest,
   output: DescribeLocationNfsResponse,
   errors: [InternalException, InvalidRequestException],
@@ -3144,7 +3144,7 @@ export const describeLocationObjectStorage: API.OperationMethod<
   DescribeLocationObjectStorageResponse,
   DescribeLocationObjectStorageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeLocationObjectStorageRequest,
   output: DescribeLocationObjectStorageResponse,
   errors: [InternalException, InvalidRequestException],
@@ -3162,7 +3162,7 @@ export const describeLocationS3: API.OperationMethod<
   DescribeLocationS3Response,
   DescribeLocationS3Error,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeLocationS3Request,
   output: DescribeLocationS3Response,
   errors: [InternalException, InvalidRequestException],
@@ -3180,7 +3180,7 @@ export const describeLocationSmb: API.OperationMethod<
   DescribeLocationSmbResponse,
   DescribeLocationSmbError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeLocationSmbRequest,
   output: DescribeLocationSmbResponse,
   errors: [InternalException, InvalidRequestException],
@@ -3198,7 +3198,7 @@ export const describeTask: API.OperationMethod<
   DescribeTaskResponse,
   DescribeTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeTaskRequest,
   output: DescribeTaskResponse,
   errors: [InternalException, InvalidRequestException],
@@ -3221,7 +3221,7 @@ export const describeTaskExecution: API.OperationMethod<
   DescribeTaskExecutionResponse,
   DescribeTaskExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeTaskExecutionRequest,
   output: DescribeTaskExecutionResponse,
   errors: [InternalException, InvalidRequestException],
@@ -3264,7 +3264,7 @@ export const listAgents: API.OperationMethod<
     ListAgentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAgentsRequest,
   output: ListAgentsResponse,
   errors: [InternalException, InvalidRequestException],
@@ -3306,7 +3306,7 @@ export const listLocations: API.OperationMethod<
     ListLocationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLocationsRequest,
   output: ListLocationsResponse,
   errors: [InternalException, InvalidRequestException],
@@ -3344,7 +3344,7 @@ export const listTagsForResource: API.OperationMethod<
     ListTagsForResourceError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [InternalException, InvalidRequestException],
@@ -3382,7 +3382,7 @@ export const listTaskExecutions: API.OperationMethod<
     ListTaskExecutionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTaskExecutionsRequest,
   output: ListTaskExecutionsResponse,
   errors: [InternalException, InvalidRequestException],
@@ -3420,7 +3420,7 @@ export const listTasks: API.OperationMethod<
     ListTasksError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTasksRequest,
   output: ListTasksResponse,
   errors: [InternalException, InvalidRequestException],
@@ -3451,7 +3451,7 @@ export const startTaskExecution: API.OperationMethod<
   StartTaskExecutionResponse,
   StartTaskExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartTaskExecutionRequest,
   output: StartTaskExecutionResponse,
   errors: [InternalException, InvalidRequestException],
@@ -3472,7 +3472,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [InternalException, InvalidRequestException],
@@ -3489,7 +3489,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [InternalException, InvalidRequestException],
@@ -3506,7 +3506,7 @@ export const updateAgent: API.OperationMethod<
   UpdateAgentResponse,
   UpdateAgentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAgentRequest,
   output: UpdateAgentResponse,
   errors: [InternalException, InvalidRequestException],
@@ -3526,7 +3526,7 @@ export const updateLocationAzureBlob: API.OperationMethod<
   UpdateLocationAzureBlobResponse,
   UpdateLocationAzureBlobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateLocationAzureBlobRequest,
   output: UpdateLocationAzureBlobResponse,
   errors: [InternalException, InvalidRequestException],
@@ -3547,7 +3547,7 @@ export const updateLocationEfs: API.OperationMethod<
   UpdateLocationEfsResponse,
   UpdateLocationEfsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateLocationEfsRequest,
   output: UpdateLocationEfsResponse,
   errors: [InternalException, InvalidRequestException],
@@ -3568,7 +3568,7 @@ export const updateLocationFsxLustre: API.OperationMethod<
   UpdateLocationFsxLustreResponse,
   UpdateLocationFsxLustreError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateLocationFsxLustreRequest,
   output: UpdateLocationFsxLustreResponse,
   errors: [InternalException, InvalidRequestException],
@@ -3589,7 +3589,7 @@ export const updateLocationFsxOntap: API.OperationMethod<
   UpdateLocationFsxOntapResponse,
   UpdateLocationFsxOntapError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateLocationFsxOntapRequest,
   output: UpdateLocationFsxOntapResponse,
   errors: [InternalException, InvalidRequestException],
@@ -3613,7 +3613,7 @@ export const updateLocationFsxOpenZfs: API.OperationMethod<
   UpdateLocationFsxOpenZfsResponse,
   UpdateLocationFsxOpenZfsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateLocationFsxOpenZfsRequest,
   output: UpdateLocationFsxOpenZfsResponse,
   errors: [InternalException, InvalidRequestException],
@@ -3634,7 +3634,7 @@ export const updateLocationFsxWindows: API.OperationMethod<
   UpdateLocationFsxWindowsResponse,
   UpdateLocationFsxWindowsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateLocationFsxWindowsRequest,
   output: UpdateLocationFsxWindowsResponse,
   errors: [InternalException, InvalidRequestException],
@@ -3655,7 +3655,7 @@ export const updateLocationHdfs: API.OperationMethod<
   UpdateLocationHdfsResponse,
   UpdateLocationHdfsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateLocationHdfsRequest,
   output: UpdateLocationHdfsResponse,
   errors: [InternalException, InvalidRequestException],
@@ -3676,7 +3676,7 @@ export const updateLocationNfs: API.OperationMethod<
   UpdateLocationNfsResponse,
   UpdateLocationNfsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateLocationNfsRequest,
   output: UpdateLocationNfsResponse,
   errors: [InternalException, InvalidRequestException],
@@ -3697,7 +3697,7 @@ export const updateLocationObjectStorage: API.OperationMethod<
   UpdateLocationObjectStorageResponse,
   UpdateLocationObjectStorageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateLocationObjectStorageRequest,
   output: UpdateLocationObjectStorageResponse,
   errors: [InternalException, InvalidRequestException],
@@ -3722,7 +3722,7 @@ export const updateLocationS3: API.OperationMethod<
   UpdateLocationS3Response,
   UpdateLocationS3Error,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateLocationS3Request,
   output: UpdateLocationS3Response,
   errors: [InternalException, InvalidRequestException],
@@ -3743,7 +3743,7 @@ export const updateLocationSmb: API.OperationMethod<
   UpdateLocationSmbResponse,
   UpdateLocationSmbError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateLocationSmbRequest,
   output: UpdateLocationSmbResponse,
   errors: [InternalException, InvalidRequestException],
@@ -3761,7 +3761,7 @@ export const updateTask: API.OperationMethod<
   UpdateTaskResponse,
   UpdateTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTaskRequest,
   output: UpdateTaskResponse,
   errors: [InternalException, InvalidRequestException],
@@ -3784,7 +3784,7 @@ export const updateTaskExecution: API.OperationMethod<
   UpdateTaskExecutionResponse,
   UpdateTaskExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTaskExecutionRequest,
   output: UpdateTaskExecutionResponse,
   errors: [InternalException, InvalidRequestException],

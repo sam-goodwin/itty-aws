@@ -4044,7 +4044,7 @@ export const deleteRecommendationPreferences: API.OperationMethod<
   DeleteRecommendationPreferencesResponse,
   DeleteRecommendationPreferencesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRecommendationPreferencesRequest,
   output: DeleteRecommendationPreferencesResponse,
   errors: [
@@ -4095,7 +4095,7 @@ export const describeRecommendationExportJobs: API.OperationMethod<
     DescribeRecommendationExportJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRecommendationExportJobsRequest,
   output: DescribeRecommendationExportJobsResponse,
   errors: [
@@ -4140,7 +4140,7 @@ export const exportAutoScalingGroupRecommendations: API.OperationMethod<
   ExportAutoScalingGroupRecommendationsResponse,
   ExportAutoScalingGroupRecommendationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExportAutoScalingGroupRecommendationsRequest,
   output: ExportAutoScalingGroupRecommendationsResponse,
   errors: [
@@ -4179,7 +4179,7 @@ export const exportEBSVolumeRecommendations: API.OperationMethod<
   ExportEBSVolumeRecommendationsResponse,
   ExportEBSVolumeRecommendationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExportEBSVolumeRecommendationsRequest,
   output: ExportEBSVolumeRecommendationsResponse,
   errors: [
@@ -4218,7 +4218,7 @@ export const exportEC2InstanceRecommendations: API.OperationMethod<
   ExportEC2InstanceRecommendationsResponse,
   ExportEC2InstanceRecommendationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExportEC2InstanceRecommendationsRequest,
   output: ExportEC2InstanceRecommendationsResponse,
   errors: [
@@ -4257,7 +4257,7 @@ export const exportECSServiceRecommendations: API.OperationMethod<
   ExportECSServiceRecommendationsResponse,
   ExportECSServiceRecommendationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExportECSServiceRecommendationsRequest,
   output: ExportECSServiceRecommendationsResponse,
   errors: [
@@ -4296,7 +4296,7 @@ export const exportIdleRecommendations: API.OperationMethod<
   ExportIdleRecommendationsResponse,
   ExportIdleRecommendationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExportIdleRecommendationsRequest,
   output: ExportIdleRecommendationsResponse,
   errors: [
@@ -4335,7 +4335,7 @@ export const exportLambdaFunctionRecommendations: API.OperationMethod<
   ExportLambdaFunctionRecommendationsResponse,
   ExportLambdaFunctionRecommendationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExportLambdaFunctionRecommendationsRequest,
   output: ExportLambdaFunctionRecommendationsResponse,
   errors: [
@@ -4374,7 +4374,7 @@ export const exportLicenseRecommendations: API.OperationMethod<
   ExportLicenseRecommendationsResponse,
   ExportLicenseRecommendationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExportLicenseRecommendationsRequest,
   output: ExportLicenseRecommendationsResponse,
   errors: [
@@ -4413,7 +4413,7 @@ export const exportRDSDatabaseRecommendations: API.OperationMethod<
   ExportRDSDatabaseRecommendationsResponse,
   ExportRDSDatabaseRecommendationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExportRDSDatabaseRecommendationsRequest,
   output: ExportRDSDatabaseRecommendationsResponse,
   errors: [
@@ -4450,7 +4450,7 @@ export const getAutoScalingGroupRecommendations: API.OperationMethod<
   GetAutoScalingGroupRecommendationsResponse,
   GetAutoScalingGroupRecommendationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAutoScalingGroupRecommendationsRequest,
   output: GetAutoScalingGroupRecommendationsResponse,
   errors: [
@@ -4487,7 +4487,7 @@ export const getEBSVolumeRecommendations: API.OperationMethod<
   GetEBSVolumeRecommendationsResponse,
   GetEBSVolumeRecommendationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEBSVolumeRecommendationsRequest,
   output: GetEBSVolumeRecommendationsResponse,
   errors: [
@@ -4524,7 +4524,7 @@ export const getEC2InstanceRecommendations: API.OperationMethod<
   GetEC2InstanceRecommendationsResponse,
   GetEC2InstanceRecommendationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEC2InstanceRecommendationsRequest,
   output: GetEC2InstanceRecommendationsResponse,
   errors: [
@@ -4562,7 +4562,7 @@ export const getEC2RecommendationProjectedMetrics: API.OperationMethod<
   GetEC2RecommendationProjectedMetricsResponse,
   GetEC2RecommendationProjectedMetricsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEC2RecommendationProjectedMetricsRequest,
   output: GetEC2RecommendationProjectedMetricsResponse,
   errors: [
@@ -4594,7 +4594,7 @@ export const getECSServiceRecommendationProjectedMetrics: API.OperationMethod<
   GetECSServiceRecommendationProjectedMetricsResponse,
   GetECSServiceRecommendationProjectedMetricsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetECSServiceRecommendationProjectedMetricsRequest,
   output: GetECSServiceRecommendationProjectedMetricsResponse,
   errors: [
@@ -4632,7 +4632,7 @@ export const getECSServiceRecommendations: API.OperationMethod<
   GetECSServiceRecommendationsResponse,
   GetECSServiceRecommendationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetECSServiceRecommendationsRequest,
   output: GetECSServiceRecommendationsResponse,
   errors: [
@@ -4670,7 +4670,7 @@ export const getEffectiveRecommendationPreferences: API.OperationMethod<
   GetEffectiveRecommendationPreferencesResponse,
   GetEffectiveRecommendationPreferencesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEffectiveRecommendationPreferencesRequest,
   output: GetEffectiveRecommendationPreferencesResponse,
   errors: [
@@ -4705,7 +4705,7 @@ export const getEnrollmentStatus: API.OperationMethod<
   GetEnrollmentStatusResponse,
   GetEnrollmentStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEnrollmentStatusRequest,
   output: GetEnrollmentStatusResponse,
   errors: [
@@ -4751,7 +4751,7 @@ export const getEnrollmentStatusesForOrganization: API.OperationMethod<
     GetEnrollmentStatusesForOrganizationError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetEnrollmentStatusesForOrganizationRequest,
   output: GetEnrollmentStatusesForOrganizationResponse,
   errors: [
@@ -4790,7 +4790,7 @@ export const getIdleRecommendations: API.OperationMethod<
   GetIdleRecommendationsResponse,
   GetIdleRecommendationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIdleRecommendationsRequest,
   output: GetIdleRecommendationsResponse,
   errors: [
@@ -4842,7 +4842,7 @@ export const getLambdaFunctionRecommendations: API.OperationMethod<
     GetLambdaFunctionRecommendationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetLambdaFunctionRecommendationsRequest,
   output: GetLambdaFunctionRecommendationsResponse,
   errors: [
@@ -4885,7 +4885,7 @@ export const getLicenseRecommendations: API.OperationMethod<
   GetLicenseRecommendationsResponse,
   GetLicenseRecommendationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLicenseRecommendationsRequest,
   output: GetLicenseRecommendationsResponse,
   errors: [
@@ -4917,7 +4917,7 @@ export const getRDSDatabaseRecommendationProjectedMetrics: API.OperationMethod<
   GetRDSDatabaseRecommendationProjectedMetricsResponse,
   GetRDSDatabaseRecommendationProjectedMetricsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRDSDatabaseRecommendationProjectedMetricsRequest,
   output: GetRDSDatabaseRecommendationProjectedMetricsResponse,
   errors: [
@@ -4955,7 +4955,7 @@ export const getRDSDatabaseRecommendations: API.OperationMethod<
   GetRDSDatabaseRecommendationsResponse,
   GetRDSDatabaseRecommendationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRDSDatabaseRecommendationsRequest,
   output: GetRDSDatabaseRecommendationsResponse,
   errors: [
@@ -5011,7 +5011,7 @@ export const getRecommendationPreferences: API.OperationMethod<
     GetRecommendationPreferencesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetRecommendationPreferencesRequest,
   output: GetRecommendationPreferencesResponse,
   errors: [
@@ -5087,7 +5087,7 @@ export const getRecommendationSummaries: API.OperationMethod<
     GetRecommendationSummariesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetRecommendationSummariesRequest,
   output: GetRecommendationSummariesResponse,
   errors: [
@@ -5129,7 +5129,7 @@ export const putRecommendationPreferences: API.OperationMethod<
   PutRecommendationPreferencesResponse,
   PutRecommendationPreferencesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutRecommendationPreferencesRequest,
   output: PutRecommendationPreferencesResponse,
   errors: [
@@ -5169,7 +5169,7 @@ export const updateEnrollmentStatus: API.OperationMethod<
   UpdateEnrollmentStatusResponse,
   UpdateEnrollmentStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEnrollmentStatusRequest,
   output: UpdateEnrollmentStatusResponse,
   errors: [

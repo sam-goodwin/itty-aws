@@ -966,7 +966,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -992,7 +992,7 @@ export const putNotificationSettings: API.OperationMethod<
   PutNotificationSettingsResponse,
   PutNotificationSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutNotificationSettingsRequest,
   output: PutNotificationSettingsResponse,
   errors: [
@@ -1016,7 +1016,7 @@ export const resetNotificationSettings: API.OperationMethod<
   ResetNotificationSettingsResponse,
   ResetNotificationSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetNotificationSettingsRequest,
   output: ResetNotificationSettingsResponse,
   errors: [
@@ -1041,7 +1041,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -1066,7 +1066,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -1089,7 +1089,7 @@ export const importCrl: API.OperationMethod<
   CrlDetailResponse,
   ImportCrlError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportCrlRequest,
   output: CrlDetailResponse,
   errors: [AccessDeniedException, ValidationException],
@@ -1105,7 +1105,7 @@ export const getCrl: API.OperationMethod<
   CrlDetailResponse,
   GetCrlError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ScalarCrlRequest,
   output: CrlDetailResponse,
   errors: [ResourceNotFoundException],
@@ -1125,7 +1125,7 @@ export const updateCrl: API.OperationMethod<
   CrlDetailResponse,
   UpdateCrlError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCrlRequest,
   output: CrlDetailResponse,
   errors: [
@@ -1148,7 +1148,7 @@ export const deleteCrl: API.OperationMethod<
   CrlDetailResponse,
   DeleteCrlError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ScalarCrlRequest,
   output: CrlDetailResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
@@ -1182,7 +1182,7 @@ export const listCrls: API.OperationMethod<
     ListCrlsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRequest,
   output: ListCrlsResponse,
   errors: [AccessDeniedException, ValidationException],
@@ -1206,7 +1206,7 @@ export const disableCrl: API.OperationMethod<
   CrlDetailResponse,
   DisableCrlError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ScalarCrlRequest,
   output: CrlDetailResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
@@ -1225,7 +1225,7 @@ export const enableCrl: API.OperationMethod<
   CrlDetailResponse,
   EnableCrlError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ScalarCrlRequest,
   output: CrlDetailResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
@@ -1244,7 +1244,7 @@ export const createProfile: API.OperationMethod<
   ProfileDetailResponse,
   CreateProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProfileRequest,
   output: ProfileDetailResponse,
   errors: [AccessDeniedException, ValidationException],
@@ -1263,7 +1263,7 @@ export const getProfile: API.OperationMethod<
   ProfileDetailResponse,
   GetProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ScalarProfileRequest,
   output: ProfileDetailResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
@@ -1283,7 +1283,7 @@ export const updateProfile: API.OperationMethod<
   ProfileDetailResponse,
   UpdateProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateProfileRequest,
   output: ProfileDetailResponse,
   errors: [
@@ -1306,7 +1306,7 @@ export const deleteProfile: API.OperationMethod<
   ProfileDetailResponse,
   DeleteProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ScalarProfileRequest,
   output: ProfileDetailResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
@@ -1340,7 +1340,7 @@ export const listProfiles: API.OperationMethod<
     ListProfilesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRequest,
   output: ListProfilesResponse,
   errors: [AccessDeniedException, ValidationException],
@@ -1363,7 +1363,7 @@ export const deleteAttributeMapping: API.OperationMethod<
   DeleteAttributeMappingResponse,
   DeleteAttributeMappingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAttributeMappingRequest,
   output: DeleteAttributeMappingResponse,
   errors: [
@@ -1386,7 +1386,7 @@ export const disableProfile: API.OperationMethod<
   ProfileDetailResponse,
   DisableProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ScalarProfileRequest,
   output: ProfileDetailResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
@@ -1405,7 +1405,7 @@ export const enableProfile: API.OperationMethod<
   ProfileDetailResponse,
   EnableProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ScalarProfileRequest,
   output: ProfileDetailResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
@@ -1423,7 +1423,7 @@ export const putAttributeMapping: API.OperationMethod<
   PutAttributeMappingResponse,
   PutAttributeMappingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutAttributeMappingRequest,
   output: PutAttributeMappingResponse,
   errors: [
@@ -1446,7 +1446,7 @@ export const getSubject: API.OperationMethod<
   SubjectDetailResponse,
   GetSubjectError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ScalarSubjectRequest,
   output: SubjectDetailResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
@@ -1480,7 +1480,7 @@ export const listSubjects: API.OperationMethod<
     ListSubjectsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRequest,
   output: ListSubjectsResponse,
   errors: [AccessDeniedException, ValidationException],
@@ -1504,7 +1504,7 @@ export const createTrustAnchor: API.OperationMethod<
   TrustAnchorDetailResponse,
   CreateTrustAnchorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTrustAnchorRequest,
   output: TrustAnchorDetailResponse,
   errors: [AccessDeniedException, ValidationException],
@@ -1524,7 +1524,7 @@ export const getTrustAnchor: API.OperationMethod<
   TrustAnchorDetailResponse,
   GetTrustAnchorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ScalarTrustAnchorRequest,
   output: TrustAnchorDetailResponse,
   errors: [
@@ -1548,7 +1548,7 @@ export const updateTrustAnchor: API.OperationMethod<
   TrustAnchorDetailResponse,
   UpdateTrustAnchorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTrustAnchorRequest,
   output: TrustAnchorDetailResponse,
   errors: [
@@ -1571,7 +1571,7 @@ export const deleteTrustAnchor: API.OperationMethod<
   TrustAnchorDetailResponse,
   DeleteTrustAnchorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ScalarTrustAnchorRequest,
   output: TrustAnchorDetailResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
@@ -1605,7 +1605,7 @@ export const listTrustAnchors: API.OperationMethod<
     ListTrustAnchorsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRequest,
   output: ListTrustAnchorsResponse,
   errors: [AccessDeniedException, ValidationException],
@@ -1629,7 +1629,7 @@ export const disableTrustAnchor: API.OperationMethod<
   TrustAnchorDetailResponse,
   DisableTrustAnchorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ScalarTrustAnchorRequest,
   output: TrustAnchorDetailResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
@@ -1648,7 +1648,7 @@ export const enableTrustAnchor: API.OperationMethod<
   TrustAnchorDetailResponse,
   EnableTrustAnchorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ScalarTrustAnchorRequest,
   output: TrustAnchorDetailResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],

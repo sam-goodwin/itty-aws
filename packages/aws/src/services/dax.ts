@@ -1286,7 +1286,7 @@ export const createCluster: API.OperationMethod<
   CreateClusterResponse,
   CreateClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateClusterRequest,
   output: CreateClusterResponse,
   errors: [
@@ -1324,7 +1324,7 @@ export const createParameterGroup: API.OperationMethod<
   CreateParameterGroupResponse,
   CreateParameterGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateParameterGroupRequest,
   output: CreateParameterGroupResponse,
   errors: [
@@ -1352,7 +1352,7 @@ export const createSubnetGroup: API.OperationMethod<
   CreateSubnetGroupResponse,
   CreateSubnetGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSubnetGroupRequest,
   output: CreateSubnetGroupResponse,
   errors: [
@@ -1384,7 +1384,7 @@ export const decreaseReplicationFactor: API.OperationMethod<
   DecreaseReplicationFactorResponse,
   DecreaseReplicationFactorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DecreaseReplicationFactorRequest,
   output: DecreaseReplicationFactorResponse,
   errors: [
@@ -1415,7 +1415,7 @@ export const deleteCluster: API.OperationMethod<
   DeleteClusterResponse,
   DeleteClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteClusterRequest,
   output: DeleteClusterResponse,
   errors: [
@@ -1442,7 +1442,7 @@ export const deleteParameterGroup: API.OperationMethod<
   DeleteParameterGroupResponse,
   DeleteParameterGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteParameterGroupRequest,
   output: DeleteParameterGroupResponse,
   errors: [
@@ -1469,7 +1469,7 @@ export const deleteSubnetGroup: API.OperationMethod<
   DeleteSubnetGroupResponse,
   DeleteSubnetGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSubnetGroupRequest,
   output: DeleteSubnetGroupResponse,
   errors: [
@@ -1508,7 +1508,7 @@ export const describeClusters: API.OperationMethod<
   DescribeClustersResponse,
   DescribeClustersError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeClustersRequest,
   output: DescribeClustersResponse,
   errors: [
@@ -1532,7 +1532,7 @@ export const describeDefaultParameters: API.OperationMethod<
   DescribeDefaultParametersResponse,
   DescribeDefaultParametersError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDefaultParametersRequest,
   output: DescribeDefaultParametersResponse,
   errors: [
@@ -1559,7 +1559,7 @@ export const describeEvents: API.OperationMethod<
   DescribeEventsResponse,
   DescribeEventsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeEventsRequest,
   output: DescribeEventsResponse,
   errors: [
@@ -1583,7 +1583,7 @@ export const describeParameterGroups: API.OperationMethod<
   DescribeParameterGroupsResponse,
   DescribeParameterGroupsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeParameterGroupsRequest,
   output: DescribeParameterGroupsResponse,
   errors: [
@@ -1607,7 +1607,7 @@ export const describeParameters: API.OperationMethod<
   DescribeParametersResponse,
   DescribeParametersError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeParametersRequest,
   output: DescribeParametersResponse,
   errors: [
@@ -1630,7 +1630,7 @@ export const describeSubnetGroups: API.OperationMethod<
   DescribeSubnetGroupsResponse,
   DescribeSubnetGroupsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeSubnetGroupsRequest,
   output: DescribeSubnetGroupsResponse,
   errors: [ServiceLinkedRoleNotFoundFault, SubnetGroupNotFoundFault],
@@ -1654,7 +1654,7 @@ export const increaseReplicationFactor: API.OperationMethod<
   IncreaseReplicationFactorResponse,
   IncreaseReplicationFactorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: IncreaseReplicationFactorRequest,
   output: IncreaseReplicationFactorResponse,
   errors: [
@@ -1686,7 +1686,7 @@ export const listTags: API.OperationMethod<
   ListTagsResponse,
   ListTagsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsRequest,
   output: ListTagsResponse,
   errors: [
@@ -1719,7 +1719,7 @@ export const rebootNode: API.OperationMethod<
   RebootNodeResponse,
   RebootNodeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RebootNodeRequest,
   output: RebootNodeResponse,
   errors: [
@@ -1750,7 +1750,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -1781,7 +1781,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -1813,7 +1813,7 @@ export const updateCluster: API.OperationMethod<
   UpdateClusterResponse,
   UpdateClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateClusterRequest,
   output: UpdateClusterResponse,
   errors: [
@@ -1842,7 +1842,7 @@ export const updateParameterGroup: API.OperationMethod<
   UpdateParameterGroupResponse,
   UpdateParameterGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateParameterGroupRequest,
   output: UpdateParameterGroupResponse,
   errors: [
@@ -1869,7 +1869,7 @@ export const updateSubnetGroup: API.OperationMethod<
   UpdateSubnetGroupResponse,
   UpdateSubnetGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSubnetGroupRequest,
   output: UpdateSubnetGroupResponse,
   errors: [

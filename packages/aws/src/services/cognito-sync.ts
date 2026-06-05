@@ -981,7 +981,7 @@ export const bulkPublish: API.OperationMethod<
   BulkPublishResponse,
   BulkPublishError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BulkPublishRequest,
   output: BulkPublishResponse,
   errors: [
@@ -1014,7 +1014,7 @@ export const deleteDataset: API.OperationMethod<
   DeleteDatasetResponse,
   DeleteDatasetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDatasetRequest,
   output: DeleteDatasetResponse,
   errors: [
@@ -1045,7 +1045,7 @@ export const describeDataset: API.OperationMethod<
   DescribeDatasetResponse,
   DescribeDatasetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDatasetRequest,
   output: DescribeDatasetResponse,
   errors: [
@@ -1114,7 +1114,7 @@ export const describeIdentityPoolUsage: API.OperationMethod<
   DescribeIdentityPoolUsageResponse,
   DescribeIdentityPoolUsageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeIdentityPoolUsageRequest,
   output: DescribeIdentityPoolUsageResponse,
   errors: [
@@ -1185,7 +1185,7 @@ export const describeIdentityUsage: API.OperationMethod<
   DescribeIdentityUsageResponse,
   DescribeIdentityUsageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeIdentityUsageRequest,
   output: DescribeIdentityUsageResponse,
   errors: [
@@ -1212,7 +1212,7 @@ export const getBulkPublishDetails: API.OperationMethod<
   GetBulkPublishDetailsResponse,
   GetBulkPublishDetailsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetBulkPublishDetailsRequest,
   output: GetBulkPublishDetailsResponse,
   errors: [
@@ -1239,7 +1239,7 @@ export const getCognitoEvents: API.OperationMethod<
   GetCognitoEventsResponse,
   GetCognitoEventsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCognitoEventsRequest,
   output: GetCognitoEventsResponse,
   errors: [
@@ -1307,7 +1307,7 @@ export const getIdentityPoolConfiguration: API.OperationMethod<
   GetIdentityPoolConfigurationResponse,
   GetIdentityPoolConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIdentityPoolConfigurationRequest,
   output: GetIdentityPoolConfigurationResponse,
   errors: [
@@ -1386,7 +1386,7 @@ export const listDatasets: API.OperationMethod<
   ListDatasetsResponse,
   ListDatasetsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListDatasetsRequest,
   output: ListDatasetsResponse,
   errors: [
@@ -1464,7 +1464,7 @@ export const listIdentityPoolUsage: API.OperationMethod<
   ListIdentityPoolUsageResponse,
   ListIdentityPoolUsageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListIdentityPoolUsageRequest,
   output: ListIdentityPoolUsageResponse,
   errors: [
@@ -1539,7 +1539,7 @@ export const listRecords: API.OperationMethod<
   ListRecordsResponse,
   ListRecordsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListRecordsRequest,
   output: ListRecordsResponse,
   errors: [
@@ -1606,7 +1606,7 @@ export const registerDevice: API.OperationMethod<
   RegisterDeviceResponse,
   RegisterDeviceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterDeviceRequest,
   output: RegisterDeviceResponse,
   errors: [
@@ -1635,7 +1635,7 @@ export const setCognitoEvents: API.OperationMethod<
   SetCognitoEventsResponse,
   SetCognitoEventsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetCognitoEventsRequest,
   output: SetCognitoEventsResponse,
   errors: [
@@ -1709,7 +1709,7 @@ export const setIdentityPoolConfiguration: API.OperationMethod<
   SetIdentityPoolConfigurationResponse,
   SetIdentityPoolConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIdentityPoolConfigurationRequest,
   output: SetIdentityPoolConfigurationResponse,
   errors: [
@@ -1777,7 +1777,7 @@ export const subscribeToDataset: API.OperationMethod<
   SubscribeToDatasetResponse,
   SubscribeToDatasetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SubscribeToDatasetRequest,
   output: SubscribeToDatasetResponse,
   errors: [
@@ -1846,7 +1846,7 @@ export const unsubscribeFromDataset: API.OperationMethod<
   UnsubscribeFromDatasetResponse,
   UnsubscribeFromDatasetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UnsubscribeFromDatasetRequest,
   output: UnsubscribeFromDatasetResponse,
   errors: [
@@ -1883,7 +1883,7 @@ export const updateRecords: API.OperationMethod<
   UpdateRecordsResponse,
   UpdateRecordsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRecordsRequest,
   output: UpdateRecordsResponse,
   errors: [

@@ -3267,7 +3267,7 @@ export const addApplicationCloudWatchLoggingOption: API.OperationMethod<
   AddApplicationCloudWatchLoggingOptionResponse,
   AddApplicationCloudWatchLoggingOptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddApplicationCloudWatchLoggingOptionRequest,
   output: AddApplicationCloudWatchLoggingOptionResponse,
   errors: [
@@ -3303,7 +3303,7 @@ export const addApplicationInput: API.OperationMethod<
   AddApplicationInputResponse,
   AddApplicationInputError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddApplicationInputRequest,
   output: AddApplicationInputResponse,
   errors: [
@@ -3332,7 +3332,7 @@ export const addApplicationInputProcessingConfiguration: API.OperationMethod<
   AddApplicationInputProcessingConfigurationResponse,
   AddApplicationInputProcessingConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddApplicationInputProcessingConfigurationRequest,
   output: AddApplicationInputProcessingConfigurationResponse,
   errors: [
@@ -3373,7 +3373,7 @@ export const addApplicationOutput: API.OperationMethod<
   AddApplicationOutputResponse,
   AddApplicationOutputError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddApplicationOutputRequest,
   output: AddApplicationOutputResponse,
   errors: [
@@ -3405,7 +3405,7 @@ export const addApplicationReferenceDataSource: API.OperationMethod<
   AddApplicationReferenceDataSourceResponse,
   AddApplicationReferenceDataSourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddApplicationReferenceDataSourceRequest,
   output: AddApplicationReferenceDataSourceResponse,
   errors: [
@@ -3439,7 +3439,7 @@ export const addApplicationVpcConfiguration: API.OperationMethod<
   AddApplicationVpcConfigurationResponse,
   AddApplicationVpcConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddApplicationVpcConfigurationRequest,
   output: AddApplicationVpcConfigurationResponse,
   errors: [
@@ -3470,7 +3470,7 @@ export const createApplication: API.OperationMethod<
   CreateApplicationResponse,
   CreateApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateApplicationRequest,
   output: CreateApplicationResponse,
   errors: [
@@ -3510,7 +3510,7 @@ export const createApplicationPresignedUrl: API.OperationMethod<
   CreateApplicationPresignedUrlResponse,
   CreateApplicationPresignedUrlError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateApplicationPresignedUrlRequest,
   output: CreateApplicationPresignedUrlResponse,
   errors: [
@@ -3536,7 +3536,7 @@ export const createApplicationSnapshot: API.OperationMethod<
   CreateApplicationSnapshotResponse,
   CreateApplicationSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateApplicationSnapshotRequest,
   output: CreateApplicationSnapshotResponse,
   errors: [
@@ -3565,7 +3565,7 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationResponse,
   DeleteApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteApplicationRequest,
   output: DeleteApplicationResponse,
   errors: [
@@ -3593,7 +3593,7 @@ export const deleteApplicationCloudWatchLoggingOption: API.OperationMethod<
   DeleteApplicationCloudWatchLoggingOptionResponse,
   DeleteApplicationCloudWatchLoggingOptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteApplicationCloudWatchLoggingOptionRequest,
   output: DeleteApplicationCloudWatchLoggingOptionResponse,
   errors: [
@@ -3620,7 +3620,7 @@ export const deleteApplicationInputProcessingConfiguration: API.OperationMethod<
   DeleteApplicationInputProcessingConfigurationResponse,
   DeleteApplicationInputProcessingConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteApplicationInputProcessingConfigurationRequest,
   output: DeleteApplicationInputProcessingConfigurationResponse,
   errors: [
@@ -3648,7 +3648,7 @@ export const deleteApplicationOutput: API.OperationMethod<
   DeleteApplicationOutputResponse,
   DeleteApplicationOutputError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteApplicationOutputRequest,
   output: DeleteApplicationOutputResponse,
   errors: [
@@ -3677,7 +3677,7 @@ export const deleteApplicationReferenceDataSource: API.OperationMethod<
   DeleteApplicationReferenceDataSourceResponse,
   DeleteApplicationReferenceDataSourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteApplicationReferenceDataSourceRequest,
   output: DeleteApplicationReferenceDataSourceResponse,
   errors: [
@@ -3704,7 +3704,7 @@ export const deleteApplicationSnapshot: API.OperationMethod<
   DeleteApplicationSnapshotResponse,
   DeleteApplicationSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteApplicationSnapshotRequest,
   output: DeleteApplicationSnapshotResponse,
   errors: [
@@ -3731,7 +3731,7 @@ export const deleteApplicationVpcConfiguration: API.OperationMethod<
   DeleteApplicationVpcConfigurationResponse,
   DeleteApplicationVpcConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteApplicationVpcConfigurationRequest,
   output: DeleteApplicationVpcConfigurationResponse,
   errors: [
@@ -3758,7 +3758,7 @@ export const describeApplication: API.OperationMethod<
   DescribeApplicationResponse,
   DescribeApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeApplicationRequest,
   output: DescribeApplicationResponse,
   errors: [
@@ -3782,7 +3782,7 @@ export const describeApplicationOperation: API.OperationMethod<
   DescribeApplicationOperationResponse,
   DescribeApplicationOperationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeApplicationOperationRequest,
   output: DescribeApplicationOperationResponse,
   errors: [
@@ -3804,7 +3804,7 @@ export const describeApplicationSnapshot: API.OperationMethod<
   DescribeApplicationSnapshotResponse,
   DescribeApplicationSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeApplicationSnapshotRequest,
   output: DescribeApplicationSnapshotResponse,
   errors: [
@@ -3828,7 +3828,7 @@ export const describeApplicationVersion: API.OperationMethod<
   DescribeApplicationVersionResponse,
   DescribeApplicationVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeApplicationVersionRequest,
   output: DescribeApplicationVersionResponse,
   errors: [
@@ -3860,7 +3860,7 @@ export const discoverInputSchema: API.OperationMethod<
   DiscoverInputSchemaResponse,
   DiscoverInputSchemaError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DiscoverInputSchemaRequest,
   output: DiscoverInputSchemaResponse,
   errors: [
@@ -3905,7 +3905,7 @@ export const listApplicationOperations: API.OperationMethod<
     ListApplicationOperationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationOperationsRequest,
   output: ListApplicationOperationsResponse,
   errors: [
@@ -3949,7 +3949,7 @@ export const listApplications: API.OperationMethod<
     ListApplicationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationsRequest,
   output: ListApplicationsResponse,
   errors: [InvalidRequestException],
@@ -3987,7 +3987,7 @@ export const listApplicationSnapshots: API.OperationMethod<
     ListApplicationSnapshotsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationSnapshotsRequest,
   output: ListApplicationSnapshotsResponse,
   errors: [InvalidArgumentException, UnsupportedOperationException],
@@ -4031,7 +4031,7 @@ export const listApplicationVersions: API.OperationMethod<
     ListApplicationVersionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationVersionsRequest,
   output: ListApplicationVersionsResponse,
   errors: [
@@ -4060,7 +4060,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -4092,7 +4092,7 @@ export const rollbackApplication: API.OperationMethod<
   RollbackApplicationResponse,
   RollbackApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RollbackApplicationRequest,
   output: RollbackApplicationResponse,
   errors: [
@@ -4120,7 +4120,7 @@ export const startApplication: API.OperationMethod<
   StartApplicationResponse,
   StartApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartApplicationRequest,
   output: StartApplicationResponse,
   errors: [
@@ -4154,7 +4154,7 @@ export const stopApplication: API.OperationMethod<
   StopApplicationResponse,
   StopApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopApplicationRequest,
   output: StopApplicationResponse,
   errors: [
@@ -4183,7 +4183,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -4210,7 +4210,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -4243,7 +4243,7 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationResponse,
   UpdateApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateApplicationRequest,
   output: UpdateApplicationResponse,
   errors: [
@@ -4289,7 +4289,7 @@ export const updateApplicationMaintenanceConfiguration: API.OperationMethod<
   UpdateApplicationMaintenanceConfigurationResponse,
   UpdateApplicationMaintenanceConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateApplicationMaintenanceConfigurationRequest,
   output: UpdateApplicationMaintenanceConfigurationResponse,
   errors: [

@@ -1603,7 +1603,7 @@ export const createConnector: API.OperationMethod<
   CreateConnectorResponse,
   CreateConnectorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateConnectorRequest,
   output: CreateConnectorResponse,
   errors: [
@@ -1635,7 +1635,7 @@ export const createCustomPlugin: API.OperationMethod<
   CreateCustomPluginResponse,
   CreateCustomPluginError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCustomPluginRequest,
   output: CreateCustomPluginResponse,
   errors: [
@@ -1667,7 +1667,7 @@ export const createWorkerConfiguration: API.OperationMethod<
   CreateWorkerConfigurationResponse,
   CreateWorkerConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateWorkerConfigurationRequest,
   output: CreateWorkerConfigurationResponse,
   errors: [
@@ -1698,7 +1698,7 @@ export const deleteConnector: API.OperationMethod<
   DeleteConnectorResponse,
   DeleteConnectorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConnectorRequest,
   output: DeleteConnectorResponse,
   errors: [
@@ -1728,7 +1728,7 @@ export const deleteCustomPlugin: API.OperationMethod<
   DeleteCustomPluginResponse,
   DeleteCustomPluginError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCustomPluginRequest,
   output: DeleteCustomPluginResponse,
   errors: [
@@ -1758,7 +1758,7 @@ export const deleteWorkerConfiguration: API.OperationMethod<
   DeleteWorkerConfigurationResponse,
   DeleteWorkerConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteWorkerConfigurationRequest,
   output: DeleteWorkerConfigurationResponse,
   errors: [
@@ -1788,7 +1788,7 @@ export const describeConnector: API.OperationMethod<
   DescribeConnectorResponse,
   DescribeConnectorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeConnectorRequest,
   output: DescribeConnectorResponse,
   errors: [
@@ -1818,7 +1818,7 @@ export const describeConnectorOperation: API.OperationMethod<
   DescribeConnectorOperationResponse,
   DescribeConnectorOperationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeConnectorOperationRequest,
   output: DescribeConnectorOperationResponse,
   errors: [
@@ -1848,7 +1848,7 @@ export const describeCustomPlugin: API.OperationMethod<
   DescribeCustomPluginResponse,
   DescribeCustomPluginError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeCustomPluginRequest,
   output: DescribeCustomPluginResponse,
   errors: [
@@ -1878,7 +1878,7 @@ export const describeWorkerConfiguration: API.OperationMethod<
   DescribeWorkerConfigurationResponse,
   DescribeWorkerConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeWorkerConfigurationRequest,
   output: DescribeWorkerConfigurationResponse,
   errors: [
@@ -1923,7 +1923,7 @@ export const listConnectorOperations: API.OperationMethod<
     ListConnectorOperationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConnectorOperationsRequest,
   output: ListConnectorOperationsResponse,
   errors: [
@@ -1974,7 +1974,7 @@ export const listConnectors: API.OperationMethod<
     ListConnectorsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConnectorsRequest,
   output: ListConnectorsResponse,
   errors: [
@@ -2025,7 +2025,7 @@ export const listCustomPlugins: API.OperationMethod<
     ListCustomPluginsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomPluginsRequest,
   output: ListCustomPluginsResponse,
   errors: [
@@ -2061,7 +2061,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -2106,7 +2106,7 @@ export const listWorkerConfigurations: API.OperationMethod<
     ListWorkerConfigurationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkerConfigurationsRequest,
   output: ListWorkerConfigurationsResponse,
   errors: [
@@ -2143,7 +2143,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -2174,7 +2174,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -2204,7 +2204,7 @@ export const updateConnector: API.OperationMethod<
   UpdateConnectorResponse,
   UpdateConnectorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateConnectorRequest,
   output: UpdateConnectorResponse,
   errors: [

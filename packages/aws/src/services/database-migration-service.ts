@@ -7894,7 +7894,7 @@ export const addTagsToResource: API.OperationMethod<
   AddTagsToResourceResponse,
   AddTagsToResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddTagsToResourceMessage,
   output: AddTagsToResourceResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
@@ -7911,7 +7911,7 @@ export const applyPendingMaintenanceAction: API.OperationMethod<
   ApplyPendingMaintenanceActionResponse,
   ApplyPendingMaintenanceActionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ApplyPendingMaintenanceActionMessage,
   output: ApplyPendingMaintenanceActionResponse,
   errors: [ResourceNotFoundFault],
@@ -7937,7 +7937,7 @@ export const batchStartRecommendations: API.OperationMethod<
   BatchStartRecommendationsResponse,
   BatchStartRecommendationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchStartRecommendationsRequest,
   output: BatchStartRecommendationsResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
@@ -7955,7 +7955,7 @@ export const cancelMetadataModelConversion: API.OperationMethod<
   CancelMetadataModelConversionResponse,
   CancelMetadataModelConversionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelMetadataModelConversionMessage,
   output: CancelMetadataModelConversionResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
@@ -7973,7 +7973,7 @@ export const cancelMetadataModelCreation: API.OperationMethod<
   CancelMetadataModelCreationResponse,
   CancelMetadataModelCreationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelMetadataModelCreationMessage,
   output: CancelMetadataModelCreationResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
@@ -7995,7 +7995,7 @@ export const cancelReplicationTaskAssessmentRun: API.OperationMethod<
   CancelReplicationTaskAssessmentRunResponse,
   CancelReplicationTaskAssessmentRunError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelReplicationTaskAssessmentRunMessage,
   output: CancelReplicationTaskAssessmentRunResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
@@ -8015,7 +8015,7 @@ export const createDataMigration: API.OperationMethod<
   CreateDataMigrationResponse,
   CreateDataMigrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDataMigrationMessage,
   output: CreateDataMigrationResponse,
   errors: [
@@ -8041,7 +8041,7 @@ export const createDataProvider: API.OperationMethod<
   CreateDataProviderResponse,
   CreateDataProviderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDataProviderMessage,
   output: CreateDataProviderResponse,
   errors: [
@@ -8075,7 +8075,7 @@ export const createEndpoint: API.OperationMethod<
   CreateEndpointResponse,
   CreateEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEndpointMessage,
   output: CreateEndpointResponse,
   errors: [
@@ -8123,7 +8123,7 @@ export const createEventSubscription: API.OperationMethod<
   CreateEventSubscriptionResponse,
   CreateEventSubscriptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEventSubscriptionMessage,
   output: CreateEventSubscriptionResponse,
   errors: [
@@ -8156,7 +8156,7 @@ export const createFleetAdvisorCollector: API.OperationMethod<
   CreateFleetAdvisorCollectorResponse,
   CreateFleetAdvisorCollectorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFleetAdvisorCollectorRequest,
   output: CreateFleetAdvisorCollectorResponse,
   errors: [
@@ -8186,7 +8186,7 @@ export const createInstanceProfile: API.OperationMethod<
   CreateInstanceProfileResponse,
   CreateInstanceProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateInstanceProfileMessage,
   output: CreateInstanceProfileResponse,
   errors: [
@@ -8221,7 +8221,7 @@ export const createMigrationProject: API.OperationMethod<
   CreateMigrationProjectResponse,
   CreateMigrationProjectError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMigrationProjectMessage,
   output: CreateMigrationProjectResponse,
   errors: [
@@ -8254,7 +8254,7 @@ export const createReplicationConfig: API.OperationMethod<
   CreateReplicationConfigResponse,
   CreateReplicationConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateReplicationConfigMessage,
   output: CreateReplicationConfigResponse,
   errors: [
@@ -8297,7 +8297,7 @@ export const createReplicationInstance: API.OperationMethod<
   CreateReplicationInstanceResponse,
   CreateReplicationInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateReplicationInstanceMessage,
   output: CreateReplicationInstanceResponse,
   errors: [
@@ -8339,7 +8339,7 @@ export const createReplicationSubnetGroup: API.OperationMethod<
   CreateReplicationSubnetGroupResponse,
   CreateReplicationSubnetGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateReplicationSubnetGroupMessage,
   output: CreateReplicationSubnetGroupResponse,
   errors: [
@@ -8367,7 +8367,7 @@ export const createReplicationTask: API.OperationMethod<
   CreateReplicationTaskResponse,
   CreateReplicationTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateReplicationTaskMessage,
   output: CreateReplicationTaskResponse,
   errors: [
@@ -8391,7 +8391,7 @@ export const deleteCertificate: API.OperationMethod<
   DeleteCertificateResponse,
   DeleteCertificateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCertificateMessage,
   output: DeleteCertificateResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
@@ -8409,7 +8409,7 @@ export const deleteConnection: API.OperationMethod<
   DeleteConnectionResponse,
   DeleteConnectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConnectionMessage,
   output: DeleteConnectionResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
@@ -8427,7 +8427,7 @@ export const deleteDataMigration: API.OperationMethod<
   DeleteDataMigrationResponse,
   DeleteDataMigrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDataMigrationMessage,
   output: DeleteDataMigrationResponse,
   errors: [
@@ -8453,7 +8453,7 @@ export const deleteDataProvider: API.OperationMethod<
   DeleteDataProviderResponse,
   DeleteDataProviderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDataProviderMessage,
   output: DeleteDataProviderResponse,
   errors: [
@@ -8478,7 +8478,7 @@ export const deleteEndpoint: API.OperationMethod<
   DeleteEndpointResponse,
   DeleteEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEndpointMessage,
   output: DeleteEndpointResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
@@ -8496,7 +8496,7 @@ export const deleteEventSubscription: API.OperationMethod<
   DeleteEventSubscriptionResponse,
   DeleteEventSubscriptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEventSubscriptionMessage,
   output: DeleteEventSubscriptionResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
@@ -8516,7 +8516,7 @@ export const deleteFleetAdvisorCollector: API.OperationMethod<
   DeleteFleetAdvisorCollectorResponse,
   DeleteFleetAdvisorCollectorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCollectorRequest,
   output: DeleteFleetAdvisorCollectorResponse,
   errors: [
@@ -8540,7 +8540,7 @@ export const deleteFleetAdvisorDatabases: API.OperationMethod<
   DeleteFleetAdvisorDatabasesResponse,
   DeleteFleetAdvisorDatabasesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFleetAdvisorDatabasesRequest,
   output: DeleteFleetAdvisorDatabasesResponse,
   errors: [AccessDeniedFault, InvalidOperationFault, ResourceNotFoundFault],
@@ -8562,7 +8562,7 @@ export const deleteInstanceProfile: API.OperationMethod<
   DeleteInstanceProfileResponse,
   DeleteInstanceProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteInstanceProfileMessage,
   output: DeleteInstanceProfileResponse,
   errors: [
@@ -8588,7 +8588,7 @@ export const deleteMigrationProject: API.OperationMethod<
   DeleteMigrationProjectResponse,
   DeleteMigrationProjectError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMigrationProjectMessage,
   output: DeleteMigrationProjectResponse,
   errors: [
@@ -8614,7 +8614,7 @@ export const deleteReplicationConfig: API.OperationMethod<
   DeleteReplicationConfigResponse,
   DeleteReplicationConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteReplicationConfigMessage,
   output: DeleteReplicationConfigResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
@@ -8634,7 +8634,7 @@ export const deleteReplicationInstance: API.OperationMethod<
   DeleteReplicationInstanceResponse,
   DeleteReplicationInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteReplicationInstanceMessage,
   output: DeleteReplicationInstanceResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
@@ -8652,7 +8652,7 @@ export const deleteReplicationSubnetGroup: API.OperationMethod<
   DeleteReplicationSubnetGroupResponse,
   DeleteReplicationSubnetGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteReplicationSubnetGroupMessage,
   output: DeleteReplicationSubnetGroupResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
@@ -8669,7 +8669,7 @@ export const deleteReplicationTask: API.OperationMethod<
   DeleteReplicationTaskResponse,
   DeleteReplicationTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteReplicationTaskMessage,
   output: DeleteReplicationTaskResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
@@ -8691,7 +8691,7 @@ export const deleteReplicationTaskAssessmentRun: API.OperationMethod<
   DeleteReplicationTaskAssessmentRunResponse,
   DeleteReplicationTaskAssessmentRunError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteReplicationTaskAssessmentRunMessage,
   output: DeleteReplicationTaskAssessmentRunResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
@@ -8712,7 +8712,7 @@ export const describeAccountAttributes: API.OperationMethod<
   DescribeAccountAttributesResponse,
   DescribeAccountAttributesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAccountAttributesMessage,
   output: DescribeAccountAttributesResponse,
   errors: [],
@@ -8763,7 +8763,7 @@ export const describeApplicableIndividualAssessments: API.OperationMethod<
     DescribeApplicableIndividualAssessmentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeApplicableIndividualAssessmentsMessage,
   output: DescribeApplicableIndividualAssessmentsResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
@@ -8797,7 +8797,7 @@ export const describeCertificates: API.OperationMethod<
     DescribeCertificatesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCertificatesMessage,
   output: DescribeCertificatesResponse,
   errors: [ResourceNotFoundFault],
@@ -8832,7 +8832,7 @@ export const describeConnections: API.OperationMethod<
     DescribeConnectionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeConnectionsMessage,
   output: DescribeConnectionsResponse,
   errors: [ResourceNotFoundFault],
@@ -8853,7 +8853,7 @@ export const describeConversionConfiguration: API.OperationMethod<
   DescribeConversionConfigurationResponse,
   DescribeConversionConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeConversionConfigurationMessage,
   output: DescribeConversionConfigurationResponse,
   errors: [ResourceNotFoundFault],
@@ -8886,7 +8886,7 @@ export const describeDataMigrations: API.OperationMethod<
     DescribeDataMigrationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDataMigrationsMessage,
   output: DescribeDataMigrationsResponse,
   errors: [
@@ -8930,7 +8930,7 @@ export const describeDataProviders: API.OperationMethod<
     DescribeDataProvidersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDataProvidersMessage,
   output: DescribeDataProvidersResponse,
   errors: [AccessDeniedFault, FailedDependencyFault, ResourceNotFoundFault],
@@ -8964,7 +8964,7 @@ export const describeEndpoints: API.OperationMethod<
     DescribeEndpointsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEndpointsMessage,
   output: DescribeEndpointsResponse,
   errors: [ResourceNotFoundFault],
@@ -8999,7 +8999,7 @@ export const describeEndpointSettings: API.OperationMethod<
     DescribeEndpointSettingsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEndpointSettingsMessage,
   output: DescribeEndpointSettingsResponse,
   errors: [],
@@ -9033,7 +9033,7 @@ export const describeEndpointTypes: API.OperationMethod<
     DescribeEndpointTypesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEndpointTypesMessage,
   output: DescribeEndpointTypesResponse,
   errors: [],
@@ -9067,7 +9067,7 @@ export const describeEngineVersions: API.OperationMethod<
     DescribeEngineVersionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEngineVersionsMessage,
   output: DescribeEngineVersionsResponse,
   errors: [],
@@ -9088,7 +9088,7 @@ export const describeEventCategories: API.OperationMethod<
   DescribeEventCategoriesResponse,
   DescribeEventCategoriesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeEventCategoriesMessage,
   output: DescribeEventCategoriesResponse,
   errors: [],
@@ -9119,7 +9119,7 @@ export const describeEvents: API.OperationMethod<
     DescribeEventsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEventsMessage,
   output: DescribeEventsResponse,
   errors: [],
@@ -9161,7 +9161,7 @@ export const describeEventSubscriptions: API.OperationMethod<
     DescribeEventSubscriptionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEventSubscriptionsMessage,
   output: DescribeEventSubscriptionsResponse,
   errors: [ResourceNotFoundFault],
@@ -9197,7 +9197,7 @@ export const describeExtensionPackAssociations: API.OperationMethod<
     DescribeExtensionPackAssociationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeExtensionPackAssociationsMessage,
   output: DescribeExtensionPackAssociationsResponse,
   errors: [],
@@ -9235,7 +9235,7 @@ export const describeFleetAdvisorCollectors: API.OperationMethod<
     DescribeFleetAdvisorCollectorsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFleetAdvisorCollectorsRequest,
   output: DescribeFleetAdvisorCollectorsResponse,
   errors: [InvalidResourceStateFault],
@@ -9273,7 +9273,7 @@ export const describeFleetAdvisorDatabases: API.OperationMethod<
     DescribeFleetAdvisorDatabasesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFleetAdvisorDatabasesRequest,
   output: DescribeFleetAdvisorDatabasesResponse,
   errors: [InvalidResourceStateFault],
@@ -9312,7 +9312,7 @@ export const describeFleetAdvisorLsaAnalysis: API.OperationMethod<
     DescribeFleetAdvisorLsaAnalysisError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFleetAdvisorLsaAnalysisRequest,
   output: DescribeFleetAdvisorLsaAnalysisResponse,
   errors: [InvalidResourceStateFault],
@@ -9351,7 +9351,7 @@ export const describeFleetAdvisorSchemaObjectSummary: API.OperationMethod<
     DescribeFleetAdvisorSchemaObjectSummaryError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFleetAdvisorSchemaObjectSummaryRequest,
   output: DescribeFleetAdvisorSchemaObjectSummaryResponse,
   errors: [InvalidResourceStateFault],
@@ -9389,7 +9389,7 @@ export const describeFleetAdvisorSchemas: API.OperationMethod<
     DescribeFleetAdvisorSchemasError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFleetAdvisorSchemasRequest,
   output: DescribeFleetAdvisorSchemasResponse,
   errors: [InvalidResourceStateFault],
@@ -9428,7 +9428,7 @@ export const describeInstanceProfiles: API.OperationMethod<
     DescribeInstanceProfilesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstanceProfilesMessage,
   output: DescribeInstanceProfilesResponse,
   errors: [AccessDeniedFault, FailedDependencyFault, ResourceNotFoundFault],
@@ -9450,7 +9450,7 @@ export const describeMetadataModel: API.OperationMethod<
   DescribeMetadataModelResponse,
   DescribeMetadataModelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeMetadataModelMessage,
   output: DescribeMetadataModelResponse,
   errors: [AccessDeniedFault, ResourceNotFoundFault],
@@ -9482,7 +9482,7 @@ export const describeMetadataModelAssessments: API.OperationMethod<
     DescribeMetadataModelAssessmentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMetadataModelAssessmentsMessage,
   output: DescribeMetadataModelAssessmentsResponse,
   errors: [ResourceNotFoundFault],
@@ -9519,7 +9519,7 @@ export const describeMetadataModelChildren: API.OperationMethod<
     DescribeMetadataModelChildrenError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMetadataModelChildrenMessage,
   output: DescribeMetadataModelChildrenResponse,
   errors: [AccessDeniedFault, ResourceNotFoundFault],
@@ -9556,7 +9556,7 @@ export const describeMetadataModelConversions: API.OperationMethod<
     DescribeMetadataModelConversionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMetadataModelConversionsMessage,
   output: DescribeMetadataModelConversionsResponse,
   errors: [ResourceNotFoundFault],
@@ -9593,7 +9593,7 @@ export const describeMetadataModelCreations: API.OperationMethod<
     DescribeMetadataModelCreationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMetadataModelCreationsMessage,
   output: DescribeMetadataModelCreationsResponse,
   errors: [AccessDeniedFault, ResourceNotFoundFault],
@@ -9630,7 +9630,7 @@ export const describeMetadataModelExportsAsScript: API.OperationMethod<
     DescribeMetadataModelExportsAsScriptError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMetadataModelExportsAsScriptMessage,
   output: DescribeMetadataModelExportsAsScriptResponse,
   errors: [ResourceNotFoundFault],
@@ -9666,7 +9666,7 @@ export const describeMetadataModelExportsToTarget: API.OperationMethod<
     DescribeMetadataModelExportsToTargetError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMetadataModelExportsToTargetMessage,
   output: DescribeMetadataModelExportsToTargetResponse,
   errors: [ResourceNotFoundFault],
@@ -9702,7 +9702,7 @@ export const describeMetadataModelImports: API.OperationMethod<
     DescribeMetadataModelImportsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMetadataModelImportsMessage,
   output: DescribeMetadataModelImportsResponse,
   errors: [ResourceNotFoundFault],
@@ -9741,7 +9741,7 @@ export const describeMigrationProjects: API.OperationMethod<
     DescribeMigrationProjectsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMigrationProjectsMessage,
   output: DescribeMigrationProjectsResponse,
   errors: [AccessDeniedFault, FailedDependencyFault, ResourceNotFoundFault],
@@ -9776,7 +9776,7 @@ export const describeOrderableReplicationInstances: API.OperationMethod<
     DescribeOrderableReplicationInstancesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeOrderableReplicationInstancesMessage,
   output: DescribeOrderableReplicationInstancesResponse,
   errors: [],
@@ -9813,7 +9813,7 @@ export const describePendingMaintenanceActions: API.OperationMethod<
     DescribePendingMaintenanceActionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribePendingMaintenanceActionsMessage,
   output: DescribePendingMaintenanceActionsResponse,
   errors: [ResourceNotFoundFault],
@@ -9853,7 +9853,7 @@ export const describeRecommendationLimitations: API.OperationMethod<
     DescribeRecommendationLimitationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRecommendationLimitationsRequest,
   output: DescribeRecommendationLimitationsResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault],
@@ -9893,7 +9893,7 @@ export const describeRecommendations: API.OperationMethod<
     DescribeRecommendationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRecommendationsRequest,
   output: DescribeRecommendationsResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault],
@@ -9915,7 +9915,7 @@ export const describeRefreshSchemasStatus: API.OperationMethod<
   DescribeRefreshSchemasStatusResponse,
   DescribeRefreshSchemasStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeRefreshSchemasStatusMessage,
   output: DescribeRefreshSchemasStatusResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
@@ -9947,7 +9947,7 @@ export const describeReplicationConfigs: API.OperationMethod<
     DescribeReplicationConfigsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReplicationConfigsMessage,
   output: DescribeReplicationConfigsResponse,
   errors: [ResourceNotFoundFault],
@@ -9984,7 +9984,7 @@ export const describeReplicationInstances: API.OperationMethod<
     DescribeReplicationInstancesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReplicationInstancesMessage,
   output: DescribeReplicationInstancesResponse,
   errors: [ResourceNotFoundFault],
@@ -10021,7 +10021,7 @@ export const describeReplicationInstanceTaskLogs: API.OperationMethod<
     DescribeReplicationInstanceTaskLogsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReplicationInstanceTaskLogsMessage,
   output: DescribeReplicationInstanceTaskLogsResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
@@ -10056,7 +10056,7 @@ export const describeReplications: API.OperationMethod<
     DescribeReplicationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReplicationsMessage,
   output: DescribeReplicationsResponse,
   errors: [ResourceNotFoundFault],
@@ -10092,7 +10092,7 @@ export const describeReplicationSubnetGroups: API.OperationMethod<
     DescribeReplicationSubnetGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReplicationSubnetGroupsMessage,
   output: DescribeReplicationSubnetGroupsResponse,
   errors: [ResourceNotFoundFault],
@@ -10130,7 +10130,7 @@ export const describeReplicationTableStatistics: API.OperationMethod<
     DescribeReplicationTableStatisticsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReplicationTableStatisticsMessage,
   output: DescribeReplicationTableStatisticsResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
@@ -10170,7 +10170,7 @@ export const describeReplicationTaskAssessmentResults: API.OperationMethod<
     DescribeReplicationTaskAssessmentResultsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReplicationTaskAssessmentResultsMessage,
   output: DescribeReplicationTaskAssessmentResultsResponse,
   errors: [ResourceNotFoundFault],
@@ -10214,7 +10214,7 @@ export const describeReplicationTaskAssessmentRuns: API.OperationMethod<
     DescribeReplicationTaskAssessmentRunsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReplicationTaskAssessmentRunsMessage,
   output: DescribeReplicationTaskAssessmentRunsResponse,
   errors: [ResourceNotFoundFault],
@@ -10253,7 +10253,7 @@ export const describeReplicationTaskIndividualAssessments: API.OperationMethod<
     DescribeReplicationTaskIndividualAssessmentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReplicationTaskIndividualAssessmentsMessage,
   output: DescribeReplicationTaskIndividualAssessmentsResponse,
   errors: [ResourceNotFoundFault],
@@ -10290,7 +10290,7 @@ export const describeReplicationTasks: API.OperationMethod<
     DescribeReplicationTasksError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReplicationTasksMessage,
   output: DescribeReplicationTasksResponse,
   errors: [ResourceNotFoundFault],
@@ -10327,7 +10327,7 @@ export const describeSchemas: API.OperationMethod<
     DescribeSchemasError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSchemasMessage,
   output: DescribeSchemasResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
@@ -10370,7 +10370,7 @@ export const describeTableStatistics: API.OperationMethod<
     DescribeTableStatisticsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTableStatisticsMessage,
   output: DescribeTableStatisticsResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
@@ -10392,7 +10392,7 @@ export const exportMetadataModelAssessment: API.OperationMethod<
   ExportMetadataModelAssessmentResponse,
   ExportMetadataModelAssessmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExportMetadataModelAssessmentMessage,
   output: ExportMetadataModelAssessmentResponse,
   errors: [ResourceNotFoundFault],
@@ -10410,7 +10410,7 @@ export const getTargetSelectionRules: API.OperationMethod<
   GetTargetSelectionRulesResponse,
   GetTargetSelectionRulesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTargetSelectionRulesMessage,
   output: GetTargetSelectionRulesResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
@@ -10429,7 +10429,7 @@ export const importCertificate: API.OperationMethod<
   ImportCertificateResponse,
   ImportCertificateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportCertificateMessage,
   output: ImportCertificateResponse,
   errors: [
@@ -10455,7 +10455,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceMessage,
   output: ListTagsForResourceResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
@@ -10472,7 +10472,7 @@ export const modifyConversionConfiguration: API.OperationMethod<
   ModifyConversionConfigurationResponse,
   ModifyConversionConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyConversionConfigurationMessage,
   output: ModifyConversionConfigurationResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
@@ -10490,7 +10490,7 @@ export const modifyDataMigration: API.OperationMethod<
   ModifyDataMigrationResponse,
   ModifyDataMigrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyDataMigrationMessage,
   output: ModifyDataMigrationResponse,
   errors: [
@@ -10516,7 +10516,7 @@ export const modifyDataProvider: API.OperationMethod<
   ModifyDataProviderResponse,
   ModifyDataProviderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyDataProviderMessage,
   output: ModifyDataProviderResponse,
   errors: [
@@ -10548,7 +10548,7 @@ export const modifyEndpoint: API.OperationMethod<
   ModifyEndpointResponse,
   ModifyEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyEndpointMessage,
   output: ModifyEndpointResponse,
   errors: [
@@ -10579,7 +10579,7 @@ export const modifyEventSubscription: API.OperationMethod<
   ModifyEventSubscriptionResponse,
   ModifyEventSubscriptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyEventSubscriptionMessage,
   output: ModifyEventSubscriptionResponse,
   errors: [
@@ -10615,7 +10615,7 @@ export const modifyInstanceProfile: API.OperationMethod<
   ModifyInstanceProfileResponse,
   ModifyInstanceProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyInstanceProfileMessage,
   output: ModifyInstanceProfileResponse,
   errors: [
@@ -10646,7 +10646,7 @@ export const modifyMigrationProject: API.OperationMethod<
   ModifyMigrationProjectResponse,
   ModifyMigrationProjectError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyMigrationProjectMessage,
   output: ModifyMigrationProjectResponse,
   errors: [
@@ -10682,7 +10682,7 @@ export const modifyReplicationConfig: API.OperationMethod<
   ModifyReplicationConfigResponse,
   ModifyReplicationConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyReplicationConfigMessage,
   output: ModifyReplicationConfigResponse,
   errors: [
@@ -10714,7 +10714,7 @@ export const modifyReplicationInstance: API.OperationMethod<
   ModifyReplicationInstanceResponse,
   ModifyReplicationInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyReplicationInstanceMessage,
   output: ModifyReplicationInstanceResponse,
   errors: [
@@ -10743,7 +10743,7 @@ export const modifyReplicationSubnetGroup: API.OperationMethod<
   ModifyReplicationSubnetGroupResponse,
   ModifyReplicationSubnetGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyReplicationSubnetGroupMessage,
   output: ModifyReplicationSubnetGroupResponse,
   errors: [
@@ -10774,7 +10774,7 @@ export const modifyReplicationTask: API.OperationMethod<
   ModifyReplicationTaskResponse,
   ModifyReplicationTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyReplicationTaskMessage,
   output: ModifyReplicationTaskResponse,
   errors: [
@@ -10801,7 +10801,7 @@ export const moveReplicationTask: API.OperationMethod<
   MoveReplicationTaskResponse,
   MoveReplicationTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MoveReplicationTaskMessage,
   output: MoveReplicationTaskResponse,
   errors: [
@@ -10825,7 +10825,7 @@ export const rebootReplicationInstance: API.OperationMethod<
   RebootReplicationInstanceResponse,
   RebootReplicationInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RebootReplicationInstanceMessage,
   output: RebootReplicationInstanceResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
@@ -10846,7 +10846,7 @@ export const refreshSchemas: API.OperationMethod<
   RefreshSchemasResponse,
   RefreshSchemasError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RefreshSchemasMessage,
   output: RefreshSchemasResponse,
   errors: [
@@ -10872,7 +10872,7 @@ export const reloadReplicationTables: API.OperationMethod<
   ReloadReplicationTablesResponse,
   ReloadReplicationTablesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReloadReplicationTablesMessage,
   output: ReloadReplicationTablesResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
@@ -10892,7 +10892,7 @@ export const reloadTables: API.OperationMethod<
   ReloadTablesResponse,
   ReloadTablesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReloadTablesMessage,
   output: ReloadTablesResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
@@ -10913,7 +10913,7 @@ export const removeTagsFromResource: API.OperationMethod<
   RemoveTagsFromResourceResponse,
   RemoveTagsFromResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveTagsFromResourceMessage,
   output: RemoveTagsFromResourceResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
@@ -10932,7 +10932,7 @@ export const runFleetAdvisorLsaAnalysis: API.OperationMethod<
   RunFleetAdvisorLsaAnalysisResponse,
   RunFleetAdvisorLsaAnalysisError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RunFleetAdvisorLsaAnalysisRequest,
   output: RunFleetAdvisorLsaAnalysisResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
@@ -10952,7 +10952,7 @@ export const startDataMigration: API.OperationMethod<
   StartDataMigrationResponse,
   StartDataMigrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartDataMigrationMessage,
   output: StartDataMigrationResponse,
   errors: [
@@ -10983,7 +10983,7 @@ export const startExtensionPackAssociation: API.OperationMethod<
   StartExtensionPackAssociationResponse,
   StartExtensionPackAssociationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartExtensionPackAssociationMessage,
   output: StartExtensionPackAssociationResponse,
   errors: [
@@ -11018,7 +11018,7 @@ export const startMetadataModelAssessment: API.OperationMethod<
   StartMetadataModelAssessmentResponse,
   StartMetadataModelAssessmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartMetadataModelAssessmentMessage,
   output: StartMetadataModelAssessmentResponse,
   errors: [
@@ -11050,7 +11050,7 @@ export const startMetadataModelConversion: API.OperationMethod<
   StartMetadataModelConversionResponse,
   StartMetadataModelConversionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartMetadataModelConversionMessage,
   output: StartMetadataModelConversionResponse,
   errors: [
@@ -11080,7 +11080,7 @@ export const startMetadataModelCreation: API.OperationMethod<
   StartMetadataModelCreationResponse,
   StartMetadataModelCreationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartMetadataModelCreationMessage,
   output: StartMetadataModelCreationResponse,
   errors: [
@@ -11109,7 +11109,7 @@ export const startMetadataModelExportAsScript: API.OperationMethod<
   StartMetadataModelExportAsScriptResponse,
   StartMetadataModelExportAsScriptError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartMetadataModelExportAsScriptMessage,
   output: StartMetadataModelExportAsScriptResponse,
   errors: [
@@ -11141,7 +11141,7 @@ export const startMetadataModelExportToTarget: API.OperationMethod<
   StartMetadataModelExportToTargetResponse,
   StartMetadataModelExportToTargetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartMetadataModelExportToTargetMessage,
   output: StartMetadataModelExportToTargetResponse,
   errors: [
@@ -11176,7 +11176,7 @@ export const startMetadataModelImport: API.OperationMethod<
   StartMetadataModelImportResponse,
   StartMetadataModelImportError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartMetadataModelImportMessage,
   output: StartMetadataModelImportResponse,
   errors: [
@@ -11208,7 +11208,7 @@ export const startRecommendations: API.OperationMethod<
   StartRecommendationsResponse,
   StartRecommendationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartRecommendationsRequest,
   output: StartRecommendationsResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
@@ -11230,7 +11230,7 @@ export const startReplication: API.OperationMethod<
   StartReplicationResponse,
   StartReplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartReplicationMessage,
   output: StartReplicationResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
@@ -11251,7 +11251,7 @@ export const startReplicationTask: API.OperationMethod<
   StartReplicationTaskResponse,
   StartReplicationTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartReplicationTaskMessage,
   output: StartReplicationTaskResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
@@ -11281,7 +11281,7 @@ export const startReplicationTaskAssessment: API.OperationMethod<
   StartReplicationTaskAssessmentResponse,
   StartReplicationTaskAssessmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartReplicationTaskAssessmentMessage,
   output: StartReplicationTaskAssessmentResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
@@ -11315,7 +11315,7 @@ export const startReplicationTaskAssessmentRun: API.OperationMethod<
   StartReplicationTaskAssessmentRunResponse,
   StartReplicationTaskAssessmentRunError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartReplicationTaskAssessmentRunMessage,
   output: StartReplicationTaskAssessmentRunResponse,
   errors: [
@@ -11346,7 +11346,7 @@ export const stopDataMigration: API.OperationMethod<
   StopDataMigrationResponse,
   StopDataMigrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopDataMigrationMessage,
   output: StopDataMigrationResponse,
   errors: [
@@ -11370,7 +11370,7 @@ export const stopReplication: API.OperationMethod<
   StopReplicationResponse,
   StopReplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopReplicationMessage,
   output: StopReplicationResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
@@ -11387,7 +11387,7 @@ export const stopReplicationTask: API.OperationMethod<
   StopReplicationTaskResponse,
   StopReplicationTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopReplicationTaskMessage,
   output: StopReplicationTaskResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
@@ -11407,7 +11407,7 @@ export const testConnection: API.OperationMethod<
   TestConnectionResponse,
   TestConnectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestConnectionMessage,
   output: TestConnectionResponse,
   errors: [
@@ -11441,7 +11441,7 @@ export const updateSubscriptionsToEventBridge: API.OperationMethod<
   UpdateSubscriptionsToEventBridgeResponse,
   UpdateSubscriptionsToEventBridgeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSubscriptionsToEventBridgeMessage,
   output: UpdateSubscriptionsToEventBridgeResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault],

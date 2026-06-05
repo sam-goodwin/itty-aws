@@ -1220,7 +1220,7 @@ export const addProfilePermission: API.OperationMethod<
   AddProfilePermissionResponse,
   AddProfilePermissionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddProfilePermissionRequest,
   output: AddProfilePermissionResponse,
   errors: [
@@ -1249,7 +1249,7 @@ export const cancelSigningProfile: API.OperationMethod<
   CancelSigningProfileResponse,
   CancelSigningProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelSigningProfileRequest,
   output: CancelSigningProfileResponse,
   errors: [
@@ -1275,7 +1275,7 @@ export const describeSigningJob: API.OperationMethod<
   DescribeSigningJobResponse,
   DescribeSigningJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeSigningJobRequest,
   output: DescribeSigningJobResponse,
   errors: [
@@ -1300,7 +1300,7 @@ export const getRevocationStatus: API.OperationMethod<
   GetRevocationStatusResponse,
   GetRevocationStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRevocationStatusRequest,
   output: GetRevocationStatusResponse,
   errors: [
@@ -1324,7 +1324,7 @@ export const getSigningPlatform: API.OperationMethod<
   GetSigningPlatformResponse,
   GetSigningPlatformError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSigningPlatformRequest,
   output: GetSigningPlatformResponse,
   errors: [
@@ -1348,7 +1348,7 @@ export const getSigningProfile: API.OperationMethod<
   GetSigningProfileResponse,
   GetSigningProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSigningProfileRequest,
   output: GetSigningProfileResponse,
   errors: [
@@ -1373,7 +1373,7 @@ export const listProfilePermissions: API.OperationMethod<
   ListProfilePermissionsResponse,
   ListProfilePermissionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListProfilePermissionsRequest,
   output: ListProfilePermissionsResponse,
   errors: [
@@ -1419,7 +1419,7 @@ export const listSigningJobs: API.OperationMethod<
     ListSigningJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSigningJobsRequest,
   output: ListSigningJobsResponse,
   errors: [
@@ -1469,7 +1469,7 @@ export const listSigningPlatforms: API.OperationMethod<
     ListSigningPlatformsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSigningPlatformsRequest,
   output: ListSigningPlatformsResponse,
   errors: [
@@ -1519,7 +1519,7 @@ export const listSigningProfiles: API.OperationMethod<
     ListSigningProfilesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSigningProfilesRequest,
   output: ListSigningProfilesResponse,
   errors: [
@@ -1547,7 +1547,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -1573,7 +1573,7 @@ export const putSigningProfile: API.OperationMethod<
   PutSigningProfileResponse,
   PutSigningProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutSigningProfileRequest,
   output: PutSigningProfileResponse,
   errors: [
@@ -1600,7 +1600,7 @@ export const removeProfilePermission: API.OperationMethod<
   RemoveProfilePermissionResponse,
   RemoveProfilePermissionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveProfilePermissionRequest,
   output: RemoveProfilePermissionResponse,
   errors: [
@@ -1628,7 +1628,7 @@ export const revokeSignature: API.OperationMethod<
   RevokeSignatureResponse,
   RevokeSignatureError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RevokeSignatureRequest,
   output: RevokeSignatureResponse,
   errors: [
@@ -1658,7 +1658,7 @@ export const revokeSigningProfile: API.OperationMethod<
   RevokeSigningProfileResponse,
   RevokeSigningProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RevokeSigningProfileRequest,
   output: RevokeSigningProfileResponse,
   errors: [
@@ -1684,7 +1684,7 @@ export const signPayload: API.OperationMethod<
   SignPayloadResponse,
   SignPayloadError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SignPayloadRequest,
   output: SignPayloadResponse,
   errors: [
@@ -1732,7 +1732,7 @@ export const startSigningJob: API.OperationMethod<
   StartSigningJobResponse,
   StartSigningJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartSigningJobRequest,
   output: StartSigningJobResponse,
   errors: [
@@ -1761,7 +1761,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -1786,7 +1786,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [

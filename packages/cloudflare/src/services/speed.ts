@@ -21,15 +21,11 @@ export interface ListAvailabilitiesRequest {
   zoneId: string;
 }
 
-export const ListAvailabilitiesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/zones/{zone_id}/speed_api/availabilities",
-    }),
-  ) as unknown as Schema.Schema<ListAvailabilitiesRequest>;
+export const ListAvailabilitiesRequest = /*@__PURE__*/ Schema.Struct({
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+}).pipe(
+  T.Http({ method: "GET", path: "/zones/{zone_id}/speed_api/availabilities" }),
+) as unknown as Schema.Schema<ListAvailabilitiesRequest>;
 
 export interface ListAvailabilitiesResponse {
   quota?: {
@@ -203,297 +199,296 @@ export interface ListAvailabilitiesResponse {
   } | null;
 }
 
-export const ListAvailabilitiesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    quota: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          plan: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          quotasPerPlan: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                value: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      business: Schema.optional(
-                        Schema.Union([Schema.Number, Schema.Null]),
-                      ),
-                      enterprise: Schema.optional(
-                        Schema.Union([Schema.Number, Schema.Null]),
-                      ),
-                      free: Schema.optional(
-                        Schema.Union([Schema.Number, Schema.Null]),
-                      ),
-                      pro: Schema.optional(
-                        Schema.Union([Schema.Number, Schema.Null]),
-                      ),
-                    }),
-                    Schema.Null,
-                  ]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-          remainingSchedules: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
-          remainingTests: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
-          scheduleQuotasPerPlan: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                value: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      business: Schema.optional(
-                        Schema.Union([Schema.Number, Schema.Null]),
-                      ),
-                      enterprise: Schema.optional(
-                        Schema.Union([Schema.Number, Schema.Null]),
-                      ),
-                      free: Schema.optional(
-                        Schema.Union([Schema.Number, Schema.Null]),
-                      ),
-                      pro: Schema.optional(
-                        Schema.Union([Schema.Number, Schema.Null]),
-                      ),
-                    }),
-                    Schema.Null,
-                  ]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Null,
-      ]),
-    ),
-    regions: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            label: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            value: Schema.optional(
-              Schema.Union([
+export const ListAvailabilitiesResponse = /*@__PURE__*/ Schema.Struct({
+  quota: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        plan: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        quotasPerPlan: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              value: Schema.optional(
                 Schema.Union([
-                  Schema.Literals([
-                    "asia-east1",
-                    "asia-northeast1",
-                    "asia-northeast2",
-                    "asia-south1",
-                    "asia-southeast1",
-                    "australia-southeast1",
-                    "europe-north1",
-                    "europe-southwest1",
-                    "europe-west1",
-                    "europe-west2",
-                    "europe-west3",
-                    "europe-west4",
-                    "europe-west8",
-                    "europe-west9",
-                    "me-west1",
-                    "southamerica-east1",
-                    "us-central1",
-                    "us-east1",
-                    "us-east4",
-                    "us-south1",
-                    "us-west1",
-                  ]),
-                  Schema.String,
+                  Schema.Struct({
+                    business: Schema.optional(
+                      Schema.Union([Schema.Number, Schema.Null]),
+                    ),
+                    enterprise: Schema.optional(
+                      Schema.Union([Schema.Number, Schema.Null]),
+                    ),
+                    free: Schema.optional(
+                      Schema.Union([Schema.Number, Schema.Null]),
+                    ),
+                    pro: Schema.optional(
+                      Schema.Union([Schema.Number, Schema.Null]),
+                    ),
+                  }),
+                  Schema.Null,
                 ]),
-                Schema.Null,
-              ]),
-            ),
-          }),
+              ),
+            }),
+            Schema.Null,
+          ]),
         ),
-        Schema.Null,
-      ]),
-    ),
-    regionsPerPlan: Schema.optional(
-      Schema.Union([
+        remainingSchedules: Schema.optional(
+          Schema.Union([Schema.Number, Schema.Null]),
+        ),
+        remainingTests: Schema.optional(
+          Schema.Union([Schema.Number, Schema.Null]),
+        ),
+        scheduleQuotasPerPlan: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              value: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    business: Schema.optional(
+                      Schema.Union([Schema.Number, Schema.Null]),
+                    ),
+                    enterprise: Schema.optional(
+                      Schema.Union([Schema.Number, Schema.Null]),
+                    ),
+                    free: Schema.optional(
+                      Schema.Union([Schema.Number, Schema.Null]),
+                    ),
+                    pro: Schema.optional(
+                      Schema.Union([Schema.Number, Schema.Null]),
+                    ),
+                  }),
+                  Schema.Null,
+                ]),
+              ),
+            }),
+            Schema.Null,
+          ]),
+        ),
+      }),
+      Schema.Null,
+    ]),
+  ),
+  regions: Schema.optional(
+    Schema.Union([
+      Schema.Array(
         Schema.Struct({
-          business: Schema.optional(
+          label: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          value: Schema.optional(
             Schema.Union([
-              Schema.Array(
-                Schema.Struct({
-                  label: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  value: Schema.optional(
-                    Schema.Union([
-                      Schema.Union([
-                        Schema.Literals([
-                          "asia-east1",
-                          "asia-northeast1",
-                          "asia-northeast2",
-                          "asia-south1",
-                          "asia-southeast1",
-                          "australia-southeast1",
-                          "europe-north1",
-                          "europe-southwest1",
-                          "europe-west1",
-                          "europe-west2",
-                          "europe-west3",
-                          "europe-west4",
-                          "europe-west8",
-                          "europe-west9",
-                          "me-west1",
-                          "southamerica-east1",
-                          "us-central1",
-                          "us-east1",
-                          "us-east4",
-                          "us-south1",
-                          "us-west1",
-                        ]),
-                        Schema.String,
-                      ]),
-                      Schema.Null,
-                    ]),
-                  ),
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-          enterprise: Schema.optional(
-            Schema.Union([
-              Schema.Array(
-                Schema.Struct({
-                  label: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  value: Schema.optional(
-                    Schema.Union([
-                      Schema.Union([
-                        Schema.Literals([
-                          "asia-east1",
-                          "asia-northeast1",
-                          "asia-northeast2",
-                          "asia-south1",
-                          "asia-southeast1",
-                          "australia-southeast1",
-                          "europe-north1",
-                          "europe-southwest1",
-                          "europe-west1",
-                          "europe-west2",
-                          "europe-west3",
-                          "europe-west4",
-                          "europe-west8",
-                          "europe-west9",
-                          "me-west1",
-                          "southamerica-east1",
-                          "us-central1",
-                          "us-east1",
-                          "us-east4",
-                          "us-south1",
-                          "us-west1",
-                        ]),
-                        Schema.String,
-                      ]),
-                      Schema.Null,
-                    ]),
-                  ),
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-          free: Schema.optional(
-            Schema.Union([
-              Schema.Array(
-                Schema.Struct({
-                  label: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  value: Schema.optional(
-                    Schema.Union([
-                      Schema.Union([
-                        Schema.Literals([
-                          "asia-east1",
-                          "asia-northeast1",
-                          "asia-northeast2",
-                          "asia-south1",
-                          "asia-southeast1",
-                          "australia-southeast1",
-                          "europe-north1",
-                          "europe-southwest1",
-                          "europe-west1",
-                          "europe-west2",
-                          "europe-west3",
-                          "europe-west4",
-                          "europe-west8",
-                          "europe-west9",
-                          "me-west1",
-                          "southamerica-east1",
-                          "us-central1",
-                          "us-east1",
-                          "us-east4",
-                          "us-south1",
-                          "us-west1",
-                        ]),
-                        Schema.String,
-                      ]),
-                      Schema.Null,
-                    ]),
-                  ),
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-          pro: Schema.optional(
-            Schema.Union([
-              Schema.Array(
-                Schema.Struct({
-                  label: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  value: Schema.optional(
-                    Schema.Union([
-                      Schema.Union([
-                        Schema.Literals([
-                          "asia-east1",
-                          "asia-northeast1",
-                          "asia-northeast2",
-                          "asia-south1",
-                          "asia-southeast1",
-                          "australia-southeast1",
-                          "europe-north1",
-                          "europe-southwest1",
-                          "europe-west1",
-                          "europe-west2",
-                          "europe-west3",
-                          "europe-west4",
-                          "europe-west8",
-                          "europe-west9",
-                          "me-west1",
-                          "southamerica-east1",
-                          "us-central1",
-                          "us-east1",
-                          "us-east4",
-                          "us-south1",
-                          "us-west1",
-                        ]),
-                        Schema.String,
-                      ]),
-                      Schema.Null,
-                    ]),
-                  ),
-                }),
-              ),
+              Schema.Union([
+                Schema.Literals([
+                  "asia-east1",
+                  "asia-northeast1",
+                  "asia-northeast2",
+                  "asia-south1",
+                  "asia-southeast1",
+                  "australia-southeast1",
+                  "europe-north1",
+                  "europe-southwest1",
+                  "europe-west1",
+                  "europe-west2",
+                  "europe-west3",
+                  "europe-west4",
+                  "europe-west8",
+                  "europe-west9",
+                  "me-west1",
+                  "southamerica-east1",
+                  "us-central1",
+                  "us-east1",
+                  "us-east4",
+                  "us-south1",
+                  "us-west1",
+                ]),
+                Schema.String,
+              ]),
               Schema.Null,
             ]),
           ),
         }),
-        Schema.Null,
-      ]),
-    ),
-  }).pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<ListAvailabilitiesResponse>;
+      ),
+      Schema.Null,
+    ]),
+  ),
+  regionsPerPlan: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        business: Schema.optional(
+          Schema.Union([
+            Schema.Array(
+              Schema.Struct({
+                label: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                value: Schema.optional(
+                  Schema.Union([
+                    Schema.Union([
+                      Schema.Literals([
+                        "asia-east1",
+                        "asia-northeast1",
+                        "asia-northeast2",
+                        "asia-south1",
+                        "asia-southeast1",
+                        "australia-southeast1",
+                        "europe-north1",
+                        "europe-southwest1",
+                        "europe-west1",
+                        "europe-west2",
+                        "europe-west3",
+                        "europe-west4",
+                        "europe-west8",
+                        "europe-west9",
+                        "me-west1",
+                        "southamerica-east1",
+                        "us-central1",
+                        "us-east1",
+                        "us-east4",
+                        "us-south1",
+                        "us-west1",
+                      ]),
+                      Schema.String,
+                    ]),
+                    Schema.Null,
+                  ]),
+                ),
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        enterprise: Schema.optional(
+          Schema.Union([
+            Schema.Array(
+              Schema.Struct({
+                label: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                value: Schema.optional(
+                  Schema.Union([
+                    Schema.Union([
+                      Schema.Literals([
+                        "asia-east1",
+                        "asia-northeast1",
+                        "asia-northeast2",
+                        "asia-south1",
+                        "asia-southeast1",
+                        "australia-southeast1",
+                        "europe-north1",
+                        "europe-southwest1",
+                        "europe-west1",
+                        "europe-west2",
+                        "europe-west3",
+                        "europe-west4",
+                        "europe-west8",
+                        "europe-west9",
+                        "me-west1",
+                        "southamerica-east1",
+                        "us-central1",
+                        "us-east1",
+                        "us-east4",
+                        "us-south1",
+                        "us-west1",
+                      ]),
+                      Schema.String,
+                    ]),
+                    Schema.Null,
+                  ]),
+                ),
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        free: Schema.optional(
+          Schema.Union([
+            Schema.Array(
+              Schema.Struct({
+                label: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                value: Schema.optional(
+                  Schema.Union([
+                    Schema.Union([
+                      Schema.Literals([
+                        "asia-east1",
+                        "asia-northeast1",
+                        "asia-northeast2",
+                        "asia-south1",
+                        "asia-southeast1",
+                        "australia-southeast1",
+                        "europe-north1",
+                        "europe-southwest1",
+                        "europe-west1",
+                        "europe-west2",
+                        "europe-west3",
+                        "europe-west4",
+                        "europe-west8",
+                        "europe-west9",
+                        "me-west1",
+                        "southamerica-east1",
+                        "us-central1",
+                        "us-east1",
+                        "us-east4",
+                        "us-south1",
+                        "us-west1",
+                      ]),
+                      Schema.String,
+                    ]),
+                    Schema.Null,
+                  ]),
+                ),
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        pro: Schema.optional(
+          Schema.Union([
+            Schema.Array(
+              Schema.Struct({
+                label: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                value: Schema.optional(
+                  Schema.Union([
+                    Schema.Union([
+                      Schema.Literals([
+                        "asia-east1",
+                        "asia-northeast1",
+                        "asia-northeast2",
+                        "asia-south1",
+                        "asia-southeast1",
+                        "australia-southeast1",
+                        "europe-north1",
+                        "europe-southwest1",
+                        "europe-west1",
+                        "europe-west2",
+                        "europe-west3",
+                        "europe-west4",
+                        "europe-west8",
+                        "europe-west9",
+                        "me-west1",
+                        "southamerica-east1",
+                        "us-central1",
+                        "us-east1",
+                        "us-east4",
+                        "us-south1",
+                        "us-west1",
+                      ]),
+                      Schema.String,
+                    ]),
+                    Schema.Null,
+                  ]),
+                ),
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+      }),
+      Schema.Null,
+    ]),
+  ),
+}).pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<ListAvailabilitiesResponse>;
 
 export type ListAvailabilitiesError = DefaultErrors;
 
@@ -502,7 +497,7 @@ export const listAvailabilities: API.OperationMethod<
   ListAvailabilitiesResponse,
   ListAvailabilitiesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListAvailabilitiesRequest,
   output: ListAvailabilitiesResponse,
   errors: [],
@@ -517,7 +512,7 @@ export interface ListPagesRequest {
   zoneId: string;
 }
 
-export const ListPagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListPagesRequest = /*@__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
 }).pipe(
   T.Http({ method: "GET", path: "/zones/{zone_id}/speed_api/pages" }),
@@ -642,7 +637,7 @@ export interface ListPagesResponse {
   }[];
 }
 
-export const ListPagesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListPagesResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       region: Schema.optional(
@@ -924,7 +919,7 @@ export const listPages: API.PaginatedOperationMethod<
   ListPagesResponse,
   ListPagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPagesRequest,
   output: ListPagesResponse,
   errors: [],
@@ -974,7 +969,7 @@ export interface TrendPageRequest {
   end?: string;
 }
 
-export const TrendPageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TrendPageRequest = /*@__PURE__*/ Schema.Struct({
   url: Schema.String.pipe(T.HttpPath("url")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   deviceType: Schema.Union([
@@ -1037,7 +1032,7 @@ export interface TrendPageResponse {
   tti?: (number | null)[] | null;
 }
 
-export const TrendPageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TrendPageResponse = /*@__PURE__*/ Schema.Struct({
   cls: Schema.optional(
     Schema.Union([
       Schema.Array(Schema.Union([Schema.Number, Schema.Null])),
@@ -1097,7 +1092,7 @@ export const trendPage: API.OperationMethod<
   TrendPageResponse,
   TrendPageError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TrendPageRequest,
   output: TrendPageResponse,
   errors: [],
@@ -1114,7 +1109,7 @@ export interface GetPageTestRequest {
   zoneId: string;
 }
 
-export const GetPageTestRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetPageTestRequest = /*@__PURE__*/ Schema.Struct({
   url: Schema.String.pipe(T.HttpPath("url")),
   testId: Schema.String.pipe(T.HttpPath("testId")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -1215,7 +1210,7 @@ export interface GetPageTestResponse {
   url?: string | null;
 }
 
-export const GetPageTestResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetPageTestResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   date: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   desktopReport: Schema.optional(
@@ -1407,7 +1402,7 @@ export const getPageTest: API.OperationMethod<
   GetPageTestResponse,
   GetPageTestError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPageTestRequest,
   output: GetPageTestResponse,
   errors: [],
@@ -1445,7 +1440,7 @@ export interface ListPageTestsRequest {
     | (string & {});
 }
 
-export const ListPageTestsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListPageTestsRequest = /*@__PURE__*/ Schema.Struct({
   url: Schema.String.pipe(T.HttpPath("url")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -1577,7 +1572,7 @@ export interface ListPageTestsResponse {
   } | null;
 }
 
-export const ListPageTestsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListPageTestsResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1791,7 +1786,7 @@ export const listPageTests: API.PaginatedOperationMethod<
   ListPageTestsResponse,
   ListPageTestsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPageTestsRequest,
   output: ListPageTestsResponse,
   errors: [],
@@ -1834,7 +1829,7 @@ export interface CreatePageTestRequest {
     | (string & {});
 }
 
-export const CreatePageTestRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreatePageTestRequest = /*@__PURE__*/ Schema.Struct({
   url: Schema.String.pipe(T.HttpPath("url")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   region: Schema.optional(
@@ -1962,190 +1957,188 @@ export interface CreatePageTestResponse {
   url?: string | null;
 }
 
-export const CreatePageTestResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    date: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    desktopReport: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          cls: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          deviceType: Schema.optional(
+export const CreatePageTestResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  date: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  desktopReport: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        cls: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        deviceType: Schema.optional(
+          Schema.Union([
             Schema.Union([
-              Schema.Union([
-                Schema.Literals(["DESKTOP", "MOBILE"]),
-                Schema.String,
-              ]),
-              Schema.Null,
+              Schema.Literals(["DESKTOP", "MOBILE"]),
+              Schema.String,
             ]),
-          ),
-          error: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                code: Schema.optional(
+            Schema.Null,
+          ]),
+        ),
+        error: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              code: Schema.optional(
+                Schema.Union([
                   Schema.Union([
-                    Schema.Union([
-                      Schema.Literals([
-                        "NOT_REACHABLE",
-                        "DNS_FAILURE",
-                        "NOT_HTML",
-                        "LIGHTHOUSE_TIMEOUT",
-                        "UNKNOWN",
-                      ]),
-                      Schema.String,
+                    Schema.Literals([
+                      "NOT_REACHABLE",
+                      "DNS_FAILURE",
+                      "NOT_HTML",
+                      "LIGHTHOUSE_TIMEOUT",
+                      "UNKNOWN",
                     ]),
-                    Schema.Null,
+                    Schema.String,
                   ]),
-                ),
-                detail: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                finalDisplayedUrl: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-          fcp: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          jsonReportUrl: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          lcp: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          performanceScore: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
-          si: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          state: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals(["RUNNING", "COMPLETE", "FAILED"]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
-          tbt: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          ttfb: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          tti: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        }),
-        Schema.Null,
-      ]),
-    ),
-    mobileReport: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          cls: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          deviceType: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals(["DESKTOP", "MOBILE"]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
-          error: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                code: Schema.optional(
-                  Schema.Union([
-                    Schema.Union([
-                      Schema.Literals([
-                        "NOT_REACHABLE",
-                        "DNS_FAILURE",
-                        "NOT_HTML",
-                        "LIGHTHOUSE_TIMEOUT",
-                        "UNKNOWN",
-                      ]),
-                      Schema.String,
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-                detail: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                finalDisplayedUrl: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-          fcp: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          jsonReportUrl: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          lcp: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          performanceScore: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
-          si: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          state: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals(["RUNNING", "COMPLETE", "FAILED"]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
-          tbt: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          ttfb: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          tti: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        }),
-        Schema.Null,
-      ]),
-    ),
-    region: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          label: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals([
-                  "asia-east1",
-                  "asia-northeast1",
-                  "asia-northeast2",
-                  "asia-south1",
-                  "asia-southeast1",
-                  "australia-southeast1",
-                  "europe-north1",
-                  "europe-southwest1",
-                  "europe-west1",
-                  "europe-west2",
-                  "europe-west3",
-                  "europe-west4",
-                  "europe-west8",
-                  "europe-west9",
-                  "me-west1",
-                  "southamerica-east1",
-                  "us-central1",
-                  "us-east1",
-                  "us-east4",
-                  "us-south1",
-                  "us-west1",
+                  Schema.Null,
                 ]),
-                Schema.String,
-              ]),
-              Schema.Null,
+              ),
+              detail: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              finalDisplayedUrl: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }),
+            Schema.Null,
+          ]),
+        ),
+        fcp: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        jsonReportUrl: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        lcp: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        performanceScore: Schema.optional(
+          Schema.Union([Schema.Number, Schema.Null]),
+        ),
+        si: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        state: Schema.optional(
+          Schema.Union([
+            Schema.Union([
+              Schema.Literals(["RUNNING", "COMPLETE", "FAILED"]),
+              Schema.String,
             ]),
-          ),
-        }),
-        Schema.Null,
-      ]),
-    ),
-    scheduleFrequency: Schema.optional(
-      Schema.Union([
-        Schema.Union([Schema.Literals(["DAILY", "WEEKLY"]), Schema.String]),
-        Schema.Null,
-      ]),
-    ),
-    url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  },
-).pipe(
+            Schema.Null,
+          ]),
+        ),
+        tbt: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        ttfb: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        tti: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      }),
+      Schema.Null,
+    ]),
+  ),
+  mobileReport: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        cls: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        deviceType: Schema.optional(
+          Schema.Union([
+            Schema.Union([
+              Schema.Literals(["DESKTOP", "MOBILE"]),
+              Schema.String,
+            ]),
+            Schema.Null,
+          ]),
+        ),
+        error: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              code: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals([
+                      "NOT_REACHABLE",
+                      "DNS_FAILURE",
+                      "NOT_HTML",
+                      "LIGHTHOUSE_TIMEOUT",
+                      "UNKNOWN",
+                    ]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+              detail: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              finalDisplayedUrl: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }),
+            Schema.Null,
+          ]),
+        ),
+        fcp: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        jsonReportUrl: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        lcp: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        performanceScore: Schema.optional(
+          Schema.Union([Schema.Number, Schema.Null]),
+        ),
+        si: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        state: Schema.optional(
+          Schema.Union([
+            Schema.Union([
+              Schema.Literals(["RUNNING", "COMPLETE", "FAILED"]),
+              Schema.String,
+            ]),
+            Schema.Null,
+          ]),
+        ),
+        tbt: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        ttfb: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        tti: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      }),
+      Schema.Null,
+    ]),
+  ),
+  region: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        label: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        value: Schema.optional(
+          Schema.Union([
+            Schema.Union([
+              Schema.Literals([
+                "asia-east1",
+                "asia-northeast1",
+                "asia-northeast2",
+                "asia-south1",
+                "asia-southeast1",
+                "australia-southeast1",
+                "europe-north1",
+                "europe-southwest1",
+                "europe-west1",
+                "europe-west2",
+                "europe-west3",
+                "europe-west4",
+                "europe-west8",
+                "europe-west9",
+                "me-west1",
+                "southamerica-east1",
+                "us-central1",
+                "us-east1",
+                "us-east4",
+                "us-south1",
+                "us-west1",
+              ]),
+              Schema.String,
+            ]),
+            Schema.Null,
+          ]),
+        ),
+      }),
+      Schema.Null,
+    ]),
+  ),
+  scheduleFrequency: Schema.optional(
+    Schema.Union([
+      Schema.Union([Schema.Literals(["DAILY", "WEEKLY"]), Schema.String]),
+      Schema.Null,
+    ]),
+  ),
+  url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+}).pipe(
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<CreatePageTestResponse>;
 
@@ -2156,7 +2149,7 @@ export const createPageTest: API.OperationMethod<
   CreatePageTestResponse,
   CreatePageTestError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePageTestRequest,
   output: CreatePageTestResponse,
   errors: [],
@@ -2192,7 +2185,7 @@ export interface DeletePageTestRequest {
     | (string & {});
 }
 
-export const DeletePageTestRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeletePageTestRequest = /*@__PURE__*/ Schema.Struct({
   url: Schema.String.pipe(T.HttpPath("url")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   region: Schema.optional(
@@ -2235,11 +2228,9 @@ export interface DeletePageTestResponse {
   count?: number | null;
 }
 
-export const DeletePageTestResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  },
-).pipe(
+export const DeletePageTestResponse = /*@__PURE__*/ Schema.Struct({
+  count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+}).pipe(
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<DeletePageTestResponse>;
 
@@ -2250,7 +2241,7 @@ export const deletePageTest: API.OperationMethod<
   DeletePageTestResponse,
   DeletePageTestError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePageTestRequest,
   output: DeletePageTestResponse,
   errors: [],
@@ -2290,7 +2281,7 @@ export interface GetScheduleRequest {
     | (string & {});
 }
 
-export const GetScheduleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetScheduleRequest = /*@__PURE__*/ Schema.Struct({
   url: Schema.String.pipe(T.HttpPath("url")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   region: Schema.optional(
@@ -2357,7 +2348,7 @@ export interface GetScheduleResponse {
   url?: string | null;
 }
 
-export const GetScheduleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetScheduleResponse = /*@__PURE__*/ Schema.Struct({
   frequency: Schema.optional(
     Schema.Union([
       Schema.Union([Schema.Literals(["DAILY", "WEEKLY"]), Schema.String]),
@@ -2407,7 +2398,7 @@ export const getSchedule: API.OperationMethod<
   GetScheduleResponse,
   GetScheduleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetScheduleRequest,
   output: GetScheduleResponse,
   errors: [],
@@ -2445,7 +2436,7 @@ export interface CreateScheduleRequest {
     | (string & {});
 }
 
-export const CreateScheduleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateScheduleRequest = /*@__PURE__*/ Schema.Struct({
   url: Schema.String.pipe(T.HttpPath("url")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   frequency: Schema.optional(
@@ -2598,274 +2589,242 @@ export interface CreateScheduleResponse {
   } | null;
 }
 
-export const CreateScheduleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    schedule: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          frequency: Schema.optional(
+export const CreateScheduleResponse = /*@__PURE__*/ Schema.Struct({
+  schedule: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        frequency: Schema.optional(
+          Schema.Union([
+            Schema.Union([Schema.Literals(["DAILY", "WEEKLY"]), Schema.String]),
+            Schema.Null,
+          ]),
+        ),
+        region: Schema.optional(
+          Schema.Union([
             Schema.Union([
-              Schema.Union([
-                Schema.Literals(["DAILY", "WEEKLY"]),
-                Schema.String,
+              Schema.Literals([
+                "asia-east1",
+                "asia-northeast1",
+                "asia-northeast2",
+                "asia-south1",
+                "asia-southeast1",
+                "australia-southeast1",
+                "europe-north1",
+                "europe-southwest1",
+                "europe-west1",
+                "europe-west2",
+                "europe-west3",
+                "europe-west4",
+                "europe-west8",
+                "europe-west9",
+                "me-west1",
+                "southamerica-east1",
+                "us-central1",
+                "us-east1",
+                "us-east4",
+                "us-south1",
+                "us-west1",
               ]),
-              Schema.Null,
+              Schema.String,
             ]),
-          ),
-          region: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals([
-                  "asia-east1",
-                  "asia-northeast1",
-                  "asia-northeast2",
-                  "asia-south1",
-                  "asia-southeast1",
-                  "australia-southeast1",
-                  "europe-north1",
-                  "europe-southwest1",
-                  "europe-west1",
-                  "europe-west2",
-                  "europe-west3",
-                  "europe-west4",
-                  "europe-west8",
-                  "europe-west9",
-                  "me-west1",
-                  "southamerica-east1",
-                  "us-central1",
-                  "us-east1",
-                  "us-east4",
-                  "us-south1",
-                  "us-west1",
+            Schema.Null,
+          ]),
+        ),
+        url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      }),
+      Schema.Null,
+    ]),
+  ),
+  test: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        date: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        desktopReport: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              cls: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+              deviceType: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["DESKTOP", "MOBILE"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
                 ]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
-          url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
-        Schema.Null,
-      ]),
-    ),
-    test: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          date: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          desktopReport: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                cls: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                deviceType: Schema.optional(
-                  Schema.Union([
-                    Schema.Union([
-                      Schema.Literals(["DESKTOP", "MOBILE"]),
-                      Schema.String,
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-                error: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      code: Schema.optional(
+              ),
+              error: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    code: Schema.optional(
+                      Schema.Union([
                         Schema.Union([
-                          Schema.Union([
-                            Schema.Literals([
-                              "NOT_REACHABLE",
-                              "DNS_FAILURE",
-                              "NOT_HTML",
-                              "LIGHTHOUSE_TIMEOUT",
-                              "UNKNOWN",
-                            ]),
-                            Schema.String,
+                          Schema.Literals([
+                            "NOT_REACHABLE",
+                            "DNS_FAILURE",
+                            "NOT_HTML",
+                            "LIGHTHOUSE_TIMEOUT",
+                            "UNKNOWN",
                           ]),
-                          Schema.Null,
+                          Schema.String,
                         ]),
-                      ),
-                      detail: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      finalDisplayedUrl: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                    }),
-                    Schema.Null,
-                  ]),
-                ),
-                fcp: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                jsonReportUrl: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                lcp: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                performanceScore: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                si: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-                state: Schema.optional(
-                  Schema.Union([
-                    Schema.Union([
-                      Schema.Literals(["RUNNING", "COMPLETE", "FAILED"]),
-                      Schema.String,
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-                tbt: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                ttfb: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                tti: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-          mobileReport: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                cls: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                deviceType: Schema.optional(
-                  Schema.Union([
-                    Schema.Union([
-                      Schema.Literals(["DESKTOP", "MOBILE"]),
-                      Schema.String,
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-                error: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      code: Schema.optional(
-                        Schema.Union([
-                          Schema.Union([
-                            Schema.Literals([
-                              "NOT_REACHABLE",
-                              "DNS_FAILURE",
-                              "NOT_HTML",
-                              "LIGHTHOUSE_TIMEOUT",
-                              "UNKNOWN",
-                            ]),
-                            Schema.String,
-                          ]),
-                          Schema.Null,
-                        ]),
-                      ),
-                      detail: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      finalDisplayedUrl: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                    }),
-                    Schema.Null,
-                  ]),
-                ),
-                fcp: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                jsonReportUrl: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                lcp: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                performanceScore: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                si: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-                state: Schema.optional(
-                  Schema.Union([
-                    Schema.Union([
-                      Schema.Literals(["RUNNING", "COMPLETE", "FAILED"]),
-                      Schema.String,
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-                tbt: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                ttfb: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                tti: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-          region: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                label: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                value: Schema.optional(
-                  Schema.Union([
-                    Schema.Union([
-                      Schema.Literals([
-                        "asia-east1",
-                        "asia-northeast1",
-                        "asia-northeast2",
-                        "asia-south1",
-                        "asia-southeast1",
-                        "australia-southeast1",
-                        "europe-north1",
-                        "europe-southwest1",
-                        "europe-west1",
-                        "europe-west2",
-                        "europe-west3",
-                        "europe-west4",
-                        "europe-west8",
-                        "europe-west9",
-                        "me-west1",
-                        "southamerica-east1",
-                        "us-central1",
-                        "us-east1",
-                        "us-east4",
-                        "us-south1",
-                        "us-west1",
+                        Schema.Null,
                       ]),
-                      Schema.String,
-                    ]),
-                    Schema.Null,
+                    ),
+                    detail: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
+                    finalDisplayedUrl: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
+                  }),
+                  Schema.Null,
+                ]),
+              ),
+              fcp: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+              jsonReportUrl: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              lcp: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+              performanceScore: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              si: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+              state: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["RUNNING", "COMPLETE", "FAILED"]),
+                    Schema.String,
                   ]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-          scheduleFrequency: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals(["DAILY", "WEEKLY"]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
-          url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
-        Schema.Null,
-      ]),
-    ),
-  },
-).pipe(
+                  Schema.Null,
+                ]),
+              ),
+              tbt: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+              ttfb: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+              tti: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            }),
+            Schema.Null,
+          ]),
+        ),
+        mobileReport: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              cls: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+              deviceType: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["DESKTOP", "MOBILE"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+              error: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    code: Schema.optional(
+                      Schema.Union([
+                        Schema.Union([
+                          Schema.Literals([
+                            "NOT_REACHABLE",
+                            "DNS_FAILURE",
+                            "NOT_HTML",
+                            "LIGHTHOUSE_TIMEOUT",
+                            "UNKNOWN",
+                          ]),
+                          Schema.String,
+                        ]),
+                        Schema.Null,
+                      ]),
+                    ),
+                    detail: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
+                    finalDisplayedUrl: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
+                  }),
+                  Schema.Null,
+                ]),
+              ),
+              fcp: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+              jsonReportUrl: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              lcp: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+              performanceScore: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              si: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+              state: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["RUNNING", "COMPLETE", "FAILED"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+              tbt: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+              ttfb: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+              tti: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            }),
+            Schema.Null,
+          ]),
+        ),
+        region: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              label: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              value: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals([
+                      "asia-east1",
+                      "asia-northeast1",
+                      "asia-northeast2",
+                      "asia-south1",
+                      "asia-southeast1",
+                      "australia-southeast1",
+                      "europe-north1",
+                      "europe-southwest1",
+                      "europe-west1",
+                      "europe-west2",
+                      "europe-west3",
+                      "europe-west4",
+                      "europe-west8",
+                      "europe-west9",
+                      "me-west1",
+                      "southamerica-east1",
+                      "us-central1",
+                      "us-east1",
+                      "us-east4",
+                      "us-south1",
+                      "us-west1",
+                    ]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+            }),
+            Schema.Null,
+          ]),
+        ),
+        scheduleFrequency: Schema.optional(
+          Schema.Union([
+            Schema.Union([Schema.Literals(["DAILY", "WEEKLY"]), Schema.String]),
+            Schema.Null,
+          ]),
+        ),
+        url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      }),
+      Schema.Null,
+    ]),
+  ),
+}).pipe(
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<CreateScheduleResponse>;
 
@@ -2876,7 +2835,7 @@ export const createSchedule: API.OperationMethod<
   CreateScheduleResponse,
   CreateScheduleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateScheduleRequest,
   output: CreateScheduleResponse,
   errors: [],
@@ -2912,7 +2871,7 @@ export interface DeleteScheduleRequest {
     | (string & {});
 }
 
-export const DeleteScheduleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteScheduleRequest = /*@__PURE__*/ Schema.Struct({
   url: Schema.String.pipe(T.HttpPath("url")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   region: Schema.optional(
@@ -2955,11 +2914,9 @@ export interface DeleteScheduleResponse {
   count?: number | null;
 }
 
-export const DeleteScheduleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  },
-).pipe(
+export const DeleteScheduleResponse = /*@__PURE__*/ Schema.Struct({
+  count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+}).pipe(
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<DeleteScheduleResponse>;
 
@@ -2970,7 +2927,7 @@ export const deleteSchedule: API.OperationMethod<
   DeleteScheduleResponse,
   DeleteScheduleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteScheduleRequest,
   output: DeleteScheduleResponse,
   errors: [],

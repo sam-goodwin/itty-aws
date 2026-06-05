@@ -1932,7 +1932,7 @@ export const getPreferences: API.OperationMethod<
   GetPreferencesResponse,
   GetPreferencesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPreferencesRequest,
   output: GetPreferencesResponse,
   errors: [
@@ -1959,7 +1959,7 @@ export const getRecommendation: API.OperationMethod<
   GetRecommendationResponse,
   GetRecommendationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRecommendationRequest,
   output: GetRecommendationResponse,
   errors: [
@@ -2001,7 +2001,7 @@ export const listEfficiencyMetrics: API.OperationMethod<
     ListEfficiencyMetricsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEfficiencyMetricsRequest,
   output: ListEfficiencyMetricsResponse,
   errors: [
@@ -2046,7 +2046,7 @@ export const listEnrollmentStatuses: API.OperationMethod<
     ListEnrollmentStatusesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnrollmentStatusesRequest,
   output: ListEnrollmentStatusesResponse,
   errors: [
@@ -2091,7 +2091,7 @@ export const listRecommendations: API.OperationMethod<
     ListRecommendationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecommendationsRequest,
   output: ListRecommendationsResponse,
   errors: [
@@ -2138,7 +2138,7 @@ export const listRecommendationSummaries: API.OperationMethod<
     ListRecommendationSummariesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecommendationSummariesRequest,
   output: ListRecommendationSummariesResponse,
   errors: [
@@ -2172,7 +2172,7 @@ export const updateEnrollmentStatus: API.OperationMethod<
   UpdateEnrollmentStatusResponse,
   UpdateEnrollmentStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEnrollmentStatusRequest,
   output: UpdateEnrollmentStatusResponse,
   errors: [
@@ -2196,7 +2196,7 @@ export const updatePreferences: API.OperationMethod<
   UpdatePreferencesResponse,
   UpdatePreferencesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePreferencesRequest,
   output: UpdatePreferencesResponse,
   errors: [

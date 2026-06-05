@@ -3357,7 +3357,7 @@ export const countClosedWorkflowExecutions: API.OperationMethod<
   WorkflowExecutionCount,
   CountClosedWorkflowExecutionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CountClosedWorkflowExecutionsInput,
   output: WorkflowExecutionCount,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
@@ -3407,7 +3407,7 @@ export const countOpenWorkflowExecutions: API.OperationMethod<
   WorkflowExecutionCount,
   CountOpenWorkflowExecutionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CountOpenWorkflowExecutionsInput,
   output: WorkflowExecutionCount,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
@@ -3447,7 +3447,7 @@ export const countPendingActivityTasks: API.OperationMethod<
   PendingTaskCount,
   CountPendingActivityTasksError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CountPendingActivityTasksInput,
   output: PendingTaskCount,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
@@ -3487,7 +3487,7 @@ export const countPendingDecisionTasks: API.OperationMethod<
   PendingTaskCount,
   CountPendingDecisionTasksError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CountPendingDecisionTasksInput,
   output: PendingTaskCount,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
@@ -3534,7 +3534,7 @@ export const deleteActivityType: API.OperationMethod<
   DeleteActivityTypeResponse,
   DeleteActivityTypeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteActivityTypeInput,
   output: DeleteActivityTypeResponse,
   errors: [
@@ -3586,7 +3586,7 @@ export const deleteWorkflowType: API.OperationMethod<
   DeleteWorkflowTypeResponse,
   DeleteWorkflowTypeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteWorkflowTypeInput,
   output: DeleteWorkflowTypeResponse,
   errors: [
@@ -3636,7 +3636,7 @@ export const deprecateActivityType: API.OperationMethod<
   DeprecateActivityTypeResponse,
   DeprecateActivityTypeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeprecateActivityTypeInput,
   output: DeprecateActivityTypeResponse,
   errors: [
@@ -3684,7 +3684,7 @@ export const deprecateDomain: API.OperationMethod<
   DeprecateDomainResponse,
   DeprecateDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeprecateDomainInput,
   output: DeprecateDomainResponse,
   errors: [
@@ -3738,7 +3738,7 @@ export const deprecateWorkflowType: API.OperationMethod<
   DeprecateWorkflowTypeResponse,
   DeprecateWorkflowTypeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeprecateWorkflowTypeInput,
   output: DeprecateWorkflowTypeResponse,
   errors: [
@@ -3787,7 +3787,7 @@ export const describeActivityType: API.OperationMethod<
   ActivityTypeDetail,
   DescribeActivityTypeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeActivityTypeInput,
   output: ActivityTypeDetail,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
@@ -3824,7 +3824,7 @@ export const describeDomain: API.OperationMethod<
   DomainDetail,
   DescribeDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDomainInput,
   output: DomainDetail,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
@@ -3864,7 +3864,7 @@ export const describeWorkflowExecution: API.OperationMethod<
   WorkflowExecutionDetail,
   DescribeWorkflowExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeWorkflowExecutionInput,
   output: WorkflowExecutionDetail,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
@@ -3909,7 +3909,7 @@ export const describeWorkflowType: API.OperationMethod<
   WorkflowTypeDetail,
   DescribeWorkflowTypeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeWorkflowTypeInput,
   output: WorkflowTypeDetail,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
@@ -3965,7 +3965,7 @@ export const getWorkflowExecutionHistory: API.OperationMethod<
     GetWorkflowExecutionHistoryError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetWorkflowExecutionHistoryInput,
   output: History,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
@@ -4026,7 +4026,7 @@ export const listActivityTypes: API.OperationMethod<
     ListActivityTypesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListActivityTypesInput,
   output: ActivityTypeInfos,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
@@ -4098,7 +4098,7 @@ export const listClosedWorkflowExecutions: API.OperationMethod<
     ListClosedWorkflowExecutionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListClosedWorkflowExecutionsInput,
   output: WorkflowExecutionInfos,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
@@ -4159,7 +4159,7 @@ export const listDomains: API.OperationMethod<
     ListDomainsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDomainsInput,
   output: DomainInfos,
   errors: [OperationNotPermittedFault],
@@ -4231,7 +4231,7 @@ export const listOpenWorkflowExecutions: API.OperationMethod<
     ListOpenWorkflowExecutionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOpenWorkflowExecutionsInput,
   output: WorkflowExecutionInfos,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
@@ -4255,7 +4255,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceOutput,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [
@@ -4311,7 +4311,7 @@ export const listWorkflowTypes: API.OperationMethod<
     ListWorkflowTypesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkflowTypesInput,
   output: WorkflowTypeInfos,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
@@ -4365,7 +4365,7 @@ export const pollForActivityTask: API.OperationMethod<
   ActivityTask,
   PollForActivityTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PollForActivityTaskInput,
   output: ActivityTask,
   errors: [
@@ -4444,7 +4444,7 @@ export const pollForDecisionTask: API.OperationMethod<
     PollForDecisionTaskError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: PollForDecisionTaskInput,
   output: DecisionTask,
   errors: [
@@ -4513,7 +4513,7 @@ export const recordActivityTaskHeartbeat: API.OperationMethod<
   ActivityTaskStatus,
   RecordActivityTaskHeartbeatError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RecordActivityTaskHeartbeatInput,
   output: ActivityTaskStatus,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
@@ -4565,7 +4565,7 @@ export const registerActivityType: API.OperationMethod<
   RegisterActivityTypeResponse,
   RegisterActivityTypeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterActivityTypeInput,
   output: RegisterActivityTypeResponse,
   errors: [
@@ -4608,7 +4608,7 @@ export const registerDomain: API.OperationMethod<
   RegisterDomainResponse,
   RegisterDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterDomainInput,
   output: RegisterDomainResponse,
   errors: [
@@ -4667,7 +4667,7 @@ export const registerWorkflowType: API.OperationMethod<
   RegisterWorkflowTypeResponse,
   RegisterWorkflowTypeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterWorkflowTypeInput,
   output: RegisterWorkflowTypeResponse,
   errors: [
@@ -4719,7 +4719,7 @@ export const requestCancelWorkflowExecution: API.OperationMethod<
   RequestCancelWorkflowExecutionResponse,
   RequestCancelWorkflowExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RequestCancelWorkflowExecutionInput,
   output: RequestCancelWorkflowExecutionResponse,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
@@ -4770,7 +4770,7 @@ export const respondActivityTaskCanceled: API.OperationMethod<
   RespondActivityTaskCanceledResponse,
   RespondActivityTaskCanceledError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RespondActivityTaskCanceledInput,
   output: RespondActivityTaskCanceledResponse,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
@@ -4819,7 +4819,7 @@ export const respondActivityTaskCompleted: API.OperationMethod<
   RespondActivityTaskCompletedResponse,
   RespondActivityTaskCompletedError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RespondActivityTaskCompletedInput,
   output: RespondActivityTaskCompletedResponse,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
@@ -4863,7 +4863,7 @@ export const respondActivityTaskFailed: API.OperationMethod<
   RespondActivityTaskFailedResponse,
   RespondActivityTaskFailedError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RespondActivityTaskFailedInput,
   output: RespondActivityTaskFailedResponse,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
@@ -4897,7 +4897,7 @@ export const respondDecisionTaskCompleted: API.OperationMethod<
   RespondDecisionTaskCompletedResponse,
   RespondDecisionTaskCompletedError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RespondDecisionTaskCompletedInput,
   output: RespondDecisionTaskCompletedResponse,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
@@ -4943,7 +4943,7 @@ export const signalWorkflowExecution: API.OperationMethod<
   SignalWorkflowExecutionResponse,
   SignalWorkflowExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SignalWorkflowExecutionInput,
   output: SignalWorkflowExecutionResponse,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
@@ -5006,7 +5006,7 @@ export const startWorkflowExecution: API.OperationMethod<
   Run,
   StartWorkflowExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartWorkflowExecutionInput,
   output: Run,
   errors: [
@@ -5034,7 +5034,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceResponse,
   errors: [
@@ -5088,7 +5088,7 @@ export const terminateWorkflowExecution: API.OperationMethod<
   TerminateWorkflowExecutionResponse,
   TerminateWorkflowExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TerminateWorkflowExecutionInput,
   output: TerminateWorkflowExecutionResponse,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
@@ -5136,7 +5136,7 @@ export const undeprecateActivityType: API.OperationMethod<
   UndeprecateActivityTypeResponse,
   UndeprecateActivityTypeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UndeprecateActivityTypeInput,
   output: UndeprecateActivityTypeResponse,
   errors: [
@@ -5181,7 +5181,7 @@ export const undeprecateDomain: API.OperationMethod<
   UndeprecateDomainResponse,
   UndeprecateDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UndeprecateDomainInput,
   output: UndeprecateDomainResponse,
   errors: [
@@ -5233,7 +5233,7 @@ export const undeprecateWorkflowType: API.OperationMethod<
   UndeprecateWorkflowTypeResponse,
   UndeprecateWorkflowTypeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UndeprecateWorkflowTypeInput,
   output: UndeprecateWorkflowTypeResponse,
   errors: [
@@ -5255,7 +5255,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceResponse,
   errors: [

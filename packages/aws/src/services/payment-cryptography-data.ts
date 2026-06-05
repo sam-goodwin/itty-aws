@@ -2071,7 +2071,7 @@ export const decryptData: API.OperationMethod<
   DecryptDataOutput,
   DecryptDataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DecryptDataInput,
   output: DecryptDataOutput,
   errors: [
@@ -2123,7 +2123,7 @@ export const encryptData: API.OperationMethod<
   EncryptDataOutput,
   EncryptDataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EncryptDataInput,
   output: EncryptDataOutput,
   errors: [
@@ -2157,7 +2157,7 @@ export const generateAs2805KekValidation: API.OperationMethod<
   GenerateAs2805KekValidationOutput,
   GenerateAs2805KekValidationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GenerateAs2805KekValidationInput,
   output: GenerateAs2805KekValidationOutput,
   errors: [
@@ -2195,7 +2195,7 @@ export const generateCardValidationData: API.OperationMethod<
   GenerateCardValidationDataOutput,
   GenerateCardValidationDataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GenerateCardValidationDataInput,
   output: GenerateCardValidationDataOutput,
   errors: [
@@ -2233,7 +2233,7 @@ export const generateMac: API.OperationMethod<
   GenerateMacOutput,
   GenerateMacError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GenerateMacInput,
   output: GenerateMacOutput,
   errors: [
@@ -2277,7 +2277,7 @@ export const generateMacEmvPinChange: API.OperationMethod<
   GenerateMacEmvPinChangeOutput,
   GenerateMacEmvPinChangeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GenerateMacEmvPinChangeInput,
   output: GenerateMacEmvPinChangeOutput,
   errors: [
@@ -2319,7 +2319,7 @@ export const generatePinData: API.OperationMethod<
   GeneratePinDataOutput,
   GeneratePinDataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GeneratePinDataInput,
   output: GeneratePinDataOutput,
   errors: [
@@ -2365,7 +2365,7 @@ export const reEncryptData: API.OperationMethod<
   ReEncryptDataOutput,
   ReEncryptDataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReEncryptDataInput,
   output: ReEncryptDataOutput,
   errors: [
@@ -2407,7 +2407,7 @@ export const translateKeyMaterial: API.OperationMethod<
   TranslateKeyMaterialOutput,
   TranslateKeyMaterialError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TranslateKeyMaterialInput,
   output: TranslateKeyMaterialOutput,
   errors: [
@@ -2455,7 +2455,7 @@ export const translatePinData: API.OperationMethod<
   TranslatePinDataOutput,
   TranslatePinDataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TranslatePinDataInput,
   output: TranslatePinDataOutput,
   errors: [
@@ -2494,7 +2494,7 @@ export const verifyAuthRequestCryptogram: API.OperationMethod<
   VerifyAuthRequestCryptogramOutput,
   VerifyAuthRequestCryptogramError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: VerifyAuthRequestCryptogramInput,
   output: VerifyAuthRequestCryptogramOutput,
   errors: [
@@ -2536,7 +2536,7 @@ export const verifyCardValidationData: API.OperationMethod<
   VerifyCardValidationDataOutput,
   VerifyCardValidationDataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: VerifyCardValidationDataInput,
   output: VerifyCardValidationDataOutput,
   errors: [
@@ -2574,7 +2574,7 @@ export const verifyMac: API.OperationMethod<
   VerifyMacOutput,
   VerifyMacError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: VerifyMacInput,
   output: VerifyMacOutput,
   errors: [
@@ -2614,7 +2614,7 @@ export const verifyPinData: API.OperationMethod<
   VerifyPinDataOutput,
   VerifyPinDataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: VerifyPinDataInput,
   output: VerifyPinDataOutput,
   errors: [

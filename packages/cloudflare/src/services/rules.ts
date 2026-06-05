@@ -22,7 +22,7 @@ export interface GetListRequest {
   accountId: string;
 }
 
-export const GetListRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetListRequest = /*@__PURE__*/ Schema.Struct({
   listId: Schema.String.pipe(T.HttpPath("listId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -51,7 +51,7 @@ export interface GetListResponse {
   description?: string | null;
 }
 
-export const GetListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetListResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   createdOn: Schema.String,
   kind: Schema.Union([
@@ -85,7 +85,7 @@ export const getList: API.OperationMethod<
   GetListResponse,
   GetListError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetListRequest,
   output: GetListResponse,
   errors: [],
@@ -96,7 +96,7 @@ export interface ListListsRequest {
   accountId: string;
 }
 
-export const ListListsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListListsRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
   T.Http({ method: "GET", path: "/accounts/{account_id}/rules/lists" }),
@@ -115,7 +115,7 @@ export interface ListListsResponse {
   }[];
 }
 
-export const ListListsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListListsResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       id: Schema.String,
@@ -151,7 +151,7 @@ export const listLists: API.PaginatedOperationMethod<
   ListListsResponse,
   ListListsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListListsRequest,
   output: ListListsResponse,
   errors: [],
@@ -172,7 +172,7 @@ export interface CreateListRequest {
   description?: string;
 }
 
-export const CreateListRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateListRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   kind: Schema.Union([
     Schema.Literals(["ip", "redirect", "hostname", "asn"]),
@@ -203,7 +203,7 @@ export interface CreateListResponse {
   description?: string | null;
 }
 
-export const CreateListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateListResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   createdOn: Schema.String,
   kind: Schema.Union([
@@ -239,7 +239,7 @@ export const createList: API.OperationMethod<
   CreateListResponse,
   CreateListError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateListRequest,
   output: CreateListResponse,
   errors: [],
@@ -253,7 +253,7 @@ export interface UpdateListRequest {
   description?: string;
 }
 
-export const UpdateListRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateListRequest = /*@__PURE__*/ Schema.Struct({
   listId: Schema.String.pipe(T.HttpPath("listId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   description: Schema.optional(Schema.String),
@@ -283,7 +283,7 @@ export interface UpdateListResponse {
   description?: string | null;
 }
 
-export const UpdateListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateListResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   createdOn: Schema.String,
   kind: Schema.Union([
@@ -319,7 +319,7 @@ export const updateList: API.OperationMethod<
   UpdateListResponse,
   UpdateListError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateListRequest,
   output: UpdateListResponse,
   errors: [],
@@ -331,7 +331,7 @@ export interface DeleteListRequest {
   accountId: string;
 }
 
-export const DeleteListRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteListRequest = /*@__PURE__*/ Schema.Struct({
   listId: Schema.String.pipe(T.HttpPath("listId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -346,7 +346,7 @@ export interface DeleteListResponse {
   id: string;
 }
 
-export const DeleteListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteListResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
 }).pipe(
   T.ResponsePath("result"),
@@ -359,7 +359,7 @@ export const deleteList: API.OperationMethod<
   DeleteListResponse,
   DeleteListError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteListRequest,
   output: DeleteListResponse,
   errors: [],
@@ -375,45 +375,43 @@ export interface GetListBulkOperationRequest {
   accountId: string;
 }
 
-export const GetListBulkOperationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    operationId: Schema.String.pipe(T.HttpPath("operationId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/rules/lists/bulk_operations/{operationId}",
-    }),
-  ) as unknown as Schema.Schema<GetListBulkOperationRequest>;
+export const GetListBulkOperationRequest = /*@__PURE__*/ Schema.Struct({
+  operationId: Schema.String.pipe(T.HttpPath("operationId")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/rules/lists/bulk_operations/{operationId}",
+  }),
+) as unknown as Schema.Schema<GetListBulkOperationRequest>;
 
 export type GetListBulkOperationResponse =
   | { id: string; status: "pending" | "running" | (string & {}) }
   | { id: string; completed: string; status: "completed" }
   | { id: string; completed: string; error: string; status: "failed" };
 
-export const GetListBulkOperationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
-    Schema.Struct({
-      id: Schema.String,
-      completed: Schema.String,
-      error: Schema.String,
-      status: Schema.Literal("failed"),
-    }),
-    Schema.Struct({
-      id: Schema.String,
-      completed: Schema.String,
-      status: Schema.Literal("completed"),
-    }),
-    Schema.Struct({
-      id: Schema.String,
-      status: Schema.Union([
-        Schema.Literals(["pending", "running"]),
-        Schema.String,
-      ]),
-    }),
-  ]).pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<GetListBulkOperationResponse>;
+export const GetListBulkOperationResponse = /*@__PURE__*/ Schema.Union([
+  Schema.Struct({
+    id: Schema.String,
+    completed: Schema.String,
+    error: Schema.String,
+    status: Schema.Literal("failed"),
+  }),
+  Schema.Struct({
+    id: Schema.String,
+    completed: Schema.String,
+    status: Schema.Literal("completed"),
+  }),
+  Schema.Struct({
+    id: Schema.String,
+    status: Schema.Union([
+      Schema.Literals(["pending", "running"]),
+      Schema.String,
+    ]),
+  }),
+]).pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<GetListBulkOperationResponse>;
 
 export type GetListBulkOperationError = DefaultErrors;
 
@@ -422,7 +420,7 @@ export const getListBulkOperation: API.OperationMethod<
   GetListBulkOperationResponse,
   GetListBulkOperationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetListBulkOperationRequest,
   output: GetListBulkOperationResponse,
   errors: [],
@@ -439,7 +437,7 @@ export interface GetListItemRequest {
   accountId: string;
 }
 
-export const GetListItemRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetListItemRequest = /*@__PURE__*/ Schema.Struct({
   listId: Schema.String.pipe(T.HttpPath("listId")),
   itemId: Schema.String.pipe(T.HttpPath("itemId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -488,7 +486,7 @@ export type GetListItemResponse =
       comment?: string | null;
     };
 
-export const GetListItemResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
+export const GetListItemResponse = /*@__PURE__*/ Schema.Union([
   Schema.Struct({
     id: Schema.String,
     createdOn: Schema.String,
@@ -604,7 +602,7 @@ export const getListItem: API.OperationMethod<
   GetListItemResponse,
   GetListItemError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetListItemRequest,
   output: GetListItemResponse,
   errors: [],
@@ -621,7 +619,7 @@ export interface ListListItemsRequest {
   search?: string;
 }
 
-export const ListListItemsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListListItemsRequest = /*@__PURE__*/ Schema.Struct({
   listId: Schema.String.pipe(T.HttpPath("listId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   cursor: Schema.optional(Schema.String).pipe(T.HttpQuery("cursor")),
@@ -679,7 +677,7 @@ export interface ListListItemsResponse {
   resultInfo?: { cursors?: { after?: string | null } | null } | null;
 }
 
-export const ListListItemsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListListItemsResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Union([
       Schema.Struct({
@@ -816,7 +814,7 @@ export const listListItems: API.PaginatedOperationMethod<
   ListListItemsResponse,
   ListListItemsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListListItemsRequest,
   output: ListListItemsResponse,
   errors: [],
@@ -855,7 +853,7 @@ export interface CreateListItemRequest {
   )[];
 }
 
-export const CreateListItemRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateListItemRequest = /*@__PURE__*/ Schema.Struct({
   listId: Schema.String.pipe(T.HttpPath("listId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   body: Schema.Array(
@@ -921,11 +919,9 @@ export interface CreateListItemResponse {
   operationId: string;
 }
 
-export const CreateListItemResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    operationId: Schema.String,
-  },
-)
+export const CreateListItemResponse = /*@__PURE__*/ Schema.Struct({
+  operationId: Schema.String,
+})
   .pipe(Schema.encodeKeys({ operationId: "operation_id" }))
   .pipe(
     T.ResponsePath("result"),
@@ -938,7 +934,7 @@ export const createListItem: API.OperationMethod<
   CreateListItemResponse,
   CreateListItemError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateListItemRequest,
   output: CreateListItemResponse,
   errors: [],
@@ -971,7 +967,7 @@ export interface UpdateListItemRequest {
   )[];
 }
 
-export const UpdateListItemRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateListItemRequest = /*@__PURE__*/ Schema.Struct({
   listId: Schema.String.pipe(T.HttpPath("listId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   body: Schema.Array(
@@ -1037,11 +1033,9 @@ export interface UpdateListItemResponse {
   operationId: string;
 }
 
-export const UpdateListItemResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    operationId: Schema.String,
-  },
-)
+export const UpdateListItemResponse = /*@__PURE__*/ Schema.Struct({
+  operationId: Schema.String,
+})
   .pipe(Schema.encodeKeys({ operationId: "operation_id" }))
   .pipe(
     T.ResponsePath("result"),
@@ -1054,7 +1048,7 @@ export const updateListItem: API.OperationMethod<
   UpdateListItemResponse,
   UpdateListItemError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateListItemRequest,
   output: UpdateListItemResponse,
   errors: [],
@@ -1068,7 +1062,7 @@ export interface DeleteListItemRequest {
   items?: { id: string }[];
 }
 
-export const DeleteListItemRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteListItemRequest = /*@__PURE__*/ Schema.Struct({
   listId: Schema.String.pipe(T.HttpPath("listId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   items: Schema.optional(
@@ -1090,11 +1084,9 @@ export interface DeleteListItemResponse {
   operationId: string;
 }
 
-export const DeleteListItemResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    operationId: Schema.String,
-  },
-)
+export const DeleteListItemResponse = /*@__PURE__*/ Schema.Struct({
+  operationId: Schema.String,
+})
   .pipe(Schema.encodeKeys({ operationId: "operation_id" }))
   .pipe(
     T.ResponsePath("result"),
@@ -1107,7 +1099,7 @@ export const deleteListItem: API.OperationMethod<
   DeleteListItemResponse,
   DeleteListItemError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteListItemRequest,
   output: DeleteListItemResponse,
   errors: [],

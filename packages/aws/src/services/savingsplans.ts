@@ -984,7 +984,7 @@ export const createSavingsPlan: API.OperationMethod<
   CreateSavingsPlanResponse,
   CreateSavingsPlanError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSavingsPlanRequest,
   output: CreateSavingsPlanResponse,
   errors: [
@@ -1008,7 +1008,7 @@ export const deleteQueuedSavingsPlan: API.OperationMethod<
   DeleteQueuedSavingsPlanResponse,
   DeleteQueuedSavingsPlanError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteQueuedSavingsPlanRequest,
   output: DeleteQueuedSavingsPlanResponse,
   errors: [
@@ -1031,7 +1031,7 @@ export const describeSavingsPlanRates: API.OperationMethod<
   DescribeSavingsPlanRatesResponse,
   DescribeSavingsPlanRatesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeSavingsPlanRatesRequest,
   output: DescribeSavingsPlanRatesResponse,
   errors: [
@@ -1052,7 +1052,7 @@ export const describeSavingsPlans: API.OperationMethod<
   DescribeSavingsPlansResponse,
   DescribeSavingsPlansError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeSavingsPlansRequest,
   output: DescribeSavingsPlansResponse,
   errors: [InternalServerException, ValidationException],
@@ -1069,7 +1069,7 @@ export const describeSavingsPlansOfferingRates: API.OperationMethod<
   DescribeSavingsPlansOfferingRatesResponse,
   DescribeSavingsPlansOfferingRatesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeSavingsPlansOfferingRatesRequest,
   output: DescribeSavingsPlansOfferingRatesResponse,
   errors: [InternalServerException, ValidationException],
@@ -1086,7 +1086,7 @@ export const describeSavingsPlansOfferings: API.OperationMethod<
   DescribeSavingsPlansOfferingsResponse,
   DescribeSavingsPlansOfferingsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeSavingsPlansOfferingsRequest,
   output: DescribeSavingsPlansOfferingsResponse,
   errors: [InternalServerException, ValidationException],
@@ -1104,7 +1104,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -1127,7 +1127,7 @@ export const returnSavingsPlan: API.OperationMethod<
   ReturnSavingsPlanResponse,
   ReturnSavingsPlanError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReturnSavingsPlanRequest,
   output: ReturnSavingsPlanResponse,
   errors: [
@@ -1151,7 +1151,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -1174,7 +1174,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [

@@ -1085,7 +1085,7 @@ export const deleteLexicon: API.OperationMethod<
   DeleteLexiconOutput,
   DeleteLexiconError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLexiconInput,
   output: DeleteLexiconOutput,
   errors: [LexiconNotFoundException, ServiceFailureException],
@@ -1121,7 +1121,7 @@ export const describeVoices: API.OperationMethod<
   DescribeVoicesOutput,
   DescribeVoicesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeVoicesInput,
   output: DescribeVoicesOutput,
   errors: [InvalidNextTokenException, ServiceFailureException],
@@ -1139,7 +1139,7 @@ export const getLexicon: API.OperationMethod<
   GetLexiconOutput,
   GetLexiconError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLexiconInput,
   output: GetLexiconOutput,
   errors: [LexiconNotFoundException, ServiceFailureException],
@@ -1160,7 +1160,7 @@ export const getSpeechSynthesisTask: API.OperationMethod<
   GetSpeechSynthesisTaskOutput,
   GetSpeechSynthesisTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSpeechSynthesisTaskInput,
   output: GetSpeechSynthesisTaskOutput,
   errors: [
@@ -1181,7 +1181,7 @@ export const listLexicons: API.OperationMethod<
   ListLexiconsOutput,
   ListLexiconsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListLexiconsInput,
   output: ListLexiconsOutput,
   errors: [InvalidNextTokenException, ServiceFailureException],
@@ -1215,7 +1215,7 @@ export const listSpeechSynthesisTasks: API.OperationMethod<
     ListSpeechSynthesisTasksError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSpeechSynthesisTasksInput,
   output: ListSpeechSynthesisTasksOutput,
   errors: [InvalidNextTokenException, ServiceFailureException],
@@ -1248,7 +1248,7 @@ export const putLexicon: API.OperationMethod<
   PutLexiconOutput,
   PutLexiconError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutLexiconInput,
   output: PutLexiconOutput,
   errors: [
@@ -1281,7 +1281,7 @@ export const startSpeechSynthesisStream: API.OperationMethod<
   StartSpeechSynthesisStreamOutput,
   StartSpeechSynthesisStreamError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartSpeechSynthesisStreamInput,
   output: StartSpeechSynthesisStreamOutput,
   errors: [
@@ -1322,7 +1322,7 @@ export const startSpeechSynthesisTask: API.OperationMethod<
   StartSpeechSynthesisTaskOutput,
   StartSpeechSynthesisTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartSpeechSynthesisTaskInput,
   output: StartSpeechSynthesisTaskOutput,
   errors: [
@@ -1363,7 +1363,7 @@ export const synthesizeSpeech: API.OperationMethod<
   SynthesizeSpeechOutput,
   SynthesizeSpeechError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SynthesizeSpeechInput,
   output: SynthesizeSpeechOutput,
   errors: [

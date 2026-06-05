@@ -4847,7 +4847,7 @@ export const cancelJob: API.OperationMethod<
   CancelJobResponse,
   CancelJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelJobRequest,
   output: CancelJobResponse,
   errors: [ClientException, ServerException],
@@ -4889,7 +4889,7 @@ export const createComputeEnvironment: API.OperationMethod<
   CreateComputeEnvironmentResponse,
   CreateComputeEnvironmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateComputeEnvironmentRequest,
   output: CreateComputeEnvironmentResponse,
   errors: [ClientException, ServerException],
@@ -4906,7 +4906,7 @@ export const createConsumableResource: API.OperationMethod<
   CreateConsumableResourceResponse,
   CreateConsumableResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateConsumableResourceRequest,
   output: CreateConsumableResourceResponse,
   errors: [ClientException, ServerException],
@@ -4930,7 +4930,7 @@ export const createJobQueue: API.OperationMethod<
   CreateJobQueueResponse,
   CreateJobQueueError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateJobQueueRequest,
   output: CreateJobQueueResponse,
   errors: [ClientException, ServerException],
@@ -4947,7 +4947,7 @@ export const createQuotaShare: API.OperationMethod<
   CreateQuotaShareResponse,
   CreateQuotaShareError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateQuotaShareRequest,
   output: CreateQuotaShareResponse,
   errors: [ClientException, ServerException],
@@ -4964,7 +4964,7 @@ export const createSchedulingPolicy: API.OperationMethod<
   CreateSchedulingPolicyResponse,
   CreateSchedulingPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSchedulingPolicyRequest,
   output: CreateSchedulingPolicyResponse,
   errors: [ClientException, ServerException],
@@ -4981,7 +4981,7 @@ export const createServiceEnvironment: API.OperationMethod<
   CreateServiceEnvironmentResponse,
   CreateServiceEnvironmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateServiceEnvironmentRequest,
   output: CreateServiceEnvironmentResponse,
   errors: [ClientException, ServerException],
@@ -5005,7 +5005,7 @@ export const deleteComputeEnvironment: API.OperationMethod<
   DeleteComputeEnvironmentResponse,
   DeleteComputeEnvironmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteComputeEnvironmentRequest,
   output: DeleteComputeEnvironmentResponse,
   errors: [ClientException, ServerException],
@@ -5022,7 +5022,7 @@ export const deleteConsumableResource: API.OperationMethod<
   DeleteConsumableResourceResponse,
   DeleteConsumableResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConsumableResourceRequest,
   output: DeleteConsumableResourceResponse,
   errors: [ClientException, ServerException],
@@ -5044,7 +5044,7 @@ export const deleteJobQueue: API.OperationMethod<
   DeleteJobQueueResponse,
   DeleteJobQueueError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteJobQueueRequest,
   output: DeleteJobQueueResponse,
   errors: [ClientException, ServerException],
@@ -5063,7 +5063,7 @@ export const deleteQuotaShare: API.OperationMethod<
   DeleteQuotaShareResponse,
   DeleteQuotaShareError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteQuotaShareRequest,
   output: DeleteQuotaShareResponse,
   errors: [ClientException, ServerException],
@@ -5082,7 +5082,7 @@ export const deleteSchedulingPolicy: API.OperationMethod<
   DeleteSchedulingPolicyResponse,
   DeleteSchedulingPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSchedulingPolicyRequest,
   output: DeleteSchedulingPolicyResponse,
   errors: [ClientException, ServerException],
@@ -5099,7 +5099,7 @@ export const deleteServiceEnvironment: API.OperationMethod<
   DeleteServiceEnvironmentResponse,
   DeleteServiceEnvironmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteServiceEnvironmentRequest,
   output: DeleteServiceEnvironmentResponse,
   errors: [ClientException, ServerException],
@@ -5117,7 +5117,7 @@ export const deregisterJobDefinition: API.OperationMethod<
   DeregisterJobDefinitionResponse,
   DeregisterJobDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeregisterJobDefinitionRequest,
   output: DeregisterJobDefinitionResponse,
   errors: [ClientException, ServerException],
@@ -5153,7 +5153,7 @@ export const describeComputeEnvironments: API.OperationMethod<
     DescribeComputeEnvironmentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeComputeEnvironmentsRequest,
   output: DescribeComputeEnvironmentsResponse,
   errors: [ClientException, ServerException],
@@ -5176,7 +5176,7 @@ export const describeConsumableResource: API.OperationMethod<
   DescribeConsumableResourceResponse,
   DescribeConsumableResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeConsumableResourceRequest,
   output: DescribeConsumableResourceResponse,
   errors: [ClientException, ServerException],
@@ -5209,7 +5209,7 @@ export const describeJobDefinitions: API.OperationMethod<
     DescribeJobDefinitionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeJobDefinitionsRequest,
   output: DescribeJobDefinitionsResponse,
   errors: [ClientException, ServerException],
@@ -5247,7 +5247,7 @@ export const describeJobQueues: API.OperationMethod<
     DescribeJobQueuesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeJobQueuesRequest,
   output: DescribeJobQueuesResponse,
   errors: [ClientException, ServerException],
@@ -5270,7 +5270,7 @@ export const describeJobs: API.OperationMethod<
   DescribeJobsResponse,
   DescribeJobsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeJobsRequest,
   output: DescribeJobsResponse,
   errors: [ClientException, ServerException],
@@ -5287,7 +5287,7 @@ export const describeQuotaShare: API.OperationMethod<
   DescribeQuotaShareResponse,
   DescribeQuotaShareError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeQuotaShareRequest,
   output: DescribeQuotaShareResponse,
   errors: [ClientException, ServerException],
@@ -5304,7 +5304,7 @@ export const describeSchedulingPolicies: API.OperationMethod<
   DescribeSchedulingPoliciesResponse,
   DescribeSchedulingPoliciesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeSchedulingPoliciesRequest,
   output: DescribeSchedulingPoliciesResponse,
   errors: [ClientException, ServerException],
@@ -5336,7 +5336,7 @@ export const describeServiceEnvironments: API.OperationMethod<
     DescribeServiceEnvironmentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeServiceEnvironmentsRequest,
   output: DescribeServiceEnvironmentsResponse,
   errors: [ClientException, ServerException],
@@ -5359,7 +5359,7 @@ export const describeServiceJob: API.OperationMethod<
   DescribeServiceJobResponse,
   DescribeServiceJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeServiceJobRequest,
   output: DescribeServiceJobResponse,
   errors: [ClientException, ServerException],
@@ -5379,7 +5379,7 @@ export const getJobQueueSnapshot: API.OperationMethod<
   GetJobQueueSnapshotResponse,
   GetJobQueueSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetJobQueueSnapshotRequest,
   output: GetJobQueueSnapshotResponse,
   errors: [ClientException, ServerException],
@@ -5411,7 +5411,7 @@ export const listConsumableResources: API.OperationMethod<
     ListConsumableResourcesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConsumableResourcesRequest,
   output: ListConsumableResourcesResponse,
   errors: [ClientException, ServerException],
@@ -5454,7 +5454,7 @@ export const listJobs: API.OperationMethod<
     ListJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJobsRequest,
   output: ListJobsResponse,
   errors: [ClientException, ServerException],
@@ -5492,7 +5492,7 @@ export const listJobsByConsumableResource: API.OperationMethod<
     ListJobsByConsumableResourceError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJobsByConsumableResourceRequest,
   output: ListJobsByConsumableResourceResponse,
   errors: [ClientException, ServerException],
@@ -5530,7 +5530,7 @@ export const listQuotaShares: API.OperationMethod<
     ListQuotaSharesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListQuotaSharesRequest,
   output: ListQuotaSharesResponse,
   errors: [ClientException, ServerException],
@@ -5568,7 +5568,7 @@ export const listSchedulingPolicies: API.OperationMethod<
     ListSchedulingPoliciesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSchedulingPoliciesRequest,
   output: ListSchedulingPoliciesResponse,
   errors: [ClientException, ServerException],
@@ -5606,7 +5606,7 @@ export const listServiceJobs: API.OperationMethod<
     ListServiceJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServiceJobsRequest,
   output: ListServiceJobsResponse,
   errors: [ClientException, ServerException],
@@ -5630,7 +5630,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ClientException, ServerException],
@@ -5647,7 +5647,7 @@ export const registerJobDefinition: API.OperationMethod<
   RegisterJobDefinitionResponse,
   RegisterJobDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterJobDefinitionRequest,
   output: RegisterJobDefinitionResponse,
   errors: [ClientException, ServerException],
@@ -5673,7 +5673,7 @@ export const submitJob: API.OperationMethod<
   SubmitJobResponse,
   SubmitJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SubmitJobRequest,
   output: SubmitJobResponse,
   errors: [ClientException, ServerException],
@@ -5690,7 +5690,7 @@ export const submitServiceJob: API.OperationMethod<
   SubmitServiceJobResponse,
   SubmitServiceJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SubmitServiceJobRequest,
   output: SubmitServiceJobResponse,
   errors: [ClientException, ServerException],
@@ -5708,7 +5708,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [ClientException, ServerException],
@@ -5728,7 +5728,7 @@ export const terminateJob: API.OperationMethod<
   TerminateJobResponse,
   TerminateJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TerminateJobRequest,
   output: TerminateJobResponse,
   errors: [ClientException, ServerException],
@@ -5745,7 +5745,7 @@ export const terminateServiceJob: API.OperationMethod<
   TerminateServiceJobResponse,
   TerminateServiceJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TerminateServiceJobRequest,
   output: TerminateServiceJobResponse,
   errors: [ClientException, ServerException],
@@ -5762,7 +5762,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ClientException, ServerException],
@@ -5779,7 +5779,7 @@ export const updateComputeEnvironment: API.OperationMethod<
   UpdateComputeEnvironmentResponse,
   UpdateComputeEnvironmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateComputeEnvironmentRequest,
   output: UpdateComputeEnvironmentResponse,
   errors: [ClientException, ServerException],
@@ -5796,7 +5796,7 @@ export const updateConsumableResource: API.OperationMethod<
   UpdateConsumableResourceResponse,
   UpdateConsumableResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateConsumableResourceRequest,
   output: UpdateConsumableResourceResponse,
   errors: [ClientException, ServerException],
@@ -5813,7 +5813,7 @@ export const updateJobQueue: API.OperationMethod<
   UpdateJobQueueResponse,
   UpdateJobQueueError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateJobQueueRequest,
   output: UpdateJobQueueResponse,
   errors: [ClientException, ServerException],
@@ -5830,7 +5830,7 @@ export const updateQuotaShare: API.OperationMethod<
   UpdateQuotaShareResponse,
   UpdateQuotaShareError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateQuotaShareRequest,
   output: UpdateQuotaShareResponse,
   errors: [ClientException, ServerException],
@@ -5847,7 +5847,7 @@ export const updateSchedulingPolicy: API.OperationMethod<
   UpdateSchedulingPolicyResponse,
   UpdateSchedulingPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSchedulingPolicyRequest,
   output: UpdateSchedulingPolicyResponse,
   errors: [ClientException, ServerException],
@@ -5864,7 +5864,7 @@ export const updateServiceEnvironment: API.OperationMethod<
   UpdateServiceEnvironmentResponse,
   UpdateServiceEnvironmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateServiceEnvironmentRequest,
   output: UpdateServiceEnvironmentResponse,
   errors: [ClientException, ServerException],
@@ -5881,7 +5881,7 @@ export const updateServiceJob: API.OperationMethod<
   UpdateServiceJobResponse,
   UpdateServiceJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateServiceJobRequest,
   output: UpdateServiceJobResponse,
   errors: [ClientException, ServerException],

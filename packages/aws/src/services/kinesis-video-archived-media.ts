@@ -630,7 +630,7 @@ export const getClip: API.OperationMethod<
   GetClipOutput,
   GetClipError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetClipInput,
   output: GetClipOutput,
   errors: [
@@ -785,7 +785,7 @@ export const getDASHStreamingSessionURL: API.OperationMethod<
   GetDASHStreamingSessionURLOutput,
   GetDASHStreamingSessionURLError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDASHStreamingSessionURLInput,
   output: GetDASHStreamingSessionURLOutput,
   errors: [
@@ -979,7 +979,7 @@ export const getHLSStreamingSessionURL: API.OperationMethod<
   GetHLSStreamingSessionURLOutput,
   GetHLSStreamingSessionURLError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetHLSStreamingSessionURLInput,
   output: GetHLSStreamingSessionURLOutput,
   errors: [
@@ -1024,7 +1024,7 @@ export const getImages: API.OperationMethod<
     GetImagesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetImagesInput,
   output: GetImagesOutput,
   errors: [
@@ -1082,7 +1082,7 @@ export const getMediaForFragmentList: API.OperationMethod<
   GetMediaForFragmentListOutput,
   GetMediaForFragmentListError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMediaForFragmentListInput,
   output: GetMediaForFragmentListOutput,
   errors: [
@@ -1150,7 +1150,7 @@ export const listFragments: API.OperationMethod<
     ListFragmentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFragmentsInput,
   output: ListFragmentsOutput,
   errors: [

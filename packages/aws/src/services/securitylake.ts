@@ -1517,7 +1517,7 @@ export const createDataLakeExceptionSubscription: API.OperationMethod<
   CreateDataLakeExceptionSubscriptionResponse,
   CreateDataLakeExceptionSubscriptionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDataLakeExceptionSubscriptionRequest,
   output: CreateDataLakeExceptionSubscriptionResponse,
   errors: [
@@ -1546,7 +1546,7 @@ export const deleteDataLakeExceptionSubscription: API.OperationMethod<
   DeleteDataLakeExceptionSubscriptionResponse,
   DeleteDataLakeExceptionSubscriptionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDataLakeExceptionSubscriptionRequest,
   output: DeleteDataLakeExceptionSubscriptionResponse,
   errors: [
@@ -1576,7 +1576,7 @@ export const deregisterDataLakeDelegatedAdministrator: API.OperationMethod<
   DeregisterDataLakeDelegatedAdministratorResponse,
   DeregisterDataLakeDelegatedAdministratorError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeregisterDataLakeDelegatedAdministratorRequest,
   output: DeregisterDataLakeDelegatedAdministratorResponse,
   errors: [
@@ -1604,7 +1604,7 @@ export const getDataLakeExceptionSubscription: API.OperationMethod<
   GetDataLakeExceptionSubscriptionResponse,
   GetDataLakeExceptionSubscriptionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDataLakeExceptionSubscriptionRequest,
   output: GetDataLakeExceptionSubscriptionResponse,
   errors: [
@@ -1648,7 +1648,7 @@ export const listDataLakeExceptions: API.OperationMethod<
     ListDataLakeExceptionsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataLakeExceptionsRequest,
   output: ListDataLakeExceptionsResponse,
   errors: [
@@ -1683,7 +1683,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -1713,7 +1713,7 @@ export const registerDataLakeDelegatedAdministrator: API.OperationMethod<
   RegisterDataLakeDelegatedAdministratorResponse,
   RegisterDataLakeDelegatedAdministratorError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterDataLakeDelegatedAdministratorRequest,
   output: RegisterDataLakeDelegatedAdministratorResponse,
   errors: [
@@ -1748,7 +1748,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -1777,7 +1777,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -1806,7 +1806,7 @@ export const updateDataLakeExceptionSubscription: API.OperationMethod<
   UpdateDataLakeExceptionSubscriptionResponse,
   UpdateDataLakeExceptionSubscriptionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDataLakeExceptionSubscriptionRequest,
   output: UpdateDataLakeExceptionSubscriptionResponse,
   errors: [
@@ -1841,7 +1841,7 @@ export const createAwsLogSource: API.OperationMethod<
   CreateAwsLogSourceResponse,
   CreateAwsLogSourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAwsLogSourceRequest,
   output: CreateAwsLogSourceResponse,
   errors: [
@@ -1875,7 +1875,7 @@ export const createCustomLogSource: API.OperationMethod<
   CreateCustomLogSourceResponse,
   CreateCustomLogSourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCustomLogSourceRequest,
   output: CreateCustomLogSourceResponse,
   errors: [
@@ -1917,7 +1917,7 @@ export const createDataLake: API.OperationMethod<
   CreateDataLakeResponse,
   CreateDataLakeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDataLakeRequest,
   output: CreateDataLakeResponse,
   errors: [
@@ -1949,7 +1949,7 @@ export const createDataLakeOrganizationConfiguration: API.OperationMethod<
   CreateDataLakeOrganizationConfigurationResponse,
   CreateDataLakeOrganizationConfigurationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDataLakeOrganizationConfigurationRequest,
   output: CreateDataLakeOrganizationConfigurationResponse,
   errors: [
@@ -1984,7 +1984,7 @@ export const deleteAwsLogSource: API.OperationMethod<
   DeleteAwsLogSourceResponse,
   DeleteAwsLogSourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAwsLogSourceRequest,
   output: DeleteAwsLogSourceResponse,
   errors: [
@@ -2013,7 +2013,7 @@ export const deleteCustomLogSource: API.OperationMethod<
   DeleteCustomLogSourceResponse,
   DeleteCustomLogSourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCustomLogSourceRequest,
   output: DeleteCustomLogSourceResponse,
   errors: [
@@ -2049,7 +2049,7 @@ export const deleteDataLake: API.OperationMethod<
   DeleteDataLakeResponse,
   DeleteDataLakeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDataLakeRequest,
   output: DeleteDataLakeResponse,
   errors: [
@@ -2079,7 +2079,7 @@ export const deleteDataLakeOrganizationConfiguration: API.OperationMethod<
   DeleteDataLakeOrganizationConfigurationResponse,
   DeleteDataLakeOrganizationConfigurationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDataLakeOrganizationConfigurationRequest,
   output: DeleteDataLakeOrganizationConfigurationResponse,
   errors: [
@@ -2109,7 +2109,7 @@ export const getDataLakeOrganizationConfiguration: API.OperationMethod<
   GetDataLakeOrganizationConfigurationResponse,
   GetDataLakeOrganizationConfigurationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDataLakeOrganizationConfigurationRequest,
   output: GetDataLakeOrganizationConfigurationResponse,
   errors: [
@@ -2153,7 +2153,7 @@ export const getDataLakeSources: API.OperationMethod<
     GetDataLakeSourcesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetDataLakeSourcesRequest,
   output: GetDataLakeSourcesResponse,
   errors: [
@@ -2188,7 +2188,7 @@ export const listDataLakes: API.OperationMethod<
   ListDataLakesResponse,
   ListDataLakesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListDataLakesRequest,
   output: ListDataLakesResponse,
   errors: [
@@ -2231,7 +2231,7 @@ export const listLogSources: API.OperationMethod<
     ListLogSourcesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLogSourcesRequest,
   output: ListLogSourcesResponse,
   errors: [
@@ -2277,7 +2277,7 @@ export const updateDataLake: API.OperationMethod<
   UpdateDataLakeResponse,
   UpdateDataLakeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDataLakeRequest,
   output: UpdateDataLakeResponse,
   errors: [
@@ -2306,7 +2306,7 @@ export const createSubscriber: API.OperationMethod<
   CreateSubscriberResponse,
   CreateSubscriberError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSubscriberRequest,
   output: CreateSubscriberResponse,
   errors: [
@@ -2335,7 +2335,7 @@ export const getSubscriber: API.OperationMethod<
   GetSubscriberResponse,
   GetSubscriberError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSubscriberRequest,
   output: GetSubscriberResponse,
   errors: [
@@ -2364,7 +2364,7 @@ export const updateSubscriber: API.OperationMethod<
   UpdateSubscriberResponse,
   UpdateSubscriberError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSubscriberRequest,
   output: UpdateSubscriberResponse,
   errors: [
@@ -2395,7 +2395,7 @@ export const deleteSubscriber: API.OperationMethod<
   DeleteSubscriberResponse,
   DeleteSubscriberError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSubscriberRequest,
   output: DeleteSubscriberResponse,
   errors: [
@@ -2439,7 +2439,7 @@ export const listSubscribers: API.OperationMethod<
     ListSubscribersError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSubscribersRequest,
   output: ListSubscribersResponse,
   errors: [
@@ -2475,7 +2475,7 @@ export const createSubscriberNotification: API.OperationMethod<
   CreateSubscriberNotificationResponse,
   CreateSubscriberNotificationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSubscriberNotificationRequest,
   output: CreateSubscriberNotificationResponse,
   errors: [
@@ -2504,7 +2504,7 @@ export const deleteSubscriberNotification: API.OperationMethod<
   DeleteSubscriberNotificationResponse,
   DeleteSubscriberNotificationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSubscriberNotificationRequest,
   output: DeleteSubscriberNotificationResponse,
   errors: [
@@ -2533,7 +2533,7 @@ export const updateSubscriberNotification: API.OperationMethod<
   UpdateSubscriberNotificationResponse,
   UpdateSubscriberNotificationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSubscriberNotificationRequest,
   output: UpdateSubscriberNotificationResponse,
   errors: [

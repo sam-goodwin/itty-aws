@@ -263,7 +263,7 @@ export const getConnectionRecordingPreferences: API.OperationMethod<
   GetConnectionRecordingPreferencesResponse,
   GetConnectionRecordingPreferencesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConnectionRecordingPreferencesRequest,
   output: GetConnectionRecordingPreferencesResponse,
   errors: [
@@ -293,7 +293,7 @@ export const deleteConnectionRecordingPreferences: API.OperationMethod<
   DeleteConnectionRecordingPreferencesResponse,
   DeleteConnectionRecordingPreferencesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConnectionRecordingPreferencesRequest,
   output: DeleteConnectionRecordingPreferencesResponse,
   errors: [
@@ -323,7 +323,7 @@ export const updateConnectionRecordingPreferences: API.OperationMethod<
   UpdateConnectionRecordingPreferencesResponse,
   UpdateConnectionRecordingPreferencesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateConnectionRecordingPreferencesRequest,
   output: UpdateConnectionRecordingPreferencesResponse,
   errors: [

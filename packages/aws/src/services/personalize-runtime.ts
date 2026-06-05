@@ -348,7 +348,7 @@ export const getActionRecommendations: API.OperationMethod<
   GetActionRecommendationsResponse,
   GetActionRecommendationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetActionRecommendationsRequest,
   output: GetActionRecommendationsResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
@@ -369,7 +369,7 @@ export const getPersonalizedRanking: API.OperationMethod<
   GetPersonalizedRankingResponse,
   GetPersonalizedRankingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPersonalizedRankingRequest,
   output: GetPersonalizedRankingResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
@@ -397,7 +397,7 @@ export const getRecommendations: API.OperationMethod<
   GetRecommendationsResponse,
   GetRecommendationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRecommendationsRequest,
   output: GetRecommendationsResponse,
   errors: [InvalidInputException, ResourceNotFoundException],

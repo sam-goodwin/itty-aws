@@ -193,7 +193,7 @@ export const getRawMessageContent: API.OperationMethod<
   GetRawMessageContentResponse,
   GetRawMessageContentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRawMessageContentRequest,
   output: GetRawMessageContentResponse,
   errors: [ResourceNotFoundException],
@@ -222,7 +222,7 @@ export const putRawMessageContent: API.OperationMethod<
   PutRawMessageContentResponse,
   PutRawMessageContentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutRawMessageContentRequest,
   output: PutRawMessageContentResponse,
   errors: [

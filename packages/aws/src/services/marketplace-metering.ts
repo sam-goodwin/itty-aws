@@ -439,7 +439,7 @@ export const batchMeterUsage: API.OperationMethod<
   BatchMeterUsageResult,
   BatchMeterUsageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchMeterUsageRequest,
   output: BatchMeterUsageResult,
   errors: [
@@ -514,7 +514,7 @@ export const meterUsage: API.OperationMethod<
   MeterUsageResult,
   MeterUsageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MeterUsageRequest,
   output: MeterUsageResult,
   errors: [
@@ -587,7 +587,7 @@ export const registerUsage: API.OperationMethod<
   RegisterUsageResult,
   RegisterUsageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterUsageRequest,
   output: RegisterUsageResult,
   errors: [
@@ -631,7 +631,7 @@ export const resolveCustomer: API.OperationMethod<
   ResolveCustomerResult,
   ResolveCustomerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResolveCustomerRequest,
   output: ResolveCustomerResult,
   errors: [

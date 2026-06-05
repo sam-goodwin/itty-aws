@@ -280,7 +280,7 @@ export const listRecommendedActions: API.OperationMethod<
     ListRecommendedActionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecommendedActionsRequest,
   output: ListRecommendedActionsResponse,
   errors: [

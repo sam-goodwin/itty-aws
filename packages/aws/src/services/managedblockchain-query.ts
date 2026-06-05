@@ -861,7 +861,7 @@ export const batchGetTokenBalance: API.OperationMethod<
   BatchGetTokenBalanceOutput,
   BatchGetTokenBalanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetTokenBalanceInput,
   output: BatchGetTokenBalanceOutput,
   errors: [
@@ -895,7 +895,7 @@ export const getAssetContract: API.OperationMethod<
   GetAssetContractOutput,
   GetAssetContractError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAssetContractInput,
   output: GetAssetContractOutput,
   errors: [
@@ -926,7 +926,7 @@ export const getTokenBalance: API.OperationMethod<
   GetTokenBalanceOutput,
   GetTokenBalanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTokenBalanceInput,
   output: GetTokenBalanceOutput,
   errors: [
@@ -958,7 +958,7 @@ export const getTransaction: API.OperationMethod<
   GetTransactionOutput,
   GetTransactionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTransactionInput,
   output: GetTransactionOutput,
   errors: [
@@ -1004,7 +1004,7 @@ export const listAssetContracts: API.OperationMethod<
     ListAssetContractsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssetContractsInput,
   output: ListAssetContractsOutput,
   errors: [
@@ -1053,7 +1053,7 @@ export const listFilteredTransactionEvents: API.OperationMethod<
     ListFilteredTransactionEventsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFilteredTransactionEventsInput,
   output: ListFilteredTransactionEventsOutput,
   errors: [
@@ -1110,7 +1110,7 @@ export const listTokenBalances: API.OperationMethod<
     ListTokenBalancesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTokenBalancesInput,
   output: ListTokenBalancesOutput,
   errors: [
@@ -1161,7 +1161,7 @@ export const listTransactionEvents: API.OperationMethod<
     ListTransactionEventsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTransactionEventsInput,
   output: ListTransactionEventsOutput,
   errors: [
@@ -1208,7 +1208,7 @@ export const listTransactions: API.OperationMethod<
     ListTransactionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTransactionsInput,
   output: ListTransactionsOutput,
   errors: [

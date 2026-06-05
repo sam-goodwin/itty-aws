@@ -889,7 +889,7 @@ export const createSuiteDefinition: API.OperationMethod<
   CreateSuiteDefinitionResponse,
   CreateSuiteDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSuiteDefinitionRequest,
   output: CreateSuiteDefinitionResponse,
   errors: [InternalServerException, ValidationException],
@@ -908,7 +908,7 @@ export const deleteSuiteDefinition: API.OperationMethod<
   DeleteSuiteDefinitionResponse,
   DeleteSuiteDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSuiteDefinitionRequest,
   output: DeleteSuiteDefinitionResponse,
   errors: [InternalServerException, ValidationException],
@@ -926,7 +926,7 @@ export const getEndpoint: API.OperationMethod<
   GetEndpointResponse,
   GetEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEndpointRequest,
   output: GetEndpointResponse,
   errors: [
@@ -950,7 +950,7 @@ export const getSuiteDefinition: API.OperationMethod<
   GetSuiteDefinitionResponse,
   GetSuiteDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSuiteDefinitionRequest,
   output: GetSuiteDefinitionResponse,
   errors: [
@@ -974,7 +974,7 @@ export const getSuiteRun: API.OperationMethod<
   GetSuiteRunResponse,
   GetSuiteRunError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSuiteRunRequest,
   output: GetSuiteRunResponse,
   errors: [
@@ -998,7 +998,7 @@ export const getSuiteRunReport: API.OperationMethod<
   GetSuiteRunReportResponse,
   GetSuiteRunReportError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSuiteRunReportRequest,
   output: GetSuiteRunReportResponse,
   errors: [
@@ -1036,7 +1036,7 @@ export const listSuiteDefinitions: API.OperationMethod<
     ListSuiteDefinitionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSuiteDefinitionsRequest,
   output: ListSuiteDefinitionsResponse,
   errors: [InternalServerException, ValidationException],
@@ -1076,7 +1076,7 @@ export const listSuiteRuns: API.OperationMethod<
     ListSuiteRunsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSuiteRunsRequest,
   output: ListSuiteRunsResponse,
   errors: [InternalServerException, ValidationException],
@@ -1101,7 +1101,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -1125,7 +1125,7 @@ export const startSuiteRun: API.OperationMethod<
   StartSuiteRunResponse,
   StartSuiteRunError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartSuiteRunRequest,
   output: StartSuiteRunResponse,
   errors: [ConflictException, InternalServerException, ValidationException],
@@ -1145,7 +1145,7 @@ export const stopSuiteRun: API.OperationMethod<
   StopSuiteRunResponse,
   StopSuiteRunError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopSuiteRunRequest,
   output: StopSuiteRunResponse,
   errors: [
@@ -1169,7 +1169,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -1193,7 +1193,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -1216,7 +1216,7 @@ export const updateSuiteDefinition: API.OperationMethod<
   UpdateSuiteDefinitionResponse,
   UpdateSuiteDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSuiteDefinitionRequest,
   output: UpdateSuiteDefinitionResponse,
   errors: [InternalServerException, ValidationException],

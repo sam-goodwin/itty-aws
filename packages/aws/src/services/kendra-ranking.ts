@@ -495,7 +495,7 @@ export const createRescoreExecutionPlan: API.OperationMethod<
   CreateRescoreExecutionPlanResponse,
   CreateRescoreExecutionPlanError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRescoreExecutionPlanRequest,
   output: CreateRescoreExecutionPlanResponse,
   errors: [
@@ -525,7 +525,7 @@ export const deleteRescoreExecutionPlan: API.OperationMethod<
   DeleteRescoreExecutionPlanResponse,
   DeleteRescoreExecutionPlanError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRescoreExecutionPlanRequest,
   output: DeleteRescoreExecutionPlanResponse,
   errors: [
@@ -554,7 +554,7 @@ export const describeRescoreExecutionPlan: API.OperationMethod<
   DescribeRescoreExecutionPlanResponse,
   DescribeRescoreExecutionPlanError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeRescoreExecutionPlanRequest,
   output: DescribeRescoreExecutionPlanResponse,
   errors: [
@@ -596,7 +596,7 @@ export const listRescoreExecutionPlans: API.OperationMethod<
     ListRescoreExecutionPlansError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRescoreExecutionPlansRequest,
   output: ListRescoreExecutionPlansResponse,
   errors: [
@@ -628,7 +628,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -658,7 +658,7 @@ export const rescore: API.OperationMethod<
   RescoreResult,
   RescoreError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RescoreRequest,
   output: RescoreResult,
   errors: [
@@ -689,7 +689,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -718,7 +718,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -751,7 +751,7 @@ export const updateRescoreExecutionPlan: API.OperationMethod<
   UpdateRescoreExecutionPlanResponse,
   UpdateRescoreExecutionPlanError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRescoreExecutionPlanRequest,
   output: UpdateRescoreExecutionPlanResponse,
   errors: [

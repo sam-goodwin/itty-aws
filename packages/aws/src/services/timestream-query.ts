@@ -1240,7 +1240,7 @@ export const cancelQuery: API.OperationMethod<
   CancelQueryResponse,
   CancelQueryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelQueryRequest,
   output: CancelQueryResponse,
   errors: [
@@ -1272,7 +1272,7 @@ export const createScheduledQuery: API.OperationMethod<
   CreateScheduledQueryResponse,
   CreateScheduledQueryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateScheduledQueryRequest,
   output: CreateScheduledQueryResponse,
   errors: [
@@ -1301,7 +1301,7 @@ export const deleteScheduledQuery: API.OperationMethod<
   DeleteScheduledQueryResponse,
   DeleteScheduledQueryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteScheduledQueryRequest,
   output: DeleteScheduledQueryResponse,
   errors: [
@@ -1329,7 +1329,7 @@ export const describeAccountSettings: API.OperationMethod<
   DescribeAccountSettingsResponse,
   DescribeAccountSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAccountSettingsRequest,
   output: DescribeAccountSettingsResponse,
   errors: [
@@ -1367,7 +1367,7 @@ export const describeEndpoints: API.OperationMethod<
   DescribeEndpointsResponse,
   DescribeEndpointsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeEndpointsRequest,
   output: DescribeEndpointsResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
@@ -1388,7 +1388,7 @@ export const describeScheduledQuery: API.OperationMethod<
   DescribeScheduledQueryResponse,
   DescribeScheduledQueryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeScheduledQueryRequest,
   output: DescribeScheduledQueryResponse,
   errors: [
@@ -1418,7 +1418,7 @@ export const executeScheduledQuery: API.OperationMethod<
   ExecuteScheduledQueryResponse,
   ExecuteScheduledQueryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExecuteScheduledQueryRequest,
   output: ExecuteScheduledQueryResponse,
   errors: [
@@ -1461,7 +1461,7 @@ export const listScheduledQueries: API.OperationMethod<
     ListScheduledQueriesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListScheduledQueriesRequest,
   output: ListScheduledQueriesResponse,
   errors: [
@@ -1507,7 +1507,7 @@ export const listTagsForResource: API.OperationMethod<
     ListTagsForResourceError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -1540,7 +1540,7 @@ export const prepareQuery: API.OperationMethod<
   PrepareQueryResponse,
   PrepareQueryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PrepareQueryRequest,
   output: PrepareQueryResponse,
   errors: [
@@ -1612,7 +1612,7 @@ export const query: API.OperationMethod<
     QueryError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: QueryRequest,
   output: QueryResponse,
   errors: [
@@ -1648,7 +1648,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -1673,7 +1673,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -1700,7 +1700,7 @@ export const updateAccountSettings: API.OperationMethod<
   UpdateAccountSettingsResponse,
   UpdateAccountSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccountSettingsRequest,
   output: UpdateAccountSettingsResponse,
   errors: [
@@ -1727,7 +1727,7 @@ export const updateScheduledQuery: API.OperationMethod<
   UpdateScheduledQueryResponse,
   UpdateScheduledQueryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateScheduledQueryRequest,
   output: UpdateScheduledQueryResponse,
   errors: [

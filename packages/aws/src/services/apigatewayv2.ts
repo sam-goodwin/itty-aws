@@ -7465,7 +7465,7 @@ export const createApi: API.OperationMethod<
   CreateApiResponse,
   CreateApiError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateApiRequest,
   output: CreateApiResponse,
   errors: [
@@ -7489,7 +7489,7 @@ export const createApiMapping: API.OperationMethod<
   CreateApiMappingResponse,
   CreateApiMappingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateApiMappingRequest,
   output: CreateApiMappingResponse,
   errors: [
@@ -7513,7 +7513,7 @@ export const createAuthorizer: API.OperationMethod<
   CreateAuthorizerResponse,
   CreateAuthorizerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAuthorizerRequest,
   output: CreateAuthorizerResponse,
   errors: [
@@ -7537,7 +7537,7 @@ export const createDeployment: API.OperationMethod<
   CreateDeploymentResponse,
   CreateDeploymentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDeploymentRequest,
   output: CreateDeploymentResponse,
   errors: [
@@ -7562,7 +7562,7 @@ export const createDomainName: API.OperationMethod<
   CreateDomainNameResponse,
   CreateDomainNameError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDomainNameRequest,
   output: CreateDomainNameResponse,
   errors: [
@@ -7587,7 +7587,7 @@ export const createIntegration: API.OperationMethod<
   CreateIntegrationResult,
   CreateIntegrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateIntegrationRequest,
   output: CreateIntegrationResult,
   errors: [
@@ -7611,7 +7611,7 @@ export const createIntegrationResponse: API.OperationMethod<
   CreateIntegrationResponseResponse,
   CreateIntegrationResponseError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateIntegrationResponseRequest,
   output: CreateIntegrationResponseResponse,
   errors: [
@@ -7635,7 +7635,7 @@ export const createModel: API.OperationMethod<
   CreateModelResponse,
   CreateModelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateModelRequest,
   output: CreateModelResponse,
   errors: [
@@ -7658,7 +7658,7 @@ export const createPortal: API.OperationMethod<
   CreatePortalResponse,
   CreatePortalError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePortalRequest,
   output: CreatePortalResponse,
   errors: [
@@ -7680,7 +7680,7 @@ export const createPortalProduct: API.OperationMethod<
   CreatePortalProductResponse,
   CreatePortalProductError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePortalProductRequest,
   output: CreatePortalProductResponse,
   errors: [
@@ -7703,7 +7703,7 @@ export const createProductPage: API.OperationMethod<
   CreateProductPageResponse,
   CreateProductPageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProductPageRequest,
   output: CreateProductPageResponse,
   errors: [
@@ -7727,7 +7727,7 @@ export const createProductRestEndpointPage: API.OperationMethod<
   CreateProductRestEndpointPageResponse,
   CreateProductRestEndpointPageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProductRestEndpointPageRequest,
   output: CreateProductRestEndpointPageResponse,
   errors: [
@@ -7751,7 +7751,7 @@ export const createRoute: API.OperationMethod<
   CreateRouteResult,
   CreateRouteError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRouteRequest,
   output: CreateRouteResult,
   errors: [
@@ -7775,7 +7775,7 @@ export const createRouteResponse: API.OperationMethod<
   CreateRouteResponseResponse,
   CreateRouteResponseError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRouteResponseRequest,
   output: CreateRouteResponseResponse,
   errors: [
@@ -7799,7 +7799,7 @@ export const createRoutingRule: API.OperationMethod<
   CreateRoutingRuleResponse,
   CreateRoutingRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRoutingRuleRequest,
   output: CreateRoutingRuleResponse,
   errors: [
@@ -7823,7 +7823,7 @@ export const createStage: API.OperationMethod<
   CreateStageResponse,
   CreateStageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateStageRequest,
   output: CreateStageResponse,
   errors: [
@@ -7845,7 +7845,7 @@ export const createVpcLink: API.OperationMethod<
   CreateVpcLinkResponse,
   CreateVpcLinkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateVpcLinkRequest,
   output: CreateVpcLinkResponse,
   errors: [BadRequestException, TooManyRequestsException],
@@ -7862,7 +7862,7 @@ export const deleteAccessLogSettings: API.OperationMethod<
   DeleteAccessLogSettingsResponse,
   DeleteAccessLogSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessLogSettingsRequest,
   output: DeleteAccessLogSettingsResponse,
   errors: [NotFoundException, TooManyRequestsException],
@@ -7879,7 +7879,7 @@ export const deleteApi: API.OperationMethod<
   DeleteApiResponse,
   DeleteApiError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteApiRequest,
   output: DeleteApiResponse,
   errors: [NotFoundException, TooManyRequestsException],
@@ -7897,7 +7897,7 @@ export const deleteApiMapping: API.OperationMethod<
   DeleteApiMappingResponse,
   DeleteApiMappingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteApiMappingRequest,
   output: DeleteApiMappingResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
@@ -7914,7 +7914,7 @@ export const deleteAuthorizer: API.OperationMethod<
   DeleteAuthorizerResponse,
   DeleteAuthorizerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAuthorizerRequest,
   output: DeleteAuthorizerResponse,
   errors: [NotFoundException, TooManyRequestsException],
@@ -7931,7 +7931,7 @@ export const deleteCorsConfiguration: API.OperationMethod<
   DeleteCorsConfigurationResponse,
   DeleteCorsConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCorsConfigurationRequest,
   output: DeleteCorsConfigurationResponse,
   errors: [NotFoundException, TooManyRequestsException],
@@ -7948,7 +7948,7 @@ export const deleteDeployment: API.OperationMethod<
   DeleteDeploymentResponse,
   DeleteDeploymentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDeploymentRequest,
   output: DeleteDeploymentResponse,
   errors: [NotFoundException, TooManyRequestsException],
@@ -7965,7 +7965,7 @@ export const deleteDomainName: API.OperationMethod<
   DeleteDomainNameResponse,
   DeleteDomainNameError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDomainNameRequest,
   output: DeleteDomainNameResponse,
   errors: [NotFoundException, TooManyRequestsException],
@@ -7982,7 +7982,7 @@ export const deleteIntegration: API.OperationMethod<
   DeleteIntegrationResponse,
   DeleteIntegrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteIntegrationRequest,
   output: DeleteIntegrationResponse,
   errors: [NotFoundException, TooManyRequestsException],
@@ -7999,7 +7999,7 @@ export const deleteIntegrationResponse: API.OperationMethod<
   DeleteIntegrationResponseResponse,
   DeleteIntegrationResponseError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteIntegrationResponseRequest,
   output: DeleteIntegrationResponseResponse,
   errors: [NotFoundException, TooManyRequestsException],
@@ -8016,7 +8016,7 @@ export const deleteModel: API.OperationMethod<
   DeleteModelResponse,
   DeleteModelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteModelRequest,
   output: DeleteModelResponse,
   errors: [NotFoundException, TooManyRequestsException],
@@ -8034,7 +8034,7 @@ export const deletePortal: API.OperationMethod<
   DeletePortalResponse,
   DeletePortalError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePortalRequest,
   output: DeletePortalResponse,
   errors: [
@@ -8057,7 +8057,7 @@ export const deletePortalProduct: API.OperationMethod<
   DeletePortalProductResponse,
   DeletePortalProductError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePortalProductRequest,
   output: DeletePortalProductResponse,
   errors: [
@@ -8081,7 +8081,7 @@ export const deletePortalProductSharingPolicy: API.OperationMethod<
   DeletePortalProductSharingPolicyResponse,
   DeletePortalProductSharingPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePortalProductSharingPolicyRequest,
   output: DeletePortalProductSharingPolicyResponse,
   errors: [
@@ -8105,7 +8105,7 @@ export const deleteProductPage: API.OperationMethod<
   DeleteProductPageResponse,
   DeleteProductPageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProductPageRequest,
   output: DeleteProductPageResponse,
   errors: [
@@ -8129,7 +8129,7 @@ export const deleteProductRestEndpointPage: API.OperationMethod<
   DeleteProductRestEndpointPageResponse,
   DeleteProductRestEndpointPageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProductRestEndpointPageRequest,
   output: DeleteProductRestEndpointPageResponse,
   errors: [
@@ -8151,7 +8151,7 @@ export const deleteRoute: API.OperationMethod<
   DeleteRouteResponse,
   DeleteRouteError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRouteRequest,
   output: DeleteRouteResponse,
   errors: [NotFoundException, TooManyRequestsException],
@@ -8168,7 +8168,7 @@ export const deleteRouteRequestParameter: API.OperationMethod<
   DeleteRouteRequestParameterResponse,
   DeleteRouteRequestParameterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRouteRequestParameterRequest,
   output: DeleteRouteRequestParameterResponse,
   errors: [NotFoundException, TooManyRequestsException],
@@ -8185,7 +8185,7 @@ export const deleteRouteResponse: API.OperationMethod<
   DeleteRouteResponseResponse,
   DeleteRouteResponseError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRouteResponseRequest,
   output: DeleteRouteResponseResponse,
   errors: [NotFoundException, TooManyRequestsException],
@@ -8202,7 +8202,7 @@ export const deleteRouteSettings: API.OperationMethod<
   DeleteRouteSettingsResponse,
   DeleteRouteSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRouteSettingsRequest,
   output: DeleteRouteSettingsResponse,
   errors: [NotFoundException, TooManyRequestsException],
@@ -8220,7 +8220,7 @@ export const deleteRoutingRule: API.OperationMethod<
   DeleteRoutingRuleResponse,
   DeleteRoutingRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRoutingRuleRequest,
   output: DeleteRoutingRuleResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
@@ -8237,7 +8237,7 @@ export const deleteStage: API.OperationMethod<
   DeleteStageResponse,
   DeleteStageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteStageRequest,
   output: DeleteStageResponse,
   errors: [NotFoundException, TooManyRequestsException],
@@ -8254,7 +8254,7 @@ export const deleteVpcLink: API.OperationMethod<
   DeleteVpcLinkResponse,
   DeleteVpcLinkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteVpcLinkRequest,
   output: DeleteVpcLinkResponse,
   errors: [NotFoundException, TooManyRequestsException],
@@ -8274,7 +8274,7 @@ export const disablePortal: API.OperationMethod<
   DisablePortalResponse,
   DisablePortalError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisablePortalRequest,
   output: DisablePortalResponse,
   errors: [
@@ -8298,7 +8298,7 @@ export const exportApi: API.OperationMethod<
   ExportApiResponse,
   ExportApiError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExportApiRequest,
   output: ExportApiResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
@@ -8315,7 +8315,7 @@ export const getApi: API.OperationMethod<
   GetApiResponse,
   GetApiError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetApiRequest,
   output: GetApiResponse,
   errors: [NotFoundException, TooManyRequestsException],
@@ -8333,7 +8333,7 @@ export const getApiMapping: API.OperationMethod<
   GetApiMappingResponse,
   GetApiMappingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetApiMappingRequest,
   output: GetApiMappingResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
@@ -8351,7 +8351,7 @@ export const getApiMappings: API.OperationMethod<
   GetApiMappingsResponse,
   GetApiMappingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetApiMappingsRequest,
   output: GetApiMappingsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
@@ -8369,7 +8369,7 @@ export const getApis: API.OperationMethod<
   GetApisResponse,
   GetApisError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetApisRequest,
   output: GetApisResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
@@ -8386,7 +8386,7 @@ export const getAuthorizer: API.OperationMethod<
   GetAuthorizerResponse,
   GetAuthorizerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAuthorizerRequest,
   output: GetAuthorizerResponse,
   errors: [NotFoundException, TooManyRequestsException],
@@ -8404,7 +8404,7 @@ export const getAuthorizers: API.OperationMethod<
   GetAuthorizersResponse,
   GetAuthorizersError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAuthorizersRequest,
   output: GetAuthorizersResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
@@ -8421,7 +8421,7 @@ export const getDeployment: API.OperationMethod<
   GetDeploymentResponse,
   GetDeploymentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDeploymentRequest,
   output: GetDeploymentResponse,
   errors: [NotFoundException, TooManyRequestsException],
@@ -8439,7 +8439,7 @@ export const getDeployments: API.OperationMethod<
   GetDeploymentsResponse,
   GetDeploymentsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDeploymentsRequest,
   output: GetDeploymentsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
@@ -8456,7 +8456,7 @@ export const getDomainName: API.OperationMethod<
   GetDomainNameResponse,
   GetDomainNameError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDomainNameRequest,
   output: GetDomainNameResponse,
   errors: [NotFoundException, TooManyRequestsException],
@@ -8474,7 +8474,7 @@ export const getDomainNames: API.OperationMethod<
   GetDomainNamesResponse,
   GetDomainNamesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDomainNamesRequest,
   output: GetDomainNamesResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
@@ -8491,7 +8491,7 @@ export const getIntegration: API.OperationMethod<
   GetIntegrationResult,
   GetIntegrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIntegrationRequest,
   output: GetIntegrationResult,
   errors: [NotFoundException, TooManyRequestsException],
@@ -8508,7 +8508,7 @@ export const getIntegrationResponse: API.OperationMethod<
   GetIntegrationResponseResponse,
   GetIntegrationResponseError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIntegrationResponseRequest,
   output: GetIntegrationResponseResponse,
   errors: [NotFoundException, TooManyRequestsException],
@@ -8526,7 +8526,7 @@ export const getIntegrationResponses: API.OperationMethod<
   GetIntegrationResponsesResponse,
   GetIntegrationResponsesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIntegrationResponsesRequest,
   output: GetIntegrationResponsesResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
@@ -8544,7 +8544,7 @@ export const getIntegrations: API.OperationMethod<
   GetIntegrationsResponse,
   GetIntegrationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIntegrationsRequest,
   output: GetIntegrationsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
@@ -8561,7 +8561,7 @@ export const getModel: API.OperationMethod<
   GetModelResponse,
   GetModelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetModelRequest,
   output: GetModelResponse,
   errors: [NotFoundException, TooManyRequestsException],
@@ -8579,7 +8579,7 @@ export const getModels: API.OperationMethod<
   GetModelsResponse,
   GetModelsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetModelsRequest,
   output: GetModelsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
@@ -8596,7 +8596,7 @@ export const getModelTemplate: API.OperationMethod<
   GetModelTemplateResponse,
   GetModelTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetModelTemplateRequest,
   output: GetModelTemplateResponse,
   errors: [NotFoundException, TooManyRequestsException],
@@ -8615,7 +8615,7 @@ export const getPortal: API.OperationMethod<
   GetPortalResponse,
   GetPortalError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPortalRequest,
   output: GetPortalResponse,
   errors: [
@@ -8639,7 +8639,7 @@ export const getPortalProduct: API.OperationMethod<
   GetPortalProductResponse,
   GetPortalProductError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPortalProductRequest,
   output: GetPortalProductResponse,
   errors: [
@@ -8663,7 +8663,7 @@ export const getPortalProductSharingPolicy: API.OperationMethod<
   GetPortalProductSharingPolicyResponse,
   GetPortalProductSharingPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPortalProductSharingPolicyRequest,
   output: GetPortalProductSharingPolicyResponse,
   errors: [
@@ -8687,7 +8687,7 @@ export const getProductPage: API.OperationMethod<
   GetProductPageResponse,
   GetProductPageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProductPageRequest,
   output: GetProductPageResponse,
   errors: [
@@ -8711,7 +8711,7 @@ export const getProductRestEndpointPage: API.OperationMethod<
   GetProductRestEndpointPageResponse,
   GetProductRestEndpointPageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProductRestEndpointPageRequest,
   output: GetProductRestEndpointPageResponse,
   errors: [
@@ -8733,7 +8733,7 @@ export const getRoute: API.OperationMethod<
   GetRouteResult,
   GetRouteError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRouteRequest,
   output: GetRouteResult,
   errors: [NotFoundException, TooManyRequestsException],
@@ -8750,7 +8750,7 @@ export const getRouteResponse: API.OperationMethod<
   GetRouteResponseResponse,
   GetRouteResponseError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRouteResponseRequest,
   output: GetRouteResponseResponse,
   errors: [NotFoundException, TooManyRequestsException],
@@ -8768,7 +8768,7 @@ export const getRouteResponses: API.OperationMethod<
   GetRouteResponsesResponse,
   GetRouteResponsesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRouteResponsesRequest,
   output: GetRouteResponsesResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
@@ -8786,7 +8786,7 @@ export const getRoutes: API.OperationMethod<
   GetRoutesResponse,
   GetRoutesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRoutesRequest,
   output: GetRoutesResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
@@ -8804,7 +8804,7 @@ export const getRoutingRule: API.OperationMethod<
   GetRoutingRuleResponse,
   GetRoutingRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRoutingRuleRequest,
   output: GetRoutingRuleResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
@@ -8821,7 +8821,7 @@ export const getStage: API.OperationMethod<
   GetStageResponse,
   GetStageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetStageRequest,
   output: GetStageResponse,
   errors: [NotFoundException, TooManyRequestsException],
@@ -8839,7 +8839,7 @@ export const getStages: API.OperationMethod<
   GetStagesResponse,
   GetStagesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetStagesRequest,
   output: GetStagesResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
@@ -8858,7 +8858,7 @@ export const getTags: API.OperationMethod<
   GetTagsResponse,
   GetTagsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTagsRequest,
   output: GetTagsResponse,
   errors: [
@@ -8880,7 +8880,7 @@ export const getVpcLink: API.OperationMethod<
   GetVpcLinkResponse,
   GetVpcLinkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetVpcLinkRequest,
   output: GetVpcLinkResponse,
   errors: [NotFoundException, TooManyRequestsException],
@@ -8897,7 +8897,7 @@ export const getVpcLinks: API.OperationMethod<
   GetVpcLinksResponse,
   GetVpcLinksError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetVpcLinksRequest,
   output: GetVpcLinksResponse,
   errors: [BadRequestException, TooManyRequestsException],
@@ -8916,7 +8916,7 @@ export const importApi: API.OperationMethod<
   ImportApiResponse,
   ImportApiError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportApiRequest,
   output: ImportApiResponse,
   errors: [
@@ -8939,7 +8939,7 @@ export const listPortalProducts: API.OperationMethod<
   ListPortalProductsResponse,
   ListPortalProductsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListPortalProductsRequest,
   output: ListPortalProductsResponse,
   errors: [
@@ -8961,7 +8961,7 @@ export const listPortals: API.OperationMethod<
   ListPortalsResponse,
   ListPortalsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListPortalsRequest,
   output: ListPortalsResponse,
   errors: [
@@ -8984,7 +8984,7 @@ export const listProductPages: API.OperationMethod<
   ListProductPagesResponse,
   ListProductPagesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListProductPagesRequest,
   output: ListProductPagesResponse,
   errors: [
@@ -9008,7 +9008,7 @@ export const listProductRestEndpointPages: API.OperationMethod<
   ListProductRestEndpointPagesResponse,
   ListProductRestEndpointPagesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListProductRestEndpointPagesRequest,
   output: ListProductRestEndpointPagesResponse,
   errors: [
@@ -9046,7 +9046,7 @@ export const listRoutingRules: API.OperationMethod<
     ListRoutingRulesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRoutingRulesRequest,
   output: ListRoutingRulesResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
@@ -9072,7 +9072,7 @@ export const previewPortal: API.OperationMethod<
   PreviewPortalResponse,
   PreviewPortalError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PreviewPortalRequest,
   output: PreviewPortalResponse,
   errors: [
@@ -9098,7 +9098,7 @@ export const publishPortal: API.OperationMethod<
   PublishPortalResponse,
   PublishPortalError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PublishPortalRequest,
   output: PublishPortalResponse,
   errors: [
@@ -9123,7 +9123,7 @@ export const putPortalProductSharingPolicy: API.OperationMethod<
   PutPortalProductSharingPolicyResponse,
   PutPortalProductSharingPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutPortalProductSharingPolicyRequest,
   output: PutPortalProductSharingPolicyResponse,
   errors: [
@@ -9147,7 +9147,7 @@ export const putRoutingRule: API.OperationMethod<
   PutRoutingRuleResponse,
   PutRoutingRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutRoutingRuleRequest,
   output: PutRoutingRuleResponse,
   errors: [
@@ -9171,7 +9171,7 @@ export const reimportApi: API.OperationMethod<
   ReimportApiResponse,
   ReimportApiError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReimportApiRequest,
   output: ReimportApiResponse,
   errors: [
@@ -9193,7 +9193,7 @@ export const resetAuthorizersCache: API.OperationMethod<
   ResetAuthorizersCacheResponse,
   ResetAuthorizersCacheError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetAuthorizersCacheRequest,
   output: ResetAuthorizersCacheResponse,
   errors: [NotFoundException, TooManyRequestsException],
@@ -9212,7 +9212,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -9236,7 +9236,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -9260,7 +9260,7 @@ export const updateApi: API.OperationMethod<
   UpdateApiResponse,
   UpdateApiError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateApiRequest,
   output: UpdateApiResponse,
   errors: [
@@ -9284,7 +9284,7 @@ export const updateApiMapping: API.OperationMethod<
   UpdateApiMappingResponse,
   UpdateApiMappingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateApiMappingRequest,
   output: UpdateApiMappingResponse,
   errors: [
@@ -9308,7 +9308,7 @@ export const updateAuthorizer: API.OperationMethod<
   UpdateAuthorizerResponse,
   UpdateAuthorizerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAuthorizerRequest,
   output: UpdateAuthorizerResponse,
   errors: [
@@ -9332,7 +9332,7 @@ export const updateDeployment: API.OperationMethod<
   UpdateDeploymentResponse,
   UpdateDeploymentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDeploymentRequest,
   output: UpdateDeploymentResponse,
   errors: [
@@ -9356,7 +9356,7 @@ export const updateDomainName: API.OperationMethod<
   UpdateDomainNameResponse,
   UpdateDomainNameError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDomainNameRequest,
   output: UpdateDomainNameResponse,
   errors: [
@@ -9380,7 +9380,7 @@ export const updateIntegration: API.OperationMethod<
   UpdateIntegrationResult,
   UpdateIntegrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateIntegrationRequest,
   output: UpdateIntegrationResult,
   errors: [
@@ -9404,7 +9404,7 @@ export const updateIntegrationResponse: API.OperationMethod<
   UpdateIntegrationResponseResponse,
   UpdateIntegrationResponseError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateIntegrationResponseRequest,
   output: UpdateIntegrationResponseResponse,
   errors: [
@@ -9428,7 +9428,7 @@ export const updateModel: API.OperationMethod<
   UpdateModelResponse,
   UpdateModelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateModelRequest,
   output: UpdateModelResponse,
   errors: [
@@ -9453,7 +9453,7 @@ export const updatePortal: API.OperationMethod<
   UpdatePortalResponse,
   UpdatePortalError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePortalRequest,
   output: UpdatePortalResponse,
   errors: [
@@ -9478,7 +9478,7 @@ export const updatePortalProduct: API.OperationMethod<
   UpdatePortalProductResponse,
   UpdatePortalProductError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePortalProductRequest,
   output: UpdatePortalProductResponse,
   errors: [
@@ -9502,7 +9502,7 @@ export const updateProductPage: API.OperationMethod<
   UpdateProductPageResponse,
   UpdateProductPageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateProductPageRequest,
   output: UpdateProductPageResponse,
   errors: [
@@ -9526,7 +9526,7 @@ export const updateProductRestEndpointPage: API.OperationMethod<
   UpdateProductRestEndpointPageResponse,
   UpdateProductRestEndpointPageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateProductRestEndpointPageRequest,
   output: UpdateProductRestEndpointPageResponse,
   errors: [
@@ -9550,7 +9550,7 @@ export const updateRoute: API.OperationMethod<
   UpdateRouteResult,
   UpdateRouteError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRouteRequest,
   output: UpdateRouteResult,
   errors: [
@@ -9574,7 +9574,7 @@ export const updateRouteResponse: API.OperationMethod<
   UpdateRouteResponseResponse,
   UpdateRouteResponseError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRouteResponseRequest,
   output: UpdateRouteResponseResponse,
   errors: [
@@ -9598,7 +9598,7 @@ export const updateStage: API.OperationMethod<
   UpdateStageResponse,
   UpdateStageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateStageRequest,
   output: UpdateStageResponse,
   errors: [
@@ -9621,7 +9621,7 @@ export const updateVpcLink: API.OperationMethod<
   UpdateVpcLinkResponse,
   UpdateVpcLinkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateVpcLinkRequest,
   output: UpdateVpcLinkResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],

@@ -756,7 +756,7 @@ export const createLink: API.OperationMethod<
   CreateLinkOutput,
   CreateLinkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLinkInput,
   output: CreateLinkOutput,
   errors: [
@@ -786,7 +786,7 @@ export const createSink: API.OperationMethod<
   CreateSinkOutput,
   CreateSinkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSinkInput,
   output: CreateSinkOutput,
   errors: [
@@ -811,7 +811,7 @@ export const deleteLink: API.OperationMethod<
   DeleteLinkOutput,
   DeleteLinkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLinkInput,
   output: DeleteLinkOutput,
   errors: [
@@ -836,7 +836,7 @@ export const deleteSink: API.OperationMethod<
   DeleteSinkOutput,
   DeleteSinkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSinkInput,
   output: DeleteSinkOutput,
   errors: [
@@ -863,7 +863,7 @@ export const getLink: API.OperationMethod<
   GetLinkOutput,
   GetLinkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLinkInput,
   output: GetLinkOutput,
   errors: [
@@ -889,7 +889,7 @@ export const getSink: API.OperationMethod<
   GetSinkOutput,
   GetSinkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSinkInput,
   output: GetSinkOutput,
   errors: [
@@ -913,7 +913,7 @@ export const getSinkPolicy: API.OperationMethod<
   GetSinkPolicyOutput,
   GetSinkPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSinkPolicyInput,
   output: GetSinkPolicyOutput,
   errors: [
@@ -956,7 +956,7 @@ export const listAttachedLinks: API.OperationMethod<
     ListAttachedLinksError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAttachedLinksInput,
   output: ListAttachedLinksOutput,
   errors: [
@@ -1002,7 +1002,7 @@ export const listLinks: API.OperationMethod<
     ListLinksError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLinksInput,
   output: ListLinksOutput,
   errors: [
@@ -1045,7 +1045,7 @@ export const listSinks: API.OperationMethod<
     ListSinksError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSinksInput,
   output: ListSinksOutput,
   errors: [
@@ -1072,7 +1072,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceOutput,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [ResourceNotFoundException, ValidationException],
@@ -1107,7 +1107,7 @@ export const putSinkPolicy: API.OperationMethod<
   PutSinkPolicyOutput,
   PutSinkPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutSinkPolicyInput,
   output: PutSinkPolicyOutput,
   errors: [
@@ -1140,7 +1140,7 @@ export const tagResource: API.OperationMethod<
   TagResourceOutput,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
   errors: [
@@ -1163,7 +1163,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceOutput,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
   errors: [ResourceNotFoundException, ValidationException],
@@ -1186,7 +1186,7 @@ export const updateLink: API.OperationMethod<
   UpdateLinkOutput,
   UpdateLinkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateLinkInput,
   output: UpdateLinkOutput,
   errors: [

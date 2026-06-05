@@ -22,7 +22,7 @@ export interface GetFilterRequest {
   zoneId: string;
 }
 
-export const GetFilterRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetFilterRequest = /*@__PURE__*/ Schema.Struct({
   filterId: Schema.String.pipe(T.HttpPath("filterId")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
 }).pipe(
@@ -42,7 +42,7 @@ export interface GetFilterResponse {
   ref?: string | null;
 }
 
-export const GetFilterResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetFilterResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -59,7 +59,7 @@ export const getFilter: API.OperationMethod<
   GetFilterResponse,
   GetFilterError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFilterRequest,
   output: GetFilterResponse,
   errors: [],
@@ -82,7 +82,7 @@ export interface ListFiltersRequest {
   ref?: string;
 }
 
-export const ListFiltersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListFiltersRequest = /*@__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
   perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
@@ -111,7 +111,7 @@ export interface ListFiltersResponse {
   } | null;
 }
 
-export const ListFiltersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListFiltersResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -150,7 +150,7 @@ export const listFilters: API.PaginatedOperationMethod<
   ListFiltersResponse,
   ListFiltersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFiltersRequest,
   output: ListFiltersResponse,
   errors: [],
@@ -175,7 +175,7 @@ export interface CreateFilterRequest {
   }[];
 }
 
-export const CreateFilterRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateFilterRequest = /*@__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   body: Schema.Array(
     Schema.Struct({
@@ -199,7 +199,7 @@ export interface CreateFilterResponse {
   }[];
 }
 
-export const CreateFilterResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateFilterResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -218,7 +218,7 @@ export const createFilter: API.PaginatedOperationMethod<
   CreateFilterResponse,
   CreateFilterError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: CreateFilterRequest,
   output: CreateFilterResponse,
   errors: [],
@@ -242,7 +242,7 @@ export interface UpdateFilterRequest {
   ref?: string;
 }
 
-export const UpdateFilterRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateFilterRequest = /*@__PURE__*/ Schema.Struct({
   filterId: Schema.String.pipe(T.HttpPath("filterId")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   description: Schema.optional(Schema.String),
@@ -266,7 +266,7 @@ export interface UpdateFilterResponse {
   ref?: string | null;
 }
 
-export const UpdateFilterResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateFilterResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -283,7 +283,7 @@ export const updateFilter: API.OperationMethod<
   UpdateFilterResponse,
   UpdateFilterError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateFilterRequest,
   output: UpdateFilterResponse,
   errors: [],
@@ -295,7 +295,7 @@ export interface DeleteFilterRequest {
   zoneId: string;
 }
 
-export const DeleteFilterRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteFilterRequest = /*@__PURE__*/ Schema.Struct({
   filterId: Schema.String.pipe(T.HttpPath("filterId")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
 }).pipe(
@@ -307,7 +307,7 @@ export interface DeleteFilterResponse {
   id: string;
 }
 
-export const DeleteFilterResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteFilterResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
 }).pipe(
   T.ResponsePath("result"),
@@ -320,7 +320,7 @@ export const deleteFilter: API.OperationMethod<
   DeleteFilterResponse,
   DeleteFilterError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFilterRequest,
   output: DeleteFilterResponse,
   errors: [],
@@ -333,24 +333,22 @@ export interface BulkDeleteFiltersRequest {
   id: string[];
 }
 
-export const BulkDeleteFiltersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    id: Schema.Array(Schema.String).pipe(T.HttpQuery("id")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "/zones/{zone_id}/filters" }),
-  ) as unknown as Schema.Schema<BulkDeleteFiltersRequest>;
+export const BulkDeleteFiltersRequest = /*@__PURE__*/ Schema.Struct({
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  id: Schema.Array(Schema.String).pipe(T.HttpQuery("id")),
+}).pipe(
+  T.Http({ method: "DELETE", path: "/zones/{zone_id}/filters" }),
+) as unknown as Schema.Schema<BulkDeleteFiltersRequest>;
 
 export type BulkDeleteFiltersResponse = { id?: string | null }[];
 
-export const BulkDeleteFiltersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }),
-  ).pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<BulkDeleteFiltersResponse>;
+export const BulkDeleteFiltersResponse = /*@__PURE__*/ Schema.Array(
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
+).pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<BulkDeleteFiltersResponse>;
 
 export type BulkDeleteFiltersError = DefaultErrors;
 
@@ -359,7 +357,7 @@ export const bulkDeleteFilters: API.OperationMethod<
   BulkDeleteFiltersResponse,
   BulkDeleteFiltersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BulkDeleteFiltersRequest,
   output: BulkDeleteFiltersResponse,
   errors: [],
@@ -381,7 +379,7 @@ export interface BulkPutFiltersRequest {
   }[];
 }
 
-export const BulkPutFiltersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BulkPutFiltersRequest = /*@__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   body: Schema.Array(
     Schema.Struct({
@@ -405,21 +403,17 @@ export interface BulkPutFiltersResponse {
   }[];
 }
 
-export const BulkPutFiltersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    result: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        description: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-        ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }),
-    ),
-  },
-) as unknown as Schema.Schema<BulkPutFiltersResponse>;
+export const BulkPutFiltersResponse = /*@__PURE__*/ Schema.Struct({
+  result: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+  ),
+}) as unknown as Schema.Schema<BulkPutFiltersResponse>;
 
 export type BulkPutFiltersError = DefaultErrors;
 
@@ -428,7 +422,7 @@ export const bulkPutFilters: API.PaginatedOperationMethod<
   BulkPutFiltersResponse,
   BulkPutFiltersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: BulkPutFiltersRequest,
   output: BulkPutFiltersResponse,
   errors: [],

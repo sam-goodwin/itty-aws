@@ -1364,7 +1364,7 @@ export const deleteSession: API.OperationMethod<
   DeleteSessionResponse,
   DeleteSessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSessionRequest,
   output: DeleteSessionResponse,
   errors: [
@@ -1401,7 +1401,7 @@ export const getSession: API.OperationMethod<
   GetSessionResponse,
   GetSessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSessionRequest,
   output: GetSessionResponse,
   errors: [
@@ -1432,7 +1432,7 @@ export const putSession: API.OperationMethod<
   PutSessionResponse,
   PutSessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutSessionRequest,
   output: PutSessionResponse,
   errors: [
@@ -1489,7 +1489,7 @@ export const recognizeText: API.OperationMethod<
   RecognizeTextResponse,
   RecognizeTextError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RecognizeTextRequest,
   output: RecognizeTextResponse,
   errors: [
@@ -1569,7 +1569,7 @@ export const recognizeUtterance: API.OperationMethod<
   RecognizeUtteranceResponse,
   RecognizeUtteranceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RecognizeUtteranceRequest,
   output: RecognizeUtteranceResponse,
   errors: [
@@ -1641,7 +1641,7 @@ export const startConversation: API.OperationMethod<
   StartConversationResponse,
   StartConversationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartConversationRequest,
   output: StartConversationResponse,
   errors: [

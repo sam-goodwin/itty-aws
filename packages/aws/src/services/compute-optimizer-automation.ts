@@ -1570,7 +1570,7 @@ export const associateAccounts: API.OperationMethod<
   AssociateAccountsResponse,
   AssociateAccountsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateAccountsRequest,
   output: AssociateAccountsResponse,
   errors: [
@@ -1607,7 +1607,7 @@ export const createAutomationRule: API.OperationMethod<
   CreateAutomationRuleResponse,
   CreateAutomationRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAutomationRuleRequest,
   output: CreateAutomationRuleResponse,
   errors: [
@@ -1644,7 +1644,7 @@ export const deleteAutomationRule: API.OperationMethod<
   DeleteAutomationRuleResponse,
   DeleteAutomationRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAutomationRuleRequest,
   output: DeleteAutomationRuleResponse,
   errors: [
@@ -1682,7 +1682,7 @@ export const disassociateAccounts: API.OperationMethod<
   DisassociateAccountsResponse,
   DisassociateAccountsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateAccountsRequest,
   output: DisassociateAccountsResponse,
   errors: [
@@ -1716,7 +1716,7 @@ export const getAutomationEvent: API.OperationMethod<
   GetAutomationEventResponse,
   GetAutomationEventError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAutomationEventRequest,
   output: GetAutomationEventResponse,
   errors: [
@@ -1748,7 +1748,7 @@ export const getAutomationRule: API.OperationMethod<
   GetAutomationRuleResponse,
   GetAutomationRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAutomationRuleRequest,
   output: GetAutomationRuleResponse,
   errors: [
@@ -1780,7 +1780,7 @@ export const getEnrollmentConfiguration: API.OperationMethod<
   GetEnrollmentConfigurationResponse,
   GetEnrollmentConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEnrollmentConfigurationRequest,
   output: GetEnrollmentConfigurationResponse,
   errors: [
@@ -1829,7 +1829,7 @@ export const listAccounts: API.OperationMethod<
     ListAccountsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsRequest,
   output: ListAccountsResponse,
   errors: [
@@ -1881,7 +1881,7 @@ export const listAutomationEvents: API.OperationMethod<
     ListAutomationEventsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAutomationEventsRequest,
   output: ListAutomationEventsResponse,
   errors: [
@@ -1933,7 +1933,7 @@ export const listAutomationEventSteps: API.OperationMethod<
     ListAutomationEventStepsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAutomationEventStepsRequest,
   output: ListAutomationEventStepsResponse,
   errors: [
@@ -1985,7 +1985,7 @@ export const listAutomationEventSummaries: API.OperationMethod<
     ListAutomationEventSummariesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAutomationEventSummariesRequest,
   output: ListAutomationEventSummariesResponse,
   errors: [
@@ -2036,7 +2036,7 @@ export const listAutomationRulePreview: API.OperationMethod<
     ListAutomationRulePreviewError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAutomationRulePreviewRequest,
   output: ListAutomationRulePreviewResponse,
   errors: [
@@ -2087,7 +2087,7 @@ export const listAutomationRulePreviewSummaries: API.OperationMethod<
     ListAutomationRulePreviewSummariesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAutomationRulePreviewSummariesRequest,
   output: ListAutomationRulePreviewSummariesResponse,
   errors: [
@@ -2138,7 +2138,7 @@ export const listAutomationRules: API.OperationMethod<
     ListAutomationRulesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAutomationRulesRequest,
   output: ListAutomationRulesResponse,
   errors: [
@@ -2191,7 +2191,7 @@ export const listRecommendedActions: API.OperationMethod<
     ListRecommendedActionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecommendedActionsRequest,
   output: ListRecommendedActionsResponse,
   errors: [
@@ -2244,7 +2244,7 @@ export const listRecommendedActionSummaries: API.OperationMethod<
     ListRecommendedActionSummariesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecommendedActionSummariesRequest,
   output: ListRecommendedActionSummariesResponse,
   errors: [
@@ -2281,7 +2281,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -2317,7 +2317,7 @@ export const rollbackAutomationEvent: API.OperationMethod<
   RollbackAutomationEventResponse,
   RollbackAutomationEventError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RollbackAutomationEventRequest,
   output: RollbackAutomationEventResponse,
   errors: [
@@ -2356,7 +2356,7 @@ export const startAutomationEvent: API.OperationMethod<
   StartAutomationEventResponse,
   StartAutomationEventError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartAutomationEventRequest,
   output: StartAutomationEventResponse,
   errors: [
@@ -2393,7 +2393,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -2429,7 +2429,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -2465,7 +2465,7 @@ export const updateAutomationRule: API.OperationMethod<
   UpdateAutomationRuleResponse,
   UpdateAutomationRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAutomationRuleRequest,
   output: UpdateAutomationRuleResponse,
   errors: [
@@ -2502,7 +2502,7 @@ export const updateEnrollmentConfiguration: API.OperationMethod<
   UpdateEnrollmentConfigurationResponse,
   UpdateEnrollmentConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEnrollmentConfigurationRequest,
   output: UpdateEnrollmentConfigurationResponse,
   errors: [

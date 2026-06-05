@@ -21,7 +21,7 @@ export interface GetFraudRequest {
   zoneId: string;
 }
 
-export const GetFraudRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetFraudRequest = /*@__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
 }).pipe(
   T.Http({ method: "GET", path: "/zones/{zone_id}/fraud_detection/settings" }),
@@ -45,7 +45,7 @@ export interface GetFraudResponse {
   usernameExpressions?: string[] | null;
 }
 
-export const GetFraudResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetFraudResponse = /*@__PURE__*/ Schema.Struct({
   authenticationSettings: Schema.optional(
     Schema.Union([
       Schema.Struct({
@@ -110,7 +110,7 @@ export const getFraud: API.OperationMethod<
   GetFraudResponse,
   GetFraudError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFraudRequest,
   output: GetFraudResponse,
   errors: [],
@@ -130,7 +130,7 @@ export interface PutFraudRequest {
   usernameExpressions?: string[];
 }
 
-export const PutFraudRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PutFraudRequest = /*@__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   authenticationSettings: Schema.optional(
     Schema.Struct({
@@ -188,7 +188,7 @@ export interface PutFraudResponse {
   usernameExpressions?: string[] | null;
 }
 
-export const PutFraudResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PutFraudResponse = /*@__PURE__*/ Schema.Struct({
   authenticationSettings: Schema.optional(
     Schema.Union([
       Schema.Struct({
@@ -253,7 +253,7 @@ export const putFraud: API.OperationMethod<
   PutFraudResponse,
   PutFraudError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutFraudRequest,
   output: PutFraudResponse,
   errors: [],

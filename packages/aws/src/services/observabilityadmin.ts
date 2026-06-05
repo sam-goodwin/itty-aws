@@ -2112,7 +2112,7 @@ export const createCentralizationRuleForOrganization: API.OperationMethod<
   CreateCentralizationRuleForOrganizationOutput,
   CreateCentralizationRuleForOrganizationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCentralizationRuleForOrganizationInput,
   output: CreateCentralizationRuleForOrganizationOutput,
   errors: [
@@ -2140,7 +2140,7 @@ export const createS3TableIntegration: API.OperationMethod<
   CreateS3TableIntegrationOutput,
   CreateS3TableIntegrationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateS3TableIntegrationInput,
   output: CreateS3TableIntegrationOutput,
   errors: [
@@ -2168,7 +2168,7 @@ export const createTelemetryRule: API.OperationMethod<
   CreateTelemetryRuleOutput,
   CreateTelemetryRuleError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTelemetryRuleInput,
   output: CreateTelemetryRuleOutput,
   errors: [
@@ -2196,7 +2196,7 @@ export const createTelemetryRuleForOrganization: API.OperationMethod<
   CreateTelemetryRuleForOrganizationOutput,
   CreateTelemetryRuleForOrganizationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTelemetryRuleForOrganizationInput,
   output: CreateTelemetryRuleForOrganizationOutput,
   errors: [
@@ -2223,7 +2223,7 @@ export const deleteCentralizationRuleForOrganization: API.OperationMethod<
   DeleteCentralizationRuleForOrganizationResponse,
   DeleteCentralizationRuleForOrganizationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCentralizationRuleForOrganizationInput,
   output: DeleteCentralizationRuleForOrganizationResponse,
   errors: [
@@ -2250,7 +2250,7 @@ export const deleteS3TableIntegration: API.OperationMethod<
   DeleteS3TableIntegrationResponse,
   DeleteS3TableIntegrationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteS3TableIntegrationInput,
   output: DeleteS3TableIntegrationResponse,
   errors: [
@@ -2277,7 +2277,7 @@ export const deleteTelemetryRule: API.OperationMethod<
   DeleteTelemetryRuleResponse,
   DeleteTelemetryRuleError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTelemetryRuleInput,
   output: DeleteTelemetryRuleResponse,
   errors: [
@@ -2303,7 +2303,7 @@ export const deleteTelemetryRuleForOrganization: API.OperationMethod<
   DeleteTelemetryRuleForOrganizationResponse,
   DeleteTelemetryRuleForOrganizationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTelemetryRuleForOrganizationInput,
   output: DeleteTelemetryRuleForOrganizationResponse,
   errors: [
@@ -2329,7 +2329,7 @@ export const getCentralizationRuleForOrganization: API.OperationMethod<
   GetCentralizationRuleForOrganizationOutput,
   GetCentralizationRuleForOrganizationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCentralizationRuleForOrganizationInput,
   output: GetCentralizationRuleForOrganizationOutput,
   errors: [
@@ -2355,7 +2355,7 @@ export const getS3TableIntegration: API.OperationMethod<
   GetS3TableIntegrationOutput,
   GetS3TableIntegrationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetS3TableIntegrationInput,
   output: GetS3TableIntegrationOutput,
   errors: [
@@ -2380,7 +2380,7 @@ export const getTelemetryEnrichmentStatus: API.OperationMethod<
   GetTelemetryEnrichmentStatusOutput,
   GetTelemetryEnrichmentStatusError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTelemetryEnrichmentStatusRequest,
   output: GetTelemetryEnrichmentStatusOutput,
   errors: [
@@ -2403,7 +2403,7 @@ export const getTelemetryEvaluationStatus: API.OperationMethod<
   GetTelemetryEvaluationStatusOutput,
   GetTelemetryEvaluationStatusError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTelemetryEvaluationStatusRequest,
   output: GetTelemetryEvaluationStatusOutput,
   errors: [
@@ -2426,7 +2426,7 @@ export const getTelemetryEvaluationStatusForOrganization: API.OperationMethod<
   GetTelemetryEvaluationStatusForOrganizationOutput,
   GetTelemetryEvaluationStatusForOrganizationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTelemetryEvaluationStatusForOrganizationRequest,
   output: GetTelemetryEvaluationStatusForOrganizationOutput,
   errors: [
@@ -2451,7 +2451,7 @@ export const getTelemetryRule: API.OperationMethod<
   GetTelemetryRuleOutput,
   GetTelemetryRuleError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTelemetryRuleInput,
   output: GetTelemetryRuleOutput,
   errors: [
@@ -2477,7 +2477,7 @@ export const getTelemetryRuleForOrganization: API.OperationMethod<
   GetTelemetryRuleForOrganizationOutput,
   GetTelemetryRuleForOrganizationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTelemetryRuleForOrganizationInput,
   output: GetTelemetryRuleForOrganizationOutput,
   errors: [
@@ -2517,7 +2517,7 @@ export const listCentralizationRulesForOrganization: API.OperationMethod<
     ListCentralizationRulesForOrganizationError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCentralizationRulesForOrganizationInput,
   output: ListCentralizationRulesForOrganizationOutput,
   errors: [
@@ -2562,7 +2562,7 @@ export const listResourceTelemetry: API.OperationMethod<
     ListResourceTelemetryError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceTelemetryInput,
   output: ListResourceTelemetryOutput,
   errors: [
@@ -2607,7 +2607,7 @@ export const listResourceTelemetryForOrganization: API.OperationMethod<
     ListResourceTelemetryForOrganizationError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceTelemetryForOrganizationInput,
   output: ListResourceTelemetryForOrganizationOutput,
   errors: [
@@ -2652,7 +2652,7 @@ export const listS3TableIntegrations: API.OperationMethod<
     ListS3TableIntegrationsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListS3TableIntegrationsInput,
   output: ListS3TableIntegrationsOutput,
   errors: [
@@ -2683,7 +2683,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceOutput,
   ListTagsForResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [
@@ -2723,7 +2723,7 @@ export const listTelemetryRules: API.OperationMethod<
     ListTelemetryRulesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTelemetryRulesInput,
   output: ListTelemetryRulesOutput,
   errors: [
@@ -2768,7 +2768,7 @@ export const listTelemetryRulesForOrganization: API.OperationMethod<
     ListTelemetryRulesForOrganizationError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTelemetryRulesForOrganizationInput,
   output: ListTelemetryRulesForOrganizationOutput,
   errors: [
@@ -2798,7 +2798,7 @@ export const startTelemetryEnrichment: API.OperationMethod<
   StartTelemetryEnrichmentOutput,
   StartTelemetryEnrichmentError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartTelemetryEnrichmentRequest,
   output: StartTelemetryEnrichmentOutput,
   errors: [
@@ -2822,7 +2822,7 @@ export const startTelemetryEvaluation: API.OperationMethod<
   StartTelemetryEvaluationResponse,
   StartTelemetryEvaluationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartTelemetryEvaluationInput,
   output: StartTelemetryEvaluationResponse,
   errors: [
@@ -2846,7 +2846,7 @@ export const startTelemetryEvaluationForOrganization: API.OperationMethod<
   StartTelemetryEvaluationForOrganizationResponse,
   StartTelemetryEvaluationForOrganizationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartTelemetryEvaluationForOrganizationInput,
   output: StartTelemetryEvaluationForOrganizationResponse,
   errors: [
@@ -2870,7 +2870,7 @@ export const stopTelemetryEnrichment: API.OperationMethod<
   StopTelemetryEnrichmentOutput,
   StopTelemetryEnrichmentError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopTelemetryEnrichmentRequest,
   output: StopTelemetryEnrichmentOutput,
   errors: [
@@ -2894,7 +2894,7 @@ export const stopTelemetryEvaluation: API.OperationMethod<
   StopTelemetryEvaluationResponse,
   StopTelemetryEvaluationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopTelemetryEvaluationRequest,
   output: StopTelemetryEvaluationResponse,
   errors: [
@@ -2918,7 +2918,7 @@ export const stopTelemetryEvaluationForOrganization: API.OperationMethod<
   StopTelemetryEvaluationForOrganizationResponse,
   StopTelemetryEvaluationForOrganizationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopTelemetryEvaluationForOrganizationRequest,
   output: StopTelemetryEvaluationForOrganizationResponse,
   errors: [
@@ -2944,7 +2944,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceResponse,
   errors: [
@@ -2970,7 +2970,7 @@ export const testTelemetryPipeline: API.OperationMethod<
   TestTelemetryPipelineOutput,
   TestTelemetryPipelineError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestTelemetryPipelineInput,
   output: TestTelemetryPipelineOutput,
   errors: [
@@ -2995,7 +2995,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceResponse,
   errors: [
@@ -3022,7 +3022,7 @@ export const updateCentralizationRuleForOrganization: API.OperationMethod<
   UpdateCentralizationRuleForOrganizationOutput,
   UpdateCentralizationRuleForOrganizationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCentralizationRuleForOrganizationInput,
   output: UpdateCentralizationRuleForOrganizationOutput,
   errors: [
@@ -3051,7 +3051,7 @@ export const updateTelemetryRule: API.OperationMethod<
   UpdateTelemetryRuleOutput,
   UpdateTelemetryRuleError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTelemetryRuleInput,
   output: UpdateTelemetryRuleOutput,
   errors: [
@@ -3080,7 +3080,7 @@ export const updateTelemetryRuleForOrganization: API.OperationMethod<
   UpdateTelemetryRuleForOrganizationOutput,
   UpdateTelemetryRuleForOrganizationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTelemetryRuleForOrganizationInput,
   output: UpdateTelemetryRuleForOrganizationOutput,
   errors: [
@@ -3106,7 +3106,7 @@ export const validateTelemetryPipelineConfiguration: API.OperationMethod<
   ValidateTelemetryPipelineConfigurationOutput,
   ValidateTelemetryPipelineConfigurationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ValidateTelemetryPipelineConfigurationInput,
   output: ValidateTelemetryPipelineConfigurationOutput,
   errors: [
@@ -3132,7 +3132,7 @@ export const createTelemetryPipeline: API.OperationMethod<
   CreateTelemetryPipelineOutput,
   CreateTelemetryPipelineError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTelemetryPipelineInput,
   output: CreateTelemetryPipelineOutput,
   errors: [
@@ -3159,7 +3159,7 @@ export const getTelemetryPipeline: API.OperationMethod<
   GetTelemetryPipelineOutput,
   GetTelemetryPipelineError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTelemetryPipelineInput,
   output: GetTelemetryPipelineOutput,
   errors: [
@@ -3233,7 +3233,7 @@ export const updateTelemetryPipeline: API.OperationMethod<
   UpdateTelemetryPipelineOutput,
   UpdateTelemetryPipelineError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTelemetryPipelineInput,
   output: UpdateTelemetryPipelineOutput,
   errors: [
@@ -3260,7 +3260,7 @@ export const deleteTelemetryPipeline: API.OperationMethod<
   DeleteTelemetryPipelineOutput,
   DeleteTelemetryPipelineError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTelemetryPipelineInput,
   output: DeleteTelemetryPipelineOutput,
   errors: [
@@ -3301,7 +3301,7 @@ export const listTelemetryPipelines: API.OperationMethod<
     ListTelemetryPipelinesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTelemetryPipelinesInput,
   output: ListTelemetryPipelinesOutput,
   errors: [

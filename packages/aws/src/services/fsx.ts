@@ -5721,7 +5721,7 @@ export const associateFileSystemAliases: API.OperationMethod<
   AssociateFileSystemAliasesResponse,
   AssociateFileSystemAliasesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateFileSystemAliasesRequest,
   output: AssociateFileSystemAliasesResponse,
   errors: [BadRequest, FileSystemNotFound, InternalServerError],
@@ -5752,7 +5752,7 @@ export const cancelDataRepositoryTask: API.OperationMethod<
   CancelDataRepositoryTaskResponse,
   CancelDataRepositoryTaskError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelDataRepositoryTaskRequest,
   output: CancelDataRepositoryTaskResponse,
   errors: [
@@ -5808,7 +5808,7 @@ export const copyBackup: API.OperationMethod<
   CopyBackupResponse,
   CopyBackupError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CopyBackupRequest,
   output: CopyBackupResponse,
   errors: [
@@ -5840,7 +5840,7 @@ export const copySnapshotAndUpdateVolume: API.OperationMethod<
   CopySnapshotAndUpdateVolumeResponse,
   CopySnapshotAndUpdateVolumeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CopySnapshotAndUpdateVolumeRequest,
   output: CopySnapshotAndUpdateVolumeResponse,
   errors: [
@@ -5890,7 +5890,7 @@ export const createAndAttachS3AccessPoint: API.OperationMethod<
   CreateAndAttachS3AccessPointResponse,
   CreateAndAttachS3AccessPointError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAndAttachS3AccessPointRequest,
   output: CreateAndAttachS3AccessPointResponse,
   errors: [
@@ -5969,7 +5969,7 @@ export const createBackup: API.OperationMethod<
   CreateBackupResponse,
   CreateBackupError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateBackupRequest,
   output: CreateBackupResponse,
   errors: [
@@ -6015,7 +6015,7 @@ export const createDataRepositoryAssociation: API.OperationMethod<
   CreateDataRepositoryAssociationResponse,
   CreateDataRepositoryAssociationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDataRepositoryAssociationRequest,
   output: CreateDataRepositoryAssociationResponse,
   errors: [
@@ -6061,7 +6061,7 @@ export const createDataRepositoryTask: API.OperationMethod<
   CreateDataRepositoryTaskResponse,
   CreateDataRepositoryTaskError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDataRepositoryTaskRequest,
   output: CreateDataRepositoryTaskResponse,
   errors: [
@@ -6110,7 +6110,7 @@ export const createFileCache: API.OperationMethod<
   CreateFileCacheResponse,
   CreateFileCacheError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFileCacheRequest,
   output: CreateFileCacheResponse,
   errors: [
@@ -6179,7 +6179,7 @@ export const createFileSystem: API.OperationMethod<
   CreateFileSystemResponse,
   CreateFileSystemError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFileSystemRequest,
   output: CreateFileSystemResponse,
   errors: [
@@ -6244,7 +6244,7 @@ export const createFileSystemFromBackup: API.OperationMethod<
   CreateFileSystemFromBackupResponse,
   CreateFileSystemFromBackupError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFileSystemFromBackupRequest,
   output: CreateFileSystemFromBackupResponse,
   errors: [
@@ -6299,7 +6299,7 @@ export const createSnapshot: API.OperationMethod<
   CreateSnapshotResponse,
   CreateSnapshotError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSnapshotRequest,
   output: CreateSnapshotResponse,
   errors: [
@@ -6326,7 +6326,7 @@ export const createStorageVirtualMachine: API.OperationMethod<
   CreateStorageVirtualMachineResponse,
   CreateStorageVirtualMachineError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateStorageVirtualMachineRequest,
   output: CreateStorageVirtualMachineResponse,
   errors: [
@@ -6357,7 +6357,7 @@ export const createVolume: API.OperationMethod<
   CreateVolumeResponse,
   CreateVolumeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateVolumeRequest,
   output: CreateVolumeResponse,
   errors: [
@@ -6390,7 +6390,7 @@ export const createVolumeFromBackup: API.OperationMethod<
   CreateVolumeFromBackupResponse,
   CreateVolumeFromBackupError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateVolumeFromBackupRequest,
   output: CreateVolumeFromBackupResponse,
   errors: [
@@ -6428,7 +6428,7 @@ export const deleteBackup: API.OperationMethod<
   DeleteBackupResponse,
   DeleteBackupError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteBackupRequest,
   output: DeleteBackupResponse,
   errors: [
@@ -6462,7 +6462,7 @@ export const deleteDataRepositoryAssociation: API.OperationMethod<
   DeleteDataRepositoryAssociationResponse,
   DeleteDataRepositoryAssociationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDataRepositoryAssociationRequest,
   output: DeleteDataRepositoryAssociationResponse,
   errors: [
@@ -6499,7 +6499,7 @@ export const deleteFileCache: API.OperationMethod<
   DeleteFileCacheResponse,
   DeleteFileCacheError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFileCacheRequest,
   output: DeleteFileCacheResponse,
   errors: [
@@ -6570,7 +6570,7 @@ export const deleteFileSystem: API.OperationMethod<
   DeleteFileSystemResponse,
   DeleteFileSystemError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFileSystemRequest,
   output: DeleteFileSystemResponse,
   errors: [
@@ -6599,7 +6599,7 @@ export const deleteSnapshot: API.OperationMethod<
   DeleteSnapshotResponse,
   DeleteSnapshotError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSnapshotRequest,
   output: DeleteSnapshotResponse,
   errors: [BadRequest, InternalServerError, SnapshotNotFound],
@@ -6619,7 +6619,7 @@ export const deleteStorageVirtualMachine: API.OperationMethod<
   DeleteStorageVirtualMachineResponse,
   DeleteStorageVirtualMachineError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteStorageVirtualMachineRequest,
   output: DeleteStorageVirtualMachineResponse,
   errors: [
@@ -6645,7 +6645,7 @@ export const deleteVolume: API.OperationMethod<
   DeleteVolumeResponse,
   DeleteVolumeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteVolumeRequest,
   output: DeleteVolumeResponse,
   errors: [
@@ -6710,7 +6710,7 @@ export const describeBackups: API.OperationMethod<
     DescribeBackupsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeBackupsRequest,
   output: DescribeBackupsResponse,
   errors: [
@@ -6776,7 +6776,7 @@ export const describeDataRepositoryAssociations: API.OperationMethod<
     DescribeDataRepositoryAssociationsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDataRepositoryAssociationsRequest,
   output: DescribeDataRepositoryAssociationsResponse,
   errors: [
@@ -6831,7 +6831,7 @@ export const describeDataRepositoryTasks: API.OperationMethod<
     DescribeDataRepositoryTasksError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDataRepositoryTasksRequest,
   output: DescribeDataRepositoryTasksResponse,
   errors: [
@@ -6900,7 +6900,7 @@ export const describeFileCaches: API.OperationMethod<
     DescribeFileCachesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFileCachesRequest,
   output: DescribeFileCachesResponse,
   errors: [BadRequest, FileCacheNotFound, InternalServerError],
@@ -6940,7 +6940,7 @@ export const describeFileSystemAliases: API.OperationMethod<
     DescribeFileSystemAliasesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFileSystemAliasesRequest,
   output: DescribeFileSystemAliasesResponse,
   errors: [BadRequest, FileSystemNotFound, InternalServerError],
@@ -7004,7 +7004,7 @@ export const describeFileSystems: API.OperationMethod<
     DescribeFileSystemsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFileSystemsRequest,
   output: DescribeFileSystemsResponse,
   errors: [BadRequest, FileSystemNotFound, InternalServerError],
@@ -7047,7 +7047,7 @@ export const describeS3AccessPointAttachments: API.OperationMethod<
     DescribeS3AccessPointAttachmentsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeS3AccessPointAttachmentsRequest,
   output: DescribeS3AccessPointAttachmentsResponse,
   errors: [
@@ -7076,7 +7076,7 @@ export const describeSharedVpcConfiguration: API.OperationMethod<
   DescribeSharedVpcConfigurationResponse,
   DescribeSharedVpcConfigurationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeSharedVpcConfigurationRequest,
   output: DescribeSharedVpcConfigurationResponse,
   errors: [BadRequest, InternalServerError],
@@ -7134,7 +7134,7 @@ export const describeSnapshots: API.OperationMethod<
     DescribeSnapshotsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSnapshotsRequest,
   output: DescribeSnapshotsResponse,
   errors: [BadRequest, InternalServerError, SnapshotNotFound],
@@ -7173,7 +7173,7 @@ export const describeStorageVirtualMachines: API.OperationMethod<
     DescribeStorageVirtualMachinesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeStorageVirtualMachinesRequest,
   output: DescribeStorageVirtualMachinesResponse,
   errors: [BadRequest, InternalServerError, StorageVirtualMachineNotFound],
@@ -7213,7 +7213,7 @@ export const describeVolumes: API.OperationMethod<
     DescribeVolumesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVolumesRequest,
   output: DescribeVolumesResponse,
   errors: [BadRequest, InternalServerError, VolumeNotFound],
@@ -7245,7 +7245,7 @@ export const detachAndDeleteS3AccessPoint: API.OperationMethod<
   DetachAndDeleteS3AccessPointResponse,
   DetachAndDeleteS3AccessPointError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetachAndDeleteS3AccessPointRequest,
   output: DetachAndDeleteS3AccessPointResponse,
   errors: [
@@ -7278,7 +7278,7 @@ export const disassociateFileSystemAliases: API.OperationMethod<
   DisassociateFileSystemAliasesResponse,
   DisassociateFileSystemAliasesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateFileSystemAliasesRequest,
   output: DisassociateFileSystemAliasesResponse,
   errors: [BadRequest, FileSystemNotFound, InternalServerError],
@@ -7335,7 +7335,7 @@ export const listTagsForResource: API.OperationMethod<
     ListTagsForResourceError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -7367,7 +7367,7 @@ export const releaseFileSystemNfsV3Locks: API.OperationMethod<
   ReleaseFileSystemNfsV3LocksResponse,
   ReleaseFileSystemNfsV3LocksError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReleaseFileSystemNfsV3LocksRequest,
   output: ReleaseFileSystemNfsV3LocksResponse,
   errors: [
@@ -7392,7 +7392,7 @@ export const restoreVolumeFromSnapshot: API.OperationMethod<
   RestoreVolumeFromSnapshotResponse,
   RestoreVolumeFromSnapshotError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RestoreVolumeFromSnapshotRequest,
   output: RestoreVolumeFromSnapshotResponse,
   errors: [BadRequest, InternalServerError, VolumeNotFound],
@@ -7411,7 +7411,7 @@ export const startMisconfiguredStateRecovery: API.OperationMethod<
   StartMisconfiguredStateRecoveryResponse,
   StartMisconfiguredStateRecoveryError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartMisconfiguredStateRecoveryRequest,
   output: StartMisconfiguredStateRecoveryResponse,
   errors: [BadRequest, FileSystemNotFound, InternalServerError],
@@ -7431,7 +7431,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -7457,7 +7457,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -7486,7 +7486,7 @@ export const updateDataRepositoryAssociation: API.OperationMethod<
   UpdateDataRepositoryAssociationResponse,
   UpdateDataRepositoryAssociationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDataRepositoryAssociationRequest,
   output: UpdateDataRepositoryAssociationResponse,
   errors: [
@@ -7515,7 +7515,7 @@ export const updateFileCache: API.OperationMethod<
   UpdateFileCacheResponse,
   UpdateFileCacheError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateFileCacheRequest,
   output: UpdateFileCacheResponse,
   errors: [
@@ -7651,7 +7651,7 @@ export const updateFileSystem: API.OperationMethod<
   UpdateFileSystemResponse,
   UpdateFileSystemError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateFileSystemRequest,
   output: UpdateFileSystemResponse,
   errors: [
@@ -7686,7 +7686,7 @@ export const updateSharedVpcConfiguration: API.OperationMethod<
   UpdateSharedVpcConfigurationResponse,
   UpdateSharedVpcConfigurationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSharedVpcConfigurationRequest,
   output: UpdateSharedVpcConfigurationResponse,
   errors: [BadRequest, IncompatibleParameterError, InternalServerError],
@@ -7704,7 +7704,7 @@ export const updateSnapshot: API.OperationMethod<
   UpdateSnapshotResponse,
   UpdateSnapshotError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSnapshotRequest,
   output: UpdateSnapshotResponse,
   errors: [BadRequest, InternalServerError, SnapshotNotFound],
@@ -7724,7 +7724,7 @@ export const updateStorageVirtualMachine: API.OperationMethod<
   UpdateStorageVirtualMachineResponse,
   UpdateStorageVirtualMachineError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateStorageVirtualMachineRequest,
   output: UpdateStorageVirtualMachineResponse,
   errors: [
@@ -7750,7 +7750,7 @@ export const updateVolume: API.OperationMethod<
   UpdateVolumeResponse,
   UpdateVolumeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateVolumeRequest,
   output: UpdateVolumeResponse,
   errors: [

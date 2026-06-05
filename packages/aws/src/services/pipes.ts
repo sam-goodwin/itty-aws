@@ -1889,7 +1889,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [InternalException, NotFoundException, ValidationException],
@@ -1920,7 +1920,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [InternalException, NotFoundException, ValidationException],
@@ -1938,7 +1938,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [InternalException, NotFoundException, ValidationException],
@@ -1960,7 +1960,7 @@ export const createPipe: API.OperationMethod<
   CreatePipeResponse,
   CreatePipeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePipeRequest,
   output: CreatePipeResponse,
   errors: [
@@ -1986,7 +1986,7 @@ export const describePipe: API.OperationMethod<
   DescribePipeResponse,
   DescribePipeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribePipeRequest,
   output: DescribePipeResponse,
   errors: [
@@ -2023,7 +2023,7 @@ export const updatePipe: API.OperationMethod<
   UpdatePipeResponse,
   UpdatePipeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePipeRequest,
   output: UpdatePipeResponse,
   errors: [
@@ -2049,7 +2049,7 @@ export const deletePipe: API.OperationMethod<
   DeletePipeResponse,
   DeletePipeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePipeRequest,
   output: DeletePipeResponse,
   errors: [
@@ -2088,7 +2088,7 @@ export const listPipes: API.OperationMethod<
     ListPipesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPipesRequest,
   output: ListPipesResponse,
   errors: [InternalException, ThrottlingException, ValidationException],
@@ -2114,7 +2114,7 @@ export const startPipe: API.OperationMethod<
   StartPipeResponse,
   StartPipeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartPipeRequest,
   output: StartPipeResponse,
   errors: [
@@ -2140,7 +2140,7 @@ export const stopPipe: API.OperationMethod<
   StopPipeResponse,
   StopPipeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopPipeRequest,
   output: StopPipeResponse,
   errors: [

@@ -225,7 +225,7 @@ export const queryForecast: API.OperationMethod<
   QueryForecastResponse,
   QueryForecastError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: QueryForecastRequest,
   output: QueryForecastResponse,
   errors: [
@@ -251,7 +251,7 @@ export const queryWhatIfForecast: API.OperationMethod<
   QueryWhatIfForecastResponse,
   QueryWhatIfForecastError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: QueryWhatIfForecastRequest,
   output: QueryWhatIfForecastResponse,
   errors: [

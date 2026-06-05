@@ -11770,7 +11770,7 @@ export const addRoleToDBCluster: API.OperationMethod<
   AddRoleToDBClusterResponse,
   AddRoleToDBClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddRoleToDBClusterMessage,
   output: AddRoleToDBClusterResponse,
   errors: [
@@ -11798,7 +11798,7 @@ export const addRoleToDBInstance: API.OperationMethod<
   AddRoleToDBInstanceResponse,
   AddRoleToDBInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddRoleToDBInstanceMessage,
   output: AddRoleToDBInstanceResponse,
   errors: [
@@ -11820,7 +11820,7 @@ export const addSourceIdentifierToSubscription: API.OperationMethod<
   AddSourceIdentifierToSubscriptionResult,
   AddSourceIdentifierToSubscriptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddSourceIdentifierToSubscriptionMessage,
   output: AddSourceIdentifierToSubscriptionResult,
   errors: [SourceNotFoundFault, SubscriptionNotFoundFault],
@@ -11851,7 +11851,7 @@ export const addTagsToResource: API.OperationMethod<
   AddTagsToResourceResponse,
   AddTagsToResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddTagsToResourceMessage,
   output: AddTagsToResourceResponse,
   errors: [
@@ -11884,7 +11884,7 @@ export const applyPendingMaintenanceAction: API.OperationMethod<
   ApplyPendingMaintenanceActionResult,
   ApplyPendingMaintenanceActionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ApplyPendingMaintenanceActionMessage,
   output: ApplyPendingMaintenanceActionResult,
   errors: [
@@ -11913,7 +11913,7 @@ export const authorizeDBSecurityGroupIngress: API.OperationMethod<
   AuthorizeDBSecurityGroupIngressResult,
   AuthorizeDBSecurityGroupIngressError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AuthorizeDBSecurityGroupIngressMessage,
   output: AuthorizeDBSecurityGroupIngressResult,
   errors: [
@@ -11939,7 +11939,7 @@ export const backtrackDBCluster: API.OperationMethod<
   DBClusterBacktrack,
   BacktrackDBClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BacktrackDBClusterMessage,
   output: DBClusterBacktrack,
   errors: [DBClusterNotFoundFault, InvalidDBClusterStateFault],
@@ -11956,7 +11956,7 @@ export const cancelExportTask: API.OperationMethod<
   ExportTask,
   CancelExportTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelExportTaskMessage,
   output: ExportTask,
   errors: [ExportTaskNotFoundFault, InvalidExportTaskStateFault],
@@ -11976,7 +11976,7 @@ export const copyDBClusterParameterGroup: API.OperationMethod<
   CopyDBClusterParameterGroupResult,
   CopyDBClusterParameterGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CopyDBClusterParameterGroupMessage,
   output: CopyDBClusterParameterGroupResult,
   errors: [
@@ -12019,7 +12019,7 @@ export const copyDBClusterSnapshot: API.OperationMethod<
   CopyDBClusterSnapshotResult,
   CopyDBClusterSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CopyDBClusterSnapshotMessage,
   output: CopyDBClusterSnapshotResult,
   errors: [
@@ -12046,7 +12046,7 @@ export const copyDBParameterGroup: API.OperationMethod<
   CopyDBParameterGroupResult,
   CopyDBParameterGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CopyDBParameterGroupMessage,
   output: CopyDBParameterGroupResult,
   errors: [
@@ -12077,7 +12077,7 @@ export const copyDBSnapshot: API.OperationMethod<
   CopyDBSnapshotResult,
   CopyDBSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CopyDBSnapshotMessage,
   output: CopyDBSnapshotResult,
   errors: [
@@ -12102,7 +12102,7 @@ export const copyOptionGroup: API.OperationMethod<
   CopyOptionGroupResult,
   CopyOptionGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CopyOptionGroupMessage,
   output: CopyOptionGroupResult,
   errors: [
@@ -12139,7 +12139,7 @@ export const createBlueGreenDeployment: API.OperationMethod<
   CreateBlueGreenDeploymentResponse,
   CreateBlueGreenDeploymentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateBlueGreenDeploymentRequest,
   output: CreateBlueGreenDeploymentResponse,
   errors: [
@@ -12174,7 +12174,7 @@ export const createCustomDBEngineVersion: API.OperationMethod<
   DBEngineVersion,
   CreateCustomDBEngineVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCustomDBEngineVersionMessage,
   output: DBEngineVersion,
   errors: [
@@ -12229,7 +12229,7 @@ export const createDBCluster: API.OperationMethod<
   CreateDBClusterResult,
   CreateDBClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDBClusterMessage,
   output: CreateDBClusterResult,
   errors: [
@@ -12277,7 +12277,7 @@ export const createDBClusterEndpoint: API.OperationMethod<
   DBClusterEndpoint,
   CreateDBClusterEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDBClusterEndpointMessage,
   output: DBClusterEndpoint,
   errors: [
@@ -12315,7 +12315,7 @@ export const createDBClusterParameterGroup: API.OperationMethod<
   CreateDBClusterParameterGroupResult,
   CreateDBClusterParameterGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDBClusterParameterGroupMessage,
   output: CreateDBClusterParameterGroupResult,
   errors: [
@@ -12342,7 +12342,7 @@ export const createDBClusterSnapshot: API.OperationMethod<
   CreateDBClusterSnapshotResult,
   CreateDBClusterSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDBClusterSnapshotMessage,
   output: CreateDBClusterSnapshotResult,
   errors: [
@@ -12392,7 +12392,7 @@ export const createDBInstance: API.OperationMethod<
   CreateDBInstanceResult,
   CreateDBInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDBInstanceMessage,
   output: CreateDBInstanceResult,
   errors: [
@@ -12462,7 +12462,7 @@ export const createDBInstanceReadReplica: API.OperationMethod<
   CreateDBInstanceReadReplicaResult,
   CreateDBInstanceReadReplicaError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDBInstanceReadReplicaMessage,
   output: CreateDBInstanceReadReplicaResult,
   errors: [
@@ -12509,7 +12509,7 @@ export const createDBParameterGroup: API.OperationMethod<
   CreateDBParameterGroupResult,
   CreateDBParameterGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDBParameterGroupMessage,
   output: CreateDBParameterGroupResult,
   errors: [
@@ -12530,7 +12530,7 @@ export const createDBProxy: API.OperationMethod<
   CreateDBProxyResponse,
   CreateDBProxyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDBProxyRequest,
   output: CreateDBProxyResponse,
   errors: [DBProxyAlreadyExistsFault, DBProxyQuotaExceededFault, InvalidSubnet],
@@ -12550,7 +12550,7 @@ export const createDBProxyEndpoint: API.OperationMethod<
   CreateDBProxyEndpointResponse,
   CreateDBProxyEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDBProxyEndpointRequest,
   output: CreateDBProxyEndpointResponse,
   errors: [
@@ -12578,7 +12578,7 @@ export const createDBSecurityGroup: API.OperationMethod<
   CreateDBSecurityGroupResult,
   CreateDBSecurityGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDBSecurityGroupMessage,
   output: CreateDBSecurityGroupResult,
   errors: [
@@ -12606,7 +12606,7 @@ export const createDBShardGroup: API.OperationMethod<
   DBShardGroup,
   CreateDBShardGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDBShardGroupMessage,
   output: DBShardGroup,
   errors: [
@@ -12633,7 +12633,7 @@ export const createDBSnapshot: API.OperationMethod<
   CreateDBSnapshotResult,
   CreateDBSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDBSnapshotMessage,
   output: CreateDBSnapshotResult,
   errors: [
@@ -12658,7 +12658,7 @@ export const createDBSubnetGroup: API.OperationMethod<
   CreateDBSubnetGroupResult,
   CreateDBSubnetGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDBSubnetGroupMessage,
   output: CreateDBSubnetGroupResult,
   errors: [
@@ -12694,7 +12694,7 @@ export const createEventSubscription: API.OperationMethod<
   CreateEventSubscriptionResult,
   CreateEventSubscriptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEventSubscriptionMessage,
   output: CreateEventSubscriptionResult,
   errors: [
@@ -12727,7 +12727,7 @@ export const createGlobalCluster: API.OperationMethod<
   CreateGlobalClusterResult,
   CreateGlobalClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateGlobalClusterMessage,
   output: CreateGlobalClusterResult,
   errors: [
@@ -12755,7 +12755,7 @@ export const createIntegration: API.OperationMethod<
   Integration,
   CreateIntegrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateIntegrationMessage,
   output: Integration,
   errors: [
@@ -12781,7 +12781,7 @@ export const createOptionGroup: API.OperationMethod<
   CreateOptionGroupResult,
   CreateOptionGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOptionGroupMessage,
   output: CreateOptionGroupResult,
   errors: [OptionGroupAlreadyExistsFault, OptionGroupQuotaExceededFault],
@@ -12801,7 +12801,7 @@ export const createTenantDatabase: API.OperationMethod<
   CreateTenantDatabaseResult,
   CreateTenantDatabaseError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTenantDatabaseMessage,
   output: CreateTenantDatabaseResult,
   errors: [
@@ -12826,7 +12826,7 @@ export const deleteBlueGreenDeployment: API.OperationMethod<
   DeleteBlueGreenDeploymentResponse,
   DeleteBlueGreenDeploymentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteBlueGreenDeploymentRequest,
   output: DeleteBlueGreenDeploymentResponse,
   errors: [
@@ -12856,7 +12856,7 @@ export const deleteCustomDBEngineVersion: API.OperationMethod<
   DBEngineVersion,
   DeleteCustomDBEngineVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCustomDBEngineVersionMessage,
   output: DBEngineVersion,
   errors: [
@@ -12888,7 +12888,7 @@ export const deleteDBCluster: API.OperationMethod<
   DeleteDBClusterResult,
   DeleteDBClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDBClusterMessage,
   output: DeleteDBClusterResult,
   errors: [
@@ -12914,7 +12914,7 @@ export const deleteDBClusterAutomatedBackup: API.OperationMethod<
   DeleteDBClusterAutomatedBackupResult,
   DeleteDBClusterAutomatedBackupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDBClusterAutomatedBackupMessage,
   output: DeleteDBClusterAutomatedBackupResult,
   errors: [
@@ -12937,7 +12937,7 @@ export const deleteDBClusterEndpoint: API.OperationMethod<
   DBClusterEndpoint,
   DeleteDBClusterEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDBClusterEndpointMessage,
   output: DBClusterEndpoint,
   errors: [
@@ -12962,7 +12962,7 @@ export const deleteDBClusterParameterGroup: API.OperationMethod<
   DeleteDBClusterParameterGroupResponse,
   DeleteDBClusterParameterGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDBClusterParameterGroupMessage,
   output: DeleteDBClusterParameterGroupResponse,
   errors: [DBParameterGroupNotFoundFault, InvalidDBParameterGroupStateFault],
@@ -12985,7 +12985,7 @@ export const deleteDBClusterSnapshot: API.OperationMethod<
   DeleteDBClusterSnapshotResult,
   DeleteDBClusterSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDBClusterSnapshotMessage,
   output: DeleteDBClusterSnapshotResult,
   errors: [DBClusterSnapshotNotFoundFault, InvalidDBClusterSnapshotStateFault],
@@ -13021,7 +13021,7 @@ export const deleteDBInstance: API.OperationMethod<
   DeleteDBInstanceResult,
   DeleteDBInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDBInstanceMessage,
   output: DeleteDBInstanceResult,
   errors: [
@@ -13046,7 +13046,7 @@ export const deleteDBInstanceAutomatedBackup: API.OperationMethod<
   DeleteDBInstanceAutomatedBackupResult,
   DeleteDBInstanceAutomatedBackupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDBInstanceAutomatedBackupMessage,
   output: DeleteDBInstanceAutomatedBackupResult,
   errors: [
@@ -13066,7 +13066,7 @@ export const deleteDBParameterGroup: API.OperationMethod<
   DeleteDBParameterGroupResponse,
   DeleteDBParameterGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDBParameterGroupMessage,
   output: DeleteDBParameterGroupResponse,
   errors: [DBParameterGroupNotFoundFault, InvalidDBParameterGroupStateFault],
@@ -13083,7 +13083,7 @@ export const deleteDBProxy: API.OperationMethod<
   DeleteDBProxyResponse,
   DeleteDBProxyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDBProxyRequest,
   output: DeleteDBProxyResponse,
   errors: [DBProxyNotFoundFault, InvalidDBProxyStateFault],
@@ -13100,7 +13100,7 @@ export const deleteDBProxyEndpoint: API.OperationMethod<
   DeleteDBProxyEndpointResponse,
   DeleteDBProxyEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDBProxyEndpointRequest,
   output: DeleteDBProxyEndpointResponse,
   errors: [DBProxyEndpointNotFoundFault, InvalidDBProxyEndpointStateFault],
@@ -13121,7 +13121,7 @@ export const deleteDBSecurityGroup: API.OperationMethod<
   DeleteDBSecurityGroupResponse,
   DeleteDBSecurityGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDBSecurityGroupMessage,
   output: DeleteDBSecurityGroupResponse,
   errors: [DBSecurityGroupNotFoundFault, InvalidDBSecurityGroupStateFault],
@@ -13139,7 +13139,7 @@ export const deleteDBShardGroup: API.OperationMethod<
   DBShardGroup,
   DeleteDBShardGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDBShardGroupMessage,
   output: DBShardGroup,
   errors: [
@@ -13162,7 +13162,7 @@ export const deleteDBSnapshot: API.OperationMethod<
   DeleteDBSnapshotResult,
   DeleteDBSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDBSnapshotMessage,
   output: DeleteDBSnapshotResult,
   errors: [DBSnapshotNotFoundFault, InvalidDBSnapshotStateFault],
@@ -13182,7 +13182,7 @@ export const deleteDBSubnetGroup: API.OperationMethod<
   DeleteDBSubnetGroupResponse,
   DeleteDBSubnetGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDBSubnetGroupMessage,
   output: DeleteDBSubnetGroupResponse,
   errors: [
@@ -13203,7 +13203,7 @@ export const deleteEventSubscription: API.OperationMethod<
   DeleteEventSubscriptionResult,
   DeleteEventSubscriptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEventSubscriptionMessage,
   output: DeleteEventSubscriptionResult,
   errors: [InvalidEventSubscriptionStateFault, SubscriptionNotFoundFault],
@@ -13222,7 +13222,7 @@ export const deleteGlobalCluster: API.OperationMethod<
   DeleteGlobalClusterResult,
   DeleteGlobalClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteGlobalClusterMessage,
   output: DeleteGlobalClusterResult,
   errors: [GlobalClusterNotFoundFault, InvalidGlobalClusterStateFault],
@@ -13240,7 +13240,7 @@ export const deleteIntegration: API.OperationMethod<
   Integration,
   DeleteIntegrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteIntegrationMessage,
   output: Integration,
   errors: [
@@ -13261,7 +13261,7 @@ export const deleteOptionGroup: API.OperationMethod<
   DeleteOptionGroupResponse,
   DeleteOptionGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOptionGroupMessage,
   output: DeleteOptionGroupResponse,
   errors: [InvalidOptionGroupStateFault, OptionGroupNotFoundFault],
@@ -13282,7 +13282,7 @@ export const deleteTenantDatabase: API.OperationMethod<
   DeleteTenantDatabaseResult,
   DeleteTenantDatabaseError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTenantDatabaseMessage,
   output: DeleteTenantDatabaseResult,
   errors: [
@@ -13306,7 +13306,7 @@ export const deregisterDBProxyTargets: API.OperationMethod<
   DeregisterDBProxyTargetsResponse,
   DeregisterDBProxyTargetsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeregisterDBProxyTargetsRequest,
   output: DeregisterDBProxyTargetsResponse,
   errors: [
@@ -13327,7 +13327,7 @@ export const describeAccountAttributes: API.OperationMethod<
   AccountAttributesMessage,
   DescribeAccountAttributesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAccountAttributesMessage,
   output: AccountAttributesMessage,
   errors: [],
@@ -13360,7 +13360,7 @@ export const describeBlueGreenDeployments: API.OperationMethod<
     DescribeBlueGreenDeploymentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeBlueGreenDeploymentsRequest,
   output: DescribeBlueGreenDeploymentsResponse,
   errors: [BlueGreenDeploymentNotFoundFault],
@@ -13397,7 +13397,7 @@ export const describeCertificates: API.OperationMethod<
     DescribeCertificatesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCertificatesMessage,
   output: CertificateMessage,
   errors: [CertificateNotFoundFault],
@@ -13436,7 +13436,7 @@ export const describeDBClusterAutomatedBackups: API.OperationMethod<
     DescribeDBClusterAutomatedBackupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBClusterAutomatedBackupsMessage,
   output: DBClusterAutomatedBackupMessage,
   errors: [DBClusterAutomatedBackupNotFoundFault],
@@ -13478,7 +13478,7 @@ export const describeDBClusterBacktracks: API.OperationMethod<
     DescribeDBClusterBacktracksError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBClusterBacktracksMessage,
   output: DBClusterBacktrackMessage,
   errors: [DBClusterBacktrackNotFoundFault, DBClusterNotFoundFault],
@@ -13517,7 +13517,7 @@ export const describeDBClusterEndpoints: API.OperationMethod<
     DescribeDBClusterEndpointsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBClusterEndpointsMessage,
   output: DBClusterEndpointMessage,
   errors: [DBClusterNotFoundFault],
@@ -13558,7 +13558,7 @@ export const describeDBClusterParameterGroups: API.OperationMethod<
     DescribeDBClusterParameterGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBClusterParameterGroupsMessage,
   output: DBClusterParameterGroupsMessage,
   errors: [DBParameterGroupNotFoundFault],
@@ -13599,7 +13599,7 @@ export const describeDBClusterParameters: API.OperationMethod<
     DescribeDBClusterParametersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBClusterParametersMessage,
   output: DBClusterParameterGroupDetails,
   errors: [DBParameterGroupNotFoundFault],
@@ -13640,7 +13640,7 @@ export const describeDBClusters: API.OperationMethod<
     DescribeDBClustersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBClustersMessage,
   output: DBClusterMessage,
   errors: [DBClusterNotFoundFault],
@@ -13666,7 +13666,7 @@ export const describeDBClusterSnapshotAttributes: API.OperationMethod<
   DescribeDBClusterSnapshotAttributesResult,
   DescribeDBClusterSnapshotAttributesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDBClusterSnapshotAttributesMessage,
   output: DescribeDBClusterSnapshotAttributesResult,
   errors: [DBClusterSnapshotNotFoundFault],
@@ -13701,7 +13701,7 @@ export const describeDBClusterSnapshots: API.OperationMethod<
     DescribeDBClusterSnapshotsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBClusterSnapshotsMessage,
   output: DBClusterSnapshotMessage,
   errors: [DBClusterSnapshotNotFoundFault],
@@ -13736,7 +13736,7 @@ export const describeDBEngineVersions: API.OperationMethod<
     DescribeDBEngineVersionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBEngineVersionsMessage,
   output: DBEngineVersionMessage,
   errors: [],
@@ -13775,7 +13775,7 @@ export const describeDBInstanceAutomatedBackups: API.OperationMethod<
     DescribeDBInstanceAutomatedBackupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBInstanceAutomatedBackupsMessage,
   output: DBInstanceAutomatedBackupMessage,
   errors: [DBInstanceAutomatedBackupNotFoundFault],
@@ -13812,7 +13812,7 @@ export const describeDBInstances: API.OperationMethod<
     DescribeDBInstancesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBInstancesMessage,
   output: DBInstanceMessage,
   errors: [DBInstanceNotFoundFault],
@@ -13852,7 +13852,7 @@ export const describeDBLogFiles: API.OperationMethod<
     DescribeDBLogFilesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBLogFilesMessage,
   output: DescribeDBLogFilesResponse,
   errors: [DBInstanceNotFoundFault, DBInstanceNotReadyFault],
@@ -13887,7 +13887,7 @@ export const describeDBMajorEngineVersions: API.OperationMethod<
     DescribeDBMajorEngineVersionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBMajorEngineVersionsRequest,
   output: DescribeDBMajorEngineVersionsResponse,
   errors: [],
@@ -13924,7 +13924,7 @@ export const describeDBParameterGroups: API.OperationMethod<
     DescribeDBParameterGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBParameterGroupsMessage,
   output: DBParameterGroupsMessage,
   errors: [DBParameterGroupNotFoundFault],
@@ -13961,7 +13961,7 @@ export const describeDBParameters: API.OperationMethod<
     DescribeDBParametersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBParametersMessage,
   output: DBParameterGroupDetails,
   errors: [DBParameterGroupNotFoundFault],
@@ -13996,7 +13996,7 @@ export const describeDBProxies: API.OperationMethod<
     DescribeDBProxiesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBProxiesRequest,
   output: DescribeDBProxiesResponse,
   errors: [DBProxyNotFoundFault],
@@ -14034,7 +14034,7 @@ export const describeDBProxyEndpoints: API.OperationMethod<
     DescribeDBProxyEndpointsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBProxyEndpointsRequest,
   output: DescribeDBProxyEndpointsResponse,
   errors: [DBProxyEndpointNotFoundFault, DBProxyNotFoundFault],
@@ -14073,7 +14073,7 @@ export const describeDBProxyTargetGroups: API.OperationMethod<
     DescribeDBProxyTargetGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBProxyTargetGroupsRequest,
   output: DescribeDBProxyTargetGroupsResponse,
   errors: [
@@ -14117,7 +14117,7 @@ export const describeDBProxyTargets: API.OperationMethod<
     DescribeDBProxyTargetsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBProxyTargetsRequest,
   output: DescribeDBProxyTargetsResponse,
   errors: [
@@ -14157,7 +14157,7 @@ export const describeDBRecommendations: API.OperationMethod<
     DescribeDBRecommendationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBRecommendationsMessage,
   output: DBRecommendationsMessage,
   errors: [],
@@ -14196,7 +14196,7 @@ export const describeDBSecurityGroups: API.OperationMethod<
     DescribeDBSecurityGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBSecurityGroupsMessage,
   output: DBSecurityGroupMessage,
   errors: [DBSecurityGroupNotFoundFault],
@@ -14219,7 +14219,7 @@ export const describeDBShardGroups: API.OperationMethod<
   DescribeDBShardGroupsResponse,
   DescribeDBShardGroupsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDBShardGroupsMessage,
   output: DescribeDBShardGroupsResponse,
   errors: [DBClusterNotFoundFault, DBShardGroupNotFoundFault],
@@ -14239,7 +14239,7 @@ export const describeDBSnapshotAttributes: API.OperationMethod<
   DescribeDBSnapshotAttributesResult,
   DescribeDBSnapshotAttributesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDBSnapshotAttributesMessage,
   output: DescribeDBSnapshotAttributesResult,
   errors: [DBSnapshotNotFoundFault],
@@ -14268,7 +14268,7 @@ export const describeDBSnapshots: API.OperationMethod<
     DescribeDBSnapshotsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBSnapshotsMessage,
   output: DBSnapshotMessage,
   errors: [DBSnapshotNotFoundFault],
@@ -14307,7 +14307,7 @@ export const describeDBSnapshotTenantDatabases: API.OperationMethod<
     DescribeDBSnapshotTenantDatabasesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBSnapshotTenantDatabasesMessage,
   output: DBSnapshotTenantDatabasesMessage,
   errors: [DBSnapshotNotFoundFault],
@@ -14346,7 +14346,7 @@ export const describeDBSubnetGroups: API.OperationMethod<
     DescribeDBSubnetGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDBSubnetGroupsMessage,
   output: DBSubnetGroupMessage,
   errors: [DBSubnetGroupNotFoundFault],
@@ -14383,7 +14383,7 @@ export const describeEngineDefaultClusterParameters: API.OperationMethod<
     DescribeEngineDefaultClusterParametersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEngineDefaultClusterParametersMessage,
   output: DescribeEngineDefaultClusterParametersResult,
   errors: [],
@@ -14418,7 +14418,7 @@ export const describeEngineDefaultParameters: API.OperationMethod<
     DescribeEngineDefaultParametersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEngineDefaultParametersMessage,
   output: DescribeEngineDefaultParametersResult,
   errors: [],
@@ -14438,7 +14438,7 @@ export const describeEventCategories: API.OperationMethod<
   EventCategoriesMessage,
   DescribeEventCategoriesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeEventCategoriesMessage,
   output: EventCategoriesMessage,
   errors: [],
@@ -14471,7 +14471,7 @@ export const describeEvents: API.OperationMethod<
     DescribeEventsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEventsMessage,
   output: EventsMessage,
   errors: [],
@@ -14510,7 +14510,7 @@ export const describeEventSubscriptions: API.OperationMethod<
     DescribeEventSubscriptionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEventSubscriptionsMessage,
   output: EventSubscriptionsMessage,
   errors: [SubscriptionNotFoundFault],
@@ -14545,7 +14545,7 @@ export const describeExportTasks: API.OperationMethod<
     DescribeExportTasksError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeExportTasksMessage,
   output: ExportTasksMessage,
   errors: [ExportTaskNotFoundFault],
@@ -14586,7 +14586,7 @@ export const describeGlobalClusters: API.OperationMethod<
     DescribeGlobalClustersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeGlobalClustersMessage,
   output: GlobalClustersMessage,
   errors: [GlobalClusterNotFoundFault],
@@ -14621,7 +14621,7 @@ export const describeIntegrations: API.OperationMethod<
     DescribeIntegrationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeIntegrationsMessage,
   output: DescribeIntegrationsResponse,
   errors: [IntegrationNotFoundFault],
@@ -14656,7 +14656,7 @@ export const describeOptionGroupOptions: API.OperationMethod<
     DescribeOptionGroupOptionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeOptionGroupOptionsMessage,
   output: OptionGroupOptionsMessage,
   errors: [],
@@ -14691,7 +14691,7 @@ export const describeOptionGroups: API.OperationMethod<
     DescribeOptionGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeOptionGroupsMessage,
   output: OptionGroups,
   errors: [OptionGroupNotFoundFault],
@@ -14726,7 +14726,7 @@ export const describeOrderableDBInstanceOptions: API.OperationMethod<
     DescribeOrderableDBInstanceOptionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeOrderableDBInstanceOptionsMessage,
   output: OrderableDBInstanceOptionsMessage,
   errors: [],
@@ -14765,7 +14765,7 @@ export const describePendingMaintenanceActions: API.OperationMethod<
     DescribePendingMaintenanceActionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribePendingMaintenanceActionsMessage,
   output: PendingMaintenanceActionsMessage,
   errors: [ResourceNotFoundFault],
@@ -14802,7 +14802,7 @@ export const describeReservedDBInstances: API.OperationMethod<
     DescribeReservedDBInstancesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReservedDBInstancesMessage,
   output: ReservedDBInstanceMessage,
   errors: [ReservedDBInstanceNotFoundFault],
@@ -14839,7 +14839,7 @@ export const describeReservedDBInstancesOfferings: API.OperationMethod<
     DescribeReservedDBInstancesOfferingsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReservedDBInstancesOfferingsMessage,
   output: ReservedDBInstancesOfferingMessage,
   errors: [ReservedDBInstancesOfferingNotFoundFault],
@@ -14878,7 +14878,7 @@ export const describeSourceRegions: API.OperationMethod<
     DescribeSourceRegionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSourceRegionsMessage,
   output: SourceRegionMessage,
   errors: [],
@@ -14915,7 +14915,7 @@ export const describeTenantDatabases: API.OperationMethod<
     DescribeTenantDatabasesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTenantDatabasesMessage,
   output: TenantDatabasesMessage,
   errors: [DBInstanceNotFoundFault],
@@ -14940,7 +14940,7 @@ export const describeValidDBInstanceModifications: API.OperationMethod<
   DescribeValidDBInstanceModificationsResult,
   DescribeValidDBInstanceModificationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeValidDBInstanceModificationsMessage,
   output: DescribeValidDBInstanceModificationsResult,
   errors: [DBInstanceNotFoundFault, InvalidDBInstanceStateFault],
@@ -14961,7 +14961,7 @@ export const disableHttpEndpoint: API.OperationMethod<
   DisableHttpEndpointResponse,
   DisableHttpEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableHttpEndpointRequest,
   output: DisableHttpEndpointResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
@@ -14998,7 +14998,7 @@ export const downloadDBLogFilePortion: API.OperationMethod<
     DownloadDBLogFilePortionError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DownloadDBLogFilePortionMessage,
   output: DownloadDBLogFilePortionDetails,
   errors: [
@@ -15030,7 +15030,7 @@ export const enableHttpEndpoint: API.OperationMethod<
   EnableHttpEndpointResponse,
   EnableHttpEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableHttpEndpointRequest,
   output: EnableHttpEndpointResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
@@ -15060,7 +15060,7 @@ export const failoverDBCluster: API.OperationMethod<
   FailoverDBClusterResult,
   FailoverDBClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: FailoverDBClusterMessage,
   output: FailoverDBClusterResult,
   errors: [
@@ -15103,7 +15103,7 @@ export const failoverGlobalCluster: API.OperationMethod<
   FailoverGlobalClusterResult,
   FailoverGlobalClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: FailoverGlobalClusterMessage,
   output: FailoverGlobalClusterResult,
   errors: [
@@ -15136,7 +15136,7 @@ export const listTagsForResource: API.OperationMethod<
   TagListMessage,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceMessage,
   output: TagListMessage,
   errors: [
@@ -15168,7 +15168,7 @@ export const modifyActivityStream: API.OperationMethod<
   ModifyActivityStreamResponse,
   ModifyActivityStreamError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyActivityStreamRequest,
   output: ModifyActivityStreamResponse,
   errors: [
@@ -15198,7 +15198,7 @@ export const modifyCertificates: API.OperationMethod<
   ModifyCertificatesResult,
   ModifyCertificatesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyCertificatesMessage,
   output: ModifyCertificatesResult,
   errors: [CertificateNotFoundFault],
@@ -15226,7 +15226,7 @@ export const modifyCurrentDBClusterCapacity: API.OperationMethod<
   DBClusterCapacityInfo,
   ModifyCurrentDBClusterCapacityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyCurrentDBClusterCapacityMessage,
   output: DBClusterCapacityInfo,
   errors: [
@@ -15251,7 +15251,7 @@ export const modifyCustomDBEngineVersion: API.OperationMethod<
   DBEngineVersion,
   ModifyCustomDBEngineVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyCustomDBEngineVersionMessage,
   output: DBEngineVersion,
   errors: [
@@ -15294,7 +15294,7 @@ export const modifyDBCluster: API.OperationMethod<
   ModifyDBClusterResult,
   ModifyDBClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyDBClusterMessage,
   output: ModifyDBClusterResult,
   errors: [
@@ -15338,7 +15338,7 @@ export const modifyDBClusterEndpoint: API.OperationMethod<
   DBClusterEndpoint,
   ModifyDBClusterEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyDBClusterEndpointMessage,
   output: DBClusterEndpoint,
   errors: [
@@ -15367,7 +15367,7 @@ export const modifyDBClusterParameterGroup: API.OperationMethod<
   DBClusterParameterGroupNameMessage,
   ModifyDBClusterParameterGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyDBClusterParameterGroupMessage,
   output: DBClusterParameterGroupNameMessage,
   errors: [DBParameterGroupNotFoundFault, InvalidDBParameterGroupStateFault],
@@ -15393,7 +15393,7 @@ export const modifyDBClusterSnapshotAttribute: API.OperationMethod<
   ModifyDBClusterSnapshotAttributeResult,
   ModifyDBClusterSnapshotAttributeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyDBClusterSnapshotAttributeMessage,
   output: ModifyDBClusterSnapshotAttributeResult,
   errors: [
@@ -15434,7 +15434,7 @@ export const modifyDBInstance: API.OperationMethod<
   ModifyDBInstanceResult,
   ModifyDBInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyDBInstanceMessage,
   output: ModifyDBInstanceResult,
   errors: [
@@ -15476,7 +15476,7 @@ export const modifyDBParameterGroup: API.OperationMethod<
   DBParameterGroupNameMessage,
   ModifyDBParameterGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyDBParameterGroupMessage,
   output: DBParameterGroupNameMessage,
   errors: [DBParameterGroupNotFoundFault, InvalidDBParameterGroupStateFault],
@@ -15494,7 +15494,7 @@ export const modifyDBProxy: API.OperationMethod<
   ModifyDBProxyResponse,
   ModifyDBProxyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyDBProxyRequest,
   output: ModifyDBProxyResponse,
   errors: [
@@ -15517,7 +15517,7 @@ export const modifyDBProxyEndpoint: API.OperationMethod<
   ModifyDBProxyEndpointResponse,
   ModifyDBProxyEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyDBProxyEndpointRequest,
   output: ModifyDBProxyEndpointResponse,
   errors: [
@@ -15540,7 +15540,7 @@ export const modifyDBProxyTargetGroup: API.OperationMethod<
   ModifyDBProxyTargetGroupResponse,
   ModifyDBProxyTargetGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyDBProxyTargetGroupRequest,
   output: ModifyDBProxyTargetGroupResponse,
   errors: [
@@ -15558,7 +15558,7 @@ export const modifyDBRecommendation: API.OperationMethod<
   DBRecommendationMessage,
   ModifyDBRecommendationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyDBRecommendationMessage,
   output: DBRecommendationMessage,
   errors: [],
@@ -15576,7 +15576,7 @@ export const modifyDBShardGroup: API.OperationMethod<
   DBShardGroup,
   ModifyDBShardGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyDBShardGroupMessage,
   output: DBShardGroup,
   errors: [
@@ -15600,7 +15600,7 @@ export const modifyDBSnapshot: API.OperationMethod<
   ModifyDBSnapshotResult,
   ModifyDBSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyDBSnapshotMessage,
   output: ModifyDBSnapshotResult,
   errors: [
@@ -15630,7 +15630,7 @@ export const modifyDBSnapshotAttribute: API.OperationMethod<
   ModifyDBSnapshotAttributeResult,
   ModifyDBSnapshotAttributeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyDBSnapshotAttributeMessage,
   output: ModifyDBSnapshotAttributeResult,
   errors: [
@@ -15655,7 +15655,7 @@ export const modifyDBSubnetGroup: API.OperationMethod<
   ModifyDBSubnetGroupResult,
   ModifyDBSubnetGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyDBSubnetGroupMessage,
   output: ModifyDBSubnetGroupResult,
   errors: [
@@ -15685,7 +15685,7 @@ export const modifyEventSubscription: API.OperationMethod<
   ModifyEventSubscriptionResult,
   ModifyEventSubscriptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyEventSubscriptionMessage,
   output: ModifyEventSubscriptionResult,
   errors: [
@@ -15714,7 +15714,7 @@ export const modifyGlobalCluster: API.OperationMethod<
   ModifyGlobalClusterResult,
   ModifyGlobalClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyGlobalClusterMessage,
   output: ModifyGlobalClusterResult,
   errors: [
@@ -15738,7 +15738,7 @@ export const modifyIntegration: API.OperationMethod<
   Integration,
   ModifyIntegrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyIntegrationMessage,
   output: Integration,
   errors: [
@@ -15759,7 +15759,7 @@ export const modifyOptionGroup: API.OperationMethod<
   ModifyOptionGroupResult,
   ModifyOptionGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyOptionGroupMessage,
   output: ModifyOptionGroupResult,
   errors: [InvalidOptionGroupStateFault, OptionGroupNotFoundFault],
@@ -15779,7 +15779,7 @@ export const modifyTenantDatabase: API.OperationMethod<
   ModifyTenantDatabaseResult,
   ModifyTenantDatabaseError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyTenantDatabaseMessage,
   output: ModifyTenantDatabaseResult,
   errors: [
@@ -15806,7 +15806,7 @@ export const promoteReadReplica: API.OperationMethod<
   PromoteReadReplicaResult,
   PromoteReadReplicaError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PromoteReadReplicaMessage,
   output: PromoteReadReplicaResult,
   errors: [DBInstanceNotFoundFault, InvalidDBInstanceStateFault],
@@ -15823,7 +15823,7 @@ export const promoteReadReplicaDBCluster: API.OperationMethod<
   PromoteReadReplicaDBClusterResult,
   PromoteReadReplicaDBClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PromoteReadReplicaDBClusterMessage,
   output: PromoteReadReplicaDBClusterResult,
   errors: [DBClusterNotFoundFault, InvalidDBClusterStateFault],
@@ -15841,7 +15841,7 @@ export const purchaseReservedDBInstancesOffering: API.OperationMethod<
   PurchaseReservedDBInstancesOfferingResult,
   PurchaseReservedDBInstancesOfferingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PurchaseReservedDBInstancesOfferingMessage,
   output: PurchaseReservedDBInstancesOfferingResult,
   errors: [
@@ -15869,7 +15869,7 @@ export const rebootDBCluster: API.OperationMethod<
   RebootDBClusterResult,
   RebootDBClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RebootDBClusterMessage,
   output: RebootDBClusterResult,
   errors: [
@@ -15899,7 +15899,7 @@ export const rebootDBInstance: API.OperationMethod<
   RebootDBInstanceResult,
   RebootDBInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RebootDBInstanceMessage,
   output: RebootDBInstanceResult,
   errors: [
@@ -15922,7 +15922,7 @@ export const rebootDBShardGroup: API.OperationMethod<
   DBShardGroup,
   RebootDBShardGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RebootDBShardGroupMessage,
   output: DBShardGroup,
   errors: [DBShardGroupNotFoundFault, InvalidDBShardGroupStateFault],
@@ -15946,7 +15946,7 @@ export const registerDBProxyTargets: API.OperationMethod<
   RegisterDBProxyTargetsResponse,
   RegisterDBProxyTargetsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterDBProxyTargetsRequest,
   output: RegisterDBProxyTargetsResponse,
   errors: [
@@ -15977,7 +15977,7 @@ export const removeFromGlobalCluster: API.OperationMethod<
   RemoveFromGlobalClusterResult,
   RemoveFromGlobalClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveFromGlobalClusterMessage,
   output: RemoveFromGlobalClusterResult,
   errors: [
@@ -16004,7 +16004,7 @@ export const removeRoleFromDBCluster: API.OperationMethod<
   RemoveRoleFromDBClusterResponse,
   RemoveRoleFromDBClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveRoleFromDBClusterMessage,
   output: RemoveRoleFromDBClusterResponse,
   errors: [
@@ -16026,7 +16026,7 @@ export const removeRoleFromDBInstance: API.OperationMethod<
   RemoveRoleFromDBInstanceResponse,
   RemoveRoleFromDBInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveRoleFromDBInstanceMessage,
   output: RemoveRoleFromDBInstanceResponse,
   errors: [
@@ -16047,7 +16047,7 @@ export const removeSourceIdentifierFromSubscription: API.OperationMethod<
   RemoveSourceIdentifierFromSubscriptionResult,
   RemoveSourceIdentifierFromSubscriptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveSourceIdentifierFromSubscriptionMessage,
   output: RemoveSourceIdentifierFromSubscriptionResult,
   errors: [SourceNotFoundFault, SubscriptionNotFoundFault],
@@ -16078,7 +16078,7 @@ export const removeTagsFromResource: API.OperationMethod<
   RemoveTagsFromResourceResponse,
   RemoveTagsFromResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveTagsFromResourceMessage,
   output: RemoveTagsFromResourceResponse,
   errors: [
@@ -16116,7 +16116,7 @@ export const resetDBClusterParameterGroup: API.OperationMethod<
   DBClusterParameterGroupNameMessage,
   ResetDBClusterParameterGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetDBClusterParameterGroupMessage,
   output: DBClusterParameterGroupNameMessage,
   errors: [DBParameterGroupNotFoundFault, InvalidDBParameterGroupStateFault],
@@ -16133,7 +16133,7 @@ export const resetDBParameterGroup: API.OperationMethod<
   DBParameterGroupNameMessage,
   ResetDBParameterGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetDBParameterGroupMessage,
   output: DBParameterGroupNameMessage,
   errors: [DBParameterGroupNotFoundFault, InvalidDBParameterGroupStateFault],
@@ -16170,7 +16170,7 @@ export const restoreDBClusterFromS3: API.OperationMethod<
   RestoreDBClusterFromS3Result,
   RestoreDBClusterFromS3Error,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RestoreDBClusterFromS3Message,
   output: RestoreDBClusterFromS3Result,
   errors: [
@@ -16235,7 +16235,7 @@ export const restoreDBClusterFromSnapshot: API.OperationMethod<
   RestoreDBClusterFromSnapshotResult,
   RestoreDBClusterFromSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RestoreDBClusterFromSnapshotMessage,
   output: RestoreDBClusterFromSnapshotResult,
   errors: [
@@ -16305,7 +16305,7 @@ export const restoreDBClusterToPointInTime: API.OperationMethod<
   RestoreDBClusterToPointInTimeResult,
   RestoreDBClusterToPointInTimeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RestoreDBClusterToPointInTimeMessage,
   output: RestoreDBClusterToPointInTimeResult,
   errors: [
@@ -16377,7 +16377,7 @@ export const restoreDBInstanceFromDBSnapshot: API.OperationMethod<
   RestoreDBInstanceFromDBSnapshotResult,
   RestoreDBInstanceFromDBSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RestoreDBInstanceFromDBSnapshotMessage,
   output: RestoreDBInstanceFromDBSnapshotResult,
   errors: [
@@ -16440,7 +16440,7 @@ export const restoreDBInstanceFromS3: API.OperationMethod<
   RestoreDBInstanceFromS3Result,
   RestoreDBInstanceFromS3Error,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RestoreDBInstanceFromS3Message,
   output: RestoreDBInstanceFromS3Result,
   errors: [
@@ -16506,7 +16506,7 @@ export const restoreDBInstanceToPointInTime: API.OperationMethod<
   RestoreDBInstanceToPointInTimeResult,
   RestoreDBInstanceToPointInTimeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RestoreDBInstanceToPointInTimeMessage,
   output: RestoreDBInstanceToPointInTimeResult,
   errors: [
@@ -16553,7 +16553,7 @@ export const revokeDBSecurityGroupIngress: API.OperationMethod<
   RevokeDBSecurityGroupIngressResult,
   RevokeDBSecurityGroupIngressError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RevokeDBSecurityGroupIngressMessage,
   output: RevokeDBSecurityGroupIngressResult,
   errors: [
@@ -16578,7 +16578,7 @@ export const startActivityStream: API.OperationMethod<
   StartActivityStreamResponse,
   StartActivityStreamError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartActivityStreamRequest,
   output: StartActivityStreamResponse,
   errors: [
@@ -16610,7 +16610,7 @@ export const startDBCluster: API.OperationMethod<
   StartDBClusterResult,
   StartDBClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartDBClusterMessage,
   output: StartDBClusterResult,
   errors: [
@@ -16648,7 +16648,7 @@ export const startDBInstance: API.OperationMethod<
   StartDBInstanceResult,
   StartDBInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartDBInstanceMessage,
   output: StartDBInstanceResult,
   errors: [
@@ -16686,7 +16686,7 @@ export const startDBInstanceAutomatedBackupsReplication: API.OperationMethod<
   StartDBInstanceAutomatedBackupsReplicationResult,
   StartDBInstanceAutomatedBackupsReplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartDBInstanceAutomatedBackupsReplicationMessage,
   output: StartDBInstanceAutomatedBackupsReplicationResult,
   errors: [
@@ -16724,7 +16724,7 @@ export const startExportTask: API.OperationMethod<
   ExportTask,
   StartExportTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartExportTaskMessage,
   output: ExportTask,
   errors: [
@@ -16757,7 +16757,7 @@ export const stopActivityStream: API.OperationMethod<
   StopActivityStreamResponse,
   StopActivityStreamError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopActivityStreamRequest,
   output: StopActivityStreamResponse,
   errors: [
@@ -16786,7 +16786,7 @@ export const stopDBCluster: API.OperationMethod<
   StopDBClusterResult,
   StopDBClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopDBClusterMessage,
   output: StopDBClusterResult,
   errors: [
@@ -16815,7 +16815,7 @@ export const stopDBInstance: API.OperationMethod<
   StopDBInstanceResult,
   StopDBInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopDBInstanceMessage,
   output: StopDBInstanceResult,
   errors: [
@@ -16842,7 +16842,7 @@ export const stopDBInstanceAutomatedBackupsReplication: API.OperationMethod<
   StopDBInstanceAutomatedBackupsReplicationResult,
   StopDBInstanceAutomatedBackupsReplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopDBInstanceAutomatedBackupsReplicationMessage,
   output: StopDBInstanceAutomatedBackupsReplicationResult,
   errors: [DBInstanceNotFoundFault, InvalidDBInstanceStateFault],
@@ -16863,7 +16863,7 @@ export const switchoverBlueGreenDeployment: API.OperationMethod<
   SwitchoverBlueGreenDeploymentResponse,
   SwitchoverBlueGreenDeploymentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SwitchoverBlueGreenDeploymentRequest,
   output: SwitchoverBlueGreenDeploymentResponse,
   errors: [
@@ -16889,7 +16889,7 @@ export const switchoverGlobalCluster: API.OperationMethod<
   SwitchoverGlobalClusterResult,
   SwitchoverGlobalClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SwitchoverGlobalClusterMessage,
   output: SwitchoverGlobalClusterResult,
   errors: [
@@ -16911,7 +16911,7 @@ export const switchoverReadReplica: API.OperationMethod<
   SwitchoverReadReplicaResult,
   SwitchoverReadReplicaError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SwitchoverReadReplicaMessage,
   output: SwitchoverReadReplicaResult,
   errors: [DBInstanceNotFoundFault, InvalidDBInstanceStateFault],

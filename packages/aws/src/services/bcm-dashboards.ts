@@ -1015,7 +1015,7 @@ export const createDashboard: API.OperationMethod<
   CreateDashboardResponse,
   CreateDashboardError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDashboardRequest,
   output: CreateDashboardResponse,
   errors: [
@@ -1042,7 +1042,7 @@ export const createScheduledReport: API.OperationMethod<
   CreateScheduledReportResponse,
   CreateScheduledReportError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateScheduledReportRequest,
   output: CreateScheduledReportResponse,
   errors: [
@@ -1068,7 +1068,7 @@ export const deleteDashboard: API.OperationMethod<
   DeleteDashboardResponse,
   DeleteDashboardError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDashboardRequest,
   output: DeleteDashboardResponse,
   errors: [
@@ -1093,7 +1093,7 @@ export const deleteScheduledReport: API.OperationMethod<
   DeleteScheduledReportResponse,
   DeleteScheduledReportError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteScheduledReportRequest,
   output: DeleteScheduledReportResponse,
   errors: [
@@ -1122,7 +1122,7 @@ export const executeScheduledReport: API.OperationMethod<
   ExecuteScheduledReportResponse,
   ExecuteScheduledReportError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExecuteScheduledReportRequest,
   output: ExecuteScheduledReportResponse,
   errors: [
@@ -1149,7 +1149,7 @@ export const getDashboard: API.OperationMethod<
   GetDashboardResponse,
   GetDashboardError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDashboardRequest,
   output: GetDashboardResponse,
   errors: [
@@ -1175,7 +1175,7 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyResponse,
   GetResourcePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResourcePolicyRequest,
   output: GetResourcePolicyResponse,
   errors: [
@@ -1201,7 +1201,7 @@ export const getScheduledReport: API.OperationMethod<
   GetScheduledReportResponse,
   GetScheduledReportError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetScheduledReportRequest,
   output: GetScheduledReportResponse,
   errors: [
@@ -1241,7 +1241,7 @@ export const listDashboards: API.OperationMethod<
     ListDashboardsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDashboardsRequest,
   output: ListDashboardsResponse,
   errors: [
@@ -1286,7 +1286,7 @@ export const listScheduledReports: API.OperationMethod<
     ListScheduledReportsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListScheduledReportsRequest,
   output: ListScheduledReportsResponse,
   errors: [
@@ -1316,7 +1316,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -1340,7 +1340,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -1364,7 +1364,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -1389,7 +1389,7 @@ export const updateDashboard: API.OperationMethod<
   UpdateDashboardResponse,
   UpdateDashboardError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDashboardRequest,
   output: UpdateDashboardResponse,
   errors: [
@@ -1416,7 +1416,7 @@ export const updateScheduledReport: API.OperationMethod<
   UpdateScheduledReportResponse,
   UpdateScheduledReportError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateScheduledReportRequest,
   output: UpdateScheduledReportResponse,
   errors: [

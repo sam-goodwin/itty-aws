@@ -363,7 +363,7 @@ export const putActionInteractions: API.OperationMethod<
   PutActionInteractionsResponse,
   PutActionInteractionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutActionInteractionsRequest,
   output: PutActionInteractionsResponse,
   errors: [
@@ -386,7 +386,7 @@ export const putActions: API.OperationMethod<
   PutActionsResponse,
   PutActionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutActionsRequest,
   output: PutActionsResponse,
   errors: [
@@ -405,7 +405,7 @@ export const putEvents: API.OperationMethod<
   PutEventsResponse,
   PutEventsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutEventsRequest,
   output: PutEventsResponse,
   errors: [InvalidInputException],
@@ -424,7 +424,7 @@ export const putItems: API.OperationMethod<
   PutItemsResponse,
   PutItemsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutItemsRequest,
   output: PutItemsResponse,
   errors: [
@@ -447,7 +447,7 @@ export const putUsers: API.OperationMethod<
   PutUsersResponse,
   PutUsersError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutUsersRequest,
   output: PutUsersResponse,
   errors: [

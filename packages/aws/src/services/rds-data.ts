@@ -854,7 +854,7 @@ export const batchExecuteStatement: API.OperationMethod<
   BatchExecuteStatementResponse,
   BatchExecuteStatementError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchExecuteStatementRequest,
   output: BatchExecuteStatementResponse,
   errors: [
@@ -909,7 +909,7 @@ export const beginTransaction: API.OperationMethod<
   BeginTransactionResponse,
   BeginTransactionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BeginTransactionRequest,
   output: BeginTransactionResponse,
   errors: [
@@ -956,7 +956,7 @@ export const commitTransaction: API.OperationMethod<
   CommitTransactionResponse,
   CommitTransactionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CommitTransactionRequest,
   output: CommitTransactionResponse,
   errors: [
@@ -996,7 +996,7 @@ export const executeSql: API.OperationMethod<
   ExecuteSqlResponse,
   ExecuteSqlError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExecuteSqlRequest,
   output: ExecuteSqlResponse,
   errors: [
@@ -1039,7 +1039,7 @@ export const executeStatement: API.OperationMethod<
   ExecuteStatementResponse,
   ExecuteStatementError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExecuteStatementRequest,
   output: ExecuteStatementResponse,
   errors: [
@@ -1086,7 +1086,7 @@ export const rollbackTransaction: API.OperationMethod<
   RollbackTransactionResponse,
   RollbackTransactionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RollbackTransactionRequest,
   output: RollbackTransactionResponse,
   errors: [

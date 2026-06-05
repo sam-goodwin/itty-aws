@@ -152,7 +152,7 @@ export interface CreateContentRequest {
   html?: string;
 }
 
-export const CreateContentRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateContentRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   cacheTTL: Schema.optional(Schema.Number).pipe(T.HttpQuery("cacheTTL")),
   url: Schema.optional(Schema.String),
@@ -334,10 +334,9 @@ export const CreateContentRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type CreateContentResponse = string;
 
-export const CreateContentResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String.pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<CreateContentResponse>;
+export const CreateContentResponse = /*@__PURE__*/ Schema.String.pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<CreateContentResponse>;
 
 export type CreateContentError = DefaultErrors;
 
@@ -346,7 +345,7 @@ export const createContent: API.OperationMethod<
   CreateContentResponse,
   CreateContentError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateContentRequest,
   output: CreateContentResponse,
   errors: [],
@@ -377,7 +376,7 @@ export interface GetCrawlRequest {
     | (string & {});
 }
 
-export const GetCrawlRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetCrawlRequest = /*@__PURE__*/ Schema.Struct({
   jobId: Schema.String.pipe(T.HttpPath("jobId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   cacheTTL: Schema.optional(Schema.Number).pipe(T.HttpQuery("cacheTTL")),
@@ -436,7 +435,7 @@ export interface GetCrawlResponse {
   cursor?: string | null;
 }
 
-export const GetCrawlResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetCrawlResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   browserSecondsUsed: Schema.Number,
   finished: Schema.Number,
@@ -482,7 +481,7 @@ export const getCrawl: API.OperationMethod<
   GetCrawlResponse,
   GetCrawlError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCrawlRequest,
   output: GetCrawlResponse,
   errors: [],
@@ -651,7 +650,7 @@ export interface CreateCrawlRequest {
   waitForTimeout?: number;
 }
 
-export const CreateCrawlRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateCrawlRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   cacheTTL: Schema.optional(Schema.Number).pipe(T.HttpQuery("cacheTTL")),
   url: Schema.String,
@@ -896,10 +895,9 @@ export const CreateCrawlRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type CreateCrawlResponse = string;
 
-export const CreateCrawlResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String.pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<CreateCrawlResponse>;
+export const CreateCrawlResponse = /*@__PURE__*/ Schema.String.pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<CreateCrawlResponse>;
 
 export type CreateCrawlError = DefaultErrors;
 
@@ -908,7 +906,7 @@ export const createCrawl: API.OperationMethod<
   CreateCrawlResponse,
   CreateCrawlError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCrawlRequest,
   output: CreateCrawlResponse,
   errors: [],
@@ -920,7 +918,7 @@ export interface DeleteCrawlRequest {
   accountId: string;
 }
 
-export const DeleteCrawlRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteCrawlRequest = /*@__PURE__*/ Schema.Struct({
   jobId: Schema.String.pipe(T.HttpPath("jobId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -937,7 +935,7 @@ export interface DeleteCrawlResponse {
   message: string;
 }
 
-export const DeleteCrawlResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteCrawlResponse = /*@__PURE__*/ Schema.Struct({
   jobId: Schema.String,
   message: Schema.String,
 })
@@ -953,7 +951,7 @@ export const deleteCrawl: API.OperationMethod<
   DeleteCrawlResponse,
   DeleteCrawlError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCrawlRequest,
   output: DeleteCrawlResponse,
   errors: [],
@@ -976,19 +974,18 @@ export interface CreateDevtoolBrowserRequest {
   targets?: boolean;
 }
 
-export const CreateDevtoolBrowserRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    keepAlive: Schema.optional(Schema.Number).pipe(T.HttpQuery("keep_alive")),
-    lab: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("lab")),
-    recording: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("recording")),
-    targets: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("targets")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/browser-rendering/devtools/browser",
-    }),
-  ) as unknown as Schema.Schema<CreateDevtoolBrowserRequest>;
+export const CreateDevtoolBrowserRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  keepAlive: Schema.optional(Schema.Number).pipe(T.HttpQuery("keep_alive")),
+  lab: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("lab")),
+  recording: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("recording")),
+  targets: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("targets")),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/accounts/{account_id}/browser-rendering/devtools/browser",
+  }),
+) as unknown as Schema.Schema<CreateDevtoolBrowserRequest>;
 
 export interface CreateDevtoolBrowserResponse {
   /** Browser session ID. */
@@ -997,13 +994,12 @@ export interface CreateDevtoolBrowserResponse {
   webSocketDebuggerUrl?: string | null;
 }
 
-export const CreateDevtoolBrowserResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    sessionId: Schema.String,
-    webSocketDebuggerUrl: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-  }) as unknown as Schema.Schema<CreateDevtoolBrowserResponse>;
+export const CreateDevtoolBrowserResponse = /*@__PURE__*/ Schema.Struct({
+  sessionId: Schema.String,
+  webSocketDebuggerUrl: Schema.optional(
+    Schema.Union([Schema.String, Schema.Null]),
+  ),
+}) as unknown as Schema.Schema<CreateDevtoolBrowserResponse>;
 
 export type CreateDevtoolBrowserError = DefaultErrors;
 
@@ -1012,7 +1008,7 @@ export const createDevtoolBrowser: API.OperationMethod<
   CreateDevtoolBrowserResponse,
   CreateDevtoolBrowserError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDevtoolBrowserRequest,
   output: CreateDevtoolBrowserResponse,
   errors: [],
@@ -1024,28 +1020,23 @@ export interface DeleteDevtoolBrowserRequest {
   accountId: string;
 }
 
-export const DeleteDevtoolBrowserRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    sessionId: Schema.String.pipe(T.HttpPath("sessionId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/accounts/{account_id}/browser-rendering/devtools/browser/{sessionId}",
-    }),
-  ) as unknown as Schema.Schema<DeleteDevtoolBrowserRequest>;
+export const DeleteDevtoolBrowserRequest = /*@__PURE__*/ Schema.Struct({
+  sessionId: Schema.String.pipe(T.HttpPath("sessionId")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/accounts/{account_id}/browser-rendering/devtools/browser/{sessionId}",
+  }),
+) as unknown as Schema.Schema<DeleteDevtoolBrowserRequest>;
 
 export interface DeleteDevtoolBrowserResponse {
   status: "closing" | "closed" | (string & {});
 }
 
-export const DeleteDevtoolBrowserResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    status: Schema.Union([
-      Schema.Literals(["closing", "closed"]),
-      Schema.String,
-    ]),
-  }) as unknown as Schema.Schema<DeleteDevtoolBrowserResponse>;
+export const DeleteDevtoolBrowserResponse = /*@__PURE__*/ Schema.Struct({
+  status: Schema.Union([Schema.Literals(["closing", "closed"]), Schema.String]),
+}) as unknown as Schema.Schema<DeleteDevtoolBrowserResponse>;
 
 export type DeleteDevtoolBrowserError = DefaultErrors;
 
@@ -1054,7 +1045,7 @@ export const deleteDevtoolBrowser: API.OperationMethod<
   DeleteDevtoolBrowserResponse,
   DeleteDevtoolBrowserError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDevtoolBrowserRequest,
   output: DeleteDevtoolBrowserResponse,
   errors: [],
@@ -1072,24 +1063,23 @@ export interface ConnectDevtoolBrowserRequest {
   recording?: boolean;
 }
 
-export const ConnectDevtoolBrowserRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    sessionId: Schema.String.pipe(T.HttpPath("sessionId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    keepAlive: Schema.optional(Schema.Number).pipe(T.HttpQuery("keep_alive")),
-    lab: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("lab")),
-    recording: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("recording")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/browser-rendering/devtools/browser/{sessionId}",
-    }),
-  ) as unknown as Schema.Schema<ConnectDevtoolBrowserRequest>;
+export const ConnectDevtoolBrowserRequest = /*@__PURE__*/ Schema.Struct({
+  sessionId: Schema.String.pipe(T.HttpPath("sessionId")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  keepAlive: Schema.optional(Schema.Number).pipe(T.HttpQuery("keep_alive")),
+  lab: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("lab")),
+  recording: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("recording")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/browser-rendering/devtools/browser/{sessionId}",
+  }),
+) as unknown as Schema.Schema<ConnectDevtoolBrowserRequest>;
 
 export type ConnectDevtoolBrowserResponse = unknown;
 
 export const ConnectDevtoolBrowserResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<ConnectDevtoolBrowserResponse>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<ConnectDevtoolBrowserResponse>;
 
 export type ConnectDevtoolBrowserError = DefaultErrors;
 
@@ -1098,7 +1088,7 @@ export const connectDevtoolBrowser: API.OperationMethod<
   ConnectDevtoolBrowserResponse,
   ConnectDevtoolBrowserError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ConnectDevtoolBrowserRequest,
   output: ConnectDevtoolBrowserResponse,
   errors: [],
@@ -1115,23 +1105,22 @@ export interface LaunchDevtoolBrowserRequest {
   recording?: boolean;
 }
 
-export const LaunchDevtoolBrowserRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    keepAlive: Schema.optional(Schema.Number).pipe(T.HttpQuery("keep_alive")),
-    lab: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("lab")),
-    recording: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("recording")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/browser-rendering/devtools/browser",
-    }),
-  ) as unknown as Schema.Schema<LaunchDevtoolBrowserRequest>;
+export const LaunchDevtoolBrowserRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  keepAlive: Schema.optional(Schema.Number).pipe(T.HttpQuery("keep_alive")),
+  lab: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("lab")),
+  recording: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("recording")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/browser-rendering/devtools/browser",
+  }),
+) as unknown as Schema.Schema<LaunchDevtoolBrowserRequest>;
 
 export type LaunchDevtoolBrowserResponse = unknown;
 
 export const LaunchDevtoolBrowserResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<LaunchDevtoolBrowserResponse>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<LaunchDevtoolBrowserResponse>;
 
 export type LaunchDevtoolBrowserError = DefaultErrors;
 
@@ -1140,7 +1129,7 @@ export const launchDevtoolBrowser: API.OperationMethod<
   LaunchDevtoolBrowserResponse,
   LaunchDevtoolBrowserError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: LaunchDevtoolBrowserRequest,
   output: LaunchDevtoolBrowserResponse,
   errors: [],
@@ -1152,16 +1141,15 @@ export interface ProtocolDevtoolBrowserRequest {
   accountId: string;
 }
 
-export const ProtocolDevtoolBrowserRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    sessionId: Schema.String.pipe(T.HttpPath("sessionId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/browser-rendering/devtools/browser/{sessionId}/json/protocol",
-    }),
-  ) as unknown as Schema.Schema<ProtocolDevtoolBrowserRequest>;
+export const ProtocolDevtoolBrowserRequest = /*@__PURE__*/ Schema.Struct({
+  sessionId: Schema.String.pipe(T.HttpPath("sessionId")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/browser-rendering/devtools/browser/{sessionId}/json/protocol",
+  }),
+) as unknown as Schema.Schema<ProtocolDevtoolBrowserRequest>;
 
 export interface ProtocolDevtoolBrowserResponse {
   /** List of protocol domains. */
@@ -1177,47 +1165,46 @@ export interface ProtocolDevtoolBrowserResponse {
   version?: { major: string; minor: string } | null;
 }
 
-export const ProtocolDevtoolBrowserResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    domains: Schema.Array(
+export const ProtocolDevtoolBrowserResponse = /*@__PURE__*/ Schema.Struct({
+  domains: Schema.Array(
+    Schema.Struct({
+      domain: Schema.String,
+      commands: Schema.optional(
+        Schema.Union([
+          Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+          Schema.Null,
+        ]),
+      ),
+      dependencies: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+      events: Schema.optional(
+        Schema.Union([
+          Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+          Schema.Null,
+        ]),
+      ),
+      experimental: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      types: Schema.optional(
+        Schema.Union([
+          Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+          Schema.Null,
+        ]),
+      ),
+    }),
+  ),
+  version: Schema.optional(
+    Schema.Union([
       Schema.Struct({
-        domain: Schema.String,
-        commands: Schema.optional(
-          Schema.Union([
-            Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-            Schema.Null,
-          ]),
-        ),
-        dependencies: Schema.optional(
-          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-        ),
-        events: Schema.optional(
-          Schema.Union([
-            Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-            Schema.Null,
-          ]),
-        ),
-        experimental: Schema.optional(
-          Schema.Union([Schema.Boolean, Schema.Null]),
-        ),
-        types: Schema.optional(
-          Schema.Union([
-            Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-            Schema.Null,
-          ]),
-        ),
+        major: Schema.String,
+        minor: Schema.String,
       }),
-    ),
-    version: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          major: Schema.String,
-          minor: Schema.String,
-        }),
-        Schema.Null,
-      ]),
-    ),
-  }) as unknown as Schema.Schema<ProtocolDevtoolBrowserResponse>;
+      Schema.Null,
+    ]),
+  ),
+}) as unknown as Schema.Schema<ProtocolDevtoolBrowserResponse>;
 
 export type ProtocolDevtoolBrowserError = DefaultErrors;
 
@@ -1226,7 +1213,7 @@ export const protocolDevtoolBrowser: API.OperationMethod<
   ProtocolDevtoolBrowserResponse,
   ProtocolDevtoolBrowserError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ProtocolDevtoolBrowserRequest,
   output: ProtocolDevtoolBrowserResponse,
   errors: [],
@@ -1238,16 +1225,15 @@ export interface VersionDevtoolBrowserRequest {
   accountId: string;
 }
 
-export const VersionDevtoolBrowserRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    sessionId: Schema.String.pipe(T.HttpPath("sessionId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/browser-rendering/devtools/browser/{sessionId}/json/version",
-    }),
-  ) as unknown as Schema.Schema<VersionDevtoolBrowserRequest>;
+export const VersionDevtoolBrowserRequest = /*@__PURE__*/ Schema.Struct({
+  sessionId: Schema.String.pipe(T.HttpPath("sessionId")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/browser-rendering/devtools/browser/{sessionId}/json/version",
+  }),
+) as unknown as Schema.Schema<VersionDevtoolBrowserRequest>;
 
 export interface VersionDevtoolBrowserResponse {
   /** Browser name and version. */
@@ -1264,24 +1250,23 @@ export interface VersionDevtoolBrowserResponse {
   webSocketDebuggerUrl: string;
 }
 
-export const VersionDevtoolBrowserResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    browser: Schema.String,
-    protocolVersion: Schema.String,
-    userAgent: Schema.String,
-    v8Version: Schema.String,
-    webKitVersion: Schema.String,
-    webSocketDebuggerUrl: Schema.String,
-  }).pipe(
-    Schema.encodeKeys({
-      browser: "Browser",
-      protocolVersion: "Protocol-Version",
-      userAgent: "User-Agent",
-      v8Version: "V8-Version",
-      webKitVersion: "WebKit-Version",
-      webSocketDebuggerUrl: "webSocketDebuggerUrl",
-    }),
-  ) as unknown as Schema.Schema<VersionDevtoolBrowserResponse>;
+export const VersionDevtoolBrowserResponse = /*@__PURE__*/ Schema.Struct({
+  browser: Schema.String,
+  protocolVersion: Schema.String,
+  userAgent: Schema.String,
+  v8Version: Schema.String,
+  webKitVersion: Schema.String,
+  webSocketDebuggerUrl: Schema.String,
+}).pipe(
+  Schema.encodeKeys({
+    browser: "Browser",
+    protocolVersion: "Protocol-Version",
+    userAgent: "User-Agent",
+    v8Version: "V8-Version",
+    webKitVersion: "WebKit-Version",
+    webSocketDebuggerUrl: "webSocketDebuggerUrl",
+  }),
+) as unknown as Schema.Schema<VersionDevtoolBrowserResponse>;
 
 export type VersionDevtoolBrowserError = DefaultErrors;
 
@@ -1290,7 +1275,7 @@ export const versionDevtoolBrowser: API.OperationMethod<
   VersionDevtoolBrowserResponse,
   VersionDevtoolBrowserError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: VersionDevtoolBrowserRequest,
   output: VersionDevtoolBrowserResponse,
   errors: [],
@@ -1307,22 +1292,21 @@ export interface GetDevtoolBrowserPageRequest {
   accountId: string;
 }
 
-export const GetDevtoolBrowserPageRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    sessionId: Schema.String.pipe(T.HttpPath("sessionId")),
-    targetId: Schema.String.pipe(T.HttpPath("targetId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/browser-rendering/devtools/browser/{sessionId}/page/{targetId}",
-    }),
-  ) as unknown as Schema.Schema<GetDevtoolBrowserPageRequest>;
+export const GetDevtoolBrowserPageRequest = /*@__PURE__*/ Schema.Struct({
+  sessionId: Schema.String.pipe(T.HttpPath("sessionId")),
+  targetId: Schema.String.pipe(T.HttpPath("targetId")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/browser-rendering/devtools/browser/{sessionId}/page/{targetId}",
+  }),
+) as unknown as Schema.Schema<GetDevtoolBrowserPageRequest>;
 
 export type GetDevtoolBrowserPageResponse = unknown;
 
 export const GetDevtoolBrowserPageResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<GetDevtoolBrowserPageResponse>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<GetDevtoolBrowserPageResponse>;
 
 export type GetDevtoolBrowserPageError = DefaultErrors;
 
@@ -1331,7 +1315,7 @@ export const getDevtoolBrowserPage: API.OperationMethod<
   GetDevtoolBrowserPageResponse,
   GetDevtoolBrowserPageError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDevtoolBrowserPageRequest,
   output: GetDevtoolBrowserPageResponse,
   errors: [],
@@ -1348,17 +1332,16 @@ export interface GetDevtoolBrowserTargetRequest {
   accountId: string;
 }
 
-export const GetDevtoolBrowserTargetRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    sessionId: Schema.String.pipe(T.HttpPath("sessionId")),
-    targetId: Schema.String.pipe(T.HttpPath("targetId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/browser-rendering/devtools/browser/{sessionId}/json/list/{targetId}",
-    }),
-  ) as unknown as Schema.Schema<GetDevtoolBrowserTargetRequest>;
+export const GetDevtoolBrowserTargetRequest = /*@__PURE__*/ Schema.Struct({
+  sessionId: Schema.String.pipe(T.HttpPath("sessionId")),
+  targetId: Schema.String.pipe(T.HttpPath("targetId")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/browser-rendering/devtools/browser/{sessionId}/json/list/{targetId}",
+  }),
+) as unknown as Schema.Schema<GetDevtoolBrowserTargetRequest>;
 
 export interface GetDevtoolBrowserTargetResponse {
   /** Target ID. */
@@ -1377,20 +1360,19 @@ export interface GetDevtoolBrowserTargetResponse {
   webSocketDebuggerUrl?: string | null;
 }
 
-export const GetDevtoolBrowserTargetResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    type: Schema.String,
-    url: Schema.String,
-    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    devtoolsFrontendUrl: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    title: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    webSocketDebuggerUrl: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-  }) as unknown as Schema.Schema<GetDevtoolBrowserTargetResponse>;
+export const GetDevtoolBrowserTargetResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  type: Schema.String,
+  url: Schema.String,
+  description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  devtoolsFrontendUrl: Schema.optional(
+    Schema.Union([Schema.String, Schema.Null]),
+  ),
+  title: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  webSocketDebuggerUrl: Schema.optional(
+    Schema.Union([Schema.String, Schema.Null]),
+  ),
+}) as unknown as Schema.Schema<GetDevtoolBrowserTargetResponse>;
 
 export type GetDevtoolBrowserTargetError = DefaultErrors;
 
@@ -1399,7 +1381,7 @@ export const getDevtoolBrowserTarget: API.OperationMethod<
   GetDevtoolBrowserTargetResponse,
   GetDevtoolBrowserTargetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDevtoolBrowserTargetRequest,
   output: GetDevtoolBrowserTargetResponse,
   errors: [],
@@ -1411,16 +1393,15 @@ export interface ListDevtoolBrowserTargetsRequest {
   accountId: string;
 }
 
-export const ListDevtoolBrowserTargetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    sessionId: Schema.String.pipe(T.HttpPath("sessionId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/browser-rendering/devtools/browser/{sessionId}/json/list",
-    }),
-  ) as unknown as Schema.Schema<ListDevtoolBrowserTargetsRequest>;
+export const ListDevtoolBrowserTargetsRequest = /*@__PURE__*/ Schema.Struct({
+  sessionId: Schema.String.pipe(T.HttpPath("sessionId")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/browser-rendering/devtools/browser/{sessionId}/json/list",
+  }),
+) as unknown as Schema.Schema<ListDevtoolBrowserTargetsRequest>;
 
 export type ListDevtoolBrowserTargetsResponse = {
   id: string;
@@ -1432,22 +1413,21 @@ export type ListDevtoolBrowserTargetsResponse = {
   webSocketDebuggerUrl?: string | null;
 }[];
 
-export const ListDevtoolBrowserTargetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-    Schema.Struct({
-      id: Schema.String,
-      type: Schema.String,
-      url: Schema.String,
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      devtoolsFrontendUrl: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      title: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      webSocketDebuggerUrl: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-    }),
-  ) as unknown as Schema.Schema<ListDevtoolBrowserTargetsResponse>;
+export const ListDevtoolBrowserTargetsResponse = /*@__PURE__*/ Schema.Array(
+  Schema.Struct({
+    id: Schema.String,
+    type: Schema.String,
+    url: Schema.String,
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    devtoolsFrontendUrl: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    title: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    webSocketDebuggerUrl: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+  }),
+) as unknown as Schema.Schema<ListDevtoolBrowserTargetsResponse>;
 
 export type ListDevtoolBrowserTargetsError = DefaultErrors;
 
@@ -1456,7 +1436,7 @@ export const listDevtoolBrowserTargets: API.OperationMethod<
   ListDevtoolBrowserTargetsResponse,
   ListDevtoolBrowserTargetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListDevtoolBrowserTargetsRequest,
   output: ListDevtoolBrowserTargetsResponse,
   errors: [],
@@ -1470,17 +1450,16 @@ export interface CreateDevtoolBrowserTargetRequest {
   url?: string;
 }
 
-export const CreateDevtoolBrowserTargetRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    sessionId: Schema.String.pipe(T.HttpPath("sessionId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    url: Schema.optional(Schema.String).pipe(T.HttpQuery("url")),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/accounts/{account_id}/browser-rendering/devtools/browser/{sessionId}/json/new",
-    }),
-  ) as unknown as Schema.Schema<CreateDevtoolBrowserTargetRequest>;
+export const CreateDevtoolBrowserTargetRequest = /*@__PURE__*/ Schema.Struct({
+  sessionId: Schema.String.pipe(T.HttpPath("sessionId")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  url: Schema.optional(Schema.String).pipe(T.HttpQuery("url")),
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/accounts/{account_id}/browser-rendering/devtools/browser/{sessionId}/json/new",
+  }),
+) as unknown as Schema.Schema<CreateDevtoolBrowserTargetRequest>;
 
 export interface CreateDevtoolBrowserTargetResponse {
   /** Target ID. */
@@ -1499,20 +1478,19 @@ export interface CreateDevtoolBrowserTargetResponse {
   webSocketDebuggerUrl?: string | null;
 }
 
-export const CreateDevtoolBrowserTargetResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    type: Schema.String,
-    url: Schema.String,
-    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    devtoolsFrontendUrl: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    title: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    webSocketDebuggerUrl: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-  }) as unknown as Schema.Schema<CreateDevtoolBrowserTargetResponse>;
+export const CreateDevtoolBrowserTargetResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  type: Schema.String,
+  url: Schema.String,
+  description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  devtoolsFrontendUrl: Schema.optional(
+    Schema.Union([Schema.String, Schema.Null]),
+  ),
+  title: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  webSocketDebuggerUrl: Schema.optional(
+    Schema.Union([Schema.String, Schema.Null]),
+  ),
+}) as unknown as Schema.Schema<CreateDevtoolBrowserTargetResponse>;
 
 export type CreateDevtoolBrowserTargetError = DefaultErrors;
 
@@ -1521,7 +1499,7 @@ export const createDevtoolBrowserTarget: API.OperationMethod<
   CreateDevtoolBrowserTargetResponse,
   CreateDevtoolBrowserTargetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDevtoolBrowserTargetRequest,
   output: CreateDevtoolBrowserTargetResponse,
   errors: [],
@@ -1534,27 +1512,27 @@ export interface ActivateDevtoolBrowserTargetRequest {
   accountId: string;
 }
 
-export const ActivateDevtoolBrowserTargetRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    sessionId: Schema.String.pipe(T.HttpPath("sessionId")),
-    targetId: Schema.String.pipe(T.HttpPath("targetId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/browser-rendering/devtools/browser/{sessionId}/json/activate/{targetId}",
-    }),
-  ) as unknown as Schema.Schema<ActivateDevtoolBrowserTargetRequest>;
+export const ActivateDevtoolBrowserTargetRequest = /*@__PURE__*/ Schema.Struct({
+  sessionId: Schema.String.pipe(T.HttpPath("sessionId")),
+  targetId: Schema.String.pipe(T.HttpPath("targetId")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/browser-rendering/devtools/browser/{sessionId}/json/activate/{targetId}",
+  }),
+) as unknown as Schema.Schema<ActivateDevtoolBrowserTargetRequest>;
 
 export interface ActivateDevtoolBrowserTargetResponse {
   /** Target activated. */
   message: string;
 }
 
-export const ActivateDevtoolBrowserTargetResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ActivateDevtoolBrowserTargetResponse = /*@__PURE__*/ Schema.Struct(
+  {
     message: Schema.String,
-  }) as unknown as Schema.Schema<ActivateDevtoolBrowserTargetResponse>;
+  },
+) as unknown as Schema.Schema<ActivateDevtoolBrowserTargetResponse>;
 
 export type ActivateDevtoolBrowserTargetError = DefaultErrors;
 
@@ -1563,7 +1541,7 @@ export const activateDevtoolBrowserTarget: API.OperationMethod<
   ActivateDevtoolBrowserTargetResponse,
   ActivateDevtoolBrowserTargetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ActivateDevtoolBrowserTargetRequest,
   output: ActivateDevtoolBrowserTargetResponse,
   errors: [],
@@ -1576,27 +1554,25 @@ export interface CloseDevtoolBrowserTargetRequest {
   accountId: string;
 }
 
-export const CloseDevtoolBrowserTargetRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    sessionId: Schema.String.pipe(T.HttpPath("sessionId")),
-    targetId: Schema.String.pipe(T.HttpPath("targetId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/browser-rendering/devtools/browser/{sessionId}/json/close/{targetId}",
-    }),
-  ) as unknown as Schema.Schema<CloseDevtoolBrowserTargetRequest>;
+export const CloseDevtoolBrowserTargetRequest = /*@__PURE__*/ Schema.Struct({
+  sessionId: Schema.String.pipe(T.HttpPath("sessionId")),
+  targetId: Schema.String.pipe(T.HttpPath("targetId")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/browser-rendering/devtools/browser/{sessionId}/json/close/{targetId}",
+  }),
+) as unknown as Schema.Schema<CloseDevtoolBrowserTargetRequest>;
 
 export interface CloseDevtoolBrowserTargetResponse {
   /** Target is closing. */
   message: string;
 }
 
-export const CloseDevtoolBrowserTargetResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    message: Schema.String,
-  }) as unknown as Schema.Schema<CloseDevtoolBrowserTargetResponse>;
+export const CloseDevtoolBrowserTargetResponse = /*@__PURE__*/ Schema.Struct({
+  message: Schema.String,
+}) as unknown as Schema.Schema<CloseDevtoolBrowserTargetResponse>;
 
 export type CloseDevtoolBrowserTargetError = DefaultErrors;
 
@@ -1605,7 +1581,7 @@ export const closeDevtoolBrowserTarget: API.OperationMethod<
   CloseDevtoolBrowserTargetResponse,
   CloseDevtoolBrowserTargetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CloseDevtoolBrowserTargetRequest,
   output: CloseDevtoolBrowserTargetResponse,
   errors: [],
@@ -1621,16 +1597,15 @@ export interface GetDevtoolSessionRequest {
   accountId: string;
 }
 
-export const GetDevtoolSessionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    sessionId: Schema.String.pipe(T.HttpPath("sessionId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/browser-rendering/devtools/session/{sessionId}",
-    }),
-  ) as unknown as Schema.Schema<GetDevtoolSessionRequest>;
+export const GetDevtoolSessionRequest = /*@__PURE__*/ Schema.Struct({
+  sessionId: Schema.String.pipe(T.HttpPath("sessionId")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/browser-rendering/devtools/session/{sessionId}",
+  }),
+) as unknown as Schema.Schema<GetDevtoolSessionRequest>;
 
 export interface GetDevtoolSessionResponse {
   /** Session ID. */
@@ -1657,8 +1632,77 @@ export interface GetDevtoolSessionResponse {
   webSocketDebuggerUrl?: string | null;
 }
 
-export const GetDevtoolSessionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetDevtoolSessionResponse = /*@__PURE__*/ Schema.Struct({
+  sessionId: Schema.String,
+  closeReason: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  closeReasonText: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  connectionEndTime: Schema.optional(
+    Schema.Union([Schema.Number, Schema.Null]),
+  ),
+  connectionId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  connectionStartTime: Schema.optional(
+    Schema.Union([Schema.Number, Schema.Null]),
+  ),
+  devtoolsFrontendUrl: Schema.optional(
+    Schema.Union([Schema.String, Schema.Null]),
+  ),
+  endTime: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  lastUpdated: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  startTime: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  webSocketDebuggerUrl: Schema.optional(
+    Schema.Union([Schema.String, Schema.Null]),
+  ),
+}) as unknown as Schema.Schema<GetDevtoolSessionResponse>;
+
+export type GetDevtoolSessionError = DefaultErrors;
+
+export const getDevtoolSession: API.OperationMethod<
+  GetDevtoolSessionRequest,
+  GetDevtoolSessionResponse,
+  GetDevtoolSessionError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetDevtoolSessionRequest,
+  output: GetDevtoolSessionResponse,
+  errors: [],
+}));
+
+export interface ListDevtoolSessionsRequest {
+  /** Path param: Account ID. */
+  accountId: string;
+  /** Query param */
+  limit?: number;
+  /** Query param */
+  offset?: number;
+}
+
+export const ListDevtoolSessionsRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  limit: Schema.optional(Schema.Number).pipe(T.HttpQuery("limit")),
+  offset: Schema.optional(Schema.Number).pipe(T.HttpQuery("offset")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/browser-rendering/devtools/session",
+  }),
+) as unknown as Schema.Schema<ListDevtoolSessionsRequest>;
+
+export type ListDevtoolSessionsResponse = {
+  sessionId: string;
+  closeReason?: string | null;
+  closeReasonText?: string | null;
+  connectionEndTime?: number | null;
+  connectionId?: string | null;
+  connectionStartTime?: number | null;
+  devtoolsFrontendUrl?: string | null;
+  endTime?: number | null;
+  lastUpdated?: number | null;
+  startTime?: number | null;
+  webSocketDebuggerUrl?: string | null;
+}[];
+
+export const ListDevtoolSessionsResponse = /*@__PURE__*/ Schema.Array(
+  Schema.Struct({
     sessionId: Schema.String,
     closeReason: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     closeReasonText: Schema.optional(
@@ -1680,82 +1724,8 @@ export const GetDevtoolSessionResponse =
     webSocketDebuggerUrl: Schema.optional(
       Schema.Union([Schema.String, Schema.Null]),
     ),
-  }) as unknown as Schema.Schema<GetDevtoolSessionResponse>;
-
-export type GetDevtoolSessionError = DefaultErrors;
-
-export const getDevtoolSession: API.OperationMethod<
-  GetDevtoolSessionRequest,
-  GetDevtoolSessionResponse,
-  GetDevtoolSessionError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetDevtoolSessionRequest,
-  output: GetDevtoolSessionResponse,
-  errors: [],
-}));
-
-export interface ListDevtoolSessionsRequest {
-  /** Path param: Account ID. */
-  accountId: string;
-  /** Query param */
-  limit?: number;
-  /** Query param */
-  offset?: number;
-}
-
-export const ListDevtoolSessionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    limit: Schema.optional(Schema.Number).pipe(T.HttpQuery("limit")),
-    offset: Schema.optional(Schema.Number).pipe(T.HttpQuery("offset")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/browser-rendering/devtools/session",
-    }),
-  ) as unknown as Schema.Schema<ListDevtoolSessionsRequest>;
-
-export type ListDevtoolSessionsResponse = {
-  sessionId: string;
-  closeReason?: string | null;
-  closeReasonText?: string | null;
-  connectionEndTime?: number | null;
-  connectionId?: string | null;
-  connectionStartTime?: number | null;
-  devtoolsFrontendUrl?: string | null;
-  endTime?: number | null;
-  lastUpdated?: number | null;
-  startTime?: number | null;
-  webSocketDebuggerUrl?: string | null;
-}[];
-
-export const ListDevtoolSessionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-    Schema.Struct({
-      sessionId: Schema.String,
-      closeReason: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      closeReasonText: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      connectionEndTime: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-      connectionId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      connectionStartTime: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-      devtoolsFrontendUrl: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      endTime: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      lastUpdated: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      startTime: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      webSocketDebuggerUrl: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-    }),
-  ) as unknown as Schema.Schema<ListDevtoolSessionsResponse>;
+  }),
+) as unknown as Schema.Schema<ListDevtoolSessionsResponse>;
 
 export type ListDevtoolSessionsError = DefaultErrors;
 
@@ -1764,7 +1734,7 @@ export const listDevtoolSessions: API.OperationMethod<
   ListDevtoolSessionsResponse,
   ListDevtoolSessionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListDevtoolSessionsRequest,
   output: ListDevtoolSessionsResponse,
   errors: [],
@@ -1918,7 +1888,7 @@ export interface CreateJsonRequest {
   url?: string;
 }
 
-export const CreateJsonRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateJsonRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   cacheTTL: Schema.optional(Schema.Number).pipe(T.HttpQuery("cacheTTL")),
   html: Schema.optional(Schema.String),
@@ -2145,7 +2115,7 @@ export const CreateJsonRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type CreateJsonResponse = Record<string, unknown>;
 
-export const CreateJsonResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Record(
+export const CreateJsonResponse = /*@__PURE__*/ Schema.Record(
   Schema.String,
   Schema.Unknown,
 ).pipe(
@@ -2159,7 +2129,7 @@ export const createJson: API.OperationMethod<
   CreateJsonResponse,
   CreateJsonError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateJsonRequest,
   output: CreateJsonResponse,
   errors: [],
@@ -2308,7 +2278,7 @@ export interface CreateLinkRequest {
   url?: string;
 }
 
-export const CreateLinkRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateLinkRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   cacheTTL: Schema.optional(Schema.Number).pipe(T.HttpQuery("cacheTTL")),
   html: Schema.optional(Schema.String),
@@ -2492,7 +2462,7 @@ export const CreateLinkRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type CreateLinkResponse = string[];
 
-export const CreateLinkResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const CreateLinkResponse = /*@__PURE__*/ Schema.Array(
   Schema.String,
 ).pipe(
   T.ResponsePath("result"),
@@ -2505,7 +2475,7 @@ export const createLink: API.OperationMethod<
   CreateLinkResponse,
   CreateLinkError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLinkRequest,
   output: CreateLinkResponse,
   errors: [],
@@ -2650,7 +2620,7 @@ export interface CreateMarkdownRequest {
   html?: string;
 }
 
-export const CreateMarkdownRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateMarkdownRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   cacheTTL: Schema.optional(Schema.Number).pipe(T.HttpQuery("cacheTTL")),
   url: Schema.optional(Schema.String),
@@ -2832,10 +2802,9 @@ export const CreateMarkdownRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type CreateMarkdownResponse = string;
 
-export const CreateMarkdownResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String.pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<CreateMarkdownResponse>;
+export const CreateMarkdownResponse = /*@__PURE__*/ Schema.String.pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<CreateMarkdownResponse>;
 
 export type CreateMarkdownError = DefaultErrors;
 
@@ -2844,7 +2813,7 @@ export const createMarkdown: API.OperationMethod<
   CreateMarkdownResponse,
   CreateMarkdownError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMarkdownRequest,
   output: CreateMarkdownResponse,
   errors: [],
@@ -3025,7 +2994,7 @@ export interface CreatePdfRequest {
   url?: string;
 }
 
-export const CreatePdfRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreatePdfRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   cacheTTL: Schema.optional(Schema.Number).pipe(T.HttpQuery("cacheTTL")),
   html: Schema.optional(Schema.String),
@@ -3252,7 +3221,7 @@ export const CreatePdfRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreatePdfResponse = unknown;
 
 export const CreatePdfResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<CreatePdfResponse>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<CreatePdfResponse>;
 
 export type CreatePdfError = DefaultErrors;
 
@@ -3261,7 +3230,7 @@ export const createPdf: API.OperationMethod<
   CreatePdfResponse,
   CreatePdfError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePdfRequest,
   output: CreatePdfResponse,
   errors: [],
@@ -3408,7 +3377,7 @@ export interface CreateScrapeRequest {
   url?: string;
 }
 
-export const CreateScrapeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateScrapeRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   cacheTTL: Schema.optional(Schema.Number).pipe(T.HttpQuery("cacheTTL")),
   elements: Schema.Array(
@@ -3606,7 +3575,7 @@ export type CreateScrapeResponse = {
   selector: string;
 }[];
 
-export const CreateScrapeResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const CreateScrapeResponse = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     results: Schema.Struct({
       attributes: Schema.Array(
@@ -3635,7 +3604,7 @@ export const createScrape: API.OperationMethod<
   CreateScrapeResponse,
   CreateScrapeError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateScrapeRequest,
   output: CreateScrapeResponse,
   errors: [],
@@ -3802,216 +3771,212 @@ export interface CreateScreenshotRequest {
   url?: string;
 }
 
-export const CreateScreenshotRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    cacheTTL: Schema.optional(Schema.Number).pipe(T.HttpQuery("cacheTTL")),
-    html: Schema.optional(Schema.String),
-    actionTimeout: Schema.optional(Schema.Number),
-    addScriptTag: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          content: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          url: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
-    addStyleTag: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          content: Schema.optional(Schema.String),
-          url: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
-    allowRequestPattern: Schema.optional(Schema.Array(Schema.String)),
-    allowResourceTypes: Schema.optional(
-      Schema.Array(
-        Schema.Union([
-          Schema.Literals([
-            "document",
-            "stylesheet",
-            "image",
-            "media",
-            "font",
-            "script",
-            "texttrack",
-            "xhr",
-            "fetch",
-            "prefetch",
-            "eventsource",
-            "websocket",
-            "manifest",
-            "signedexchange",
-            "ping",
-            "cspviolationreport",
-            "preflight",
-            "other",
-          ]),
-          Schema.String,
-        ]),
-      ),
-    ),
-    authenticate: Schema.optional(
+export const CreateScreenshotRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  cacheTTL: Schema.optional(Schema.Number).pipe(T.HttpQuery("cacheTTL")),
+  html: Schema.optional(Schema.String),
+  actionTimeout: Schema.optional(Schema.Number),
+  addScriptTag: Schema.optional(
+    Schema.Array(
       Schema.Struct({
-        password: SensitiveString,
-        username: Schema.String,
+        id: Schema.optional(Schema.String),
+        content: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        url: Schema.optional(Schema.String),
       }),
     ),
-    bestAttempt: Schema.optional(Schema.Boolean),
-    cookies: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-          domain: Schema.optional(Schema.String),
-          expires: Schema.optional(Schema.Number),
-          httpOnly: Schema.optional(Schema.Boolean),
-          partitionKey: Schema.optional(Schema.String),
-          path: Schema.optional(Schema.String),
-          priority: Schema.optional(
-            Schema.Union([
-              Schema.Literals(["Low", "Medium", "High"]),
-              Schema.String,
-            ]),
-          ),
-          sameParty: Schema.optional(Schema.Boolean),
-          sameSite: Schema.optional(
-            Schema.Union([
-              Schema.Literals(["Strict", "Lax", "None"]),
-              Schema.String,
-            ]),
-          ),
-          secure: Schema.optional(Schema.Boolean),
-          sourcePort: Schema.optional(Schema.Number),
-          sourceScheme: Schema.optional(
-            Schema.Union([
-              Schema.Literals(["Unset", "NonSecure", "Secure"]),
-              Schema.String,
-            ]),
-          ),
-          url: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
-    emulateMediaType: Schema.optional(Schema.String),
-    gotoOptions: Schema.optional(
+  ),
+  addStyleTag: Schema.optional(
+    Schema.Array(
       Schema.Struct({
-        referer: Schema.optional(Schema.String),
-        referrerPolicy: Schema.optional(Schema.String),
-        timeout: Schema.optional(Schema.Number),
-        waitUntil: Schema.optional(
-          Schema.Union([
-            Schema.Literal("load"),
-            Schema.Literal("domcontentloaded"),
-            Schema.Literal("networkidle0"),
-            Schema.Literal("networkidle2"),
-            Schema.Array(
-              Schema.Union([
-                Schema.Literals([
-                  "load",
-                  "domcontentloaded",
-                  "networkidle0",
-                  "networkidle2",
-                ]),
-                Schema.String,
-              ]),
-            ),
-          ]),
-        ),
+        content: Schema.optional(Schema.String),
+        url: Schema.optional(Schema.String),
       }),
     ),
-    rejectRequestPattern: Schema.optional(Schema.Array(Schema.String)),
-    rejectResourceTypes: Schema.optional(
-      Schema.Array(
-        Schema.Union([
-          Schema.Literals([
-            "document",
-            "stylesheet",
-            "image",
-            "media",
-            "font",
-            "script",
-            "texttrack",
-            "xhr",
-            "fetch",
-            "prefetch",
-            "eventsource",
-            "websocket",
-            "manifest",
-            "signedexchange",
-            "ping",
-            "cspviolationreport",
-            "preflight",
-            "other",
-          ]),
-          Schema.String,
+  ),
+  allowRequestPattern: Schema.optional(Schema.Array(Schema.String)),
+  allowResourceTypes: Schema.optional(
+    Schema.Array(
+      Schema.Union([
+        Schema.Literals([
+          "document",
+          "stylesheet",
+          "image",
+          "media",
+          "font",
+          "script",
+          "texttrack",
+          "xhr",
+          "fetch",
+          "prefetch",
+          "eventsource",
+          "websocket",
+          "manifest",
+          "signedexchange",
+          "ping",
+          "cspviolationreport",
+          "preflight",
+          "other",
         ]),
-      ),
+        Schema.String,
+      ]),
     ),
-    screenshotOptions: Schema.optional(
+  ),
+  authenticate: Schema.optional(
+    Schema.Struct({
+      password: SensitiveString,
+      username: Schema.String,
+    }),
+  ),
+  bestAttempt: Schema.optional(Schema.Boolean),
+  cookies: Schema.optional(
+    Schema.Array(
       Schema.Struct({
-        captureBeyondViewport: Schema.optional(Schema.Boolean),
-        clip: Schema.optional(
-          Schema.Struct({
-            height: Schema.Number,
-            width: Schema.Number,
-            x: Schema.Number,
-            y: Schema.Number,
-            scale: Schema.optional(Schema.Number),
-          }),
-        ),
-        encoding: Schema.optional(
-          Schema.Union([Schema.Literals(["binary", "base64"]), Schema.String]),
-        ),
-        fromSurface: Schema.optional(Schema.Boolean),
-        fullPage: Schema.optional(Schema.Boolean),
-        omitBackground: Schema.optional(Schema.Boolean),
-        optimizeForSpeed: Schema.optional(Schema.Boolean),
-        quality: Schema.optional(Schema.Number),
-        type: Schema.optional(
+        name: Schema.String,
+        value: Schema.String,
+        domain: Schema.optional(Schema.String),
+        expires: Schema.optional(Schema.Number),
+        httpOnly: Schema.optional(Schema.Boolean),
+        partitionKey: Schema.optional(Schema.String),
+        path: Schema.optional(Schema.String),
+        priority: Schema.optional(
           Schema.Union([
-            Schema.Literals(["png", "jpeg", "webp"]),
+            Schema.Literals(["Low", "Medium", "High"]),
             Schema.String,
           ]),
         ),
+        sameParty: Schema.optional(Schema.Boolean),
+        sameSite: Schema.optional(
+          Schema.Union([
+            Schema.Literals(["Strict", "Lax", "None"]),
+            Schema.String,
+          ]),
+        ),
+        secure: Schema.optional(Schema.Boolean),
+        sourcePort: Schema.optional(Schema.Number),
+        sourceScheme: Schema.optional(
+          Schema.Union([
+            Schema.Literals(["Unset", "NonSecure", "Secure"]),
+            Schema.String,
+          ]),
+        ),
+        url: Schema.optional(Schema.String),
       }),
     ),
-    scrollPage: Schema.optional(Schema.Boolean),
-    selector: Schema.optional(Schema.String),
-    setExtraHTTPHeaders: Schema.optional(
-      Schema.Record(Schema.String, Schema.Unknown),
-    ),
-    setJavaScriptEnabled: Schema.optional(Schema.Boolean),
-    userAgent: Schema.optional(Schema.String),
-    viewport: Schema.optional(
-      Schema.Struct({
-        height: Schema.Number,
-        width: Schema.Number,
-        deviceScaleFactor: Schema.optional(Schema.Number),
-        hasTouch: Schema.optional(Schema.Boolean),
-        isLandscape: Schema.optional(Schema.Boolean),
-        isMobile: Schema.optional(Schema.Boolean),
-      }),
-    ),
-    waitForSelector: Schema.optional(
-      Schema.Struct({
-        selector: Schema.String,
-        hidden: Schema.optional(Schema.Literal(true)),
-        timeout: Schema.optional(Schema.Number),
-        visible: Schema.optional(Schema.Literal(true)),
-      }),
-    ),
-    waitForTimeout: Schema.optional(Schema.Number),
-    url: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/browser-rendering/screenshot",
+  ),
+  emulateMediaType: Schema.optional(Schema.String),
+  gotoOptions: Schema.optional(
+    Schema.Struct({
+      referer: Schema.optional(Schema.String),
+      referrerPolicy: Schema.optional(Schema.String),
+      timeout: Schema.optional(Schema.Number),
+      waitUntil: Schema.optional(
+        Schema.Union([
+          Schema.Literal("load"),
+          Schema.Literal("domcontentloaded"),
+          Schema.Literal("networkidle0"),
+          Schema.Literal("networkidle2"),
+          Schema.Array(
+            Schema.Union([
+              Schema.Literals([
+                "load",
+                "domcontentloaded",
+                "networkidle0",
+                "networkidle2",
+              ]),
+              Schema.String,
+            ]),
+          ),
+        ]),
+      ),
     }),
-  ) as unknown as Schema.Schema<CreateScreenshotRequest>;
+  ),
+  rejectRequestPattern: Schema.optional(Schema.Array(Schema.String)),
+  rejectResourceTypes: Schema.optional(
+    Schema.Array(
+      Schema.Union([
+        Schema.Literals([
+          "document",
+          "stylesheet",
+          "image",
+          "media",
+          "font",
+          "script",
+          "texttrack",
+          "xhr",
+          "fetch",
+          "prefetch",
+          "eventsource",
+          "websocket",
+          "manifest",
+          "signedexchange",
+          "ping",
+          "cspviolationreport",
+          "preflight",
+          "other",
+        ]),
+        Schema.String,
+      ]),
+    ),
+  ),
+  screenshotOptions: Schema.optional(
+    Schema.Struct({
+      captureBeyondViewport: Schema.optional(Schema.Boolean),
+      clip: Schema.optional(
+        Schema.Struct({
+          height: Schema.Number,
+          width: Schema.Number,
+          x: Schema.Number,
+          y: Schema.Number,
+          scale: Schema.optional(Schema.Number),
+        }),
+      ),
+      encoding: Schema.optional(
+        Schema.Union([Schema.Literals(["binary", "base64"]), Schema.String]),
+      ),
+      fromSurface: Schema.optional(Schema.Boolean),
+      fullPage: Schema.optional(Schema.Boolean),
+      omitBackground: Schema.optional(Schema.Boolean),
+      optimizeForSpeed: Schema.optional(Schema.Boolean),
+      quality: Schema.optional(Schema.Number),
+      type: Schema.optional(
+        Schema.Union([Schema.Literals(["png", "jpeg", "webp"]), Schema.String]),
+      ),
+    }),
+  ),
+  scrollPage: Schema.optional(Schema.Boolean),
+  selector: Schema.optional(Schema.String),
+  setExtraHTTPHeaders: Schema.optional(
+    Schema.Record(Schema.String, Schema.Unknown),
+  ),
+  setJavaScriptEnabled: Schema.optional(Schema.Boolean),
+  userAgent: Schema.optional(Schema.String),
+  viewport: Schema.optional(
+    Schema.Struct({
+      height: Schema.Number,
+      width: Schema.Number,
+      deviceScaleFactor: Schema.optional(Schema.Number),
+      hasTouch: Schema.optional(Schema.Boolean),
+      isLandscape: Schema.optional(Schema.Boolean),
+      isMobile: Schema.optional(Schema.Boolean),
+    }),
+  ),
+  waitForSelector: Schema.optional(
+    Schema.Struct({
+      selector: Schema.String,
+      hidden: Schema.optional(Schema.Literal(true)),
+      timeout: Schema.optional(Schema.Number),
+      visible: Schema.optional(Schema.Literal(true)),
+    }),
+  ),
+  waitForTimeout: Schema.optional(Schema.Number),
+  url: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/accounts/{account_id}/browser-rendering/screenshot",
+  }),
+) as unknown as Schema.Schema<CreateScreenshotRequest>;
 
 export interface CreateScreenshotResponse {
   /** Response status. */
@@ -4019,21 +3984,20 @@ export interface CreateScreenshotResponse {
   errors?: { code: number; message: string }[] | null;
 }
 
-export const CreateScreenshotResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    success: Schema.Boolean,
-    errors: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            code: Schema.Number,
-            message: Schema.String,
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
-  }) as unknown as Schema.Schema<CreateScreenshotResponse>;
+export const CreateScreenshotResponse = /*@__PURE__*/ Schema.Struct({
+  success: Schema.Boolean,
+  errors: Schema.optional(
+    Schema.Union([
+      Schema.Array(
+        Schema.Struct({
+          code: Schema.Number,
+          message: Schema.String,
+        }),
+      ),
+      Schema.Null,
+    ]),
+  ),
+}) as unknown as Schema.Schema<CreateScreenshotResponse>;
 
 export type CreateScreenshotError = DefaultErrors;
 
@@ -4042,7 +4006,7 @@ export const createScreenshot: API.OperationMethod<
   CreateScreenshotResponse,
   CreateScreenshotError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateScreenshotRequest,
   output: CreateScreenshotResponse,
   errors: [],
@@ -4204,7 +4168,7 @@ export interface CreateSnapshotRequest {
   url?: string;
 }
 
-export const CreateSnapshotRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateSnapshotRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   cacheTTL: Schema.optional(Schema.Number).pipe(T.HttpQuery("cacheTTL")),
   html: Schema.optional(Schema.String),
@@ -4413,12 +4377,10 @@ export interface CreateSnapshotResponse {
   screenshot: string;
 }
 
-export const CreateSnapshotResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    content: Schema.String,
-    screenshot: Schema.String,
-  },
-).pipe(
+export const CreateSnapshotResponse = /*@__PURE__*/ Schema.Struct({
+  content: Schema.String,
+  screenshot: Schema.String,
+}).pipe(
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<CreateSnapshotResponse>;
 
@@ -4429,7 +4391,7 @@ export const createSnapshot: API.OperationMethod<
   CreateSnapshotResponse,
   CreateSnapshotError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSnapshotRequest,
   output: CreateSnapshotResponse,
   errors: [],

@@ -2341,7 +2341,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -2375,7 +2375,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -2409,7 +2409,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -2441,7 +2441,7 @@ export const createNamespace: API.OperationMethod<
   CreateNamespaceResponse,
   CreateNamespaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateNamespaceRequest,
   output: CreateNamespaceResponse,
   errors: [
@@ -2473,7 +2473,7 @@ export const deleteNamespace: API.OperationMethod<
   DeleteNamespaceResponse,
   DeleteNamespaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteNamespaceRequest,
   output: DeleteNamespaceResponse,
   errors: [
@@ -2506,7 +2506,7 @@ export const getNamespace: API.OperationMethod<
   GetNamespaceResponse,
   GetNamespaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetNamespaceRequest,
   output: GetNamespaceResponse,
   errors: [
@@ -2555,7 +2555,7 @@ export const listNamespaces: API.OperationMethod<
     ListNamespacesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNamespacesRequest,
   output: ListNamespacesResponse,
   errors: [
@@ -2594,7 +2594,7 @@ export const deleteTableBucketEncryption: API.OperationMethod<
   DeleteTableBucketEncryptionResponse,
   DeleteTableBucketEncryptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTableBucketEncryptionRequest,
   output: DeleteTableBucketEncryptionResponse,
   errors: [
@@ -2626,7 +2626,7 @@ export const getTableBucketEncryption: API.OperationMethod<
   GetTableBucketEncryptionResponse,
   GetTableBucketEncryptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTableBucketEncryptionRequest,
   output: GetTableBucketEncryptionResponse,
   errors: [
@@ -2660,7 +2660,7 @@ export const putTableBucketEncryption: API.OperationMethod<
   PutTableBucketEncryptionResponse,
   PutTableBucketEncryptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutTableBucketEncryptionRequest,
   output: PutTableBucketEncryptionResponse,
   errors: [
@@ -2692,7 +2692,7 @@ export const deleteTableBucketPolicy: API.OperationMethod<
   DeleteTableBucketPolicyResponse,
   DeleteTableBucketPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTableBucketPolicyRequest,
   output: DeleteTableBucketPolicyResponse,
   errors: [
@@ -2724,7 +2724,7 @@ export const getTableBucketPolicy: API.OperationMethod<
   GetTableBucketPolicyResponse,
   GetTableBucketPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTableBucketPolicyRequest,
   output: GetTableBucketPolicyResponse,
   errors: [
@@ -2756,7 +2756,7 @@ export const putTableBucketPolicy: API.OperationMethod<
   PutTableBucketPolicyResponse,
   PutTableBucketPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutTableBucketPolicyRequest,
   output: PutTableBucketPolicyResponse,
   errors: [
@@ -2789,7 +2789,7 @@ export const deleteTableBucketReplication: API.OperationMethod<
   DeleteTableBucketReplicationResponse,
   DeleteTableBucketReplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTableBucketReplicationRequest,
   output: DeleteTableBucketReplicationResponse,
   errors: [
@@ -2823,7 +2823,7 @@ export const getTableBucketReplication: API.OperationMethod<
   GetTableBucketReplicationResponse,
   GetTableBucketReplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTableBucketReplicationRequest,
   output: GetTableBucketReplicationResponse,
   errors: [
@@ -2873,7 +2873,7 @@ export const putTableBucketReplication: API.OperationMethod<
   PutTableBucketReplicationResponse,
   PutTableBucketReplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutTableBucketReplicationRequest,
   output: PutTableBucketReplicationResponse,
   errors: [
@@ -2912,7 +2912,7 @@ export const createTableBucket: API.OperationMethod<
   CreateTableBucketResponse,
   CreateTableBucketError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTableBucketRequest,
   output: CreateTableBucketResponse,
   errors: [
@@ -2944,7 +2944,7 @@ export const deleteTableBucket: API.OperationMethod<
   DeleteTableBucketResponse,
   DeleteTableBucketError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTableBucketRequest,
   output: DeleteTableBucketResponse,
   errors: [
@@ -2976,7 +2976,7 @@ export const deleteTableBucketMetricsConfiguration: API.OperationMethod<
   DeleteTableBucketMetricsConfigurationResponse,
   DeleteTableBucketMetricsConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTableBucketMetricsConfigurationRequest,
   output: DeleteTableBucketMetricsConfigurationResponse,
   errors: [
@@ -3009,7 +3009,7 @@ export const getTableBucket: API.OperationMethod<
   GetTableBucketResponse,
   GetTableBucketError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTableBucketRequest,
   output: GetTableBucketResponse,
   errors: [
@@ -3042,7 +3042,7 @@ export const getTableBucketMaintenanceConfiguration: API.OperationMethod<
   GetTableBucketMaintenanceConfigurationResponse,
   GetTableBucketMaintenanceConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTableBucketMaintenanceConfigurationRequest,
   output: GetTableBucketMaintenanceConfigurationResponse,
   errors: [
@@ -3074,7 +3074,7 @@ export const getTableBucketMetricsConfiguration: API.OperationMethod<
   GetTableBucketMetricsConfigurationResponse,
   GetTableBucketMetricsConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTableBucketMetricsConfigurationRequest,
   output: GetTableBucketMetricsConfigurationResponse,
   errors: [
@@ -3106,7 +3106,7 @@ export const getTableBucketStorageClass: API.OperationMethod<
   GetTableBucketStorageClassResponse,
   GetTableBucketStorageClassError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTableBucketStorageClassRequest,
   output: GetTableBucketStorageClassResponse,
   errors: [
@@ -3154,7 +3154,7 @@ export const listTableBuckets: API.OperationMethod<
     ListTableBucketsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTableBucketsRequest,
   output: ListTableBucketsResponse,
   errors: [
@@ -3193,7 +3193,7 @@ export const putTableBucketMaintenanceConfiguration: API.OperationMethod<
   PutTableBucketMaintenanceConfigurationResponse,
   PutTableBucketMaintenanceConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutTableBucketMaintenanceConfigurationRequest,
   output: PutTableBucketMaintenanceConfigurationResponse,
   errors: [
@@ -3225,7 +3225,7 @@ export const putTableBucketMetricsConfiguration: API.OperationMethod<
   PutTableBucketMetricsConfigurationResponse,
   PutTableBucketMetricsConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutTableBucketMetricsConfigurationRequest,
   output: PutTableBucketMetricsConfigurationResponse,
   errors: [
@@ -3257,7 +3257,7 @@ export const putTableBucketStorageClass: API.OperationMethod<
   PutTableBucketStorageClassResponse,
   PutTableBucketStorageClassError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutTableBucketStorageClassRequest,
   output: PutTableBucketStorageClassResponse,
   errors: [
@@ -3289,7 +3289,7 @@ export const getTableEncryption: API.OperationMethod<
   GetTableEncryptionResponse,
   GetTableEncryptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTableEncryptionRequest,
   output: GetTableEncryptionResponse,
   errors: [
@@ -3321,7 +3321,7 @@ export const deleteTablePolicy: API.OperationMethod<
   DeleteTablePolicyResponse,
   DeleteTablePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTablePolicyRequest,
   output: DeleteTablePolicyResponse,
   errors: [
@@ -3353,7 +3353,7 @@ export const getTablePolicy: API.OperationMethod<
   GetTablePolicyResponse,
   GetTablePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTablePolicyRequest,
   output: GetTablePolicyResponse,
   errors: [
@@ -3385,7 +3385,7 @@ export const putTablePolicy: API.OperationMethod<
   PutTablePolicyResponse,
   PutTablePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutTablePolicyRequest,
   output: PutTablePolicyResponse,
   errors: [
@@ -3418,7 +3418,7 @@ export const deleteTableReplication: API.OperationMethod<
   DeleteTableReplicationResponse,
   DeleteTableReplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTableReplicationRequest,
   output: DeleteTableReplicationResponse,
   errors: [
@@ -3452,7 +3452,7 @@ export const getTableReplication: API.OperationMethod<
   GetTableReplicationResponse,
   GetTableReplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTableReplicationRequest,
   output: GetTableReplicationResponse,
   errors: [
@@ -3485,7 +3485,7 @@ export const getTableReplicationStatus: API.OperationMethod<
   GetTableReplicationStatusResponse,
   GetTableReplicationStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTableReplicationStatusRequest,
   output: GetTableReplicationStatusResponse,
   errors: [
@@ -3532,7 +3532,7 @@ export const putTableReplication: API.OperationMethod<
   PutTableReplicationResponse,
   PutTableReplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutTableReplicationRequest,
   output: PutTableReplicationResponse,
   errors: [
@@ -3575,7 +3575,7 @@ export const createTable: API.OperationMethod<
   CreateTableResponse,
   CreateTableError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTableRequest,
   output: CreateTableResponse,
   errors: [
@@ -3607,7 +3607,7 @@ export const deleteTable: API.OperationMethod<
   DeleteTableResponse,
   DeleteTableError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTableRequest,
   output: DeleteTableResponse,
   errors: [
@@ -3640,7 +3640,7 @@ export const getTable: API.OperationMethod<
   GetTableResponse,
   GetTableError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTableRequest,
   output: GetTableResponse,
   errors: [
@@ -3675,7 +3675,7 @@ export const getTableMaintenanceConfiguration: API.OperationMethod<
   GetTableMaintenanceConfigurationResponse,
   GetTableMaintenanceConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTableMaintenanceConfigurationRequest,
   output: GetTableMaintenanceConfigurationResponse,
   errors: [
@@ -3707,7 +3707,7 @@ export const getTableMaintenanceJobStatus: API.OperationMethod<
   GetTableMaintenanceJobStatusResponse,
   GetTableMaintenanceJobStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTableMaintenanceJobStatusRequest,
   output: GetTableMaintenanceJobStatusResponse,
   errors: [
@@ -3739,7 +3739,7 @@ export const getTableMetadataLocation: API.OperationMethod<
   GetTableMetadataLocationResponse,
   GetTableMetadataLocationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTableMetadataLocationRequest,
   output: GetTableMetadataLocationResponse,
   errors: [
@@ -3771,7 +3771,7 @@ export const getTableRecordExpirationConfiguration: API.OperationMethod<
   GetTableRecordExpirationConfigurationResponse,
   GetTableRecordExpirationConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTableRecordExpirationConfigurationRequest,
   output: GetTableRecordExpirationConfigurationResponse,
   errors: [
@@ -3803,7 +3803,7 @@ export const getTableRecordExpirationJobStatus: API.OperationMethod<
   GetTableRecordExpirationJobStatusResponse,
   GetTableRecordExpirationJobStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTableRecordExpirationJobStatusRequest,
   output: GetTableRecordExpirationJobStatusResponse,
   errors: [
@@ -3835,7 +3835,7 @@ export const getTableStorageClass: API.OperationMethod<
   GetTableStorageClassResponse,
   GetTableStorageClassError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTableStorageClassRequest,
   output: GetTableStorageClassResponse,
   errors: [
@@ -3882,7 +3882,7 @@ export const listTables: API.OperationMethod<
     ListTablesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTablesRequest,
   output: ListTablesResponse,
   errors: [
@@ -3920,7 +3920,7 @@ export const putTableMaintenanceConfiguration: API.OperationMethod<
   PutTableMaintenanceConfigurationResponse,
   PutTableMaintenanceConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutTableMaintenanceConfigurationRequest,
   output: PutTableMaintenanceConfigurationResponse,
   errors: [
@@ -3952,7 +3952,7 @@ export const putTableRecordExpirationConfiguration: API.OperationMethod<
   PutTableRecordExpirationConfigurationResponse,
   PutTableRecordExpirationConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutTableRecordExpirationConfigurationRequest,
   output: PutTableRecordExpirationConfigurationResponse,
   errors: [
@@ -3984,7 +3984,7 @@ export const renameTable: API.OperationMethod<
   RenameTableResponse,
   RenameTableError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RenameTableRequest,
   output: RenameTableResponse,
   errors: [
@@ -4016,7 +4016,7 @@ export const updateTableMetadataLocation: API.OperationMethod<
   UpdateTableMetadataLocationResponse,
   UpdateTableMetadataLocationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTableMetadataLocationRequest,
   output: UpdateTableMetadataLocationResponse,
   errors: [

@@ -2670,7 +2670,7 @@ export const associateFirewallRuleGroup: API.OperationMethod<
   AssociateFirewallRuleGroupResponse,
   AssociateFirewallRuleGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateFirewallRuleGroupRequest,
   output: AssociateFirewallRuleGroupResponse,
   errors: [
@@ -2704,7 +2704,7 @@ export const associateResolverEndpointIpAddress: API.OperationMethod<
   AssociateResolverEndpointIpAddressResponse,
   AssociateResolverEndpointIpAddressError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateResolverEndpointIpAddressRequest,
   output: AssociateResolverEndpointIpAddressResponse,
   errors: [
@@ -2742,7 +2742,7 @@ export const associateResolverQueryLogConfig: API.OperationMethod<
   AssociateResolverQueryLogConfigResponse,
   AssociateResolverQueryLogConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateResolverQueryLogConfigRequest,
   output: AssociateResolverQueryLogConfigResponse,
   errors: [
@@ -2777,7 +2777,7 @@ export const associateResolverRule: API.OperationMethod<
   AssociateResolverRuleResponse,
   AssociateResolverRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateResolverRuleRequest,
   output: AssociateResolverRuleResponse,
   errors: [
@@ -2806,7 +2806,7 @@ export const createFirewallDomainList: API.OperationMethod<
   CreateFirewallDomainListResponse,
   CreateFirewallDomainListError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFirewallDomainListRequest,
   output: CreateFirewallDomainListResponse,
   errors: [
@@ -2833,7 +2833,7 @@ export const createFirewallRule: API.OperationMethod<
   CreateFirewallRuleResponse,
   CreateFirewallRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFirewallRuleRequest,
   output: CreateFirewallRuleResponse,
   errors: [
@@ -2861,7 +2861,7 @@ export const createFirewallRuleGroup: API.OperationMethod<
   CreateFirewallRuleGroupResponse,
   CreateFirewallRuleGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFirewallRuleGroupRequest,
   output: CreateFirewallRuleGroupResponse,
   errors: [
@@ -2888,7 +2888,7 @@ export const createOutpostResolver: API.OperationMethod<
   CreateOutpostResolverResponse,
   CreateOutpostResolverError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOutpostResolverRequest,
   output: CreateOutpostResolverResponse,
   errors: [
@@ -2924,7 +2924,7 @@ export const createResolverEndpoint: API.OperationMethod<
   CreateResolverEndpointResponse,
   CreateResolverEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateResolverEndpointRequest,
   output: CreateResolverEndpointResponse,
   errors: [
@@ -2964,7 +2964,7 @@ export const createResolverQueryLogConfig: API.OperationMethod<
   CreateResolverQueryLogConfigResponse,
   CreateResolverQueryLogConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateResolverQueryLogConfigRequest,
   output: CreateResolverQueryLogConfigResponse,
   errors: [
@@ -2998,7 +2998,7 @@ export const createResolverRule: API.OperationMethod<
   CreateResolverRuleResponse,
   CreateResolverRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateResolverRuleRequest,
   output: CreateResolverRuleResponse,
   errors: [
@@ -3028,7 +3028,7 @@ export const deleteFirewallDomainList: API.OperationMethod<
   DeleteFirewallDomainListResponse,
   DeleteFirewallDomainListError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFirewallDomainListRequest,
   output: DeleteFirewallDomainListResponse,
   errors: [
@@ -3054,7 +3054,7 @@ export const deleteFirewallRule: API.OperationMethod<
   DeleteFirewallRuleResponse,
   DeleteFirewallRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFirewallRuleRequest,
   output: DeleteFirewallRuleResponse,
   errors: [
@@ -3081,7 +3081,7 @@ export const deleteFirewallRuleGroup: API.OperationMethod<
   DeleteFirewallRuleGroupResponse,
   DeleteFirewallRuleGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFirewallRuleGroupRequest,
   output: DeleteFirewallRuleGroupResponse,
   errors: [
@@ -3109,7 +3109,7 @@ export const deleteOutpostResolver: API.OperationMethod<
   DeleteOutpostResolverResponse,
   DeleteOutpostResolverError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOutpostResolverRequest,
   output: DeleteOutpostResolverResponse,
   errors: [
@@ -3142,7 +3142,7 @@ export const deleteResolverEndpoint: API.OperationMethod<
   DeleteResolverEndpointResponse,
   DeleteResolverEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteResolverEndpointRequest,
   output: DeleteResolverEndpointResponse,
   errors: [
@@ -3179,7 +3179,7 @@ export const deleteResolverQueryLogConfig: API.OperationMethod<
   DeleteResolverQueryLogConfigResponse,
   DeleteResolverQueryLogConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteResolverQueryLogConfigRequest,
   output: DeleteResolverQueryLogConfigResponse,
   errors: [
@@ -3208,7 +3208,7 @@ export const deleteResolverRule: API.OperationMethod<
   DeleteResolverRuleResponse,
   DeleteResolverRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteResolverRuleRequest,
   output: DeleteResolverRuleResponse,
   errors: [
@@ -3235,7 +3235,7 @@ export const disassociateFirewallRuleGroup: API.OperationMethod<
   DisassociateFirewallRuleGroupResponse,
   DisassociateFirewallRuleGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateFirewallRuleGroupRequest,
   output: DisassociateFirewallRuleGroupResponse,
   errors: [
@@ -3267,7 +3267,7 @@ export const disassociateResolverEndpointIpAddress: API.OperationMethod<
   DisassociateResolverEndpointIpAddressResponse,
   DisassociateResolverEndpointIpAddressError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateResolverEndpointIpAddressRequest,
   output: DisassociateResolverEndpointIpAddressResponse,
   errors: [
@@ -3304,7 +3304,7 @@ export const disassociateResolverQueryLogConfig: API.OperationMethod<
   DisassociateResolverQueryLogConfigResponse,
   DisassociateResolverQueryLogConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateResolverQueryLogConfigRequest,
   output: DisassociateResolverQueryLogConfigResponse,
   errors: [
@@ -3333,7 +3333,7 @@ export const disassociateResolverRule: API.OperationMethod<
   DisassociateResolverRuleResponse,
   DisassociateResolverRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateResolverRuleRequest,
   output: DisassociateResolverRuleResponse,
   errors: [
@@ -3359,7 +3359,7 @@ export const getFirewallConfig: API.OperationMethod<
   GetFirewallConfigResponse,
   GetFirewallConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFirewallConfigRequest,
   output: GetFirewallConfigResponse,
   errors: [
@@ -3384,7 +3384,7 @@ export const getFirewallDomainList: API.OperationMethod<
   GetFirewallDomainListResponse,
   GetFirewallDomainListError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFirewallDomainListRequest,
   output: GetFirewallDomainListResponse,
   errors: [
@@ -3408,7 +3408,7 @@ export const getFirewallRuleGroup: API.OperationMethod<
   GetFirewallRuleGroupResponse,
   GetFirewallRuleGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFirewallRuleGroupRequest,
   output: GetFirewallRuleGroupResponse,
   errors: [
@@ -3432,7 +3432,7 @@ export const getFirewallRuleGroupAssociation: API.OperationMethod<
   GetFirewallRuleGroupAssociationResponse,
   GetFirewallRuleGroupAssociationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFirewallRuleGroupAssociationRequest,
   output: GetFirewallRuleGroupAssociationResponse,
   errors: [
@@ -3458,7 +3458,7 @@ export const getFirewallRuleGroupPolicy: API.OperationMethod<
   GetFirewallRuleGroupPolicyResponse,
   GetFirewallRuleGroupPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFirewallRuleGroupPolicyRequest,
   output: GetFirewallRuleGroupPolicyResponse,
   errors: [
@@ -3485,7 +3485,7 @@ export const getOutpostResolver: API.OperationMethod<
   GetOutpostResolverResponse,
   GetOutpostResolverError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOutpostResolverRequest,
   output: GetOutpostResolverResponse,
   errors: [
@@ -3513,7 +3513,7 @@ export const getResolverConfig: API.OperationMethod<
   GetResolverConfigResponse,
   GetResolverConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResolverConfigRequest,
   output: GetResolverConfigResponse,
   errors: [
@@ -3541,7 +3541,7 @@ export const getResolverDnssecConfig: API.OperationMethod<
   GetResolverDnssecConfigResponse,
   GetResolverDnssecConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResolverDnssecConfigRequest,
   output: GetResolverDnssecConfigResponse,
   errors: [
@@ -3568,7 +3568,7 @@ export const getResolverEndpoint: API.OperationMethod<
   GetResolverEndpointResponse,
   GetResolverEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResolverEndpointRequest,
   output: GetResolverEndpointResponse,
   errors: [
@@ -3595,7 +3595,7 @@ export const getResolverQueryLogConfig: API.OperationMethod<
   GetResolverQueryLogConfigResponse,
   GetResolverQueryLogConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResolverQueryLogConfigRequest,
   output: GetResolverQueryLogConfigResponse,
   errors: [
@@ -3624,7 +3624,7 @@ export const getResolverQueryLogConfigAssociation: API.OperationMethod<
   GetResolverQueryLogConfigAssociationResponse,
   GetResolverQueryLogConfigAssociationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResolverQueryLogConfigAssociationRequest,
   output: GetResolverQueryLogConfigAssociationResponse,
   errors: [
@@ -3652,7 +3652,7 @@ export const getResolverQueryLogConfigPolicy: API.OperationMethod<
   GetResolverQueryLogConfigPolicyResponse,
   GetResolverQueryLogConfigPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResolverQueryLogConfigPolicyRequest,
   output: GetResolverQueryLogConfigPolicyResponse,
   errors: [
@@ -3678,7 +3678,7 @@ export const getResolverRule: API.OperationMethod<
   GetResolverRuleResponse,
   GetResolverRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResolverRuleRequest,
   output: GetResolverRuleResponse,
   errors: [
@@ -3703,7 +3703,7 @@ export const getResolverRuleAssociation: API.OperationMethod<
   GetResolverRuleAssociationResponse,
   GetResolverRuleAssociationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResolverRuleAssociationRequest,
   output: GetResolverRuleAssociationResponse,
   errors: [
@@ -3728,7 +3728,7 @@ export const getResolverRulePolicy: API.OperationMethod<
   GetResolverRulePolicyResponse,
   GetResolverRulePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResolverRulePolicyRequest,
   output: GetResolverRulePolicyResponse,
   errors: [
@@ -3766,7 +3766,7 @@ export const importFirewallDomains: API.OperationMethod<
   ImportFirewallDomainsResponse,
   ImportFirewallDomainsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportFirewallDomainsRequest,
   output: ImportFirewallDomainsResponse,
   errors: [
@@ -3810,7 +3810,7 @@ export const listFirewallConfigs: API.OperationMethod<
     ListFirewallConfigsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFirewallConfigsRequest,
   output: ListFirewallConfigsResponse,
   errors: [
@@ -3857,7 +3857,7 @@ export const listFirewallDomainLists: API.OperationMethod<
     ListFirewallDomainListsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFirewallDomainListsRequest,
   output: ListFirewallDomainListsResponse,
   errors: [
@@ -3905,7 +3905,7 @@ export const listFirewallDomains: API.OperationMethod<
     ListFirewallDomainsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFirewallDomainsRequest,
   output: ListFirewallDomainsResponse,
   errors: [
@@ -3953,7 +3953,7 @@ export const listFirewallRuleGroupAssociations: API.OperationMethod<
     ListFirewallRuleGroupAssociationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFirewallRuleGroupAssociationsRequest,
   output: ListFirewallRuleGroupAssociationsResponse,
   errors: [
@@ -4000,7 +4000,7 @@ export const listFirewallRuleGroups: API.OperationMethod<
     ListFirewallRuleGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFirewallRuleGroupsRequest,
   output: ListFirewallRuleGroupsResponse,
   errors: [
@@ -4048,7 +4048,7 @@ export const listFirewallRules: API.OperationMethod<
     ListFirewallRulesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFirewallRulesRequest,
   output: ListFirewallRulesResponse,
   errors: [
@@ -4095,7 +4095,7 @@ export const listOutpostResolvers: API.OperationMethod<
     ListOutpostResolversError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOutpostResolversRequest,
   output: ListOutpostResolversResponse,
   errors: [
@@ -4145,7 +4145,7 @@ export const listResolverConfigs: API.OperationMethod<
     ListResolverConfigsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResolverConfigsRequest,
   output: ListResolverConfigsResponse,
   errors: [
@@ -4195,7 +4195,7 @@ export const listResolverDnssecConfigs: API.OperationMethod<
     ListResolverDnssecConfigsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResolverDnssecConfigsRequest,
   output: ListResolverDnssecConfigsResponse,
   errors: [
@@ -4243,7 +4243,7 @@ export const listResolverEndpointIpAddresses: API.OperationMethod<
     ListResolverEndpointIpAddressesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResolverEndpointIpAddressesRequest,
   output: ListResolverEndpointIpAddressesResponse,
   errors: [
@@ -4290,7 +4290,7 @@ export const listResolverEndpoints: API.OperationMethod<
     ListResolverEndpointsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResolverEndpointsRequest,
   output: ListResolverEndpointsResponse,
   errors: [
@@ -4338,7 +4338,7 @@ export const listResolverQueryLogConfigAssociations: API.OperationMethod<
     ListResolverQueryLogConfigAssociationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResolverQueryLogConfigAssociationsRequest,
   output: ListResolverQueryLogConfigAssociationsResponse,
   errors: [
@@ -4388,7 +4388,7 @@ export const listResolverQueryLogConfigs: API.OperationMethod<
     ListResolverQueryLogConfigsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResolverQueryLogConfigsRequest,
   output: ListResolverQueryLogConfigsResponse,
   errors: [
@@ -4436,7 +4436,7 @@ export const listResolverRuleAssociations: API.OperationMethod<
     ListResolverRuleAssociationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResolverRuleAssociationsRequest,
   output: ListResolverRuleAssociationsResponse,
   errors: [
@@ -4483,7 +4483,7 @@ export const listResolverRules: API.OperationMethod<
     ListResolverRulesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResolverRulesRequest,
   output: ListResolverRulesResponse,
   errors: [
@@ -4531,7 +4531,7 @@ export const listTagsForResource: API.OperationMethod<
     ListTagsForResourceError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -4566,7 +4566,7 @@ export const putFirewallRuleGroupPolicy: API.OperationMethod<
   PutFirewallRuleGroupPolicyResponse,
   PutFirewallRuleGroupPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutFirewallRuleGroupPolicyRequest,
   output: PutFirewallRuleGroupPolicyResponse,
   errors: [
@@ -4594,7 +4594,7 @@ export const putResolverQueryLogConfigPolicy: API.OperationMethod<
   PutResolverQueryLogConfigPolicyResponse,
   PutResolverQueryLogConfigPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutResolverQueryLogConfigPolicyRequest,
   output: PutResolverQueryLogConfigPolicyResponse,
   errors: [
@@ -4622,7 +4622,7 @@ export const putResolverRulePolicy: API.OperationMethod<
   PutResolverRulePolicyResponse,
   PutResolverRulePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutResolverRulePolicyRequest,
   output: PutResolverRulePolicyResponse,
   errors: [
@@ -4650,7 +4650,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -4678,7 +4678,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -4705,7 +4705,7 @@ export const updateFirewallConfig: API.OperationMethod<
   UpdateFirewallConfigResponse,
   UpdateFirewallConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateFirewallConfigRequest,
   output: UpdateFirewallConfigResponse,
   errors: [
@@ -4733,7 +4733,7 @@ export const updateFirewallDomains: API.OperationMethod<
   UpdateFirewallDomainsResponse,
   UpdateFirewallDomainsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateFirewallDomainsRequest,
   output: UpdateFirewallDomainsResponse,
   errors: [
@@ -4762,7 +4762,7 @@ export const updateFirewallRule: API.OperationMethod<
   UpdateFirewallRuleResponse,
   UpdateFirewallRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateFirewallRuleRequest,
   output: UpdateFirewallRuleResponse,
   errors: [
@@ -4790,7 +4790,7 @@ export const updateFirewallRuleGroupAssociation: API.OperationMethod<
   UpdateFirewallRuleGroupAssociationResponse,
   UpdateFirewallRuleGroupAssociationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateFirewallRuleGroupAssociationRequest,
   output: UpdateFirewallRuleGroupAssociationResponse,
   errors: [
@@ -4819,7 +4819,7 @@ export const updateOutpostResolver: API.OperationMethod<
   UpdateOutpostResolverResponse,
   UpdateOutpostResolverError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateOutpostResolverRequest,
   output: UpdateOutpostResolverResponse,
   errors: [
@@ -4852,7 +4852,7 @@ export const updateResolverConfig: API.OperationMethod<
   UpdateResolverConfigResponse,
   UpdateResolverConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateResolverConfigRequest,
   output: UpdateResolverConfigResponse,
   errors: [
@@ -4883,7 +4883,7 @@ export const updateResolverDnssecConfig: API.OperationMethod<
   UpdateResolverDnssecConfigResponse,
   UpdateResolverDnssecConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateResolverDnssecConfigRequest,
   output: UpdateResolverDnssecConfigResponse,
   errors: [
@@ -4912,7 +4912,7 @@ export const updateResolverEndpoint: API.OperationMethod<
   UpdateResolverEndpointResponse,
   UpdateResolverEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateResolverEndpointRequest,
   output: UpdateResolverEndpointResponse,
   errors: [
@@ -4943,7 +4943,7 @@ export const updateResolverRule: API.OperationMethod<
   UpdateResolverRuleResponse,
   UpdateResolverRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateResolverRuleRequest,
   output: UpdateResolverRuleResponse,
   errors: [

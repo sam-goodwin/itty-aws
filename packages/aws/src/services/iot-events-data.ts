@@ -1029,7 +1029,7 @@ export const batchAcknowledgeAlarm: API.OperationMethod<
   BatchAcknowledgeAlarmResponse,
   BatchAcknowledgeAlarmError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchAcknowledgeAlarmRequest,
   output: BatchAcknowledgeAlarmResponse,
   errors: [
@@ -1053,7 +1053,7 @@ export const batchDeleteDetector: API.OperationMethod<
   BatchDeleteDetectorResponse,
   BatchDeleteDetectorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchDeleteDetectorRequest,
   output: BatchDeleteDetectorResponse,
   errors: [
@@ -1078,7 +1078,7 @@ export const batchDisableAlarm: API.OperationMethod<
   BatchDisableAlarmResponse,
   BatchDisableAlarmError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchDisableAlarmRequest,
   output: BatchDisableAlarmResponse,
   errors: [
@@ -1103,7 +1103,7 @@ export const batchEnableAlarm: API.OperationMethod<
   BatchEnableAlarmResponse,
   BatchEnableAlarmError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchEnableAlarmRequest,
   output: BatchEnableAlarmResponse,
   errors: [
@@ -1131,7 +1131,7 @@ export const batchPutMessage: API.OperationMethod<
   BatchPutMessageResponse,
   BatchPutMessageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchPutMessageRequest,
   output: BatchPutMessageResponse,
   errors: [
@@ -1156,7 +1156,7 @@ export const batchResetAlarm: API.OperationMethod<
   BatchResetAlarmResponse,
   BatchResetAlarmError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchResetAlarmRequest,
   output: BatchResetAlarmResponse,
   errors: [
@@ -1181,7 +1181,7 @@ export const batchSnoozeAlarm: API.OperationMethod<
   BatchSnoozeAlarmResponse,
   BatchSnoozeAlarmError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchSnoozeAlarmRequest,
   output: BatchSnoozeAlarmResponse,
   errors: [
@@ -1206,7 +1206,7 @@ export const batchUpdateDetector: API.OperationMethod<
   BatchUpdateDetectorResponse,
   BatchUpdateDetectorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchUpdateDetectorRequest,
   output: BatchUpdateDetectorResponse,
   errors: [
@@ -1231,7 +1231,7 @@ export const describeAlarm: API.OperationMethod<
   DescribeAlarmResponse,
   DescribeAlarmError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAlarmRequest,
   output: DescribeAlarmResponse,
   errors: [
@@ -1257,7 +1257,7 @@ export const describeDetector: API.OperationMethod<
   DescribeDetectorResponse,
   DescribeDetectorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDetectorRequest,
   output: DescribeDetectorResponse,
   errors: [
@@ -1284,7 +1284,7 @@ export const listAlarms: API.OperationMethod<
   ListAlarmsResponse,
   ListAlarmsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListAlarmsRequest,
   output: ListAlarmsResponse,
   errors: [
@@ -1310,7 +1310,7 @@ export const listDetectors: API.OperationMethod<
   ListDetectorsResponse,
   ListDetectorsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListDetectorsRequest,
   output: ListDetectorsResponse,
   errors: [

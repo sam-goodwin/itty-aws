@@ -469,7 +469,7 @@ export const invokeDataAutomation: API.OperationMethod<
   InvokeDataAutomationResponse,
   InvokeDataAutomationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InvokeDataAutomationRequest,
   output: InvokeDataAutomationResponse,
   errors: [
@@ -495,7 +495,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -522,7 +522,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -549,7 +549,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -575,7 +575,7 @@ export const invokeDataAutomationAsync: API.OperationMethod<
   InvokeDataAutomationAsyncResponse,
   InvokeDataAutomationAsyncError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InvokeDataAutomationAsyncRequest,
   output: InvokeDataAutomationAsyncResponse,
   errors: [
@@ -601,7 +601,7 @@ export const getDataAutomationStatus: API.OperationMethod<
   GetDataAutomationStatusResponse,
   GetDataAutomationStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDataAutomationStatusRequest,
   output: GetDataAutomationStatusResponse,
   errors: [

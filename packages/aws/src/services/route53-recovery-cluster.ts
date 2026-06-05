@@ -339,7 +339,7 @@ export const getRoutingControlState: API.OperationMethod<
   GetRoutingControlStateResponse,
   GetRoutingControlStateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRoutingControlStateRequest,
   output: GetRoutingControlStateResponse,
   errors: [
@@ -407,7 +407,7 @@ export const listRoutingControls: API.OperationMethod<
     ListRoutingControlsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRoutingControlsRequest,
   output: ListRoutingControlsResponse,
   errors: [
@@ -469,7 +469,7 @@ export const updateRoutingControlState: API.OperationMethod<
   UpdateRoutingControlStateResponse,
   UpdateRoutingControlStateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRoutingControlStateRequest,
   output: UpdateRoutingControlStateResponse,
   errors: [
@@ -527,7 +527,7 @@ export const updateRoutingControlStates: API.OperationMethod<
   UpdateRoutingControlStatesResponse,
   UpdateRoutingControlStatesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRoutingControlStatesRequest,
   output: UpdateRoutingControlStatesResponse,
   errors: [

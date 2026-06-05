@@ -4754,7 +4754,7 @@ export const batchDetectDominantLanguage: API.OperationMethod<
   BatchDetectDominantLanguageResponse,
   BatchDetectDominantLanguageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchDetectDominantLanguageRequest,
   output: BatchDetectDominantLanguageResponse,
   errors: [
@@ -4781,7 +4781,7 @@ export const batchDetectEntities: API.OperationMethod<
   BatchDetectEntitiesResponse,
   BatchDetectEntitiesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchDetectEntitiesRequest,
   output: BatchDetectEntitiesResponse,
   errors: [
@@ -4807,7 +4807,7 @@ export const batchDetectKeyPhrases: API.OperationMethod<
   BatchDetectKeyPhrasesResponse,
   BatchDetectKeyPhrasesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchDetectKeyPhrasesRequest,
   output: BatchDetectKeyPhrasesResponse,
   errors: [
@@ -4835,7 +4835,7 @@ export const batchDetectSentiment: API.OperationMethod<
   BatchDetectSentimentResponse,
   BatchDetectSentimentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchDetectSentimentRequest,
   output: BatchDetectSentimentResponse,
   errors: [
@@ -4863,7 +4863,7 @@ export const batchDetectSyntax: API.OperationMethod<
   BatchDetectSyntaxResponse,
   BatchDetectSyntaxError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchDetectSyntaxRequest,
   output: BatchDetectSyntaxResponse,
   errors: [
@@ -4892,7 +4892,7 @@ export const batchDetectTargetedSentiment: API.OperationMethod<
   BatchDetectTargetedSentimentResponse,
   BatchDetectTargetedSentimentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchDetectTargetedSentimentRequest,
   output: BatchDetectTargetedSentimentResponse,
   errors: [
@@ -4937,7 +4937,7 @@ export const classifyDocument: API.OperationMethod<
   ClassifyDocumentResponse,
   ClassifyDocumentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ClassifyDocumentRequest,
   output: ClassifyDocumentResponse,
   errors: [
@@ -4963,7 +4963,7 @@ export const containsPiiEntities: API.OperationMethod<
   ContainsPiiEntitiesResponse,
   ContainsPiiEntitiesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ContainsPiiEntitiesRequest,
   output: ContainsPiiEntitiesResponse,
   errors: [
@@ -4992,7 +4992,7 @@ export const createDataset: API.OperationMethod<
   CreateDatasetResponse,
   CreateDatasetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDatasetRequest,
   output: CreateDatasetResponse,
   errors: [
@@ -5027,7 +5027,7 @@ export const createDocumentClassifier: API.OperationMethod<
   CreateDocumentClassifierResponse,
   CreateDocumentClassifierError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDocumentClassifierRequest,
   output: CreateDocumentClassifierResponse,
   errors: [
@@ -5061,7 +5061,7 @@ export const createEndpoint: API.OperationMethod<
   CreateEndpointResponse,
   CreateEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEndpointRequest,
   output: CreateEndpointResponse,
   errors: [
@@ -5095,7 +5095,7 @@ export const createEntityRecognizer: API.OperationMethod<
   CreateEntityRecognizerResponse,
   CreateEntityRecognizerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEntityRecognizerRequest,
   output: CreateEntityRecognizerResponse,
   errors: [
@@ -5143,7 +5143,7 @@ export const createFlywheel: API.OperationMethod<
   CreateFlywheelResponse,
   CreateFlywheelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFlywheelRequest,
   output: CreateFlywheelResponse,
   errors: [
@@ -5183,7 +5183,7 @@ export const deleteDocumentClassifier: API.OperationMethod<
   DeleteDocumentClassifierResponse,
   DeleteDocumentClassifierError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDocumentClassifierRequest,
   output: DeleteDocumentClassifierResponse,
   errors: [
@@ -5212,7 +5212,7 @@ export const deleteEndpoint: API.OperationMethod<
   DeleteEndpointResponse,
   DeleteEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEndpointRequest,
   output: DeleteEndpointResponse,
   errors: [
@@ -5247,7 +5247,7 @@ export const deleteEntityRecognizer: API.OperationMethod<
   DeleteEntityRecognizerResponse,
   DeleteEntityRecognizerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEntityRecognizerRequest,
   output: DeleteEntityRecognizerResponse,
   errors: [
@@ -5279,7 +5279,7 @@ export const deleteFlywheel: API.OperationMethod<
   DeleteFlywheelResponse,
   DeleteFlywheelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFlywheelRequest,
   output: DeleteFlywheelResponse,
   errors: [
@@ -5304,7 +5304,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyResponse,
   DeleteResourcePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourcePolicyRequest,
   output: DeleteResourcePolicyResponse,
   errors: [
@@ -5329,7 +5329,7 @@ export const describeDataset: API.OperationMethod<
   DescribeDatasetResponse,
   DescribeDatasetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDatasetRequest,
   output: DescribeDatasetResponse,
   errors: [
@@ -5354,7 +5354,7 @@ export const describeDocumentClassificationJob: API.OperationMethod<
   DescribeDocumentClassificationJobResponse,
   DescribeDocumentClassificationJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDocumentClassificationJobRequest,
   output: DescribeDocumentClassificationJobResponse,
   errors: [
@@ -5378,7 +5378,7 @@ export const describeDocumentClassifier: API.OperationMethod<
   DescribeDocumentClassifierResponse,
   DescribeDocumentClassifierError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDocumentClassifierRequest,
   output: DescribeDocumentClassifierResponse,
   errors: [
@@ -5403,7 +5403,7 @@ export const describeDominantLanguageDetectionJob: API.OperationMethod<
   DescribeDominantLanguageDetectionJobResponse,
   DescribeDominantLanguageDetectionJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDominantLanguageDetectionJobRequest,
   output: DescribeDominantLanguageDetectionJobResponse,
   errors: [
@@ -5429,7 +5429,7 @@ export const describeEndpoint: API.OperationMethod<
   DescribeEndpointResponse,
   DescribeEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeEndpointRequest,
   output: DescribeEndpointResponse,
   errors: [
@@ -5454,7 +5454,7 @@ export const describeEntitiesDetectionJob: API.OperationMethod<
   DescribeEntitiesDetectionJobResponse,
   DescribeEntitiesDetectionJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeEntitiesDetectionJobRequest,
   output: DescribeEntitiesDetectionJobResponse,
   errors: [
@@ -5479,7 +5479,7 @@ export const describeEntityRecognizer: API.OperationMethod<
   DescribeEntityRecognizerResponse,
   DescribeEntityRecognizerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeEntityRecognizerRequest,
   output: DescribeEntityRecognizerResponse,
   errors: [
@@ -5503,7 +5503,7 @@ export const describeEventsDetectionJob: API.OperationMethod<
   DescribeEventsDetectionJobResponse,
   DescribeEventsDetectionJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeEventsDetectionJobRequest,
   output: DescribeEventsDetectionJobResponse,
   errors: [
@@ -5528,7 +5528,7 @@ export const describeFlywheel: API.OperationMethod<
   DescribeFlywheelResponse,
   DescribeFlywheelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeFlywheelRequest,
   output: DescribeFlywheelResponse,
   errors: [
@@ -5554,7 +5554,7 @@ export const describeFlywheelIteration: API.OperationMethod<
   DescribeFlywheelIterationResponse,
   DescribeFlywheelIterationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeFlywheelIterationRequest,
   output: DescribeFlywheelIterationResponse,
   errors: [
@@ -5579,7 +5579,7 @@ export const describeKeyPhrasesDetectionJob: API.OperationMethod<
   DescribeKeyPhrasesDetectionJobResponse,
   DescribeKeyPhrasesDetectionJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeKeyPhrasesDetectionJobRequest,
   output: DescribeKeyPhrasesDetectionJobResponse,
   errors: [
@@ -5604,7 +5604,7 @@ export const describePiiEntitiesDetectionJob: API.OperationMethod<
   DescribePiiEntitiesDetectionJobResponse,
   DescribePiiEntitiesDetectionJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribePiiEntitiesDetectionJobRequest,
   output: DescribePiiEntitiesDetectionJobResponse,
   errors: [
@@ -5628,7 +5628,7 @@ export const describeResourcePolicy: API.OperationMethod<
   DescribeResourcePolicyResponse,
   DescribeResourcePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeResourcePolicyRequest,
   output: DescribeResourcePolicyResponse,
   errors: [
@@ -5652,7 +5652,7 @@ export const describeSentimentDetectionJob: API.OperationMethod<
   DescribeSentimentDetectionJobResponse,
   DescribeSentimentDetectionJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeSentimentDetectionJobRequest,
   output: DescribeSentimentDetectionJobResponse,
   errors: [
@@ -5677,7 +5677,7 @@ export const describeTargetedSentimentDetectionJob: API.OperationMethod<
   DescribeTargetedSentimentDetectionJobResponse,
   DescribeTargetedSentimentDetectionJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeTargetedSentimentDetectionJobRequest,
   output: DescribeTargetedSentimentDetectionJobResponse,
   errors: [
@@ -5702,7 +5702,7 @@ export const describeTopicsDetectionJob: API.OperationMethod<
   DescribeTopicsDetectionJobResponse,
   DescribeTopicsDetectionJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeTopicsDetectionJobRequest,
   output: DescribeTopicsDetectionJobResponse,
   errors: [
@@ -5726,7 +5726,7 @@ export const detectDominantLanguage: API.OperationMethod<
   DetectDominantLanguageResponse,
   DetectDominantLanguageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetectDominantLanguageRequest,
   output: DetectDominantLanguageResponse,
   errors: [
@@ -5767,7 +5767,7 @@ export const detectEntities: API.OperationMethod<
   DetectEntitiesResponse,
   DetectEntitiesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetectEntitiesRequest,
   output: DetectEntitiesResponse,
   errors: [
@@ -5792,7 +5792,7 @@ export const detectKeyPhrases: API.OperationMethod<
   DetectKeyPhrasesResponse,
   DetectKeyPhrasesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetectKeyPhrasesRequest,
   output: DetectKeyPhrasesResponse,
   errors: [
@@ -5817,7 +5817,7 @@ export const detectPiiEntities: API.OperationMethod<
   DetectPiiEntitiesResponse,
   DetectPiiEntitiesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetectPiiEntitiesRequest,
   output: DetectPiiEntitiesResponse,
   errors: [
@@ -5842,7 +5842,7 @@ export const detectSentiment: API.OperationMethod<
   DetectSentimentResponse,
   DetectSentimentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetectSentimentRequest,
   output: DetectSentimentResponse,
   errors: [
@@ -5868,7 +5868,7 @@ export const detectSyntax: API.OperationMethod<
   DetectSyntaxResponse,
   DetectSyntaxError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetectSyntaxRequest,
   output: DetectSyntaxResponse,
   errors: [
@@ -5894,7 +5894,7 @@ export const detectTargetedSentiment: API.OperationMethod<
   DetectTargetedSentimentResponse,
   DetectTargetedSentimentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetectTargetedSentimentRequest,
   output: DetectTargetedSentimentResponse,
   errors: [
@@ -5920,7 +5920,7 @@ export const detectToxicContent: API.OperationMethod<
   DetectToxicContentResponse,
   DetectToxicContentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetectToxicContentRequest,
   output: DetectToxicContentResponse,
   errors: [
@@ -5956,7 +5956,7 @@ export const importModel: API.OperationMethod<
   ImportModelResponse,
   ImportModelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportModelRequest,
   output: ImportModelResponse,
   errors: [
@@ -6002,7 +6002,7 @@ export const listDatasets: API.OperationMethod<
     ListDatasetsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatasetsRequest,
   output: ListDatasetsResponse,
   errors: [
@@ -6047,7 +6047,7 @@ export const listDocumentClassificationJobs: API.OperationMethod<
     ListDocumentClassificationJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDocumentClassificationJobsRequest,
   output: ListDocumentClassificationJobsResponse,
   errors: [
@@ -6091,7 +6091,7 @@ export const listDocumentClassifiers: API.OperationMethod<
     ListDocumentClassifiersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDocumentClassifiersRequest,
   output: ListDocumentClassifiersResponse,
   errors: [
@@ -6134,7 +6134,7 @@ export const listDocumentClassifierSummaries: API.OperationMethod<
     ListDocumentClassifierSummariesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDocumentClassifierSummariesRequest,
   output: ListDocumentClassifierSummariesResponse,
   errors: [
@@ -6177,7 +6177,7 @@ export const listDominantLanguageDetectionJobs: API.OperationMethod<
     ListDominantLanguageDetectionJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDominantLanguageDetectionJobsRequest,
   output: ListDominantLanguageDetectionJobsResponse,
   errors: [
@@ -6221,7 +6221,7 @@ export const listEndpoints: API.OperationMethod<
     ListEndpointsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEndpointsRequest,
   output: ListEndpointsResponse,
   errors: [
@@ -6265,7 +6265,7 @@ export const listEntitiesDetectionJobs: API.OperationMethod<
     ListEntitiesDetectionJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEntitiesDetectionJobsRequest,
   output: ListEntitiesDetectionJobsResponse,
   errors: [
@@ -6315,7 +6315,7 @@ export const listEntityRecognizers: API.OperationMethod<
     ListEntityRecognizersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEntityRecognizersRequest,
   output: ListEntityRecognizersResponse,
   errors: [
@@ -6358,7 +6358,7 @@ export const listEntityRecognizerSummaries: API.OperationMethod<
     ListEntityRecognizerSummariesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEntityRecognizerSummariesRequest,
   output: ListEntityRecognizerSummariesResponse,
   errors: [
@@ -6401,7 +6401,7 @@ export const listEventsDetectionJobs: API.OperationMethod<
     ListEventsDetectionJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEventsDetectionJobsRequest,
   output: ListEventsDetectionJobsResponse,
   errors: [
@@ -6448,7 +6448,7 @@ export const listFlywheelIterationHistory: API.OperationMethod<
     ListFlywheelIterationHistoryError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFlywheelIterationHistoryRequest,
   output: ListFlywheelIterationHistoryResponse,
   errors: [
@@ -6493,7 +6493,7 @@ export const listFlywheels: API.OperationMethod<
     ListFlywheelsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFlywheelsRequest,
   output: ListFlywheelsResponse,
   errors: [
@@ -6537,7 +6537,7 @@ export const listKeyPhrasesDetectionJobs: API.OperationMethod<
     ListKeyPhrasesDetectionJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListKeyPhrasesDetectionJobsRequest,
   output: ListKeyPhrasesDetectionJobsResponse,
   errors: [
@@ -6581,7 +6581,7 @@ export const listPiiEntitiesDetectionJobs: API.OperationMethod<
     ListPiiEntitiesDetectionJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPiiEntitiesDetectionJobsRequest,
   output: ListPiiEntitiesDetectionJobsResponse,
   errors: [
@@ -6626,7 +6626,7 @@ export const listSentimentDetectionJobs: API.OperationMethod<
     ListSentimentDetectionJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSentimentDetectionJobsRequest,
   output: ListSentimentDetectionJobsResponse,
   errors: [
@@ -6654,7 +6654,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -6692,7 +6692,7 @@ export const listTargetedSentimentDetectionJobs: API.OperationMethod<
     ListTargetedSentimentDetectionJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTargetedSentimentDetectionJobsRequest,
   output: ListTargetedSentimentDetectionJobsResponse,
   errors: [
@@ -6736,7 +6736,7 @@ export const listTopicsDetectionJobs: API.OperationMethod<
     ListTopicsDetectionJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTopicsDetectionJobsRequest,
   output: ListTopicsDetectionJobsResponse,
   errors: [
@@ -6766,7 +6766,7 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyResponse,
   PutResourcePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutResourcePolicyRequest,
   output: PutResourcePolicyResponse,
   errors: [
@@ -6795,7 +6795,7 @@ export const startDocumentClassificationJob: API.OperationMethod<
   StartDocumentClassificationJobResponse,
   StartDocumentClassificationJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartDocumentClassificationJobRequest,
   output: StartDocumentClassificationJobResponse,
   errors: [
@@ -6827,7 +6827,7 @@ export const startDominantLanguageDetectionJob: API.OperationMethod<
   StartDominantLanguageDetectionJobResponse,
   StartDominantLanguageDetectionJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartDominantLanguageDetectionJobRequest,
   output: StartDominantLanguageDetectionJobResponse,
   errors: [
@@ -6862,7 +6862,7 @@ export const startEntitiesDetectionJob: API.OperationMethod<
   StartEntitiesDetectionJobResponse,
   StartEntitiesDetectionJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartEntitiesDetectionJobRequest,
   output: StartEntitiesDetectionJobResponse,
   errors: [
@@ -6892,7 +6892,7 @@ export const startEventsDetectionJob: API.OperationMethod<
   StartEventsDetectionJobResponse,
   StartEventsDetectionJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartEventsDetectionJobRequest,
   output: StartEventsDetectionJobResponse,
   errors: [
@@ -6921,7 +6921,7 @@ export const startFlywheelIteration: API.OperationMethod<
   StartFlywheelIterationResponse,
   StartFlywheelIterationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartFlywheelIterationRequest,
   output: StartFlywheelIterationResponse,
   errors: [
@@ -6950,7 +6950,7 @@ export const startKeyPhrasesDetectionJob: API.OperationMethod<
   StartKeyPhrasesDetectionJobResponse,
   StartKeyPhrasesDetectionJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartKeyPhrasesDetectionJobRequest,
   output: StartKeyPhrasesDetectionJobResponse,
   errors: [
@@ -6978,7 +6978,7 @@ export const startPiiEntitiesDetectionJob: API.OperationMethod<
   StartPiiEntitiesDetectionJobResponse,
   StartPiiEntitiesDetectionJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartPiiEntitiesDetectionJobRequest,
   output: StartPiiEntitiesDetectionJobResponse,
   errors: [
@@ -7008,7 +7008,7 @@ export const startSentimentDetectionJob: API.OperationMethod<
   StartSentimentDetectionJobResponse,
   StartSentimentDetectionJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartSentimentDetectionJobRequest,
   output: StartSentimentDetectionJobResponse,
   errors: [
@@ -7038,7 +7038,7 @@ export const startTargetedSentimentDetectionJob: API.OperationMethod<
   StartTargetedSentimentDetectionJobResponse,
   StartTargetedSentimentDetectionJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartTargetedSentimentDetectionJobRequest,
   output: StartTargetedSentimentDetectionJobResponse,
   errors: [
@@ -7067,7 +7067,7 @@ export const startTopicsDetectionJob: API.OperationMethod<
   StartTopicsDetectionJobResponse,
   StartTopicsDetectionJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartTopicsDetectionJobRequest,
   output: StartTopicsDetectionJobResponse,
   errors: [
@@ -7104,7 +7104,7 @@ export const stopDominantLanguageDetectionJob: API.OperationMethod<
   StopDominantLanguageDetectionJobResponse,
   StopDominantLanguageDetectionJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopDominantLanguageDetectionJobRequest,
   output: StopDominantLanguageDetectionJobResponse,
   errors: [
@@ -7138,7 +7138,7 @@ export const stopEntitiesDetectionJob: API.OperationMethod<
   StopEntitiesDetectionJobResponse,
   StopEntitiesDetectionJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopEntitiesDetectionJobRequest,
   output: StopEntitiesDetectionJobResponse,
   errors: [
@@ -7160,7 +7160,7 @@ export const stopEventsDetectionJob: API.OperationMethod<
   StopEventsDetectionJobResponse,
   StopEventsDetectionJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopEventsDetectionJobRequest,
   output: StopEventsDetectionJobResponse,
   errors: [
@@ -7194,7 +7194,7 @@ export const stopKeyPhrasesDetectionJob: API.OperationMethod<
   StopKeyPhrasesDetectionJobResponse,
   StopKeyPhrasesDetectionJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopKeyPhrasesDetectionJobRequest,
   output: StopKeyPhrasesDetectionJobResponse,
   errors: [
@@ -7216,7 +7216,7 @@ export const stopPiiEntitiesDetectionJob: API.OperationMethod<
   StopPiiEntitiesDetectionJobResponse,
   StopPiiEntitiesDetectionJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopPiiEntitiesDetectionJobRequest,
   output: StopPiiEntitiesDetectionJobResponse,
   errors: [
@@ -7250,7 +7250,7 @@ export const stopSentimentDetectionJob: API.OperationMethod<
   StopSentimentDetectionJobResponse,
   StopSentimentDetectionJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopSentimentDetectionJobRequest,
   output: StopSentimentDetectionJobResponse,
   errors: [
@@ -7284,7 +7284,7 @@ export const stopTargetedSentimentDetectionJob: API.OperationMethod<
   StopTargetedSentimentDetectionJobResponse,
   StopTargetedSentimentDetectionJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopTargetedSentimentDetectionJobRequest,
   output: StopTargetedSentimentDetectionJobResponse,
   errors: [
@@ -7313,7 +7313,7 @@ export const stopTrainingDocumentClassifier: API.OperationMethod<
   StopTrainingDocumentClassifierResponse,
   StopTrainingDocumentClassifierError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopTrainingDocumentClassifierRequest,
   output: StopTrainingDocumentClassifierResponse,
   errors: [
@@ -7343,7 +7343,7 @@ export const stopTrainingEntityRecognizer: API.OperationMethod<
   StopTrainingEntityRecognizerResponse,
   StopTrainingEntityRecognizerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopTrainingEntityRecognizerRequest,
   output: StopTrainingEntityRecognizerResponse,
   errors: [
@@ -7370,7 +7370,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -7396,7 +7396,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -7425,7 +7425,7 @@ export const updateEndpoint: API.OperationMethod<
   UpdateEndpointResponse,
   UpdateEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEndpointRequest,
   output: UpdateEndpointResponse,
   errors: [
@@ -7453,7 +7453,7 @@ export const updateFlywheel: API.OperationMethod<
   UpdateFlywheelResponse,
   UpdateFlywheelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateFlywheelRequest,
   output: UpdateFlywheelResponse,
   errors: [

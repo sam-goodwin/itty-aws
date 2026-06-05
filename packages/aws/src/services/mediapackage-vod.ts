@@ -1581,7 +1581,7 @@ export const configureLogs: API.OperationMethod<
   ConfigureLogsResponse,
   ConfigureLogsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ConfigureLogsRequest,
   output: ConfigureLogsResponse,
   errors: [
@@ -1609,7 +1609,7 @@ export const createAsset: API.OperationMethod<
   CreateAssetResponse,
   CreateAssetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAssetRequest,
   output: CreateAssetResponse,
   errors: [
@@ -1637,7 +1637,7 @@ export const createPackagingConfiguration: API.OperationMethod<
   CreatePackagingConfigurationResponse,
   CreatePackagingConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePackagingConfigurationRequest,
   output: CreatePackagingConfigurationResponse,
   errors: [
@@ -1665,7 +1665,7 @@ export const createPackagingGroup: API.OperationMethod<
   CreatePackagingGroupResponse,
   CreatePackagingGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePackagingGroupRequest,
   output: CreatePackagingGroupResponse,
   errors: [
@@ -1693,7 +1693,7 @@ export const deleteAsset: API.OperationMethod<
   DeleteAssetResponse,
   DeleteAssetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAssetRequest,
   output: DeleteAssetResponse,
   errors: [
@@ -1721,7 +1721,7 @@ export const deletePackagingConfiguration: API.OperationMethod<
   DeletePackagingConfigurationResponse,
   DeletePackagingConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePackagingConfigurationRequest,
   output: DeletePackagingConfigurationResponse,
   errors: [
@@ -1749,7 +1749,7 @@ export const deletePackagingGroup: API.OperationMethod<
   DeletePackagingGroupResponse,
   DeletePackagingGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePackagingGroupRequest,
   output: DeletePackagingGroupResponse,
   errors: [
@@ -1777,7 +1777,7 @@ export const describeAsset: API.OperationMethod<
   DescribeAssetResponse,
   DescribeAssetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAssetRequest,
   output: DescribeAssetResponse,
   errors: [
@@ -1805,7 +1805,7 @@ export const describePackagingConfiguration: API.OperationMethod<
   DescribePackagingConfigurationResponse,
   DescribePackagingConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribePackagingConfigurationRequest,
   output: DescribePackagingConfigurationResponse,
   errors: [
@@ -1833,7 +1833,7 @@ export const describePackagingGroup: API.OperationMethod<
   DescribePackagingGroupResponse,
   DescribePackagingGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribePackagingGroupRequest,
   output: DescribePackagingGroupResponse,
   errors: [
@@ -1876,7 +1876,7 @@ export const listAssets: API.OperationMethod<
     ListAssetsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssetsRequest,
   output: ListAssetsResponse,
   errors: [
@@ -1925,7 +1925,7 @@ export const listPackagingConfigurations: API.OperationMethod<
     ListPackagingConfigurationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPackagingConfigurationsRequest,
   output: ListPackagingConfigurationsResponse,
   errors: [
@@ -1974,7 +1974,7 @@ export const listPackagingGroups: API.OperationMethod<
     ListPackagingGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPackagingGroupsRequest,
   output: ListPackagingGroupsResponse,
   errors: [
@@ -2001,7 +2001,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [],
@@ -2015,7 +2015,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [],
@@ -2029,7 +2029,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [],
@@ -2050,7 +2050,7 @@ export const updatePackagingGroup: API.OperationMethod<
   UpdatePackagingGroupResponse,
   UpdatePackagingGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePackagingGroupRequest,
   output: UpdatePackagingGroupResponse,
   errors: [

@@ -2902,7 +2902,7 @@ export const addNotificationChannel: API.OperationMethod<
   AddNotificationChannelResponse,
   AddNotificationChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddNotificationChannelRequest,
   output: AddNotificationChannelResponse,
   errors: [
@@ -2931,7 +2931,7 @@ export const deleteInsight: API.OperationMethod<
   DeleteInsightResponse,
   DeleteInsightError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteInsightRequest,
   output: DeleteInsightResponse,
   errors: [
@@ -2959,7 +2959,7 @@ export const describeAccountHealth: API.OperationMethod<
   DescribeAccountHealthResponse,
   DescribeAccountHealthError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAccountHealthRequest,
   output: DescribeAccountHealthResponse,
   errors: [
@@ -2985,7 +2985,7 @@ export const describeAccountOverview: API.OperationMethod<
   DescribeAccountOverviewResponse,
   DescribeAccountOverviewError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAccountOverviewRequest,
   output: DescribeAccountOverviewResponse,
   errors: [
@@ -3010,7 +3010,7 @@ export const describeAnomaly: API.OperationMethod<
   DescribeAnomalyResponse,
   DescribeAnomalyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAnomalyRequest,
   output: DescribeAnomalyResponse,
   errors: [
@@ -3038,7 +3038,7 @@ export const describeEventSourcesConfig: API.OperationMethod<
   DescribeEventSourcesConfigResponse,
   DescribeEventSourcesConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeEventSourcesConfigRequest,
   output: DescribeEventSourcesConfigResponse,
   errors: [
@@ -3063,7 +3063,7 @@ export const describeFeedback: API.OperationMethod<
   DescribeFeedbackResponse,
   DescribeFeedbackError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeFeedbackRequest,
   output: DescribeFeedbackResponse,
   errors: [
@@ -3089,7 +3089,7 @@ export const describeInsight: API.OperationMethod<
   DescribeInsightResponse,
   DescribeInsightError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeInsightRequest,
   output: DescribeInsightResponse,
   errors: [
@@ -3115,7 +3115,7 @@ export const describeOrganizationHealth: API.OperationMethod<
   DescribeOrganizationHealthResponse,
   DescribeOrganizationHealthError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeOrganizationHealthRequest,
   output: DescribeOrganizationHealthResponse,
   errors: [
@@ -3140,7 +3140,7 @@ export const describeOrganizationOverview: API.OperationMethod<
   DescribeOrganizationOverviewResponse,
   DescribeOrganizationOverviewError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeOrganizationOverviewRequest,
   output: DescribeOrganizationOverviewResponse,
   errors: [
@@ -3181,7 +3181,7 @@ export const describeOrganizationResourceCollectionHealth: API.OperationMethod<
     DescribeOrganizationResourceCollectionHealthError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeOrganizationResourceCollectionHealthRequest,
   output: DescribeOrganizationResourceCollectionHealthResponse,
   errors: [
@@ -3225,7 +3225,7 @@ export const describeResourceCollectionHealth: API.OperationMethod<
     DescribeResourceCollectionHealthError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeResourceCollectionHealthRequest,
   output: DescribeResourceCollectionHealthResponse,
   errors: [
@@ -3253,7 +3253,7 @@ export const describeServiceIntegration: API.OperationMethod<
   DescribeServiceIntegrationResponse,
   DescribeServiceIntegrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeServiceIntegrationRequest,
   output: DescribeServiceIntegrationResponse,
   errors: [
@@ -3298,7 +3298,7 @@ export const getCostEstimation: API.OperationMethod<
     GetCostEstimationError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetCostEstimationRequest,
   output: GetCostEstimationResponse,
   errors: [
@@ -3343,7 +3343,7 @@ export const getResourceCollection: API.OperationMethod<
     GetResourceCollectionError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetResourceCollectionRequest,
   output: GetResourceCollectionResponse,
   errors: [
@@ -3386,7 +3386,7 @@ export const listAnomaliesForInsight: API.OperationMethod<
     ListAnomaliesForInsightError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAnomaliesForInsightRequest,
   output: ListAnomaliesForInsightResponse,
   errors: [
@@ -3432,7 +3432,7 @@ export const listAnomalousLogGroups: API.OperationMethod<
     ListAnomalousLogGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAnomalousLogGroupsRequest,
   output: ListAnomalousLogGroupsResponse,
   errors: [
@@ -3479,7 +3479,7 @@ export const listEvents: API.OperationMethod<
     ListEventsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEventsRequest,
   output: ListEventsResponse,
   errors: [
@@ -3527,7 +3527,7 @@ export const listInsights: API.OperationMethod<
     ListInsightsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInsightsRequest,
   output: ListInsightsResponse,
   errors: [
@@ -3571,7 +3571,7 @@ export const listMonitoredResources: API.OperationMethod<
     ListMonitoredResourcesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMonitoredResourcesRequest,
   output: ListMonitoredResourcesResponse,
   errors: [
@@ -3618,7 +3618,7 @@ export const listNotificationChannels: API.OperationMethod<
     ListNotificationChannelsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNotificationChannelsRequest,
   output: ListNotificationChannelsResponse,
   errors: [
@@ -3662,7 +3662,7 @@ export const listOrganizationInsights: API.OperationMethod<
     ListOrganizationInsightsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationInsightsRequest,
   output: ListOrganizationInsightsResponse,
   errors: [
@@ -3708,7 +3708,7 @@ export const listRecommendations: API.OperationMethod<
     ListRecommendationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecommendationsRequest,
   output: ListRecommendationsResponse,
   errors: [
@@ -3740,7 +3740,7 @@ export const putFeedback: API.OperationMethod<
   PutFeedbackResponse,
   PutFeedbackError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutFeedbackRequest,
   output: PutFeedbackResponse,
   errors: [
@@ -3770,7 +3770,7 @@ export const removeNotificationChannel: API.OperationMethod<
   RemoveNotificationChannelResponse,
   RemoveNotificationChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveNotificationChannelRequest,
   output: RemoveNotificationChannelResponse,
   errors: [
@@ -3818,7 +3818,7 @@ export const searchInsights: API.OperationMethod<
     SearchInsightsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchInsightsRequest,
   output: SearchInsightsResponse,
   errors: [
@@ -3870,7 +3870,7 @@ export const searchOrganizationInsights: API.OperationMethod<
     SearchOrganizationInsightsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchOrganizationInsightsRequest,
   output: SearchOrganizationInsightsResponse,
   errors: [
@@ -3902,7 +3902,7 @@ export const startCostEstimation: API.OperationMethod<
   StartCostEstimationResponse,
   StartCostEstimationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartCostEstimationRequest,
   output: StartCostEstimationResponse,
   errors: [
@@ -3930,7 +3930,7 @@ export const updateEventSourcesConfig: API.OperationMethod<
   UpdateEventSourcesConfigResponse,
   UpdateEventSourcesConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEventSourcesConfigRequest,
   output: UpdateEventSourcesConfigResponse,
   errors: [
@@ -3959,7 +3959,7 @@ export const updateResourceCollection: API.OperationMethod<
   UpdateResourceCollectionResponse,
   UpdateResourceCollectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateResourceCollectionRequest,
   output: UpdateResourceCollectionResponse,
   errors: [
@@ -3987,7 +3987,7 @@ export const updateServiceIntegration: API.OperationMethod<
   UpdateServiceIntegrationResponse,
   UpdateServiceIntegrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateServiceIntegrationRequest,
   output: UpdateServiceIntegrationResponse,
   errors: [

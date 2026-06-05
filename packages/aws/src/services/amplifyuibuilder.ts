@@ -2600,7 +2600,7 @@ export const exchangeCodeForToken: API.OperationMethod<
   ExchangeCodeForTokenResponse,
   ExchangeCodeForTokenError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExchangeCodeForTokenRequest,
   output: ExchangeCodeForTokenResponse,
   errors: [InvalidParameterException],
@@ -2617,7 +2617,7 @@ export const getMetadata: API.OperationMethod<
   GetMetadataResponse,
   GetMetadataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMetadataRequest,
   output: GetMetadataResponse,
   errors: [InvalidParameterException, UnauthorizedException],
@@ -2637,7 +2637,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -2660,7 +2660,7 @@ export const putMetadataFlag: API.OperationMethod<
   PutMetadataFlagResponse,
   PutMetadataFlagError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutMetadataFlagRequest,
   output: PutMetadataFlagResponse,
   errors: [InvalidParameterException, UnauthorizedException],
@@ -2676,7 +2676,7 @@ export const refreshToken: API.OperationMethod<
   RefreshTokenResponse,
   RefreshTokenError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RefreshTokenRequest,
   output: RefreshTokenResponse,
   errors: [InvalidParameterException],
@@ -2696,7 +2696,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -2722,7 +2722,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -2746,7 +2746,7 @@ export const startCodegenJob: API.OperationMethod<
   StartCodegenJobResponse,
   StartCodegenJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartCodegenJobRequest,
   output: StartCodegenJobResponse,
   errors: [
@@ -2769,7 +2769,7 @@ export const getCodegenJob: API.OperationMethod<
   GetCodegenJobResponse,
   GetCodegenJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCodegenJobRequest,
   output: GetCodegenJobResponse,
   errors: [
@@ -2807,7 +2807,7 @@ export const listCodegenJobs: API.OperationMethod<
     ListCodegenJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCodegenJobsRequest,
   output: ListCodegenJobsResponse,
   errors: [
@@ -2836,7 +2836,7 @@ export const createComponent: API.OperationMethod<
   CreateComponentResponse,
   CreateComponentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateComponentRequest,
   output: CreateComponentResponse,
   errors: [
@@ -2859,7 +2859,7 @@ export const getComponent: API.OperationMethod<
   GetComponentResponse,
   GetComponentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetComponentRequest,
   output: GetComponentResponse,
   errors: [
@@ -2881,7 +2881,7 @@ export const updateComponent: API.OperationMethod<
   UpdateComponentResponse,
   UpdateComponentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateComponentRequest,
   output: UpdateComponentResponse,
   errors: [
@@ -2903,7 +2903,7 @@ export const deleteComponent: API.OperationMethod<
   DeleteComponentResponse,
   DeleteComponentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteComponentRequest,
   output: DeleteComponentResponse,
   errors: [
@@ -2940,7 +2940,7 @@ export const listComponents: API.OperationMethod<
     ListComponentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListComponentsRequest,
   output: ListComponentsResponse,
   errors: [InternalServerException, InvalidParameterException],
@@ -2978,7 +2978,7 @@ export const exportComponents: API.OperationMethod<
     ExportComponentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ExportComponentsRequest,
   output: ExportComponentsResponse,
   errors: [InternalServerException, InvalidParameterException],
@@ -3002,7 +3002,7 @@ export const createForm: API.OperationMethod<
   CreateFormResponse,
   CreateFormError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFormRequest,
   output: CreateFormResponse,
   errors: [
@@ -3025,7 +3025,7 @@ export const getForm: API.OperationMethod<
   GetFormResponse,
   GetFormError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFormRequest,
   output: GetFormResponse,
   errors: [
@@ -3047,7 +3047,7 @@ export const updateForm: API.OperationMethod<
   UpdateFormResponse,
   UpdateFormError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateFormRequest,
   output: UpdateFormResponse,
   errors: [
@@ -3069,7 +3069,7 @@ export const deleteForm: API.OperationMethod<
   DeleteFormResponse,
   DeleteFormError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFormRequest,
   output: DeleteFormResponse,
   errors: [
@@ -3105,7 +3105,7 @@ export const listForms: API.OperationMethod<
     ListFormsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFormsRequest,
   output: ListFormsResponse,
   errors: [InternalServerException, InvalidParameterException],
@@ -3143,7 +3143,7 @@ export const exportForms: API.OperationMethod<
     ExportFormsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ExportFormsRequest,
   output: ExportFormsResponse,
   errors: [InternalServerException, InvalidParameterException],
@@ -3167,7 +3167,7 @@ export const createTheme: API.OperationMethod<
   CreateThemeResponse,
   CreateThemeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateThemeRequest,
   output: CreateThemeResponse,
   errors: [
@@ -3190,7 +3190,7 @@ export const getTheme: API.OperationMethod<
   GetThemeResponse,
   GetThemeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetThemeRequest,
   output: GetThemeResponse,
   errors: [
@@ -3212,7 +3212,7 @@ export const updateTheme: API.OperationMethod<
   UpdateThemeResponse,
   UpdateThemeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateThemeRequest,
   output: UpdateThemeResponse,
   errors: [
@@ -3234,7 +3234,7 @@ export const deleteTheme: API.OperationMethod<
   DeleteThemeResponse,
   DeleteThemeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteThemeRequest,
   output: DeleteThemeResponse,
   errors: [
@@ -3271,7 +3271,7 @@ export const listThemes: API.OperationMethod<
     ListThemesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListThemesRequest,
   output: ListThemesResponse,
   errors: [InternalServerException, InvalidParameterException],
@@ -3309,7 +3309,7 @@ export const exportThemes: API.OperationMethod<
     ExportThemesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ExportThemesRequest,
   output: ExportThemesResponse,
   errors: [InternalServerException, InvalidParameterException],

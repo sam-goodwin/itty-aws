@@ -135,7 +135,7 @@ export interface GetAccountRequest {
   accountId: string;
 }
 
-export const GetAccountRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetAccountRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
   T.Http({ method: "GET", path: "/accounts/{account_id}" }),
@@ -161,7 +161,7 @@ export interface GetAccountResponse {
   } | null;
 }
 
-export const GetAccountResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetAccountResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   type: Schema.Union([
@@ -227,7 +227,7 @@ export const getAccount: API.OperationMethod<
   GetAccountResponse,
   GetAccountError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountRequest,
   output: GetAccountResponse,
   errors: [InvalidRoute],
@@ -235,9 +235,7 @@ export const getAccount: API.OperationMethod<
 
 export interface ListAccountsRequest {}
 
-export const ListAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ListAccountsRequest = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "GET", path: "/accounts" }),
 ) as unknown as Schema.Schema<ListAccountsRequest>;
 
@@ -264,7 +262,7 @@ export interface ListAccountsResponse {
   } | null;
 }
 
-export const ListAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListAccountsResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       id: Schema.String,
@@ -350,7 +348,7 @@ export const listAccounts: API.PaginatedOperationMethod<
   ListAccountsResponse,
   ListAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsRequest,
   output: ListAccountsResponse,
   errors: [],
@@ -371,7 +369,7 @@ export interface CreateAccountRequest {
   unit?: { id?: string };
 }
 
-export const CreateAccountRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateAccountRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String,
   type: Schema.optional(
     Schema.Union([Schema.Literals(["standard", "enterprise"]), Schema.String]),
@@ -405,7 +403,7 @@ export interface CreateAccountResponse {
   } | null;
 }
 
-export const CreateAccountResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateAccountResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   type: Schema.Union([
@@ -474,7 +472,7 @@ export const createAccount: API.OperationMethod<
   CreateAccountResponse,
   CreateAccountError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccountRequest,
   output: CreateAccountResponse,
   errors: [AccountCreationForbidden, MissingName],
@@ -495,7 +493,7 @@ export interface UpdateAccountRequest {
   settings?: { abuseContactEmail?: string; enforceTwofactor?: boolean };
 }
 
-export const UpdateAccountRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateAccountRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   id: Schema.String,
   name: Schema.String,
@@ -545,7 +543,7 @@ export interface UpdateAccountResponse {
   } | null;
 }
 
-export const UpdateAccountResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateAccountResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   type: Schema.Union([
@@ -617,7 +615,7 @@ export const updateAccount: API.OperationMethod<
   UpdateAccountResponse,
   UpdateAccountError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccountRequest,
   output: UpdateAccountResponse,
   errors: [
@@ -634,7 +632,7 @@ export interface DeleteAccountRequest {
   accountId: string;
 }
 
-export const DeleteAccountRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteAccountRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
   T.Http({ method: "DELETE", path: "/accounts/{account_id}" }),
@@ -645,7 +643,7 @@ export interface DeleteAccountResponse {
   id: string;
 }
 
-export const DeleteAccountResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteAccountResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
 }).pipe(
   T.ResponsePath("result"),
@@ -661,7 +659,7 @@ export const deleteAccount: API.OperationMethod<
   DeleteAccountResponse,
   DeleteAccountError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccountRequest,
   output: DeleteAccountResponse,
   errors: [InvalidRoute, MethodNotAllowed],
@@ -750,7 +748,7 @@ export interface ListLogAuditsRequest {
   zoneName?: { not?: string[] };
 }
 
-export const ListLogAuditsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListLogAuditsRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   cursor: Schema.optional(Schema.String).pipe(T.HttpQuery("cursor")),
   before: Schema.String.pipe(T.HttpQuery("before")),
@@ -966,7 +964,7 @@ export interface ListLogAuditsResponse {
   resultInfo?: { cursors?: { after?: string | null } | null } | null;
 }
 
-export const ListLogAuditsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListLogAuditsResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1133,7 +1131,7 @@ export const listLogAudits: API.PaginatedOperationMethod<
   ListLogAuditsResponse,
   ListLogAuditsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLogAuditsRequest,
   output: ListLogAuditsResponse,
   errors: [],
@@ -1155,7 +1153,7 @@ export interface GetMemberRequest {
   accountId: string;
 }
 
-export const GetMemberRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetMemberRequest = /*@__PURE__*/ Schema.Struct({
   memberId: Schema.String.pipe(T.HttpPath("memberId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -1216,7 +1214,7 @@ export interface GetMemberResponse {
   } | null;
 }
 
-export const GetMemberResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetMemberResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   policies: Schema.optional(
@@ -1486,7 +1484,7 @@ export const getMember: API.OperationMethod<
   GetMemberResponse,
   GetMemberError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMemberRequest,
   output: GetMemberResponse,
   errors: [MemberNotFound, InvalidRoute],
@@ -1510,7 +1508,7 @@ export interface ListMembersRequest {
   status?: "accepted" | "pending" | "rejected" | (string & {});
 }
 
-export const ListMembersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListMembersRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
   perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
@@ -1603,7 +1601,7 @@ export interface ListMembersResponse {
   } | null;
 }
 
-export const ListMembersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListMembersResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1906,7 +1904,7 @@ export const listMembers: API.PaginatedOperationMethod<
   ListMembersResponse,
   ListMembersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMembersRequest,
   output: ListMembersResponse,
   errors: [],
@@ -1936,7 +1934,7 @@ export interface CreateMemberRequest {
   }[];
 }
 
-export const CreateMemberRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateMemberRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   email: Schema.String,
   roles: Schema.optional(Schema.Array(Schema.String)),
@@ -2027,7 +2025,7 @@ export interface CreateMemberResponse {
   } | null;
 }
 
-export const CreateMemberResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateMemberResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   policies: Schema.optional(
@@ -2297,7 +2295,7 @@ export const createMember: API.OperationMethod<
   CreateMemberResponse,
   CreateMemberError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMemberRequest,
   output: CreateMemberResponse,
   errors: [InvalidRoute, ValidationError],
@@ -2317,7 +2315,7 @@ export interface UpdateMemberRequest {
   }[];
 }
 
-export const UpdateMemberRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateMemberRequest = /*@__PURE__*/ Schema.Struct({
   memberId: Schema.String.pipe(T.HttpPath("memberId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   roles: Schema.optional(
@@ -2411,7 +2409,7 @@ export interface UpdateMemberResponse {
   } | null;
 }
 
-export const UpdateMemberResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateMemberResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   policies: Schema.optional(
@@ -2686,7 +2684,7 @@ export const updateMember: API.OperationMethod<
   UpdateMemberResponse,
   UpdateMemberError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateMemberRequest,
   output: UpdateMemberResponse,
   errors: [MemberNotFound, InvalidRoute, BadRequest, MethodNotAllowed],
@@ -2698,7 +2696,7 @@ export interface DeleteMemberRequest {
   accountId: string;
 }
 
-export const DeleteMemberRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteMemberRequest = /*@__PURE__*/ Schema.Struct({
   memberId: Schema.String.pipe(T.HttpPath("memberId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -2713,7 +2711,7 @@ export interface DeleteMemberResponse {
   id: string;
 }
 
-export const DeleteMemberResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteMemberResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
 }).pipe(
   T.ResponsePath("result"),
@@ -2726,7 +2724,7 @@ export const deleteMember: API.OperationMethod<
   DeleteMemberResponse,
   DeleteMemberError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMemberRequest,
   output: DeleteMemberResponse,
   errors: [MemberNotFound, InvalidRoute],
@@ -2742,7 +2740,7 @@ export interface GetRoleRequest {
   accountId: string;
 }
 
-export const GetRoleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetRoleRequest = /*@__PURE__*/ Schema.Struct({
   roleId: Schema.String.pipe(T.HttpPath("roleId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -2772,7 +2770,7 @@ export interface GetRoleResponse {
   };
 }
 
-export const GetRoleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetRoleResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   description: Schema.String,
   name: Schema.String,
@@ -2910,7 +2908,7 @@ export const getRole: API.OperationMethod<
   GetRoleResponse,
   GetRoleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRoleRequest,
   output: GetRoleResponse,
   errors: [InvalidRoute],
@@ -2923,7 +2921,7 @@ export interface ListRolesRequest {
   perPage?: number;
 }
 
-export const ListRolesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListRolesRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
   perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
@@ -2959,7 +2957,7 @@ export interface ListRolesResponse {
   } | null;
 }
 
-export const ListRolesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListRolesResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       id: Schema.String,
@@ -3169,7 +3167,7 @@ export const listRoles: API.PaginatedOperationMethod<
   ListRolesResponse,
   ListRolesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRolesRequest,
   output: ListRolesResponse,
   errors: [],
@@ -3191,11 +3189,9 @@ export interface GetSubscriptionRequest {
   accountId: string;
 }
 
-export const GetSubscriptionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  },
-).pipe(
+export const GetSubscriptionRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+}).pipe(
   T.Http({ method: "GET", path: "/accounts/{account_id}/subscriptions" }),
 ) as unknown as Schema.Schema<GetSubscriptionRequest>;
 
@@ -3247,114 +3243,111 @@ export interface GetSubscriptionResponse {
   }[];
 }
 
-export const GetSubscriptionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        currency: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        currentPeriodEnd: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        currentPeriodStart: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        frequency: Schema.optional(
-          Schema.Union([
-            Schema.Union([
-              Schema.Literals(["weekly", "monthly", "quarterly", "yearly"]),
-              Schema.String,
-            ]),
-            Schema.Null,
-          ]),
-        ),
-        price: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        ratePlan: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              id: Schema.optional(
-                Schema.Union([
-                  Schema.Union([
-                    Schema.Literals([
-                      "free",
-                      "lite",
-                      "pro",
-                      "pro_plus",
-                      "business",
-                      "enterprise",
-                      "partners_free",
-                      "partners_pro",
-                      "partners_business",
-                      "partners_enterprise",
-                    ]),
-                    Schema.String,
-                  ]),
-                  Schema.Null,
-                ]),
-              ),
-              currency: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              externallyManaged: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              isContract: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              publicName: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              scope: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              sets: Schema.optional(
-                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                id: "id",
-                currency: "currency",
-                externallyManaged: "externally_managed",
-                isContract: "is_contract",
-                publicName: "public_name",
-                scope: "scope",
-                sets: "sets",
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-        state: Schema.optional(
-          Schema.Union([
-            Schema.Union([
-              Schema.Literals([
-                "Trial",
-                "Provisioned",
-                "Paid",
-                "AwaitingPayment",
-                "Cancelled",
-                "Failed",
-                "Expired",
-              ]),
-              Schema.String,
-            ]),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          currency: "currency",
-          currentPeriodEnd: "current_period_end",
-          currentPeriodStart: "current_period_start",
-          frequency: "frequency",
-          price: "price",
-          ratePlan: "rate_plan",
-          state: "state",
-        }),
+export const GetSubscriptionResponse = /*@__PURE__*/ Schema.Struct({
+  result: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      currency: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      currentPeriodEnd: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
       ),
+      currentPeriodStart: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      frequency: Schema.optional(
+        Schema.Union([
+          Schema.Union([
+            Schema.Literals(["weekly", "monthly", "quarterly", "yearly"]),
+            Schema.String,
+          ]),
+          Schema.Null,
+        ]),
+      ),
+      price: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      ratePlan: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals([
+                    "free",
+                    "lite",
+                    "pro",
+                    "pro_plus",
+                    "business",
+                    "enterprise",
+                    "partners_free",
+                    "partners_pro",
+                    "partners_business",
+                    "partners_enterprise",
+                  ]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
+            ),
+            currency: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            externallyManaged: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            isContract: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            publicName: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            scope: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            sets: Schema.optional(
+              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              id: "id",
+              currency: "currency",
+              externallyManaged: "externally_managed",
+              isContract: "is_contract",
+              publicName: "public_name",
+              scope: "scope",
+              sets: "sets",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      state: Schema.optional(
+        Schema.Union([
+          Schema.Union([
+            Schema.Literals([
+              "Trial",
+              "Provisioned",
+              "Paid",
+              "AwaitingPayment",
+              "Cancelled",
+              "Failed",
+              "Expired",
+            ]),
+            Schema.String,
+          ]),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        currency: "currency",
+        currentPeriodEnd: "current_period_end",
+        currentPeriodStart: "current_period_start",
+        frequency: "frequency",
+        price: "price",
+        ratePlan: "rate_plan",
+        state: "state",
+      }),
     ),
-  }) as unknown as Schema.Schema<GetSubscriptionResponse>;
+  ),
+}) as unknown as Schema.Schema<GetSubscriptionResponse>;
 
 export type GetSubscriptionError = DefaultErrors;
 
@@ -3363,7 +3356,7 @@ export const getSubscription: API.PaginatedOperationMethod<
   GetSubscriptionResponse,
   GetSubscriptionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetSubscriptionRequest,
   output: GetSubscriptionResponse,
   errors: [],
@@ -3401,56 +3394,55 @@ export interface CreateSubscriptionRequest {
   };
 }
 
-export const CreateSubscriptionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    frequency: Schema.optional(
-      Schema.Union([
-        Schema.Literals(["weekly", "monthly", "quarterly", "yearly"]),
-        Schema.String,
-      ]),
-    ),
-    ratePlan: Schema.optional(
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([
-            Schema.Literals([
-              "free",
-              "lite",
-              "pro",
-              "pro_plus",
-              "business",
-              "enterprise",
-              "partners_free",
-              "partners_pro",
-              "partners_business",
-              "partners_enterprise",
-            ]),
-            Schema.String,
+export const CreateSubscriptionRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  frequency: Schema.optional(
+    Schema.Union([
+      Schema.Literals(["weekly", "monthly", "quarterly", "yearly"]),
+      Schema.String,
+    ]),
+  ),
+  ratePlan: Schema.optional(
+    Schema.Struct({
+      id: Schema.optional(
+        Schema.Union([
+          Schema.Literals([
+            "free",
+            "lite",
+            "pro",
+            "pro_plus",
+            "business",
+            "enterprise",
+            "partners_free",
+            "partners_pro",
+            "partners_business",
+            "partners_enterprise",
           ]),
-        ),
-        currency: Schema.optional(Schema.String),
-        externallyManaged: Schema.optional(Schema.Boolean),
-        isContract: Schema.optional(Schema.Boolean),
-        publicName: Schema.optional(Schema.String),
-        scope: Schema.optional(Schema.String),
-        sets: Schema.optional(Schema.Array(Schema.String)),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          currency: "currency",
-          externallyManaged: "externally_managed",
-          isContract: "is_contract",
-          publicName: "public_name",
-          scope: "scope",
-          sets: "sets",
-        }),
+          Schema.String,
+        ]),
       ),
+      currency: Schema.optional(Schema.String),
+      externallyManaged: Schema.optional(Schema.Boolean),
+      isContract: Schema.optional(Schema.Boolean),
+      publicName: Schema.optional(Schema.String),
+      scope: Schema.optional(Schema.String),
+      sets: Schema.optional(Schema.Array(Schema.String)),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        currency: "currency",
+        externallyManaged: "externally_managed",
+        isContract: "is_contract",
+        publicName: "public_name",
+        scope: "scope",
+        sets: "sets",
+      }),
     ),
-  }).pipe(
-    Schema.encodeKeys({ frequency: "frequency", ratePlan: "rate_plan" }),
-    T.Http({ method: "POST", path: "/accounts/{account_id}/subscriptions" }),
-  ) as unknown as Schema.Schema<CreateSubscriptionRequest>;
+  ),
+}).pipe(
+  Schema.encodeKeys({ frequency: "frequency", ratePlan: "rate_plan" }),
+  T.Http({ method: "POST", path: "/accounts/{account_id}/subscriptions" }),
+) as unknown as Schema.Schema<CreateSubscriptionRequest>;
 
 export interface CreateSubscriptionResponse {
   /** Subscription identifier tag. */
@@ -3506,110 +3498,105 @@ export interface CreateSubscriptionResponse {
     | null;
 }
 
-export const CreateSubscriptionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    currency: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    currentPeriodEnd: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    currentPeriodStart: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    frequency: Schema.optional(
+export const CreateSubscriptionResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  currency: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  currentPeriodEnd: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  currentPeriodStart: Schema.optional(
+    Schema.Union([Schema.String, Schema.Null]),
+  ),
+  frequency: Schema.optional(
+    Schema.Union([
       Schema.Union([
-        Schema.Union([
-          Schema.Literals(["weekly", "monthly", "quarterly", "yearly"]),
-          Schema.String,
-        ]),
-        Schema.Null,
+        Schema.Literals(["weekly", "monthly", "quarterly", "yearly"]),
+        Schema.String,
       ]),
-    ),
-    price: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    ratePlan: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          id: Schema.optional(
+      Schema.Null,
+    ]),
+  ),
+  price: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  ratePlan: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        id: Schema.optional(
+          Schema.Union([
             Schema.Union([
-              Schema.Union([
-                Schema.Literals([
-                  "free",
-                  "lite",
-                  "pro",
-                  "pro_plus",
-                  "business",
-                  "enterprise",
-                  "partners_free",
-                  "partners_pro",
-                  "partners_business",
-                  "partners_enterprise",
-                ]),
-                Schema.String,
+              Schema.Literals([
+                "free",
+                "lite",
+                "pro",
+                "pro_plus",
+                "business",
+                "enterprise",
+                "partners_free",
+                "partners_pro",
+                "partners_business",
+                "partners_enterprise",
               ]),
-              Schema.Null,
+              Schema.String,
             ]),
-          ),
-          currency: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          externallyManaged: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          isContract: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          publicName: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          scope: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          sets: Schema.optional(
-            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            currency: "currency",
-            externallyManaged: "externally_managed",
-            isContract: "is_contract",
-            publicName: "public_name",
-            scope: "scope",
-            sets: "sets",
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
-    state: Schema.optional(
-      Schema.Union([
-        Schema.Union([
-          Schema.Literals([
-            "Trial",
-            "Provisioned",
-            "Paid",
-            "AwaitingPayment",
-            "Cancelled",
-            "Failed",
-            "Expired",
+            Schema.Null,
           ]),
-          Schema.String,
+        ),
+        currency: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        externallyManaged: Schema.optional(
+          Schema.Union([Schema.Boolean, Schema.Null]),
+        ),
+        isContract: Schema.optional(
+          Schema.Union([Schema.Boolean, Schema.Null]),
+        ),
+        publicName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        scope: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        sets: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          id: "id",
+          currency: "currency",
+          externallyManaged: "externally_managed",
+          isContract: "is_contract",
+          publicName: "public_name",
+          scope: "scope",
+          sets: "sets",
+        }),
+      ),
+      Schema.Null,
+    ]),
+  ),
+  state: Schema.optional(
+    Schema.Union([
+      Schema.Union([
+        Schema.Literals([
+          "Trial",
+          "Provisioned",
+          "Paid",
+          "AwaitingPayment",
+          "Cancelled",
+          "Failed",
+          "Expired",
         ]),
-        Schema.Null,
+        Schema.String,
       ]),
-    ),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        currency: "currency",
-        currentPeriodEnd: "current_period_end",
-        currentPeriodStart: "current_period_start",
-        frequency: "frequency",
-        price: "price",
-        ratePlan: "rate_plan",
-        state: "state",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<CreateSubscriptionResponse>;
+      Schema.Null,
+    ]),
+  ),
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      currency: "currency",
+      currentPeriodEnd: "current_period_end",
+      currentPeriodStart: "current_period_start",
+      frequency: "frequency",
+      price: "price",
+      ratePlan: "rate_plan",
+      state: "state",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<CreateSubscriptionResponse>;
 
 export type CreateSubscriptionError =
   | DefaultErrors
@@ -3621,7 +3608,7 @@ export const createSubscription: API.OperationMethod<
   CreateSubscriptionResponse,
   CreateSubscriptionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSubscriptionRequest,
   output: CreateSubscriptionResponse,
   errors: [JsonDecodeFailure, InvalidRoute],
@@ -3656,62 +3643,61 @@ export interface UpdateSubscriptionRequest {
   };
 }
 
-export const UpdateSubscriptionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionIdentifier: Schema.String.pipe(
-      T.HttpPath("subscriptionIdentifier"),
-    ),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    frequency: Schema.optional(
-      Schema.Union([
-        Schema.Literals(["weekly", "monthly", "quarterly", "yearly"]),
-        Schema.String,
-      ]),
-    ),
-    ratePlan: Schema.optional(
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([
-            Schema.Literals([
-              "free",
-              "lite",
-              "pro",
-              "pro_plus",
-              "business",
-              "enterprise",
-              "partners_free",
-              "partners_pro",
-              "partners_business",
-              "partners_enterprise",
-            ]),
-            Schema.String,
+export const UpdateSubscriptionRequest = /*@__PURE__*/ Schema.Struct({
+  subscriptionIdentifier: Schema.String.pipe(
+    T.HttpPath("subscriptionIdentifier"),
+  ),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  frequency: Schema.optional(
+    Schema.Union([
+      Schema.Literals(["weekly", "monthly", "quarterly", "yearly"]),
+      Schema.String,
+    ]),
+  ),
+  ratePlan: Schema.optional(
+    Schema.Struct({
+      id: Schema.optional(
+        Schema.Union([
+          Schema.Literals([
+            "free",
+            "lite",
+            "pro",
+            "pro_plus",
+            "business",
+            "enterprise",
+            "partners_free",
+            "partners_pro",
+            "partners_business",
+            "partners_enterprise",
           ]),
-        ),
-        currency: Schema.optional(Schema.String),
-        externallyManaged: Schema.optional(Schema.Boolean),
-        isContract: Schema.optional(Schema.Boolean),
-        publicName: Schema.optional(Schema.String),
-        scope: Schema.optional(Schema.String),
-        sets: Schema.optional(Schema.Array(Schema.String)),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          currency: "currency",
-          externallyManaged: "externally_managed",
-          isContract: "is_contract",
-          publicName: "public_name",
-          scope: "scope",
-          sets: "sets",
-        }),
+          Schema.String,
+        ]),
       ),
+      currency: Schema.optional(Schema.String),
+      externallyManaged: Schema.optional(Schema.Boolean),
+      isContract: Schema.optional(Schema.Boolean),
+      publicName: Schema.optional(Schema.String),
+      scope: Schema.optional(Schema.String),
+      sets: Schema.optional(Schema.Array(Schema.String)),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        currency: "currency",
+        externallyManaged: "externally_managed",
+        isContract: "is_contract",
+        publicName: "public_name",
+        scope: "scope",
+        sets: "sets",
+      }),
     ),
-  }).pipe(
-    Schema.encodeKeys({ frequency: "frequency", ratePlan: "rate_plan" }),
-    T.Http({
-      method: "PUT",
-      path: "/accounts/{account_id}/subscriptions/{subscriptionIdentifier}",
-    }),
-  ) as unknown as Schema.Schema<UpdateSubscriptionRequest>;
+  ),
+}).pipe(
+  Schema.encodeKeys({ frequency: "frequency", ratePlan: "rate_plan" }),
+  T.Http({
+    method: "PUT",
+    path: "/accounts/{account_id}/subscriptions/{subscriptionIdentifier}",
+  }),
+) as unknown as Schema.Schema<UpdateSubscriptionRequest>;
 
 export interface UpdateSubscriptionResponse {
   /** Subscription identifier tag. */
@@ -3767,110 +3753,105 @@ export interface UpdateSubscriptionResponse {
     | null;
 }
 
-export const UpdateSubscriptionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    currency: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    currentPeriodEnd: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    currentPeriodStart: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    frequency: Schema.optional(
+export const UpdateSubscriptionResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  currency: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  currentPeriodEnd: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  currentPeriodStart: Schema.optional(
+    Schema.Union([Schema.String, Schema.Null]),
+  ),
+  frequency: Schema.optional(
+    Schema.Union([
       Schema.Union([
-        Schema.Union([
-          Schema.Literals(["weekly", "monthly", "quarterly", "yearly"]),
-          Schema.String,
-        ]),
-        Schema.Null,
+        Schema.Literals(["weekly", "monthly", "quarterly", "yearly"]),
+        Schema.String,
       ]),
-    ),
-    price: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    ratePlan: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          id: Schema.optional(
+      Schema.Null,
+    ]),
+  ),
+  price: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  ratePlan: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        id: Schema.optional(
+          Schema.Union([
             Schema.Union([
-              Schema.Union([
-                Schema.Literals([
-                  "free",
-                  "lite",
-                  "pro",
-                  "pro_plus",
-                  "business",
-                  "enterprise",
-                  "partners_free",
-                  "partners_pro",
-                  "partners_business",
-                  "partners_enterprise",
-                ]),
-                Schema.String,
+              Schema.Literals([
+                "free",
+                "lite",
+                "pro",
+                "pro_plus",
+                "business",
+                "enterprise",
+                "partners_free",
+                "partners_pro",
+                "partners_business",
+                "partners_enterprise",
               ]),
-              Schema.Null,
+              Schema.String,
             ]),
-          ),
-          currency: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          externallyManaged: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          isContract: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          publicName: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          scope: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          sets: Schema.optional(
-            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            currency: "currency",
-            externallyManaged: "externally_managed",
-            isContract: "is_contract",
-            publicName: "public_name",
-            scope: "scope",
-            sets: "sets",
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
-    state: Schema.optional(
-      Schema.Union([
-        Schema.Union([
-          Schema.Literals([
-            "Trial",
-            "Provisioned",
-            "Paid",
-            "AwaitingPayment",
-            "Cancelled",
-            "Failed",
-            "Expired",
+            Schema.Null,
           ]),
-          Schema.String,
+        ),
+        currency: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        externallyManaged: Schema.optional(
+          Schema.Union([Schema.Boolean, Schema.Null]),
+        ),
+        isContract: Schema.optional(
+          Schema.Union([Schema.Boolean, Schema.Null]),
+        ),
+        publicName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        scope: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        sets: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          id: "id",
+          currency: "currency",
+          externallyManaged: "externally_managed",
+          isContract: "is_contract",
+          publicName: "public_name",
+          scope: "scope",
+          sets: "sets",
+        }),
+      ),
+      Schema.Null,
+    ]),
+  ),
+  state: Schema.optional(
+    Schema.Union([
+      Schema.Union([
+        Schema.Literals([
+          "Trial",
+          "Provisioned",
+          "Paid",
+          "AwaitingPayment",
+          "Cancelled",
+          "Failed",
+          "Expired",
         ]),
-        Schema.Null,
+        Schema.String,
       ]),
-    ),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        currency: "currency",
-        currentPeriodEnd: "current_period_end",
-        currentPeriodStart: "current_period_start",
-        frequency: "frequency",
-        price: "price",
-        ratePlan: "rate_plan",
-        state: "state",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<UpdateSubscriptionResponse>;
+      Schema.Null,
+    ]),
+  ),
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      currency: "currency",
+      currentPeriodEnd: "current_period_end",
+      currentPeriodStart: "current_period_start",
+      frequency: "frequency",
+      price: "price",
+      ratePlan: "rate_plan",
+      state: "state",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<UpdateSubscriptionResponse>;
 
 export type UpdateSubscriptionError =
   | DefaultErrors
@@ -3883,7 +3864,7 @@ export const updateSubscription: API.OperationMethod<
   UpdateSubscriptionResponse,
   UpdateSubscriptionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSubscriptionRequest,
   output: UpdateSubscriptionResponse,
   errors: [JsonDecodeFailure, InvalidRoute, EndpointNotFound],
@@ -3895,32 +3876,30 @@ export interface DeleteSubscriptionRequest {
   accountId: string;
 }
 
-export const DeleteSubscriptionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionIdentifier: Schema.String.pipe(
-      T.HttpPath("subscriptionIdentifier"),
-    ),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/accounts/{account_id}/subscriptions/{subscriptionIdentifier}",
-    }),
-  ) as unknown as Schema.Schema<DeleteSubscriptionRequest>;
+export const DeleteSubscriptionRequest = /*@__PURE__*/ Schema.Struct({
+  subscriptionIdentifier: Schema.String.pipe(
+    T.HttpPath("subscriptionIdentifier"),
+  ),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/accounts/{account_id}/subscriptions/{subscriptionIdentifier}",
+  }),
+) as unknown as Schema.Schema<DeleteSubscriptionRequest>;
 
 export interface DeleteSubscriptionResponse {
   /** Subscription identifier tag. */
   subscriptionId?: string | null;
 }
 
-export const DeleteSubscriptionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(Schema.encodeKeys({ subscriptionId: "subscription_id" }))
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<DeleteSubscriptionResponse>;
+export const DeleteSubscriptionResponse = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+})
+  .pipe(Schema.encodeKeys({ subscriptionId: "subscription_id" }))
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<DeleteSubscriptionResponse>;
 
 export type DeleteSubscriptionError =
   | DefaultErrors
@@ -3932,7 +3911,7 @@ export const deleteSubscription: API.OperationMethod<
   DeleteSubscriptionResponse,
   DeleteSubscriptionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSubscriptionRequest,
   output: DeleteSubscriptionResponse,
   errors: [InvalidRoute, EndpointNotFound],
@@ -3948,7 +3927,7 @@ export interface GetTokenRequest {
   accountId: string;
 }
 
-export const GetTokenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetTokenRequest = /*@__PURE__*/ Schema.Struct({
   tokenId: Schema.String.pipe(T.HttpPath("tokenId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -3990,7 +3969,7 @@ export interface GetTokenResponse {
   status?: "active" | "disabled" | "expired" | (string & {}) | null;
 }
 
-export const GetTokenResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetTokenResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   condition: Schema.optional(
     Schema.Union([
@@ -4092,7 +4071,7 @@ export const getToken: API.OperationMethod<
   GetTokenResponse,
   GetTokenError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTokenRequest,
   output: GetTokenResponse,
   errors: [InvalidRoute, TokenNotFound],
@@ -4107,7 +4086,7 @@ export interface ListTokensRequest {
   direction?: "asc" | "desc" | (string & {});
 }
 
-export const ListTokensRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListTokensRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
   perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
@@ -4152,7 +4131,7 @@ export interface ListTokensResponse {
   } | null;
 }
 
-export const ListTokensResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListTokensResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -4278,7 +4257,7 @@ export const listTokens: API.PaginatedOperationMethod<
   ListTokensResponse,
   ListTokensError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTokensRequest,
   output: ListTokensResponse,
   errors: [],
@@ -4310,7 +4289,7 @@ export interface CreateTokenRequest {
   notBefore?: string;
 }
 
-export const CreateTokenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateTokenRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   name: Schema.String,
   policies: Schema.Array(
@@ -4396,7 +4375,7 @@ export interface CreateTokenResponse {
   value?: string | null;
 }
 
-export const CreateTokenResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateTokenResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   condition: Schema.optional(
     Schema.Union([
@@ -4506,7 +4485,7 @@ export const createToken: API.OperationMethod<
   CreateTokenResponse,
   CreateTokenError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTokenRequest,
   output: CreateTokenResponse,
   errors: [InvalidRoute, InvalidTokenName, PermissionGroupNotFound],
@@ -4534,7 +4513,7 @@ export interface UpdateTokenRequest {
   status?: "active" | "disabled" | "expired" | (string & {});
 }
 
-export const UpdateTokenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateTokenRequest = /*@__PURE__*/ Schema.Struct({
   tokenId: Schema.String.pipe(T.HttpPath("tokenId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   name: Schema.String,
@@ -4626,7 +4605,7 @@ export interface UpdateTokenResponse {
   status?: "active" | "disabled" | "expired" | (string & {}) | null;
 }
 
-export const UpdateTokenResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateTokenResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   condition: Schema.optional(
     Schema.Union([
@@ -4735,7 +4714,7 @@ export const updateToken: API.OperationMethod<
   UpdateTokenResponse,
   UpdateTokenError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTokenRequest,
   output: UpdateTokenResponse,
   errors: [
@@ -4752,7 +4731,7 @@ export interface DeleteTokenRequest {
   accountId: string;
 }
 
-export const DeleteTokenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteTokenRequest = /*@__PURE__*/ Schema.Struct({
   tokenId: Schema.String.pipe(T.HttpPath("tokenId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -4764,7 +4743,7 @@ export interface DeleteTokenResponse {
   id: string;
 }
 
-export const DeleteTokenResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteTokenResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
 }).pipe(
   T.ResponsePath("result"),
@@ -4781,7 +4760,7 @@ export const deleteToken: API.OperationMethod<
   DeleteTokenResponse,
   DeleteTokenError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTokenRequest,
   output: DeleteTokenResponse,
   errors: [InvalidRoute, MethodNotAllowed, TokenNotFound],
@@ -4792,7 +4771,7 @@ export interface VerifyTokenRequest {
   accountId: string;
 }
 
-export const VerifyTokenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VerifyTokenRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
   T.Http({ method: "GET", path: "/accounts/{account_id}/tokens/verify" }),
@@ -4809,7 +4788,7 @@ export interface VerifyTokenResponse {
   notBefore?: string | null;
 }
 
-export const VerifyTokenResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VerifyTokenResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   status: Schema.Union([
     Schema.Literals(["active", "disabled", "expired"]),
@@ -4840,7 +4819,7 @@ export const verifyToken: API.OperationMethod<
   VerifyTokenResponse,
   VerifyTokenError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: VerifyTokenRequest,
   output: VerifyTokenResponse,
   errors: [MissingAuthenticationToken, InvalidRoute],
@@ -4859,17 +4838,16 @@ export interface GetTokenPermissionGroupRequest {
   scope?: string;
 }
 
-export const GetTokenPermissionGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
-    scope: Schema.optional(Schema.String).pipe(T.HttpQuery("scope")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/tokens/permission_groups",
-    }),
-  ) as unknown as Schema.Schema<GetTokenPermissionGroupRequest>;
+export const GetTokenPermissionGroupRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
+  scope: Schema.optional(Schema.String).pipe(T.HttpQuery("scope")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/tokens/permission_groups",
+  }),
+) as unknown as Schema.Schema<GetTokenPermissionGroupRequest>;
 
 export type GetTokenPermissionGroupResponse = {
   id?: string | null;
@@ -4885,8 +4863,82 @@ export type GetTokenPermissionGroupResponse = {
     | null;
 }[];
 
-export const GetTokenPermissionGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const GetTokenPermissionGroupResponse = /*@__PURE__*/ Schema.Array(
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    scopes: Schema.optional(
+      Schema.Union([
+        Schema.Array(
+          Schema.Union([
+            Schema.Literals([
+              "com.cloudflare.api.account",
+              "com.cloudflare.api.account.zone",
+              "com.cloudflare.api.user",
+              "com.cloudflare.edge.r2.bucket",
+            ]),
+            Schema.String,
+          ]),
+        ),
+        Schema.Null,
+      ]),
+    ),
+  }),
+).pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<GetTokenPermissionGroupResponse>;
+
+export type GetTokenPermissionGroupError = DefaultErrors | InvalidRoute;
+
+export const getTokenPermissionGroup: API.OperationMethod<
+  GetTokenPermissionGroupRequest,
+  GetTokenPermissionGroupResponse,
+  GetTokenPermissionGroupError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetTokenPermissionGroupRequest,
+  output: GetTokenPermissionGroupResponse,
+  errors: [InvalidRoute],
+}));
+
+export interface ListTokenPermissionGroupsRequest {
+  /** Path param: Account identifier tag. */
+  accountId: string;
+  /** Query param: Filter by the name of the permission group. The value must be URL-encoded. */
+  name?: string;
+  /** Query param: Filter by the scope of the permission group. The value must be URL-encoded. */
+  scope?: string;
+}
+
+export const ListTokenPermissionGroupsRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
+  scope: Schema.optional(Schema.String).pipe(T.HttpQuery("scope")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/tokens/permission_groups",
+  }),
+) as unknown as Schema.Schema<ListTokenPermissionGroupsRequest>;
+
+export interface ListTokenPermissionGroupsResponse {
+  result: {
+    id?: string | null;
+    name?: string | null;
+    scopes?:
+      | (
+          | "com.cloudflare.api.account"
+          | "com.cloudflare.api.account.zone"
+          | "com.cloudflare.api.user"
+          | "com.cloudflare.edge.r2.bucket"
+          | (string & {})
+        )[]
+      | null;
+  }[];
+}
+
+export const ListTokenPermissionGroupsResponse = /*@__PURE__*/ Schema.Struct({
+  result: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -4907,85 +4959,8 @@ export const GetTokenPermissionGroupResponse =
         ]),
       ),
     }),
-  ).pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<GetTokenPermissionGroupResponse>;
-
-export type GetTokenPermissionGroupError = DefaultErrors | InvalidRoute;
-
-export const getTokenPermissionGroup: API.OperationMethod<
-  GetTokenPermissionGroupRequest,
-  GetTokenPermissionGroupResponse,
-  GetTokenPermissionGroupError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetTokenPermissionGroupRequest,
-  output: GetTokenPermissionGroupResponse,
-  errors: [InvalidRoute],
-}));
-
-export interface ListTokenPermissionGroupsRequest {
-  /** Path param: Account identifier tag. */
-  accountId: string;
-  /** Query param: Filter by the name of the permission group. The value must be URL-encoded. */
-  name?: string;
-  /** Query param: Filter by the scope of the permission group. The value must be URL-encoded. */
-  scope?: string;
-}
-
-export const ListTokenPermissionGroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
-    scope: Schema.optional(Schema.String).pipe(T.HttpQuery("scope")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/tokens/permission_groups",
-    }),
-  ) as unknown as Schema.Schema<ListTokenPermissionGroupsRequest>;
-
-export interface ListTokenPermissionGroupsResponse {
-  result: {
-    id?: string | null;
-    name?: string | null;
-    scopes?:
-      | (
-          | "com.cloudflare.api.account"
-          | "com.cloudflare.api.account.zone"
-          | "com.cloudflare.api.user"
-          | "com.cloudflare.edge.r2.bucket"
-          | (string & {})
-        )[]
-      | null;
-  }[];
-}
-
-export const ListTokenPermissionGroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        scopes: Schema.optional(
-          Schema.Union([
-            Schema.Array(
-              Schema.Union([
-                Schema.Literals([
-                  "com.cloudflare.api.account",
-                  "com.cloudflare.api.account.zone",
-                  "com.cloudflare.api.user",
-                  "com.cloudflare.edge.r2.bucket",
-                ]),
-                Schema.String,
-              ]),
-            ),
-            Schema.Null,
-          ]),
-        ),
-      }),
-    ),
-  }) as unknown as Schema.Schema<ListTokenPermissionGroupsResponse>;
+  ),
+}) as unknown as Schema.Schema<ListTokenPermissionGroupsResponse>;
 
 export type ListTokenPermissionGroupsError = DefaultErrors;
 
@@ -4994,7 +4969,7 @@ export const listTokenPermissionGroups: API.PaginatedOperationMethod<
   ListTokenPermissionGroupsResponse,
   ListTokenPermissionGroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTokenPermissionGroupsRequest,
   output: ListTokenPermissionGroupsResponse,
   errors: [],
@@ -5016,7 +4991,7 @@ export interface PutTokenValueRequest {
   body: unknown;
 }
 
-export const PutTokenValueRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PutTokenValueRequest = /*@__PURE__*/ Schema.Struct({
   tokenId: Schema.String.pipe(T.HttpPath("tokenId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   body: Schema.Unknown.pipe(T.HttpBody()),
@@ -5029,10 +5004,9 @@ export const PutTokenValueRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type PutTokenValueResponse = string;
 
-export const PutTokenValueResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String.pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<PutTokenValueResponse>;
+export const PutTokenValueResponse = /*@__PURE__*/ Schema.String.pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<PutTokenValueResponse>;
 
 export type PutTokenValueError = DefaultErrors | InvalidRoute | TokenNotFound;
 
@@ -5041,7 +5015,7 @@ export const putTokenValue: API.OperationMethod<
   PutTokenValueResponse,
   PutTokenValueError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutTokenValueRequest,
   output: PutTokenValueResponse,
   errors: [InvalidRoute, TokenNotFound],

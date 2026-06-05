@@ -612,7 +612,7 @@ export const getAccountSettings: API.OperationMethod<
   GetAccountSettingsResponse,
   GetAccountSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountSettingsRequest,
   output: GetAccountSettingsResponse,
   errors: [
@@ -642,7 +642,7 @@ export const putAccountSettings: API.OperationMethod<
   PutAccountSettingsResponse,
   PutAccountSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutAccountSettingsRequest,
   output: PutAccountSettingsResponse,
   errors: [
@@ -684,7 +684,7 @@ export const listCustomerAgreements: API.OperationMethod<
     ListCustomerAgreementsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomerAgreementsRequest,
   output: ListCustomerAgreementsResponse,
   errors: [
@@ -716,7 +716,7 @@ export const getReportMetadata: API.OperationMethod<
   GetReportMetadataResponse,
   GetReportMetadataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetReportMetadataRequest,
   output: GetReportMetadataResponse,
   errors: [
@@ -759,7 +759,7 @@ export const listReports: API.OperationMethod<
     ListReportsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReportsRequest,
   output: ListReportsResponse,
   errors: [
@@ -794,7 +794,7 @@ export const getReport: API.OperationMethod<
   GetReportResponse,
   GetReportError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetReportRequest,
   output: GetReportResponse,
   errors: [
@@ -824,7 +824,7 @@ export const getTermForReport: API.OperationMethod<
   GetTermForReportResponse,
   GetTermForReportError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTermForReportRequest,
   output: GetTermForReportResponse,
   errors: [
@@ -868,7 +868,7 @@ export const listReportVersions: API.OperationMethod<
     ListReportVersionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReportVersionsRequest,
   output: ListReportVersionsResponse,
   errors: [

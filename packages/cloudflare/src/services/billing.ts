@@ -21,7 +21,7 @@ export interface GetProfileRequest {
   accountId: string;
 }
 
-export const GetProfileRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetProfileRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
   T.Http({ method: "GET", path: "/accounts/{account_id}/billing/profile" }),
@@ -70,7 +70,7 @@ export interface GetProfileResponse {
   zipcode?: string | null;
 }
 
-export const GetProfileResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetProfileResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   accountType: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   address: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -169,7 +169,7 @@ export const getProfile: API.OperationMethod<
   GetProfileResponse,
   GetProfileError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProfileRequest,
   output: GetProfileResponse,
   errors: [],
@@ -190,7 +190,7 @@ export interface GetUsageRequest {
   to?: string;
 }
 
-export const GetUsageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetUsageRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   from: Schema.optional(Schema.String).pipe(T.HttpQuery("from")),
   metric: Schema.optional(Schema.String).pipe(T.HttpQuery("metric")),
@@ -235,7 +235,7 @@ export type GetUsageResponse = {
   xZoneName?: string | null;
 }[];
 
-export const GetUsageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const GetUsageResponse = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     billingAccountId: Schema.String,
     billingAccountName: Schema.String,
@@ -332,7 +332,7 @@ export const getUsage: API.OperationMethod<
   GetUsageResponse,
   GetUsageError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUsageRequest,
   output: GetUsageResponse,
   errors: [],
@@ -347,7 +347,7 @@ export interface PaygoUsageRequest {
   to?: string;
 }
 
-export const PaygoUsageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PaygoUsageRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   from: Schema.optional(Schema.String).pipe(T.HttpQuery("from")),
   to: Schema.optional(Schema.String).pipe(T.HttpQuery("to")),
@@ -370,7 +370,7 @@ export type PaygoUsageResponse = {
   serviceFamilyName?: string | null;
 }[];
 
-export const PaygoUsageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const PaygoUsageResponse = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     billingCurrency: Schema.String,
     billingPeriodStart: Schema.String,
@@ -413,7 +413,7 @@ export const paygoUsage: API.OperationMethod<
   PaygoUsageResponse,
   PaygoUsageError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PaygoUsageRequest,
   output: PaygoUsageResponse,
   errors: [],

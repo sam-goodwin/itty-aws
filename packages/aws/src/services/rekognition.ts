@@ -4864,7 +4864,7 @@ export const associateFaces: API.OperationMethod<
   AssociateFacesResponse,
   AssociateFacesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateFacesRequest,
   output: AssociateFacesResponse,
   errors: [
@@ -4952,7 +4952,7 @@ export const compareFaces: API.OperationMethod<
   CompareFacesResponse,
   CompareFacesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CompareFacesRequest,
   output: CompareFacesResponse,
   errors: [
@@ -5010,7 +5010,7 @@ export const copyProjectVersion: API.OperationMethod<
   CopyProjectVersionResponse,
   CopyProjectVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CopyProjectVersionRequest,
   output: CopyProjectVersionResponse,
   errors: [
@@ -5058,7 +5058,7 @@ export const createCollection: API.OperationMethod<
   CreateCollectionResponse,
   CreateCollectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCollectionRequest,
   output: CreateCollectionResponse,
   errors: [
@@ -5113,7 +5113,7 @@ export const createDataset: API.OperationMethod<
   CreateDatasetResponse,
   CreateDatasetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDatasetRequest,
   output: CreateDatasetResponse,
   errors: [
@@ -5154,7 +5154,7 @@ export const createFaceLivenessSession: API.OperationMethod<
   CreateFaceLivenessSessionResponse,
   CreateFaceLivenessSessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFaceLivenessSessionRequest,
   output: CreateFaceLivenessSessionResponse,
   errors: [
@@ -5187,7 +5187,7 @@ export const createProject: API.OperationMethod<
   CreateProjectResponse,
   CreateProjectError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectRequest,
   output: CreateProjectResponse,
   errors: [
@@ -5247,7 +5247,7 @@ export const createProjectVersion: API.OperationMethod<
   CreateProjectVersionResponse,
   CreateProjectVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectVersionRequest,
   output: CreateProjectVersionResponse,
   errors: [
@@ -5308,7 +5308,7 @@ export const createStreamProcessor: API.OperationMethod<
   CreateStreamProcessorResponse,
   CreateStreamProcessorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateStreamProcessorRequest,
   output: CreateStreamProcessorResponse,
   errors: [
@@ -5349,7 +5349,7 @@ export const createUser: API.OperationMethod<
   CreateUserResponse,
   CreateUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateUserRequest,
   output: CreateUserResponse,
   errors: [
@@ -5385,7 +5385,7 @@ export const deleteCollection: API.OperationMethod<
   DeleteCollectionResponse,
   DeleteCollectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCollectionRequest,
   output: DeleteCollectionResponse,
   errors: [
@@ -5426,7 +5426,7 @@ export const deleteDataset: API.OperationMethod<
   DeleteDatasetResponse,
   DeleteDatasetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDatasetRequest,
   output: DeleteDatasetResponse,
   errors: [
@@ -5460,7 +5460,7 @@ export const deleteFaces: API.OperationMethod<
   DeleteFacesResponse,
   DeleteFacesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFacesRequest,
   output: DeleteFacesResponse,
   errors: [
@@ -5498,7 +5498,7 @@ export const deleteProject: API.OperationMethod<
   DeleteProjectResponse,
   DeleteProjectError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectRequest,
   output: DeleteProjectResponse,
   errors: [
@@ -5534,7 +5534,7 @@ export const deleteProjectPolicy: API.OperationMethod<
   DeleteProjectPolicyResponse,
   DeleteProjectPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectPolicyRequest,
   output: DeleteProjectPolicyResponse,
   errors: [
@@ -5572,7 +5572,7 @@ export const deleteProjectVersion: API.OperationMethod<
   DeleteProjectVersionResponse,
   DeleteProjectVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectVersionRequest,
   output: DeleteProjectVersionResponse,
   errors: [
@@ -5603,7 +5603,7 @@ export const deleteStreamProcessor: API.OperationMethod<
   DeleteStreamProcessorResponse,
   DeleteStreamProcessorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteStreamProcessorRequest,
   output: DeleteStreamProcessorResponse,
   errors: [
@@ -5638,7 +5638,7 @@ export const deleteUser: API.OperationMethod<
   DeleteUserResponse,
   DeleteUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteUserRequest,
   output: DeleteUserResponse,
   errors: [
@@ -5673,7 +5673,7 @@ export const describeCollection: API.OperationMethod<
   DescribeCollectionResponse,
   DescribeCollectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeCollectionRequest,
   output: DescribeCollectionResponse,
   errors: [
@@ -5706,7 +5706,7 @@ export const describeDataset: API.OperationMethod<
   DescribeDatasetResponse,
   DescribeDatasetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDatasetRequest,
   output: DescribeDatasetResponse,
   errors: [
@@ -5751,7 +5751,7 @@ export const describeProjects: API.OperationMethod<
     DescribeProjectsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeProjectsRequest,
   output: DescribeProjectsResponse,
   errors: [
@@ -5806,7 +5806,7 @@ export const describeProjectVersions: API.OperationMethod<
     DescribeProjectVersionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeProjectVersionsRequest,
   output: DescribeProjectVersionsResponse,
   errors: [
@@ -5842,7 +5842,7 @@ export const describeStreamProcessor: API.OperationMethod<
   DescribeStreamProcessorResponse,
   DescribeStreamProcessorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeStreamProcessorRequest,
   output: DescribeStreamProcessorResponse,
   errors: [
@@ -5916,7 +5916,7 @@ export const detectCustomLabels: API.OperationMethod<
   DetectCustomLabelsResponse,
   DetectCustomLabelsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetectCustomLabelsRequest,
   output: DetectCustomLabelsResponse,
   errors: [
@@ -5971,7 +5971,7 @@ export const detectFaces: API.OperationMethod<
   DetectFacesResponse,
   DetectFacesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetectFacesRequest,
   output: DetectFacesResponse,
   errors: [
@@ -6106,7 +6106,7 @@ export const detectLabels: API.OperationMethod<
   DetectLabelsResponse,
   DetectLabelsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetectLabelsRequest,
   output: DetectLabelsResponse,
   errors: [
@@ -6159,7 +6159,7 @@ export const detectModerationLabels: API.OperationMethod<
   DetectModerationLabelsResponse,
   DetectModerationLabelsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetectModerationLabelsRequest,
   output: DetectModerationLabelsResponse,
   errors: [
@@ -6225,7 +6225,7 @@ export const detectProtectiveEquipment: API.OperationMethod<
   DetectProtectiveEquipmentResponse,
   DetectProtectiveEquipmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetectProtectiveEquipmentRequest,
   output: DetectProtectiveEquipmentResponse,
   errors: [
@@ -6286,7 +6286,7 @@ export const detectText: API.OperationMethod<
   DetectTextResponse,
   DetectTextError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetectTextRequest,
   output: DetectTextResponse,
   errors: [
@@ -6325,7 +6325,7 @@ export const disassociateFaces: API.OperationMethod<
   DisassociateFacesResponse,
   DisassociateFacesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateFacesRequest,
   output: DisassociateFacesResponse,
   errors: [
@@ -6370,7 +6370,7 @@ export const distributeDatasetEntries: API.OperationMethod<
   DistributeDatasetEntriesResponse,
   DistributeDatasetEntriesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DistributeDatasetEntriesRequest,
   output: DistributeDatasetEntriesResponse,
   errors: [
@@ -6407,7 +6407,7 @@ export const getCelebrityInfo: API.OperationMethod<
   GetCelebrityInfoResponse,
   GetCelebrityInfoError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCelebrityInfoRequest,
   output: GetCelebrityInfoResponse,
   errors: [
@@ -6494,7 +6494,7 @@ export const getCelebrityRecognition: API.OperationMethod<
     GetCelebrityRecognitionError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetCelebrityRecognitionRequest,
   output: GetCelebrityRecognitionResponse,
   errors: [
@@ -6574,7 +6574,7 @@ export const getContentModeration: API.OperationMethod<
     GetContentModerationError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetContentModerationRequest,
   output: GetContentModerationResponse,
   errors: [
@@ -6641,7 +6641,7 @@ export const getFaceDetection: API.OperationMethod<
     GetFaceDetectionError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetFaceDetectionRequest,
   output: GetFaceDetectionResponse,
   errors: [
@@ -6684,7 +6684,7 @@ export const getFaceLivenessSessionResults: API.OperationMethod<
   GetFaceLivenessSessionResultsResponse,
   GetFaceLivenessSessionResultsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFaceLivenessSessionResultsRequest,
   output: GetFaceLivenessSessionResultsResponse,
   errors: [
@@ -6758,7 +6758,7 @@ export const getFaceSearch: API.OperationMethod<
     GetFaceSearchError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetFaceSearchRequest,
   output: GetFaceSearchResponse,
   errors: [
@@ -6873,7 +6873,7 @@ export const getLabelDetection: API.OperationMethod<
     GetLabelDetectionError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetLabelDetectionRequest,
   output: GetLabelDetectionResponse,
   errors: [
@@ -6908,7 +6908,7 @@ export const getMediaAnalysisJob: API.OperationMethod<
   GetMediaAnalysisJobResponse,
   GetMediaAnalysisJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMediaAnalysisJobRequest,
   output: GetMediaAnalysisJobResponse,
   errors: [
@@ -6984,7 +6984,7 @@ export const getPersonTracking: API.OperationMethod<
     GetPersonTrackingError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetPersonTrackingRequest,
   output: GetPersonTrackingResponse,
   errors: [
@@ -7059,7 +7059,7 @@ export const getSegmentDetection: API.OperationMethod<
     GetSegmentDetectionError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetSegmentDetectionRequest,
   output: GetSegmentDetectionResponse,
   errors: [
@@ -7130,7 +7130,7 @@ export const getTextDetection: API.OperationMethod<
     GetTextDetectionError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTextDetectionRequest,
   output: GetTextDetectionResponse,
   errors: [
@@ -7259,7 +7259,7 @@ export const indexFaces: API.OperationMethod<
   IndexFacesResponse,
   IndexFacesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: IndexFacesRequest,
   output: IndexFacesResponse,
   errors: [
@@ -7315,7 +7315,7 @@ export const listCollections: API.OperationMethod<
     ListCollectionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCollectionsRequest,
   output: ListCollectionsResponse,
   errors: [
@@ -7383,7 +7383,7 @@ export const listDatasetEntries: API.OperationMethod<
     ListDatasetEntriesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatasetEntriesRequest,
   output: ListDatasetEntriesResponse,
   errors: [
@@ -7444,7 +7444,7 @@ export const listDatasetLabels: API.OperationMethod<
     ListDatasetLabelsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatasetLabelsRequest,
   output: ListDatasetLabelsResponse,
   errors: [
@@ -7503,7 +7503,7 @@ export const listFaces: API.OperationMethod<
     ListFacesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFacesRequest,
   output: ListFacesResponse,
   errors: [
@@ -7553,7 +7553,7 @@ export const listMediaAnalysisJobs: API.OperationMethod<
     ListMediaAnalysisJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMediaAnalysisJobsRequest,
   output: ListMediaAnalysisJobsResponse,
   errors: [
@@ -7608,7 +7608,7 @@ export const listProjectPolicies: API.OperationMethod<
     ListProjectPoliciesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectPoliciesRequest,
   output: ListProjectPoliciesResponse,
   errors: [
@@ -7658,7 +7658,7 @@ export const listStreamProcessors: API.OperationMethod<
     ListStreamProcessorsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStreamProcessorsRequest,
   output: ListStreamProcessorsResponse,
   errors: [
@@ -7695,7 +7695,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -7743,7 +7743,7 @@ export const listUsers: API.OperationMethod<
     ListUsersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsersRequest,
   output: ListUsersResponse,
   errors: [
@@ -7803,7 +7803,7 @@ export const putProjectPolicy: API.OperationMethod<
   PutProjectPolicyResponse,
   PutProjectPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutProjectPolicyRequest,
   output: PutProjectPolicyResponse,
   errors: [
@@ -7869,7 +7869,7 @@ export const recognizeCelebrities: API.OperationMethod<
   RecognizeCelebritiesResponse,
   RecognizeCelebritiesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RecognizeCelebritiesRequest,
   output: RecognizeCelebritiesResponse,
   errors: [
@@ -7916,7 +7916,7 @@ export const searchFaces: API.OperationMethod<
   SearchFacesResponse,
   SearchFacesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SearchFacesRequest,
   output: SearchFacesResponse,
   errors: [
@@ -7988,7 +7988,7 @@ export const searchFacesByImage: API.OperationMethod<
   SearchFacesByImageResponse,
   SearchFacesByImageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SearchFacesByImageRequest,
   output: SearchFacesByImageResponse,
   errors: [
@@ -8024,7 +8024,7 @@ export const searchUsers: API.OperationMethod<
   SearchUsersResponse,
   SearchUsersError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SearchUsersRequest,
   output: SearchUsersResponse,
   errors: [
@@ -8065,7 +8065,7 @@ export const searchUsersByImage: API.OperationMethod<
   SearchUsersByImageResponse,
   SearchUsersByImageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SearchUsersByImageRequest,
   output: SearchUsersByImageResponse,
   errors: [
@@ -8111,7 +8111,7 @@ export const startCelebrityRecognition: API.OperationMethod<
   StartCelebrityRecognitionResponse,
   StartCelebrityRecognitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartCelebrityRecognitionRequest,
   output: StartCelebrityRecognitionResponse,
   errors: [
@@ -8158,7 +8158,7 @@ export const startContentModeration: API.OperationMethod<
   StartContentModerationResponse,
   StartContentModerationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartContentModerationRequest,
   output: StartContentModerationResponse,
   errors: [
@@ -8205,7 +8205,7 @@ export const startFaceDetection: API.OperationMethod<
   StartFaceDetectionResponse,
   StartFaceDetectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartFaceDetectionRequest,
   output: StartFaceDetectionResponse,
   errors: [
@@ -8250,7 +8250,7 @@ export const startFaceSearch: API.OperationMethod<
   StartFaceSearchResponse,
   StartFaceSearchError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartFaceSearchRequest,
   output: StartFaceSearchResponse,
   errors: [
@@ -8312,7 +8312,7 @@ export const startLabelDetection: API.OperationMethod<
   StartLabelDetectionResponse,
   StartLabelDetectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartLabelDetectionRequest,
   output: StartLabelDetectionResponse,
   errors: [
@@ -8349,7 +8349,7 @@ export const startMediaAnalysisJob: API.OperationMethod<
   StartMediaAnalysisJobResponse,
   StartMediaAnalysisJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartMediaAnalysisJobRequest,
   output: StartMediaAnalysisJobResponse,
   errors: [
@@ -8400,7 +8400,7 @@ export const startPersonTracking: API.OperationMethod<
   StartPersonTrackingResponse,
   StartPersonTrackingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartPersonTrackingRequest,
   output: StartPersonTrackingResponse,
   errors: [
@@ -8445,7 +8445,7 @@ export const startProjectVersion: API.OperationMethod<
   StartProjectVersionResponse,
   StartProjectVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartProjectVersionRequest,
   output: StartProjectVersionResponse,
   errors: [
@@ -8495,7 +8495,7 @@ export const startSegmentDetection: API.OperationMethod<
   StartSegmentDetectionResponse,
   StartSegmentDetectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartSegmentDetectionRequest,
   output: StartSegmentDetectionResponse,
   errors: [
@@ -8531,7 +8531,7 @@ export const startStreamProcessor: API.OperationMethod<
   StartStreamProcessorResponse,
   StartStreamProcessorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartStreamProcessorRequest,
   output: StartStreamProcessorResponse,
   errors: [
@@ -8572,7 +8572,7 @@ export const startTextDetection: API.OperationMethod<
   StartTextDetectionResponse,
   StartTextDetectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartTextDetectionRequest,
   output: StartTextDetectionResponse,
   errors: [
@@ -8610,7 +8610,7 @@ export const stopProjectVersion: API.OperationMethod<
   StopProjectVersionResponse,
   StopProjectVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopProjectVersionRequest,
   output: StopProjectVersionResponse,
   errors: [
@@ -8640,7 +8640,7 @@ export const stopStreamProcessor: API.OperationMethod<
   StopStreamProcessorResponse,
   StopStreamProcessorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopStreamProcessorRequest,
   output: StopStreamProcessorResponse,
   errors: [
@@ -8675,7 +8675,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -8708,7 +8708,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -8764,7 +8764,7 @@ export const updateDatasetEntries: API.OperationMethod<
   UpdateDatasetEntriesResponse,
   UpdateDatasetEntriesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDatasetEntriesRequest,
   output: UpdateDatasetEntriesResponse,
   errors: [
@@ -8795,7 +8795,7 @@ export const updateStreamProcessor: API.OperationMethod<
   UpdateStreamProcessorResponse,
   UpdateStreamProcessorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateStreamProcessorRequest,
   output: UpdateStreamProcessorResponse,
   errors: [

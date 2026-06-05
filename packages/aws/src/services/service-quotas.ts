@@ -1159,7 +1159,7 @@ export const associateServiceQuotaTemplate: API.OperationMethod<
   AssociateServiceQuotaTemplateResponse,
   AssociateServiceQuotaTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateServiceQuotaTemplateRequest,
   output: AssociateServiceQuotaTemplateResponse,
   errors: [
@@ -1192,7 +1192,7 @@ export const createSupportCase: API.OperationMethod<
   CreateSupportCaseResponse,
   CreateSupportCaseError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSupportCaseRequest,
   output: CreateSupportCaseResponse,
   errors: [
@@ -1226,7 +1226,7 @@ export const deleteServiceQuotaIncreaseRequestFromTemplate: API.OperationMethod<
   DeleteServiceQuotaIncreaseRequestFromTemplateResponse,
   DeleteServiceQuotaIncreaseRequestFromTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteServiceQuotaIncreaseRequestFromTemplateRequest,
   output: DeleteServiceQuotaIncreaseRequestFromTemplateResponse,
   errors: [
@@ -1261,7 +1261,7 @@ export const disassociateServiceQuotaTemplate: API.OperationMethod<
   DisassociateServiceQuotaTemplateResponse,
   DisassociateServiceQuotaTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateServiceQuotaTemplateRequest,
   output: DisassociateServiceQuotaTemplateResponse,
   errors: [
@@ -1293,7 +1293,7 @@ export const getAssociationForServiceQuotaTemplate: API.OperationMethod<
   GetAssociationForServiceQuotaTemplateResponse,
   GetAssociationForServiceQuotaTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAssociationForServiceQuotaTemplateRequest,
   output: GetAssociationForServiceQuotaTemplateResponse,
   errors: [
@@ -1323,7 +1323,7 @@ export const getAutoManagementConfiguration: API.OperationMethod<
   GetAutoManagementConfigurationResponse,
   GetAutoManagementConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAutoManagementConfigurationRequest,
   output: GetAutoManagementConfigurationResponse,
   errors: [
@@ -1350,7 +1350,7 @@ export const getAWSDefaultServiceQuota: API.OperationMethod<
   GetAWSDefaultServiceQuotaResponse,
   GetAWSDefaultServiceQuotaError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAWSDefaultServiceQuotaRequest,
   output: GetAWSDefaultServiceQuotaResponse,
   errors: [
@@ -1387,7 +1387,7 @@ export const getQuotaUtilizationReport: API.OperationMethod<
   GetQuotaUtilizationReportResponse,
   GetQuotaUtilizationReportError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetQuotaUtilizationReportRequest,
   output: GetQuotaUtilizationReportResponse,
   errors: [
@@ -1413,7 +1413,7 @@ export const getRequestedServiceQuotaChange: API.OperationMethod<
   GetRequestedServiceQuotaChangeResponse,
   GetRequestedServiceQuotaChangeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRequestedServiceQuotaChangeRequest,
   output: GetRequestedServiceQuotaChangeResponse,
   errors: [
@@ -1441,7 +1441,7 @@ export const getServiceQuota: API.OperationMethod<
   GetServiceQuotaResponse,
   GetServiceQuotaError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetServiceQuotaRequest,
   output: GetServiceQuotaResponse,
   errors: [
@@ -1472,7 +1472,7 @@ export const getServiceQuotaIncreaseRequestFromTemplate: API.OperationMethod<
   GetServiceQuotaIncreaseRequestFromTemplateResponse,
   GetServiceQuotaIncreaseRequestFromTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetServiceQuotaIncreaseRequestFromTemplateRequest,
   output: GetServiceQuotaIncreaseRequestFromTemplateResponse,
   errors: [
@@ -1519,7 +1519,7 @@ export const listAWSDefaultServiceQuotas: API.OperationMethod<
     ListAWSDefaultServiceQuotasError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAWSDefaultServiceQuotasRequest,
   output: ListAWSDefaultServiceQuotasResponse,
   errors: [
@@ -1570,7 +1570,7 @@ export const listRequestedServiceQuotaChangeHistory: API.OperationMethod<
     ListRequestedServiceQuotaChangeHistoryError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRequestedServiceQuotaChangeHistoryRequest,
   output: ListRequestedServiceQuotaChangeHistoryResponse,
   errors: [
@@ -1620,7 +1620,7 @@ export const listRequestedServiceQuotaChangeHistoryByQuota: API.OperationMethod<
     ListRequestedServiceQuotaChangeHistoryByQuotaError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRequestedServiceQuotaChangeHistoryByQuotaRequest,
   output: ListRequestedServiceQuotaChangeHistoryByQuotaResponse,
   errors: [
@@ -1671,7 +1671,7 @@ export const listServiceQuotaIncreaseRequestsInTemplate: API.OperationMethod<
     ListServiceQuotaIncreaseRequestsInTemplateError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServiceQuotaIncreaseRequestsInTemplateRequest,
   output: ListServiceQuotaIncreaseRequestsInTemplateResponse,
   errors: [
@@ -1725,7 +1725,7 @@ export const listServiceQuotas: API.OperationMethod<
     ListServiceQuotasError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServiceQuotasRequest,
   output: ListServiceQuotasResponse,
   errors: [
@@ -1773,7 +1773,7 @@ export const listServices: API.OperationMethod<
     ListServicesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicesRequest,
   output: ListServicesResponse,
   errors: [
@@ -1805,7 +1805,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -1836,7 +1836,7 @@ export const putServiceQuotaIncreaseRequestIntoTemplate: API.OperationMethod<
   PutServiceQuotaIncreaseRequestIntoTemplateResponse,
   PutServiceQuotaIncreaseRequestIntoTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutServiceQuotaIncreaseRequestIntoTemplateRequest,
   output: PutServiceQuotaIncreaseRequestIntoTemplateResponse,
   errors: [
@@ -1872,7 +1872,7 @@ export const requestServiceQuotaIncrease: API.OperationMethod<
   RequestServiceQuotaIncreaseResponse,
   RequestServiceQuotaIncreaseError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RequestServiceQuotaIncreaseRequest,
   output: RequestServiceQuotaIncreaseResponse,
   errors: [
@@ -1904,7 +1904,7 @@ export const startAutoManagement: API.OperationMethod<
   StartAutoManagementResponse,
   StartAutoManagementError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartAutoManagementRequest,
   output: StartAutoManagementResponse,
   errors: [
@@ -1937,7 +1937,7 @@ export const startQuotaUtilizationReport: API.OperationMethod<
   StartQuotaUtilizationReportResponse,
   StartQuotaUtilizationReportError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartQuotaUtilizationReportRequest,
   output: StartQuotaUtilizationReportResponse,
   errors: [
@@ -1966,7 +1966,7 @@ export const stopAutoManagement: API.OperationMethod<
   StopAutoManagementResponse,
   StopAutoManagementError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopAutoManagementRequest,
   output: StopAutoManagementResponse,
   errors: [
@@ -1995,7 +1995,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -2024,7 +2024,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -2052,7 +2052,7 @@ export const updateAutoManagement: API.OperationMethod<
   UpdateAutoManagementResponse,
   UpdateAutoManagementError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAutoManagementRequest,
   output: UpdateAutoManagementResponse,
   errors: [

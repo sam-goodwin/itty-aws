@@ -1019,7 +1019,7 @@ export const createPerformanceAnalysisReport: API.OperationMethod<
   CreatePerformanceAnalysisReportResponse,
   CreatePerformanceAnalysisReportError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePerformanceAnalysisReportRequest,
   output: CreatePerformanceAnalysisReportResponse,
   errors: [
@@ -1041,7 +1041,7 @@ export const deletePerformanceAnalysisReport: API.OperationMethod<
   DeletePerformanceAnalysisReportResponse,
   DeletePerformanceAnalysisReportError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePerformanceAnalysisReportRequest,
   output: DeletePerformanceAnalysisReportResponse,
   errors: [
@@ -1081,7 +1081,7 @@ export const describeDimensionKeys: API.OperationMethod<
     DescribeDimensionKeysError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDimensionKeysRequest,
   output: DescribeDimensionKeysResponse,
   errors: [
@@ -1111,7 +1111,7 @@ export const getDimensionKeyDetails: API.OperationMethod<
   GetDimensionKeyDetailsResponse,
   GetDimensionKeyDetailsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDimensionKeyDetailsRequest,
   output: GetDimensionKeyDetailsResponse,
   errors: [
@@ -1136,7 +1136,7 @@ export const getPerformanceAnalysisReport: API.OperationMethod<
   GetPerformanceAnalysisReportResponse,
   GetPerformanceAnalysisReportError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPerformanceAnalysisReportRequest,
   output: GetPerformanceAnalysisReportResponse,
   errors: [
@@ -1159,7 +1159,7 @@ export const getResourceMetadata: API.OperationMethod<
   GetResourceMetadataResponse,
   GetResourceMetadataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResourceMetadataRequest,
   output: GetResourceMetadataResponse,
   errors: [
@@ -1201,7 +1201,7 @@ export const getResourceMetrics: API.OperationMethod<
     GetResourceMetricsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetResourceMetricsRequest,
   output: GetResourceMetricsResponse,
   errors: [
@@ -1243,7 +1243,7 @@ export const listAvailableResourceDimensions: API.OperationMethod<
     ListAvailableResourceDimensionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAvailableResourceDimensionsRequest,
   output: ListAvailableResourceDimensionsResponse,
   errors: [
@@ -1285,7 +1285,7 @@ export const listAvailableResourceMetrics: API.OperationMethod<
     ListAvailableResourceMetricsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAvailableResourceMetricsRequest,
   output: ListAvailableResourceMetricsResponse,
   errors: [
@@ -1327,7 +1327,7 @@ export const listPerformanceAnalysisReports: API.OperationMethod<
     ListPerformanceAnalysisReportsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPerformanceAnalysisReportsRequest,
   output: ListPerformanceAnalysisReportsResponse,
   errors: [
@@ -1354,7 +1354,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -1376,7 +1376,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -1398,7 +1398,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [

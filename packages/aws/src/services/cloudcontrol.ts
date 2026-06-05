@@ -567,7 +567,7 @@ export const cancelResourceRequest: API.OperationMethod<
   CancelResourceRequestOutput,
   CancelResourceRequestError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelResourceRequestInput,
   output: CancelResourceRequestOutput,
   errors: [ConcurrentModificationException, RequestTokenNotFoundException],
@@ -606,7 +606,7 @@ export const createResource: API.OperationMethod<
   CreateResourceOutput,
   CreateResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateResourceInput,
   output: CreateResourceOutput,
   errors: [
@@ -665,7 +665,7 @@ export const deleteResource: API.OperationMethod<
   DeleteResourceOutput,
   DeleteResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourceInput,
   output: DeleteResourceOutput,
   errors: [
@@ -721,7 +721,7 @@ export const getResource: API.OperationMethod<
   GetResourceOutput,
   GetResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResourceInput,
   output: GetResourceOutput,
   errors: [
@@ -757,7 +757,7 @@ export const getResourceRequestStatus: API.OperationMethod<
   GetResourceRequestStatusOutput,
   GetResourceRequestStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResourceRequestStatusInput,
   output: GetResourceRequestStatusOutput,
   errors: [RequestTokenNotFoundException],
@@ -790,7 +790,7 @@ export const listResourceRequests: API.OperationMethod<
     ListResourceRequestsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceRequestsInput,
   output: ListResourceRequestsOutput,
   errors: [],
@@ -846,7 +846,7 @@ export const listResources: API.OperationMethod<
     ListResourcesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourcesInput,
   output: ListResourcesOutput,
   errors: [
@@ -919,7 +919,7 @@ export const updateResource: API.OperationMethod<
   UpdateResourceOutput,
   UpdateResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateResourceInput,
   output: UpdateResourceOutput,
   errors: [

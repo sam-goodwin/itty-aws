@@ -5478,7 +5478,7 @@ export const acceptAttachment: API.OperationMethod<
   AcceptAttachmentResponse,
   AcceptAttachmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AcceptAttachmentRequest,
   output: AcceptAttachmentResponse,
   errors: [
@@ -5511,7 +5511,7 @@ export const associateConnectPeer: API.OperationMethod<
   AssociateConnectPeerResponse,
   AssociateConnectPeerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateConnectPeerRequest,
   output: AssociateConnectPeerResponse,
   errors: [
@@ -5551,7 +5551,7 @@ export const associateCustomerGateway: API.OperationMethod<
   AssociateCustomerGatewayResponse,
   AssociateCustomerGatewayError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateCustomerGatewayRequest,
   output: AssociateCustomerGatewayResponse,
   errors: [
@@ -5581,7 +5581,7 @@ export const associateLink: API.OperationMethod<
   AssociateLinkResponse,
   AssociateLinkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateLinkRequest,
   output: AssociateLinkResponse,
   errors: [
@@ -5617,7 +5617,7 @@ export const associateTransitGatewayConnectPeer: API.OperationMethod<
   AssociateTransitGatewayConnectPeerResponse,
   AssociateTransitGatewayConnectPeerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateTransitGatewayConnectPeerRequest,
   output: AssociateTransitGatewayConnectPeerResponse,
   errors: [
@@ -5650,7 +5650,7 @@ export const createConnectAttachment: API.OperationMethod<
   CreateConnectAttachmentResponse,
   CreateConnectAttachmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateConnectAttachmentRequest,
   output: CreateConnectAttachmentResponse,
   errors: [
@@ -5678,7 +5678,7 @@ export const createConnection: API.OperationMethod<
   CreateConnectionResponse,
   CreateConnectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateConnectionRequest,
   output: CreateConnectionResponse,
   errors: [
@@ -5707,7 +5707,7 @@ export const createConnectPeer: API.OperationMethod<
   CreateConnectPeerResponse,
   CreateConnectPeerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateConnectPeerRequest,
   output: CreateConnectPeerResponse,
   errors: [
@@ -5736,7 +5736,7 @@ export const createCoreNetwork: API.OperationMethod<
   CreateCoreNetworkResponse,
   CreateCoreNetworkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCoreNetworkRequest,
   output: CreateCoreNetworkResponse,
   errors: [
@@ -5766,7 +5766,7 @@ export const createCoreNetworkPrefixListAssociation: API.OperationMethod<
   CreateCoreNetworkPrefixListAssociationResponse,
   CreateCoreNetworkPrefixListAssociationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCoreNetworkPrefixListAssociationRequest,
   output: CreateCoreNetworkPrefixListAssociationResponse,
   errors: [
@@ -5797,7 +5797,7 @@ export const createDevice: API.OperationMethod<
   CreateDeviceResponse,
   CreateDeviceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDeviceRequest,
   output: CreateDeviceResponse,
   errors: [
@@ -5826,7 +5826,7 @@ export const createDirectConnectGatewayAttachment: API.OperationMethod<
   CreateDirectConnectGatewayAttachmentResponse,
   CreateDirectConnectGatewayAttachmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDirectConnectGatewayAttachmentRequest,
   output: CreateDirectConnectGatewayAttachmentResponse,
   errors: [
@@ -5854,7 +5854,7 @@ export const createGlobalNetwork: API.OperationMethod<
   CreateGlobalNetworkResponse,
   CreateGlobalNetworkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateGlobalNetworkRequest,
   output: CreateGlobalNetworkResponse,
   errors: [
@@ -5883,7 +5883,7 @@ export const createLink: API.OperationMethod<
   CreateLinkResponse,
   CreateLinkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLinkRequest,
   output: CreateLinkResponse,
   errors: [
@@ -5913,7 +5913,7 @@ export const createSite: API.OperationMethod<
   CreateSiteResponse,
   CreateSiteError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSiteRequest,
   output: CreateSiteResponse,
   errors: [
@@ -5942,7 +5942,7 @@ export const createSiteToSiteVpnAttachment: API.OperationMethod<
   CreateSiteToSiteVpnAttachmentResponse,
   CreateSiteToSiteVpnAttachmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSiteToSiteVpnAttachmentRequest,
   output: CreateSiteToSiteVpnAttachmentResponse,
   errors: [
@@ -5970,7 +5970,7 @@ export const createTransitGatewayPeering: API.OperationMethod<
   CreateTransitGatewayPeeringResponse,
   CreateTransitGatewayPeeringError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTransitGatewayPeeringRequest,
   output: CreateTransitGatewayPeeringResponse,
   errors: [
@@ -5998,7 +5998,7 @@ export const createTransitGatewayRouteTableAttachment: API.OperationMethod<
   CreateTransitGatewayRouteTableAttachmentResponse,
   CreateTransitGatewayRouteTableAttachmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTransitGatewayRouteTableAttachmentRequest,
   output: CreateTransitGatewayRouteTableAttachmentResponse,
   errors: [
@@ -6026,7 +6026,7 @@ export const createVpcAttachment: API.OperationMethod<
   CreateVpcAttachmentResponse,
   CreateVpcAttachmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateVpcAttachmentRequest,
   output: CreateVpcAttachmentResponse,
   errors: [
@@ -6054,7 +6054,7 @@ export const deleteAttachment: API.OperationMethod<
   DeleteAttachmentResponse,
   DeleteAttachmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAttachmentRequest,
   output: DeleteAttachmentResponse,
   errors: [
@@ -6082,7 +6082,7 @@ export const deleteConnection: API.OperationMethod<
   DeleteConnectionResponse,
   DeleteConnectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConnectionRequest,
   output: DeleteConnectionResponse,
   errors: [
@@ -6110,7 +6110,7 @@ export const deleteConnectPeer: API.OperationMethod<
   DeleteConnectPeerResponse,
   DeleteConnectPeerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConnectPeerRequest,
   output: DeleteConnectPeerResponse,
   errors: [
@@ -6138,7 +6138,7 @@ export const deleteCoreNetwork: API.OperationMethod<
   DeleteCoreNetworkResponse,
   DeleteCoreNetworkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCoreNetworkRequest,
   output: DeleteCoreNetworkResponse,
   errors: [
@@ -6166,7 +6166,7 @@ export const deleteCoreNetworkPolicyVersion: API.OperationMethod<
   DeleteCoreNetworkPolicyVersionResponse,
   DeleteCoreNetworkPolicyVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCoreNetworkPolicyVersionRequest,
   output: DeleteCoreNetworkPolicyVersionResponse,
   errors: [
@@ -6195,7 +6195,7 @@ export const deleteCoreNetworkPrefixListAssociation: API.OperationMethod<
   DeleteCoreNetworkPrefixListAssociationResponse,
   DeleteCoreNetworkPrefixListAssociationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCoreNetworkPrefixListAssociationRequest,
   output: DeleteCoreNetworkPrefixListAssociationResponse,
   errors: [
@@ -6225,7 +6225,7 @@ export const deleteDevice: API.OperationMethod<
   DeleteDeviceResponse,
   DeleteDeviceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDeviceRequest,
   output: DeleteDeviceResponse,
   errors: [
@@ -6254,7 +6254,7 @@ export const deleteGlobalNetwork: API.OperationMethod<
   DeleteGlobalNetworkResponse,
   DeleteGlobalNetworkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteGlobalNetworkRequest,
   output: DeleteGlobalNetworkResponse,
   errors: [
@@ -6283,7 +6283,7 @@ export const deleteLink: API.OperationMethod<
   DeleteLinkResponse,
   DeleteLinkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLinkRequest,
   output: DeleteLinkResponse,
   errors: [
@@ -6311,7 +6311,7 @@ export const deletePeering: API.OperationMethod<
   DeletePeeringResponse,
   DeletePeeringError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePeeringRequest,
   output: DeletePeeringResponse,
   errors: [
@@ -6338,7 +6338,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyResponse,
   DeleteResourcePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourcePolicyRequest,
   output: DeleteResourcePolicyResponse,
   errors: [
@@ -6365,7 +6365,7 @@ export const deleteSite: API.OperationMethod<
   DeleteSiteResponse,
   DeleteSiteError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSiteRequest,
   output: DeleteSiteResponse,
   errors: [
@@ -6394,7 +6394,7 @@ export const deregisterTransitGateway: API.OperationMethod<
   DeregisterTransitGatewayResponse,
   DeregisterTransitGatewayError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeregisterTransitGatewayRequest,
   output: DeregisterTransitGatewayResponse,
   errors: [
@@ -6439,7 +6439,7 @@ export const describeGlobalNetworks: API.OperationMethod<
     DescribeGlobalNetworksError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeGlobalNetworksRequest,
   output: DescribeGlobalNetworksResponse,
   errors: [
@@ -6472,7 +6472,7 @@ export const disassociateConnectPeer: API.OperationMethod<
   DisassociateConnectPeerResponse,
   DisassociateConnectPeerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateConnectPeerRequest,
   output: DisassociateConnectPeerResponse,
   errors: [
@@ -6500,7 +6500,7 @@ export const disassociateCustomerGateway: API.OperationMethod<
   DisassociateCustomerGatewayResponse,
   DisassociateCustomerGatewayError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateCustomerGatewayRequest,
   output: DisassociateCustomerGatewayResponse,
   errors: [
@@ -6529,7 +6529,7 @@ export const disassociateLink: API.OperationMethod<
   DisassociateLinkResponse,
   DisassociateLinkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateLinkRequest,
   output: DisassociateLinkResponse,
   errors: [
@@ -6557,7 +6557,7 @@ export const disassociateTransitGatewayConnectPeer: API.OperationMethod<
   DisassociateTransitGatewayConnectPeerResponse,
   DisassociateTransitGatewayConnectPeerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateTransitGatewayConnectPeerRequest,
   output: DisassociateTransitGatewayConnectPeerResponse,
   errors: [
@@ -6585,7 +6585,7 @@ export const executeCoreNetworkChangeSet: API.OperationMethod<
   ExecuteCoreNetworkChangeSetResponse,
   ExecuteCoreNetworkChangeSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExecuteCoreNetworkChangeSetRequest,
   output: ExecuteCoreNetworkChangeSetResponse,
   errors: [
@@ -6612,7 +6612,7 @@ export const getConnectAttachment: API.OperationMethod<
   GetConnectAttachmentResponse,
   GetConnectAttachmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConnectAttachmentRequest,
   output: GetConnectAttachmentResponse,
   errors: [
@@ -6653,7 +6653,7 @@ export const getConnections: API.OperationMethod<
     GetConnectionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetConnectionsRequest,
   output: GetConnectionsResponse,
   errors: [
@@ -6685,7 +6685,7 @@ export const getConnectPeer: API.OperationMethod<
   GetConnectPeerResponse,
   GetConnectPeerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConnectPeerRequest,
   output: GetConnectPeerResponse,
   errors: [
@@ -6727,7 +6727,7 @@ export const getConnectPeerAssociations: API.OperationMethod<
     GetConnectPeerAssociationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetConnectPeerAssociationsRequest,
   output: GetConnectPeerAssociationsResponse,
   errors: [
@@ -6760,7 +6760,7 @@ export const getCoreNetwork: API.OperationMethod<
   GetCoreNetworkResponse,
   GetCoreNetworkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCoreNetworkRequest,
   output: GetCoreNetworkResponse,
   errors: [
@@ -6801,7 +6801,7 @@ export const getCoreNetworkChangeEvents: API.OperationMethod<
     GetCoreNetworkChangeEventsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetCoreNetworkChangeEventsRequest,
   output: GetCoreNetworkChangeEventsResponse,
   errors: [
@@ -6848,7 +6848,7 @@ export const getCoreNetworkChangeSet: API.OperationMethod<
     GetCoreNetworkChangeSetError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetCoreNetworkChangeSetRequest,
   output: GetCoreNetworkChangeSetResponse,
   errors: [
@@ -6880,7 +6880,7 @@ export const getCoreNetworkPolicy: API.OperationMethod<
   GetCoreNetworkPolicyResponse,
   GetCoreNetworkPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCoreNetworkPolicyRequest,
   output: GetCoreNetworkPolicyResponse,
   errors: [
@@ -6923,7 +6923,7 @@ export const getCustomerGatewayAssociations: API.OperationMethod<
     GetCustomerGatewayAssociationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetCustomerGatewayAssociationsRequest,
   output: GetCustomerGatewayAssociationsResponse,
   errors: [
@@ -6971,7 +6971,7 @@ export const getDevices: API.OperationMethod<
     GetDevicesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetDevicesRequest,
   output: GetDevicesResponse,
   errors: [
@@ -7003,7 +7003,7 @@ export const getDirectConnectGatewayAttachment: API.OperationMethod<
   GetDirectConnectGatewayAttachmentResponse,
   GetDirectConnectGatewayAttachmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDirectConnectGatewayAttachmentRequest,
   output: GetDirectConnectGatewayAttachmentResponse,
   errors: [
@@ -7045,7 +7045,7 @@ export const getLinkAssociations: API.OperationMethod<
     GetLinkAssociationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetLinkAssociationsRequest,
   output: GetLinkAssociationsResponse,
   errors: [
@@ -7094,7 +7094,7 @@ export const getLinks: API.OperationMethod<
     GetLinksError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetLinksRequest,
   output: GetLinksResponse,
   errors: [
@@ -7140,7 +7140,7 @@ export const getNetworkResourceCounts: API.OperationMethod<
     GetNetworkResourceCountsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetNetworkResourceCountsRequest,
   output: GetNetworkResourceCountsResponse,
   errors: [
@@ -7186,7 +7186,7 @@ export const getNetworkResourceRelationships: API.OperationMethod<
     GetNetworkResourceRelationshipsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetNetworkResourceRelationshipsRequest,
   output: GetNetworkResourceRelationshipsResponse,
   errors: [
@@ -7235,7 +7235,7 @@ export const getNetworkResources: API.OperationMethod<
     GetNetworkResourcesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetNetworkResourcesRequest,
   output: GetNetworkResourcesResponse,
   errors: [
@@ -7267,7 +7267,7 @@ export const getNetworkRoutes: API.OperationMethod<
   GetNetworkRoutesResponse,
   GetNetworkRoutesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetNetworkRoutesRequest,
   output: GetNetworkRoutesResponse,
   errors: [
@@ -7308,7 +7308,7 @@ export const getNetworkTelemetry: API.OperationMethod<
     GetNetworkTelemetryError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetNetworkTelemetryRequest,
   output: GetNetworkTelemetryResponse,
   errors: [
@@ -7339,7 +7339,7 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyResponse,
   GetResourcePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResourcePolicyRequest,
   output: GetResourcePolicyResponse,
   errors: [
@@ -7364,7 +7364,7 @@ export const getRouteAnalysis: API.OperationMethod<
   GetRouteAnalysisResponse,
   GetRouteAnalysisError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRouteAnalysisRequest,
   output: GetRouteAnalysisResponse,
   errors: [
@@ -7405,7 +7405,7 @@ export const getSites: API.OperationMethod<
     GetSitesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetSitesRequest,
   output: GetSitesResponse,
   errors: [
@@ -7437,7 +7437,7 @@ export const getSiteToSiteVpnAttachment: API.OperationMethod<
   GetSiteToSiteVpnAttachmentResponse,
   GetSiteToSiteVpnAttachmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSiteToSiteVpnAttachmentRequest,
   output: GetSiteToSiteVpnAttachmentResponse,
   errors: [
@@ -7479,7 +7479,7 @@ export const getTransitGatewayConnectPeerAssociations: API.OperationMethod<
     GetTransitGatewayConnectPeerAssociationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTransitGatewayConnectPeerAssociationsRequest,
   output: GetTransitGatewayConnectPeerAssociationsResponse,
   errors: [
@@ -7512,7 +7512,7 @@ export const getTransitGatewayPeering: API.OperationMethod<
   GetTransitGatewayPeeringResponse,
   GetTransitGatewayPeeringError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTransitGatewayPeeringRequest,
   output: GetTransitGatewayPeeringResponse,
   errors: [
@@ -7554,7 +7554,7 @@ export const getTransitGatewayRegistrations: API.OperationMethod<
     GetTransitGatewayRegistrationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTransitGatewayRegistrationsRequest,
   output: GetTransitGatewayRegistrationsResponse,
   errors: [
@@ -7586,7 +7586,7 @@ export const getTransitGatewayRouteTableAttachment: API.OperationMethod<
   GetTransitGatewayRouteTableAttachmentResponse,
   GetTransitGatewayRouteTableAttachmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTransitGatewayRouteTableAttachmentRequest,
   output: GetTransitGatewayRouteTableAttachmentResponse,
   errors: [
@@ -7612,7 +7612,7 @@ export const getVpcAttachment: API.OperationMethod<
   GetVpcAttachmentResponse,
   GetVpcAttachmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetVpcAttachmentRequest,
   output: GetVpcAttachmentResponse,
   errors: [
@@ -7653,7 +7653,7 @@ export const listAttachmentRoutingPolicyAssociations: API.OperationMethod<
     ListAttachmentRoutingPolicyAssociationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAttachmentRoutingPolicyAssociationsRequest,
   output: ListAttachmentRoutingPolicyAssociationsResponse,
   errors: [
@@ -7699,7 +7699,7 @@ export const listAttachments: API.OperationMethod<
     ListAttachmentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAttachmentsRequest,
   output: ListAttachmentsResponse,
   errors: [
@@ -7744,7 +7744,7 @@ export const listConnectPeers: API.OperationMethod<
     ListConnectPeersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConnectPeersRequest,
   output: ListConnectPeersResponse,
   errors: [
@@ -7790,7 +7790,7 @@ export const listCoreNetworkPolicyVersions: API.OperationMethod<
     ListCoreNetworkPolicyVersionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCoreNetworkPolicyVersionsRequest,
   output: ListCoreNetworkPolicyVersionsResponse,
   errors: [
@@ -7837,7 +7837,7 @@ export const listCoreNetworkPrefixListAssociations: API.OperationMethod<
     ListCoreNetworkPrefixListAssociationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCoreNetworkPrefixListAssociationsRequest,
   output: ListCoreNetworkPrefixListAssociationsResponse,
   errors: [
@@ -7884,7 +7884,7 @@ export const listCoreNetworkRoutingInformation: API.OperationMethod<
     ListCoreNetworkRoutingInformationError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCoreNetworkRoutingInformationRequest,
   output: ListCoreNetworkRoutingInformationResponse,
   errors: [
@@ -7930,7 +7930,7 @@ export const listCoreNetworks: API.OperationMethod<
     ListCoreNetworksError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCoreNetworksRequest,
   output: ListCoreNetworksResponse,
   errors: [
@@ -7955,7 +7955,7 @@ export const listOrganizationServiceAccessStatus: API.OperationMethod<
   ListOrganizationServiceAccessStatusResponse,
   ListOrganizationServiceAccessStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListOrganizationServiceAccessStatusRequest,
   output: ListOrganizationServiceAccessStatusResponse,
   errors: [],
@@ -7989,7 +7989,7 @@ export const listPeerings: API.OperationMethod<
     ListPeeringsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPeeringsRequest,
   output: ListPeeringsResponse,
   errors: [
@@ -8020,7 +8020,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -8048,7 +8048,7 @@ export const putAttachmentRoutingPolicyLabel: API.OperationMethod<
   PutAttachmentRoutingPolicyLabelResponse,
   PutAttachmentRoutingPolicyLabelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutAttachmentRoutingPolicyLabelRequest,
   output: PutAttachmentRoutingPolicyLabelResponse,
   errors: [
@@ -8078,7 +8078,7 @@ export const putCoreNetworkPolicy: API.OperationMethod<
   PutCoreNetworkPolicyResponse,
   PutCoreNetworkPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutCoreNetworkPolicyRequest,
   output: PutCoreNetworkPolicyResponse,
   errors: [
@@ -8107,7 +8107,7 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyResponse,
   PutResourcePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutResourcePolicyRequest,
   output: PutResourcePolicyResponse,
   errors: [
@@ -8139,7 +8139,7 @@ export const registerTransitGateway: API.OperationMethod<
   RegisterTransitGatewayResponse,
   RegisterTransitGatewayError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterTransitGatewayRequest,
   output: RegisterTransitGatewayResponse,
   errors: [
@@ -8167,7 +8167,7 @@ export const rejectAttachment: API.OperationMethod<
   RejectAttachmentResponse,
   RejectAttachmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RejectAttachmentRequest,
   output: RejectAttachmentResponse,
   errors: [
@@ -8196,7 +8196,7 @@ export const removeAttachmentRoutingPolicyLabel: API.OperationMethod<
   RemoveAttachmentRoutingPolicyLabelResponse,
   RemoveAttachmentRoutingPolicyLabelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveAttachmentRoutingPolicyLabelRequest,
   output: RemoveAttachmentRoutingPolicyLabelResponse,
   errors: [
@@ -8225,7 +8225,7 @@ export const restoreCoreNetworkPolicyVersion: API.OperationMethod<
   RestoreCoreNetworkPolicyVersionResponse,
   RestoreCoreNetworkPolicyVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RestoreCoreNetworkPolicyVersionRequest,
   output: RestoreCoreNetworkPolicyVersionResponse,
   errors: [
@@ -8253,7 +8253,7 @@ export const startOrganizationServiceAccessUpdate: API.OperationMethod<
   StartOrganizationServiceAccessUpdateResponse,
   StartOrganizationServiceAccessUpdateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartOrganizationServiceAccessUpdateRequest,
   output: StartOrganizationServiceAccessUpdateResponse,
   errors: [
@@ -8282,7 +8282,7 @@ export const startRouteAnalysis: API.OperationMethod<
   StartRouteAnalysisResponse,
   StartRouteAnalysisError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartRouteAnalysisRequest,
   output: StartRouteAnalysisResponse,
   errors: [
@@ -8311,7 +8311,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -8340,7 +8340,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -8369,7 +8369,7 @@ export const updateConnection: API.OperationMethod<
   UpdateConnectionResponse,
   UpdateConnectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateConnectionRequest,
   output: UpdateConnectionResponse,
   errors: [
@@ -8397,7 +8397,7 @@ export const updateCoreNetwork: API.OperationMethod<
   UpdateCoreNetworkResponse,
   UpdateCoreNetworkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCoreNetworkRequest,
   output: UpdateCoreNetworkResponse,
   errors: [
@@ -8426,7 +8426,7 @@ export const updateDevice: API.OperationMethod<
   UpdateDeviceResponse,
   UpdateDeviceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDeviceRequest,
   output: UpdateDeviceResponse,
   errors: [
@@ -8454,7 +8454,7 @@ export const updateDirectConnectGatewayAttachment: API.OperationMethod<
   UpdateDirectConnectGatewayAttachmentResponse,
   UpdateDirectConnectGatewayAttachmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDirectConnectGatewayAttachmentRequest,
   output: UpdateDirectConnectGatewayAttachmentResponse,
   errors: [
@@ -8483,7 +8483,7 @@ export const updateGlobalNetwork: API.OperationMethod<
   UpdateGlobalNetworkResponse,
   UpdateGlobalNetworkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateGlobalNetworkRequest,
   output: UpdateGlobalNetworkResponse,
   errors: [
@@ -8513,7 +8513,7 @@ export const updateLink: API.OperationMethod<
   UpdateLinkResponse,
   UpdateLinkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateLinkRequest,
   output: UpdateLinkResponse,
   errors: [
@@ -8542,7 +8542,7 @@ export const updateNetworkResourceMetadata: API.OperationMethod<
   UpdateNetworkResourceMetadataResponse,
   UpdateNetworkResourceMetadataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateNetworkResourceMetadataRequest,
   output: UpdateNetworkResourceMetadataResponse,
   errors: [
@@ -8571,7 +8571,7 @@ export const updateSite: API.OperationMethod<
   UpdateSiteResponse,
   UpdateSiteError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSiteRequest,
   output: UpdateSiteResponse,
   errors: [
@@ -8599,7 +8599,7 @@ export const updateVpcAttachment: API.OperationMethod<
   UpdateVpcAttachmentResponse,
   UpdateVpcAttachmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateVpcAttachmentRequest,
   output: UpdateVpcAttachmentResponse,
   errors: [

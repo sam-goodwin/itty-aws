@@ -588,7 +588,7 @@ export const describeReportCreation: API.OperationMethod<
   DescribeReportCreationOutput,
   DescribeReportCreationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeReportCreationInput,
   output: DescribeReportCreationOutput,
   errors: [
@@ -641,7 +641,7 @@ export const getComplianceSummary: API.OperationMethod<
     GetComplianceSummaryError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetComplianceSummaryInput,
   output: GetComplianceSummaryOutput,
   errors: [
@@ -710,7 +710,7 @@ export const getResources: API.OperationMethod<
     GetResourcesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetResourcesInput,
   output: GetResourcesOutput,
   errors: [
@@ -763,7 +763,7 @@ export const getTagKeys: API.OperationMethod<
     GetTagKeysError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTagKeysInput,
   output: GetTagKeysOutput,
   errors: [
@@ -815,7 +815,7 @@ export const getTagValues: API.OperationMethod<
     GetTagValuesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTagValuesInput,
   output: GetTagValuesOutput,
   errors: [
@@ -859,7 +859,7 @@ export const listRequiredTags: API.OperationMethod<
     ListRequiredTagsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRequiredTagsInput,
   output: ListRequiredTagsOutput,
   errors: [
@@ -910,7 +910,7 @@ export const startReportCreation: API.OperationMethod<
   StartReportCreationOutput,
   StartReportCreationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartReportCreationInput,
   output: StartReportCreationOutput,
   errors: [
@@ -983,7 +983,7 @@ export const tagResources: API.OperationMethod<
   TagResourcesOutput,
   TagResourcesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourcesInput,
   output: TagResourcesOutput,
   errors: [
@@ -1034,7 +1034,7 @@ export const untagResources: API.OperationMethod<
   UntagResourcesOutput,
   UntagResourcesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourcesInput,
   output: UntagResourcesOutput,
   errors: [

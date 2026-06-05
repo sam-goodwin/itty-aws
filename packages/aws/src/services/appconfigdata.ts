@@ -250,7 +250,7 @@ export const getLatestConfiguration: API.OperationMethod<
   GetLatestConfigurationResponse,
   GetLatestConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLatestConfigurationRequest,
   output: GetLatestConfigurationResponse,
   errors: [
@@ -277,7 +277,7 @@ export const startConfigurationSession: API.OperationMethod<
   StartConfigurationSessionResponse,
   StartConfigurationSessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartConfigurationSessionRequest,
   output: StartConfigurationSessionResponse,
   errors: [

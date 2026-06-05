@@ -6950,7 +6950,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceOutput,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [ResourceNotFoundException, ValidationException],
@@ -6967,7 +6967,7 @@ export const tagResource: API.OperationMethod<
   TagResourceOutput,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
   errors: [ResourceNotFoundException, ValidationException],
@@ -6984,7 +6984,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceOutput,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
   errors: [ResourceNotFoundException, ValidationException],
@@ -7006,7 +7006,7 @@ export const createAnalysisTemplate: API.OperationMethod<
   CreateAnalysisTemplateOutput,
   CreateAnalysisTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAnalysisTemplateInput,
   output: CreateAnalysisTemplateOutput,
   errors: [
@@ -7034,7 +7034,7 @@ export const getAnalysisTemplate: API.OperationMethod<
   GetAnalysisTemplateOutput,
   GetAnalysisTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAnalysisTemplateInput,
   output: GetAnalysisTemplateOutput,
   errors: [
@@ -7060,7 +7060,7 @@ export const updateAnalysisTemplate: API.OperationMethod<
   UpdateAnalysisTemplateOutput,
   UpdateAnalysisTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAnalysisTemplateInput,
   output: UpdateAnalysisTemplateOutput,
   errors: [
@@ -7086,7 +7086,7 @@ export const deleteAnalysisTemplate: API.OperationMethod<
   DeleteAnalysisTemplateOutput,
   DeleteAnalysisTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAnalysisTemplateInput,
   output: DeleteAnalysisTemplateOutput,
   errors: [
@@ -7127,7 +7127,7 @@ export const listAnalysisTemplates: API.OperationMethod<
     ListAnalysisTemplatesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAnalysisTemplatesInput,
   output: ListAnalysisTemplatesOutput,
   errors: [
@@ -7159,7 +7159,7 @@ export const createCollaboration: API.OperationMethod<
   CreateCollaborationOutput,
   CreateCollaborationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCollaborationInput,
   output: CreateCollaborationOutput,
   errors: [
@@ -7184,7 +7184,7 @@ export const getCollaboration: API.OperationMethod<
   GetCollaborationOutput,
   GetCollaborationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCollaborationInput,
   output: GetCollaborationOutput,
   errors: [
@@ -7208,7 +7208,7 @@ export const updateCollaboration: API.OperationMethod<
   UpdateCollaborationOutput,
   UpdateCollaborationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCollaborationInput,
   output: UpdateCollaborationOutput,
   errors: [
@@ -7232,7 +7232,7 @@ export const deleteCollaboration: API.OperationMethod<
   DeleteCollaborationOutput,
   DeleteCollaborationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCollaborationInput,
   output: DeleteCollaborationOutput,
   errors: [
@@ -7271,7 +7271,7 @@ export const listCollaborations: API.OperationMethod<
     ListCollaborationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCollaborationsInput,
   output: ListCollaborationsOutput,
   errors: [
@@ -7302,7 +7302,7 @@ export const batchGetCollaborationAnalysisTemplate: API.OperationMethod<
   BatchGetCollaborationAnalysisTemplateOutput,
   BatchGetCollaborationAnalysisTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetCollaborationAnalysisTemplateInput,
   output: BatchGetCollaborationAnalysisTemplateOutput,
   errors: [
@@ -7328,7 +7328,7 @@ export const batchGetSchema: API.OperationMethod<
   BatchGetSchemaOutput,
   BatchGetSchemaError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetSchemaInput,
   output: BatchGetSchemaOutput,
   errors: [
@@ -7354,7 +7354,7 @@ export const batchGetSchemaAnalysisRule: API.OperationMethod<
   BatchGetSchemaAnalysisRuleOutput,
   BatchGetSchemaAnalysisRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetSchemaAnalysisRuleInput,
   output: BatchGetSchemaAnalysisRuleOutput,
   errors: [
@@ -7382,7 +7382,7 @@ export const createCollaborationChangeRequest: API.OperationMethod<
   CreateCollaborationChangeRequestOutput,
   CreateCollaborationChangeRequestError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCollaborationChangeRequestInput,
   output: CreateCollaborationChangeRequestOutput,
   errors: [
@@ -7411,7 +7411,7 @@ export const deleteMember: API.OperationMethod<
   DeleteMemberOutput,
   DeleteMemberError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMemberInput,
   output: DeleteMemberOutput,
   errors: [
@@ -7438,7 +7438,7 @@ export const getCollaborationAnalysisTemplate: API.OperationMethod<
   GetCollaborationAnalysisTemplateOutput,
   GetCollaborationAnalysisTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCollaborationAnalysisTemplateInput,
   output: GetCollaborationAnalysisTemplateOutput,
   errors: [
@@ -7464,7 +7464,7 @@ export const getCollaborationChangeRequest: API.OperationMethod<
   GetCollaborationChangeRequestOutput,
   GetCollaborationChangeRequestError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCollaborationChangeRequestInput,
   output: GetCollaborationChangeRequestOutput,
   errors: [
@@ -7490,7 +7490,7 @@ export const getCollaborationConfiguredAudienceModelAssociation: API.OperationMe
   GetCollaborationConfiguredAudienceModelAssociationOutput,
   GetCollaborationConfiguredAudienceModelAssociationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCollaborationConfiguredAudienceModelAssociationInput,
   output: GetCollaborationConfiguredAudienceModelAssociationOutput,
   errors: [
@@ -7516,7 +7516,7 @@ export const getCollaborationIdNamespaceAssociation: API.OperationMethod<
   GetCollaborationIdNamespaceAssociationOutput,
   GetCollaborationIdNamespaceAssociationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCollaborationIdNamespaceAssociationInput,
   output: GetCollaborationIdNamespaceAssociationOutput,
   errors: [
@@ -7542,7 +7542,7 @@ export const getCollaborationPrivacyBudgetTemplate: API.OperationMethod<
   GetCollaborationPrivacyBudgetTemplateOutput,
   GetCollaborationPrivacyBudgetTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCollaborationPrivacyBudgetTemplateInput,
   output: GetCollaborationPrivacyBudgetTemplateOutput,
   errors: [
@@ -7568,7 +7568,7 @@ export const getSchema: API.OperationMethod<
   GetSchemaOutput,
   GetSchemaError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSchemaInput,
   output: GetSchemaOutput,
   errors: [
@@ -7594,7 +7594,7 @@ export const getSchemaAnalysisRule: API.OperationMethod<
   GetSchemaAnalysisRuleOutput,
   GetSchemaAnalysisRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSchemaAnalysisRuleInput,
   output: GetSchemaAnalysisRuleOutput,
   errors: [
@@ -7635,7 +7635,7 @@ export const listCollaborationAnalysisTemplates: API.OperationMethod<
     ListCollaborationAnalysisTemplatesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCollaborationAnalysisTemplatesInput,
   output: ListCollaborationAnalysisTemplatesOutput,
   errors: [
@@ -7682,7 +7682,7 @@ export const listCollaborationChangeRequests: API.OperationMethod<
     ListCollaborationChangeRequestsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCollaborationChangeRequestsInput,
   output: ListCollaborationChangeRequestsOutput,
   errors: [
@@ -7729,7 +7729,7 @@ export const listCollaborationConfiguredAudienceModelAssociations: API.Operation
     ListCollaborationConfiguredAudienceModelAssociationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCollaborationConfiguredAudienceModelAssociationsInput,
   output: ListCollaborationConfiguredAudienceModelAssociationsOutput,
   errors: [
@@ -7776,7 +7776,7 @@ export const listCollaborationIdNamespaceAssociations: API.OperationMethod<
     ListCollaborationIdNamespaceAssociationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCollaborationIdNamespaceAssociationsInput,
   output: ListCollaborationIdNamespaceAssociationsOutput,
   errors: [
@@ -7823,7 +7823,7 @@ export const listCollaborationPrivacyBudgets: API.OperationMethod<
     ListCollaborationPrivacyBudgetsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCollaborationPrivacyBudgetsInput,
   output: ListCollaborationPrivacyBudgetsOutput,
   errors: [
@@ -7870,7 +7870,7 @@ export const listCollaborationPrivacyBudgetTemplates: API.OperationMethod<
     ListCollaborationPrivacyBudgetTemplatesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCollaborationPrivacyBudgetTemplatesInput,
   output: ListCollaborationPrivacyBudgetTemplatesOutput,
   errors: [
@@ -7917,7 +7917,7 @@ export const listMembers: API.OperationMethod<
     ListMembersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMembersInput,
   output: ListMembersOutput,
   errors: [
@@ -7964,7 +7964,7 @@ export const listSchemas: API.OperationMethod<
     ListSchemasError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSchemasInput,
   output: ListSchemasOutput,
   errors: [
@@ -7999,7 +7999,7 @@ export const updateCollaborationChangeRequest: API.OperationMethod<
   UpdateCollaborationChangeRequestOutput,
   UpdateCollaborationChangeRequestError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCollaborationChangeRequestInput,
   output: UpdateCollaborationChangeRequestOutput,
   errors: [
@@ -8028,7 +8028,7 @@ export const createConfiguredAudienceModelAssociation: API.OperationMethod<
   CreateConfiguredAudienceModelAssociationOutput,
   CreateConfiguredAudienceModelAssociationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateConfiguredAudienceModelAssociationInput,
   output: CreateConfiguredAudienceModelAssociationOutput,
   errors: [
@@ -8056,7 +8056,7 @@ export const getConfiguredAudienceModelAssociation: API.OperationMethod<
   GetConfiguredAudienceModelAssociationOutput,
   GetConfiguredAudienceModelAssociationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConfiguredAudienceModelAssociationInput,
   output: GetConfiguredAudienceModelAssociationOutput,
   errors: [
@@ -8082,7 +8082,7 @@ export const updateConfiguredAudienceModelAssociation: API.OperationMethod<
   UpdateConfiguredAudienceModelAssociationOutput,
   UpdateConfiguredAudienceModelAssociationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateConfiguredAudienceModelAssociationInput,
   output: UpdateConfiguredAudienceModelAssociationOutput,
   errors: [
@@ -8108,7 +8108,7 @@ export const deleteConfiguredAudienceModelAssociation: API.OperationMethod<
   DeleteConfiguredAudienceModelAssociationOutput,
   DeleteConfiguredAudienceModelAssociationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConfiguredAudienceModelAssociationInput,
   output: DeleteConfiguredAudienceModelAssociationOutput,
   errors: [
@@ -8149,7 +8149,7 @@ export const listConfiguredAudienceModelAssociations: API.OperationMethod<
     ListConfiguredAudienceModelAssociationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfiguredAudienceModelAssociationsInput,
   output: ListConfiguredAudienceModelAssociationsOutput,
   errors: [
@@ -8183,7 +8183,7 @@ export const createConfiguredTableAssociation: API.OperationMethod<
   CreateConfiguredTableAssociationOutput,
   CreateConfiguredTableAssociationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateConfiguredTableAssociationInput,
   output: CreateConfiguredTableAssociationOutput,
   errors: [
@@ -8211,7 +8211,7 @@ export const getConfiguredTableAssociation: API.OperationMethod<
   GetConfiguredTableAssociationOutput,
   GetConfiguredTableAssociationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConfiguredTableAssociationInput,
   output: GetConfiguredTableAssociationOutput,
   errors: [
@@ -8238,7 +8238,7 @@ export const updateConfiguredTableAssociation: API.OperationMethod<
   UpdateConfiguredTableAssociationOutput,
   UpdateConfiguredTableAssociationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateConfiguredTableAssociationInput,
   output: UpdateConfiguredTableAssociationOutput,
   errors: [
@@ -8266,7 +8266,7 @@ export const deleteConfiguredTableAssociation: API.OperationMethod<
   DeleteConfiguredTableAssociationOutput,
   DeleteConfiguredTableAssociationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConfiguredTableAssociationInput,
   output: DeleteConfiguredTableAssociationOutput,
   errors: [
@@ -8308,7 +8308,7 @@ export const listConfiguredTableAssociations: API.OperationMethod<
     ListConfiguredTableAssociationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfiguredTableAssociationsInput,
   output: ListConfiguredTableAssociationsOutput,
   errors: [
@@ -8341,7 +8341,7 @@ export const createConfiguredTableAssociationAnalysisRule: API.OperationMethod<
   CreateConfiguredTableAssociationAnalysisRuleOutput,
   CreateConfiguredTableAssociationAnalysisRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateConfiguredTableAssociationAnalysisRuleInput,
   output: CreateConfiguredTableAssociationAnalysisRuleOutput,
   errors: [
@@ -8369,7 +8369,7 @@ export const deleteConfiguredTableAssociationAnalysisRule: API.OperationMethod<
   DeleteConfiguredTableAssociationAnalysisRuleOutput,
   DeleteConfiguredTableAssociationAnalysisRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConfiguredTableAssociationAnalysisRuleInput,
   output: DeleteConfiguredTableAssociationAnalysisRuleOutput,
   errors: [
@@ -8396,7 +8396,7 @@ export const getConfiguredTableAssociationAnalysisRule: API.OperationMethod<
   GetConfiguredTableAssociationAnalysisRuleOutput,
   GetConfiguredTableAssociationAnalysisRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConfiguredTableAssociationAnalysisRuleInput,
   output: GetConfiguredTableAssociationAnalysisRuleOutput,
   errors: [
@@ -8423,7 +8423,7 @@ export const updateConfiguredTableAssociationAnalysisRule: API.OperationMethod<
   UpdateConfiguredTableAssociationAnalysisRuleOutput,
   UpdateConfiguredTableAssociationAnalysisRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateConfiguredTableAssociationAnalysisRuleInput,
   output: UpdateConfiguredTableAssociationAnalysisRuleOutput,
   errors: [
@@ -8452,7 +8452,7 @@ export const createConfiguredTable: API.OperationMethod<
   CreateConfiguredTableOutput,
   CreateConfiguredTableError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateConfiguredTableInput,
   output: CreateConfiguredTableOutput,
   errors: [
@@ -8480,7 +8480,7 @@ export const getConfiguredTable: API.OperationMethod<
   GetConfiguredTableOutput,
   GetConfiguredTableError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConfiguredTableInput,
   output: GetConfiguredTableOutput,
   errors: [
@@ -8508,7 +8508,7 @@ export const updateConfiguredTable: API.OperationMethod<
   UpdateConfiguredTableOutput,
   UpdateConfiguredTableError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateConfiguredTableInput,
   output: UpdateConfiguredTableOutput,
   errors: [
@@ -8537,7 +8537,7 @@ export const deleteConfiguredTable: API.OperationMethod<
   DeleteConfiguredTableOutput,
   DeleteConfiguredTableError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConfiguredTableInput,
   output: DeleteConfiguredTableOutput,
   errors: [
@@ -8578,7 +8578,7 @@ export const listConfiguredTables: API.OperationMethod<
     ListConfiguredTablesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfiguredTablesInput,
   output: ListConfiguredTablesOutput,
   errors: [
@@ -8611,7 +8611,7 @@ export const createConfiguredTableAnalysisRule: API.OperationMethod<
   CreateConfiguredTableAnalysisRuleOutput,
   CreateConfiguredTableAnalysisRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateConfiguredTableAnalysisRuleInput,
   output: CreateConfiguredTableAnalysisRuleOutput,
   errors: [
@@ -8640,7 +8640,7 @@ export const deleteConfiguredTableAnalysisRule: API.OperationMethod<
   DeleteConfiguredTableAnalysisRuleOutput,
   DeleteConfiguredTableAnalysisRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConfiguredTableAnalysisRuleInput,
   output: DeleteConfiguredTableAnalysisRuleOutput,
   errors: [
@@ -8667,7 +8667,7 @@ export const getConfiguredTableAnalysisRule: API.OperationMethod<
   GetConfiguredTableAnalysisRuleOutput,
   GetConfiguredTableAnalysisRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConfiguredTableAnalysisRuleInput,
   output: GetConfiguredTableAnalysisRuleOutput,
   errors: [
@@ -8694,7 +8694,7 @@ export const updateConfiguredTableAnalysisRule: API.OperationMethod<
   UpdateConfiguredTableAnalysisRuleOutput,
   UpdateConfiguredTableAnalysisRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateConfiguredTableAnalysisRuleInput,
   output: UpdateConfiguredTableAnalysisRuleOutput,
   errors: [
@@ -8723,7 +8723,7 @@ export const createIdMappingTable: API.OperationMethod<
   CreateIdMappingTableOutput,
   CreateIdMappingTableError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateIdMappingTableInput,
   output: CreateIdMappingTableOutput,
   errors: [
@@ -8751,7 +8751,7 @@ export const getIdMappingTable: API.OperationMethod<
   GetIdMappingTableOutput,
   GetIdMappingTableError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIdMappingTableInput,
   output: GetIdMappingTableOutput,
   errors: [
@@ -8777,7 +8777,7 @@ export const updateIdMappingTable: API.OperationMethod<
   UpdateIdMappingTableOutput,
   UpdateIdMappingTableError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateIdMappingTableInput,
   output: UpdateIdMappingTableOutput,
   errors: [
@@ -8803,7 +8803,7 @@ export const deleteIdMappingTable: API.OperationMethod<
   DeleteIdMappingTableOutput,
   DeleteIdMappingTableError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteIdMappingTableInput,
   output: DeleteIdMappingTableOutput,
   errors: [
@@ -8844,7 +8844,7 @@ export const listIdMappingTables: API.OperationMethod<
     ListIdMappingTablesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIdMappingTablesInput,
   output: ListIdMappingTablesOutput,
   errors: [
@@ -8878,7 +8878,7 @@ export const populateIdMappingTable: API.OperationMethod<
   PopulateIdMappingTableOutput,
   PopulateIdMappingTableError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PopulateIdMappingTableInput,
   output: PopulateIdMappingTableOutput,
   errors: [
@@ -8908,7 +8908,7 @@ export const createIdNamespaceAssociation: API.OperationMethod<
   CreateIdNamespaceAssociationOutput,
   CreateIdNamespaceAssociationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateIdNamespaceAssociationInput,
   output: CreateIdNamespaceAssociationOutput,
   errors: [
@@ -8936,7 +8936,7 @@ export const getIdNamespaceAssociation: API.OperationMethod<
   GetIdNamespaceAssociationOutput,
   GetIdNamespaceAssociationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIdNamespaceAssociationInput,
   output: GetIdNamespaceAssociationOutput,
   errors: [
@@ -8962,7 +8962,7 @@ export const updateIdNamespaceAssociation: API.OperationMethod<
   UpdateIdNamespaceAssociationOutput,
   UpdateIdNamespaceAssociationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateIdNamespaceAssociationInput,
   output: UpdateIdNamespaceAssociationOutput,
   errors: [
@@ -8988,7 +8988,7 @@ export const deleteIdNamespaceAssociation: API.OperationMethod<
   DeleteIdNamespaceAssociationOutput,
   DeleteIdNamespaceAssociationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteIdNamespaceAssociationInput,
   output: DeleteIdNamespaceAssociationOutput,
   errors: [
@@ -9029,7 +9029,7 @@ export const listIdNamespaceAssociations: API.OperationMethod<
     ListIdNamespaceAssociationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIdNamespaceAssociationsInput,
   output: ListIdNamespaceAssociationsOutput,
   errors: [
@@ -9063,7 +9063,7 @@ export const createMembership: API.OperationMethod<
   CreateMembershipOutput,
   CreateMembershipError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMembershipInput,
   output: CreateMembershipOutput,
   errors: [
@@ -9091,7 +9091,7 @@ export const getMembership: API.OperationMethod<
   GetMembershipOutput,
   GetMembershipError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMembershipInput,
   output: GetMembershipOutput,
   errors: [
@@ -9118,7 +9118,7 @@ export const updateMembership: API.OperationMethod<
   UpdateMembershipOutput,
   UpdateMembershipError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateMembershipInput,
   output: UpdateMembershipOutput,
   errors: [
@@ -9146,7 +9146,7 @@ export const deleteMembership: API.OperationMethod<
   DeleteMembershipOutput,
   DeleteMembershipError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMembershipInput,
   output: DeleteMembershipOutput,
   errors: [
@@ -9187,7 +9187,7 @@ export const listMemberships: API.OperationMethod<
     ListMembershipsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMembershipsInput,
   output: ListMembershipsOutput,
   errors: [
@@ -9218,7 +9218,7 @@ export const getProtectedJob: API.OperationMethod<
   GetProtectedJobOutput,
   GetProtectedJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProtectedJobInput,
   output: GetProtectedJobOutput,
   errors: [
@@ -9244,7 +9244,7 @@ export const getProtectedQuery: API.OperationMethod<
   GetProtectedQueryOutput,
   GetProtectedQueryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProtectedQueryInput,
   output: GetProtectedQueryOutput,
   errors: [
@@ -9285,7 +9285,7 @@ export const listPrivacyBudgets: API.OperationMethod<
     ListPrivacyBudgetsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPrivacyBudgetsInput,
   output: ListPrivacyBudgetsOutput,
   errors: [
@@ -9332,7 +9332,7 @@ export const listProtectedJobs: API.OperationMethod<
     ListProtectedJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProtectedJobsInput,
   output: ListProtectedJobsOutput,
   errors: [
@@ -9379,7 +9379,7 @@ export const listProtectedQueries: API.OperationMethod<
     ListProtectedQueriesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProtectedQueriesInput,
   output: ListProtectedQueriesOutput,
   errors: [
@@ -9411,7 +9411,7 @@ export const previewPrivacyImpact: API.OperationMethod<
   PreviewPrivacyImpactOutput,
   PreviewPrivacyImpactError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PreviewPrivacyImpactInput,
   output: PreviewPrivacyImpactOutput,
   errors: [
@@ -9438,7 +9438,7 @@ export const startProtectedJob: API.OperationMethod<
   StartProtectedJobOutput,
   StartProtectedJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartProtectedJobInput,
   output: StartProtectedJobOutput,
   errors: [
@@ -9466,7 +9466,7 @@ export const startProtectedQuery: API.OperationMethod<
   StartProtectedQueryOutput,
   StartProtectedQueryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartProtectedQueryInput,
   output: StartProtectedQueryOutput,
   errors: [
@@ -9494,7 +9494,7 @@ export const updateProtectedJob: API.OperationMethod<
   UpdateProtectedJobOutput,
   UpdateProtectedJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateProtectedJobInput,
   output: UpdateProtectedJobOutput,
   errors: [
@@ -9522,7 +9522,7 @@ export const updateProtectedQuery: API.OperationMethod<
   UpdateProtectedQueryOutput,
   UpdateProtectedQueryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateProtectedQueryInput,
   output: UpdateProtectedQueryOutput,
   errors: [
@@ -9551,7 +9551,7 @@ export const createPrivacyBudgetTemplate: API.OperationMethod<
   CreatePrivacyBudgetTemplateOutput,
   CreatePrivacyBudgetTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePrivacyBudgetTemplateInput,
   output: CreatePrivacyBudgetTemplateOutput,
   errors: [
@@ -9579,7 +9579,7 @@ export const getPrivacyBudgetTemplate: API.OperationMethod<
   GetPrivacyBudgetTemplateOutput,
   GetPrivacyBudgetTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPrivacyBudgetTemplateInput,
   output: GetPrivacyBudgetTemplateOutput,
   errors: [
@@ -9606,7 +9606,7 @@ export const updatePrivacyBudgetTemplate: API.OperationMethod<
   UpdatePrivacyBudgetTemplateOutput,
   UpdatePrivacyBudgetTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePrivacyBudgetTemplateInput,
   output: UpdatePrivacyBudgetTemplateOutput,
   errors: [
@@ -9633,7 +9633,7 @@ export const deletePrivacyBudgetTemplate: API.OperationMethod<
   DeletePrivacyBudgetTemplateOutput,
   DeletePrivacyBudgetTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePrivacyBudgetTemplateInput,
   output: DeletePrivacyBudgetTemplateOutput,
   errors: [
@@ -9674,7 +9674,7 @@ export const listPrivacyBudgetTemplates: API.OperationMethod<
     ListPrivacyBudgetTemplatesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPrivacyBudgetTemplatesInput,
   output: ListPrivacyBudgetTemplatesOutput,
   errors: [

@@ -1279,7 +1279,7 @@ export const deleteScalingPolicy: API.OperationMethod<
   DeleteScalingPolicyResponse,
   DeleteScalingPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteScalingPolicyRequest,
   output: DeleteScalingPolicyResponse,
   errors: [
@@ -1305,7 +1305,7 @@ export const deleteScheduledAction: API.OperationMethod<
   DeleteScheduledActionResponse,
   DeleteScheduledActionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteScheduledActionRequest,
   output: DeleteScheduledActionResponse,
   errors: [
@@ -1333,7 +1333,7 @@ export const deregisterScalableTarget: API.OperationMethod<
   DeregisterScalableTargetResponse,
   DeregisterScalableTargetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeregisterScalableTargetRequest,
   output: DeregisterScalableTargetResponse,
   errors: [
@@ -1375,7 +1375,7 @@ export const describeScalableTargets: API.OperationMethod<
     DescribeScalableTargetsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeScalableTargetsRequest,
   output: DescribeScalableTargetsResponse,
   errors: [
@@ -1426,7 +1426,7 @@ export const describeScalingActivities: API.OperationMethod<
     DescribeScalingActivitiesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeScalingActivitiesRequest,
   output: DescribeScalingActivitiesResponse,
   errors: [
@@ -1477,7 +1477,7 @@ export const describeScalingPolicies: API.OperationMethod<
     DescribeScalingPoliciesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeScalingPoliciesRequest,
   output: DescribeScalingPoliciesResponse,
   errors: [
@@ -1528,7 +1528,7 @@ export const describeScheduledActions: API.OperationMethod<
     DescribeScheduledActionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeScheduledActionsRequest,
   output: DescribeScheduledActionsResponse,
   errors: [
@@ -1564,7 +1564,7 @@ export const getPredictiveScalingForecast: API.OperationMethod<
   GetPredictiveScalingForecastResponse,
   GetPredictiveScalingForecastError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPredictiveScalingForecastRequest,
   output: GetPredictiveScalingForecastResponse,
   errors: [InternalServiceException, ValidationException],
@@ -1581,7 +1581,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException],
@@ -1630,7 +1630,7 @@ export const putScalingPolicy: API.OperationMethod<
   PutScalingPolicyResponse,
   PutScalingPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutScalingPolicyRequest,
   output: PutScalingPolicyResponse,
   errors: [
@@ -1674,7 +1674,7 @@ export const putScheduledAction: API.OperationMethod<
   PutScheduledActionResponse,
   PutScheduledActionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutScheduledActionRequest,
   output: PutScheduledActionResponse,
   errors: [
@@ -1735,7 +1735,7 @@ export const registerScalableTarget: API.OperationMethod<
   RegisterScalableTargetResponse,
   RegisterScalableTargetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterScalableTargetRequest,
   output: RegisterScalableTargetResponse,
   errors: [
@@ -1774,7 +1774,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -1796,7 +1796,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException, ValidationException],

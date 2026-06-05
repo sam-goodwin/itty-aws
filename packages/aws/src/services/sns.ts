@@ -1779,7 +1779,7 @@ export const addPermission: API.OperationMethod<
   AddPermissionResponse,
   AddPermissionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddPermissionInput,
   output: AddPermissionResponse,
   errors: [
@@ -1810,7 +1810,7 @@ export const checkIfPhoneNumberIsOptedOut: API.OperationMethod<
   CheckIfPhoneNumberIsOptedOutResponse,
   CheckIfPhoneNumberIsOptedOutError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CheckIfPhoneNumberIsOptedOutInput,
   output: CheckIfPhoneNumberIsOptedOutResponse,
   errors: [
@@ -1841,7 +1841,7 @@ export const confirmSubscription: API.OperationMethod<
   ConfirmSubscriptionResponse,
   ConfirmSubscriptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ConfirmSubscriptionInput,
   output: ConfirmSubscriptionResponse,
   errors: [
@@ -1904,7 +1904,7 @@ export const createPlatformApplication: API.OperationMethod<
   CreatePlatformApplicationResponse,
   CreatePlatformApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePlatformApplicationInput,
   output: CreatePlatformApplicationResponse,
   errors: [
@@ -1943,7 +1943,7 @@ export const createPlatformEndpoint: API.OperationMethod<
   CreateEndpointResponse,
   CreatePlatformEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePlatformEndpointInput,
   output: CreateEndpointResponse,
   errors: [
@@ -1981,7 +1981,7 @@ export const createSMSSandboxPhoneNumber: API.OperationMethod<
   CreateSMSSandboxPhoneNumberResult,
   CreateSMSSandboxPhoneNumberError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSMSSandboxPhoneNumberInput,
   output: CreateSMSSandboxPhoneNumberResult,
   errors: [
@@ -2016,7 +2016,7 @@ export const createTopic: API.OperationMethod<
   CreateTopicResponse,
   CreateTopicError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTopicInput,
   output: CreateTopicResponse,
   errors: [
@@ -2051,7 +2051,7 @@ export const deleteEndpoint: API.OperationMethod<
   DeleteEndpointResponse,
   DeleteEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEndpointInput,
   output: DeleteEndpointResponse,
   errors: [
@@ -2080,7 +2080,7 @@ export const deletePlatformApplication: API.OperationMethod<
   DeletePlatformApplicationResponse,
   DeletePlatformApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePlatformApplicationInput,
   output: DeletePlatformApplicationResponse,
   errors: [
@@ -2117,7 +2117,7 @@ export const deleteSMSSandboxPhoneNumber: API.OperationMethod<
   DeleteSMSSandboxPhoneNumberResult,
   DeleteSMSSandboxPhoneNumberError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSMSSandboxPhoneNumberInput,
   output: DeleteSMSSandboxPhoneNumberResult,
   errors: [
@@ -2152,7 +2152,7 @@ export const deleteTopic: API.OperationMethod<
   DeleteTopicResponse,
   DeleteTopicError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTopicInput,
   output: DeleteTopicResponse,
   errors: [
@@ -2186,7 +2186,7 @@ export const getDataProtectionPolicy: API.OperationMethod<
   GetDataProtectionPolicyResponse,
   GetDataProtectionPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDataProtectionPolicyInput,
   output: GetDataProtectionPolicyResponse,
   errors: [
@@ -2217,7 +2217,7 @@ export const getEndpointAttributes: API.OperationMethod<
   GetEndpointAttributesResponse,
   GetEndpointAttributesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEndpointAttributesInput,
   output: GetEndpointAttributesResponse,
   errors: [
@@ -2247,7 +2247,7 @@ export const getPlatformApplicationAttributes: API.OperationMethod<
   GetPlatformApplicationAttributesResponse,
   GetPlatformApplicationAttributesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPlatformApplicationAttributesInput,
   output: GetPlatformApplicationAttributesResponse,
   errors: [
@@ -2275,7 +2275,7 @@ export const getSMSAttributes: API.OperationMethod<
   GetSMSAttributesResponse,
   GetSMSAttributesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSMSAttributesInput,
   output: GetSMSAttributesResponse,
   errors: [
@@ -2308,7 +2308,7 @@ export const getSMSSandboxAccountStatus: API.OperationMethod<
   GetSMSSandboxAccountStatusResult,
   GetSMSSandboxAccountStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSMSSandboxAccountStatusInput,
   output: GetSMSSandboxAccountStatusResult,
   errors: [
@@ -2331,7 +2331,7 @@ export const getSubscriptionAttributes: API.OperationMethod<
   GetSubscriptionAttributesResponse,
   GetSubscriptionAttributesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSubscriptionAttributesInput,
   output: GetSubscriptionAttributesResponse,
   errors: [
@@ -2359,7 +2359,7 @@ export const getTopicAttributes: API.OperationMethod<
   GetTopicAttributesResponse,
   GetTopicAttributesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTopicAttributesInput,
   output: GetTopicAttributesResponse,
   errors: [
@@ -2413,7 +2413,7 @@ export const listEndpointsByPlatformApplication: API.OperationMethod<
     ListEndpointsByPlatformApplicationError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEndpointsByPlatformApplicationInput,
   output: ListEndpointsByPlatformApplicationResponse,
   errors: [
@@ -2462,7 +2462,7 @@ export const listOriginationNumbers: API.OperationMethod<
     ListOriginationNumbersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOriginationNumbersRequest,
   output: ListOriginationNumbersResult,
   errors: [
@@ -2516,7 +2516,7 @@ export const listPhoneNumbersOptedOut: API.OperationMethod<
     ListPhoneNumbersOptedOutError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPhoneNumbersOptedOutInput,
   output: ListPhoneNumbersOptedOutResponse,
   errors: [
@@ -2569,7 +2569,7 @@ export const listPlatformApplications: API.OperationMethod<
     ListPlatformApplicationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlatformApplicationsInput,
   output: ListPlatformApplicationsResponse,
   errors: [
@@ -2623,7 +2623,7 @@ export const listSMSSandboxPhoneNumbers: API.OperationMethod<
     ListSMSSandboxPhoneNumbersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSMSSandboxPhoneNumbersInput,
   output: ListSMSSandboxPhoneNumbersResult,
   errors: [
@@ -2673,7 +2673,7 @@ export const listSubscriptions: API.OperationMethod<
     ListSubscriptionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSubscriptionsInput,
   output: ListSubscriptionsResponse,
   errors: [
@@ -2723,7 +2723,7 @@ export const listSubscriptionsByTopic: API.OperationMethod<
     ListSubscriptionsByTopicError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSubscriptionsByTopicInput,
   output: ListSubscriptionsByTopicResponse,
   errors: [
@@ -2758,7 +2758,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -2804,7 +2804,7 @@ export const listTopics: API.OperationMethod<
     ListTopicsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTopicsInput,
   output: ListTopicsResponse,
   errors: [
@@ -2835,7 +2835,7 @@ export const optInPhoneNumber: API.OperationMethod<
   OptInPhoneNumberResponse,
   OptInPhoneNumberError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: OptInPhoneNumberInput,
   output: OptInPhoneNumberResponse,
   errors: [
@@ -2892,7 +2892,7 @@ export const publish: API.OperationMethod<
   PublishResponse,
   PublishError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PublishInput,
   output: PublishResponse,
   errors: [
@@ -2982,7 +2982,7 @@ export const publishBatch: API.OperationMethod<
   PublishBatchResponse,
   PublishBatchError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PublishBatchInput,
   output: PublishBatchResponse,
   errors: [
@@ -3026,7 +3026,7 @@ export const putDataProtectionPolicy: API.OperationMethod<
   PutDataProtectionPolicyResponse,
   PutDataProtectionPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutDataProtectionPolicyInput,
   output: PutDataProtectionPolicyResponse,
   errors: [
@@ -3059,7 +3059,7 @@ export const removePermission: API.OperationMethod<
   RemovePermissionResponse,
   RemovePermissionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemovePermissionInput,
   output: RemovePermissionResponse,
   errors: [
@@ -3089,7 +3089,7 @@ export const setEndpointAttributes: API.OperationMethod<
   SetEndpointAttributesResponse,
   SetEndpointAttributesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetEndpointAttributesInput,
   output: SetEndpointAttributesResponse,
   errors: [
@@ -3121,7 +3121,7 @@ export const setPlatformApplicationAttributes: API.OperationMethod<
   SetPlatformApplicationAttributesResponse,
   SetPlatformApplicationAttributesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetPlatformApplicationAttributesInput,
   output: SetPlatformApplicationAttributesResponse,
   errors: [
@@ -3157,7 +3157,7 @@ export const setSMSAttributes: API.OperationMethod<
   SetSMSAttributesResponse,
   SetSMSAttributesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetSMSAttributesInput,
   output: SetSMSAttributesResponse,
   errors: [
@@ -3184,7 +3184,7 @@ export const setSubscriptionAttributes: API.OperationMethod<
   SetSubscriptionAttributesResponse,
   SetSubscriptionAttributesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetSubscriptionAttributesInput,
   output: SetSubscriptionAttributesResponse,
   errors: [
@@ -3217,7 +3217,7 @@ export const setTopicAttributes: API.OperationMethod<
   SetTopicAttributesResponse,
   SetTopicAttributesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetTopicAttributesInput,
   output: SetTopicAttributesResponse,
   errors: [
@@ -3257,7 +3257,7 @@ export const subscribe: API.OperationMethod<
   SubscribeResponse,
   SubscribeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SubscribeInput,
   output: SubscribeResponse,
   errors: [
@@ -3308,7 +3308,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -3345,7 +3345,7 @@ export const unsubscribe: API.OperationMethod<
   UnsubscribeResponse,
   UnsubscribeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UnsubscribeInput,
   output: UnsubscribeResponse,
   errors: [
@@ -3376,7 +3376,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -3417,7 +3417,7 @@ export const verifySMSSandboxPhoneNumber: API.OperationMethod<
   VerifySMSSandboxPhoneNumberResult,
   VerifySMSSandboxPhoneNumberError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: VerifySMSSandboxPhoneNumberInput,
   output: VerifySMSSandboxPhoneNumberResult,
   errors: [

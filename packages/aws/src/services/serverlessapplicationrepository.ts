@@ -1240,7 +1240,7 @@ export const createApplication: API.OperationMethod<
   CreateApplicationResponse,
   CreateApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateApplicationRequest,
   output: CreateApplicationResponse,
   errors: [
@@ -1266,7 +1266,7 @@ export const createApplicationVersion: API.OperationMethod<
   CreateApplicationVersionResponse,
   CreateApplicationVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateApplicationVersionRequest,
   output: CreateApplicationVersionResponse,
   errors: [
@@ -1291,7 +1291,7 @@ export const createCloudFormationChangeSet: API.OperationMethod<
   CreateCloudFormationChangeSetResponse,
   CreateCloudFormationChangeSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCloudFormationChangeSetRequest,
   output: CreateCloudFormationChangeSetResponse,
   errors: [
@@ -1316,7 +1316,7 @@ export const createCloudFormationTemplate: API.OperationMethod<
   CreateCloudFormationTemplateResponse,
   CreateCloudFormationTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCloudFormationTemplateRequest,
   output: CreateCloudFormationTemplateResponse,
   errors: [
@@ -1343,7 +1343,7 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationResponse,
   DeleteApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteApplicationRequest,
   output: DeleteApplicationResponse,
   errors: [
@@ -1370,7 +1370,7 @@ export const getApplication: API.OperationMethod<
   GetApplicationResponse,
   GetApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetApplicationRequest,
   output: GetApplicationResponse,
   errors: [
@@ -1396,7 +1396,7 @@ export const getApplicationPolicy: API.OperationMethod<
   GetApplicationPolicyResponse,
   GetApplicationPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetApplicationPolicyRequest,
   output: GetApplicationPolicyResponse,
   errors: [
@@ -1422,7 +1422,7 @@ export const getCloudFormationTemplate: API.OperationMethod<
   GetCloudFormationTemplateResponse,
   GetCloudFormationTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCloudFormationTemplateRequest,
   output: GetCloudFormationTemplateResponse,
   errors: [
@@ -1463,7 +1463,7 @@ export const listApplicationDependencies: API.OperationMethod<
     ListApplicationDependenciesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationDependenciesRequest,
   output: ListApplicationDependenciesResponse,
   errors: [
@@ -1508,7 +1508,7 @@ export const listApplications: API.OperationMethod<
     ListApplicationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationsRequest,
   output: ListApplicationsResponse,
   errors: [
@@ -1553,7 +1553,7 @@ export const listApplicationVersions: API.OperationMethod<
     ListApplicationVersionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationVersionsRequest,
   output: ListApplicationVersionsResponse,
   errors: [
@@ -1587,7 +1587,7 @@ export const putApplicationPolicy: API.OperationMethod<
   PutApplicationPolicyResponse,
   PutApplicationPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutApplicationPolicyRequest,
   output: PutApplicationPolicyResponse,
   errors: [
@@ -1615,7 +1615,7 @@ export const unshareApplication: API.OperationMethod<
   UnshareApplicationResponse,
   UnshareApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UnshareApplicationRequest,
   output: UnshareApplicationResponse,
   errors: [
@@ -1642,7 +1642,7 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationResponse,
   UpdateApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateApplicationRequest,
   output: UpdateApplicationResponse,
   errors: [

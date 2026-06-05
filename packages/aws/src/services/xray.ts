@@ -2603,7 +2603,7 @@ export const batchGetTraces: API.OperationMethod<
     BatchGetTracesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: BatchGetTracesRequest,
   output: BatchGetTracesResult,
   errors: [InvalidRequestException, ThrottledException],
@@ -2626,7 +2626,7 @@ export const cancelTraceRetrieval: API.OperationMethod<
   CancelTraceRetrievalResult,
   CancelTraceRetrievalError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelTraceRetrievalRequest,
   output: CancelTraceRetrievalResult,
   errors: [
@@ -2647,7 +2647,7 @@ export const createGroup: API.OperationMethod<
   CreateGroupResult,
   CreateGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateGroupRequest,
   output: CreateGroupResult,
   errors: [InvalidRequestException, ThrottledException],
@@ -2671,7 +2671,7 @@ export const createSamplingRule: API.OperationMethod<
   CreateSamplingRuleResult,
   CreateSamplingRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSamplingRuleRequest,
   output: CreateSamplingRuleResult,
   errors: [
@@ -2692,7 +2692,7 @@ export const deleteGroup: API.OperationMethod<
   DeleteGroupResult,
   DeleteGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteGroupRequest,
   output: DeleteGroupResult,
   errors: [InvalidRequestException, ThrottledException],
@@ -2710,7 +2710,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyResult,
   DeleteResourcePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourcePolicyRequest,
   output: DeleteResourcePolicyResult,
   errors: [
@@ -2731,7 +2731,7 @@ export const deleteSamplingRule: API.OperationMethod<
   DeleteSamplingRuleResult,
   DeleteSamplingRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSamplingRuleRequest,
   output: DeleteSamplingRuleResult,
   errors: [InvalidRequestException, ThrottledException],
@@ -2748,7 +2748,7 @@ export const getEncryptionConfig: API.OperationMethod<
   GetEncryptionConfigResult,
   GetEncryptionConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEncryptionConfigRequest,
   output: GetEncryptionConfigResult,
   errors: [InvalidRequestException, ThrottledException],
@@ -2765,7 +2765,7 @@ export const getGroup: API.OperationMethod<
   GetGroupResult,
   GetGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetGroupRequest,
   output: GetGroupResult,
   errors: [InvalidRequestException, ThrottledException],
@@ -2797,7 +2797,7 @@ export const getGroups: API.OperationMethod<
     GetGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetGroupsRequest,
   output: GetGroupsResult,
   errors: [InvalidRequestException, ThrottledException],
@@ -2821,7 +2821,7 @@ export const getIndexingRules: API.OperationMethod<
   GetIndexingRulesResult,
   GetIndexingRulesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIndexingRulesRequest,
   output: GetIndexingRulesResult,
   errors: [InvalidRequestException, ThrottledException],
@@ -2840,7 +2840,7 @@ export const getInsight: API.OperationMethod<
   GetInsightResult,
   GetInsightError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInsightRequest,
   output: GetInsightResult,
   errors: [InvalidRequestException, ThrottledException],
@@ -2874,7 +2874,7 @@ export const getInsightEvents: API.OperationMethod<
     GetInsightEventsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetInsightEventsRequest,
   output: GetInsightEventsResult,
   errors: [InvalidRequestException, ThrottledException],
@@ -2897,7 +2897,7 @@ export const getInsightImpactGraph: API.OperationMethod<
   GetInsightImpactGraphResult,
   GetInsightImpactGraphError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInsightImpactGraphRequest,
   output: GetInsightImpactGraphResult,
   errors: [InvalidRequestException, ThrottledException],
@@ -2929,7 +2929,7 @@ export const getInsightSummaries: API.OperationMethod<
     GetInsightSummariesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetInsightSummariesRequest,
   output: GetInsightSummariesResult,
   errors: [InvalidRequestException, ThrottledException],
@@ -2960,7 +2960,7 @@ export const getRetrievedTracesGraph: API.OperationMethod<
   GetRetrievedTracesGraphResult,
   GetRetrievedTracesGraphError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRetrievedTracesGraphRequest,
   output: GetRetrievedTracesGraphResult,
   errors: [
@@ -2996,7 +2996,7 @@ export const getSamplingRules: API.OperationMethod<
     GetSamplingRulesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetSamplingRulesRequest,
   output: GetSamplingRulesResult,
   errors: [InvalidRequestException, ThrottledException],
@@ -3033,7 +3033,7 @@ export const getSamplingStatisticSummaries: API.OperationMethod<
     GetSamplingStatisticSummariesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetSamplingStatisticSummariesRequest,
   output: GetSamplingStatisticSummariesResult,
   errors: [InvalidRequestException, ThrottledException],
@@ -3055,7 +3055,7 @@ export const getSamplingTargets: API.OperationMethod<
   GetSamplingTargetsResult,
   GetSamplingTargetsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSamplingTargetsRequest,
   output: GetSamplingTargetsResult,
   errors: [InvalidRequestException, ThrottledException],
@@ -3091,7 +3091,7 @@ export const getServiceGraph: API.OperationMethod<
     GetServiceGraphError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetServiceGraphRequest,
   output: GetServiceGraphResult,
   errors: [InvalidRequestException, ThrottledException],
@@ -3129,7 +3129,7 @@ export const getTimeSeriesServiceStatistics: API.OperationMethod<
     GetTimeSeriesServiceStatisticsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTimeSeriesServiceStatisticsRequest,
   output: GetTimeSeriesServiceStatisticsResult,
   errors: [InvalidRequestException, ThrottledException],
@@ -3166,7 +3166,7 @@ export const getTraceGraph: API.OperationMethod<
     GetTraceGraphError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTraceGraphRequest,
   output: GetTraceGraphResult,
   errors: [InvalidRequestException, ThrottledException],
@@ -3188,7 +3188,7 @@ export const getTraceSegmentDestination: API.OperationMethod<
   GetTraceSegmentDestinationResult,
   GetTraceSegmentDestinationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTraceSegmentDestinationRequest,
   output: GetTraceSegmentDestinationResult,
   errors: [InvalidRequestException, ThrottledException],
@@ -3237,7 +3237,7 @@ export const getTraceSummaries: API.OperationMethod<
     GetTraceSummariesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTraceSummariesRequest,
   output: GetTraceSummariesResult,
   errors: [InvalidRequestException, ThrottledException],
@@ -3274,7 +3274,7 @@ export const listResourcePolicies: API.OperationMethod<
     ListResourcePoliciesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourcePoliciesRequest,
   output: ListResourcePoliciesResult,
   errors: [InvalidRequestException, ThrottledException],
@@ -3305,7 +3305,7 @@ export const listRetrievedTraces: API.OperationMethod<
   ListRetrievedTracesResult,
   ListRetrievedTracesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListRetrievedTracesRequest,
   output: ListRetrievedTracesResult,
   errors: [
@@ -3342,7 +3342,7 @@ export const listTagsForResource: API.OperationMethod<
     ListTagsForResourceError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -3368,7 +3368,7 @@ export const putEncryptionConfig: API.OperationMethod<
   PutEncryptionConfigResult,
   PutEncryptionConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutEncryptionConfigRequest,
   output: PutEncryptionConfigResult,
   errors: [InvalidRequestException, ThrottledException],
@@ -3392,7 +3392,7 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyResult,
   PutResourcePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutResourcePolicyRequest,
   output: PutResourcePolicyResult,
   errors: [
@@ -3416,7 +3416,7 @@ export const putTelemetryRecords: API.OperationMethod<
   PutTelemetryRecordsResult,
   PutTelemetryRecordsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutTelemetryRecordsRequest,
   output: PutTelemetryRecordsResult,
   errors: [InvalidRequestException, ThrottledException],
@@ -3484,7 +3484,7 @@ export const putTraceSegments: API.OperationMethod<
   PutTraceSegmentsResult,
   PutTraceSegmentsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutTraceSegmentsRequest,
   output: PutTraceSegmentsResult,
   errors: [InvalidRequestException, ThrottledException],
@@ -3508,7 +3508,7 @@ export const startTraceRetrieval: API.OperationMethod<
   StartTraceRetrievalResult,
   StartTraceRetrievalError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartTraceRetrievalRequest,
   output: StartTraceRetrievalResult,
   errors: [
@@ -3531,7 +3531,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -3555,7 +3555,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -3576,7 +3576,7 @@ export const updateGroup: API.OperationMethod<
   UpdateGroupResult,
   UpdateGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateGroupRequest,
   output: UpdateGroupResult,
   errors: [InvalidRequestException, ThrottledException],
@@ -3596,7 +3596,7 @@ export const updateIndexingRule: API.OperationMethod<
   UpdateIndexingRuleResult,
   UpdateIndexingRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateIndexingRuleRequest,
   output: UpdateIndexingRuleResult,
   errors: [
@@ -3617,7 +3617,7 @@ export const updateSamplingRule: API.OperationMethod<
   UpdateSamplingRuleResult,
   UpdateSamplingRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSamplingRuleRequest,
   output: UpdateSamplingRuleResult,
   errors: [InvalidRequestException, ThrottledException],
@@ -3634,7 +3634,7 @@ export const updateTraceSegmentDestination: API.OperationMethod<
   UpdateTraceSegmentDestinationResult,
   UpdateTraceSegmentDestinationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTraceSegmentDestinationRequest,
   output: UpdateTraceSegmentDestinationResult,
   errors: [InvalidRequestException, ThrottledException],

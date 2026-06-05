@@ -3880,7 +3880,7 @@ export const cancelFlowExecutions: API.OperationMethod<
   CancelFlowExecutionsResponse,
   CancelFlowExecutionsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelFlowExecutionsRequest,
   output: CancelFlowExecutionsResponse,
   errors: [
@@ -3910,7 +3910,7 @@ export const createConnectorProfile: API.OperationMethod<
   CreateConnectorProfileResponse,
   CreateConnectorProfileError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateConnectorProfileRequest,
   output: CreateConnectorProfileResponse,
   errors: [
@@ -3943,7 +3943,7 @@ export const createFlow: API.OperationMethod<
   CreateFlowResponse,
   CreateFlowError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFlowRequest,
   output: CreateFlowResponse,
   errors: [
@@ -3970,7 +3970,7 @@ export const deleteConnectorProfile: API.OperationMethod<
   DeleteConnectorProfileResponse,
   DeleteConnectorProfileError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConnectorProfileRequest,
   output: DeleteConnectorProfileResponse,
   errors: [
@@ -3993,7 +3993,7 @@ export const deleteFlow: API.OperationMethod<
   DeleteFlowResponse,
   DeleteFlowError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFlowRequest,
   output: DeleteFlowResponse,
   errors: [
@@ -4017,7 +4017,7 @@ export const describeConnector: API.OperationMethod<
   DescribeConnectorResponse,
   DescribeConnectorError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeConnectorRequest,
   output: DescribeConnectorResponse,
   errors: [
@@ -4042,7 +4042,7 @@ export const describeConnectorEntity: API.OperationMethod<
   DescribeConnectorEntityResponse,
   DescribeConnectorEntityError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeConnectorEntityRequest,
   output: DescribeConnectorEntityResponse,
   errors: [
@@ -4085,7 +4085,7 @@ export const describeConnectorProfiles: API.OperationMethod<
     DescribeConnectorProfilesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeConnectorProfilesRequest,
   output: DescribeConnectorProfilesResponse,
   errors: [InternalServerException, ValidationException],
@@ -4125,7 +4125,7 @@ export const describeConnectors: API.OperationMethod<
     DescribeConnectorsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeConnectorsRequest,
   output: DescribeConnectorsResponse,
   errors: [InternalServerException, ValidationException],
@@ -4147,7 +4147,7 @@ export const describeFlow: API.OperationMethod<
   DescribeFlowResponse,
   DescribeFlowError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeFlowRequest,
   output: DescribeFlowResponse,
   errors: [InternalServerException, ResourceNotFoundException],
@@ -4180,7 +4180,7 @@ export const describeFlowExecutionRecords: API.OperationMethod<
     DescribeFlowExecutionRecordsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFlowExecutionRecordsRequest,
   output: DescribeFlowExecutionRecordsResponse,
   errors: [
@@ -4212,7 +4212,7 @@ export const listConnectorEntities: API.OperationMethod<
   ListConnectorEntitiesResponse,
   ListConnectorEntitiesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListConnectorEntitiesRequest,
   output: ListConnectorEntitiesResponse,
   errors: [
@@ -4252,7 +4252,7 @@ export const listConnectors: API.OperationMethod<
     ListConnectorsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConnectorsRequest,
   output: ListConnectorsResponse,
   errors: [InternalServerException, ValidationException],
@@ -4289,7 +4289,7 @@ export const listFlows: API.OperationMethod<
     ListFlowsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFlowsRequest,
   output: ListFlowsResponse,
   errors: [InternalServerException, ValidationException],
@@ -4312,7 +4312,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -4342,7 +4342,7 @@ export const registerConnector: API.OperationMethod<
   RegisterConnectorResponse,
   RegisterConnectorError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterConnectorRequest,
   output: RegisterConnectorResponse,
   errors: [
@@ -4378,7 +4378,7 @@ export const resetConnectorMetadataCache: API.OperationMethod<
   ResetConnectorMetadataCacheResponse,
   ResetConnectorMetadataCacheError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetConnectorMetadataCacheRequest,
   output: ResetConnectorMetadataCacheResponse,
   errors: [
@@ -4403,7 +4403,7 @@ export const startFlow: API.OperationMethod<
   StartFlowResponse,
   StartFlowError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartFlowRequest,
   output: StartFlowResponse,
   errors: [
@@ -4429,7 +4429,7 @@ export const stopFlow: API.OperationMethod<
   StopFlowResponse,
   StopFlowError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopFlowRequest,
   output: StopFlowResponse,
   errors: [
@@ -4452,7 +4452,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -4475,7 +4475,7 @@ export const unregisterConnector: API.OperationMethod<
   UnregisterConnectorResponse,
   UnregisterConnectorError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UnregisterConnectorRequest,
   output: UnregisterConnectorResponse,
   errors: [
@@ -4497,7 +4497,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -4521,7 +4521,7 @@ export const updateConnectorProfile: API.OperationMethod<
   UpdateConnectorProfileResponse,
   UpdateConnectorProfileError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateConnectorProfileRequest,
   output: UpdateConnectorProfileResponse,
   errors: [
@@ -4556,7 +4556,7 @@ export const updateConnectorRegistration: API.OperationMethod<
   UpdateConnectorRegistrationResponse,
   UpdateConnectorRegistrationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateConnectorRegistrationRequest,
   output: UpdateConnectorRegistrationResponse,
   errors: [
@@ -4589,7 +4589,7 @@ export const updateFlow: API.OperationMethod<
   UpdateFlowResponse,
   UpdateFlowError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateFlowRequest,
   output: UpdateFlowResponse,
   errors: [

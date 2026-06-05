@@ -2220,7 +2220,7 @@ export const batchGetCollection: API.OperationMethod<
   BatchGetCollectionResponse,
   BatchGetCollectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetCollectionRequest,
   output: BatchGetCollectionResponse,
   errors: [InternalServerException, ValidationException],
@@ -2237,7 +2237,7 @@ export const batchGetCollectionGroup: API.OperationMethod<
   BatchGetCollectionGroupResponse,
   BatchGetCollectionGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetCollectionGroupRequest,
   output: BatchGetCollectionGroupResponse,
   errors: [InternalServerException, ValidationException],
@@ -2254,7 +2254,7 @@ export const batchGetEffectiveLifecyclePolicy: API.OperationMethod<
   BatchGetEffectiveLifecyclePolicyResponse,
   BatchGetEffectiveLifecyclePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetEffectiveLifecyclePolicyRequest,
   output: BatchGetEffectiveLifecyclePolicyResponse,
   errors: [InternalServerException, ValidationException],
@@ -2271,7 +2271,7 @@ export const batchGetLifecyclePolicy: API.OperationMethod<
   BatchGetLifecyclePolicyResponse,
   BatchGetLifecyclePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetLifecyclePolicyRequest,
   output: BatchGetLifecyclePolicyResponse,
   errors: [InternalServerException, ValidationException],
@@ -2288,7 +2288,7 @@ export const batchGetVpcEndpoint: API.OperationMethod<
   BatchGetVpcEndpointResponse,
   BatchGetVpcEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetVpcEndpointRequest,
   output: BatchGetVpcEndpointResponse,
   errors: [InternalServerException, ValidationException],
@@ -2307,7 +2307,7 @@ export const createLifecyclePolicy: API.OperationMethod<
   CreateLifecyclePolicyResponse,
   CreateLifecyclePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLifecyclePolicyRequest,
   output: CreateLifecyclePolicyResponse,
   errors: [
@@ -2331,7 +2331,7 @@ export const createSecurityPolicy: API.OperationMethod<
   CreateSecurityPolicyResponse,
   CreateSecurityPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSecurityPolicyRequest,
   output: CreateSecurityPolicyResponse,
   errors: [
@@ -2353,7 +2353,7 @@ export const getAccountSettings: API.OperationMethod<
   GetAccountSettingsResponse,
   GetAccountSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountSettingsRequest,
   output: GetAccountSettingsResponse,
   errors: [InternalServerException, ValidationException],
@@ -2367,7 +2367,7 @@ export const getPoliciesStats: API.OperationMethod<
   GetPoliciesStatsResponse,
   GetPoliciesStatsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPoliciesStatsRequest,
   output: GetPoliciesStatsResponse,
   errors: [InternalServerException],
@@ -2385,7 +2385,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -2409,7 +2409,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -2434,7 +2434,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -2457,7 +2457,7 @@ export const updateAccountSettings: API.OperationMethod<
   UpdateAccountSettingsResponse,
   UpdateAccountSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccountSettingsRequest,
   output: UpdateAccountSettingsResponse,
   errors: [
@@ -2479,7 +2479,7 @@ export const updateVpcEndpoint: API.OperationMethod<
   UpdateVpcEndpointResponse,
   UpdateVpcEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateVpcEndpointRequest,
   output: UpdateVpcEndpointResponse,
   errors: [ConflictException, InternalServerException, ValidationException],
@@ -2498,7 +2498,7 @@ export const createAccessPolicy: API.OperationMethod<
   CreateAccessPolicyResponse,
   CreateAccessPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessPolicyRequest,
   output: CreateAccessPolicyResponse,
   errors: [
@@ -2521,7 +2521,7 @@ export const getAccessPolicy: API.OperationMethod<
   GetAccessPolicyResponse,
   GetAccessPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccessPolicyRequest,
   output: GetAccessPolicyResponse,
   errors: [
@@ -2544,7 +2544,7 @@ export const updateAccessPolicy: API.OperationMethod<
   UpdateAccessPolicyResponse,
   UpdateAccessPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccessPolicyRequest,
   output: UpdateAccessPolicyResponse,
   errors: [
@@ -2568,7 +2568,7 @@ export const deleteAccessPolicy: API.OperationMethod<
   DeleteAccessPolicyResponse,
   DeleteAccessPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessPolicyRequest,
   output: DeleteAccessPolicyResponse,
   errors: [
@@ -2605,7 +2605,7 @@ export const listAccessPolicies: API.OperationMethod<
     ListAccessPoliciesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessPoliciesRequest,
   output: ListAccessPoliciesResponse,
   errors: [InternalServerException, ValidationException],
@@ -2626,7 +2626,7 @@ export const createCollection: API.OperationMethod<
   CreateCollectionResponse,
   CreateCollectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCollectionRequest,
   output: CreateCollectionResponse,
   errors: [
@@ -2650,7 +2650,7 @@ export const updateCollection: API.OperationMethod<
   UpdateCollectionResponse,
   UpdateCollectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCollectionRequest,
   output: UpdateCollectionResponse,
   errors: [ConflictException, InternalServerException, ValidationException],
@@ -2669,7 +2669,7 @@ export const deleteCollection: API.OperationMethod<
   DeleteCollectionResponse,
   DeleteCollectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCollectionRequest,
   output: DeleteCollectionResponse,
   errors: [
@@ -2708,7 +2708,7 @@ export const listCollections: API.OperationMethod<
     ListCollectionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCollectionsRequest,
   output: ListCollectionsResponse,
   errors: [InternalServerException, ValidationException],
@@ -2730,7 +2730,7 @@ export const createCollectionGroup: API.OperationMethod<
   CreateCollectionGroupResponse,
   CreateCollectionGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCollectionGroupRequest,
   output: CreateCollectionGroupResponse,
   errors: [
@@ -2754,7 +2754,7 @@ export const updateCollectionGroup: API.OperationMethod<
   UpdateCollectionGroupResponse,
   UpdateCollectionGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCollectionGroupRequest,
   output: UpdateCollectionGroupResponse,
   errors: [
@@ -2778,7 +2778,7 @@ export const deleteCollectionGroup: API.OperationMethod<
   DeleteCollectionGroupResponse,
   DeleteCollectionGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCollectionGroupRequest,
   output: DeleteCollectionGroupResponse,
   errors: [
@@ -2815,7 +2815,7 @@ export const listCollectionGroups: API.OperationMethod<
     ListCollectionGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCollectionGroupsRequest,
   output: ListCollectionGroupsResponse,
   errors: [InternalServerException, ValidationException],
@@ -2835,7 +2835,7 @@ export const createIndex: API.OperationMethod<
   CreateIndexResponse,
   CreateIndexError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateIndexRequest,
   output: CreateIndexResponse,
   errors: [
@@ -2858,7 +2858,7 @@ export const getIndex: API.OperationMethod<
   GetIndexResponse,
   GetIndexError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIndexRequest,
   output: GetIndexResponse,
   errors: [
@@ -2880,7 +2880,7 @@ export const updateIndex: API.OperationMethod<
   UpdateIndexResponse,
   UpdateIndexError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateIndexRequest,
   output: UpdateIndexResponse,
   errors: [
@@ -2902,7 +2902,7 @@ export const deleteIndex: API.OperationMethod<
   DeleteIndexResponse,
   DeleteIndexError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteIndexRequest,
   output: DeleteIndexResponse,
   errors: [
@@ -2926,7 +2926,7 @@ export const updateLifecyclePolicy: API.OperationMethod<
   UpdateLifecyclePolicyResponse,
   UpdateLifecyclePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateLifecyclePolicyRequest,
   output: UpdateLifecyclePolicyResponse,
   errors: [
@@ -2951,7 +2951,7 @@ export const deleteLifecyclePolicy: API.OperationMethod<
   DeleteLifecyclePolicyResponse,
   DeleteLifecyclePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLifecyclePolicyRequest,
   output: DeleteLifecyclePolicyResponse,
   errors: [
@@ -2988,7 +2988,7 @@ export const listLifecyclePolicies: API.OperationMethod<
     ListLifecyclePoliciesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLifecyclePoliciesRequest,
   output: ListLifecyclePoliciesResponse,
   errors: [InternalServerException, ValidationException],
@@ -3008,7 +3008,7 @@ export const createSecurityConfig: API.OperationMethod<
   CreateSecurityConfigResponse,
   CreateSecurityConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSecurityConfigRequest,
   output: CreateSecurityConfigResponse,
   errors: [
@@ -3031,7 +3031,7 @@ export const getSecurityConfig: API.OperationMethod<
   GetSecurityConfigResponse,
   GetSecurityConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSecurityConfigRequest,
   output: GetSecurityConfigResponse,
   errors: [
@@ -3054,7 +3054,7 @@ export const updateSecurityConfig: API.OperationMethod<
   UpdateSecurityConfigResponse,
   UpdateSecurityConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSecurityConfigRequest,
   output: UpdateSecurityConfigResponse,
   errors: [
@@ -3078,7 +3078,7 @@ export const deleteSecurityConfig: API.OperationMethod<
   DeleteSecurityConfigResponse,
   DeleteSecurityConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSecurityConfigRequest,
   output: DeleteSecurityConfigResponse,
   errors: [
@@ -3115,7 +3115,7 @@ export const listSecurityConfigs: API.OperationMethod<
     ListSecurityConfigsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSecurityConfigsRequest,
   output: ListSecurityConfigsResponse,
   errors: [InternalServerException, ValidationException],
@@ -3134,7 +3134,7 @@ export const getSecurityPolicy: API.OperationMethod<
   GetSecurityPolicyResponse,
   GetSecurityPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSecurityPolicyRequest,
   output: GetSecurityPolicyResponse,
   errors: [
@@ -3158,7 +3158,7 @@ export const updateSecurityPolicy: API.OperationMethod<
   UpdateSecurityPolicyResponse,
   UpdateSecurityPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSecurityPolicyRequest,
   output: UpdateSecurityPolicyResponse,
   errors: [
@@ -3183,7 +3183,7 @@ export const deleteSecurityPolicy: API.OperationMethod<
   DeleteSecurityPolicyResponse,
   DeleteSecurityPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSecurityPolicyRequest,
   output: DeleteSecurityPolicyResponse,
   errors: [
@@ -3220,7 +3220,7 @@ export const listSecurityPolicies: API.OperationMethod<
     ListSecurityPoliciesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSecurityPoliciesRequest,
   output: ListSecurityPoliciesResponse,
   errors: [InternalServerException, ValidationException],
@@ -3240,7 +3240,7 @@ export const createVpcEndpoint: API.OperationMethod<
   CreateVpcEndpointResponse,
   CreateVpcEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateVpcEndpointRequest,
   output: CreateVpcEndpointResponse,
   errors: [
@@ -3264,7 +3264,7 @@ export const deleteVpcEndpoint: API.OperationMethod<
   DeleteVpcEndpointResponse,
   DeleteVpcEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteVpcEndpointRequest,
   output: DeleteVpcEndpointResponse,
   errors: [
@@ -3301,7 +3301,7 @@ export const listVpcEndpoints: API.OperationMethod<
     ListVpcEndpointsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVpcEndpointsRequest,
   output: ListVpcEndpointsResponse,
   errors: [InternalServerException, ValidationException],

@@ -22,7 +22,7 @@ export interface GetSettingTlsRequest {
   zoneId: string;
 }
 
-export const GetSettingTlsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetSettingTlsRequest = /*@__PURE__*/ Schema.Struct({
   settingId: Schema.Union([
     Schema.Literals(["ciphers", "min_tls_version", "http2"]),
     Schema.String,
@@ -45,7 +45,7 @@ export interface GetSettingTlsResponse {
   }[];
 }
 
-export const GetSettingTlsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetSettingTlsResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -85,7 +85,7 @@ export const getSettingTls: API.PaginatedOperationMethod<
   GetSettingTlsResponse,
   GetSettingTlsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetSettingTlsRequest,
   output: GetSettingTlsResponse,
   errors: [],
@@ -104,7 +104,7 @@ export interface PutSettingTlsRequest {
   value: "1.0" | "1.1" | "1.2" | "1.3" | "on" | "off" | string[];
 }
 
-export const PutSettingTlsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PutSettingTlsRequest = /*@__PURE__*/ Schema.Struct({
   settingId: Schema.Union([
     Schema.Literals(["ciphers", "min_tls_version", "http2"]),
     Schema.String,
@@ -140,7 +140,7 @@ export interface PutSettingTlsResponse {
   value?: "1.0" | "1.1" | "1.2" | "1.3" | "on" | "off" | string[] | null;
 }
 
-export const PutSettingTlsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PutSettingTlsResponse = /*@__PURE__*/ Schema.Struct({
   createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   hostname: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -180,7 +180,7 @@ export const putSettingTls: API.OperationMethod<
   PutSettingTlsResponse,
   PutSettingTlsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutSettingTlsRequest,
   output: PutSettingTlsResponse,
   errors: [],
@@ -193,20 +193,19 @@ export interface DeleteSettingTlsRequest {
   zoneId: string;
 }
 
-export const DeleteSettingTlsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    settingId: Schema.Union([
-      Schema.Literals(["ciphers", "min_tls_version", "http2"]),
-      Schema.String,
-    ]).pipe(T.HttpPath("settingId")),
-    hostname: Schema.String.pipe(T.HttpPath("hostname")),
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/zones/{zone_id}/hostnames/settings/{settingId}/{hostname}",
-    }),
-  ) as unknown as Schema.Schema<DeleteSettingTlsRequest>;
+export const DeleteSettingTlsRequest = /*@__PURE__*/ Schema.Struct({
+  settingId: Schema.Union([
+    Schema.Literals(["ciphers", "min_tls_version", "http2"]),
+    Schema.String,
+  ]).pipe(T.HttpPath("settingId")),
+  hostname: Schema.String.pipe(T.HttpPath("hostname")),
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/zones/{zone_id}/hostnames/settings/{settingId}/{hostname}",
+  }),
+) as unknown as Schema.Schema<DeleteSettingTlsRequest>;
 
 export interface DeleteSettingTlsResponse {
   /** This is the time the tls setting was originally created for this hostname. */
@@ -221,39 +220,38 @@ export interface DeleteSettingTlsResponse {
   value?: "1.0" | "1.1" | "1.2" | "1.3" | "on" | "off" | string[] | null;
 }
 
-export const DeleteSettingTlsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    hostname: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    value: Schema.optional(
+export const DeleteSettingTlsResponse = /*@__PURE__*/ Schema.Struct({
+  createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  hostname: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  value: Schema.optional(
+    Schema.Union([
       Schema.Union([
-        Schema.Union([
-          Schema.Literal("1.0"),
-          Schema.Literal("1.1"),
-          Schema.Literal("1.2"),
-          Schema.Literal("1.3"),
-          Schema.Literal("on"),
-          Schema.Literal("off"),
-          Schema.Array(Schema.String),
-        ]),
-        Schema.Null,
+        Schema.Literal("1.0"),
+        Schema.Literal("1.1"),
+        Schema.Literal("1.2"),
+        Schema.Literal("1.3"),
+        Schema.Literal("on"),
+        Schema.Literal("off"),
+        Schema.Array(Schema.String),
       ]),
-    ),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        createdAt: "created_at",
-        hostname: "hostname",
-        status: "status",
-        updatedAt: "updated_at",
-        value: "value",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<DeleteSettingTlsResponse>;
+      Schema.Null,
+    ]),
+  ),
+})
+  .pipe(
+    Schema.encodeKeys({
+      createdAt: "created_at",
+      hostname: "hostname",
+      status: "status",
+      updatedAt: "updated_at",
+      value: "value",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<DeleteSettingTlsResponse>;
 
 export type DeleteSettingTlsError = DefaultErrors;
 
@@ -262,7 +260,7 @@ export const deleteSettingTls: API.OperationMethod<
   DeleteSettingTlsResponse,
   DeleteSettingTlsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSettingTlsRequest,
   output: DeleteSettingTlsResponse,
   errors: [],

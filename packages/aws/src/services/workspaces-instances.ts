@@ -1176,7 +1176,7 @@ export const associateVolume: API.OperationMethod<
   AssociateVolumeResponse,
   AssociateVolumeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateVolumeRequest,
   output: AssociateVolumeResponse,
   errors: [
@@ -1204,7 +1204,7 @@ export const createVolume: API.OperationMethod<
   CreateVolumeResponse,
   CreateVolumeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateVolumeRequest,
   output: CreateVolumeResponse,
   errors: [
@@ -1232,7 +1232,7 @@ export const createWorkspaceInstance: API.OperationMethod<
   CreateWorkspaceInstanceResponse,
   CreateWorkspaceInstanceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateWorkspaceInstanceRequest,
   output: CreateWorkspaceInstanceResponse,
   errors: [
@@ -1260,7 +1260,7 @@ export const deleteVolume: API.OperationMethod<
   DeleteVolumeResponse,
   DeleteVolumeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteVolumeRequest,
   output: DeleteVolumeResponse,
   errors: [
@@ -1290,7 +1290,7 @@ export const deleteWorkspaceInstance: API.OperationMethod<
   DeleteWorkspaceInstanceResponse,
   DeleteWorkspaceInstanceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteWorkspaceInstanceRequest,
   output: DeleteWorkspaceInstanceResponse,
   errors: [
@@ -1318,7 +1318,7 @@ export const disassociateVolume: API.OperationMethod<
   DisassociateVolumeResponse,
   DisassociateVolumeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateVolumeRequest,
   output: DisassociateVolumeResponse,
   errors: [
@@ -1345,7 +1345,7 @@ export const getWorkspaceInstance: API.OperationMethod<
   GetWorkspaceInstanceResponse,
   GetWorkspaceInstanceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetWorkspaceInstanceRequest,
   output: GetWorkspaceInstanceResponse,
   errors: [
@@ -1385,7 +1385,7 @@ export const listInstanceTypes: API.OperationMethod<
     ListInstanceTypesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInstanceTypesRequest,
   output: ListInstanceTypesResponse,
   errors: [
@@ -1430,7 +1430,7 @@ export const listRegions: API.OperationMethod<
     ListRegionsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegionsRequest,
   output: ListRegionsResponse,
   errors: [
@@ -1461,7 +1461,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -1501,7 +1501,7 @@ export const listWorkspaceInstances: API.OperationMethod<
     ListWorkspaceInstancesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkspaceInstancesRequest,
   output: ListWorkspaceInstancesResponse,
   errors: [
@@ -1532,7 +1532,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -1558,7 +1558,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [

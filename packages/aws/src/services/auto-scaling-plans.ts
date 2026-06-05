@@ -667,7 +667,7 @@ export const createScalingPlan: API.OperationMethod<
   CreateScalingPlanResponse,
   CreateScalingPlanError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateScalingPlanRequest,
   output: CreateScalingPlanResponse,
   errors: [
@@ -697,7 +697,7 @@ export const deleteScalingPlan: API.OperationMethod<
   DeleteScalingPlanResponse,
   DeleteScalingPlanError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteScalingPlanRequest,
   output: DeleteScalingPlanResponse,
   errors: [
@@ -721,7 +721,7 @@ export const describeScalingPlanResources: API.OperationMethod<
   DescribeScalingPlanResourcesResponse,
   DescribeScalingPlanResourcesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeScalingPlanResourcesRequest,
   output: DescribeScalingPlanResourcesResponse,
   errors: [
@@ -745,7 +745,7 @@ export const describeScalingPlans: API.OperationMethod<
   DescribeScalingPlansResponse,
   DescribeScalingPlansError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeScalingPlansRequest,
   output: DescribeScalingPlansResponse,
   errors: [
@@ -771,7 +771,7 @@ export const getScalingPlanResourceForecastData: API.OperationMethod<
   GetScalingPlanResourceForecastDataResponse,
   GetScalingPlanResourceForecastDataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetScalingPlanResourceForecastDataRequest,
   output: GetScalingPlanResourceForecastDataResponse,
   errors: [InternalServiceException, ValidationException],
@@ -793,7 +793,7 @@ export const updateScalingPlan: API.OperationMethod<
   UpdateScalingPlanResponse,
   UpdateScalingPlanError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateScalingPlanRequest,
   output: UpdateScalingPlanResponse,
   errors: [

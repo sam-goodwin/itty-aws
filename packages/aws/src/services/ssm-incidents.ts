@@ -1743,7 +1743,7 @@ export const batchGetIncidentFindings: API.OperationMethod<
   BatchGetIncidentFindingsOutput,
   BatchGetIncidentFindingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetIncidentFindingsInput,
   output: BatchGetIncidentFindingsOutput,
   errors: [
@@ -1771,7 +1771,7 @@ export const createReplicationSet: API.OperationMethod<
   CreateReplicationSetOutput,
   CreateReplicationSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateReplicationSetInput,
   output: CreateReplicationSetOutput,
   errors: [
@@ -1801,7 +1801,7 @@ export const createResponsePlan: API.OperationMethod<
   CreateResponsePlanOutput,
   CreateResponsePlanError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateResponsePlanInput,
   output: CreateResponsePlanOutput,
   errors: [
@@ -1832,7 +1832,7 @@ export const createTimelineEvent: API.OperationMethod<
   CreateTimelineEventOutput,
   CreateTimelineEventError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTimelineEventInput,
   output: CreateTimelineEventOutput,
   errors: [
@@ -1858,7 +1858,7 @@ export const deleteIncidentRecord: API.OperationMethod<
   DeleteIncidentRecordOutput,
   DeleteIncidentRecordError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteIncidentRecordInput,
   output: DeleteIncidentRecordOutput,
   errors: [
@@ -1884,7 +1884,7 @@ export const deleteReplicationSet: API.OperationMethod<
   DeleteReplicationSetOutput,
   DeleteReplicationSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteReplicationSetInput,
   output: DeleteReplicationSetOutput,
   errors: [
@@ -1911,7 +1911,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyOutput,
   DeleteResourcePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourcePolicyInput,
   output: DeleteResourcePolicyOutput,
   errors: [
@@ -1937,7 +1937,7 @@ export const deleteResponsePlan: API.OperationMethod<
   DeleteResponsePlanOutput,
   DeleteResponsePlanError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteResponsePlanInput,
   output: DeleteResponsePlanOutput,
   errors: [
@@ -1961,7 +1961,7 @@ export const deleteTimelineEvent: API.OperationMethod<
   DeleteTimelineEventOutput,
   DeleteTimelineEventError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTimelineEventInput,
   output: DeleteTimelineEventOutput,
   errors: [
@@ -1986,7 +1986,7 @@ export const getIncidentRecord: API.OperationMethod<
   GetIncidentRecordOutput,
   GetIncidentRecordError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIncidentRecordInput,
   output: GetIncidentRecordOutput,
   errors: [
@@ -2012,7 +2012,7 @@ export const getReplicationSet: API.OperationMethod<
   GetReplicationSetOutput,
   GetReplicationSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetReplicationSetInput,
   output: GetReplicationSetOutput,
   errors: [
@@ -2053,7 +2053,7 @@ export const getResourcePolicies: API.OperationMethod<
     GetResourcePoliciesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetResourcePoliciesInput,
   output: GetResourcePoliciesOutput,
   errors: [
@@ -2085,7 +2085,7 @@ export const getResponsePlan: API.OperationMethod<
   GetResponsePlanOutput,
   GetResponsePlanError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResponsePlanInput,
   output: GetResponsePlanOutput,
   errors: [
@@ -2111,7 +2111,7 @@ export const getTimelineEvent: API.OperationMethod<
   GetTimelineEventOutput,
   GetTimelineEventError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTimelineEventInput,
   output: GetTimelineEventOutput,
   errors: [
@@ -2155,7 +2155,7 @@ export const listIncidentFindings: API.OperationMethod<
     ListIncidentFindingsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIncidentFindingsInput,
   output: ListIncidentFindingsOutput,
   errors: [
@@ -2202,7 +2202,7 @@ export const listIncidentRecords: API.OperationMethod<
     ListIncidentRecordsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIncidentRecordsInput,
   output: ListIncidentRecordsOutput,
   errors: [
@@ -2247,7 +2247,7 @@ export const listRelatedItems: API.OperationMethod<
     ListRelatedItemsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRelatedItemsInput,
   output: ListRelatedItemsOutput,
   errors: [
@@ -2292,7 +2292,7 @@ export const listReplicationSets: API.OperationMethod<
     ListReplicationSetsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReplicationSetsInput,
   output: ListReplicationSetsOutput,
   errors: [
@@ -2337,7 +2337,7 @@ export const listResponsePlans: API.OperationMethod<
     ListResponsePlansError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResponsePlansInput,
   output: ListResponsePlansOutput,
   errors: [
@@ -2368,7 +2368,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -2408,7 +2408,7 @@ export const listTimelineEvents: API.OperationMethod<
     ListTimelineEventsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTimelineEventsInput,
   output: ListTimelineEventsOutput,
   errors: [
@@ -2441,7 +2441,7 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyOutput,
   PutResourcePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutResourcePolicyInput,
   output: PutResourcePolicyOutput,
   errors: [
@@ -2469,7 +2469,7 @@ export const startIncident: API.OperationMethod<
   StartIncidentOutput,
   StartIncidentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartIncidentInput,
   output: StartIncidentOutput,
   errors: [
@@ -2498,7 +2498,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -2527,7 +2527,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -2555,7 +2555,7 @@ export const updateDeletionProtection: API.OperationMethod<
   UpdateDeletionProtectionOutput,
   UpdateDeletionProtectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDeletionProtectionInput,
   output: UpdateDeletionProtectionOutput,
   errors: [
@@ -2584,7 +2584,7 @@ export const updateIncidentRecord: API.OperationMethod<
   UpdateIncidentRecordOutput,
   UpdateIncidentRecordError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateIncidentRecordInput,
   output: UpdateIncidentRecordOutput,
   errors: [
@@ -2612,7 +2612,7 @@ export const updateRelatedItems: API.OperationMethod<
   UpdateRelatedItemsOutput,
   UpdateRelatedItemsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRelatedItemsInput,
   output: UpdateRelatedItemsOutput,
   errors: [
@@ -2640,7 +2640,7 @@ export const updateReplicationSet: API.OperationMethod<
   UpdateReplicationSetOutput,
   UpdateReplicationSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateReplicationSetInput,
   output: UpdateReplicationSetOutput,
   errors: [
@@ -2668,7 +2668,7 @@ export const updateResponsePlan: API.OperationMethod<
   UpdateResponsePlanOutput,
   UpdateResponsePlanError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateResponsePlanInput,
   output: UpdateResponsePlanOutput,
   errors: [
@@ -2696,7 +2696,7 @@ export const updateTimelineEvent: API.OperationMethod<
   UpdateTimelineEventOutput,
   UpdateTimelineEventError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTimelineEventInput,
   output: UpdateTimelineEventOutput,
   errors: [

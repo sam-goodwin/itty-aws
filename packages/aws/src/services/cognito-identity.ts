@@ -1121,7 +1121,7 @@ export const createIdentityPool: API.OperationMethod<
   IdentityPool,
   CreateIdentityPoolError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateIdentityPoolInput,
   output: IdentityPool,
   errors: [
@@ -1150,7 +1150,7 @@ export const deleteIdentities: API.OperationMethod<
   DeleteIdentitiesResponse,
   DeleteIdentitiesError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteIdentitiesInput,
   output: DeleteIdentitiesResponse,
   errors: [
@@ -1178,7 +1178,7 @@ export const deleteIdentityPool: API.OperationMethod<
   DeleteIdentityPoolResponse,
   DeleteIdentityPoolError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteIdentityPoolInput,
   output: DeleteIdentityPoolResponse,
   errors: [
@@ -1208,7 +1208,7 @@ export const describeIdentity: API.OperationMethod<
   IdentityDescription,
   DescribeIdentityError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeIdentityInput,
   output: IdentityDescription,
   errors: [
@@ -1238,7 +1238,7 @@ export const describeIdentityPool: API.OperationMethod<
   IdentityPool,
   DescribeIdentityPoolError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeIdentityPoolInput,
   output: IdentityPool,
   errors: [
@@ -1271,7 +1271,7 @@ export const getCredentialsForIdentity: API.OperationMethod<
   GetCredentialsForIdentityResponse,
   GetCredentialsForIdentityError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCredentialsForIdentityInput,
   output: GetCredentialsForIdentityResponse,
   errors: [
@@ -1306,7 +1306,7 @@ export const getId: API.OperationMethod<
   GetIdResponse,
   GetIdError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIdInput,
   output: GetIdResponse,
   errors: [
@@ -1339,7 +1339,7 @@ export const getIdentityPoolRoles: API.OperationMethod<
   GetIdentityPoolRolesResponse,
   GetIdentityPoolRolesError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIdentityPoolRolesInput,
   output: GetIdentityPoolRolesResponse,
   errors: [
@@ -1374,7 +1374,7 @@ export const getOpenIdToken: API.OperationMethod<
   GetOpenIdTokenResponse,
   GetOpenIdTokenError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOpenIdTokenInput,
   output: GetOpenIdTokenResponse,
   errors: [
@@ -1419,7 +1419,7 @@ export const getOpenIdTokenForDeveloperIdentity: API.OperationMethod<
   GetOpenIdTokenForDeveloperIdentityResponse,
   GetOpenIdTokenForDeveloperIdentityError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOpenIdTokenForDeveloperIdentityInput,
   output: GetOpenIdTokenForDeveloperIdentityResponse,
   errors: [
@@ -1448,7 +1448,7 @@ export const getPrincipalTagAttributeMap: API.OperationMethod<
   GetPrincipalTagAttributeMapResponse,
   GetPrincipalTagAttributeMapError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPrincipalTagAttributeMapInput,
   output: GetPrincipalTagAttributeMapResponse,
   errors: [
@@ -1477,7 +1477,7 @@ export const listIdentities: API.OperationMethod<
   ListIdentitiesResponse,
   ListIdentitiesError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListIdentitiesInput,
   output: ListIdentitiesResponse,
   errors: [
@@ -1521,7 +1521,7 @@ export const listIdentityPools: API.OperationMethod<
     ListIdentityPoolsError,
     Creds | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIdentityPoolsInput,
   output: ListIdentityPoolsResponse,
   errors: [
@@ -1558,7 +1558,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceResponse,
   errors: [
@@ -1603,7 +1603,7 @@ export const lookupDeveloperIdentity: API.OperationMethod<
   LookupDeveloperIdentityResponse,
   LookupDeveloperIdentityError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: LookupDeveloperIdentityInput,
   output: LookupDeveloperIdentityResponse,
   errors: [
@@ -1646,7 +1646,7 @@ export const mergeDeveloperIdentities: API.OperationMethod<
   MergeDeveloperIdentitiesResponse,
   MergeDeveloperIdentitiesError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MergeDeveloperIdentitiesInput,
   output: MergeDeveloperIdentitiesResponse,
   errors: [
@@ -1678,7 +1678,7 @@ export const setIdentityPoolRoles: API.OperationMethod<
   SetIdentityPoolRolesResponse,
   SetIdentityPoolRolesError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIdentityPoolRolesInput,
   output: SetIdentityPoolRolesResponse,
   errors: [
@@ -1707,7 +1707,7 @@ export const setPrincipalTagAttributeMap: API.OperationMethod<
   SetPrincipalTagAttributeMapResponse,
   SetPrincipalTagAttributeMapError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetPrincipalTagAttributeMapInput,
   output: SetPrincipalTagAttributeMapResponse,
   errors: [
@@ -1750,7 +1750,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceResponse,
   errors: [
@@ -1783,7 +1783,7 @@ export const unlinkDeveloperIdentity: API.OperationMethod<
   UnlinkDeveloperIdentityResponse,
   UnlinkDeveloperIdentityError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UnlinkDeveloperIdentityInput,
   output: UnlinkDeveloperIdentityResponse,
   errors: [
@@ -1816,7 +1816,7 @@ export const unlinkIdentity: API.OperationMethod<
   UnlinkIdentityResponse,
   UnlinkIdentityError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UnlinkIdentityInput,
   output: UnlinkIdentityResponse,
   errors: [
@@ -1845,7 +1845,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceResponse,
   errors: [
@@ -1879,7 +1879,7 @@ export const updateIdentityPool: API.OperationMethod<
   IdentityPool,
   UpdateIdentityPoolError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: IdentityPool,
   output: IdentityPool,
   errors: [

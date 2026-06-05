@@ -2040,7 +2040,7 @@ export const approvePlanExecutionStep: API.OperationMethod<
   ApprovePlanExecutionStepResponse,
   ApprovePlanExecutionStepError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ApprovePlanExecutionStepRequest,
   output: ApprovePlanExecutionStepResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
@@ -2059,7 +2059,7 @@ export const cancelPlanExecution: API.OperationMethod<
   CancelPlanExecutionResponse,
   CancelPlanExecutionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelPlanExecutionRequest,
   output: CancelPlanExecutionResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
@@ -2091,7 +2091,7 @@ export const getPlanEvaluationStatus: API.OperationMethod<
     GetPlanEvaluationStatusError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetPlanEvaluationStatusRequest,
   output: GetPlanEvaluationStatusResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
@@ -2129,7 +2129,7 @@ export const getPlanExecution: API.OperationMethod<
     GetPlanExecutionError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetPlanExecutionRequest,
   output: GetPlanExecutionResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
@@ -2152,7 +2152,7 @@ export const getPlanInRegion: API.OperationMethod<
   GetPlanInRegionResponse,
   GetPlanInRegionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPlanInRegionRequest,
   output: GetPlanInRegionResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
@@ -2184,7 +2184,7 @@ export const listPlanExecutionEvents: API.OperationMethod<
     ListPlanExecutionEventsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlanExecutionEventsRequest,
   output: ListPlanExecutionEventsResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
@@ -2222,7 +2222,7 @@ export const listPlanExecutions: API.OperationMethod<
     ListPlanExecutionsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlanExecutionsRequest,
   output: ListPlanExecutionsResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
@@ -2257,7 +2257,7 @@ export const listPlansInRegion: API.OperationMethod<
     ListPlansInRegionError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlansInRegionRequest,
   output: ListPlansInRegionResponse,
   errors: [AccessDeniedException],
@@ -2296,7 +2296,7 @@ export const listRoute53HealthChecks: API.OperationMethod<
     ListRoute53HealthChecksError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRoute53HealthChecksRequest,
   output: ListRoute53HealthChecksResponse,
   errors: [
@@ -2340,7 +2340,7 @@ export const listRoute53HealthChecksInRegion: API.OperationMethod<
     ListRoute53HealthChecksInRegionError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRoute53HealthChecksInRegionRequest,
   output: ListRoute53HealthChecksInRegionResponse,
   errors: [
@@ -2372,7 +2372,7 @@ export const startPlanExecution: API.OperationMethod<
   StartPlanExecutionResponse,
   StartPlanExecutionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartPlanExecutionRequest,
   output: StartPlanExecutionResponse,
   errors: [
@@ -2395,7 +2395,7 @@ export const updatePlanExecution: API.OperationMethod<
   UpdatePlanExecutionResponse,
   UpdatePlanExecutionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePlanExecutionRequest,
   output: UpdatePlanExecutionResponse,
   errors: [
@@ -2416,7 +2416,7 @@ export const updatePlanExecutionStep: API.OperationMethod<
   UpdatePlanExecutionStepResponse,
   UpdatePlanExecutionStepError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePlanExecutionStepRequest,
   output: UpdatePlanExecutionStepResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
@@ -2432,7 +2432,7 @@ export const createPlan: API.OperationMethod<
   CreatePlanResponse,
   CreatePlanError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePlanRequest,
   output: CreatePlanResponse,
   errors: [],
@@ -2446,7 +2446,7 @@ export const getPlan: API.OperationMethod<
   GetPlanResponse,
   GetPlanError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPlanRequest,
   output: GetPlanResponse,
   errors: [ResourceNotFoundException],
@@ -2460,7 +2460,7 @@ export const updatePlan: API.OperationMethod<
   UpdatePlanResponse,
   UpdatePlanError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePlanRequest,
   output: UpdatePlanResponse,
   errors: [ResourceNotFoundException],
@@ -2479,7 +2479,7 @@ export const deletePlan: API.OperationMethod<
   DeletePlanResponse,
   DeletePlanError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePlanRequest,
   output: DeletePlanResponse,
   errors: [IllegalStateException, ResourceNotFoundException],
@@ -2508,7 +2508,7 @@ export const listPlans: API.OperationMethod<
     ListPlansError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlansRequest,
   output: ListPlansResponse,
   errors: [],
@@ -2531,7 +2531,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [InternalServerException, ResourceNotFoundException],
@@ -2548,7 +2548,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [InternalServerException, ResourceNotFoundException],
@@ -2565,7 +2565,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [InternalServerException, ResourceNotFoundException],

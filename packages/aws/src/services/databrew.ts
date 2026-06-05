@@ -2754,7 +2754,7 @@ export const batchDeleteRecipeVersion: API.OperationMethod<
   BatchDeleteRecipeVersionResponse,
   BatchDeleteRecipeVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchDeleteRecipeVersionRequest,
   output: BatchDeleteRecipeVersionResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
@@ -2773,7 +2773,7 @@ export const createDataset: API.OperationMethod<
   CreateDatasetResponse,
   CreateDatasetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDatasetRequest,
   output: CreateDatasetResponse,
   errors: [
@@ -2798,7 +2798,7 @@ export const createProfileJob: API.OperationMethod<
   CreateProfileJobResponse,
   CreateProfileJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProfileJobRequest,
   output: CreateProfileJobResponse,
   errors: [
@@ -2823,7 +2823,7 @@ export const createProject: API.OperationMethod<
   CreateProjectResponse,
   CreateProjectError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectRequest,
   output: CreateProjectResponse,
   errors: [
@@ -2846,7 +2846,7 @@ export const createRecipe: API.OperationMethod<
   CreateRecipeResponse,
   CreateRecipeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRecipeRequest,
   output: CreateRecipeResponse,
   errors: [
@@ -2870,7 +2870,7 @@ export const createRecipeJob: API.OperationMethod<
   CreateRecipeJobResponse,
   CreateRecipeJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRecipeJobRequest,
   output: CreateRecipeJobResponse,
   errors: [
@@ -2895,7 +2895,7 @@ export const createRuleset: API.OperationMethod<
   CreateRulesetResponse,
   CreateRulesetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRulesetRequest,
   output: CreateRulesetResponse,
   errors: [
@@ -2918,7 +2918,7 @@ export const createSchedule: API.OperationMethod<
   CreateScheduleResponse,
   CreateScheduleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateScheduleRequest,
   output: CreateScheduleResponse,
   errors: [
@@ -2940,7 +2940,7 @@ export const deleteDataset: API.OperationMethod<
   DeleteDatasetResponse,
   DeleteDatasetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDatasetRequest,
   output: DeleteDatasetResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
@@ -2958,7 +2958,7 @@ export const deleteJob: API.OperationMethod<
   DeleteJobResponse,
   DeleteJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteJobRequest,
   output: DeleteJobResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
@@ -2976,7 +2976,7 @@ export const deleteProject: API.OperationMethod<
   DeleteProjectResponse,
   DeleteProjectError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectRequest,
   output: DeleteProjectResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
@@ -2994,7 +2994,7 @@ export const deleteRecipeVersion: API.OperationMethod<
   DeleteRecipeVersionResponse,
   DeleteRecipeVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRecipeVersionRequest,
   output: DeleteRecipeVersionResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
@@ -3012,7 +3012,7 @@ export const deleteRuleset: API.OperationMethod<
   DeleteRulesetResponse,
   DeleteRulesetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRulesetRequest,
   output: DeleteRulesetResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
@@ -3029,7 +3029,7 @@ export const deleteSchedule: API.OperationMethod<
   DeleteScheduleResponse,
   DeleteScheduleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteScheduleRequest,
   output: DeleteScheduleResponse,
   errors: [ResourceNotFoundException, ValidationException],
@@ -3046,7 +3046,7 @@ export const describeDataset: API.OperationMethod<
   DescribeDatasetResponse,
   DescribeDatasetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDatasetRequest,
   output: DescribeDatasetResponse,
   errors: [ResourceNotFoundException, ValidationException],
@@ -3063,7 +3063,7 @@ export const describeJob: API.OperationMethod<
   DescribeJobResponse,
   DescribeJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeJobRequest,
   output: DescribeJobResponse,
   errors: [ResourceNotFoundException, ValidationException],
@@ -3080,7 +3080,7 @@ export const describeJobRun: API.OperationMethod<
   DescribeJobRunResponse,
   DescribeJobRunError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeJobRunRequest,
   output: DescribeJobRunResponse,
   errors: [ResourceNotFoundException, ValidationException],
@@ -3097,7 +3097,7 @@ export const describeProject: API.OperationMethod<
   DescribeProjectResponse,
   DescribeProjectError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeProjectRequest,
   output: DescribeProjectResponse,
   errors: [ResourceNotFoundException, ValidationException],
@@ -3115,7 +3115,7 @@ export const describeRecipe: API.OperationMethod<
   DescribeRecipeResponse,
   DescribeRecipeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeRecipeRequest,
   output: DescribeRecipeResponse,
   errors: [ResourceNotFoundException, ValidationException],
@@ -3132,7 +3132,7 @@ export const describeRuleset: API.OperationMethod<
   DescribeRulesetResponse,
   DescribeRulesetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeRulesetRequest,
   output: DescribeRulesetResponse,
   errors: [ResourceNotFoundException, ValidationException],
@@ -3149,7 +3149,7 @@ export const describeSchedule: API.OperationMethod<
   DescribeScheduleResponse,
   DescribeScheduleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeScheduleRequest,
   output: DescribeScheduleResponse,
   errors: [ResourceNotFoundException, ValidationException],
@@ -3178,7 +3178,7 @@ export const listDatasets: API.OperationMethod<
     ListDatasetsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatasetsRequest,
   output: ListDatasetsResponse,
   errors: [ValidationException],
@@ -3216,7 +3216,7 @@ export const listJobRuns: API.OperationMethod<
     ListJobRunsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJobRunsRequest,
   output: ListJobRunsResponse,
   errors: [ResourceNotFoundException, ValidationException],
@@ -3251,7 +3251,7 @@ export const listJobs: API.OperationMethod<
     ListJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJobsRequest,
   output: ListJobsResponse,
   errors: [ValidationException],
@@ -3286,7 +3286,7 @@ export const listProjects: API.OperationMethod<
     ListProjectsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsRequest,
   output: ListProjectsResponse,
   errors: [ValidationException],
@@ -3321,7 +3321,7 @@ export const listRecipes: API.OperationMethod<
     ListRecipesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecipesRequest,
   output: ListRecipesResponse,
   errors: [ValidationException],
@@ -3357,7 +3357,7 @@ export const listRecipeVersions: API.OperationMethod<
     ListRecipeVersionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecipeVersionsRequest,
   output: ListRecipeVersionsResponse,
   errors: [ValidationException],
@@ -3396,7 +3396,7 @@ export const listRulesets: API.OperationMethod<
     ListRulesetsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRulesetsRequest,
   output: ListRulesetsResponse,
   errors: [ResourceNotFoundException, ValidationException],
@@ -3431,7 +3431,7 @@ export const listSchedules: API.OperationMethod<
     ListSchedulesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSchedulesRequest,
   output: ListSchedulesResponse,
   errors: [ValidationException],
@@ -3455,7 +3455,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -3477,7 +3477,7 @@ export const publishRecipe: API.OperationMethod<
   PublishRecipeResponse,
   PublishRecipeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PublishRecipeRequest,
   output: PublishRecipeResponse,
   errors: [
@@ -3500,7 +3500,7 @@ export const sendProjectSessionAction: API.OperationMethod<
   SendProjectSessionActionResponse,
   SendProjectSessionActionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendProjectSessionActionRequest,
   output: SendProjectSessionActionResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
@@ -3519,7 +3519,7 @@ export const startJobRun: API.OperationMethod<
   StartJobRunResponse,
   StartJobRunError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartJobRunRequest,
   output: StartJobRunResponse,
   errors: [
@@ -3544,7 +3544,7 @@ export const startProjectSession: API.OperationMethod<
   StartProjectSessionResponse,
   StartProjectSessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartProjectSessionRequest,
   output: StartProjectSessionResponse,
   errors: [
@@ -3566,7 +3566,7 @@ export const stopJobRun: API.OperationMethod<
   StopJobRunResponse,
   StopJobRunError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopJobRunRequest,
   output: StopJobRunResponse,
   errors: [ResourceNotFoundException, ValidationException],
@@ -3585,7 +3585,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -3607,7 +3607,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -3629,7 +3629,7 @@ export const updateDataset: API.OperationMethod<
   UpdateDatasetResponse,
   UpdateDatasetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDatasetRequest,
   output: UpdateDatasetResponse,
   errors: [
@@ -3651,7 +3651,7 @@ export const updateProfileJob: API.OperationMethod<
   UpdateProfileJobResponse,
   UpdateProfileJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateProfileJobRequest,
   output: UpdateProfileJobResponse,
   errors: [
@@ -3672,7 +3672,7 @@ export const updateProject: API.OperationMethod<
   UpdateProjectResponse,
   UpdateProjectError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateProjectRequest,
   output: UpdateProjectResponse,
   errors: [ResourceNotFoundException, ValidationException],
@@ -3690,7 +3690,7 @@ export const updateRecipe: API.OperationMethod<
   UpdateRecipeResponse,
   UpdateRecipeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRecipeRequest,
   output: UpdateRecipeResponse,
   errors: [ResourceNotFoundException, ValidationException],
@@ -3708,7 +3708,7 @@ export const updateRecipeJob: API.OperationMethod<
   UpdateRecipeJobResponse,
   UpdateRecipeJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRecipeJobRequest,
   output: UpdateRecipeJobResponse,
   errors: [
@@ -3729,7 +3729,7 @@ export const updateRuleset: API.OperationMethod<
   UpdateRulesetResponse,
   UpdateRulesetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRulesetRequest,
   output: UpdateRulesetResponse,
   errors: [ResourceNotFoundException, ValidationException],
@@ -3747,7 +3747,7 @@ export const updateSchedule: API.OperationMethod<
   UpdateScheduleResponse,
   UpdateScheduleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateScheduleRequest,
   output: UpdateScheduleResponse,
   errors: [

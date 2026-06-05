@@ -1143,7 +1143,7 @@ export const addAttachmentsToSet: API.OperationMethod<
   AddAttachmentsToSetResponse,
   AddAttachmentsToSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddAttachmentsToSetRequest,
   output: AddAttachmentsToSetResponse,
   errors: [
@@ -1180,7 +1180,7 @@ export const addCommunicationToCase: API.OperationMethod<
   AddCommunicationToCaseResponse,
   AddCommunicationToCaseError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddCommunicationToCaseRequest,
   output: AddCommunicationToCaseResponse,
   errors: [
@@ -1229,7 +1229,7 @@ export const createCase: API.OperationMethod<
   CreateCaseResponse,
   CreateCaseError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCaseRequest,
   output: CreateCaseResponse,
   errors: [
@@ -1264,7 +1264,7 @@ export const describeAttachment: API.OperationMethod<
   DescribeAttachmentResponse,
   DescribeAttachmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAttachmentRequest,
   output: DescribeAttachmentResponse,
   errors: [
@@ -1322,7 +1322,7 @@ export const describeCases: API.OperationMethod<
     DescribeCasesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCasesRequest,
   output: DescribeCasesResponse,
   errors: [CaseIdNotFound, InternalServerError],
@@ -1379,7 +1379,7 @@ export const describeCommunications: API.OperationMethod<
     DescribeCommunicationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCommunicationsRequest,
   output: DescribeCommunicationsResponse,
   errors: [CaseIdNotFound, InternalServerError],
@@ -1413,7 +1413,7 @@ export const describeCreateCaseOptions: API.OperationMethod<
   DescribeCreateCaseOptionsResponse,
   DescribeCreateCaseOptionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeCreateCaseOptionsRequest,
   output: DescribeCreateCaseOptionsResponse,
   errors: [InternalServerError, ThrottlingException],
@@ -1444,7 +1444,7 @@ export const describeServices: API.OperationMethod<
   DescribeServicesResponse,
   DescribeServicesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeServicesRequest,
   output: DescribeServicesResponse,
   errors: [InternalServerError],
@@ -1468,7 +1468,7 @@ export const describeSeverityLevels: API.OperationMethod<
   DescribeSeverityLevelsResponse,
   DescribeSeverityLevelsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeSeverityLevelsRequest,
   output: DescribeSeverityLevelsResponse,
   errors: [InternalServerError],
@@ -1495,7 +1495,7 @@ export const describeSupportedLanguages: API.OperationMethod<
   DescribeSupportedLanguagesResponse,
   DescribeSupportedLanguagesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeSupportedLanguagesRequest,
   output: DescribeSupportedLanguagesResponse,
   errors: [InternalServerError, ThrottlingException],
@@ -1531,7 +1531,7 @@ export const describeTrustedAdvisorCheckRefreshStatuses: API.OperationMethod<
   DescribeTrustedAdvisorCheckRefreshStatusesResponse,
   DescribeTrustedAdvisorCheckRefreshStatusesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeTrustedAdvisorCheckRefreshStatusesRequest,
   output: DescribeTrustedAdvisorCheckRefreshStatusesResponse,
   errors: [InternalServerError, ThrottlingException],
@@ -1584,7 +1584,7 @@ export const describeTrustedAdvisorCheckResult: API.OperationMethod<
   DescribeTrustedAdvisorCheckResultResponse,
   DescribeTrustedAdvisorCheckResultError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeTrustedAdvisorCheckResultRequest,
   output: DescribeTrustedAdvisorCheckResultResponse,
   errors: [InternalServerError, ThrottlingException],
@@ -1621,7 +1621,7 @@ export const describeTrustedAdvisorChecks: API.OperationMethod<
   DescribeTrustedAdvisorChecksResponse,
   DescribeTrustedAdvisorChecksError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeTrustedAdvisorChecksRequest,
   output: DescribeTrustedAdvisorChecksResponse,
   errors: [InternalServerError, ThrottlingException],
@@ -1655,7 +1655,7 @@ export const describeTrustedAdvisorCheckSummaries: API.OperationMethod<
   DescribeTrustedAdvisorCheckSummariesResponse,
   DescribeTrustedAdvisorCheckSummariesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeTrustedAdvisorCheckSummariesRequest,
   output: DescribeTrustedAdvisorCheckSummariesResponse,
   errors: [InternalServerError, ThrottlingException],
@@ -1693,7 +1693,7 @@ export const refreshTrustedAdvisorCheck: API.OperationMethod<
   RefreshTrustedAdvisorCheckResponse,
   RefreshTrustedAdvisorCheckError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RefreshTrustedAdvisorCheckRequest,
   output: RefreshTrustedAdvisorCheckResponse,
   errors: [InternalServerError],
@@ -1719,7 +1719,7 @@ export const resolveCase: API.OperationMethod<
   ResolveCaseResponse,
   ResolveCaseError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResolveCaseRequest,
   output: ResolveCaseResponse,
   errors: [CaseIdNotFound, InternalServerError],

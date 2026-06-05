@@ -912,7 +912,7 @@ export const assumeRole: API.OperationMethod<
   AssumeRoleResponse,
   AssumeRoleError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssumeRoleRequest,
   output: AssumeRoleResponse,
   errors: [
@@ -1061,7 +1061,7 @@ export const assumeRoleWithSAML: API.OperationMethod<
   AssumeRoleWithSAMLResponse,
   AssumeRoleWithSAMLError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssumeRoleWithSAMLRequest,
   output: AssumeRoleWithSAMLResponse,
   errors: [
@@ -1207,7 +1207,7 @@ export const assumeRoleWithWebIdentity: API.OperationMethod<
   AssumeRoleWithWebIdentityResponse,
   AssumeRoleWithWebIdentityError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssumeRoleWithWebIdentityRequest,
   output: AssumeRoleWithWebIdentityResponse,
   errors: [
@@ -1252,7 +1252,7 @@ export const assumeRoot: API.OperationMethod<
   AssumeRootResponse,
   AssumeRootError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssumeRootRequest,
   output: AssumeRootResponse,
   errors: [ExpiredTokenException, RegionDisabledException],
@@ -1298,7 +1298,7 @@ export const decodeAuthorizationMessage: API.OperationMethod<
   DecodeAuthorizationMessageResponse,
   DecodeAuthorizationMessageError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DecodeAuthorizationMessageRequest,
   output: DecodeAuthorizationMessageResponse,
   errors: [InvalidAuthorizationMessageException],
@@ -1331,7 +1331,7 @@ export const getAccessKeyInfo: API.OperationMethod<
   GetAccessKeyInfoResponse,
   GetAccessKeyInfoError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccessKeyInfoRequest,
   output: GetAccessKeyInfoResponse,
   errors: [],
@@ -1353,7 +1353,7 @@ export const getCallerIdentity: API.OperationMethod<
   GetCallerIdentityResponse,
   GetCallerIdentityError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCallerIdentityRequest,
   output: GetCallerIdentityResponse,
   errors: [],
@@ -1374,7 +1374,7 @@ export const getDelegatedAccessToken: API.OperationMethod<
   GetDelegatedAccessTokenResponse,
   GetDelegatedAccessTokenError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDelegatedAccessTokenRequest,
   output: GetDelegatedAccessTokenResponse,
   errors: [
@@ -1486,7 +1486,7 @@ export const getFederationToken: API.OperationMethod<
   GetFederationTokenResponse,
   GetFederationTokenError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFederationTokenRequest,
   output: GetFederationTokenResponse,
   errors: [
@@ -1558,7 +1558,7 @@ export const getSessionToken: API.OperationMethod<
   GetSessionTokenResponse,
   GetSessionTokenError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSessionTokenRequest,
   output: GetSessionTokenResponse,
   errors: [RegionDisabledException],
@@ -1578,7 +1578,7 @@ export const getWebIdentityToken: API.OperationMethod<
   GetWebIdentityTokenResponse,
   GetWebIdentityTokenError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetWebIdentityTokenRequest,
   output: GetWebIdentityTokenResponse,
   errors: [

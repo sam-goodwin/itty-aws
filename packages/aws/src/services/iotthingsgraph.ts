@@ -1362,7 +1362,7 @@ export const associateEntityToThing: API.OperationMethod<
   AssociateEntityToThingResponse,
   AssociateEntityToThingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateEntityToThingRequest,
   output: AssociateEntityToThingResponse,
   errors: [
@@ -1389,7 +1389,7 @@ export const createFlowTemplate: API.OperationMethod<
   CreateFlowTemplateResponse,
   CreateFlowTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFlowTemplateRequest,
   output: CreateFlowTemplateResponse,
   errors: [
@@ -1427,7 +1427,7 @@ export const createSystemInstance: API.OperationMethod<
   CreateSystemInstanceResponse,
   CreateSystemInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSystemInstanceRequest,
   output: CreateSystemInstanceResponse,
   errors: [
@@ -1453,7 +1453,7 @@ export const createSystemTemplate: API.OperationMethod<
   CreateSystemTemplateResponse,
   CreateSystemTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSystemTemplateRequest,
   output: CreateSystemTemplateResponse,
   errors: [
@@ -1478,7 +1478,7 @@ export const deleteFlowTemplate: API.OperationMethod<
   DeleteFlowTemplateResponse,
   DeleteFlowTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFlowTemplateRequest,
   output: DeleteFlowTemplateResponse,
   errors: [
@@ -1501,7 +1501,7 @@ export const deleteNamespace: API.OperationMethod<
   DeleteNamespaceResponse,
   DeleteNamespaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteNamespaceRequest,
   output: DeleteNamespaceResponse,
   errors: [InternalFailureException, ThrottlingException],
@@ -1523,7 +1523,7 @@ export const deleteSystemInstance: API.OperationMethod<
   DeleteSystemInstanceResponse,
   DeleteSystemInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSystemInstanceRequest,
   output: DeleteSystemInstanceResponse,
   errors: [
@@ -1548,7 +1548,7 @@ export const deleteSystemTemplate: API.OperationMethod<
   DeleteSystemTemplateResponse,
   DeleteSystemTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSystemTemplateRequest,
   output: DeleteSystemTemplateResponse,
   errors: [
@@ -1585,7 +1585,7 @@ export const deploySystemInstance: API.OperationMethod<
   DeploySystemInstanceResponse,
   DeploySystemInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeploySystemInstanceRequest,
   output: DeploySystemInstanceResponse,
   errors: [
@@ -1610,7 +1610,7 @@ export const deprecateFlowTemplate: API.OperationMethod<
   DeprecateFlowTemplateResponse,
   DeprecateFlowTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeprecateFlowTemplateRequest,
   output: DeprecateFlowTemplateResponse,
   errors: [
@@ -1634,7 +1634,7 @@ export const deprecateSystemTemplate: API.OperationMethod<
   DeprecateSystemTemplateResponse,
   DeprecateSystemTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeprecateSystemTemplateRequest,
   output: DeprecateSystemTemplateResponse,
   errors: [
@@ -1658,7 +1658,7 @@ export const describeNamespace: API.OperationMethod<
   DescribeNamespaceResponse,
   DescribeNamespaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeNamespaceRequest,
   output: DescribeNamespaceResponse,
   errors: [
@@ -1683,7 +1683,7 @@ export const dissociateEntityFromThing: API.OperationMethod<
   DissociateEntityFromThingResponse,
   DissociateEntityFromThingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DissociateEntityFromThingRequest,
   output: DissociateEntityFromThingResponse,
   errors: [
@@ -1728,7 +1728,7 @@ export const getEntities: API.OperationMethod<
   GetEntitiesResponse,
   GetEntitiesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEntitiesRequest,
   output: GetEntitiesResponse,
   errors: [
@@ -1752,7 +1752,7 @@ export const getFlowTemplate: API.OperationMethod<
   GetFlowTemplateResponse,
   GetFlowTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFlowTemplateRequest,
   output: GetFlowTemplateResponse,
   errors: [
@@ -1792,7 +1792,7 @@ export const getFlowTemplateRevisions: API.OperationMethod<
     GetFlowTemplateRevisionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetFlowTemplateRevisionsRequest,
   output: GetFlowTemplateRevisionsResponse,
   errors: [
@@ -1821,7 +1821,7 @@ export const getNamespaceDeletionStatus: API.OperationMethod<
   GetNamespaceDeletionStatusResponse,
   GetNamespaceDeletionStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetNamespaceDeletionStatusRequest,
   output: GetNamespaceDeletionStatusResponse,
   errors: [
@@ -1844,7 +1844,7 @@ export const getSystemInstance: API.OperationMethod<
   GetSystemInstanceResponse,
   GetSystemInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSystemInstanceRequest,
   output: GetSystemInstanceResponse,
   errors: [
@@ -1868,7 +1868,7 @@ export const getSystemTemplate: API.OperationMethod<
   GetSystemTemplateResponse,
   GetSystemTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSystemTemplateRequest,
   output: GetSystemTemplateResponse,
   errors: [
@@ -1908,7 +1908,7 @@ export const getSystemTemplateRevisions: API.OperationMethod<
     GetSystemTemplateRevisionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetSystemTemplateRevisionsRequest,
   output: GetSystemTemplateRevisionsResponse,
   errors: [
@@ -1938,7 +1938,7 @@ export const getUploadStatus: API.OperationMethod<
   GetUploadStatusResponse,
   GetUploadStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUploadStatusRequest,
   output: GetUploadStatusResponse,
   errors: [
@@ -1977,7 +1977,7 @@ export const listFlowExecutionMessages: API.OperationMethod<
     ListFlowExecutionMessagesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFlowExecutionMessagesRequest,
   output: ListFlowExecutionMessagesResponse,
   errors: [
@@ -2022,7 +2022,7 @@ export const listTagsForResource: API.OperationMethod<
     ListTagsForResourceError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -2066,7 +2066,7 @@ export const searchEntities: API.OperationMethod<
     SearchEntitiesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchEntitiesRequest,
   output: SearchEntitiesResponse,
   errors: [
@@ -2110,7 +2110,7 @@ export const searchFlowExecutions: API.OperationMethod<
     SearchFlowExecutionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchFlowExecutionsRequest,
   output: SearchFlowExecutionsResponse,
   errors: [
@@ -2154,7 +2154,7 @@ export const searchFlowTemplates: API.OperationMethod<
     SearchFlowTemplatesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchFlowTemplatesRequest,
   output: SearchFlowTemplatesResponse,
   errors: [
@@ -2197,7 +2197,7 @@ export const searchSystemInstances: API.OperationMethod<
     SearchSystemInstancesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchSystemInstancesRequest,
   output: SearchSystemInstancesResponse,
   errors: [
@@ -2240,7 +2240,7 @@ export const searchSystemTemplates: API.OperationMethod<
     SearchSystemTemplatesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchSystemTemplatesRequest,
   output: SearchSystemTemplatesResponse,
   errors: [
@@ -2289,7 +2289,7 @@ export const searchThings: API.OperationMethod<
     SearchThingsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchThingsRequest,
   output: SearchThingsResponse,
   errors: [
@@ -2319,7 +2319,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -2344,7 +2344,7 @@ export const undeploySystemInstance: API.OperationMethod<
   UndeploySystemInstanceResponse,
   UndeploySystemInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UndeploySystemInstanceRequest,
   output: UndeploySystemInstanceResponse,
   errors: [
@@ -2369,7 +2369,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -2394,7 +2394,7 @@ export const updateFlowTemplate: API.OperationMethod<
   UpdateFlowTemplateResponse,
   UpdateFlowTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateFlowTemplateRequest,
   output: UpdateFlowTemplateResponse,
   errors: [
@@ -2418,7 +2418,7 @@ export const updateSystemTemplate: API.OperationMethod<
   UpdateSystemTemplateResponse,
   UpdateSystemTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSystemTemplateRequest,
   output: UpdateSystemTemplateResponse,
   errors: [
@@ -2453,7 +2453,7 @@ export const uploadEntityDefinitions: API.OperationMethod<
   UploadEntityDefinitionsResponse,
   UploadEntityDefinitionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UploadEntityDefinitionsRequest,
   output: UploadEntityDefinitionsResponse,
   errors: [

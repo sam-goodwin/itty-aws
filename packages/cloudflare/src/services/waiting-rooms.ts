@@ -23,7 +23,7 @@ export interface GetEventRequest {
   zoneId: string;
 }
 
-export const GetEventRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetEventRequest = /*@__PURE__*/ Schema.Struct({
   waitingRoomId: Schema.String.pipe(T.HttpPath("waitingRoomId")),
   eventId: Schema.String.pipe(T.HttpPath("eventId")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -75,7 +75,7 @@ export interface GetEventResponse {
     | null;
 }
 
-export const GetEventResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetEventResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   customPageHtml: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -148,7 +148,7 @@ export const getEvent: API.OperationMethod<
   GetEventResponse,
   GetEventError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEventRequest,
   output: GetEventResponse,
   errors: [],
@@ -162,7 +162,7 @@ export interface ListEventsRequest {
   perPage?: number;
 }
 
-export const ListEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListEventsRequest = /*@__PURE__*/ Schema.Struct({
   waitingRoomId: Schema.String.pipe(T.HttpPath("waitingRoomId")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -208,7 +208,7 @@ export interface ListEventsResponse {
   } | null;
 }
 
-export const ListEventsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListEventsResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -313,7 +313,7 @@ export const listEvents: API.PaginatedOperationMethod<
   ListEventsResponse,
   ListEventsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEventsRequest,
   output: ListEventsResponse,
   errors: [],
@@ -367,7 +367,7 @@ export interface CreateEventRequest {
     | null;
 }
 
-export const CreateEventRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateEventRequest = /*@__PURE__*/ Schema.Struct({
   waitingRoomId: Schema.String.pipe(T.HttpPath("waitingRoomId")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   eventEndTime: Schema.String,
@@ -470,7 +470,7 @@ export interface CreateEventResponse {
     | null;
 }
 
-export const CreateEventResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateEventResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   customPageHtml: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -545,7 +545,7 @@ export const createEvent: API.OperationMethod<
   CreateEventResponse,
   CreateEventError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEventRequest,
   output: CreateEventResponse,
   errors: [],
@@ -593,7 +593,7 @@ export interface UpdateEventRequest {
     | null;
 }
 
-export const UpdateEventRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateEventRequest = /*@__PURE__*/ Schema.Struct({
   waitingRoomId: Schema.String.pipe(T.HttpPath("waitingRoomId")),
   eventId: Schema.String.pipe(T.HttpPath("eventId")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -697,7 +697,7 @@ export interface UpdateEventResponse {
     | null;
 }
 
-export const UpdateEventResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateEventResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   customPageHtml: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -772,7 +772,7 @@ export const updateEvent: API.OperationMethod<
   UpdateEventResponse,
   UpdateEventError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEventRequest,
   output: UpdateEventResponse,
   errors: [],
@@ -820,7 +820,7 @@ export interface PatchEventRequest {
     | null;
 }
 
-export const PatchEventRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PatchEventRequest = /*@__PURE__*/ Schema.Struct({
   waitingRoomId: Schema.String.pipe(T.HttpPath("waitingRoomId")),
   eventId: Schema.String.pipe(T.HttpPath("eventId")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -924,7 +924,7 @@ export interface PatchEventResponse {
     | null;
 }
 
-export const PatchEventResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PatchEventResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   customPageHtml: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -999,7 +999,7 @@ export const patchEvent: API.OperationMethod<
   PatchEventResponse,
   PatchEventError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchEventRequest,
   output: PatchEventResponse,
   errors: [],
@@ -1012,7 +1012,7 @@ export interface DeleteEventRequest {
   zoneId: string;
 }
 
-export const DeleteEventRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteEventRequest = /*@__PURE__*/ Schema.Struct({
   waitingRoomId: Schema.String.pipe(T.HttpPath("waitingRoomId")),
   eventId: Schema.String.pipe(T.HttpPath("eventId")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -1027,7 +1027,7 @@ export interface DeleteEventResponse {
   id?: string | null;
 }
 
-export const DeleteEventResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteEventResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
 }).pipe(
   T.ResponsePath("result"),
@@ -1040,7 +1040,7 @@ export const deleteEvent: API.OperationMethod<
   DeleteEventResponse,
   DeleteEventError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEventRequest,
   output: DeleteEventResponse,
   errors: [],
@@ -1057,7 +1057,7 @@ export interface GetEventDetailRequest {
   zoneId: string;
 }
 
-export const GetEventDetailRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetEventDetailRequest = /*@__PURE__*/ Schema.Struct({
   waitingRoomId: Schema.String.pipe(T.HttpPath("waitingRoomId")),
   eventId: Schema.String.pipe(T.HttpPath("eventId")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -1094,38 +1094,32 @@ export interface GetEventDetailResponse {
   totalActiveUsers?: number | null;
 }
 
-export const GetEventDetailResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    customPageHtml: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    disableSessionRenewal: Schema.optional(
-      Schema.Union([Schema.Boolean, Schema.Null]),
-    ),
-    eventEndTime: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    eventStartTime: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    newUsersPerMinute: Schema.optional(
-      Schema.Union([Schema.Number, Schema.Null]),
-    ),
-    prequeueStartTime: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    queueingMethod: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    sessionDuration: Schema.optional(
-      Schema.Union([Schema.Number, Schema.Null]),
-    ),
-    shuffleAtEventStart: Schema.optional(
-      Schema.Union([Schema.Boolean, Schema.Null]),
-    ),
-    suspended: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    totalActiveUsers: Schema.optional(
-      Schema.Union([Schema.Number, Schema.Null]),
-    ),
-  },
-)
+export const GetEventDetailResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  customPageHtml: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  disableSessionRenewal: Schema.optional(
+    Schema.Union([Schema.Boolean, Schema.Null]),
+  ),
+  eventEndTime: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  eventStartTime: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  newUsersPerMinute: Schema.optional(
+    Schema.Union([Schema.Number, Schema.Null]),
+  ),
+  prequeueStartTime: Schema.optional(
+    Schema.Union([Schema.String, Schema.Null]),
+  ),
+  queueingMethod: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  sessionDuration: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  shuffleAtEventStart: Schema.optional(
+    Schema.Union([Schema.Boolean, Schema.Null]),
+  ),
+  suspended: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  totalActiveUsers: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+})
   .pipe(
     Schema.encodeKeys({
       id: "id",
@@ -1157,7 +1151,7 @@ export const getEventDetail: API.OperationMethod<
   GetEventDetailResponse,
   GetEventDetailError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEventDetailRequest,
   output: GetEventDetailResponse,
   errors: [],
@@ -1174,7 +1168,7 @@ export interface PreviewPageRequest {
   customHtml: string;
 }
 
-export const PreviewPageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PreviewPageRequest = /*@__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   customHtml: Schema.String,
 }).pipe(
@@ -1187,7 +1181,7 @@ export interface PreviewPageResponse {
   previewUrl?: string | null;
 }
 
-export const PreviewPageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PreviewPageResponse = /*@__PURE__*/ Schema.Struct({
   previewUrl: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
 })
   .pipe(Schema.encodeKeys({ previewUrl: "preview_url" }))
@@ -1202,7 +1196,7 @@ export const previewPage: API.OperationMethod<
   PreviewPageResponse,
   PreviewPageError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PreviewPageRequest,
   output: PreviewPageResponse,
   errors: [],
@@ -1218,7 +1212,7 @@ export interface GetRuleRequest {
   zoneId: string;
 }
 
-export const GetRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetRuleRequest = /*@__PURE__*/ Schema.Struct({
   waitingRoomId: Schema.String.pipe(T.HttpPath("waitingRoomId")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
 }).pipe(
@@ -1240,7 +1234,7 @@ export interface GetRuleResponse {
   }[];
 }
 
-export const GetRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetRuleResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1273,7 +1267,7 @@ export const getRule: API.PaginatedOperationMethod<
   GetRuleResponse,
   GetRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetRuleRequest,
   output: GetRuleResponse,
   errors: [],
@@ -1296,7 +1290,7 @@ export interface CreateRuleRequest {
   };
 }
 
-export const CreateRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateRuleRequest = /*@__PURE__*/ Schema.Struct({
   waitingRoomId: Schema.String.pipe(T.HttpPath("waitingRoomId")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   rules: Schema.Struct({
@@ -1324,7 +1318,7 @@ export interface CreateRuleResponse {
   }[];
 }
 
-export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateRuleResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1357,7 +1351,7 @@ export const createRule: API.PaginatedOperationMethod<
   CreateRuleResponse,
   CreateRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: CreateRuleRequest,
   output: CreateRuleResponse,
   errors: [],
@@ -1380,7 +1374,7 @@ export interface UpdateRuleRequest {
   }[];
 }
 
-export const UpdateRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateRuleRequest = /*@__PURE__*/ Schema.Struct({
   waitingRoomId: Schema.String.pipe(T.HttpPath("waitingRoomId")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   rules: Schema.Array(
@@ -1410,7 +1404,7 @@ export interface UpdateRuleResponse {
   }[];
 }
 
-export const UpdateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateRuleResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1443,7 +1437,7 @@ export const updateRule: API.PaginatedOperationMethod<
   UpdateRuleResponse,
   UpdateRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: UpdateRuleRequest,
   output: UpdateRuleResponse,
   errors: [],
@@ -1470,7 +1464,7 @@ export interface PatchRuleRequest {
   position?: { index?: number } | { before?: string } | { after?: string };
 }
 
-export const PatchRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PatchRuleRequest = /*@__PURE__*/ Schema.Struct({
   waitingRoomId: Schema.String.pipe(T.HttpPath("waitingRoomId")),
   ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -1510,7 +1504,7 @@ export interface PatchRuleResponse {
   }[];
 }
 
-export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PatchRuleResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1543,7 +1537,7 @@ export const patchRule: API.PaginatedOperationMethod<
   PatchRuleResponse,
   PatchRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: PatchRuleRequest,
   output: PatchRuleResponse,
   errors: [],
@@ -1560,7 +1554,7 @@ export interface DeleteRuleRequest {
   zoneId: string;
 }
 
-export const DeleteRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteRuleRequest = /*@__PURE__*/ Schema.Struct({
   waitingRoomId: Schema.String.pipe(T.HttpPath("waitingRoomId")),
   ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -1583,7 +1577,7 @@ export interface DeleteRuleResponse {
   }[];
 }
 
-export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteRuleResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1616,7 +1610,7 @@ export const deleteRule: API.PaginatedOperationMethod<
   DeleteRuleResponse,
   DeleteRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DeleteRuleRequest,
   output: DeleteRuleResponse,
   errors: [],
@@ -1635,7 +1629,7 @@ export interface GetSettingRequest {
   zoneId: string;
 }
 
-export const GetSettingRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetSettingRequest = /*@__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
 }).pipe(
   T.Http({ method: "GET", path: "/zones/{zone_id}/waiting_rooms/settings" }),
@@ -1646,7 +1640,7 @@ export interface GetSettingResponse {
   searchEngineCrawlerBypass: boolean;
 }
 
-export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetSettingResponse = /*@__PURE__*/ Schema.Struct({
   searchEngineCrawlerBypass: Schema.Boolean,
 })
   .pipe(
@@ -1665,7 +1659,7 @@ export const getSetting: API.OperationMethod<
   GetSettingResponse,
   GetSettingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSettingRequest,
   output: GetSettingResponse,
   errors: [],
@@ -1678,7 +1672,7 @@ export interface PutSettingRequest {
   searchEngineCrawlerBypass?: boolean;
 }
 
-export const PutSettingRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PutSettingRequest = /*@__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   searchEngineCrawlerBypass: Schema.optional(Schema.Boolean),
 }).pipe(
@@ -1693,7 +1687,7 @@ export interface PutSettingResponse {
   searchEngineCrawlerBypass: boolean;
 }
 
-export const PutSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PutSettingResponse = /*@__PURE__*/ Schema.Struct({
   searchEngineCrawlerBypass: Schema.Boolean,
 })
   .pipe(
@@ -1712,7 +1706,7 @@ export const putSetting: API.OperationMethod<
   PutSettingResponse,
   PutSettingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutSettingRequest,
   output: PutSettingResponse,
   errors: [],
@@ -1725,7 +1719,7 @@ export interface PatchSettingRequest {
   searchEngineCrawlerBypass?: boolean;
 }
 
-export const PatchSettingRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PatchSettingRequest = /*@__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   searchEngineCrawlerBypass: Schema.optional(Schema.Boolean),
 }).pipe(
@@ -1740,7 +1734,7 @@ export interface PatchSettingResponse {
   searchEngineCrawlerBypass: boolean;
 }
 
-export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PatchSettingResponse = /*@__PURE__*/ Schema.Struct({
   searchEngineCrawlerBypass: Schema.Boolean,
 })
   .pipe(
@@ -1759,7 +1753,7 @@ export const patchSetting: API.OperationMethod<
   PatchSettingResponse,
   PatchSettingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchSettingRequest,
   output: PatchSettingResponse,
   errors: [],
@@ -1775,7 +1769,7 @@ export interface GetStatusRequest {
   zoneId: string;
 }
 
-export const GetStatusRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetStatusRequest = /*@__PURE__*/ Schema.Struct({
   waitingRoomId: Schema.String.pipe(T.HttpPath("waitingRoomId")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
 }).pipe(
@@ -1799,7 +1793,7 @@ export interface GetStatusResponse {
     | null;
 }
 
-export const GetStatusResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetStatusResponse = /*@__PURE__*/ Schema.Struct({
   estimatedQueuedUsers: Schema.optional(
     Schema.Union([Schema.Number, Schema.Null]),
   ),
@@ -1845,7 +1839,7 @@ export const getStatus: API.OperationMethod<
   GetStatusResponse,
   GetStatusError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetStatusRequest,
   output: GetStatusResponse,
   errors: [],
@@ -1861,7 +1855,7 @@ export interface GetWaitingRoomRequest {
   zoneId: string;
 }
 
-export const GetWaitingRoomRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetWaitingRoomRequest = /*@__PURE__*/ Schema.Struct({
   waitingRoomId: Schema.String.pipe(T.HttpPath("waitingRoomId")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
 }).pipe(
@@ -1978,167 +1972,158 @@ export interface GetWaitingRoomResponse {
     | null;
 }
 
-export const GetWaitingRoomResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    additionalRoutes: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            path: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
-    cookieAttributes: Schema.optional(
-      Schema.Union([
+export const GetWaitingRoomResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  additionalRoutes: Schema.optional(
+    Schema.Union([
+      Schema.Array(
         Schema.Struct({
-          samesite: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals(["auto", "lax", "none", "strict"]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
-          secure: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals(["auto", "always", "never"]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
+          host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          path: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         }),
-        Schema.Null,
-      ]),
-    ),
-    cookieSuffix: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    customPageHtml: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    defaultTemplateLanguage: Schema.optional(
-      Schema.Union([
-        Schema.Union([
-          Schema.Literals([
-            "en-US",
-            "es-ES",
-            "de-DE",
-            "fr-FR",
-            "it-IT",
-            "ja-JP",
-            "ko-KR",
-            "pt-BR",
-            "zh-CN",
-            "zh-TW",
-            "nl-NL",
-            "pl-PL",
-            "id-ID",
-            "tr-TR",
-            "ar-EG",
-            "ru-RU",
-            "fa-IR",
-            "bg-BG",
-            "hr-HR",
-            "cs-CZ",
-            "da-DK",
-            "fi-FI",
-            "lt-LT",
-            "ms-MY",
-            "nb-NO",
-            "ro-RO",
-            "el-GR",
-            "he-IL",
-            "hi-IN",
-            "hu-HU",
-            "sr-BA",
-            "sk-SK",
-            "sl-SI",
-            "sv-SE",
-            "tl-PH",
-            "th-TH",
-            "uk-UA",
-            "vi-VN",
+      ),
+      Schema.Null,
+    ]),
+  ),
+  cookieAttributes: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        samesite: Schema.optional(
+          Schema.Union([
+            Schema.Union([
+              Schema.Literals(["auto", "lax", "none", "strict"]),
+              Schema.String,
+            ]),
+            Schema.Null,
           ]),
-          Schema.String,
-        ]),
-        Schema.Null,
-      ]),
-    ),
-    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    disableSessionRenewal: Schema.optional(
-      Schema.Union([Schema.Boolean, Schema.Null]),
-    ),
-    enabledOriginCommands: Schema.optional(
-      Schema.Union([Schema.Array(Schema.Literal("revoke")), Schema.Null]),
-    ),
-    host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    jsonResponseEnabled: Schema.optional(
-      Schema.Union([Schema.Boolean, Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    newUsersPerMinute: Schema.optional(
-      Schema.Union([Schema.Number, Schema.Null]),
-    ),
-    nextEventPrequeueStartTime: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    nextEventStartTime: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    path: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    queueAll: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    queueingMethod: Schema.optional(
-      Schema.Union([
-        Schema.Union([
-          Schema.Literals(["fifo", "random", "passthrough", "reject"]),
-          Schema.String,
-        ]),
-        Schema.Null,
-      ]),
-    ),
-    queueingStatusCode: Schema.optional(
-      Schema.Union([
-        Schema.Union([Schema.Literals(["200", "202", "429"]), Schema.String]),
-        Schema.Null,
-      ]),
-    ),
-    sessionDuration: Schema.optional(
-      Schema.Union([Schema.Number, Schema.Null]),
-    ),
-    suspended: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    totalActiveUsers: Schema.optional(
-      Schema.Union([Schema.Number, Schema.Null]),
-    ),
-    turnstileAction: Schema.optional(
-      Schema.Union([
-        Schema.Union([
-          Schema.Literals(["log", "infinite_queue"]),
-          Schema.String,
-        ]),
-        Schema.Null,
-      ]),
-    ),
-    turnstileMode: Schema.optional(
-      Schema.Union([
-        Schema.Union([
-          Schema.Literals([
-            "off",
-            "invisible",
-            "visible_non_interactive",
-            "visible_managed",
+        ),
+        secure: Schema.optional(
+          Schema.Union([
+            Schema.Union([
+              Schema.Literals(["auto", "always", "never"]),
+              Schema.String,
+            ]),
+            Schema.Null,
           ]),
-          Schema.String,
+        ),
+      }),
+      Schema.Null,
+    ]),
+  ),
+  cookieSuffix: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  customPageHtml: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  defaultTemplateLanguage: Schema.optional(
+    Schema.Union([
+      Schema.Union([
+        Schema.Literals([
+          "en-US",
+          "es-ES",
+          "de-DE",
+          "fr-FR",
+          "it-IT",
+          "ja-JP",
+          "ko-KR",
+          "pt-BR",
+          "zh-CN",
+          "zh-TW",
+          "nl-NL",
+          "pl-PL",
+          "id-ID",
+          "tr-TR",
+          "ar-EG",
+          "ru-RU",
+          "fa-IR",
+          "bg-BG",
+          "hr-HR",
+          "cs-CZ",
+          "da-DK",
+          "fi-FI",
+          "lt-LT",
+          "ms-MY",
+          "nb-NO",
+          "ro-RO",
+          "el-GR",
+          "he-IL",
+          "hi-IN",
+          "hu-HU",
+          "sr-BA",
+          "sk-SK",
+          "sl-SI",
+          "sv-SE",
+          "tl-PH",
+          "th-TH",
+          "uk-UA",
+          "vi-VN",
         ]),
-        Schema.Null,
+        Schema.String,
       ]),
-    ),
-  },
-)
+      Schema.Null,
+    ]),
+  ),
+  description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  disableSessionRenewal: Schema.optional(
+    Schema.Union([Schema.Boolean, Schema.Null]),
+  ),
+  enabledOriginCommands: Schema.optional(
+    Schema.Union([Schema.Array(Schema.Literal("revoke")), Schema.Null]),
+  ),
+  host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  jsonResponseEnabled: Schema.optional(
+    Schema.Union([Schema.Boolean, Schema.Null]),
+  ),
+  modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  newUsersPerMinute: Schema.optional(
+    Schema.Union([Schema.Number, Schema.Null]),
+  ),
+  nextEventPrequeueStartTime: Schema.optional(
+    Schema.Union([Schema.String, Schema.Null]),
+  ),
+  nextEventStartTime: Schema.optional(
+    Schema.Union([Schema.String, Schema.Null]),
+  ),
+  path: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  queueAll: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  queueingMethod: Schema.optional(
+    Schema.Union([
+      Schema.Union([
+        Schema.Literals(["fifo", "random", "passthrough", "reject"]),
+        Schema.String,
+      ]),
+      Schema.Null,
+    ]),
+  ),
+  queueingStatusCode: Schema.optional(
+    Schema.Union([
+      Schema.Union([Schema.Literals(["200", "202", "429"]), Schema.String]),
+      Schema.Null,
+    ]),
+  ),
+  sessionDuration: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  suspended: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  totalActiveUsers: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  turnstileAction: Schema.optional(
+    Schema.Union([
+      Schema.Union([Schema.Literals(["log", "infinite_queue"]), Schema.String]),
+      Schema.Null,
+    ]),
+  ),
+  turnstileMode: Schema.optional(
+    Schema.Union([
+      Schema.Union([
+        Schema.Literals([
+          "off",
+          "invisible",
+          "visible_non_interactive",
+          "visible_managed",
+        ]),
+        Schema.String,
+      ]),
+      Schema.Null,
+    ]),
+  ),
+})
   .pipe(
     Schema.encodeKeys({
       id: "id",
@@ -2180,7 +2165,7 @@ export const getWaitingRoom: API.OperationMethod<
   GetWaitingRoomResponse,
   GetWaitingRoomError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetWaitingRoomRequest,
   output: GetWaitingRoomResponse,
   errors: [],
@@ -2200,21 +2185,19 @@ export interface ListWaitingRoomsForZoneRequest extends ListWaitingRoomsBaseRequ
   zoneId: string;
 }
 
-export const ListWaitingRoomsForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    ...ListWaitingRoomsBaseFields,
-  }).pipe(
-    T.Http({ method: "GET", path: "/accounts/{account_id}/waiting_rooms" }),
-  ) as unknown as Schema.Schema<ListWaitingRoomsForAccountRequest>;
+export const ListWaitingRoomsForAccountRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  ...ListWaitingRoomsBaseFields,
+}).pipe(
+  T.Http({ method: "GET", path: "/accounts/{account_id}/waiting_rooms" }),
+) as unknown as Schema.Schema<ListWaitingRoomsForAccountRequest>;
 
-export const ListWaitingRoomsForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    ...ListWaitingRoomsBaseFields,
-  }).pipe(
-    T.Http({ method: "GET", path: "/zones/{zone_id}/waiting_rooms" }),
-  ) as unknown as Schema.Schema<ListWaitingRoomsForZoneRequest>;
+export const ListWaitingRoomsForZoneRequest = /*@__PURE__*/ Schema.Struct({
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  ...ListWaitingRoomsBaseFields,
+}).pipe(
+  T.Http({ method: "GET", path: "/zones/{zone_id}/waiting_rooms" }),
+) as unknown as Schema.Schema<ListWaitingRoomsForZoneRequest>;
 
 export interface ListWaitingRoomsResponse {
   result: {
@@ -2308,234 +2291,220 @@ export interface ListWaitingRoomsResponse {
   } | null;
 }
 
-export const ListWaitingRoomsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        additionalRoutes: Schema.optional(
-          Schema.Union([
-            Schema.Array(
-              Schema.Struct({
-                host: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                path: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-        cookieAttributes: Schema.optional(
-          Schema.Union([
+export const ListWaitingRoomsResponse = /*@__PURE__*/ Schema.Struct({
+  result: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      additionalRoutes: Schema.optional(
+        Schema.Union([
+          Schema.Array(
             Schema.Struct({
-              samesite: Schema.optional(
-                Schema.Union([
-                  Schema.Union([
-                    Schema.Literals(["auto", "lax", "none", "strict"]),
-                    Schema.String,
-                  ]),
-                  Schema.Null,
-                ]),
-              ),
-              secure: Schema.optional(
-                Schema.Union([
-                  Schema.Union([
-                    Schema.Literals(["auto", "always", "never"]),
-                    Schema.String,
-                  ]),
-                  Schema.Null,
-                ]),
-              ),
+              host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+              path: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
             }),
-            Schema.Null,
-          ]),
-        ),
-        cookieSuffix: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        customPageHtml: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        defaultTemplateLanguage: Schema.optional(
-          Schema.Union([
-            Schema.Union([
-              Schema.Literals([
-                "en-US",
-                "es-ES",
-                "de-DE",
-                "fr-FR",
-                "it-IT",
-                "ja-JP",
-                "ko-KR",
-                "pt-BR",
-                "zh-CN",
-                "zh-TW",
-                "nl-NL",
-                "pl-PL",
-                "id-ID",
-                "tr-TR",
-                "ar-EG",
-                "ru-RU",
-                "fa-IR",
-                "bg-BG",
-                "hr-HR",
-                "cs-CZ",
-                "da-DK",
-                "fi-FI",
-                "lt-LT",
-                "ms-MY",
-                "nb-NO",
-                "ro-RO",
-                "el-GR",
-                "he-IL",
-                "hi-IN",
-                "hu-HU",
-                "sr-BA",
-                "sk-SK",
-                "sl-SI",
-                "sv-SE",
-                "tl-PH",
-                "th-TH",
-                "uk-UA",
-                "vi-VN",
+          ),
+          Schema.Null,
+        ]),
+      ),
+      cookieAttributes: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            samesite: Schema.optional(
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["auto", "lax", "none", "strict"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
               ]),
-              Schema.String,
-            ]),
-            Schema.Null,
-          ]),
-        ),
-        description: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        disableSessionRenewal: Schema.optional(
-          Schema.Union([Schema.Boolean, Schema.Null]),
-        ),
-        enabledOriginCommands: Schema.optional(
-          Schema.Union([Schema.Array(Schema.Literal("revoke")), Schema.Null]),
-        ),
-        host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        jsonResponseEnabled: Schema.optional(
-          Schema.Union([Schema.Boolean, Schema.Null]),
-        ),
-        modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        newUsersPerMinute: Schema.optional(
-          Schema.Union([Schema.Number, Schema.Null]),
-        ),
-        nextEventPrequeueStartTime: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        nextEventStartTime: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        path: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        queueAll: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-        queueingMethod: Schema.optional(
-          Schema.Union([
-            Schema.Union([
-              Schema.Literals(["fifo", "random", "passthrough", "reject"]),
-              Schema.String,
-            ]),
-            Schema.Null,
-          ]),
-        ),
-        queueingStatusCode: Schema.optional(
-          Schema.Union([
-            Schema.Union([
-              Schema.Literals(["200", "202", "429"]),
-              Schema.String,
-            ]),
-            Schema.Null,
-          ]),
-        ),
-        sessionDuration: Schema.optional(
-          Schema.Union([Schema.Number, Schema.Null]),
-        ),
-        suspended: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-        totalActiveUsers: Schema.optional(
-          Schema.Union([Schema.Number, Schema.Null]),
-        ),
-        turnstileAction: Schema.optional(
-          Schema.Union([
-            Schema.Union([
-              Schema.Literals(["log", "infinite_queue"]),
-              Schema.String,
-            ]),
-            Schema.Null,
-          ]),
-        ),
-        turnstileMode: Schema.optional(
-          Schema.Union([
-            Schema.Union([
-              Schema.Literals([
-                "off",
-                "invisible",
-                "visible_non_interactive",
-                "visible_managed",
+            ),
+            secure: Schema.optional(
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["auto", "always", "never"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
               ]),
-              Schema.String,
+            ),
+          }),
+          Schema.Null,
+        ]),
+      ),
+      cookieSuffix: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      customPageHtml: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      defaultTemplateLanguage: Schema.optional(
+        Schema.Union([
+          Schema.Union([
+            Schema.Literals([
+              "en-US",
+              "es-ES",
+              "de-DE",
+              "fr-FR",
+              "it-IT",
+              "ja-JP",
+              "ko-KR",
+              "pt-BR",
+              "zh-CN",
+              "zh-TW",
+              "nl-NL",
+              "pl-PL",
+              "id-ID",
+              "tr-TR",
+              "ar-EG",
+              "ru-RU",
+              "fa-IR",
+              "bg-BG",
+              "hr-HR",
+              "cs-CZ",
+              "da-DK",
+              "fi-FI",
+              "lt-LT",
+              "ms-MY",
+              "nb-NO",
+              "ro-RO",
+              "el-GR",
+              "he-IL",
+              "hi-IN",
+              "hu-HU",
+              "sr-BA",
+              "sk-SK",
+              "sl-SI",
+              "sv-SE",
+              "tl-PH",
+              "th-TH",
+              "uk-UA",
+              "vi-VN",
             ]),
-            Schema.Null,
+            Schema.String,
           ]),
-        ),
+          Schema.Null,
+        ]),
+      ),
+      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      disableSessionRenewal: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      enabledOriginCommands: Schema.optional(
+        Schema.Union([Schema.Array(Schema.Literal("revoke")), Schema.Null]),
+      ),
+      host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      jsonResponseEnabled: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      newUsersPerMinute: Schema.optional(
+        Schema.Union([Schema.Number, Schema.Null]),
+      ),
+      nextEventPrequeueStartTime: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      nextEventStartTime: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      path: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      queueAll: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      queueingMethod: Schema.optional(
+        Schema.Union([
+          Schema.Union([
+            Schema.Literals(["fifo", "random", "passthrough", "reject"]),
+            Schema.String,
+          ]),
+          Schema.Null,
+        ]),
+      ),
+      queueingStatusCode: Schema.optional(
+        Schema.Union([
+          Schema.Union([Schema.Literals(["200", "202", "429"]), Schema.String]),
+          Schema.Null,
+        ]),
+      ),
+      sessionDuration: Schema.optional(
+        Schema.Union([Schema.Number, Schema.Null]),
+      ),
+      suspended: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      totalActiveUsers: Schema.optional(
+        Schema.Union([Schema.Number, Schema.Null]),
+      ),
+      turnstileAction: Schema.optional(
+        Schema.Union([
+          Schema.Union([
+            Schema.Literals(["log", "infinite_queue"]),
+            Schema.String,
+          ]),
+          Schema.Null,
+        ]),
+      ),
+      turnstileMode: Schema.optional(
+        Schema.Union([
+          Schema.Union([
+            Schema.Literals([
+              "off",
+              "invisible",
+              "visible_non_interactive",
+              "visible_managed",
+            ]),
+            Schema.String,
+          ]),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        additionalRoutes: "additional_routes",
+        cookieAttributes: "cookie_attributes",
+        cookieSuffix: "cookie_suffix",
+        createdOn: "created_on",
+        customPageHtml: "custom_page_html",
+        defaultTemplateLanguage: "default_template_language",
+        description: "description",
+        disableSessionRenewal: "disable_session_renewal",
+        enabledOriginCommands: "enabled_origin_commands",
+        host: "host",
+        jsonResponseEnabled: "json_response_enabled",
+        modifiedOn: "modified_on",
+        name: "name",
+        newUsersPerMinute: "new_users_per_minute",
+        nextEventPrequeueStartTime: "next_event_prequeue_start_time",
+        nextEventStartTime: "next_event_start_time",
+        path: "path",
+        queueAll: "queue_all",
+        queueingMethod: "queueing_method",
+        queueingStatusCode: "queueing_status_code",
+        sessionDuration: "session_duration",
+        suspended: "suspended",
+        totalActiveUsers: "total_active_users",
+        turnstileAction: "turnstile_action",
+        turnstileMode: "turnstile_mode",
+      }),
+    ),
+  ),
+  resultInfo: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       }).pipe(
         Schema.encodeKeys({
-          id: "id",
-          additionalRoutes: "additional_routes",
-          cookieAttributes: "cookie_attributes",
-          cookieSuffix: "cookie_suffix",
-          createdOn: "created_on",
-          customPageHtml: "custom_page_html",
-          defaultTemplateLanguage: "default_template_language",
-          description: "description",
-          disableSessionRenewal: "disable_session_renewal",
-          enabledOriginCommands: "enabled_origin_commands",
-          host: "host",
-          jsonResponseEnabled: "json_response_enabled",
-          modifiedOn: "modified_on",
-          name: "name",
-          newUsersPerMinute: "new_users_per_minute",
-          nextEventPrequeueStartTime: "next_event_prequeue_start_time",
-          nextEventStartTime: "next_event_start_time",
-          path: "path",
-          queueAll: "queue_all",
-          queueingMethod: "queueing_method",
-          queueingStatusCode: "queueing_status_code",
-          sessionDuration: "session_duration",
-          suspended: "suspended",
-          totalActiveUsers: "total_active_users",
-          turnstileAction: "turnstile_action",
-          turnstileMode: "turnstile_mode",
+          count: "count",
+          page: "page",
+          perPage: "per_page",
+          totalCount: "total_count",
         }),
       ),
-    ),
-    resultInfo: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          totalCount: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            count: "count",
-            page: "page",
-            perPage: "per_page",
-            totalCount: "total_count",
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
-  }).pipe(
-    Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
-  ) as unknown as Schema.Schema<ListWaitingRoomsResponse>;
+      Schema.Null,
+    ]),
+  ),
+}).pipe(
+  Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
+) as unknown as Schema.Schema<ListWaitingRoomsResponse>;
 
 export type ListWaitingRoomsError = DefaultErrors;
 
@@ -2544,7 +2513,7 @@ export const listWaitingRoomsForAccount: API.PaginatedOperationMethod<
   ListWaitingRoomsResponse,
   ListWaitingRoomsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWaitingRoomsForAccountRequest,
   output: ListWaitingRoomsResponse,
   errors: [],
@@ -2562,7 +2531,7 @@ export const listWaitingRoomsForZone: API.PaginatedOperationMethod<
   ListWaitingRoomsResponse,
   ListWaitingRoomsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWaitingRoomsForZoneRequest,
   output: ListWaitingRoomsResponse,
   errors: [],
@@ -2669,143 +2638,142 @@ export interface CreateWaitingRoomRequest {
     | (string & {});
 }
 
-export const CreateWaitingRoomRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    host: Schema.String,
-    name: Schema.String,
-    newUsersPerMinute: Schema.Number,
-    totalActiveUsers: Schema.Number,
-    additionalRoutes: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          host: Schema.optional(Schema.String),
-          path: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
-    cookieAttributes: Schema.optional(
+export const CreateWaitingRoomRequest = /*@__PURE__*/ Schema.Struct({
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  host: Schema.String,
+  name: Schema.String,
+  newUsersPerMinute: Schema.Number,
+  totalActiveUsers: Schema.Number,
+  additionalRoutes: Schema.optional(
+    Schema.Array(
       Schema.Struct({
-        samesite: Schema.optional(
-          Schema.Union([
-            Schema.Literals(["auto", "lax", "none", "strict"]),
-            Schema.String,
-          ]),
-        ),
-        secure: Schema.optional(
-          Schema.Union([
-            Schema.Literals(["auto", "always", "never"]),
-            Schema.String,
-          ]),
-        ),
+        host: Schema.optional(Schema.String),
+        path: Schema.optional(Schema.String),
       }),
     ),
-    cookieSuffix: Schema.optional(Schema.String),
-    customPageHtml: Schema.optional(Schema.String),
-    defaultTemplateLanguage: Schema.optional(
-      Schema.Union([
-        Schema.Literals([
-          "en-US",
-          "es-ES",
-          "de-DE",
-          "fr-FR",
-          "it-IT",
-          "ja-JP",
-          "ko-KR",
-          "pt-BR",
-          "zh-CN",
-          "zh-TW",
-          "nl-NL",
-          "pl-PL",
-          "id-ID",
-          "tr-TR",
-          "ar-EG",
-          "ru-RU",
-          "fa-IR",
-          "bg-BG",
-          "hr-HR",
-          "cs-CZ",
-          "da-DK",
-          "fi-FI",
-          "lt-LT",
-          "ms-MY",
-          "nb-NO",
-          "ro-RO",
-          "el-GR",
-          "he-IL",
-          "hi-IN",
-          "hu-HU",
-          "sr-BA",
-          "sk-SK",
-          "sl-SI",
-          "sv-SE",
-          "tl-PH",
-          "th-TH",
-          "uk-UA",
-          "vi-VN",
+  ),
+  cookieAttributes: Schema.optional(
+    Schema.Struct({
+      samesite: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["auto", "lax", "none", "strict"]),
+          Schema.String,
         ]),
-        Schema.String,
-      ]),
-    ),
-    description: Schema.optional(Schema.String),
-    disableSessionRenewal: Schema.optional(Schema.Boolean),
-    enabledOriginCommands: Schema.optional(
-      Schema.Array(Schema.Literal("revoke")),
-    ),
-    jsonResponseEnabled: Schema.optional(Schema.Boolean),
-    path: Schema.optional(Schema.String),
-    queueAll: Schema.optional(Schema.Boolean),
-    queueingMethod: Schema.optional(
-      Schema.Union([
-        Schema.Literals(["fifo", "random", "passthrough", "reject"]),
-        Schema.String,
-      ]),
-    ),
-    queueingStatusCode: Schema.optional(
-      Schema.Union([Schema.Literals(["200", "202", "429"]), Schema.String]),
-    ),
-    sessionDuration: Schema.optional(Schema.Number),
-    suspended: Schema.optional(Schema.Boolean),
-    turnstileAction: Schema.optional(
-      Schema.Union([Schema.Literals(["log", "infinite_queue"]), Schema.String]),
-    ),
-    turnstileMode: Schema.optional(
-      Schema.Union([
-        Schema.Literals([
-          "off",
-          "invisible",
-          "visible_non_interactive",
-          "visible_managed",
+      ),
+      secure: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["auto", "always", "never"]),
+          Schema.String,
         ]),
-        Schema.String,
-      ]),
-    ),
-  }).pipe(
-    Schema.encodeKeys({
-      host: "host",
-      name: "name",
-      newUsersPerMinute: "new_users_per_minute",
-      totalActiveUsers: "total_active_users",
-      additionalRoutes: "additional_routes",
-      cookieAttributes: "cookie_attributes",
-      cookieSuffix: "cookie_suffix",
-      customPageHtml: "custom_page_html",
-      defaultTemplateLanguage: "default_template_language",
-      description: "description",
-      disableSessionRenewal: "disable_session_renewal",
-      enabledOriginCommands: "enabled_origin_commands",
-      jsonResponseEnabled: "json_response_enabled",
-      path: "path",
-      queueAll: "queue_all",
-      queueingMethod: "queueing_method",
-      queueingStatusCode: "queueing_status_code",
-      sessionDuration: "session_duration",
-      suspended: "suspended",
-      turnstileAction: "turnstile_action",
-      turnstileMode: "turnstile_mode",
+      ),
     }),
-    T.Http({ method: "POST", path: "/zones/{zone_id}/waiting_rooms" }),
-  ) as unknown as Schema.Schema<CreateWaitingRoomRequest>;
+  ),
+  cookieSuffix: Schema.optional(Schema.String),
+  customPageHtml: Schema.optional(Schema.String),
+  defaultTemplateLanguage: Schema.optional(
+    Schema.Union([
+      Schema.Literals([
+        "en-US",
+        "es-ES",
+        "de-DE",
+        "fr-FR",
+        "it-IT",
+        "ja-JP",
+        "ko-KR",
+        "pt-BR",
+        "zh-CN",
+        "zh-TW",
+        "nl-NL",
+        "pl-PL",
+        "id-ID",
+        "tr-TR",
+        "ar-EG",
+        "ru-RU",
+        "fa-IR",
+        "bg-BG",
+        "hr-HR",
+        "cs-CZ",
+        "da-DK",
+        "fi-FI",
+        "lt-LT",
+        "ms-MY",
+        "nb-NO",
+        "ro-RO",
+        "el-GR",
+        "he-IL",
+        "hi-IN",
+        "hu-HU",
+        "sr-BA",
+        "sk-SK",
+        "sl-SI",
+        "sv-SE",
+        "tl-PH",
+        "th-TH",
+        "uk-UA",
+        "vi-VN",
+      ]),
+      Schema.String,
+    ]),
+  ),
+  description: Schema.optional(Schema.String),
+  disableSessionRenewal: Schema.optional(Schema.Boolean),
+  enabledOriginCommands: Schema.optional(
+    Schema.Array(Schema.Literal("revoke")),
+  ),
+  jsonResponseEnabled: Schema.optional(Schema.Boolean),
+  path: Schema.optional(Schema.String),
+  queueAll: Schema.optional(Schema.Boolean),
+  queueingMethod: Schema.optional(
+    Schema.Union([
+      Schema.Literals(["fifo", "random", "passthrough", "reject"]),
+      Schema.String,
+    ]),
+  ),
+  queueingStatusCode: Schema.optional(
+    Schema.Union([Schema.Literals(["200", "202", "429"]), Schema.String]),
+  ),
+  sessionDuration: Schema.optional(Schema.Number),
+  suspended: Schema.optional(Schema.Boolean),
+  turnstileAction: Schema.optional(
+    Schema.Union([Schema.Literals(["log", "infinite_queue"]), Schema.String]),
+  ),
+  turnstileMode: Schema.optional(
+    Schema.Union([
+      Schema.Literals([
+        "off",
+        "invisible",
+        "visible_non_interactive",
+        "visible_managed",
+      ]),
+      Schema.String,
+    ]),
+  ),
+}).pipe(
+  Schema.encodeKeys({
+    host: "host",
+    name: "name",
+    newUsersPerMinute: "new_users_per_minute",
+    totalActiveUsers: "total_active_users",
+    additionalRoutes: "additional_routes",
+    cookieAttributes: "cookie_attributes",
+    cookieSuffix: "cookie_suffix",
+    customPageHtml: "custom_page_html",
+    defaultTemplateLanguage: "default_template_language",
+    description: "description",
+    disableSessionRenewal: "disable_session_renewal",
+    enabledOriginCommands: "enabled_origin_commands",
+    jsonResponseEnabled: "json_response_enabled",
+    path: "path",
+    queueAll: "queue_all",
+    queueingMethod: "queueing_method",
+    queueingStatusCode: "queueing_status_code",
+    sessionDuration: "session_duration",
+    suspended: "suspended",
+    turnstileAction: "turnstile_action",
+    turnstileMode: "turnstile_mode",
+  }),
+  T.Http({ method: "POST", path: "/zones/{zone_id}/waiting_rooms" }),
+) as unknown as Schema.Schema<CreateWaitingRoomRequest>;
 
 export interface CreateWaitingRoomResponse {
   id?: string | null;
@@ -2914,199 +2882,191 @@ export interface CreateWaitingRoomResponse {
     | null;
 }
 
-export const CreateWaitingRoomResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    additionalRoutes: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            path: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
-    cookieAttributes: Schema.optional(
-      Schema.Union([
+export const CreateWaitingRoomResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  additionalRoutes: Schema.optional(
+    Schema.Union([
+      Schema.Array(
         Schema.Struct({
-          samesite: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals(["auto", "lax", "none", "strict"]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
-          secure: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals(["auto", "always", "never"]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
+          host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          path: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         }),
-        Schema.Null,
-      ]),
-    ),
-    cookieSuffix: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    customPageHtml: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    defaultTemplateLanguage: Schema.optional(
-      Schema.Union([
-        Schema.Union([
-          Schema.Literals([
-            "en-US",
-            "es-ES",
-            "de-DE",
-            "fr-FR",
-            "it-IT",
-            "ja-JP",
-            "ko-KR",
-            "pt-BR",
-            "zh-CN",
-            "zh-TW",
-            "nl-NL",
-            "pl-PL",
-            "id-ID",
-            "tr-TR",
-            "ar-EG",
-            "ru-RU",
-            "fa-IR",
-            "bg-BG",
-            "hr-HR",
-            "cs-CZ",
-            "da-DK",
-            "fi-FI",
-            "lt-LT",
-            "ms-MY",
-            "nb-NO",
-            "ro-RO",
-            "el-GR",
-            "he-IL",
-            "hi-IN",
-            "hu-HU",
-            "sr-BA",
-            "sk-SK",
-            "sl-SI",
-            "sv-SE",
-            "tl-PH",
-            "th-TH",
-            "uk-UA",
-            "vi-VN",
+      ),
+      Schema.Null,
+    ]),
+  ),
+  cookieAttributes: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        samesite: Schema.optional(
+          Schema.Union([
+            Schema.Union([
+              Schema.Literals(["auto", "lax", "none", "strict"]),
+              Schema.String,
+            ]),
+            Schema.Null,
           ]),
-          Schema.String,
-        ]),
-        Schema.Null,
-      ]),
-    ),
-    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    disableSessionRenewal: Schema.optional(
-      Schema.Union([Schema.Boolean, Schema.Null]),
-    ),
-    enabledOriginCommands: Schema.optional(
-      Schema.Union([Schema.Array(Schema.Literal("revoke")), Schema.Null]),
-    ),
-    host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    jsonResponseEnabled: Schema.optional(
-      Schema.Union([Schema.Boolean, Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    newUsersPerMinute: Schema.optional(
-      Schema.Union([Schema.Number, Schema.Null]),
-    ),
-    nextEventPrequeueStartTime: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    nextEventStartTime: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    path: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    queueAll: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    queueingMethod: Schema.optional(
-      Schema.Union([
-        Schema.Union([
-          Schema.Literals(["fifo", "random", "passthrough", "reject"]),
-          Schema.String,
-        ]),
-        Schema.Null,
-      ]),
-    ),
-    queueingStatusCode: Schema.optional(
-      Schema.Union([
-        Schema.Union([Schema.Literals(["200", "202", "429"]), Schema.String]),
-        Schema.Null,
-      ]),
-    ),
-    sessionDuration: Schema.optional(
-      Schema.Union([Schema.Number, Schema.Null]),
-    ),
-    suspended: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    totalActiveUsers: Schema.optional(
-      Schema.Union([Schema.Number, Schema.Null]),
-    ),
-    turnstileAction: Schema.optional(
-      Schema.Union([
-        Schema.Union([
-          Schema.Literals(["log", "infinite_queue"]),
-          Schema.String,
-        ]),
-        Schema.Null,
-      ]),
-    ),
-    turnstileMode: Schema.optional(
-      Schema.Union([
-        Schema.Union([
-          Schema.Literals([
-            "off",
-            "invisible",
-            "visible_non_interactive",
-            "visible_managed",
+        ),
+        secure: Schema.optional(
+          Schema.Union([
+            Schema.Union([
+              Schema.Literals(["auto", "always", "never"]),
+              Schema.String,
+            ]),
+            Schema.Null,
           ]),
-          Schema.String,
-        ]),
-        Schema.Null,
-      ]),
-    ),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        additionalRoutes: "additional_routes",
-        cookieAttributes: "cookie_attributes",
-        cookieSuffix: "cookie_suffix",
-        createdOn: "created_on",
-        customPageHtml: "custom_page_html",
-        defaultTemplateLanguage: "default_template_language",
-        description: "description",
-        disableSessionRenewal: "disable_session_renewal",
-        enabledOriginCommands: "enabled_origin_commands",
-        host: "host",
-        jsonResponseEnabled: "json_response_enabled",
-        modifiedOn: "modified_on",
-        name: "name",
-        newUsersPerMinute: "new_users_per_minute",
-        nextEventPrequeueStartTime: "next_event_prequeue_start_time",
-        nextEventStartTime: "next_event_start_time",
-        path: "path",
-        queueAll: "queue_all",
-        queueingMethod: "queueing_method",
-        queueingStatusCode: "queueing_status_code",
-        sessionDuration: "session_duration",
-        suspended: "suspended",
-        totalActiveUsers: "total_active_users",
-        turnstileAction: "turnstile_action",
-        turnstileMode: "turnstile_mode",
+        ),
       }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<CreateWaitingRoomResponse>;
+      Schema.Null,
+    ]),
+  ),
+  cookieSuffix: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  customPageHtml: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  defaultTemplateLanguage: Schema.optional(
+    Schema.Union([
+      Schema.Union([
+        Schema.Literals([
+          "en-US",
+          "es-ES",
+          "de-DE",
+          "fr-FR",
+          "it-IT",
+          "ja-JP",
+          "ko-KR",
+          "pt-BR",
+          "zh-CN",
+          "zh-TW",
+          "nl-NL",
+          "pl-PL",
+          "id-ID",
+          "tr-TR",
+          "ar-EG",
+          "ru-RU",
+          "fa-IR",
+          "bg-BG",
+          "hr-HR",
+          "cs-CZ",
+          "da-DK",
+          "fi-FI",
+          "lt-LT",
+          "ms-MY",
+          "nb-NO",
+          "ro-RO",
+          "el-GR",
+          "he-IL",
+          "hi-IN",
+          "hu-HU",
+          "sr-BA",
+          "sk-SK",
+          "sl-SI",
+          "sv-SE",
+          "tl-PH",
+          "th-TH",
+          "uk-UA",
+          "vi-VN",
+        ]),
+        Schema.String,
+      ]),
+      Schema.Null,
+    ]),
+  ),
+  description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  disableSessionRenewal: Schema.optional(
+    Schema.Union([Schema.Boolean, Schema.Null]),
+  ),
+  enabledOriginCommands: Schema.optional(
+    Schema.Union([Schema.Array(Schema.Literal("revoke")), Schema.Null]),
+  ),
+  host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  jsonResponseEnabled: Schema.optional(
+    Schema.Union([Schema.Boolean, Schema.Null]),
+  ),
+  modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  newUsersPerMinute: Schema.optional(
+    Schema.Union([Schema.Number, Schema.Null]),
+  ),
+  nextEventPrequeueStartTime: Schema.optional(
+    Schema.Union([Schema.String, Schema.Null]),
+  ),
+  nextEventStartTime: Schema.optional(
+    Schema.Union([Schema.String, Schema.Null]),
+  ),
+  path: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  queueAll: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  queueingMethod: Schema.optional(
+    Schema.Union([
+      Schema.Union([
+        Schema.Literals(["fifo", "random", "passthrough", "reject"]),
+        Schema.String,
+      ]),
+      Schema.Null,
+    ]),
+  ),
+  queueingStatusCode: Schema.optional(
+    Schema.Union([
+      Schema.Union([Schema.Literals(["200", "202", "429"]), Schema.String]),
+      Schema.Null,
+    ]),
+  ),
+  sessionDuration: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  suspended: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  totalActiveUsers: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  turnstileAction: Schema.optional(
+    Schema.Union([
+      Schema.Union([Schema.Literals(["log", "infinite_queue"]), Schema.String]),
+      Schema.Null,
+    ]),
+  ),
+  turnstileMode: Schema.optional(
+    Schema.Union([
+      Schema.Union([
+        Schema.Literals([
+          "off",
+          "invisible",
+          "visible_non_interactive",
+          "visible_managed",
+        ]),
+        Schema.String,
+      ]),
+      Schema.Null,
+    ]),
+  ),
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      additionalRoutes: "additional_routes",
+      cookieAttributes: "cookie_attributes",
+      cookieSuffix: "cookie_suffix",
+      createdOn: "created_on",
+      customPageHtml: "custom_page_html",
+      defaultTemplateLanguage: "default_template_language",
+      description: "description",
+      disableSessionRenewal: "disable_session_renewal",
+      enabledOriginCommands: "enabled_origin_commands",
+      host: "host",
+      jsonResponseEnabled: "json_response_enabled",
+      modifiedOn: "modified_on",
+      name: "name",
+      newUsersPerMinute: "new_users_per_minute",
+      nextEventPrequeueStartTime: "next_event_prequeue_start_time",
+      nextEventStartTime: "next_event_start_time",
+      path: "path",
+      queueAll: "queue_all",
+      queueingMethod: "queueing_method",
+      queueingStatusCode: "queueing_status_code",
+      sessionDuration: "session_duration",
+      suspended: "suspended",
+      totalActiveUsers: "total_active_users",
+      turnstileAction: "turnstile_action",
+      turnstileMode: "turnstile_mode",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<CreateWaitingRoomResponse>;
 
 export type CreateWaitingRoomError = DefaultErrors;
 
@@ -3115,7 +3075,7 @@ export const createWaitingRoom: API.OperationMethod<
   CreateWaitingRoomResponse,
   CreateWaitingRoomError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateWaitingRoomRequest,
   output: CreateWaitingRoomResponse,
   errors: [],
@@ -3216,147 +3176,146 @@ export interface UpdateWaitingRoomRequest {
     | (string & {});
 }
 
-export const UpdateWaitingRoomRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    waitingRoomId: Schema.String.pipe(T.HttpPath("waitingRoomId")),
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    host: Schema.String,
-    name: Schema.String,
-    newUsersPerMinute: Schema.Number,
-    totalActiveUsers: Schema.Number,
-    additionalRoutes: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          host: Schema.optional(Schema.String),
-          path: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
-    cookieAttributes: Schema.optional(
+export const UpdateWaitingRoomRequest = /*@__PURE__*/ Schema.Struct({
+  waitingRoomId: Schema.String.pipe(T.HttpPath("waitingRoomId")),
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  host: Schema.String,
+  name: Schema.String,
+  newUsersPerMinute: Schema.Number,
+  totalActiveUsers: Schema.Number,
+  additionalRoutes: Schema.optional(
+    Schema.Array(
       Schema.Struct({
-        samesite: Schema.optional(
-          Schema.Union([
-            Schema.Literals(["auto", "lax", "none", "strict"]),
-            Schema.String,
-          ]),
-        ),
-        secure: Schema.optional(
-          Schema.Union([
-            Schema.Literals(["auto", "always", "never"]),
-            Schema.String,
-          ]),
-        ),
+        host: Schema.optional(Schema.String),
+        path: Schema.optional(Schema.String),
       }),
     ),
-    cookieSuffix: Schema.optional(Schema.String),
-    customPageHtml: Schema.optional(Schema.String),
-    defaultTemplateLanguage: Schema.optional(
-      Schema.Union([
-        Schema.Literals([
-          "en-US",
-          "es-ES",
-          "de-DE",
-          "fr-FR",
-          "it-IT",
-          "ja-JP",
-          "ko-KR",
-          "pt-BR",
-          "zh-CN",
-          "zh-TW",
-          "nl-NL",
-          "pl-PL",
-          "id-ID",
-          "tr-TR",
-          "ar-EG",
-          "ru-RU",
-          "fa-IR",
-          "bg-BG",
-          "hr-HR",
-          "cs-CZ",
-          "da-DK",
-          "fi-FI",
-          "lt-LT",
-          "ms-MY",
-          "nb-NO",
-          "ro-RO",
-          "el-GR",
-          "he-IL",
-          "hi-IN",
-          "hu-HU",
-          "sr-BA",
-          "sk-SK",
-          "sl-SI",
-          "sv-SE",
-          "tl-PH",
-          "th-TH",
-          "uk-UA",
-          "vi-VN",
+  ),
+  cookieAttributes: Schema.optional(
+    Schema.Struct({
+      samesite: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["auto", "lax", "none", "strict"]),
+          Schema.String,
         ]),
-        Schema.String,
-      ]),
-    ),
-    description: Schema.optional(Schema.String),
-    disableSessionRenewal: Schema.optional(Schema.Boolean),
-    enabledOriginCommands: Schema.optional(
-      Schema.Array(Schema.Literal("revoke")),
-    ),
-    jsonResponseEnabled: Schema.optional(Schema.Boolean),
-    path: Schema.optional(Schema.String),
-    queueAll: Schema.optional(Schema.Boolean),
-    queueingMethod: Schema.optional(
-      Schema.Union([
-        Schema.Literals(["fifo", "random", "passthrough", "reject"]),
-        Schema.String,
-      ]),
-    ),
-    queueingStatusCode: Schema.optional(
-      Schema.Union([Schema.Literals(["200", "202", "429"]), Schema.String]),
-    ),
-    sessionDuration: Schema.optional(Schema.Number),
-    suspended: Schema.optional(Schema.Boolean),
-    turnstileAction: Schema.optional(
-      Schema.Union([Schema.Literals(["log", "infinite_queue"]), Schema.String]),
-    ),
-    turnstileMode: Schema.optional(
-      Schema.Union([
-        Schema.Literals([
-          "off",
-          "invisible",
-          "visible_non_interactive",
-          "visible_managed",
+      ),
+      secure: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["auto", "always", "never"]),
+          Schema.String,
         ]),
-        Schema.String,
+      ),
+    }),
+  ),
+  cookieSuffix: Schema.optional(Schema.String),
+  customPageHtml: Schema.optional(Schema.String),
+  defaultTemplateLanguage: Schema.optional(
+    Schema.Union([
+      Schema.Literals([
+        "en-US",
+        "es-ES",
+        "de-DE",
+        "fr-FR",
+        "it-IT",
+        "ja-JP",
+        "ko-KR",
+        "pt-BR",
+        "zh-CN",
+        "zh-TW",
+        "nl-NL",
+        "pl-PL",
+        "id-ID",
+        "tr-TR",
+        "ar-EG",
+        "ru-RU",
+        "fa-IR",
+        "bg-BG",
+        "hr-HR",
+        "cs-CZ",
+        "da-DK",
+        "fi-FI",
+        "lt-LT",
+        "ms-MY",
+        "nb-NO",
+        "ro-RO",
+        "el-GR",
+        "he-IL",
+        "hi-IN",
+        "hu-HU",
+        "sr-BA",
+        "sk-SK",
+        "sl-SI",
+        "sv-SE",
+        "tl-PH",
+        "th-TH",
+        "uk-UA",
+        "vi-VN",
       ]),
-    ),
-  }).pipe(
-    Schema.encodeKeys({
-      host: "host",
-      name: "name",
-      newUsersPerMinute: "new_users_per_minute",
-      totalActiveUsers: "total_active_users",
-      additionalRoutes: "additional_routes",
-      cookieAttributes: "cookie_attributes",
-      cookieSuffix: "cookie_suffix",
-      customPageHtml: "custom_page_html",
-      defaultTemplateLanguage: "default_template_language",
-      description: "description",
-      disableSessionRenewal: "disable_session_renewal",
-      enabledOriginCommands: "enabled_origin_commands",
-      jsonResponseEnabled: "json_response_enabled",
-      path: "path",
-      queueAll: "queue_all",
-      queueingMethod: "queueing_method",
-      queueingStatusCode: "queueing_status_code",
-      sessionDuration: "session_duration",
-      suspended: "suspended",
-      turnstileAction: "turnstile_action",
-      turnstileMode: "turnstile_mode",
-    }),
-    T.Http({
-      method: "PUT",
-      path: "/zones/{zone_id}/waiting_rooms/{waitingRoomId}",
-    }),
-  ) as unknown as Schema.Schema<UpdateWaitingRoomRequest>;
+      Schema.String,
+    ]),
+  ),
+  description: Schema.optional(Schema.String),
+  disableSessionRenewal: Schema.optional(Schema.Boolean),
+  enabledOriginCommands: Schema.optional(
+    Schema.Array(Schema.Literal("revoke")),
+  ),
+  jsonResponseEnabled: Schema.optional(Schema.Boolean),
+  path: Schema.optional(Schema.String),
+  queueAll: Schema.optional(Schema.Boolean),
+  queueingMethod: Schema.optional(
+    Schema.Union([
+      Schema.Literals(["fifo", "random", "passthrough", "reject"]),
+      Schema.String,
+    ]),
+  ),
+  queueingStatusCode: Schema.optional(
+    Schema.Union([Schema.Literals(["200", "202", "429"]), Schema.String]),
+  ),
+  sessionDuration: Schema.optional(Schema.Number),
+  suspended: Schema.optional(Schema.Boolean),
+  turnstileAction: Schema.optional(
+    Schema.Union([Schema.Literals(["log", "infinite_queue"]), Schema.String]),
+  ),
+  turnstileMode: Schema.optional(
+    Schema.Union([
+      Schema.Literals([
+        "off",
+        "invisible",
+        "visible_non_interactive",
+        "visible_managed",
+      ]),
+      Schema.String,
+    ]),
+  ),
+}).pipe(
+  Schema.encodeKeys({
+    host: "host",
+    name: "name",
+    newUsersPerMinute: "new_users_per_minute",
+    totalActiveUsers: "total_active_users",
+    additionalRoutes: "additional_routes",
+    cookieAttributes: "cookie_attributes",
+    cookieSuffix: "cookie_suffix",
+    customPageHtml: "custom_page_html",
+    defaultTemplateLanguage: "default_template_language",
+    description: "description",
+    disableSessionRenewal: "disable_session_renewal",
+    enabledOriginCommands: "enabled_origin_commands",
+    jsonResponseEnabled: "json_response_enabled",
+    path: "path",
+    queueAll: "queue_all",
+    queueingMethod: "queueing_method",
+    queueingStatusCode: "queueing_status_code",
+    sessionDuration: "session_duration",
+    suspended: "suspended",
+    turnstileAction: "turnstile_action",
+    turnstileMode: "turnstile_mode",
+  }),
+  T.Http({
+    method: "PUT",
+    path: "/zones/{zone_id}/waiting_rooms/{waitingRoomId}",
+  }),
+) as unknown as Schema.Schema<UpdateWaitingRoomRequest>;
 
 export interface UpdateWaitingRoomResponse {
   id?: string | null;
@@ -3465,199 +3424,191 @@ export interface UpdateWaitingRoomResponse {
     | null;
 }
 
-export const UpdateWaitingRoomResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    additionalRoutes: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            path: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
-    cookieAttributes: Schema.optional(
-      Schema.Union([
+export const UpdateWaitingRoomResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  additionalRoutes: Schema.optional(
+    Schema.Union([
+      Schema.Array(
         Schema.Struct({
-          samesite: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals(["auto", "lax", "none", "strict"]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
-          secure: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals(["auto", "always", "never"]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
+          host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          path: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         }),
-        Schema.Null,
-      ]),
-    ),
-    cookieSuffix: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    customPageHtml: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    defaultTemplateLanguage: Schema.optional(
-      Schema.Union([
-        Schema.Union([
-          Schema.Literals([
-            "en-US",
-            "es-ES",
-            "de-DE",
-            "fr-FR",
-            "it-IT",
-            "ja-JP",
-            "ko-KR",
-            "pt-BR",
-            "zh-CN",
-            "zh-TW",
-            "nl-NL",
-            "pl-PL",
-            "id-ID",
-            "tr-TR",
-            "ar-EG",
-            "ru-RU",
-            "fa-IR",
-            "bg-BG",
-            "hr-HR",
-            "cs-CZ",
-            "da-DK",
-            "fi-FI",
-            "lt-LT",
-            "ms-MY",
-            "nb-NO",
-            "ro-RO",
-            "el-GR",
-            "he-IL",
-            "hi-IN",
-            "hu-HU",
-            "sr-BA",
-            "sk-SK",
-            "sl-SI",
-            "sv-SE",
-            "tl-PH",
-            "th-TH",
-            "uk-UA",
-            "vi-VN",
+      ),
+      Schema.Null,
+    ]),
+  ),
+  cookieAttributes: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        samesite: Schema.optional(
+          Schema.Union([
+            Schema.Union([
+              Schema.Literals(["auto", "lax", "none", "strict"]),
+              Schema.String,
+            ]),
+            Schema.Null,
           ]),
-          Schema.String,
-        ]),
-        Schema.Null,
-      ]),
-    ),
-    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    disableSessionRenewal: Schema.optional(
-      Schema.Union([Schema.Boolean, Schema.Null]),
-    ),
-    enabledOriginCommands: Schema.optional(
-      Schema.Union([Schema.Array(Schema.Literal("revoke")), Schema.Null]),
-    ),
-    host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    jsonResponseEnabled: Schema.optional(
-      Schema.Union([Schema.Boolean, Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    newUsersPerMinute: Schema.optional(
-      Schema.Union([Schema.Number, Schema.Null]),
-    ),
-    nextEventPrequeueStartTime: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    nextEventStartTime: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    path: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    queueAll: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    queueingMethod: Schema.optional(
-      Schema.Union([
-        Schema.Union([
-          Schema.Literals(["fifo", "random", "passthrough", "reject"]),
-          Schema.String,
-        ]),
-        Schema.Null,
-      ]),
-    ),
-    queueingStatusCode: Schema.optional(
-      Schema.Union([
-        Schema.Union([Schema.Literals(["200", "202", "429"]), Schema.String]),
-        Schema.Null,
-      ]),
-    ),
-    sessionDuration: Schema.optional(
-      Schema.Union([Schema.Number, Schema.Null]),
-    ),
-    suspended: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    totalActiveUsers: Schema.optional(
-      Schema.Union([Schema.Number, Schema.Null]),
-    ),
-    turnstileAction: Schema.optional(
-      Schema.Union([
-        Schema.Union([
-          Schema.Literals(["log", "infinite_queue"]),
-          Schema.String,
-        ]),
-        Schema.Null,
-      ]),
-    ),
-    turnstileMode: Schema.optional(
-      Schema.Union([
-        Schema.Union([
-          Schema.Literals([
-            "off",
-            "invisible",
-            "visible_non_interactive",
-            "visible_managed",
+        ),
+        secure: Schema.optional(
+          Schema.Union([
+            Schema.Union([
+              Schema.Literals(["auto", "always", "never"]),
+              Schema.String,
+            ]),
+            Schema.Null,
           ]),
-          Schema.String,
-        ]),
-        Schema.Null,
-      ]),
-    ),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        additionalRoutes: "additional_routes",
-        cookieAttributes: "cookie_attributes",
-        cookieSuffix: "cookie_suffix",
-        createdOn: "created_on",
-        customPageHtml: "custom_page_html",
-        defaultTemplateLanguage: "default_template_language",
-        description: "description",
-        disableSessionRenewal: "disable_session_renewal",
-        enabledOriginCommands: "enabled_origin_commands",
-        host: "host",
-        jsonResponseEnabled: "json_response_enabled",
-        modifiedOn: "modified_on",
-        name: "name",
-        newUsersPerMinute: "new_users_per_minute",
-        nextEventPrequeueStartTime: "next_event_prequeue_start_time",
-        nextEventStartTime: "next_event_start_time",
-        path: "path",
-        queueAll: "queue_all",
-        queueingMethod: "queueing_method",
-        queueingStatusCode: "queueing_status_code",
-        sessionDuration: "session_duration",
-        suspended: "suspended",
-        totalActiveUsers: "total_active_users",
-        turnstileAction: "turnstile_action",
-        turnstileMode: "turnstile_mode",
+        ),
       }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<UpdateWaitingRoomResponse>;
+      Schema.Null,
+    ]),
+  ),
+  cookieSuffix: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  customPageHtml: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  defaultTemplateLanguage: Schema.optional(
+    Schema.Union([
+      Schema.Union([
+        Schema.Literals([
+          "en-US",
+          "es-ES",
+          "de-DE",
+          "fr-FR",
+          "it-IT",
+          "ja-JP",
+          "ko-KR",
+          "pt-BR",
+          "zh-CN",
+          "zh-TW",
+          "nl-NL",
+          "pl-PL",
+          "id-ID",
+          "tr-TR",
+          "ar-EG",
+          "ru-RU",
+          "fa-IR",
+          "bg-BG",
+          "hr-HR",
+          "cs-CZ",
+          "da-DK",
+          "fi-FI",
+          "lt-LT",
+          "ms-MY",
+          "nb-NO",
+          "ro-RO",
+          "el-GR",
+          "he-IL",
+          "hi-IN",
+          "hu-HU",
+          "sr-BA",
+          "sk-SK",
+          "sl-SI",
+          "sv-SE",
+          "tl-PH",
+          "th-TH",
+          "uk-UA",
+          "vi-VN",
+        ]),
+        Schema.String,
+      ]),
+      Schema.Null,
+    ]),
+  ),
+  description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  disableSessionRenewal: Schema.optional(
+    Schema.Union([Schema.Boolean, Schema.Null]),
+  ),
+  enabledOriginCommands: Schema.optional(
+    Schema.Union([Schema.Array(Schema.Literal("revoke")), Schema.Null]),
+  ),
+  host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  jsonResponseEnabled: Schema.optional(
+    Schema.Union([Schema.Boolean, Schema.Null]),
+  ),
+  modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  newUsersPerMinute: Schema.optional(
+    Schema.Union([Schema.Number, Schema.Null]),
+  ),
+  nextEventPrequeueStartTime: Schema.optional(
+    Schema.Union([Schema.String, Schema.Null]),
+  ),
+  nextEventStartTime: Schema.optional(
+    Schema.Union([Schema.String, Schema.Null]),
+  ),
+  path: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  queueAll: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  queueingMethod: Schema.optional(
+    Schema.Union([
+      Schema.Union([
+        Schema.Literals(["fifo", "random", "passthrough", "reject"]),
+        Schema.String,
+      ]),
+      Schema.Null,
+    ]),
+  ),
+  queueingStatusCode: Schema.optional(
+    Schema.Union([
+      Schema.Union([Schema.Literals(["200", "202", "429"]), Schema.String]),
+      Schema.Null,
+    ]),
+  ),
+  sessionDuration: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  suspended: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  totalActiveUsers: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  turnstileAction: Schema.optional(
+    Schema.Union([
+      Schema.Union([Schema.Literals(["log", "infinite_queue"]), Schema.String]),
+      Schema.Null,
+    ]),
+  ),
+  turnstileMode: Schema.optional(
+    Schema.Union([
+      Schema.Union([
+        Schema.Literals([
+          "off",
+          "invisible",
+          "visible_non_interactive",
+          "visible_managed",
+        ]),
+        Schema.String,
+      ]),
+      Schema.Null,
+    ]),
+  ),
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      additionalRoutes: "additional_routes",
+      cookieAttributes: "cookie_attributes",
+      cookieSuffix: "cookie_suffix",
+      createdOn: "created_on",
+      customPageHtml: "custom_page_html",
+      defaultTemplateLanguage: "default_template_language",
+      description: "description",
+      disableSessionRenewal: "disable_session_renewal",
+      enabledOriginCommands: "enabled_origin_commands",
+      host: "host",
+      jsonResponseEnabled: "json_response_enabled",
+      modifiedOn: "modified_on",
+      name: "name",
+      newUsersPerMinute: "new_users_per_minute",
+      nextEventPrequeueStartTime: "next_event_prequeue_start_time",
+      nextEventStartTime: "next_event_start_time",
+      path: "path",
+      queueAll: "queue_all",
+      queueingMethod: "queueing_method",
+      queueingStatusCode: "queueing_status_code",
+      sessionDuration: "session_duration",
+      suspended: "suspended",
+      totalActiveUsers: "total_active_users",
+      turnstileAction: "turnstile_action",
+      turnstileMode: "turnstile_mode",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<UpdateWaitingRoomResponse>;
 
 export type UpdateWaitingRoomError = DefaultErrors;
 
@@ -3666,7 +3617,7 @@ export const updateWaitingRoom: API.OperationMethod<
   UpdateWaitingRoomResponse,
   UpdateWaitingRoomError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateWaitingRoomRequest,
   output: UpdateWaitingRoomResponse,
   errors: [],
@@ -3767,147 +3718,146 @@ export interface PatchWaitingRoomRequest {
     | (string & {});
 }
 
-export const PatchWaitingRoomRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    waitingRoomId: Schema.String.pipe(T.HttpPath("waitingRoomId")),
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    host: Schema.String,
-    name: Schema.String,
-    newUsersPerMinute: Schema.Number,
-    totalActiveUsers: Schema.Number,
-    additionalRoutes: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          host: Schema.optional(Schema.String),
-          path: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
-    cookieAttributes: Schema.optional(
+export const PatchWaitingRoomRequest = /*@__PURE__*/ Schema.Struct({
+  waitingRoomId: Schema.String.pipe(T.HttpPath("waitingRoomId")),
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  host: Schema.String,
+  name: Schema.String,
+  newUsersPerMinute: Schema.Number,
+  totalActiveUsers: Schema.Number,
+  additionalRoutes: Schema.optional(
+    Schema.Array(
       Schema.Struct({
-        samesite: Schema.optional(
-          Schema.Union([
-            Schema.Literals(["auto", "lax", "none", "strict"]),
-            Schema.String,
-          ]),
-        ),
-        secure: Schema.optional(
-          Schema.Union([
-            Schema.Literals(["auto", "always", "never"]),
-            Schema.String,
-          ]),
-        ),
+        host: Schema.optional(Schema.String),
+        path: Schema.optional(Schema.String),
       }),
     ),
-    cookieSuffix: Schema.optional(Schema.String),
-    customPageHtml: Schema.optional(Schema.String),
-    defaultTemplateLanguage: Schema.optional(
-      Schema.Union([
-        Schema.Literals([
-          "en-US",
-          "es-ES",
-          "de-DE",
-          "fr-FR",
-          "it-IT",
-          "ja-JP",
-          "ko-KR",
-          "pt-BR",
-          "zh-CN",
-          "zh-TW",
-          "nl-NL",
-          "pl-PL",
-          "id-ID",
-          "tr-TR",
-          "ar-EG",
-          "ru-RU",
-          "fa-IR",
-          "bg-BG",
-          "hr-HR",
-          "cs-CZ",
-          "da-DK",
-          "fi-FI",
-          "lt-LT",
-          "ms-MY",
-          "nb-NO",
-          "ro-RO",
-          "el-GR",
-          "he-IL",
-          "hi-IN",
-          "hu-HU",
-          "sr-BA",
-          "sk-SK",
-          "sl-SI",
-          "sv-SE",
-          "tl-PH",
-          "th-TH",
-          "uk-UA",
-          "vi-VN",
+  ),
+  cookieAttributes: Schema.optional(
+    Schema.Struct({
+      samesite: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["auto", "lax", "none", "strict"]),
+          Schema.String,
         ]),
-        Schema.String,
-      ]),
-    ),
-    description: Schema.optional(Schema.String),
-    disableSessionRenewal: Schema.optional(Schema.Boolean),
-    enabledOriginCommands: Schema.optional(
-      Schema.Array(Schema.Literal("revoke")),
-    ),
-    jsonResponseEnabled: Schema.optional(Schema.Boolean),
-    path: Schema.optional(Schema.String),
-    queueAll: Schema.optional(Schema.Boolean),
-    queueingMethod: Schema.optional(
-      Schema.Union([
-        Schema.Literals(["fifo", "random", "passthrough", "reject"]),
-        Schema.String,
-      ]),
-    ),
-    queueingStatusCode: Schema.optional(
-      Schema.Union([Schema.Literals(["200", "202", "429"]), Schema.String]),
-    ),
-    sessionDuration: Schema.optional(Schema.Number),
-    suspended: Schema.optional(Schema.Boolean),
-    turnstileAction: Schema.optional(
-      Schema.Union([Schema.Literals(["log", "infinite_queue"]), Schema.String]),
-    ),
-    turnstileMode: Schema.optional(
-      Schema.Union([
-        Schema.Literals([
-          "off",
-          "invisible",
-          "visible_non_interactive",
-          "visible_managed",
+      ),
+      secure: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["auto", "always", "never"]),
+          Schema.String,
         ]),
-        Schema.String,
+      ),
+    }),
+  ),
+  cookieSuffix: Schema.optional(Schema.String),
+  customPageHtml: Schema.optional(Schema.String),
+  defaultTemplateLanguage: Schema.optional(
+    Schema.Union([
+      Schema.Literals([
+        "en-US",
+        "es-ES",
+        "de-DE",
+        "fr-FR",
+        "it-IT",
+        "ja-JP",
+        "ko-KR",
+        "pt-BR",
+        "zh-CN",
+        "zh-TW",
+        "nl-NL",
+        "pl-PL",
+        "id-ID",
+        "tr-TR",
+        "ar-EG",
+        "ru-RU",
+        "fa-IR",
+        "bg-BG",
+        "hr-HR",
+        "cs-CZ",
+        "da-DK",
+        "fi-FI",
+        "lt-LT",
+        "ms-MY",
+        "nb-NO",
+        "ro-RO",
+        "el-GR",
+        "he-IL",
+        "hi-IN",
+        "hu-HU",
+        "sr-BA",
+        "sk-SK",
+        "sl-SI",
+        "sv-SE",
+        "tl-PH",
+        "th-TH",
+        "uk-UA",
+        "vi-VN",
       ]),
-    ),
-  }).pipe(
-    Schema.encodeKeys({
-      host: "host",
-      name: "name",
-      newUsersPerMinute: "new_users_per_minute",
-      totalActiveUsers: "total_active_users",
-      additionalRoutes: "additional_routes",
-      cookieAttributes: "cookie_attributes",
-      cookieSuffix: "cookie_suffix",
-      customPageHtml: "custom_page_html",
-      defaultTemplateLanguage: "default_template_language",
-      description: "description",
-      disableSessionRenewal: "disable_session_renewal",
-      enabledOriginCommands: "enabled_origin_commands",
-      jsonResponseEnabled: "json_response_enabled",
-      path: "path",
-      queueAll: "queue_all",
-      queueingMethod: "queueing_method",
-      queueingStatusCode: "queueing_status_code",
-      sessionDuration: "session_duration",
-      suspended: "suspended",
-      turnstileAction: "turnstile_action",
-      turnstileMode: "turnstile_mode",
-    }),
-    T.Http({
-      method: "PATCH",
-      path: "/zones/{zone_id}/waiting_rooms/{waitingRoomId}",
-    }),
-  ) as unknown as Schema.Schema<PatchWaitingRoomRequest>;
+      Schema.String,
+    ]),
+  ),
+  description: Schema.optional(Schema.String),
+  disableSessionRenewal: Schema.optional(Schema.Boolean),
+  enabledOriginCommands: Schema.optional(
+    Schema.Array(Schema.Literal("revoke")),
+  ),
+  jsonResponseEnabled: Schema.optional(Schema.Boolean),
+  path: Schema.optional(Schema.String),
+  queueAll: Schema.optional(Schema.Boolean),
+  queueingMethod: Schema.optional(
+    Schema.Union([
+      Schema.Literals(["fifo", "random", "passthrough", "reject"]),
+      Schema.String,
+    ]),
+  ),
+  queueingStatusCode: Schema.optional(
+    Schema.Union([Schema.Literals(["200", "202", "429"]), Schema.String]),
+  ),
+  sessionDuration: Schema.optional(Schema.Number),
+  suspended: Schema.optional(Schema.Boolean),
+  turnstileAction: Schema.optional(
+    Schema.Union([Schema.Literals(["log", "infinite_queue"]), Schema.String]),
+  ),
+  turnstileMode: Schema.optional(
+    Schema.Union([
+      Schema.Literals([
+        "off",
+        "invisible",
+        "visible_non_interactive",
+        "visible_managed",
+      ]),
+      Schema.String,
+    ]),
+  ),
+}).pipe(
+  Schema.encodeKeys({
+    host: "host",
+    name: "name",
+    newUsersPerMinute: "new_users_per_minute",
+    totalActiveUsers: "total_active_users",
+    additionalRoutes: "additional_routes",
+    cookieAttributes: "cookie_attributes",
+    cookieSuffix: "cookie_suffix",
+    customPageHtml: "custom_page_html",
+    defaultTemplateLanguage: "default_template_language",
+    description: "description",
+    disableSessionRenewal: "disable_session_renewal",
+    enabledOriginCommands: "enabled_origin_commands",
+    jsonResponseEnabled: "json_response_enabled",
+    path: "path",
+    queueAll: "queue_all",
+    queueingMethod: "queueing_method",
+    queueingStatusCode: "queueing_status_code",
+    sessionDuration: "session_duration",
+    suspended: "suspended",
+    turnstileAction: "turnstile_action",
+    turnstileMode: "turnstile_mode",
+  }),
+  T.Http({
+    method: "PATCH",
+    path: "/zones/{zone_id}/waiting_rooms/{waitingRoomId}",
+  }),
+) as unknown as Schema.Schema<PatchWaitingRoomRequest>;
 
 export interface PatchWaitingRoomResponse {
   id?: string | null;
@@ -4016,199 +3966,191 @@ export interface PatchWaitingRoomResponse {
     | null;
 }
 
-export const PatchWaitingRoomResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    additionalRoutes: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            path: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
-    cookieAttributes: Schema.optional(
-      Schema.Union([
+export const PatchWaitingRoomResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  additionalRoutes: Schema.optional(
+    Schema.Union([
+      Schema.Array(
         Schema.Struct({
-          samesite: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals(["auto", "lax", "none", "strict"]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
-          secure: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals(["auto", "always", "never"]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
+          host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          path: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         }),
-        Schema.Null,
-      ]),
-    ),
-    cookieSuffix: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    customPageHtml: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    defaultTemplateLanguage: Schema.optional(
-      Schema.Union([
-        Schema.Union([
-          Schema.Literals([
-            "en-US",
-            "es-ES",
-            "de-DE",
-            "fr-FR",
-            "it-IT",
-            "ja-JP",
-            "ko-KR",
-            "pt-BR",
-            "zh-CN",
-            "zh-TW",
-            "nl-NL",
-            "pl-PL",
-            "id-ID",
-            "tr-TR",
-            "ar-EG",
-            "ru-RU",
-            "fa-IR",
-            "bg-BG",
-            "hr-HR",
-            "cs-CZ",
-            "da-DK",
-            "fi-FI",
-            "lt-LT",
-            "ms-MY",
-            "nb-NO",
-            "ro-RO",
-            "el-GR",
-            "he-IL",
-            "hi-IN",
-            "hu-HU",
-            "sr-BA",
-            "sk-SK",
-            "sl-SI",
-            "sv-SE",
-            "tl-PH",
-            "th-TH",
-            "uk-UA",
-            "vi-VN",
+      ),
+      Schema.Null,
+    ]),
+  ),
+  cookieAttributes: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        samesite: Schema.optional(
+          Schema.Union([
+            Schema.Union([
+              Schema.Literals(["auto", "lax", "none", "strict"]),
+              Schema.String,
+            ]),
+            Schema.Null,
           ]),
-          Schema.String,
-        ]),
-        Schema.Null,
-      ]),
-    ),
-    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    disableSessionRenewal: Schema.optional(
-      Schema.Union([Schema.Boolean, Schema.Null]),
-    ),
-    enabledOriginCommands: Schema.optional(
-      Schema.Union([Schema.Array(Schema.Literal("revoke")), Schema.Null]),
-    ),
-    host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    jsonResponseEnabled: Schema.optional(
-      Schema.Union([Schema.Boolean, Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    newUsersPerMinute: Schema.optional(
-      Schema.Union([Schema.Number, Schema.Null]),
-    ),
-    nextEventPrequeueStartTime: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    nextEventStartTime: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    path: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    queueAll: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    queueingMethod: Schema.optional(
-      Schema.Union([
-        Schema.Union([
-          Schema.Literals(["fifo", "random", "passthrough", "reject"]),
-          Schema.String,
-        ]),
-        Schema.Null,
-      ]),
-    ),
-    queueingStatusCode: Schema.optional(
-      Schema.Union([
-        Schema.Union([Schema.Literals(["200", "202", "429"]), Schema.String]),
-        Schema.Null,
-      ]),
-    ),
-    sessionDuration: Schema.optional(
-      Schema.Union([Schema.Number, Schema.Null]),
-    ),
-    suspended: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    totalActiveUsers: Schema.optional(
-      Schema.Union([Schema.Number, Schema.Null]),
-    ),
-    turnstileAction: Schema.optional(
-      Schema.Union([
-        Schema.Union([
-          Schema.Literals(["log", "infinite_queue"]),
-          Schema.String,
-        ]),
-        Schema.Null,
-      ]),
-    ),
-    turnstileMode: Schema.optional(
-      Schema.Union([
-        Schema.Union([
-          Schema.Literals([
-            "off",
-            "invisible",
-            "visible_non_interactive",
-            "visible_managed",
+        ),
+        secure: Schema.optional(
+          Schema.Union([
+            Schema.Union([
+              Schema.Literals(["auto", "always", "never"]),
+              Schema.String,
+            ]),
+            Schema.Null,
           ]),
-          Schema.String,
-        ]),
-        Schema.Null,
-      ]),
-    ),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        additionalRoutes: "additional_routes",
-        cookieAttributes: "cookie_attributes",
-        cookieSuffix: "cookie_suffix",
-        createdOn: "created_on",
-        customPageHtml: "custom_page_html",
-        defaultTemplateLanguage: "default_template_language",
-        description: "description",
-        disableSessionRenewal: "disable_session_renewal",
-        enabledOriginCommands: "enabled_origin_commands",
-        host: "host",
-        jsonResponseEnabled: "json_response_enabled",
-        modifiedOn: "modified_on",
-        name: "name",
-        newUsersPerMinute: "new_users_per_minute",
-        nextEventPrequeueStartTime: "next_event_prequeue_start_time",
-        nextEventStartTime: "next_event_start_time",
-        path: "path",
-        queueAll: "queue_all",
-        queueingMethod: "queueing_method",
-        queueingStatusCode: "queueing_status_code",
-        sessionDuration: "session_duration",
-        suspended: "suspended",
-        totalActiveUsers: "total_active_users",
-        turnstileAction: "turnstile_action",
-        turnstileMode: "turnstile_mode",
+        ),
       }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<PatchWaitingRoomResponse>;
+      Schema.Null,
+    ]),
+  ),
+  cookieSuffix: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  customPageHtml: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  defaultTemplateLanguage: Schema.optional(
+    Schema.Union([
+      Schema.Union([
+        Schema.Literals([
+          "en-US",
+          "es-ES",
+          "de-DE",
+          "fr-FR",
+          "it-IT",
+          "ja-JP",
+          "ko-KR",
+          "pt-BR",
+          "zh-CN",
+          "zh-TW",
+          "nl-NL",
+          "pl-PL",
+          "id-ID",
+          "tr-TR",
+          "ar-EG",
+          "ru-RU",
+          "fa-IR",
+          "bg-BG",
+          "hr-HR",
+          "cs-CZ",
+          "da-DK",
+          "fi-FI",
+          "lt-LT",
+          "ms-MY",
+          "nb-NO",
+          "ro-RO",
+          "el-GR",
+          "he-IL",
+          "hi-IN",
+          "hu-HU",
+          "sr-BA",
+          "sk-SK",
+          "sl-SI",
+          "sv-SE",
+          "tl-PH",
+          "th-TH",
+          "uk-UA",
+          "vi-VN",
+        ]),
+        Schema.String,
+      ]),
+      Schema.Null,
+    ]),
+  ),
+  description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  disableSessionRenewal: Schema.optional(
+    Schema.Union([Schema.Boolean, Schema.Null]),
+  ),
+  enabledOriginCommands: Schema.optional(
+    Schema.Union([Schema.Array(Schema.Literal("revoke")), Schema.Null]),
+  ),
+  host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  jsonResponseEnabled: Schema.optional(
+    Schema.Union([Schema.Boolean, Schema.Null]),
+  ),
+  modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  newUsersPerMinute: Schema.optional(
+    Schema.Union([Schema.Number, Schema.Null]),
+  ),
+  nextEventPrequeueStartTime: Schema.optional(
+    Schema.Union([Schema.String, Schema.Null]),
+  ),
+  nextEventStartTime: Schema.optional(
+    Schema.Union([Schema.String, Schema.Null]),
+  ),
+  path: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  queueAll: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  queueingMethod: Schema.optional(
+    Schema.Union([
+      Schema.Union([
+        Schema.Literals(["fifo", "random", "passthrough", "reject"]),
+        Schema.String,
+      ]),
+      Schema.Null,
+    ]),
+  ),
+  queueingStatusCode: Schema.optional(
+    Schema.Union([
+      Schema.Union([Schema.Literals(["200", "202", "429"]), Schema.String]),
+      Schema.Null,
+    ]),
+  ),
+  sessionDuration: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  suspended: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  totalActiveUsers: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  turnstileAction: Schema.optional(
+    Schema.Union([
+      Schema.Union([Schema.Literals(["log", "infinite_queue"]), Schema.String]),
+      Schema.Null,
+    ]),
+  ),
+  turnstileMode: Schema.optional(
+    Schema.Union([
+      Schema.Union([
+        Schema.Literals([
+          "off",
+          "invisible",
+          "visible_non_interactive",
+          "visible_managed",
+        ]),
+        Schema.String,
+      ]),
+      Schema.Null,
+    ]),
+  ),
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      additionalRoutes: "additional_routes",
+      cookieAttributes: "cookie_attributes",
+      cookieSuffix: "cookie_suffix",
+      createdOn: "created_on",
+      customPageHtml: "custom_page_html",
+      defaultTemplateLanguage: "default_template_language",
+      description: "description",
+      disableSessionRenewal: "disable_session_renewal",
+      enabledOriginCommands: "enabled_origin_commands",
+      host: "host",
+      jsonResponseEnabled: "json_response_enabled",
+      modifiedOn: "modified_on",
+      name: "name",
+      newUsersPerMinute: "new_users_per_minute",
+      nextEventPrequeueStartTime: "next_event_prequeue_start_time",
+      nextEventStartTime: "next_event_start_time",
+      path: "path",
+      queueAll: "queue_all",
+      queueingMethod: "queueing_method",
+      queueingStatusCode: "queueing_status_code",
+      sessionDuration: "session_duration",
+      suspended: "suspended",
+      totalActiveUsers: "total_active_users",
+      turnstileAction: "turnstile_action",
+      turnstileMode: "turnstile_mode",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<PatchWaitingRoomResponse>;
 
 export type PatchWaitingRoomError = DefaultErrors;
 
@@ -4217,7 +4159,7 @@ export const patchWaitingRoom: API.OperationMethod<
   PatchWaitingRoomResponse,
   PatchWaitingRoomError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchWaitingRoomRequest,
   output: PatchWaitingRoomResponse,
   errors: [],
@@ -4229,27 +4171,25 @@ export interface DeleteWaitingRoomRequest {
   zoneId: string;
 }
 
-export const DeleteWaitingRoomRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    waitingRoomId: Schema.String.pipe(T.HttpPath("waitingRoomId")),
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/zones/{zone_id}/waiting_rooms/{waitingRoomId}",
-    }),
-  ) as unknown as Schema.Schema<DeleteWaitingRoomRequest>;
+export const DeleteWaitingRoomRequest = /*@__PURE__*/ Schema.Struct({
+  waitingRoomId: Schema.String.pipe(T.HttpPath("waitingRoomId")),
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/zones/{zone_id}/waiting_rooms/{waitingRoomId}",
+  }),
+) as unknown as Schema.Schema<DeleteWaitingRoomRequest>;
 
 export interface DeleteWaitingRoomResponse {
   id?: string | null;
 }
 
-export const DeleteWaitingRoomResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<DeleteWaitingRoomResponse>;
+export const DeleteWaitingRoomResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+}).pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<DeleteWaitingRoomResponse>;
 
 export type DeleteWaitingRoomError = DefaultErrors;
 
@@ -4258,7 +4198,7 @@ export const deleteWaitingRoom: API.OperationMethod<
   DeleteWaitingRoomResponse,
   DeleteWaitingRoomError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteWaitingRoomRequest,
   output: DeleteWaitingRoomResponse,
   errors: [],

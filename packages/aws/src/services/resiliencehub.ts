@@ -3962,7 +3962,7 @@ export const acceptResourceGroupingRecommendations: API.OperationMethod<
   AcceptResourceGroupingRecommendationsResponse,
   AcceptResourceGroupingRecommendationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AcceptResourceGroupingRecommendationsRequest,
   output: AcceptResourceGroupingRecommendationsResponse,
   errors: [
@@ -3995,7 +3995,7 @@ export const addDraftAppVersionResourceMappings: API.OperationMethod<
   AddDraftAppVersionResourceMappingsResponse,
   AddDraftAppVersionResourceMappingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddDraftAppVersionResourceMappingsRequest,
   output: AddDraftAppVersionResourceMappingsResponse,
   errors: [
@@ -4023,7 +4023,7 @@ export const batchUpdateRecommendationStatus: API.OperationMethod<
   BatchUpdateRecommendationStatusResponse,
   BatchUpdateRecommendationStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchUpdateRecommendationStatusRequest,
   output: BatchUpdateRecommendationStatusResponse,
   errors: [
@@ -4062,7 +4062,7 @@ export const createApp: API.OperationMethod<
   CreateAppResponse,
   CreateAppError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAppRequest,
   output: CreateAppResponse,
   errors: [
@@ -4096,7 +4096,7 @@ export const createAppVersionAppComponent: API.OperationMethod<
   CreateAppVersionAppComponentResponse,
   CreateAppVersionAppComponentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAppVersionAppComponentRequest,
   output: CreateAppVersionAppComponentResponse,
   errors: [
@@ -4137,7 +4137,7 @@ export const createAppVersionResource: API.OperationMethod<
   CreateAppVersionResourceResponse,
   CreateAppVersionResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAppVersionResourceRequest,
   output: CreateAppVersionResourceResponse,
   errors: [
@@ -4167,7 +4167,7 @@ export const createRecommendationTemplate: API.OperationMethod<
   CreateRecommendationTemplateResponse,
   CreateRecommendationTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRecommendationTemplateRequest,
   output: CreateRecommendationTemplateResponse,
   errors: [
@@ -4204,7 +4204,7 @@ export const createResiliencyPolicy: API.OperationMethod<
   CreateResiliencyPolicyResponse,
   CreateResiliencyPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateResiliencyPolicyRequest,
   output: CreateResiliencyPolicyResponse,
   errors: [
@@ -4232,7 +4232,7 @@ export const deleteApp: API.OperationMethod<
   DeleteAppResponse,
   DeleteAppError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAppRequest,
   output: DeleteAppResponse,
   errors: [
@@ -4260,7 +4260,7 @@ export const deleteAppAssessment: API.OperationMethod<
   DeleteAppAssessmentResponse,
   DeleteAppAssessmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAppAssessmentRequest,
   output: DeleteAppAssessmentResponse,
   errors: [
@@ -4289,7 +4289,7 @@ export const deleteAppInputSource: API.OperationMethod<
   DeleteAppInputSourceResponse,
   DeleteAppInputSourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAppInputSourceRequest,
   output: DeleteAppInputSourceResponse,
   errors: [
@@ -4324,7 +4324,7 @@ export const deleteAppVersionAppComponent: API.OperationMethod<
   DeleteAppVersionAppComponentResponse,
   DeleteAppVersionAppComponentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAppVersionAppComponentRequest,
   output: DeleteAppVersionAppComponentResponse,
   errors: [
@@ -4361,7 +4361,7 @@ export const deleteAppVersionResource: API.OperationMethod<
   DeleteAppVersionResourceResponse,
   DeleteAppVersionResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAppVersionResourceRequest,
   output: DeleteAppVersionResourceResponse,
   errors: [
@@ -4389,7 +4389,7 @@ export const deleteRecommendationTemplate: API.OperationMethod<
   DeleteRecommendationTemplateResponse,
   DeleteRecommendationTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRecommendationTemplateRequest,
   output: DeleteRecommendationTemplateResponse,
   errors: [
@@ -4416,7 +4416,7 @@ export const deleteResiliencyPolicy: API.OperationMethod<
   DeleteResiliencyPolicyResponse,
   DeleteResiliencyPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteResiliencyPolicyRequest,
   output: DeleteResiliencyPolicyResponse,
   errors: [
@@ -4443,7 +4443,7 @@ export const describeApp: API.OperationMethod<
   DescribeAppResponse,
   DescribeAppError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAppRequest,
   output: DescribeAppResponse,
   errors: [
@@ -4469,7 +4469,7 @@ export const describeAppAssessment: API.OperationMethod<
   DescribeAppAssessmentResponse,
   DescribeAppAssessmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAppAssessmentRequest,
   output: DescribeAppAssessmentResponse,
   errors: [
@@ -4495,7 +4495,7 @@ export const describeAppVersion: API.OperationMethod<
   DescribeAppVersionResponse,
   DescribeAppVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAppVersionRequest,
   output: DescribeAppVersionResponse,
   errors: [
@@ -4522,7 +4522,7 @@ export const describeAppVersionAppComponent: API.OperationMethod<
   DescribeAppVersionAppComponentResponse,
   DescribeAppVersionAppComponentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAppVersionAppComponentRequest,
   output: DescribeAppVersionAppComponentResponse,
   errors: [
@@ -4559,7 +4559,7 @@ export const describeAppVersionResource: API.OperationMethod<
   DescribeAppVersionResourceResponse,
   DescribeAppVersionResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAppVersionResourceRequest,
   output: DescribeAppVersionResourceResponse,
   errors: [
@@ -4588,7 +4588,7 @@ export const describeAppVersionResourcesResolutionStatus: API.OperationMethod<
   DescribeAppVersionResourcesResolutionStatusResponse,
   DescribeAppVersionResourcesResolutionStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAppVersionResourcesResolutionStatusRequest,
   output: DescribeAppVersionResourcesResolutionStatusResponse,
   errors: [
@@ -4614,7 +4614,7 @@ export const describeAppVersionTemplate: API.OperationMethod<
   DescribeAppVersionTemplateResponse,
   DescribeAppVersionTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAppVersionTemplateRequest,
   output: DescribeAppVersionTemplateResponse,
   errors: [
@@ -4646,7 +4646,7 @@ export const describeDraftAppVersionResourcesImportStatus: API.OperationMethod<
   DescribeDraftAppVersionResourcesImportStatusResponse,
   DescribeDraftAppVersionResourcesImportStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDraftAppVersionResourcesImportStatusRequest,
   output: DescribeDraftAppVersionResourcesImportStatusResponse,
   errors: [
@@ -4672,7 +4672,7 @@ export const describeMetricsExport: API.OperationMethod<
   DescribeMetricsExportResponse,
   DescribeMetricsExportError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeMetricsExportRequest,
   output: DescribeMetricsExportResponse,
   errors: [
@@ -4700,7 +4700,7 @@ export const describeResiliencyPolicy: API.OperationMethod<
   DescribeResiliencyPolicyResponse,
   DescribeResiliencyPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeResiliencyPolicyRequest,
   output: DescribeResiliencyPolicyResponse,
   errors: [
@@ -4726,7 +4726,7 @@ export const describeResourceGroupingRecommendationTask: API.OperationMethod<
   DescribeResourceGroupingRecommendationTaskResponse,
   DescribeResourceGroupingRecommendationTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeResourceGroupingRecommendationTaskRequest,
   output: DescribeResourceGroupingRecommendationTaskResponse,
   errors: [
@@ -4756,7 +4756,7 @@ export const importResourcesToDraftAppVersion: API.OperationMethod<
   ImportResourcesToDraftAppVersionResponse,
   ImportResourcesToDraftAppVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportResourcesToDraftAppVersionRequest,
   output: ImportResourcesToDraftAppVersionResponse,
   errors: [
@@ -4799,7 +4799,7 @@ export const listAlarmRecommendations: API.OperationMethod<
     ListAlarmRecommendationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAlarmRecommendationsRequest,
   output: ListAlarmRecommendationsResponse,
   errors: [
@@ -4845,7 +4845,7 @@ export const listAppAssessmentComplianceDrifts: API.OperationMethod<
     ListAppAssessmentComplianceDriftsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppAssessmentComplianceDriftsRequest,
   output: ListAppAssessmentComplianceDriftsResponse,
   errors: [
@@ -4890,7 +4890,7 @@ export const listAppAssessmentResourceDrifts: API.OperationMethod<
     ListAppAssessmentResourceDriftsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppAssessmentResourceDriftsRequest,
   output: ListAppAssessmentResourceDriftsResponse,
   errors: [
@@ -4937,7 +4937,7 @@ export const listAppAssessments: API.OperationMethod<
     ListAppAssessmentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppAssessmentsRequest,
   output: ListAppAssessmentsResponse,
   errors: [
@@ -4983,7 +4983,7 @@ export const listAppComponentCompliances: API.OperationMethod<
     ListAppComponentCompliancesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppComponentCompliancesRequest,
   output: ListAppComponentCompliancesResponse,
   errors: [
@@ -5029,7 +5029,7 @@ export const listAppComponentRecommendations: API.OperationMethod<
     ListAppComponentRecommendationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppComponentRecommendationsRequest,
   output: ListAppComponentRecommendationsResponse,
   errors: [
@@ -5077,7 +5077,7 @@ export const listAppInputSources: API.OperationMethod<
     ListAppInputSourcesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppInputSourcesRequest,
   output: ListAppInputSourcesResponse,
   errors: [
@@ -5129,7 +5129,7 @@ export const listApps: API.OperationMethod<
     ListAppsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppsRequest,
   output: ListAppsResponse,
   errors: [
@@ -5175,7 +5175,7 @@ export const listAppVersionAppComponents: API.OperationMethod<
     ListAppVersionAppComponentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppVersionAppComponentsRequest,
   output: ListAppVersionAppComponentsResponse,
   errors: [
@@ -5224,7 +5224,7 @@ export const listAppVersionResourceMappings: API.OperationMethod<
     ListAppVersionResourceMappingsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppVersionResourceMappingsRequest,
   output: ListAppVersionResourceMappingsResponse,
   errors: [
@@ -5271,7 +5271,7 @@ export const listAppVersionResources: API.OperationMethod<
     ListAppVersionResourcesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppVersionResourcesRequest,
   output: ListAppVersionResourcesResponse,
   errors: [
@@ -5317,7 +5317,7 @@ export const listAppVersions: API.OperationMethod<
     ListAppVersionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppVersionsRequest,
   output: ListAppVersionsResponse,
   errors: [
@@ -5361,7 +5361,7 @@ export const listMetrics: API.OperationMethod<
     ListMetricsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMetricsRequest,
   output: ListMetricsResponse,
   errors: [
@@ -5406,7 +5406,7 @@ export const listRecommendationTemplates: API.OperationMethod<
     ListRecommendationTemplatesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecommendationTemplatesRequest,
   output: ListRecommendationTemplatesResponse,
   errors: [
@@ -5451,7 +5451,7 @@ export const listResiliencyPolicies: API.OperationMethod<
     ListResiliencyPoliciesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResiliencyPoliciesRequest,
   output: ListResiliencyPoliciesResponse,
   errors: [
@@ -5497,7 +5497,7 @@ export const listResourceGroupingRecommendations: API.OperationMethod<
     ListResourceGroupingRecommendationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceGroupingRecommendationsRequest,
   output: ListResourceGroupingRecommendationsResponse,
   errors: [
@@ -5545,7 +5545,7 @@ export const listSopRecommendations: API.OperationMethod<
     ListSopRecommendationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSopRecommendationsRequest,
   output: ListSopRecommendationsResponse,
   errors: [
@@ -5593,7 +5593,7 @@ export const listSuggestedResiliencyPolicies: API.OperationMethod<
     ListSuggestedResiliencyPoliciesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSuggestedResiliencyPoliciesRequest,
   output: ListSuggestedResiliencyPoliciesResponse,
   errors: [
@@ -5624,7 +5624,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -5666,7 +5666,7 @@ export const listTestRecommendations: API.OperationMethod<
     ListTestRecommendationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTestRecommendationsRequest,
   output: ListTestRecommendationsResponse,
   errors: [
@@ -5716,7 +5716,7 @@ export const listUnsupportedAppVersionResources: API.OperationMethod<
     ListUnsupportedAppVersionResourcesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUnsupportedAppVersionResourcesRequest,
   output: ListUnsupportedAppVersionResourcesResponse,
   errors: [
@@ -5749,7 +5749,7 @@ export const publishAppVersion: API.OperationMethod<
   PublishAppVersionResponse,
   PublishAppVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PublishAppVersionRequest,
   output: PublishAppVersionResponse,
   errors: [
@@ -5778,7 +5778,7 @@ export const putDraftAppVersionTemplate: API.OperationMethod<
   PutDraftAppVersionTemplateResponse,
   PutDraftAppVersionTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutDraftAppVersionTemplateRequest,
   output: PutDraftAppVersionTemplateResponse,
   errors: [
@@ -5805,7 +5805,7 @@ export const rejectResourceGroupingRecommendations: API.OperationMethod<
   RejectResourceGroupingRecommendationsResponse,
   RejectResourceGroupingRecommendationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RejectResourceGroupingRecommendationsRequest,
   output: RejectResourceGroupingRecommendationsResponse,
   errors: [
@@ -5832,7 +5832,7 @@ export const removeDraftAppVersionResourceMappings: API.OperationMethod<
   RemoveDraftAppVersionResourceMappingsResponse,
   RemoveDraftAppVersionResourceMappingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveDraftAppVersionResourceMappingsRequest,
   output: RemoveDraftAppVersionResourceMappingsResponse,
   errors: [
@@ -5860,7 +5860,7 @@ export const resolveAppVersionResources: API.OperationMethod<
   ResolveAppVersionResourcesResponse,
   ResolveAppVersionResourcesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResolveAppVersionResourcesRequest,
   output: ResolveAppVersionResourcesResponse,
   errors: [
@@ -5889,7 +5889,7 @@ export const startAppAssessment: API.OperationMethod<
   StartAppAssessmentResponse,
   StartAppAssessmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartAppAssessmentRequest,
   output: StartAppAssessmentResponse,
   errors: [
@@ -5918,7 +5918,7 @@ export const startMetricsExport: API.OperationMethod<
   StartMetricsExportResponse,
   StartMetricsExportError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartMetricsExportRequest,
   output: StartMetricsExportResponse,
   errors: [
@@ -5946,7 +5946,7 @@ export const startResourceGroupingRecommendationTask: API.OperationMethod<
   StartResourceGroupingRecommendationTaskResponse,
   StartResourceGroupingRecommendationTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartResourceGroupingRecommendationTaskRequest,
   output: StartResourceGroupingRecommendationTaskResponse,
   errors: [
@@ -5973,7 +5973,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -5999,7 +5999,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -6026,7 +6026,7 @@ export const updateApp: API.OperationMethod<
   UpdateAppResponse,
   UpdateAppError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAppRequest,
   output: UpdateAppResponse,
   errors: [
@@ -6058,7 +6058,7 @@ export const updateAppVersion: API.OperationMethod<
   UpdateAppVersionResponse,
   UpdateAppVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAppVersionRequest,
   output: UpdateAppVersionResponse,
   errors: [
@@ -6090,7 +6090,7 @@ export const updateAppVersionAppComponent: API.OperationMethod<
   UpdateAppVersionAppComponentResponse,
   UpdateAppVersionAppComponentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAppVersionAppComponentRequest,
   output: UpdateAppVersionAppComponentResponse,
   errors: [
@@ -6128,7 +6128,7 @@ export const updateAppVersionResource: API.OperationMethod<
   UpdateAppVersionResourceResponse,
   UpdateAppVersionResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAppVersionResourceRequest,
   output: UpdateAppVersionResourceResponse,
   errors: [
@@ -6165,7 +6165,7 @@ export const updateResiliencyPolicy: API.OperationMethod<
   UpdateResiliencyPolicyResponse,
   UpdateResiliencyPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateResiliencyPolicyRequest,
   output: UpdateResiliencyPolicyResponse,
   errors: [

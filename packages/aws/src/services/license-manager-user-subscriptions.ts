@@ -1021,7 +1021,7 @@ export const associateUser: API.OperationMethod<
   AssociateUserResponse,
   AssociateUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateUserRequest,
   output: AssociateUserResponse,
   errors: [
@@ -1051,7 +1051,7 @@ export const createLicenseServerEndpoint: API.OperationMethod<
   CreateLicenseServerEndpointResponse,
   CreateLicenseServerEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLicenseServerEndpointRequest,
   output: CreateLicenseServerEndpointResponse,
   errors: [
@@ -1081,7 +1081,7 @@ export const deleteLicenseServerEndpoint: API.OperationMethod<
   DeleteLicenseServerEndpointResponse,
   DeleteLicenseServerEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLicenseServerEndpointRequest,
   output: DeleteLicenseServerEndpointResponse,
   errors: [
@@ -1111,7 +1111,7 @@ export const deregisterIdentityProvider: API.OperationMethod<
   DeregisterIdentityProviderResponse,
   DeregisterIdentityProviderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeregisterIdentityProviderRequest,
   output: DeregisterIdentityProviderResponse,
   errors: [
@@ -1141,7 +1141,7 @@ export const disassociateUser: API.OperationMethod<
   DisassociateUserResponse,
   DisassociateUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateUserRequest,
   output: DisassociateUserResponse,
   errors: [
@@ -1186,7 +1186,7 @@ export const listIdentityProviders: API.OperationMethod<
     ListIdentityProvidersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIdentityProvidersRequest,
   output: ListIdentityProvidersResponse,
   errors: [
@@ -1237,7 +1237,7 @@ export const listInstances: API.OperationMethod<
     ListInstancesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInstancesRequest,
   output: ListInstancesResponse,
   errors: [
@@ -1287,7 +1287,7 @@ export const listLicenseServerEndpoints: API.OperationMethod<
     ListLicenseServerEndpointsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLicenseServerEndpointsRequest,
   output: ListLicenseServerEndpointsResponse,
   errors: [
@@ -1337,7 +1337,7 @@ export const listProductSubscriptions: API.OperationMethod<
     ListProductSubscriptionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProductSubscriptionsRequest,
   output: ListProductSubscriptionsResponse,
   errors: [
@@ -1369,7 +1369,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -1410,7 +1410,7 @@ export const listUserAssociations: API.OperationMethod<
     ListUserAssociationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUserAssociationsRequest,
   output: ListUserAssociationsResponse,
   errors: [
@@ -1446,7 +1446,7 @@ export const registerIdentityProvider: API.OperationMethod<
   RegisterIdentityProviderResponse,
   RegisterIdentityProviderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterIdentityProviderRequest,
   output: RegisterIdentityProviderResponse,
   errors: [
@@ -1478,7 +1478,7 @@ export const startProductSubscription: API.OperationMethod<
   StartProductSubscriptionResponse,
   StartProductSubscriptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartProductSubscriptionRequest,
   output: StartProductSubscriptionResponse,
   errors: [
@@ -1508,7 +1508,7 @@ export const stopProductSubscription: API.OperationMethod<
   StopProductSubscriptionResponse,
   StopProductSubscriptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopProductSubscriptionRequest,
   output: StopProductSubscriptionResponse,
   errors: [
@@ -1534,7 +1534,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -1555,7 +1555,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [InternalServerException, ResourceNotFoundException],
@@ -1574,7 +1574,7 @@ export const updateIdentityProviderSettings: API.OperationMethod<
   UpdateIdentityProviderSettingsResponse,
   UpdateIdentityProviderSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateIdentityProviderSettingsRequest,
   output: UpdateIdentityProviderSettingsResponse,
   errors: [

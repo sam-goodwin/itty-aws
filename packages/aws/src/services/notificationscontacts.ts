@@ -429,7 +429,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -455,7 +455,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -481,7 +481,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -508,7 +508,7 @@ export const createEmailContact: API.OperationMethod<
   CreateEmailContactResponse,
   CreateEmailContactError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEmailContactRequest,
   output: CreateEmailContactResponse,
   errors: [
@@ -535,7 +535,7 @@ export const getEmailContact: API.OperationMethod<
   GetEmailContactResponse,
   GetEmailContactError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEmailContactRequest,
   output: GetEmailContactResponse,
   errors: [
@@ -564,7 +564,7 @@ export const deleteEmailContact: API.OperationMethod<
   DeleteEmailContactResponse,
   DeleteEmailContactError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEmailContactRequest,
   output: DeleteEmailContactResponse,
   errors: [
@@ -605,7 +605,7 @@ export const listEmailContacts: API.OperationMethod<
     ListEmailContactsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEmailContactsRequest,
   output: ListEmailContactsResponse,
   errors: [
@@ -637,7 +637,7 @@ export const activateEmailContact: API.OperationMethod<
   ActivateEmailContactResponse,
   ActivateEmailContactError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ActivateEmailContactRequest,
   output: ActivateEmailContactResponse,
   errors: [
@@ -667,7 +667,7 @@ export const sendActivationCode: API.OperationMethod<
   SendActivationCodeResponse,
   SendActivationCodeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendActivationCodeRequest,
   output: SendActivationCodeResponse,
   errors: [

@@ -914,7 +914,7 @@ export const batchGetFindings: API.OperationMethod<
   BatchGetFindingsResponse,
   BatchGetFindingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetFindingsRequest,
   output: BatchGetFindingsResponse,
   errors: [
@@ -940,7 +940,7 @@ export const createScan: API.OperationMethod<
   CreateScanResponse,
   CreateScanError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateScanRequest,
   output: CreateScanResponse,
   errors: [
@@ -968,7 +968,7 @@ export const createUploadUrl: API.OperationMethod<
   CreateUploadUrlResponse,
   CreateUploadUrlError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateUploadUrlRequest,
   output: CreateUploadUrlResponse,
   errors: [
@@ -992,7 +992,7 @@ export const getAccountConfiguration: API.OperationMethod<
   GetAccountConfigurationResponse,
   GetAccountConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountConfigurationRequest,
   output: GetAccountConfigurationResponse,
   errors: [
@@ -1033,7 +1033,7 @@ export const getFindings: API.OperationMethod<
     GetFindingsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetFindingsRequest,
   output: GetFindingsResponse,
   errors: [
@@ -1065,7 +1065,7 @@ export const getMetricsSummary: API.OperationMethod<
   GetMetricsSummaryResponse,
   GetMetricsSummaryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMetricsSummaryRequest,
   output: GetMetricsSummaryResponse,
   errors: [
@@ -1090,7 +1090,7 @@ export const getScan: API.OperationMethod<
   GetScanResponse,
   GetScanError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetScanRequest,
   output: GetScanResponse,
   errors: [
@@ -1130,7 +1130,7 @@ export const listFindingsMetrics: API.OperationMethod<
     ListFindingsMetricsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFindingsMetricsRequest,
   output: ListFindingsMetricsResponse,
   errors: [
@@ -1175,7 +1175,7 @@ export const listScans: API.OperationMethod<
     ListScansError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListScansRequest,
   output: ListScansResponse,
   errors: [
@@ -1207,7 +1207,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -1235,7 +1235,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -1263,7 +1263,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -1290,7 +1290,7 @@ export const updateAccountConfiguration: API.OperationMethod<
   UpdateAccountConfigurationResponse,
   UpdateAccountConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccountConfigurationRequest,
   output: UpdateAccountConfigurationResponse,
   errors: [

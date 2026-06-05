@@ -1120,7 +1120,7 @@ export const createBatchLoadTask: API.OperationMethod<
   CreateBatchLoadTaskResponse,
   CreateBatchLoadTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateBatchLoadTaskRequest,
   output: CreateBatchLoadTaskResponse,
   errors: [
@@ -1153,7 +1153,7 @@ export const createDatabase: API.OperationMethod<
   CreateDatabaseResponse,
   CreateDatabaseError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDatabaseRequest,
   output: CreateDatabaseResponse,
   errors: [
@@ -1189,7 +1189,7 @@ export const createTable: API.OperationMethod<
   CreateTableResponse,
   CreateTableError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTableRequest,
   output: CreateTableResponse,
   errors: [
@@ -1230,7 +1230,7 @@ export const deleteDatabase: API.OperationMethod<
   DeleteDatabaseResponse,
   DeleteDatabaseError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDatabaseRequest,
   output: DeleteDatabaseResponse,
   errors: [
@@ -1266,7 +1266,7 @@ export const deleteTable: API.OperationMethod<
   DeleteTableResponse,
   DeleteTableError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTableRequest,
   output: DeleteTableResponse,
   errors: [
@@ -1296,7 +1296,7 @@ export const describeBatchLoadTask: API.OperationMethod<
   DescribeBatchLoadTaskResponse,
   DescribeBatchLoadTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeBatchLoadTaskRequest,
   output: DescribeBatchLoadTaskResponse,
   errors: [
@@ -1326,7 +1326,7 @@ export const describeDatabase: API.OperationMethod<
   DescribeDatabaseResponse,
   DescribeDatabaseError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDatabaseRequest,
   output: DescribeDatabaseResponse,
   errors: [
@@ -1367,7 +1367,7 @@ export const describeEndpoints: API.OperationMethod<
   DescribeEndpointsResponse,
   DescribeEndpointsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeEndpointsRequest,
   output: DescribeEndpointsResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
@@ -1391,7 +1391,7 @@ export const describeTable: API.OperationMethod<
   DescribeTableResponse,
   DescribeTableError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeTableRequest,
   output: DescribeTableResponse,
   errors: [
@@ -1435,7 +1435,7 @@ export const listBatchLoadTasks: API.OperationMethod<
     ListBatchLoadTasksError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBatchLoadTasksRequest,
   output: ListBatchLoadTasksResponse,
   errors: [
@@ -1483,7 +1483,7 @@ export const listDatabases: API.OperationMethod<
     ListDatabasesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatabasesRequest,
   output: ListDatabasesResponse,
   errors: [
@@ -1532,7 +1532,7 @@ export const listTables: API.OperationMethod<
     ListTablesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTablesRequest,
   output: ListTablesResponse,
   errors: [
@@ -1563,7 +1563,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -1589,7 +1589,7 @@ export const resumeBatchLoadTask: API.OperationMethod<
   ResumeBatchLoadTaskResponse,
   ResumeBatchLoadTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResumeBatchLoadTaskRequest,
   output: ResumeBatchLoadTaskResponse,
   errors: [
@@ -1618,7 +1618,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -1644,7 +1644,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -1677,7 +1677,7 @@ export const updateDatabase: API.OperationMethod<
   UpdateDatabaseResponse,
   UpdateDatabaseError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDatabaseRequest,
   output: UpdateDatabaseResponse,
   errors: [
@@ -1712,7 +1712,7 @@ export const updateTable: API.OperationMethod<
   UpdateTableResponse,
   UpdateTableError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTableRequest,
   output: UpdateTableResponse,
   errors: [
@@ -1783,7 +1783,7 @@ export const writeRecords: API.OperationMethod<
   WriteRecordsResponse,
   WriteRecordsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: WriteRecordsRequest,
   output: WriteRecordsResponse,
   errors: [

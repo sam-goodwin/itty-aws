@@ -1274,7 +1274,7 @@ export const addPermission: API.OperationMethod<
   AddPermissionResponse,
   AddPermissionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddPermissionRequest,
   output: AddPermissionResponse,
   errors: [
@@ -1314,7 +1314,7 @@ export const cancelMessageMoveTask: API.OperationMethod<
   CancelMessageMoveTaskResult,
   CancelMessageMoveTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelMessageMoveTaskRequest,
   output: CancelMessageMoveTaskResult,
   errors: [
@@ -1386,7 +1386,7 @@ export const changeMessageVisibility: API.OperationMethod<
   ChangeMessageVisibilityResponse,
   ChangeMessageVisibilityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ChangeMessageVisibilityRequest,
   output: ChangeMessageVisibilityResponse,
   errors: [
@@ -1427,7 +1427,7 @@ export const changeMessageVisibilityBatch: API.OperationMethod<
   ChangeMessageVisibilityBatchResult,
   ChangeMessageVisibilityBatchError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ChangeMessageVisibilityBatchRequest,
   output: ChangeMessageVisibilityBatchResult,
   errors: [
@@ -1507,7 +1507,7 @@ export const createQueue: API.OperationMethod<
   CreateQueueResult,
   CreateQueueError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateQueueRequest,
   output: CreateQueueResult,
   errors: [
@@ -1560,7 +1560,7 @@ export const deleteMessage: API.OperationMethod<
   DeleteMessageResponse,
   DeleteMessageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMessageRequest,
   output: DeleteMessageResponse,
   errors: [
@@ -1597,7 +1597,7 @@ export const deleteMessageBatch: API.OperationMethod<
   DeleteMessageBatchResult,
   DeleteMessageBatchError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMessageBatchRequest,
   output: DeleteMessageBatchResult,
   errors: [
@@ -1647,7 +1647,7 @@ export const deleteQueue: API.OperationMethod<
   DeleteQueueResponse,
   DeleteQueueError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteQueueRequest,
   output: DeleteQueueResponse,
   errors: [
@@ -1676,7 +1676,7 @@ export const getQueueAttributes: API.OperationMethod<
   GetQueueAttributesResult,
   GetQueueAttributesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetQueueAttributesRequest,
   output: GetQueueAttributesResult,
   errors: [
@@ -1714,7 +1714,7 @@ export const getQueueUrl: API.OperationMethod<
   GetQueueUrlResult,
   GetQueueUrlError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetQueueUrlRequest,
   output: GetQueueUrlResult,
   errors: [
@@ -1767,7 +1767,7 @@ export const listDeadLetterSourceQueues: API.OperationMethod<
     ListDeadLetterSourceQueuesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDeadLetterSourceQueuesRequest,
   output: ListDeadLetterSourceQueuesResult,
   errors: [
@@ -1810,7 +1810,7 @@ export const listMessageMoveTasks: API.OperationMethod<
   ListMessageMoveTasksResult,
   ListMessageMoveTasksError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListMessageMoveTasksRequest,
   output: ListMessageMoveTasksResult,
   errors: [
@@ -1867,7 +1867,7 @@ export const listQueues: API.OperationMethod<
     ListQueuesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListQueuesRequest,
   output: ListQueuesResult,
   errors: [
@@ -1904,7 +1904,7 @@ export const listQueueTags: API.OperationMethod<
   ListQueueTagsResult,
   ListQueueTagsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListQueueTagsRequest,
   output: ListQueueTagsResult,
   errors: [
@@ -1945,7 +1945,7 @@ export const purgeQueue: API.OperationMethod<
   PurgeQueueResponse,
   PurgeQueueError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PurgeQueueRequest,
   output: PurgeQueueResponse,
   errors: [
@@ -2019,7 +2019,7 @@ export const receiveMessage: API.OperationMethod<
   ReceiveMessageResult,
   ReceiveMessageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReceiveMessageRequest,
   output: ReceiveMessageResult,
   errors: [
@@ -2064,7 +2064,7 @@ export const removePermission: API.OperationMethod<
   RemovePermissionResponse,
   RemovePermissionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemovePermissionRequest,
   output: RemovePermissionResponse,
   errors: [
@@ -2107,7 +2107,7 @@ export const sendMessage: API.OperationMethod<
   SendMessageResult,
   SendMessageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendMessageRequest,
   output: SendMessageResult,
   errors: [
@@ -2179,7 +2179,7 @@ export const sendMessageBatch: API.OperationMethod<
   SendMessageBatchResult,
   SendMessageBatchError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendMessageBatchRequest,
   output: SendMessageBatchResult,
   errors: [
@@ -2240,7 +2240,7 @@ export const setQueueAttributes: API.OperationMethod<
   SetQueueAttributesResponse,
   SetQueueAttributesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetQueueAttributesRequest,
   output: SetQueueAttributesResponse,
   errors: [
@@ -2289,7 +2289,7 @@ export const startMessageMoveTask: API.OperationMethod<
   StartMessageMoveTaskResult,
   StartMessageMoveTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartMessageMoveTaskRequest,
   output: StartMessageMoveTaskResult,
   errors: [
@@ -2337,7 +2337,7 @@ export const tagQueue: API.OperationMethod<
   TagQueueResponse,
   TagQueueError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagQueueRequest,
   output: TagQueueResponse,
   errors: [
@@ -2368,7 +2368,7 @@ export const untagQueue: API.OperationMethod<
   UntagQueueResponse,
   UntagQueueError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagQueueRequest,
   output: UntagQueueResponse,
   errors: [

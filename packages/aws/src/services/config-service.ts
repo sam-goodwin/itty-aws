@@ -6601,7 +6601,7 @@ export const associateResourceTypes: API.OperationMethod<
   AssociateResourceTypesResponse,
   AssociateResourceTypesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateResourceTypesRequest,
   output: AssociateResourceTypesResponse,
   errors: [
@@ -6627,7 +6627,7 @@ export const batchGetAggregateResourceConfig: API.OperationMethod<
   BatchGetAggregateResourceConfigResponse,
   BatchGetAggregateResourceConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetAggregateResourceConfigRequest,
   output: BatchGetAggregateResourceConfigResponse,
   errors: [NoSuchConfigurationAggregatorException, ValidationException],
@@ -6656,7 +6656,7 @@ export const batchGetResourceConfig: API.OperationMethod<
   BatchGetResourceConfigResponse,
   BatchGetResourceConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetResourceConfigRequest,
   output: BatchGetResourceConfigResponse,
   errors: [NoAvailableConfigurationRecorderException, ValidationException],
@@ -6673,7 +6673,7 @@ export const deleteAggregationAuthorization: API.OperationMethod<
   DeleteAggregationAuthorizationResponse,
   DeleteAggregationAuthorizationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAggregationAuthorizationRequest,
   output: DeleteAggregationAuthorizationResponse,
   errors: [InvalidParameterValueException],
@@ -6712,7 +6712,7 @@ export const deleteConfigRule: API.OperationMethod<
   DeleteConfigRuleResponse,
   DeleteConfigRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConfigRuleRequest,
   output: DeleteConfigRuleResponse,
   errors: [NoSuchConfigRuleException, ResourceInUseException],
@@ -6729,7 +6729,7 @@ export const deleteConfigurationAggregator: API.OperationMethod<
   DeleteConfigurationAggregatorResponse,
   DeleteConfigurationAggregatorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConfigurationAggregatorRequest,
   output: DeleteConfigurationAggregatorResponse,
   errors: [NoSuchConfigurationAggregatorException],
@@ -6753,7 +6753,7 @@ export const deleteConfigurationRecorder: API.OperationMethod<
   DeleteConfigurationRecorderResponse,
   DeleteConfigurationRecorderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConfigurationRecorderRequest,
   output: DeleteConfigurationRecorderResponse,
   errors: [NoSuchConfigurationRecorderException, UnmodifiableEntityException],
@@ -6786,7 +6786,7 @@ export const deleteConformancePack: API.OperationMethod<
   DeleteConformancePackResponse,
   DeleteConformancePackError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConformancePackRequest,
   output: DeleteConformancePackResponse,
   errors: [NoSuchConformancePackException, ResourceInUseException],
@@ -6805,7 +6805,7 @@ export const deleteDeliveryChannel: API.OperationMethod<
   DeleteDeliveryChannelResponse,
   DeleteDeliveryChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDeliveryChannelRequest,
   output: DeleteDeliveryChannelResponse,
   errors: [
@@ -6828,7 +6828,7 @@ export const deleteEvaluationResults: API.OperationMethod<
   DeleteEvaluationResultsResponse,
   DeleteEvaluationResultsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEvaluationResultsRequest,
   output: DeleteEvaluationResultsResponse,
   errors: [NoSuchConfigRuleException, ResourceInUseException],
@@ -6865,7 +6865,7 @@ export const deleteOrganizationConfigRule: API.OperationMethod<
   DeleteOrganizationConfigRuleResponse,
   DeleteOrganizationConfigRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationConfigRuleRequest,
   output: DeleteOrganizationConfigRuleResponse,
   errors: [
@@ -6907,7 +6907,7 @@ export const deleteOrganizationConformancePack: API.OperationMethod<
   DeleteOrganizationConformancePackResponse,
   DeleteOrganizationConformancePackError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationConformancePackRequest,
   output: DeleteOrganizationConformancePackResponse,
   errors: [
@@ -6928,7 +6928,7 @@ export const deletePendingAggregationRequest: API.OperationMethod<
   DeletePendingAggregationRequestResponse,
   DeletePendingAggregationRequestError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePendingAggregationRequestRequest,
   output: DeletePendingAggregationRequestResponse,
   errors: [InvalidParameterValueException],
@@ -6947,7 +6947,7 @@ export const deleteRemediationConfiguration: API.OperationMethod<
   DeleteRemediationConfigurationResponse,
   DeleteRemediationConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRemediationConfigurationRequest,
   output: DeleteRemediationConfigurationResponse,
   errors: [
@@ -6971,7 +6971,7 @@ export const deleteRemediationExceptions: API.OperationMethod<
   DeleteRemediationExceptionsResponse,
   DeleteRemediationExceptionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRemediationExceptionsRequest,
   output: DeleteRemediationExceptionsResponse,
   errors: [NoSuchRemediationExceptionException],
@@ -6988,7 +6988,7 @@ export const deleteResourceConfig: API.OperationMethod<
   DeleteResourceConfigResponse,
   DeleteResourceConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourceConfigRequest,
   output: DeleteResourceConfigResponse,
   errors: [NoRunningConfigurationRecorderException, ValidationException],
@@ -7005,7 +7005,7 @@ export const deleteRetentionConfiguration: API.OperationMethod<
   DeleteRetentionConfigurationResponse,
   DeleteRetentionConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRetentionConfigurationRequest,
   output: DeleteRetentionConfigurationResponse,
   errors: [
@@ -7036,7 +7036,7 @@ export const deleteServiceLinkedConfigurationRecorder: API.OperationMethod<
   DeleteServiceLinkedConfigurationRecorderResponse,
   DeleteServiceLinkedConfigurationRecorderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteServiceLinkedConfigurationRecorderRequest,
   output: DeleteServiceLinkedConfigurationRecorderResponse,
   errors: [
@@ -7057,7 +7057,7 @@ export const deleteStoredQuery: API.OperationMethod<
   DeleteStoredQueryResponse,
   DeleteStoredQueryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteStoredQueryRequest,
   output: DeleteStoredQueryResponse,
   errors: [ResourceNotFoundException, ValidationException],
@@ -7086,7 +7086,7 @@ export const deliverConfigSnapshot: API.OperationMethod<
   DeliverConfigSnapshotResponse,
   DeliverConfigSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeliverConfigSnapshotRequest,
   output: DeliverConfigSnapshotResponse,
   errors: [
@@ -7129,7 +7129,7 @@ export const describeAggregateComplianceByConfigRules: API.OperationMethod<
     DescribeAggregateComplianceByConfigRulesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAggregateComplianceByConfigRulesRequest,
   output: DescribeAggregateComplianceByConfigRulesResponse,
   errors: [
@@ -7176,7 +7176,7 @@ export const describeAggregateComplianceByConformancePacks: API.OperationMethod<
     DescribeAggregateComplianceByConformancePacksError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAggregateComplianceByConformancePacksRequest,
   output: DescribeAggregateComplianceByConformancePacksResponse,
   errors: [
@@ -7221,7 +7221,7 @@ export const describeAggregationAuthorizations: API.OperationMethod<
     DescribeAggregationAuthorizationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAggregationAuthorizationsRequest,
   output: DescribeAggregationAuthorizationsResponse,
   errors: [
@@ -7293,7 +7293,7 @@ export const describeComplianceByConfigRule: API.OperationMethod<
     DescribeComplianceByConfigRuleError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeComplianceByConfigRuleRequest,
   output: DescribeComplianceByConfigRuleResponse,
   errors: [
@@ -7363,7 +7363,7 @@ export const describeComplianceByResource: API.OperationMethod<
     DescribeComplianceByResourceError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeComplianceByResourceRequest,
   output: DescribeComplianceByResourceResponse,
   errors: [InvalidNextTokenException, InvalidParameterValueException],
@@ -7403,7 +7403,7 @@ export const describeConfigRuleEvaluationStatus: API.OperationMethod<
     DescribeConfigRuleEvaluationStatusError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeConfigRuleEvaluationStatusRequest,
   output: DescribeConfigRuleEvaluationStatusResponse,
   errors: [
@@ -7446,7 +7446,7 @@ export const describeConfigRules: API.OperationMethod<
     DescribeConfigRulesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeConfigRulesRequest,
   output: DescribeConfigRulesResponse,
   errors: [
@@ -7492,7 +7492,7 @@ export const describeConfigurationAggregators: API.OperationMethod<
     DescribeConfigurationAggregatorsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeConfigurationAggregatorsRequest,
   output: DescribeConfigurationAggregatorsResponse,
   errors: [
@@ -7538,7 +7538,7 @@ export const describeConfigurationAggregatorSourcesStatus: API.OperationMethod<
     DescribeConfigurationAggregatorSourcesStatusError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeConfigurationAggregatorSourcesStatusRequest,
   output: DescribeConfigurationAggregatorSourcesStatusResponse,
   errors: [
@@ -7571,7 +7571,7 @@ export const describeConfigurationRecorders: API.OperationMethod<
   DescribeConfigurationRecordersResponse,
   DescribeConfigurationRecordersError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeConfigurationRecordersRequest,
   output: DescribeConfigurationRecordersResponse,
   errors: [NoSuchConfigurationRecorderException, ValidationException],
@@ -7596,7 +7596,7 @@ export const describeConfigurationRecorderStatus: API.OperationMethod<
   DescribeConfigurationRecorderStatusResponse,
   DescribeConfigurationRecorderStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeConfigurationRecorderStatusRequest,
   output: DescribeConfigurationRecorderStatusResponse,
   errors: [NoSuchConfigurationRecorderException, ValidationException],
@@ -7633,7 +7633,7 @@ export const describeConformancePackCompliance: API.OperationMethod<
     DescribeConformancePackComplianceError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeConformancePackComplianceRequest,
   output: DescribeConformancePackComplianceResponse,
   errors: [
@@ -7679,7 +7679,7 @@ export const describeConformancePacks: API.OperationMethod<
     DescribeConformancePacksError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeConformancePacksRequest,
   output: DescribeConformancePacksResponse,
   errors: [
@@ -7725,7 +7725,7 @@ export const describeConformancePackStatus: API.OperationMethod<
     DescribeConformancePackStatusError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeConformancePackStatusRequest,
   output: DescribeConformancePackStatusResponse,
   errors: [
@@ -7756,7 +7756,7 @@ export const describeDeliveryChannels: API.OperationMethod<
   DescribeDeliveryChannelsResponse,
   DescribeDeliveryChannelsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDeliveryChannelsRequest,
   output: DescribeDeliveryChannelsResponse,
   errors: [NoSuchDeliveryChannelException],
@@ -7778,7 +7778,7 @@ export const describeDeliveryChannelStatus: API.OperationMethod<
   DescribeDeliveryChannelStatusResponse,
   DescribeDeliveryChannelStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDeliveryChannelStatusRequest,
   output: DescribeDeliveryChannelStatusResponse,
   errors: [NoSuchDeliveryChannelException],
@@ -7830,7 +7830,7 @@ export const describeOrganizationConfigRules: API.OperationMethod<
     DescribeOrganizationConfigRulesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeOrganizationConfigRulesRequest,
   output: DescribeOrganizationConfigRulesResponse,
   errors: [
@@ -7882,7 +7882,7 @@ export const describeOrganizationConfigRuleStatuses: API.OperationMethod<
     DescribeOrganizationConfigRuleStatusesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeOrganizationConfigRuleStatusesRequest,
   output: DescribeOrganizationConfigRuleStatusesResponse,
   errors: [
@@ -7945,7 +7945,7 @@ export const describeOrganizationConformancePacks: API.OperationMethod<
     DescribeOrganizationConformancePacksError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeOrganizationConformancePacksRequest,
   output: DescribeOrganizationConformancePacksResponse,
   errors: [
@@ -7997,7 +7997,7 @@ export const describeOrganizationConformancePackStatuses: API.OperationMethod<
     DescribeOrganizationConformancePackStatusesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeOrganizationConformancePackStatusesRequest,
   output: DescribeOrganizationConformancePackStatusesResponse,
   errors: [
@@ -8041,7 +8041,7 @@ export const describePendingAggregationRequests: API.OperationMethod<
     DescribePendingAggregationRequestsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribePendingAggregationRequestsRequest,
   output: DescribePendingAggregationRequestsResponse,
   errors: [
@@ -8065,7 +8065,7 @@ export const describeRemediationConfigurations: API.OperationMethod<
   DescribeRemediationConfigurationsResponse,
   DescribeRemediationConfigurationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeRemediationConfigurationsRequest,
   output: DescribeRemediationConfigurationsResponse,
   errors: [],
@@ -8105,7 +8105,7 @@ export const describeRemediationExceptions: API.OperationMethod<
     DescribeRemediationExceptionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRemediationExceptionsRequest,
   output: DescribeRemediationExceptionsResponse,
   errors: [InvalidNextTokenException, InvalidParameterValueException],
@@ -8144,7 +8144,7 @@ export const describeRemediationExecutionStatus: API.OperationMethod<
     DescribeRemediationExecutionStatusError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRemediationExecutionStatusRequest,
   output: DescribeRemediationExecutionStatusResponse,
   errors: [
@@ -8193,7 +8193,7 @@ export const describeRetentionConfigurations: API.OperationMethod<
     DescribeRetentionConfigurationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRetentionConfigurationsRequest,
   output: DescribeRetentionConfigurationsResponse,
   errors: [
@@ -8222,7 +8222,7 @@ export const disassociateResourceTypes: API.OperationMethod<
   DisassociateResourceTypesResponse,
   DisassociateResourceTypesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateResourceTypesRequest,
   output: DisassociateResourceTypesResponse,
   errors: [
@@ -8267,7 +8267,7 @@ export const getAggregateComplianceDetailsByConfigRule: API.OperationMethod<
     GetAggregateComplianceDetailsByConfigRuleError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetAggregateComplianceDetailsByConfigRuleRequest,
   output: GetAggregateComplianceDetailsByConfigRuleResponse,
   errors: [
@@ -8317,7 +8317,7 @@ export const getAggregateConfigRuleComplianceSummary: API.OperationMethod<
     GetAggregateConfigRuleComplianceSummaryError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetAggregateConfigRuleComplianceSummaryRequest,
   output: GetAggregateConfigRuleComplianceSummaryResponse,
   errors: [
@@ -8363,7 +8363,7 @@ export const getAggregateConformancePackComplianceSummary: API.OperationMethod<
     GetAggregateConformancePackComplianceSummaryError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetAggregateConformancePackComplianceSummaryRequest,
   output: GetAggregateConformancePackComplianceSummaryResponse,
   errors: [
@@ -8410,7 +8410,7 @@ export const getAggregateDiscoveredResourceCounts: API.OperationMethod<
     GetAggregateDiscoveredResourceCountsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetAggregateDiscoveredResourceCountsRequest,
   output: GetAggregateDiscoveredResourceCountsResponse,
   errors: [
@@ -8441,7 +8441,7 @@ export const getAggregateResourceConfig: API.OperationMethod<
   GetAggregateResourceConfigResponse,
   GetAggregateResourceConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAggregateResourceConfigRequest,
   output: GetAggregateResourceConfigResponse,
   errors: [
@@ -8482,7 +8482,7 @@ export const getComplianceDetailsByConfigRule: API.OperationMethod<
     GetComplianceDetailsByConfigRuleError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetComplianceDetailsByConfigRuleRequest,
   output: GetComplianceDetailsByConfigRuleResponse,
   errors: [
@@ -8526,7 +8526,7 @@ export const getComplianceDetailsByResource: API.OperationMethod<
     GetComplianceDetailsByResourceError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetComplianceDetailsByResourceRequest,
   output: GetComplianceDetailsByResourceResponse,
   errors: [InvalidParameterValueException],
@@ -8546,7 +8546,7 @@ export const getComplianceSummaryByConfigRule: API.OperationMethod<
   GetComplianceSummaryByConfigRuleResponse,
   GetComplianceSummaryByConfigRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetComplianceSummaryByConfigRuleRequest,
   output: GetComplianceSummaryByConfigRuleResponse,
   errors: [],
@@ -8565,7 +8565,7 @@ export const getComplianceSummaryByResourceType: API.OperationMethod<
   GetComplianceSummaryByResourceTypeResponse,
   GetComplianceSummaryByResourceTypeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetComplianceSummaryByResourceTypeRequest,
   output: GetComplianceSummaryByResourceTypeResponse,
   errors: [InvalidParameterValueException],
@@ -8600,7 +8600,7 @@ export const getConformancePackComplianceDetails: API.OperationMethod<
     GetConformancePackComplianceDetailsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetConformancePackComplianceDetailsRequest,
   output: GetConformancePackComplianceDetailsResponse,
   errors: [
@@ -8644,7 +8644,7 @@ export const getConformancePackComplianceSummary: API.OperationMethod<
     GetConformancePackComplianceSummaryError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetConformancePackComplianceSummaryRequest,
   output: GetConformancePackComplianceSummaryResponse,
   errors: [
@@ -8668,7 +8668,7 @@ export const getCustomRulePolicy: API.OperationMethod<
   GetCustomRulePolicyResponse,
   GetCustomRulePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCustomRulePolicyRequest,
   output: GetCustomRulePolicyResponse,
   errors: [NoSuchConfigRuleException],
@@ -8743,7 +8743,7 @@ export const getDiscoveredResourceCounts: API.OperationMethod<
     GetDiscoveredResourceCountsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetDiscoveredResourceCountsRequest,
   output: GetDiscoveredResourceCountsResponse,
   errors: [
@@ -8786,7 +8786,7 @@ export const getOrganizationConfigRuleDetailedStatus: API.OperationMethod<
     GetOrganizationConfigRuleDetailedStatusError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetOrganizationConfigRuleDetailedStatusRequest,
   output: GetOrganizationConfigRuleDetailedStatusResponse,
   errors: [
@@ -8831,7 +8831,7 @@ export const getOrganizationConformancePackDetailedStatus: API.OperationMethod<
     GetOrganizationConformancePackDetailedStatusError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetOrganizationConformancePackDetailedStatusRequest,
   output: GetOrganizationConformancePackDetailedStatusResponse,
   errors: [
@@ -8859,7 +8859,7 @@ export const getOrganizationCustomRulePolicy: API.OperationMethod<
   GetOrganizationCustomRulePolicyResponse,
   GetOrganizationCustomRulePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationCustomRulePolicyRequest,
   output: GetOrganizationCustomRulePolicyResponse,
   errors: [
@@ -8926,7 +8926,7 @@ export const getResourceConfigHistory: API.OperationMethod<
     GetResourceConfigHistoryError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetResourceConfigHistoryRequest,
   output: GetResourceConfigHistoryResponse,
   errors: [
@@ -8960,7 +8960,7 @@ export const getResourceEvaluationSummary: API.OperationMethod<
   GetResourceEvaluationSummaryResponse,
   GetResourceEvaluationSummaryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResourceEvaluationSummaryRequest,
   output: GetResourceEvaluationSummaryResponse,
   errors: [ResourceNotFoundException],
@@ -8977,7 +8977,7 @@ export const getStoredQuery: API.OperationMethod<
   GetStoredQueryResponse,
   GetStoredQueryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetStoredQueryRequest,
   output: GetStoredQueryResponse,
   errors: [ResourceNotFoundException, ValidationException],
@@ -9015,7 +9015,7 @@ export const listAggregateDiscoveredResources: API.OperationMethod<
     ListAggregateDiscoveredResourcesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAggregateDiscoveredResourcesRequest,
   output: ListAggregateDiscoveredResourcesResponse,
   errors: [
@@ -9057,7 +9057,7 @@ export const listConfigurationRecorders: API.OperationMethod<
     ListConfigurationRecordersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfigurationRecordersRequest,
   output: ListConfigurationRecordersResponse,
   errors: [ValidationException],
@@ -9101,7 +9101,7 @@ export const listConformancePackComplianceScores: API.OperationMethod<
     ListConformancePackComplianceScoresError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConformancePackComplianceScoresRequest,
   output: ListConformancePackComplianceScoresResponse,
   errors: [
@@ -9177,7 +9177,7 @@ export const listDiscoveredResources: API.OperationMethod<
     ListDiscoveredResourcesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDiscoveredResourcesRequest,
   output: ListDiscoveredResourcesResponse,
   errors: [
@@ -9221,7 +9221,7 @@ export const listResourceEvaluations: API.OperationMethod<
     ListResourceEvaluationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceEvaluationsRequest,
   output: ListResourceEvaluationsResponse,
   errors: [
@@ -9263,7 +9263,7 @@ export const listStoredQueries: API.OperationMethod<
     ListStoredQueriesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStoredQueriesRequest,
   output: ListStoredQueriesResponse,
   errors: [InvalidNextTokenException, ValidationException],
@@ -9302,7 +9302,7 @@ export const listTagsForResource: API.OperationMethod<
     ListTagsForResourceError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -9337,7 +9337,7 @@ export const putAggregationAuthorization: API.OperationMethod<
   PutAggregationAuthorizationResponse,
   PutAggregationAuthorizationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutAggregationAuthorizationRequest,
   output: PutAggregationAuthorizationResponse,
   errors: [InvalidParameterValueException],
@@ -9408,7 +9408,7 @@ export const putConfigRule: API.OperationMethod<
   PutConfigRuleResponse,
   PutConfigRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutConfigRuleRequest,
   output: PutConfigRuleResponse,
   errors: [
@@ -9456,7 +9456,7 @@ export const putConfigurationAggregator: API.OperationMethod<
   PutConfigurationAggregatorResponse,
   PutConfigurationAggregatorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutConfigurationAggregatorRequest,
   output: PutConfigurationAggregatorResponse,
   errors: [
@@ -9509,7 +9509,7 @@ export const putConfigurationRecorder: API.OperationMethod<
   PutConfigurationRecorderResponse,
   PutConfigurationRecorderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutConfigurationRecorderRequest,
   output: PutConfigurationRecorderResponse,
   errors: [
@@ -9563,7 +9563,7 @@ export const putConformancePack: API.OperationMethod<
   PutConformancePackResponse,
   PutConformancePackError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutConformancePackRequest,
   output: PutConformancePackResponse,
   errors: [
@@ -9604,7 +9604,7 @@ export const putDeliveryChannel: API.OperationMethod<
   PutDeliveryChannelResponse,
   PutDeliveryChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutDeliveryChannelRequest,
   output: PutDeliveryChannelResponse,
   errors: [
@@ -9633,7 +9633,7 @@ export const putEvaluations: API.OperationMethod<
   PutEvaluationsResponse,
   PutEvaluationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutEvaluationsRequest,
   output: PutEvaluationsResponse,
   errors: [
@@ -9655,7 +9655,7 @@ export const putExternalEvaluation: API.OperationMethod<
   PutExternalEvaluationResponse,
   PutExternalEvaluationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutExternalEvaluationRequest,
   output: PutExternalEvaluationResponse,
   errors: [InvalidParameterValueException, NoSuchConfigRuleException],
@@ -9719,7 +9719,7 @@ export const putOrganizationConfigRule: API.OperationMethod<
   PutOrganizationConfigRuleResponse,
   PutOrganizationConfigRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutOrganizationConfigRuleRequest,
   output: PutOrganizationConfigRuleResponse,
   errors: [
@@ -9785,7 +9785,7 @@ export const putOrganizationConformancePack: API.OperationMethod<
   PutOrganizationConformancePackResponse,
   PutOrganizationConformancePackError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutOrganizationConformancePackRequest,
   output: PutOrganizationConformancePackResponse,
   errors: [
@@ -9838,7 +9838,7 @@ export const putRemediationConfigurations: API.OperationMethod<
   PutRemediationConfigurationsResponse,
   PutRemediationConfigurationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutRemediationConfigurationsRequest,
   output: PutRemediationConfigurationsResponse,
   errors: [InsufficientPermissionsException, InvalidParameterValueException],
@@ -9888,7 +9888,7 @@ export const putRemediationExceptions: API.OperationMethod<
   PutRemediationExceptionsResponse,
   PutRemediationExceptionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutRemediationExceptionsRequest,
   output: PutRemediationExceptionsResponse,
   errors: [InsufficientPermissionsException, InvalidParameterValueException],
@@ -9916,7 +9916,7 @@ export const putResourceConfig: API.OperationMethod<
   PutResourceConfigResponse,
   PutResourceConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutResourceConfigRequest,
   output: PutResourceConfigResponse,
   errors: [
@@ -9947,7 +9947,7 @@ export const putRetentionConfiguration: API.OperationMethod<
   PutRetentionConfigurationResponse,
   PutRetentionConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutRetentionConfigurationRequest,
   output: PutRetentionConfigurationResponse,
   errors: [
@@ -9985,7 +9985,7 @@ export const putServiceLinkedConfigurationRecorder: API.OperationMethod<
   PutServiceLinkedConfigurationRecorderResponse,
   PutServiceLinkedConfigurationRecorderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutServiceLinkedConfigurationRecorderRequest,
   output: PutServiceLinkedConfigurationRecorderResponse,
   errors: [
@@ -10014,7 +10014,7 @@ export const putStoredQuery: API.OperationMethod<
   PutStoredQueryResponse,
   PutStoredQueryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutStoredQueryRequest,
   output: PutStoredQueryResponse,
   errors: [
@@ -10064,7 +10064,7 @@ export const selectAggregateResourceConfig: API.OperationMethod<
     SelectAggregateResourceConfigError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SelectAggregateResourceConfigRequest,
   output: SelectAggregateResourceConfigResponse,
   errors: [
@@ -10113,7 +10113,7 @@ export const selectResourceConfig: API.OperationMethod<
     SelectResourceConfigError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SelectResourceConfigRequest,
   output: SelectResourceConfigResponse,
   errors: [
@@ -10181,7 +10181,7 @@ export const startConfigRulesEvaluation: API.OperationMethod<
   StartConfigRulesEvaluationResponse,
   StartConfigRulesEvaluationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartConfigRulesEvaluationRequest,
   output: StartConfigRulesEvaluationResponse,
   errors: [
@@ -10207,7 +10207,7 @@ export const startConfigurationRecorder: API.OperationMethod<
   StartConfigurationRecorderResponse,
   StartConfigurationRecorderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartConfigurationRecorderRequest,
   output: StartConfigurationRecorderResponse,
   errors: [
@@ -10231,7 +10231,7 @@ export const startRemediationExecution: API.OperationMethod<
   StartRemediationExecutionResponse,
   StartRemediationExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartRemediationExecutionRequest,
   output: StartRemediationExecutionResponse,
   errors: [
@@ -10263,7 +10263,7 @@ export const startResourceEvaluation: API.OperationMethod<
   StartResourceEvaluationResponse,
   StartResourceEvaluationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartResourceEvaluationRequest,
   output: StartResourceEvaluationResponse,
   errors: [IdempotentParameterMismatch, InvalidParameterValueException],
@@ -10280,7 +10280,7 @@ export const stopConfigurationRecorder: API.OperationMethod<
   StopConfigurationRecorderResponse,
   StopConfigurationRecorderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopConfigurationRecorderRequest,
   output: StopConfigurationRecorderResponse,
   errors: [NoSuchConfigurationRecorderException, UnmodifiableEntityException],
@@ -10299,7 +10299,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -10320,7 +10320,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException, ValidationException],

@@ -4495,7 +4495,7 @@ export const associateLenses: API.OperationMethod<
   AssociateLensesResponse,
   AssociateLensesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateLensesInput,
   output: AssociateLensesResponse,
   errors: [
@@ -4523,7 +4523,7 @@ export const associateProfiles: API.OperationMethod<
   AssociateProfilesResponse,
   AssociateProfilesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateProfilesInput,
   output: AssociateProfilesResponse,
   errors: [
@@ -4573,7 +4573,7 @@ export const createLensShare: API.OperationMethod<
   CreateLensShareOutput,
   CreateLensShareError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLensShareInput,
   output: CreateLensShareOutput,
   errors: [
@@ -4610,7 +4610,7 @@ export const createLensVersion: API.OperationMethod<
   CreateLensVersionOutput,
   CreateLensVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLensVersionInput,
   output: CreateLensVersionOutput,
   errors: [
@@ -4640,7 +4640,7 @@ export const createMilestone: API.OperationMethod<
   CreateMilestoneOutput,
   CreateMilestoneError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMilestoneInput,
   output: CreateMilestoneOutput,
   errors: [
@@ -4669,7 +4669,7 @@ export const createProfile: API.OperationMethod<
   CreateProfileOutput,
   CreateProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProfileInput,
   output: CreateProfileOutput,
   errors: [
@@ -4698,7 +4698,7 @@ export const createProfileShare: API.OperationMethod<
   CreateProfileShareOutput,
   CreateProfileShareError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProfileShareInput,
   output: CreateProfileShareOutput,
   errors: [
@@ -4737,7 +4737,7 @@ export const createReviewTemplate: API.OperationMethod<
   CreateReviewTemplateOutput,
   CreateReviewTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateReviewTemplateInput,
   output: CreateReviewTemplateOutput,
   errors: [
@@ -4782,7 +4782,7 @@ export const createTemplateShare: API.OperationMethod<
   CreateTemplateShareOutput,
   CreateTemplateShareError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTemplateShareInput,
   output: CreateTemplateShareOutput,
   errors: [
@@ -4835,7 +4835,7 @@ export const createWorkload: API.OperationMethod<
   CreateWorkloadOutput,
   CreateWorkloadError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateWorkloadInput,
   output: CreateWorkloadOutput,
   errors: [
@@ -4875,7 +4875,7 @@ export const createWorkloadShare: API.OperationMethod<
   CreateWorkloadShareOutput,
   CreateWorkloadShareError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateWorkloadShareInput,
   output: CreateWorkloadShareOutput,
   errors: [
@@ -4916,7 +4916,7 @@ export const deleteLens: API.OperationMethod<
   DeleteLensResponse,
   DeleteLensError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLensInput,
   output: DeleteLensResponse,
   errors: [
@@ -4957,7 +4957,7 @@ export const deleteLensShare: API.OperationMethod<
   DeleteLensShareResponse,
   DeleteLensShareError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLensShareInput,
   output: DeleteLensShareResponse,
   errors: [
@@ -4994,7 +4994,7 @@ export const deleteProfile: API.OperationMethod<
   DeleteProfileResponse,
   DeleteProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProfileInput,
   output: DeleteProfileResponse,
   errors: [
@@ -5022,7 +5022,7 @@ export const deleteProfileShare: API.OperationMethod<
   DeleteProfileShareResponse,
   DeleteProfileShareError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProfileShareInput,
   output: DeleteProfileShareResponse,
   errors: [
@@ -5056,7 +5056,7 @@ export const deleteReviewTemplate: API.OperationMethod<
   DeleteReviewTemplateResponse,
   DeleteReviewTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteReviewTemplateInput,
   output: DeleteReviewTemplateResponse,
   errors: [
@@ -5088,7 +5088,7 @@ export const deleteTemplateShare: API.OperationMethod<
   DeleteTemplateShareResponse,
   DeleteTemplateShareError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTemplateShareInput,
   output: DeleteTemplateShareResponse,
   errors: [
@@ -5116,7 +5116,7 @@ export const deleteWorkload: API.OperationMethod<
   DeleteWorkloadResponse,
   DeleteWorkloadError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteWorkloadInput,
   output: DeleteWorkloadResponse,
   errors: [
@@ -5144,7 +5144,7 @@ export const deleteWorkloadShare: API.OperationMethod<
   DeleteWorkloadShareResponse,
   DeleteWorkloadShareError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteWorkloadShareInput,
   output: DeleteWorkloadShareResponse,
   errors: [
@@ -5177,7 +5177,7 @@ export const disassociateLenses: API.OperationMethod<
   DisassociateLensesResponse,
   DisassociateLensesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateLensesInput,
   output: DisassociateLensesResponse,
   errors: [
@@ -5205,7 +5205,7 @@ export const disassociateProfiles: API.OperationMethod<
   DisassociateProfilesResponse,
   DisassociateProfilesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateProfilesInput,
   output: DisassociateProfilesResponse,
   errors: [
@@ -5247,7 +5247,7 @@ export const exportLens: API.OperationMethod<
   ExportLensOutput,
   ExportLensError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExportLensInput,
   output: ExportLensOutput,
   errors: [
@@ -5273,7 +5273,7 @@ export const getAnswer: API.OperationMethod<
   GetAnswerOutput,
   GetAnswerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAnswerInput,
   output: GetAnswerOutput,
   errors: [
@@ -5316,7 +5316,7 @@ export const getConsolidatedReport: API.OperationMethod<
     GetConsolidatedReportError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetConsolidatedReportInput,
   output: GetConsolidatedReportOutput,
   errors: [
@@ -5346,7 +5346,7 @@ export const getGlobalSettings: API.OperationMethod<
   GetGlobalSettingsOutput,
   GetGlobalSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetGlobalSettingsRequest,
   output: GetGlobalSettingsOutput,
   errors: [
@@ -5371,7 +5371,7 @@ export const getLens: API.OperationMethod<
   GetLensOutput,
   GetLensError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLensInput,
   output: GetLensOutput,
   errors: [
@@ -5397,7 +5397,7 @@ export const getLensReview: API.OperationMethod<
   GetLensReviewOutput,
   GetLensReviewError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLensReviewInput,
   output: GetLensReviewOutput,
   errors: [
@@ -5423,7 +5423,7 @@ export const getLensReviewReport: API.OperationMethod<
   GetLensReviewReportOutput,
   GetLensReviewReportError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLensReviewReportInput,
   output: GetLensReviewReportOutput,
   errors: [
@@ -5449,7 +5449,7 @@ export const getLensVersionDifference: API.OperationMethod<
   GetLensVersionDifferenceOutput,
   GetLensVersionDifferenceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLensVersionDifferenceInput,
   output: GetLensVersionDifferenceOutput,
   errors: [
@@ -5475,7 +5475,7 @@ export const getMilestone: API.OperationMethod<
   GetMilestoneOutput,
   GetMilestoneError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMilestoneInput,
   output: GetMilestoneOutput,
   errors: [
@@ -5501,7 +5501,7 @@ export const getProfile: API.OperationMethod<
   GetProfileOutput,
   GetProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProfileInput,
   output: GetProfileOutput,
   errors: [
@@ -5527,7 +5527,7 @@ export const getProfileTemplate: API.OperationMethod<
   GetProfileTemplateOutput,
   GetProfileTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProfileTemplateInput,
   output: GetProfileTemplateOutput,
   errors: [
@@ -5553,7 +5553,7 @@ export const getReviewTemplate: API.OperationMethod<
   GetReviewTemplateOutput,
   GetReviewTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetReviewTemplateInput,
   output: GetReviewTemplateOutput,
   errors: [
@@ -5579,7 +5579,7 @@ export const getReviewTemplateAnswer: API.OperationMethod<
   GetReviewTemplateAnswerOutput,
   GetReviewTemplateAnswerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetReviewTemplateAnswerInput,
   output: GetReviewTemplateAnswerOutput,
   errors: [
@@ -5605,7 +5605,7 @@ export const getReviewTemplateLensReview: API.OperationMethod<
   GetReviewTemplateLensReviewOutput,
   GetReviewTemplateLensReviewError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetReviewTemplateLensReviewInput,
   output: GetReviewTemplateLensReviewOutput,
   errors: [
@@ -5631,7 +5631,7 @@ export const getWorkload: API.OperationMethod<
   GetWorkloadOutput,
   GetWorkloadError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetWorkloadInput,
   output: GetWorkloadOutput,
   errors: [
@@ -5680,7 +5680,7 @@ export const importLens: API.OperationMethod<
   ImportLensOutput,
   ImportLensError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportLensInput,
   output: ImportLensOutput,
   errors: [
@@ -5723,7 +5723,7 @@ export const listAnswers: API.OperationMethod<
     ListAnswersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAnswersInput,
   output: ListAnswersOutput,
   errors: [
@@ -5769,7 +5769,7 @@ export const listCheckDetails: API.OperationMethod<
     ListCheckDetailsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCheckDetailsInput,
   output: ListCheckDetailsOutput,
   errors: [
@@ -5815,7 +5815,7 @@ export const listCheckSummaries: API.OperationMethod<
     ListCheckSummariesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCheckSummariesInput,
   output: ListCheckSummariesOutput,
   errors: [
@@ -5860,7 +5860,7 @@ export const listLenses: API.OperationMethod<
     ListLensesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLensesInput,
   output: ListLensesOutput,
   errors: [
@@ -5905,7 +5905,7 @@ export const listLensReviewImprovements: API.OperationMethod<
     ListLensReviewImprovementsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLensReviewImprovementsInput,
   output: ListLensReviewImprovementsOutput,
   errors: [
@@ -5951,7 +5951,7 @@ export const listLensReviews: API.OperationMethod<
     ListLensReviewsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLensReviewsInput,
   output: ListLensReviewsOutput,
   errors: [
@@ -5997,7 +5997,7 @@ export const listLensShares: API.OperationMethod<
     ListLensSharesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLensSharesInput,
   output: ListLensSharesOutput,
   errors: [
@@ -6043,7 +6043,7 @@ export const listMilestones: API.OperationMethod<
     ListMilestonesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMilestonesInput,
   output: ListMilestonesOutput,
   errors: [
@@ -6088,7 +6088,7 @@ export const listNotifications: API.OperationMethod<
     ListNotificationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNotificationsInput,
   output: ListNotificationsOutput,
   errors: [
@@ -6132,7 +6132,7 @@ export const listProfileNotifications: API.OperationMethod<
     ListProfileNotificationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProfileNotificationsInput,
   output: ListProfileNotificationsOutput,
   errors: [
@@ -6176,7 +6176,7 @@ export const listProfiles: API.OperationMethod<
     ListProfilesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProfilesInput,
   output: ListProfilesOutput,
   errors: [
@@ -6221,7 +6221,7 @@ export const listProfileShares: API.OperationMethod<
     ListProfileSharesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProfileSharesInput,
   output: ListProfileSharesOutput,
   errors: [
@@ -6267,7 +6267,7 @@ export const listReviewTemplateAnswers: API.OperationMethod<
     ListReviewTemplateAnswersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReviewTemplateAnswersInput,
   output: ListReviewTemplateAnswersOutput,
   errors: [
@@ -6312,7 +6312,7 @@ export const listReviewTemplates: API.OperationMethod<
     ListReviewTemplatesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReviewTemplatesInput,
   output: ListReviewTemplatesOutput,
   errors: [
@@ -6360,7 +6360,7 @@ export const listShareInvitations: API.OperationMethod<
     ListShareInvitationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListShareInvitationsInput,
   output: ListShareInvitationsOutput,
   errors: [
@@ -6389,7 +6389,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceOutput,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [InternalServerException, ResourceNotFoundException],
@@ -6424,7 +6424,7 @@ export const listTemplateShares: API.OperationMethod<
     ListTemplateSharesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTemplateSharesInput,
   output: ListTemplateSharesOutput,
   errors: [
@@ -6469,7 +6469,7 @@ export const listWorkloads: API.OperationMethod<
     ListWorkloadsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkloadsInput,
   output: ListWorkloadsOutput,
   errors: [
@@ -6514,7 +6514,7 @@ export const listWorkloadShares: API.OperationMethod<
     ListWorkloadSharesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkloadSharesInput,
   output: ListWorkloadSharesOutput,
   errors: [
@@ -6544,7 +6544,7 @@ export const tagResource: API.OperationMethod<
   TagResourceOutput,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
   errors: [InternalServerException, ResourceNotFoundException],
@@ -6567,7 +6567,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceOutput,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
   errors: [InternalServerException, ResourceNotFoundException],
@@ -6588,7 +6588,7 @@ export const updateAnswer: API.OperationMethod<
   UpdateAnswerOutput,
   UpdateAnswerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAnswerInput,
   output: UpdateAnswerOutput,
   errors: [
@@ -6615,7 +6615,7 @@ export const updateGlobalSettings: API.OperationMethod<
   UpdateGlobalSettingsResponse,
   UpdateGlobalSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateGlobalSettingsInput,
   output: UpdateGlobalSettingsResponse,
   errors: [
@@ -6642,7 +6642,7 @@ export const updateIntegration: API.OperationMethod<
   UpdateIntegrationResponse,
   UpdateIntegrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateIntegrationInput,
   output: UpdateIntegrationResponse,
   errors: [
@@ -6670,7 +6670,7 @@ export const updateLensReview: API.OperationMethod<
   UpdateLensReviewOutput,
   UpdateLensReviewError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateLensReviewInput,
   output: UpdateLensReviewOutput,
   errors: [
@@ -6698,7 +6698,7 @@ export const updateProfile: API.OperationMethod<
   UpdateProfileOutput,
   UpdateProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateProfileInput,
   output: UpdateProfileOutput,
   errors: [
@@ -6726,7 +6726,7 @@ export const updateReviewTemplate: API.OperationMethod<
   UpdateReviewTemplateOutput,
   UpdateReviewTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateReviewTemplateInput,
   output: UpdateReviewTemplateOutput,
   errors: [
@@ -6754,7 +6754,7 @@ export const updateReviewTemplateAnswer: API.OperationMethod<
   UpdateReviewTemplateAnswerOutput,
   UpdateReviewTemplateAnswerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateReviewTemplateAnswerInput,
   output: UpdateReviewTemplateAnswerOutput,
   errors: [
@@ -6782,7 +6782,7 @@ export const updateReviewTemplateLensReview: API.OperationMethod<
   UpdateReviewTemplateLensReviewOutput,
   UpdateReviewTemplateLensReviewError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateReviewTemplateLensReviewInput,
   output: UpdateReviewTemplateLensReviewOutput,
   errors: [
@@ -6812,7 +6812,7 @@ export const updateShareInvitation: API.OperationMethod<
   UpdateShareInvitationOutput,
   UpdateShareInvitationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateShareInvitationInput,
   output: UpdateShareInvitationOutput,
   errors: [
@@ -6840,7 +6840,7 @@ export const updateWorkload: API.OperationMethod<
   UpdateWorkloadOutput,
   UpdateWorkloadError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateWorkloadInput,
   output: UpdateWorkloadOutput,
   errors: [
@@ -6868,7 +6868,7 @@ export const updateWorkloadShare: API.OperationMethod<
   UpdateWorkloadShareOutput,
   UpdateWorkloadShareError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateWorkloadShareInput,
   output: UpdateWorkloadShareOutput,
   errors: [
@@ -6897,7 +6897,7 @@ export const upgradeLensReview: API.OperationMethod<
   UpgradeLensReviewResponse,
   UpgradeLensReviewError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpgradeLensReviewInput,
   output: UpgradeLensReviewResponse,
   errors: [
@@ -6927,7 +6927,7 @@ export const upgradeProfileVersion: API.OperationMethod<
   UpgradeProfileVersionResponse,
   UpgradeProfileVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpgradeProfileVersionInput,
   output: UpgradeProfileVersionResponse,
   errors: [
@@ -6956,7 +6956,7 @@ export const upgradeReviewTemplateLensReview: API.OperationMethod<
   UpgradeReviewTemplateLensReviewResponse,
   UpgradeReviewTemplateLensReviewError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpgradeReviewTemplateLensReviewInput,
   output: UpgradeReviewTemplateLensReviewResponse,
   errors: [

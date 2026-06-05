@@ -1669,7 +1669,7 @@ export const batchCreateBillingAdjustmentRequest: API.OperationMethod<
   BatchCreateBillingAdjustmentRequestOutput,
   BatchCreateBillingAdjustmentRequestError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchCreateBillingAdjustmentRequestInput,
   output: BatchCreateBillingAdjustmentRequestOutput,
   errors: [
@@ -1698,7 +1698,7 @@ export const cancelAgreementCancellationRequest: API.OperationMethod<
   CancelAgreementCancellationRequestOutput,
   CancelAgreementCancellationRequestError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelAgreementCancellationRequestInput,
   output: CancelAgreementCancellationRequestOutput,
   errors: [
@@ -1728,7 +1728,7 @@ export const cancelAgreementPaymentRequest: API.OperationMethod<
   CancelAgreementPaymentRequestOutput,
   CancelAgreementPaymentRequestError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelAgreementPaymentRequestInput,
   output: CancelAgreementPaymentRequestOutput,
   errors: [
@@ -1755,7 +1755,7 @@ export const describeAgreement: API.OperationMethod<
   DescribeAgreementOutput,
   DescribeAgreementError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAgreementInput,
   output: DescribeAgreementOutput,
   errors: [
@@ -1783,7 +1783,7 @@ export const getAgreementCancellationRequest: API.OperationMethod<
   GetAgreementCancellationRequestOutput,
   GetAgreementCancellationRequestError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAgreementCancellationRequestInput,
   output: GetAgreementCancellationRequestOutput,
   errors: [
@@ -1811,7 +1811,7 @@ export const getAgreementPaymentRequest: API.OperationMethod<
   GetAgreementPaymentRequestOutput,
   GetAgreementPaymentRequestError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAgreementPaymentRequestInput,
   output: GetAgreementPaymentRequestOutput,
   errors: [
@@ -1862,7 +1862,7 @@ export const getAgreementTerms: API.OperationMethod<
     GetAgreementTermsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetAgreementTermsInput,
   output: GetAgreementTermsOutput,
   errors: [
@@ -1895,7 +1895,7 @@ export const getBillingAdjustmentRequest: API.OperationMethod<
   GetBillingAdjustmentRequestOutput,
   GetBillingAdjustmentRequestError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetBillingAdjustmentRequestInput,
   output: GetBillingAdjustmentRequestOutput,
   errors: [
@@ -1937,7 +1937,7 @@ export const listAgreementCancellationRequests: API.OperationMethod<
     ListAgreementCancellationRequestsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAgreementCancellationRequestsInput,
   output: ListAgreementCancellationRequestsOutput,
   errors: [
@@ -1985,7 +1985,7 @@ export const listAgreementInvoiceLineItems: API.OperationMethod<
     ListAgreementInvoiceLineItemsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAgreementInvoiceLineItemsInput,
   output: ListAgreementInvoiceLineItemsOutput,
   errors: [
@@ -2033,7 +2033,7 @@ export const listAgreementPaymentRequests: API.OperationMethod<
     ListAgreementPaymentRequestsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAgreementPaymentRequestsInput,
   output: ListAgreementPaymentRequestsOutput,
   errors: [
@@ -2080,7 +2080,7 @@ export const listBillingAdjustmentRequests: API.OperationMethod<
     ListBillingAdjustmentRequestsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBillingAdjustmentRequestsInput,
   output: ListBillingAdjustmentRequestsOutput,
   errors: [
@@ -2201,7 +2201,7 @@ export const searchAgreements: API.OperationMethod<
     SearchAgreementsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchAgreementsInput,
   output: SearchAgreementsOutput,
   errors: [
@@ -2232,7 +2232,7 @@ export const sendAgreementCancellationRequest: API.OperationMethod<
   SendAgreementCancellationRequestOutput,
   SendAgreementCancellationRequestError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendAgreementCancellationRequestInput,
   output: SendAgreementCancellationRequestOutput,
   errors: [
@@ -2262,7 +2262,7 @@ export const sendAgreementPaymentRequest: API.OperationMethod<
   SendAgreementPaymentRequestOutput,
   SendAgreementPaymentRequestError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendAgreementPaymentRequestInput,
   output: SendAgreementPaymentRequestOutput,
   errors: [

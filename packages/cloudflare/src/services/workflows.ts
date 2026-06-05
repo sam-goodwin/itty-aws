@@ -79,7 +79,7 @@ export interface GetInstanceRequest {
   simple?: true | false;
 }
 
-export const GetInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetInstanceRequest = /*@__PURE__*/ Schema.Struct({
   workflowName: Schema.String.pipe(T.HttpPath("workflowName")),
   instanceId: Schema.String.pipe(T.HttpPath("instanceId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -169,7 +169,7 @@ export interface GetInstanceResponse {
   versionId: string;
 }
 
-export const GetInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetInstanceResponse = /*@__PURE__*/ Schema.Struct({
   end: Schema.Union([Schema.String, Schema.Null]),
   error: Schema.Union([
     Schema.Struct({
@@ -316,7 +316,7 @@ export const getInstance: API.OperationMethod<
   GetInstanceResponse,
   GetInstanceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInstanceRequest,
   output: GetInstanceResponse,
   errors: [WorkflowNotFound, InvalidRoute, InstanceNotFound],
@@ -349,7 +349,7 @@ export interface ListInstancesRequest {
     | (string & {});
 }
 
-export const ListInstancesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListInstancesRequest = /*@__PURE__*/ Schema.Struct({
   workflowName: Schema.String.pipe(T.HttpPath("workflowName")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -410,7 +410,7 @@ export interface ListInstancesResponse {
   } | null;
 }
 
-export const ListInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListInstancesResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       id: Schema.String,
@@ -480,7 +480,7 @@ export const listInstances: API.PaginatedOperationMethod<
   ListInstancesResponse,
   ListInstancesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInstancesRequest,
   output: ListInstancesResponse,
   errors: [WorkflowNotFound, WorkflowInternalError, InvalidRoute, InvalidBody],
@@ -508,7 +508,7 @@ export interface CreateInstanceRequest {
   params?: unknown;
 }
 
-export const CreateInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateInstanceRequest = /*@__PURE__*/ Schema.Struct({
   workflowName: Schema.String.pipe(T.HttpPath("workflowName")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   instanceId: Schema.optional(Schema.String),
@@ -556,26 +556,24 @@ export interface CreateInstanceResponse {
   workflowId: string;
 }
 
-export const CreateInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.String,
-    status: Schema.Union([
-      Schema.Literals([
-        "queued",
-        "running",
-        "paused",
-        "errored",
-        "terminated",
-        "complete",
-        "waitingForPause",
-        "waiting",
-      ]),
-      Schema.String,
+export const CreateInstanceResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  status: Schema.Union([
+    Schema.Literals([
+      "queued",
+      "running",
+      "paused",
+      "errored",
+      "terminated",
+      "complete",
+      "waitingForPause",
+      "waiting",
     ]),
-    versionId: Schema.String,
-    workflowId: Schema.String,
-  },
-)
+    Schema.String,
+  ]),
+  versionId: Schema.String,
+  workflowId: Schema.String,
+})
   .pipe(
     Schema.encodeKeys({
       id: "id",
@@ -600,7 +598,7 @@ export const createInstance: API.OperationMethod<
   CreateInstanceResponse,
   CreateInstanceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateInstanceRequest,
   output: CreateInstanceResponse,
   errors: [WorkflowNotFound, InstanceAlreadyExists, InvalidRoute, InvalidBody],
@@ -621,7 +619,7 @@ export interface BulkInstanceRequest {
   }[];
 }
 
-export const BulkInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BulkInstanceRequest = /*@__PURE__*/ Schema.Struct({
   workflowName: Schema.String.pipe(T.HttpPath("workflowName")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   body: Schema.optional(
@@ -678,7 +676,7 @@ export interface BulkInstanceResponse {
   }[];
 }
 
-export const BulkInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BulkInstanceResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       id: Schema.String,
@@ -720,7 +718,7 @@ export const bulkInstance: API.PaginatedOperationMethod<
   BulkInstanceResponse,
   BulkInstanceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: BulkInstanceRequest,
   output: BulkInstanceResponse,
   errors: [WorkflowNotFound, InstanceAlreadyExists, InvalidRoute, InvalidBody],
@@ -744,26 +742,24 @@ export interface CreateInstanceEventRequest {
   body?: unknown;
 }
 
-export const CreateInstanceEventRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    workflowName: Schema.String.pipe(T.HttpPath("workflowName")),
-    instanceId: Schema.String.pipe(T.HttpPath("instanceId")),
-    eventType: Schema.String.pipe(T.HttpPath("eventType")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    body: Schema.optional(Schema.Unknown).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/workflows/{workflowName}/instances/{instanceId}/events/{eventType}",
-    }),
-  ) as unknown as Schema.Schema<CreateInstanceEventRequest>;
+export const CreateInstanceEventRequest = /*@__PURE__*/ Schema.Struct({
+  workflowName: Schema.String.pipe(T.HttpPath("workflowName")),
+  instanceId: Schema.String.pipe(T.HttpPath("instanceId")),
+  eventType: Schema.String.pipe(T.HttpPath("eventType")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  body: Schema.optional(Schema.Unknown).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/accounts/{account_id}/workflows/{workflowName}/instances/{instanceId}/events/{eventType}",
+  }),
+) as unknown as Schema.Schema<CreateInstanceEventRequest>;
 
 export type CreateInstanceEventResponse = unknown;
 
-export const CreateInstanceEventResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<CreateInstanceEventResponse>;
+export const CreateInstanceEventResponse = /*@__PURE__*/ Schema.Unknown.pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<CreateInstanceEventResponse>;
 
 export type CreateInstanceEventError =
   | DefaultErrors
@@ -777,7 +773,7 @@ export const createInstanceEvent: API.OperationMethod<
   CreateInstanceEventResponse,
   CreateInstanceEventError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateInstanceEventRequest,
   output: CreateInstanceEventResponse,
   errors: [WorkflowNotFound, InvalidRoute, InstanceNotFound, InvalidBody],
@@ -802,33 +798,32 @@ export interface PatchInstanceStatusRequest {
   };
 }
 
-export const PatchInstanceStatusRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    workflowName: Schema.String.pipe(T.HttpPath("workflowName")),
-    instanceId: Schema.String.pipe(T.HttpPath("instanceId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    status: Schema.Union([
-      Schema.Literals(["resume", "pause", "terminate", "restart"]),
-      Schema.String,
-    ]),
-    from: Schema.optional(
-      Schema.Struct({
-        name: Schema.String,
-        count: Schema.optional(Schema.Number),
-        type: Schema.optional(
-          Schema.Union([
-            Schema.Literals(["do", "sleep", "waitForEvent"]),
-            Schema.String,
-          ]),
-        ),
-      }),
-    ),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/accounts/{account_id}/workflows/{workflowName}/instances/{instanceId}/status",
+export const PatchInstanceStatusRequest = /*@__PURE__*/ Schema.Struct({
+  workflowName: Schema.String.pipe(T.HttpPath("workflowName")),
+  instanceId: Schema.String.pipe(T.HttpPath("instanceId")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  status: Schema.Union([
+    Schema.Literals(["resume", "pause", "terminate", "restart"]),
+    Schema.String,
+  ]),
+  from: Schema.optional(
+    Schema.Struct({
+      name: Schema.String,
+      count: Schema.optional(Schema.Number),
+      type: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["do", "sleep", "waitForEvent"]),
+          Schema.String,
+        ]),
+      ),
     }),
-  ) as unknown as Schema.Schema<PatchInstanceStatusRequest>;
+  ),
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/accounts/{account_id}/workflows/{workflowName}/instances/{instanceId}/status",
+  }),
+) as unknown as Schema.Schema<PatchInstanceStatusRequest>;
 
 export interface PatchInstanceStatusResponse {
   status:
@@ -845,25 +840,24 @@ export interface PatchInstanceStatusResponse {
   timestamp: string;
 }
 
-export const PatchInstanceStatusResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    status: Schema.Union([
-      Schema.Literals([
-        "queued",
-        "running",
-        "paused",
-        "errored",
-        "terminated",
-        "complete",
-        "waitingForPause",
-        "waiting",
-      ]),
-      Schema.String,
+export const PatchInstanceStatusResponse = /*@__PURE__*/ Schema.Struct({
+  status: Schema.Union([
+    Schema.Literals([
+      "queued",
+      "running",
+      "paused",
+      "errored",
+      "terminated",
+      "complete",
+      "waitingForPause",
+      "waiting",
     ]),
-    timestamp: Schema.String,
-  }).pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<PatchInstanceStatusResponse>;
+    Schema.String,
+  ]),
+  timestamp: Schema.String,
+}).pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<PatchInstanceStatusResponse>;
 
 export type PatchInstanceStatusError =
   | DefaultErrors
@@ -877,7 +871,7 @@ export const patchInstanceStatus: API.OperationMethod<
   PatchInstanceStatusResponse,
   PatchInstanceStatusError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchInstanceStatusRequest,
   output: PatchInstanceStatusResponse,
   errors: [
@@ -898,7 +892,7 @@ export interface GetVersionRequest {
   accountId: string;
 }
 
-export const GetVersionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetVersionRequest = /*@__PURE__*/ Schema.Struct({
   workflowName: Schema.String.pipe(T.HttpPath("workflowName")),
   versionId: Schema.String.pipe(T.HttpPath("versionId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -921,7 +915,7 @@ export interface GetVersionResponse {
   limits?: { steps?: number | null } | null;
 }
 
-export const GetVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetVersionResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   className: Schema.String,
   createdOn: Schema.String,
@@ -968,7 +962,7 @@ export const getVersion: API.OperationMethod<
   GetVersionResponse,
   GetVersionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetVersionRequest,
   output: GetVersionResponse,
   errors: [WorkflowNotFound, InvalidRoute, VersionNotFound],
@@ -982,7 +976,7 @@ export interface ListVersionsRequest {
   perPage?: number;
 }
 
-export const ListVersionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListVersionsRequest = /*@__PURE__*/ Schema.Struct({
   workflowName: Schema.String.pipe(T.HttpPath("workflowName")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -1013,7 +1007,7 @@ export interface ListVersionsResponse {
   } | null;
 }
 
-export const ListVersionsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListVersionsResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       id: Schema.String,
@@ -1076,7 +1070,7 @@ export const listVersions: API.PaginatedOperationMethod<
   ListVersionsResponse,
   ListVersionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVersionsRequest,
   output: ListVersionsResponse,
   errors: [WorkflowNotFound, InvalidRoute],
@@ -1098,7 +1092,7 @@ export interface GetWorkflowRequest {
   accountId: string;
 }
 
-export const GetWorkflowRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetWorkflowRequest = /*@__PURE__*/ Schema.Struct({
   workflowName: Schema.String.pipe(T.HttpPath("workflowName")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -1128,7 +1122,7 @@ export interface GetWorkflowResponse {
   triggeredOn: string | null;
 }
 
-export const GetWorkflowResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetWorkflowResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   className: Schema.String,
   createdOn: Schema.String,
@@ -1172,7 +1166,7 @@ export const getWorkflow: API.OperationMethod<
   GetWorkflowResponse,
   GetWorkflowError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetWorkflowRequest,
   output: GetWorkflowResponse,
   errors: [WorkflowNotFound, InvalidRoute],
@@ -1187,7 +1181,7 @@ export interface ListWorkflowsRequest {
   search?: string;
 }
 
-export const ListWorkflowsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListWorkflowsRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
   perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
@@ -1224,7 +1218,7 @@ export interface ListWorkflowsResponse {
   } | null;
 }
 
-export const ListWorkflowsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListWorkflowsResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       id: Schema.String,
@@ -1288,7 +1282,7 @@ export const listWorkflows: API.PaginatedOperationMethod<
   ListWorkflowsResponse,
   ListWorkflowsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkflowsRequest,
   output: ListWorkflowsResponse,
   errors: [InvalidRoute],
@@ -1313,7 +1307,7 @@ export interface PutWorkflowRequest {
   limits?: { steps?: number };
 }
 
-export const PutWorkflowRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PutWorkflowRequest = /*@__PURE__*/ Schema.Struct({
   workflowName: Schema.String.pipe(T.HttpPath("workflowName")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   className: Schema.String,
@@ -1348,7 +1342,7 @@ export interface PutWorkflowResponse {
   versionId: string;
 }
 
-export const PutWorkflowResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PutWorkflowResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   className: Schema.String,
   createdOn: Schema.String,
@@ -1390,7 +1384,7 @@ export const putWorkflow: API.OperationMethod<
   PutWorkflowResponse,
   PutWorkflowError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutWorkflowRequest,
   output: PutWorkflowResponse,
   errors: [WorkflowInternalError, InvalidRoute],
@@ -1401,7 +1395,7 @@ export interface DeleteWorkflowRequest {
   accountId: string;
 }
 
-export const DeleteWorkflowRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteWorkflowRequest = /*@__PURE__*/ Schema.Struct({
   workflowName: Schema.String.pipe(T.HttpPath("workflowName")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -1416,12 +1410,10 @@ export interface DeleteWorkflowResponse {
   success?: boolean | null;
 }
 
-export const DeleteWorkflowResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    status: Schema.Literal("ok"),
-    success: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-  },
-).pipe(
+export const DeleteWorkflowResponse = /*@__PURE__*/ Schema.Struct({
+  status: Schema.Literal("ok"),
+  success: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+}).pipe(
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<DeleteWorkflowResponse>;
 
@@ -1435,7 +1427,7 @@ export const deleteWorkflow: API.OperationMethod<
   DeleteWorkflowResponse,
   DeleteWorkflowError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteWorkflowRequest,
   output: DeleteWorkflowResponse,
   errors: [WorkflowNotFound, InvalidRoute],

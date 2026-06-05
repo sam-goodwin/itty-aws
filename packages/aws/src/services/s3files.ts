@@ -1115,7 +1115,7 @@ export const createAccessPoint: API.OperationMethod<
   CreateAccessPointResponse,
   CreateAccessPointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessPointRequest,
   output: CreateAccessPointResponse,
   errors: [
@@ -1141,7 +1141,7 @@ export const createFileSystem: API.OperationMethod<
   CreateFileSystemResponse,
   CreateFileSystemError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFileSystemRequest,
   output: CreateFileSystemResponse,
   errors: [
@@ -1167,7 +1167,7 @@ export const createMountTarget: API.OperationMethod<
   CreateMountTargetResponse,
   CreateMountTargetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMountTargetRequest,
   output: CreateMountTargetResponse,
   errors: [
@@ -1192,7 +1192,7 @@ export const deleteAccessPoint: API.OperationMethod<
   DeleteAccessPointResponse,
   DeleteAccessPointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessPointRequest,
   output: DeleteAccessPointResponse,
   errors: [
@@ -1216,7 +1216,7 @@ export const deleteFileSystem: API.OperationMethod<
   DeleteFileSystemResponse,
   DeleteFileSystemError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFileSystemRequest,
   output: DeleteFileSystemResponse,
   errors: [
@@ -1239,7 +1239,7 @@ export const deleteFileSystemPolicy: API.OperationMethod<
   DeleteFileSystemPolicyResponse,
   DeleteFileSystemPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFileSystemPolicyRequest,
   output: DeleteFileSystemPolicyResponse,
   errors: [
@@ -1262,7 +1262,7 @@ export const deleteMountTarget: API.OperationMethod<
   DeleteMountTargetResponse,
   DeleteMountTargetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMountTargetRequest,
   output: DeleteMountTargetResponse,
   errors: [
@@ -1285,7 +1285,7 @@ export const getAccessPoint: API.OperationMethod<
   GetAccessPointResponse,
   GetAccessPointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccessPointRequest,
   output: GetAccessPointResponse,
   errors: [
@@ -1307,7 +1307,7 @@ export const getFileSystem: API.OperationMethod<
   GetFileSystemResponse,
   GetFileSystemError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFileSystemRequest,
   output: GetFileSystemResponse,
   errors: [
@@ -1329,7 +1329,7 @@ export const getFileSystemPolicy: API.OperationMethod<
   GetFileSystemPolicyResponse,
   GetFileSystemPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFileSystemPolicyRequest,
   output: GetFileSystemPolicyResponse,
   errors: [
@@ -1351,7 +1351,7 @@ export const getMountTarget: API.OperationMethod<
   GetMountTargetResponse,
   GetMountTargetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMountTargetRequest,
   output: GetMountTargetResponse,
   errors: [
@@ -1373,7 +1373,7 @@ export const getSynchronizationConfiguration: API.OperationMethod<
   GetSynchronizationConfigurationResponse,
   GetSynchronizationConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSynchronizationConfigurationRequest,
   output: GetSynchronizationConfigurationResponse,
   errors: [
@@ -1410,7 +1410,7 @@ export const listAccessPoints: API.OperationMethod<
     ListAccessPointsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessPointsRequest,
   output: ListAccessPointsResponse,
   errors: [
@@ -1452,7 +1452,7 @@ export const listFileSystems: API.OperationMethod<
     ListFileSystemsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFileSystemsRequest,
   output: ListFileSystemsResponse,
   errors: [InternalServerException, ValidationException],
@@ -1491,7 +1491,7 @@ export const listMountTargets: API.OperationMethod<
     ListMountTargetsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMountTargetsRequest,
   output: ListMountTargetsResponse,
   errors: [
@@ -1534,7 +1534,7 @@ export const listTagsForResource: API.OperationMethod<
     ListTagsForResourceError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -1562,7 +1562,7 @@ export const putFileSystemPolicy: API.OperationMethod<
   PutFileSystemPolicyResponse,
   PutFileSystemPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutFileSystemPolicyRequest,
   output: PutFileSystemPolicyResponse,
   errors: [
@@ -1585,7 +1585,7 @@ export const putSynchronizationConfiguration: API.OperationMethod<
   PutSynchronizationConfigurationResponse,
   PutSynchronizationConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutSynchronizationConfigurationRequest,
   output: PutSynchronizationConfigurationResponse,
   errors: [
@@ -1608,7 +1608,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -1630,7 +1630,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -1652,7 +1652,7 @@ export const updateMountTarget: API.OperationMethod<
   UpdateMountTargetResponse,
   UpdateMountTargetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateMountTargetRequest,
   output: UpdateMountTargetResponse,
   errors: [

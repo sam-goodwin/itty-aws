@@ -72779,7 +72779,7 @@ export const acceptAddressTransfer: API.OperationMethod<
   AcceptAddressTransferResult,
   AcceptAddressTransferError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AcceptAddressTransferRequest,
   output: AcceptAddressTransferResult,
   errors: [
@@ -72802,7 +72802,7 @@ export const acceptCapacityReservationBillingOwnership: API.OperationMethod<
   AcceptCapacityReservationBillingOwnershipResult,
   AcceptCapacityReservationBillingOwnershipError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AcceptCapacityReservationBillingOwnershipRequest,
   output: AcceptCapacityReservationBillingOwnershipResult,
   errors: [RequestLimitExceeded, InvalidCapacityReservationIdMalformed],
@@ -72819,7 +72819,7 @@ export const acceptReservedInstancesExchangeQuote: API.OperationMethod<
   AcceptReservedInstancesExchangeQuoteResult,
   AcceptReservedInstancesExchangeQuoteError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AcceptReservedInstancesExchangeQuoteRequest,
   output: AcceptReservedInstancesExchangeQuoteResult,
   errors: [RequestLimitExceeded, InvalidReservedInstancesIDNotFound],
@@ -72836,7 +72836,7 @@ export const acceptTransitGatewayMulticastDomainAssociations: API.OperationMetho
   AcceptTransitGatewayMulticastDomainAssociationsResult,
   AcceptTransitGatewayMulticastDomainAssociationsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AcceptTransitGatewayMulticastDomainAssociationsRequest,
   output: AcceptTransitGatewayMulticastDomainAssociationsResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -72854,7 +72854,7 @@ export const acceptTransitGatewayPeeringAttachment: API.OperationMethod<
   AcceptTransitGatewayPeeringAttachmentResult,
   AcceptTransitGatewayPeeringAttachmentError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AcceptTransitGatewayPeeringAttachmentRequest,
   output: AcceptTransitGatewayPeeringAttachmentResult,
   errors: [RequestLimitExceeded, InvalidTransitGatewayAttachmentIDNotFound],
@@ -72875,7 +72875,7 @@ export const acceptTransitGatewayVpcAttachment: API.OperationMethod<
   AcceptTransitGatewayVpcAttachmentResult,
   AcceptTransitGatewayVpcAttachmentError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AcceptTransitGatewayVpcAttachmentRequest,
   output: AcceptTransitGatewayVpcAttachmentResult,
   errors: [RequestLimitExceeded, InvalidTransitGatewayAttachmentIDNotFound],
@@ -72893,7 +72893,7 @@ export const acceptVpcEndpointConnections: API.OperationMethod<
   AcceptVpcEndpointConnectionsResult,
   AcceptVpcEndpointConnectionsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AcceptVpcEndpointConnectionsRequest,
   output: AcceptVpcEndpointConnectionsResult,
   errors: [
@@ -72921,7 +72921,7 @@ export const acceptVpcPeeringConnection: API.OperationMethod<
   AcceptVpcPeeringConnectionResult,
   AcceptVpcPeeringConnectionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AcceptVpcPeeringConnectionRequest,
   output: AcceptVpcPeeringConnectionResult,
   errors: [
@@ -72951,7 +72951,7 @@ export const advertiseByoipCidr: API.OperationMethod<
   AdvertiseByoipCidrResult,
   AdvertiseByoipCidrError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AdvertiseByoipCidrRequest,
   output: AdvertiseByoipCidrResult,
   errors: [RequestLimitExceeded],
@@ -72992,7 +72992,7 @@ export const allocateAddress: API.OperationMethod<
   AllocateAddressResult,
   AllocateAddressError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AllocateAddressRequest,
   output: AllocateAddressResult,
   errors: [RequestLimitExceeded, AddressLimitExceeded],
@@ -73012,7 +73012,7 @@ export const allocateHosts: API.OperationMethod<
   AllocateHostsResult,
   AllocateHostsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AllocateHostsRequest,
   output: AllocateHostsResult,
   errors: [RequestLimitExceeded, InvalidHostConfiguration, InvalidRequest],
@@ -73033,7 +73033,7 @@ export const allocateIpamPoolCidr: API.OperationMethod<
   AllocateIpamPoolCidrResult,
   AllocateIpamPoolCidrError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AllocateIpamPoolCidrRequest,
   output: AllocateIpamPoolCidrResult,
   errors: [RequestLimitExceeded, InvalidIpamPoolIdNotFound],
@@ -73051,7 +73051,7 @@ export const applySecurityGroupsToClientVpnTargetNetwork: API.OperationMethod<
   ApplySecurityGroupsToClientVpnTargetNetworkResult,
   ApplySecurityGroupsToClientVpnTargetNetworkError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ApplySecurityGroupsToClientVpnTargetNetworkRequest,
   output: ApplySecurityGroupsToClientVpnTargetNetworkResult,
   errors: [RequestLimitExceeded, InvalidVpcIdMalformed],
@@ -73080,7 +73080,7 @@ export const assignIpv6Addresses: API.OperationMethod<
   AssignIpv6AddressesResult,
   AssignIpv6AddressesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssignIpv6AddressesRequest,
   output: AssignIpv6AddressesResult,
   errors: [
@@ -73126,7 +73126,7 @@ export const assignPrivateIpAddresses: API.OperationMethod<
   AssignPrivateIpAddressesResult,
   AssignPrivateIpAddressesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssignPrivateIpAddressesRequest,
   output: AssignPrivateIpAddressesResult,
   errors: [
@@ -73149,7 +73149,7 @@ export const assignPrivateNatGatewayAddress: API.OperationMethod<
   AssignPrivateNatGatewayAddressResult,
   AssignPrivateNatGatewayAddressError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssignPrivateNatGatewayAddressRequest,
   output: AssignPrivateNatGatewayAddressResult,
   errors: [RequestLimitExceeded, NatGatewayNotFound],
@@ -73188,7 +73188,7 @@ export const associateAddress: API.OperationMethod<
   AssociateAddressResult,
   AssociateAddressError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateAddressRequest,
   output: AssociateAddressResult,
   errors: [
@@ -73215,7 +73215,7 @@ export const associateCapacityReservationBillingOwner: API.OperationMethod<
   AssociateCapacityReservationBillingOwnerResult,
   AssociateCapacityReservationBillingOwnerError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateCapacityReservationBillingOwnerRequest,
   output: AssociateCapacityReservationBillingOwnerResult,
   errors: [
@@ -73239,7 +73239,7 @@ export const associateClientVpnTargetNetwork: API.OperationMethod<
   AssociateClientVpnTargetNetworkResult,
   AssociateClientVpnTargetNetworkError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateClientVpnTargetNetworkRequest,
   output: AssociateClientVpnTargetNetworkResult,
   errors: [RequestLimitExceeded, InvalidSubnetIDMalformed, MissingParameter],
@@ -73263,7 +73263,7 @@ export const associateDhcpOptions: API.OperationMethod<
   AssociateDhcpOptionsResponse,
   AssociateDhcpOptionsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateDhcpOptionsRequest,
   output: AssociateDhcpOptionsResponse,
   errors: [
@@ -73300,7 +73300,7 @@ export const associateEnclaveCertificateIamRole: API.OperationMethod<
   AssociateEnclaveCertificateIamRoleResult,
   AssociateEnclaveCertificateIamRoleError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateEnclaveCertificateIamRoleRequest,
   output: AssociateEnclaveCertificateIamRoleResult,
   errors: [
@@ -73322,7 +73322,7 @@ export const associateIamInstanceProfile: API.OperationMethod<
   AssociateIamInstanceProfileResult,
   AssociateIamInstanceProfileError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateIamInstanceProfileRequest,
   output: AssociateIamInstanceProfileResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -73343,7 +73343,7 @@ export const associateInstanceEventWindow: API.OperationMethod<
   AssociateInstanceEventWindowResult,
   AssociateInstanceEventWindowError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateInstanceEventWindowRequest,
   output: AssociateInstanceEventWindowResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -73364,7 +73364,7 @@ export const associateIpamByoasn: API.OperationMethod<
   AssociateIpamByoasnResult,
   AssociateIpamByoasnError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateIpamByoasnRequest,
   output: AssociateIpamByoasnResult,
   errors: [RequestLimitExceeded, InvalidCidrNotFound],
@@ -73382,7 +73382,7 @@ export const associateIpamResourceDiscovery: API.OperationMethod<
   AssociateIpamResourceDiscoveryResult,
   AssociateIpamResourceDiscoveryError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateIpamResourceDiscoveryRequest,
   output: AssociateIpamResourceDiscoveryResult,
   errors: [
@@ -73415,7 +73415,7 @@ export const associateNatGatewayAddress: API.OperationMethod<
   AssociateNatGatewayAddressResult,
   AssociateNatGatewayAddressError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateNatGatewayAddressRequest,
   output: AssociateNatGatewayAddressResult,
   errors: [
@@ -73441,7 +73441,7 @@ export const associateRouteServer: API.OperationMethod<
   AssociateRouteServerResult,
   AssociateRouteServerError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateRouteServerRequest,
   output: AssociateRouteServerResult,
   errors: [RequestLimitExceeded, InvalidRouteServerIdNotFound],
@@ -73472,7 +73472,7 @@ export const associateRouteTable: API.OperationMethod<
   AssociateRouteTableResult,
   AssociateRouteTableError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateRouteTableRequest,
   output: AssociateRouteTableResult,
   errors: [
@@ -73510,7 +73510,7 @@ export const associateSecurityGroupVpc: API.OperationMethod<
   AssociateSecurityGroupVpcResult,
   AssociateSecurityGroupVpcError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateSecurityGroupVpcRequest,
   output: AssociateSecurityGroupVpcResult,
   errors: [RequestLimitExceeded, InvalidGroupIdMalformed, MissingParameter],
@@ -73529,7 +73529,7 @@ export const associateSubnetCidrBlock: API.OperationMethod<
   AssociateSubnetCidrBlockResult,
   AssociateSubnetCidrBlockError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateSubnetCidrBlockRequest,
   output: AssociateSubnetCidrBlockResult,
   errors: [RequestLimitExceeded, InvalidSubnetIDNotFound, MissingParameter],
@@ -73549,7 +73549,7 @@ export const associateTransitGatewayMulticastDomain: API.OperationMethod<
   AssociateTransitGatewayMulticastDomainResult,
   AssociateTransitGatewayMulticastDomainError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateTransitGatewayMulticastDomainRequest,
   output: AssociateTransitGatewayMulticastDomainResult,
   errors: [
@@ -73570,7 +73570,7 @@ export const associateTransitGatewayPolicyTable: API.OperationMethod<
   AssociateTransitGatewayPolicyTableResult,
   AssociateTransitGatewayPolicyTableError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateTransitGatewayPolicyTableRequest,
   output: AssociateTransitGatewayPolicyTableResult,
   errors: [
@@ -73592,7 +73592,7 @@ export const associateTransitGatewayRouteTable: API.OperationMethod<
   AssociateTransitGatewayRouteTableResult,
   AssociateTransitGatewayRouteTableError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateTransitGatewayRouteTableRequest,
   output: AssociateTransitGatewayRouteTableResult,
   errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound],
@@ -73614,7 +73614,7 @@ export const associateTrunkInterface: API.OperationMethod<
   AssociateTrunkInterfaceResult,
   AssociateTrunkInterfaceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateTrunkInterfaceRequest,
   output: AssociateTrunkInterfaceResult,
   errors: [RequestLimitExceeded, OperationNotPermitted],
@@ -73644,7 +73644,7 @@ export const associateVpcCidrBlock: API.OperationMethod<
   AssociateVpcCidrBlockResult,
   AssociateVpcCidrBlockError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateVpcCidrBlockRequest,
   output: AssociateVpcCidrBlockResult,
   errors: [
@@ -73679,7 +73679,7 @@ export const attachClassicLinkVpc: API.OperationMethod<
   AttachClassicLinkVpcResult,
   AttachClassicLinkVpcError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AttachClassicLinkVpcRequest,
   output: AttachClassicLinkVpcResult,
   errors: [RequestLimitExceeded, InvalidInstanceIDMalformed, MissingParameter],
@@ -73701,7 +73701,7 @@ export const attachInternetGateway: API.OperationMethod<
   AttachInternetGatewayResponse,
   AttachInternetGatewayError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AttachInternetGatewayRequest,
   output: AttachInternetGatewayResponse,
   errors: [
@@ -73726,7 +73726,7 @@ export const attachNetworkInterface: API.OperationMethod<
   AttachNetworkInterfaceResult,
   AttachNetworkInterfaceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AttachNetworkInterfaceRequest,
   output: AttachNetworkInterfaceResult,
   errors: [
@@ -73748,7 +73748,7 @@ export const attachVerifiedAccessTrustProvider: API.OperationMethod<
   AttachVerifiedAccessTrustProviderResult,
   AttachVerifiedAccessTrustProviderError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AttachVerifiedAccessTrustProviderRequest,
   output: AttachVerifiedAccessTrustProviderResult,
   errors: [RequestLimitExceeded, InvalidVerifiedAccessInstanceIdNotFound],
@@ -73793,7 +73793,7 @@ export const attachVolume: API.OperationMethod<
   VolumeAttachment,
   AttachVolumeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AttachVolumeRequest,
   output: VolumeAttachment,
   errors: [
@@ -73820,7 +73820,7 @@ export const attachVpnGateway: API.OperationMethod<
   AttachVpnGatewayResult,
   AttachVpnGatewayError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AttachVpnGatewayRequest,
   output: AttachVpnGatewayResult,
   errors: [
@@ -73843,7 +73843,7 @@ export const authorizeClientVpnIngress: API.OperationMethod<
   AuthorizeClientVpnIngressResult,
   AuthorizeClientVpnIngressError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AuthorizeClientVpnIngressRequest,
   output: AuthorizeClientVpnIngressResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -73879,7 +73879,7 @@ export const authorizeSecurityGroupEgress: API.OperationMethod<
   AuthorizeSecurityGroupEgressResult,
   AuthorizeSecurityGroupEgressError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AuthorizeSecurityGroupEgressRequest,
   output: AuthorizeSecurityGroupEgressResult,
   errors: [
@@ -73920,7 +73920,7 @@ export const authorizeSecurityGroupIngress: API.OperationMethod<
   AuthorizeSecurityGroupIngressResult,
   AuthorizeSecurityGroupIngressError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AuthorizeSecurityGroupIngressRequest,
   output: AuthorizeSecurityGroupIngressResult,
   errors: [
@@ -73950,7 +73950,7 @@ export const bundleInstance: API.OperationMethod<
   BundleInstanceResult,
   BundleInstanceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BundleInstanceRequest,
   output: BundleInstanceResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -73968,7 +73968,7 @@ export const cancelBundleTask: API.OperationMethod<
   CancelBundleTaskResult,
   CancelBundleTaskError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelBundleTaskRequest,
   output: CancelBundleTaskResult,
   errors: [
@@ -74011,7 +74011,7 @@ export const cancelCapacityReservation: API.OperationMethod<
   CancelCapacityReservationResult,
   CancelCapacityReservationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelCapacityReservationRequest,
   output: CancelCapacityReservationResult,
   errors: [
@@ -74042,7 +74042,7 @@ export const cancelCapacityReservationFleets: API.OperationMethod<
   CancelCapacityReservationFleetsResult,
   CancelCapacityReservationFleetsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelCapacityReservationFleetsRequest,
   output: CancelCapacityReservationFleetsResult,
   errors: [RequestLimitExceeded, InvalidCapacityReservationFleetIdMalformed],
@@ -74061,7 +74061,7 @@ export const cancelConversionTask: API.OperationMethod<
   CancelConversionTaskResponse,
   CancelConversionTaskError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelConversionRequest,
   output: CancelConversionTaskResponse,
   errors: [RequestLimitExceeded, InvalidAction],
@@ -74085,7 +74085,7 @@ export const cancelDeclarativePoliciesReport: API.OperationMethod<
   CancelDeclarativePoliciesReportResult,
   CancelDeclarativePoliciesReportError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelDeclarativePoliciesReportRequest,
   output: CancelDeclarativePoliciesReportResult,
   errors: [RequestLimitExceeded, InvalidDeclarativePoliciesReportIdMalformed],
@@ -74104,7 +74104,7 @@ export const cancelExportTask: API.OperationMethod<
   CancelExportTaskResponse,
   CancelExportTaskError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelExportTaskRequest,
   output: CancelExportTaskResponse,
   errors: [RequestLimitExceeded, InvalidID],
@@ -74123,7 +74123,7 @@ export const cancelImageLaunchPermission: API.OperationMethod<
   CancelImageLaunchPermissionResult,
   CancelImageLaunchPermissionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelImageLaunchPermissionRequest,
   output: CancelImageLaunchPermissionResult,
   errors: [RequestLimitExceeded, InvalidAMIIDMalformed],
@@ -74140,7 +74140,7 @@ export const cancelImportTask: API.OperationMethod<
   CancelImportTaskResult,
   CancelImportTaskError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelImportTaskRequest,
   output: CancelImportTaskResult,
   errors: [RequestLimitExceeded, InvalidConversionTaskIdMalformed],
@@ -74161,7 +74161,7 @@ export const cancelReservedInstancesListing: API.OperationMethod<
   CancelReservedInstancesListingResult,
   CancelReservedInstancesListingError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelReservedInstancesListingRequest,
   output: CancelReservedInstancesListingResult,
   errors: [RequestLimitExceeded, InvalidInput],
@@ -74203,7 +74203,7 @@ export const cancelSpotFleetRequests: API.OperationMethod<
   CancelSpotFleetRequestsResponse,
   CancelSpotFleetRequestsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelSpotFleetRequestsRequest,
   output: CancelSpotFleetRequestsResponse,
   errors: [RequestLimitExceeded, InvalidParameterValue, MissingParameter],
@@ -74224,7 +74224,7 @@ export const cancelSpotInstanceRequests: API.OperationMethod<
   CancelSpotInstanceRequestsResult,
   CancelSpotInstanceRequestsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelSpotInstanceRequestsRequest,
   output: CancelSpotInstanceRequestsResult,
   errors: [
@@ -74247,7 +74247,7 @@ export const confirmProductInstance: API.OperationMethod<
   ConfirmProductInstanceResult,
   ConfirmProductInstanceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ConfirmProductInstanceRequest,
   output: ConfirmProductInstanceResult,
   errors: [RequestLimitExceeded, AuthFailure],
@@ -74264,7 +74264,7 @@ export const copyFpgaImage: API.OperationMethod<
   CopyFpgaImageResult,
   CopyFpgaImageError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CopyFpgaImageRequest,
   output: CopyFpgaImageResult,
   errors: [RequestLimitExceeded, InvalidFpgaImageIDMalformed],
@@ -74345,7 +74345,7 @@ export const copyImage: API.OperationMethod<
   CopyImageResult,
   CopyImageError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CopyImageRequest,
   output: CopyImageResult,
   errors: [
@@ -74398,7 +74398,7 @@ export const copySnapshot: API.OperationMethod<
   CopySnapshotResult,
   CopySnapshotError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CopySnapshotRequest,
   output: CopySnapshotResult,
   errors: [
@@ -74422,7 +74422,7 @@ export const copyVolumes: API.OperationMethod<
   CopyVolumesResult,
   CopyVolumesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CopyVolumesRequest,
   output: CopyVolumesResult,
   errors: [RequestLimitExceeded, InvalidVolumeIDMalformed],
@@ -74440,7 +74440,7 @@ export const createCapacityManagerDataExport: API.OperationMethod<
   CreateCapacityManagerDataExportResult,
   CreateCapacityManagerDataExportError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCapacityManagerDataExportRequest,
   output: CreateCapacityManagerDataExportResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -74480,7 +74480,7 @@ export const createCapacityReservation: API.OperationMethod<
   CreateCapacityReservationResult,
   CreateCapacityReservationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCapacityReservationRequest,
   output: CreateCapacityReservationResult,
   errors: [RequestLimitExceeded, Unsupported],
@@ -74501,7 +74501,7 @@ export const createCapacityReservationBySplitting: API.OperationMethod<
   CreateCapacityReservationBySplittingResult,
   CreateCapacityReservationBySplittingError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCapacityReservationBySplittingRequest,
   output: CreateCapacityReservationBySplittingResult,
   errors: [
@@ -74524,7 +74524,7 @@ export const createCapacityReservationFleet: API.OperationMethod<
   CreateCapacityReservationFleetResult,
   CreateCapacityReservationFleetError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCapacityReservationFleetRequest,
   output: CreateCapacityReservationFleetResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -74544,7 +74544,7 @@ export const createCarrierGateway: API.OperationMethod<
   CreateCarrierGatewayResult,
   CreateCarrierGatewayError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCarrierGatewayRequest,
   output: CreateCarrierGatewayResult,
   errors: [
@@ -74569,7 +74569,7 @@ export const createClientVpnEndpoint: API.OperationMethod<
   CreateClientVpnEndpointResult,
   CreateClientVpnEndpointError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateClientVpnEndpointRequest,
   output: CreateClientVpnEndpointResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -74587,7 +74587,7 @@ export const createClientVpnRoute: API.OperationMethod<
   CreateClientVpnRouteResult,
   CreateClientVpnRouteError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateClientVpnRouteRequest,
   output: CreateClientVpnRouteResult,
   errors: [RequestLimitExceeded, InvalidClientVpnEndpointIdNotFound],
@@ -74606,7 +74606,7 @@ export const createCoipCidr: API.OperationMethod<
   CreateCoipCidrResult,
   CreateCoipCidrError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCoipCidrRequest,
   output: CreateCoipCidrResult,
   errors: [
@@ -74630,7 +74630,7 @@ export const createCoipPool: API.OperationMethod<
   CreateCoipPoolResult,
   CreateCoipPoolError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCoipPoolRequest,
   output: CreateCoipPoolResult,
   errors: [
@@ -74668,7 +74668,7 @@ export const createCustomerGateway: API.OperationMethod<
   CreateCustomerGatewayResult,
   CreateCustomerGatewayError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCustomerGatewayRequest,
   output: CreateCustomerGatewayResult,
   errors: [RequestLimitExceeded, MissingParameter, ParseError],
@@ -74689,7 +74689,7 @@ export const createDefaultSubnet: API.OperationMethod<
   CreateDefaultSubnetResult,
   CreateDefaultSubnetError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDefaultSubnetRequest,
   output: CreateDefaultSubnetResult,
   errors: [
@@ -74717,7 +74717,7 @@ export const createDefaultVpc: API.OperationMethod<
   CreateDefaultVpcResult,
   CreateDefaultVpcError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDefaultVpcRequest,
   output: CreateDefaultVpcResult,
   errors: [RequestLimitExceeded, DefaultVpcAlreadyExists],
@@ -74735,7 +74735,7 @@ export const createDelegateMacVolumeOwnershipTask: API.OperationMethod<
   CreateDelegateMacVolumeOwnershipTaskResult,
   CreateDelegateMacVolumeOwnershipTaskError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDelegateMacVolumeOwnershipTaskRequest,
   output: CreateDelegateMacVolumeOwnershipTaskResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -74790,7 +74790,7 @@ export const createDhcpOptions: API.OperationMethod<
   CreateDhcpOptionsResult,
   CreateDhcpOptionsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDhcpOptionsRequest,
   output: CreateDhcpOptionsResult,
   errors: [RequestLimitExceeded, MissingParameter, ParseError],
@@ -74813,7 +74813,7 @@ export const createEgressOnlyInternetGateway: API.OperationMethod<
   CreateEgressOnlyInternetGatewayResult,
   CreateEgressOnlyInternetGatewayError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEgressOnlyInternetGatewayRequest,
   output: CreateEgressOnlyInternetGatewayResult,
   errors: [
@@ -74842,7 +74842,7 @@ export const createFleet: API.OperationMethod<
   CreateFleetResult,
   CreateFleetError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFleetRequest,
   output: CreateFleetResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -74875,7 +74875,7 @@ export const createFlowLogs: API.OperationMethod<
   CreateFlowLogsResult,
   CreateFlowLogsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFlowLogsRequest,
   output: CreateFlowLogsResult,
   errors: [
@@ -74904,7 +74904,7 @@ export const createFpgaImage: API.OperationMethod<
   CreateFpgaImageResult,
   CreateFpgaImageError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFpgaImageRequest,
   output: CreateFpgaImageResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
@@ -74940,7 +74940,7 @@ export const createImage: API.OperationMethod<
   CreateImageResult,
   CreateImageError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateImageRequest,
   output: CreateImageResult,
   errors: [
@@ -74966,7 +74966,7 @@ export const createImageUsageReport: API.OperationMethod<
   CreateImageUsageReportResult,
   CreateImageUsageReportError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateImageUsageReportRequest,
   output: CreateImageUsageReportResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -74990,7 +74990,7 @@ export const createInstanceConnectEndpoint: API.OperationMethod<
   CreateInstanceConnectEndpointResult,
   CreateInstanceConnectEndpointError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateInstanceConnectEndpointRequest,
   output: CreateInstanceConnectEndpointResult,
   errors: [
@@ -75034,7 +75034,7 @@ export const createInstanceEventWindow: API.OperationMethod<
   CreateInstanceEventWindowResult,
   CreateInstanceEventWindowError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateInstanceEventWindowRequest,
   output: CreateInstanceEventWindowResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
@@ -75055,7 +75055,7 @@ export const createInstanceExportTask: API.OperationMethod<
   CreateInstanceExportTaskResult,
   CreateInstanceExportTaskError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateInstanceExportTaskRequest,
   output: CreateInstanceExportTaskResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -75077,7 +75077,7 @@ export const createInternetGateway: API.OperationMethod<
   CreateInternetGatewayResult,
   CreateInternetGatewayError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateInternetGatewayRequest,
   output: CreateInternetGatewayResult,
   errors: [RequestLimitExceeded, InternetGatewayLimitExceeded, ParseError],
@@ -75094,7 +75094,7 @@ export const createInterruptibleCapacityReservationAllocation: API.OperationMeth
   CreateInterruptibleCapacityReservationAllocationResult,
   CreateInterruptibleCapacityReservationAllocationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateInterruptibleCapacityReservationAllocationRequest,
   output: CreateInterruptibleCapacityReservationAllocationResult,
   errors: [RequestLimitExceeded, InvalidCapacityReservationIdNotFound],
@@ -75118,7 +75118,7 @@ export const createIpam: API.OperationMethod<
   CreateIpamResult,
   CreateIpamError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateIpamRequest,
   output: CreateIpamResult,
   errors: [
@@ -75143,7 +75143,7 @@ export const createIpamExternalResourceVerificationToken: API.OperationMethod<
   CreateIpamExternalResourceVerificationTokenResult,
   CreateIpamExternalResourceVerificationTokenError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateIpamExternalResourceVerificationTokenRequest,
   output: CreateIpamExternalResourceVerificationTokenResult,
   errors: [RequestLimitExceeded, InvalidIpamIdNotFound, MissingParameter],
@@ -75165,7 +75165,7 @@ export const createIpamPolicy: API.OperationMethod<
   CreateIpamPolicyResult,
   CreateIpamPolicyError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateIpamPolicyRequest,
   output: CreateIpamPolicyResult,
   errors: [RequestLimitExceeded, InvalidIpamIdNotFound, MissingParameter],
@@ -75185,7 +75185,7 @@ export const createIpamPool: API.OperationMethod<
   CreateIpamPoolResult,
   CreateIpamPoolError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateIpamPoolRequest,
   output: CreateIpamPoolResult,
   errors: [RequestLimitExceeded, InvalidIpamScopeIdNotFound, MissingParameter],
@@ -75206,7 +75206,7 @@ export const createIpamPrefixListResolver: API.OperationMethod<
   CreateIpamPrefixListResolverResult,
   CreateIpamPrefixListResolverError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateIpamPrefixListResolverRequest,
   output: CreateIpamPrefixListResolverResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -75229,7 +75229,7 @@ export const createIpamPrefixListResolverTarget: API.OperationMethod<
   CreateIpamPrefixListResolverTargetResult,
   CreateIpamPrefixListResolverTargetError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateIpamPrefixListResolverTargetRequest,
   output: CreateIpamPrefixListResolverTargetResult,
   errors: [
@@ -75251,7 +75251,7 @@ export const createIpamResourceDiscovery: API.OperationMethod<
   CreateIpamResourceDiscoveryResult,
   CreateIpamResourceDiscoveryError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateIpamResourceDiscoveryRequest,
   output: CreateIpamResourceDiscoveryResult,
   errors: [RequestLimitExceeded, ResourceLimitExceeded],
@@ -75271,7 +75271,7 @@ export const createIpamScope: API.OperationMethod<
   CreateIpamScopeResult,
   CreateIpamScopeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateIpamScopeRequest,
   output: CreateIpamScopeResult,
   errors: [RequestLimitExceeded, InvalidIpamIdNotFound, MissingParameter],
@@ -75301,7 +75301,7 @@ export const createKeyPair: API.OperationMethod<
   KeyPair,
   CreateKeyPairError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateKeyPairRequest,
   output: KeyPair,
   errors: [RequestLimitExceeded, InvalidKeyPairDuplicate],
@@ -75329,7 +75329,7 @@ export const createLaunchTemplate: API.OperationMethod<
   CreateLaunchTemplateResult,
   CreateLaunchTemplateError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLaunchTemplateRequest,
   output: CreateLaunchTemplateResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -75356,7 +75356,7 @@ export const createLaunchTemplateVersion: API.OperationMethod<
   CreateLaunchTemplateVersionResult,
   CreateLaunchTemplateVersionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLaunchTemplateVersionRequest,
   output: CreateLaunchTemplateVersionResult,
   errors: [],
@@ -75379,7 +75379,7 @@ export const createLocalGatewayRoute: API.OperationMethod<
   CreateLocalGatewayRouteResult,
   CreateLocalGatewayRouteError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLocalGatewayRouteRequest,
   output: CreateLocalGatewayRouteResult,
   errors: [RequestLimitExceeded, InvalidParameterValue, MissingParameter],
@@ -75398,7 +75398,7 @@ export const createLocalGatewayRouteTable: API.OperationMethod<
   CreateLocalGatewayRouteTableResult,
   CreateLocalGatewayRouteTableError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLocalGatewayRouteTableRequest,
   output: CreateLocalGatewayRouteTableResult,
   errors: [
@@ -75422,7 +75422,7 @@ export const createLocalGatewayRouteTableVirtualInterfaceGroupAssociation: API.O
   CreateLocalGatewayRouteTableVirtualInterfaceGroupAssociationResult,
   CreateLocalGatewayRouteTableVirtualInterfaceGroupAssociationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLocalGatewayRouteTableVirtualInterfaceGroupAssociationRequest,
   output: CreateLocalGatewayRouteTableVirtualInterfaceGroupAssociationResult,
   errors: [
@@ -75447,7 +75447,7 @@ export const createLocalGatewayRouteTableVpcAssociation: API.OperationMethod<
   CreateLocalGatewayRouteTableVpcAssociationResult,
   CreateLocalGatewayRouteTableVpcAssociationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLocalGatewayRouteTableVpcAssociationRequest,
   output: CreateLocalGatewayRouteTableVpcAssociationResult,
   errors: [
@@ -75472,7 +75472,7 @@ export const createLocalGatewayVirtualInterface: API.OperationMethod<
   CreateLocalGatewayVirtualInterfaceResult,
   CreateLocalGatewayVirtualInterfaceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLocalGatewayVirtualInterfaceRequest,
   output: CreateLocalGatewayVirtualInterfaceResult,
   errors: [
@@ -75495,7 +75495,7 @@ export const createLocalGatewayVirtualInterfaceGroup: API.OperationMethod<
   CreateLocalGatewayVirtualInterfaceGroupResult,
   CreateLocalGatewayVirtualInterfaceGroupError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLocalGatewayVirtualInterfaceGroupRequest,
   output: CreateLocalGatewayVirtualInterfaceGroupResult,
   errors: [
@@ -75547,7 +75547,7 @@ export const createMacSystemIntegrityProtectionModificationTask: API.OperationMe
   CreateMacSystemIntegrityProtectionModificationTaskResult,
   CreateMacSystemIntegrityProtectionModificationTaskError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMacSystemIntegrityProtectionModificationTaskRequest,
   output: CreateMacSystemIntegrityProtectionModificationTaskResult,
   errors: [],
@@ -75566,7 +75566,7 @@ export const createManagedPrefixList: API.OperationMethod<
   CreateManagedPrefixListResult,
   CreateManagedPrefixListError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateManagedPrefixListRequest,
   output: CreateManagedPrefixListResult,
   errors: [RequestLimitExceeded, InvalidParameterValue, ParseError],
@@ -75607,7 +75607,7 @@ export const createNatGateway: API.OperationMethod<
   CreateNatGatewayResult,
   CreateNatGatewayError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateNatGatewayRequest,
   output: CreateNatGatewayResult,
   errors: [
@@ -75636,7 +75636,7 @@ export const createNetworkAcl: API.OperationMethod<
   CreateNetworkAclResult,
   CreateNetworkAclError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateNetworkAclRequest,
   output: CreateNetworkAclResult,
   errors: [
@@ -75670,7 +75670,7 @@ export const createNetworkAclEntry: API.OperationMethod<
   CreateNetworkAclEntryResponse,
   CreateNetworkAclEntryError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateNetworkAclEntryRequest,
   output: CreateNetworkAclEntryResponse,
   errors: [RequestLimitExceeded, InvalidNetworkAclIDNotFound, MissingParameter],
@@ -75688,7 +75688,7 @@ export const createNetworkInsightsAccessScope: API.OperationMethod<
   CreateNetworkInsightsAccessScopeResult,
   CreateNetworkInsightsAccessScopeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateNetworkInsightsAccessScopeRequest,
   output: CreateNetworkInsightsAccessScopeResult,
   errors: [],
@@ -75710,7 +75710,7 @@ export const createNetworkInsightsPath: API.OperationMethod<
   CreateNetworkInsightsPathResult,
   CreateNetworkInsightsPathError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateNetworkInsightsPathRequest,
   output: CreateNetworkInsightsPathResult,
   errors: [RequestLimitExceeded, InvalidParameterValue, MissingParameter],
@@ -75735,7 +75735,7 @@ export const createNetworkInterface: API.OperationMethod<
   CreateNetworkInterfaceResult,
   CreateNetworkInterfaceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateNetworkInterfaceRequest,
   output: CreateNetworkInterfaceResult,
   errors: [
@@ -75761,7 +75761,7 @@ export const createNetworkInterfacePermission: API.OperationMethod<
   CreateNetworkInterfacePermissionResult,
   CreateNetworkInterfacePermissionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateNetworkInterfacePermissionRequest,
   output: CreateNetworkInterfacePermissionResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -75790,7 +75790,7 @@ export const createPlacementGroup: API.OperationMethod<
   CreatePlacementGroupResult,
   CreatePlacementGroupError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePlacementGroupRequest,
   output: CreatePlacementGroupResult,
   errors: [RequestLimitExceeded, InvalidParameterValue, MissingParameter],
@@ -75804,7 +75804,7 @@ export const createPublicIpv4Pool: API.OperationMethod<
   CreatePublicIpv4PoolResult,
   CreatePublicIpv4PoolError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePublicIpv4PoolRequest,
   output: CreatePublicIpv4PoolResult,
   errors: [],
@@ -75826,7 +75826,7 @@ export const createReplaceRootVolumeTask: API.OperationMethod<
   CreateReplaceRootVolumeTaskResult,
   CreateReplaceRootVolumeTaskError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateReplaceRootVolumeTaskRequest,
   output: CreateReplaceRootVolumeTaskResult,
   errors: [RequestLimitExceeded, InvalidInstanceIDMalformed],
@@ -75863,7 +75863,7 @@ export const createReservedInstancesListing: API.OperationMethod<
   CreateReservedInstancesListingResult,
   CreateReservedInstancesListingError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateReservedInstancesListingRequest,
   output: CreateReservedInstancesListingResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -75887,7 +75887,7 @@ export const createRestoreImageTask: API.OperationMethod<
   CreateRestoreImageTaskResult,
   CreateRestoreImageTaskError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRestoreImageTaskRequest,
   output: CreateRestoreImageTaskResult,
   errors: [RequestLimitExceeded, InvalidRequest],
@@ -75930,7 +75930,7 @@ export const createRoute: API.OperationMethod<
   CreateRouteResult,
   CreateRouteError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRouteRequest,
   output: CreateRouteResult,
   errors: [
@@ -75973,7 +75973,7 @@ export const createRouteServer: API.OperationMethod<
   CreateRouteServerResult,
   CreateRouteServerError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRouteServerRequest,
   output: CreateRouteServerResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -75997,7 +75997,7 @@ export const createRouteServerEndpoint: API.OperationMethod<
   CreateRouteServerEndpointResult,
   CreateRouteServerEndpointError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRouteServerEndpointRequest,
   output: CreateRouteServerEndpointResult,
   errors: [
@@ -76030,7 +76030,7 @@ export const createRouteServerPeer: API.OperationMethod<
   CreateRouteServerPeerResult,
   CreateRouteServerPeerError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRouteServerPeerRequest,
   output: CreateRouteServerPeerResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -76052,7 +76052,7 @@ export const createRouteTable: API.OperationMethod<
   CreateRouteTableResult,
   CreateRouteTableError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRouteTableRequest,
   output: CreateRouteTableResult,
   errors: [
@@ -76073,7 +76073,7 @@ export const createSecondaryNetwork: API.OperationMethod<
   CreateSecondaryNetworkResult,
   CreateSecondaryNetworkError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSecondaryNetworkRequest,
   output: CreateSecondaryNetworkResult,
   errors: [],
@@ -76091,7 +76091,7 @@ export const createSecondarySubnet: API.OperationMethod<
   CreateSecondarySubnetResult,
   CreateSecondarySubnetError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSecondarySubnetRequest,
   output: CreateSecondarySubnetResult,
   errors: [],
@@ -76136,7 +76136,7 @@ export const createSecurityGroup: API.OperationMethod<
   CreateSecurityGroupResult,
   CreateSecurityGroupError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSecurityGroupRequest,
   output: CreateSecurityGroupResult,
   errors: [
@@ -76196,7 +76196,7 @@ export const createSnapshot: API.OperationMethod<
   Snapshot,
   CreateSnapshotError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSnapshotRequest,
   output: Snapshot,
   errors: [
@@ -76233,7 +76233,7 @@ export const createSnapshots: API.OperationMethod<
   CreateSnapshotsResult,
   CreateSnapshotsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSnapshotsRequest,
   output: CreateSnapshotsResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -76253,7 +76253,7 @@ export const createSpotDatafeedSubscription: API.OperationMethod<
   CreateSpotDatafeedSubscriptionResult,
   CreateSpotDatafeedSubscriptionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSpotDatafeedSubscriptionRequest,
   output: CreateSpotDatafeedSubscriptionResult,
   errors: [RequestLimitExceeded, InaccessibleStorageLocation],
@@ -76276,7 +76276,7 @@ export const createStoreImageTask: API.OperationMethod<
   CreateStoreImageTaskResult,
   CreateStoreImageTaskError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateStoreImageTaskRequest,
   output: CreateStoreImageTaskResult,
   errors: [RequestLimitExceeded, InvalidAMIIDMalformed],
@@ -76318,7 +76318,7 @@ export const createSubnet: API.OperationMethod<
   CreateSubnetResult,
   CreateSubnetError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSubnetRequest,
   output: CreateSubnetResult,
   errors: [
@@ -76345,7 +76345,7 @@ export const createSubnetCidrReservation: API.OperationMethod<
   CreateSubnetCidrReservationResult,
   CreateSubnetCidrReservationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSubnetCidrReservationRequest,
   output: CreateSubnetCidrReservationResult,
   errors: [
@@ -76377,7 +76377,7 @@ export const createTags: API.OperationMethod<
   CreateTagsResponse,
   CreateTagsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTagsRequest,
   output: CreateTagsResponse,
   errors: [RequestLimitExceeded, InvalidID, MissingParameter],
@@ -76400,7 +76400,7 @@ export const createTrafficMirrorFilter: API.OperationMethod<
   CreateTrafficMirrorFilterResult,
   CreateTrafficMirrorFilterError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTrafficMirrorFilterRequest,
   output: CreateTrafficMirrorFilterResult,
   errors: [RequestLimitExceeded, ParseError],
@@ -76421,7 +76421,7 @@ export const createTrafficMirrorFilterRule: API.OperationMethod<
   CreateTrafficMirrorFilterRuleResult,
   CreateTrafficMirrorFilterRuleError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTrafficMirrorFilterRuleRequest,
   output: CreateTrafficMirrorFilterRuleResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -76449,7 +76449,7 @@ export const createTrafficMirrorSession: API.OperationMethod<
   CreateTrafficMirrorSessionResult,
   CreateTrafficMirrorSessionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTrafficMirrorSessionRequest,
   output: CreateTrafficMirrorSessionResult,
   errors: [
@@ -76479,7 +76479,7 @@ export const createTrafficMirrorTarget: API.OperationMethod<
   CreateTrafficMirrorTargetResult,
   CreateTrafficMirrorTargetError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTrafficMirrorTargetRequest,
   output: CreateTrafficMirrorTargetResult,
   errors: [RequestLimitExceeded, InvalidParameterCombination],
@@ -76513,7 +76513,7 @@ export const createTransitGateway: API.OperationMethod<
   CreateTransitGatewayResult,
   CreateTransitGatewayError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTransitGatewayRequest,
   output: CreateTransitGatewayResult,
   errors: [RequestLimitExceeded, ParseError, TransitGatewayLimitExceeded],
@@ -76532,7 +76532,7 @@ export const createTransitGatewayConnect: API.OperationMethod<
   CreateTransitGatewayConnectResult,
   CreateTransitGatewayConnectError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTransitGatewayConnectRequest,
   output: CreateTransitGatewayConnectResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -76555,7 +76555,7 @@ export const createTransitGatewayConnectPeer: API.OperationMethod<
   CreateTransitGatewayConnectPeerResult,
   CreateTransitGatewayConnectPeerError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTransitGatewayConnectPeerRequest,
   output: CreateTransitGatewayConnectPeerResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -76574,7 +76574,7 @@ export const createTransitGatewayMeteringPolicy: API.OperationMethod<
   CreateTransitGatewayMeteringPolicyResult,
   CreateTransitGatewayMeteringPolicyError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTransitGatewayMeteringPolicyRequest,
   output: CreateTransitGatewayMeteringPolicyResult,
   errors: [
@@ -76596,7 +76596,7 @@ export const createTransitGatewayMeteringPolicyEntry: API.OperationMethod<
   CreateTransitGatewayMeteringPolicyEntryResult,
   CreateTransitGatewayMeteringPolicyEntryError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTransitGatewayMeteringPolicyEntryRequest,
   output: CreateTransitGatewayMeteringPolicyEntryResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -76618,7 +76618,7 @@ export const createTransitGatewayMulticastDomain: API.OperationMethod<
   CreateTransitGatewayMulticastDomainResult,
   CreateTransitGatewayMulticastDomainError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTransitGatewayMulticastDomainRequest,
   output: CreateTransitGatewayMulticastDomainResult,
   errors: [
@@ -76648,7 +76648,7 @@ export const createTransitGatewayPeeringAttachment: API.OperationMethod<
   CreateTransitGatewayPeeringAttachmentResult,
   CreateTransitGatewayPeeringAttachmentError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTransitGatewayPeeringAttachmentRequest,
   output: CreateTransitGatewayPeeringAttachmentResult,
   errors: [
@@ -76672,7 +76672,7 @@ export const createTransitGatewayPolicyTable: API.OperationMethod<
   CreateTransitGatewayPolicyTableResult,
   CreateTransitGatewayPolicyTableError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTransitGatewayPolicyTableRequest,
   output: CreateTransitGatewayPolicyTableResult,
   errors: [
@@ -76694,7 +76694,7 @@ export const createTransitGatewayPrefixListReference: API.OperationMethod<
   CreateTransitGatewayPrefixListReferenceResult,
   CreateTransitGatewayPrefixListReferenceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTransitGatewayPrefixListReferenceRequest,
   output: CreateTransitGatewayPrefixListReferenceResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -76712,7 +76712,7 @@ export const createTransitGatewayRoute: API.OperationMethod<
   CreateTransitGatewayRouteResult,
   CreateTransitGatewayRouteError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTransitGatewayRouteRequest,
   output: CreateTransitGatewayRouteResult,
   errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound, MissingParameter],
@@ -76732,7 +76732,7 @@ export const createTransitGatewayRouteTable: API.OperationMethod<
   CreateTransitGatewayRouteTableResult,
   CreateTransitGatewayRouteTableError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTransitGatewayRouteTableRequest,
   output: CreateTransitGatewayRouteTableResult,
   errors: [
@@ -76757,7 +76757,7 @@ export const createTransitGatewayRouteTableAnnouncement: API.OperationMethod<
   CreateTransitGatewayRouteTableAnnouncementResult,
   CreateTransitGatewayRouteTableAnnouncementError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTransitGatewayRouteTableAnnouncementRequest,
   output: CreateTransitGatewayRouteTableAnnouncementResult,
   errors: [
@@ -76786,7 +76786,7 @@ export const createTransitGatewayVpcAttachment: API.OperationMethod<
   CreateTransitGatewayVpcAttachmentResult,
   CreateTransitGatewayVpcAttachmentError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTransitGatewayVpcAttachmentRequest,
   output: CreateTransitGatewayVpcAttachmentResult,
   errors: [
@@ -76808,7 +76808,7 @@ export const createVerifiedAccessEndpoint: API.OperationMethod<
   CreateVerifiedAccessEndpointResult,
   CreateVerifiedAccessEndpointError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateVerifiedAccessEndpointRequest,
   output: CreateVerifiedAccessEndpointResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -76830,7 +76830,7 @@ export const createVerifiedAccessGroup: API.OperationMethod<
   CreateVerifiedAccessGroupResult,
   CreateVerifiedAccessGroupError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateVerifiedAccessGroupRequest,
   output: CreateVerifiedAccessGroupResult,
   errors: [
@@ -76854,7 +76854,7 @@ export const createVerifiedAccessInstance: API.OperationMethod<
   CreateVerifiedAccessInstanceResult,
   CreateVerifiedAccessInstanceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateVerifiedAccessInstanceRequest,
   output: CreateVerifiedAccessInstanceResult,
   errors: [
@@ -76878,7 +76878,7 @@ export const createVerifiedAccessTrustProvider: API.OperationMethod<
   CreateVerifiedAccessTrustProviderResult,
   CreateVerifiedAccessTrustProviderError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateVerifiedAccessTrustProviderRequest,
   output: CreateVerifiedAccessTrustProviderResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -76910,7 +76910,7 @@ export const createVolume: API.OperationMethod<
   Volume,
   CreateVolumeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateVolumeRequest,
   output: Volume,
   errors: [RequestLimitExceeded, InvalidZoneNotFound, MissingParameter],
@@ -76945,7 +76945,7 @@ export const createVpc: API.OperationMethod<
   CreateVpcResult,
   CreateVpcError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateVpcRequest,
   output: CreateVpcResult,
   errors: [
@@ -76969,7 +76969,7 @@ export const createVpcBlockPublicAccessExclusion: API.OperationMethod<
   CreateVpcBlockPublicAccessExclusionResult,
   CreateVpcBlockPublicAccessExclusionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateVpcBlockPublicAccessExclusionRequest,
   output: CreateVpcBlockPublicAccessExclusionResult,
   errors: [RequestLimitExceeded, InvalidVpcIdMalformed, MissingParameter],
@@ -76989,7 +76989,7 @@ export const createVpcEncryptionControl: API.OperationMethod<
   CreateVpcEncryptionControlResult,
   CreateVpcEncryptionControlError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateVpcEncryptionControlRequest,
   output: CreateVpcEncryptionControlResult,
   errors: [RequestLimitExceeded, InvalidVpcIdMalformed, MissingParameter],
@@ -77013,7 +77013,7 @@ export const createVpcEndpoint: API.OperationMethod<
   CreateVpcEndpointResult,
   CreateVpcEndpointError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateVpcEndpointRequest,
   output: CreateVpcEndpointResult,
   errors: [
@@ -77042,7 +77042,7 @@ export const createVpcEndpointConnectionNotification: API.OperationMethod<
   CreateVpcEndpointConnectionNotificationResult,
   CreateVpcEndpointConnectionNotificationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateVpcEndpointConnectionNotificationRequest,
   output: CreateVpcEndpointConnectionNotificationResult,
   errors: [RequestLimitExceeded, InvalidParameter],
@@ -77074,7 +77074,7 @@ export const createVpcEndpointServiceConfiguration: API.OperationMethod<
   CreateVpcEndpointServiceConfigurationResult,
   CreateVpcEndpointServiceConfigurationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateVpcEndpointServiceConfigurationRequest,
   output: CreateVpcEndpointServiceConfigurationResult,
   errors: [RequestLimitExceeded, InvalidParameter],
@@ -77107,7 +77107,7 @@ export const createVpcPeeringConnection: API.OperationMethod<
   CreateVpcPeeringConnectionResult,
   CreateVpcPeeringConnectionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateVpcPeeringConnectionRequest,
   output: CreateVpcPeeringConnectionResult,
   errors: [
@@ -77130,7 +77130,7 @@ export const createVpnConcentrator: API.OperationMethod<
   CreateVpnConcentratorResult,
   CreateVpnConcentratorError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateVpnConcentratorRequest,
   output: CreateVpnConcentratorResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -77169,7 +77169,7 @@ export const createVpnConnection: API.OperationMethod<
   CreateVpnConnectionResult,
   CreateVpnConnectionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateVpnConnectionRequest,
   output: CreateVpnConnectionResult,
   errors: [
@@ -77198,7 +77198,7 @@ export const createVpnConnectionRoute: API.OperationMethod<
   CreateVpnConnectionRouteResponse,
   CreateVpnConnectionRouteError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateVpnConnectionRouteRequest,
   output: CreateVpnConnectionRouteResponse,
   errors: [RequestLimitExceeded, InvalidParameter, MissingParameter],
@@ -77221,7 +77221,7 @@ export const createVpnGateway: API.OperationMethod<
   CreateVpnGatewayResult,
   CreateVpnGatewayError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateVpnGatewayRequest,
   output: CreateVpnGatewayResult,
   errors: [RequestLimitExceeded, MissingParameter, ParseError],
@@ -77239,7 +77239,7 @@ export const deleteCapacityManagerDataExport: API.OperationMethod<
   DeleteCapacityManagerDataExportResult,
   DeleteCapacityManagerDataExportError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCapacityManagerDataExportRequest,
   output: DeleteCapacityManagerDataExportResult,
   errors: [
@@ -77266,7 +77266,7 @@ export const deleteCarrierGateway: API.OperationMethod<
   DeleteCarrierGatewayResult,
   DeleteCarrierGatewayError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCarrierGatewayRequest,
   output: DeleteCarrierGatewayResult,
   errors: [
@@ -77289,7 +77289,7 @@ export const deleteClientVpnEndpoint: API.OperationMethod<
   DeleteClientVpnEndpointResult,
   DeleteClientVpnEndpointError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteClientVpnEndpointRequest,
   output: DeleteClientVpnEndpointResult,
   errors: [RequestLimitExceeded, InvalidClientVpnEndpointIdNotFound],
@@ -77309,7 +77309,7 @@ export const deleteClientVpnRoute: API.OperationMethod<
   DeleteClientVpnRouteResult,
   DeleteClientVpnRouteError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteClientVpnRouteRequest,
   output: DeleteClientVpnRouteResult,
   errors: [RequestLimitExceeded, InvalidClientVpnEndpointIdNotFound],
@@ -77328,7 +77328,7 @@ export const deleteCoipCidr: API.OperationMethod<
   DeleteCoipCidrResult,
   DeleteCoipCidrError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCoipCidrRequest,
   output: DeleteCoipCidrResult,
   errors: [
@@ -77352,7 +77352,7 @@ export const deleteCoipPool: API.OperationMethod<
   DeleteCoipPoolResult,
   DeleteCoipPoolError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCoipPoolRequest,
   output: DeleteCoipPoolResult,
   errors: [
@@ -77377,7 +77377,7 @@ export const deleteCustomerGateway: API.OperationMethod<
   DeleteCustomerGatewayResponse,
   DeleteCustomerGatewayError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCustomerGatewayRequest,
   output: DeleteCustomerGatewayResponse,
   errors: [
@@ -77402,7 +77402,7 @@ export const deleteDhcpOptions: API.OperationMethod<
   DeleteDhcpOptionsResponse,
   DeleteDhcpOptionsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDhcpOptionsRequest,
   output: DeleteDhcpOptionsResponse,
   errors: [
@@ -77430,7 +77430,7 @@ export const deleteEgressOnlyInternetGateway: API.OperationMethod<
   DeleteEgressOnlyInternetGatewayResult,
   DeleteEgressOnlyInternetGatewayError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEgressOnlyInternetGatewayRequest,
   output: DeleteEgressOnlyInternetGatewayResult,
   errors: [
@@ -77497,7 +77497,7 @@ export const deleteFleets: API.OperationMethod<
   DeleteFleetsResult,
   DeleteFleetsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFleetsRequest,
   output: DeleteFleetsResult,
   errors: [RequestLimitExceeded, InvalidFleetIdMalformed],
@@ -77514,7 +77514,7 @@ export const deleteFlowLogs: API.OperationMethod<
   DeleteFlowLogsResult,
   DeleteFlowLogsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFlowLogsRequest,
   output: DeleteFlowLogsResult,
   errors: [RequestLimitExceeded, InvalidFlowLogIdNotFound],
@@ -77531,7 +77531,7 @@ export const deleteFpgaImage: API.OperationMethod<
   DeleteFpgaImageResult,
   DeleteFpgaImageError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFpgaImageRequest,
   output: DeleteFpgaImageResult,
   errors: [RequestLimitExceeded, InvalidFpgaImageIDMalformed],
@@ -77552,7 +77552,7 @@ export const deleteImageUsageReport: API.OperationMethod<
   DeleteImageUsageReportResult,
   DeleteImageUsageReportError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteImageUsageReportRequest,
   output: DeleteImageUsageReportResult,
   errors: [
@@ -77576,7 +77576,7 @@ export const deleteInstanceConnectEndpoint: API.OperationMethod<
   DeleteInstanceConnectEndpointResult,
   DeleteInstanceConnectEndpointError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteInstanceConnectEndpointRequest,
   output: DeleteInstanceConnectEndpointResult,
   errors: [
@@ -77603,7 +77603,7 @@ export const deleteInstanceEventWindow: API.OperationMethod<
   DeleteInstanceEventWindowResult,
   DeleteInstanceEventWindowError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteInstanceEventWindowRequest,
   output: DeleteInstanceEventWindowResult,
   errors: [
@@ -77627,7 +77627,7 @@ export const deleteInternetGateway: API.OperationMethod<
   DeleteInternetGatewayResponse,
   DeleteInternetGatewayError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteInternetGatewayRequest,
   output: DeleteInternetGatewayResponse,
   errors: [
@@ -77653,7 +77653,7 @@ export const deleteIpam: API.OperationMethod<
   DeleteIpamResult,
   DeleteIpamError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteIpamRequest,
   output: DeleteIpamResult,
   errors: [
@@ -77679,7 +77679,7 @@ export const deleteIpamExternalResourceVerificationToken: API.OperationMethod<
   DeleteIpamExternalResourceVerificationTokenResult,
   DeleteIpamExternalResourceVerificationTokenError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteIpamExternalResourceVerificationTokenRequest,
   output: DeleteIpamExternalResourceVerificationTokenResult,
   errors: [
@@ -77705,7 +77705,7 @@ export const deleteIpamPolicy: API.OperationMethod<
   DeleteIpamPolicyResult,
   DeleteIpamPolicyError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteIpamPolicyRequest,
   output: DeleteIpamPolicyResult,
   errors: [
@@ -77735,7 +77735,7 @@ export const deleteIpamPool: API.OperationMethod<
   DeleteIpamPoolResult,
   DeleteIpamPoolError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteIpamPoolRequest,
   output: DeleteIpamPoolResult,
   errors: [
@@ -77759,7 +77759,7 @@ export const deleteIpamPrefixListResolver: API.OperationMethod<
   DeleteIpamPrefixListResolverResult,
   DeleteIpamPrefixListResolverError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteIpamPrefixListResolverRequest,
   output: DeleteIpamPrefixListResolverResult,
   errors: [
@@ -77784,7 +77784,7 @@ export const deleteIpamPrefixListResolverTarget: API.OperationMethod<
   DeleteIpamPrefixListResolverTargetResult,
   DeleteIpamPrefixListResolverTargetError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteIpamPrefixListResolverTargetRequest,
   output: DeleteIpamPrefixListResolverTargetResult,
   errors: [
@@ -77806,7 +77806,7 @@ export const deleteIpamResourceDiscovery: API.OperationMethod<
   DeleteIpamResourceDiscoveryResult,
   DeleteIpamResourceDiscoveryError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteIpamResourceDiscoveryRequest,
   output: DeleteIpamResourceDiscoveryResult,
   errors: [
@@ -77832,7 +77832,7 @@ export const deleteIpamScope: API.OperationMethod<
   DeleteIpamScopeResult,
   DeleteIpamScopeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteIpamScopeRequest,
   output: DeleteIpamScopeResult,
   errors: [
@@ -77855,7 +77855,7 @@ export const deleteKeyPair: API.OperationMethod<
   DeleteKeyPairResult,
   DeleteKeyPairError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteKeyPairRequest,
   output: DeleteKeyPairResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -77874,7 +77874,7 @@ export const deleteLaunchTemplate: API.OperationMethod<
   DeleteLaunchTemplateResult,
   DeleteLaunchTemplateError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLaunchTemplateRequest,
   output: DeleteLaunchTemplateResult,
   errors: [
@@ -77906,7 +77906,7 @@ export const deleteLaunchTemplateVersions: API.OperationMethod<
   DeleteLaunchTemplateVersionsResult,
   DeleteLaunchTemplateVersionsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLaunchTemplateVersionsRequest,
   output: DeleteLaunchTemplateVersionsResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -77923,7 +77923,7 @@ export const deleteLocalGatewayRoute: API.OperationMethod<
   DeleteLocalGatewayRouteResult,
   DeleteLocalGatewayRouteError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLocalGatewayRouteRequest,
   output: DeleteLocalGatewayRouteResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -77941,7 +77941,7 @@ export const deleteLocalGatewayRouteTable: API.OperationMethod<
   DeleteLocalGatewayRouteTableResult,
   DeleteLocalGatewayRouteTableError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLocalGatewayRouteTableRequest,
   output: DeleteLocalGatewayRouteTableResult,
   errors: [
@@ -77964,7 +77964,7 @@ export const deleteLocalGatewayRouteTableVirtualInterfaceGroupAssociation: API.O
   DeleteLocalGatewayRouteTableVirtualInterfaceGroupAssociationResult,
   DeleteLocalGatewayRouteTableVirtualInterfaceGroupAssociationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLocalGatewayRouteTableVirtualInterfaceGroupAssociationRequest,
   output: DeleteLocalGatewayRouteTableVirtualInterfaceGroupAssociationResult,
   errors: [
@@ -77988,7 +77988,7 @@ export const deleteLocalGatewayRouteTableVpcAssociation: API.OperationMethod<
   DeleteLocalGatewayRouteTableVpcAssociationResult,
   DeleteLocalGatewayRouteTableVpcAssociationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLocalGatewayRouteTableVpcAssociationRequest,
   output: DeleteLocalGatewayRouteTableVpcAssociationResult,
   errors: [
@@ -78012,7 +78012,7 @@ export const deleteLocalGatewayVirtualInterface: API.OperationMethod<
   DeleteLocalGatewayVirtualInterfaceResult,
   DeleteLocalGatewayVirtualInterfaceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLocalGatewayVirtualInterfaceRequest,
   output: DeleteLocalGatewayVirtualInterfaceResult,
   errors: [
@@ -78036,7 +78036,7 @@ export const deleteLocalGatewayVirtualInterfaceGroup: API.OperationMethod<
   DeleteLocalGatewayVirtualInterfaceGroupResult,
   DeleteLocalGatewayVirtualInterfaceGroupError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLocalGatewayVirtualInterfaceGroupRequest,
   output: DeleteLocalGatewayVirtualInterfaceGroupResult,
   errors: [
@@ -78060,7 +78060,7 @@ export const deleteManagedPrefixList: API.OperationMethod<
   DeleteManagedPrefixListResult,
   DeleteManagedPrefixListError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteManagedPrefixListRequest,
   output: DeleteManagedPrefixListResult,
   errors: [
@@ -78089,7 +78089,7 @@ export const deleteNatGateway: API.OperationMethod<
   DeleteNatGatewayResult,
   DeleteNatGatewayError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteNatGatewayRequest,
   output: DeleteNatGatewayResult,
   errors: [
@@ -78119,7 +78119,7 @@ export const deleteNetworkAcl: API.OperationMethod<
   DeleteNetworkAclResponse,
   DeleteNetworkAclError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteNetworkAclRequest,
   output: DeleteNetworkAclResponse,
   errors: [
@@ -78147,7 +78147,7 @@ export const deleteNetworkAclEntry: API.OperationMethod<
   DeleteNetworkAclEntryResponse,
   DeleteNetworkAclEntryError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteNetworkAclEntryRequest,
   output: DeleteNetworkAclEntryResponse,
   errors: [
@@ -78171,7 +78171,7 @@ export const deleteNetworkInsightsAccessScope: API.OperationMethod<
   DeleteNetworkInsightsAccessScopeResult,
   DeleteNetworkInsightsAccessScopeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteNetworkInsightsAccessScopeRequest,
   output: DeleteNetworkInsightsAccessScopeResult,
   errors: [
@@ -78193,7 +78193,7 @@ export const deleteNetworkInsightsAccessScopeAnalysis: API.OperationMethod<
   DeleteNetworkInsightsAccessScopeAnalysisResult,
   DeleteNetworkInsightsAccessScopeAnalysisError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteNetworkInsightsAccessScopeAnalysisRequest,
   output: DeleteNetworkInsightsAccessScopeAnalysisResult,
   errors: [RequestLimitExceeded, InvalidParameterValue, MissingParameter],
@@ -78211,7 +78211,7 @@ export const deleteNetworkInsightsAnalysis: API.OperationMethod<
   DeleteNetworkInsightsAnalysisResult,
   DeleteNetworkInsightsAnalysisError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteNetworkInsightsAnalysisRequest,
   output: DeleteNetworkInsightsAnalysisResult,
   errors: [RequestLimitExceeded, InvalidParameterValue, MissingParameter],
@@ -78229,7 +78229,7 @@ export const deleteNetworkInsightsPath: API.OperationMethod<
   DeleteNetworkInsightsPathResult,
   DeleteNetworkInsightsPathError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteNetworkInsightsPathRequest,
   output: DeleteNetworkInsightsPathResult,
   errors: [RequestLimitExceeded, InvalidParameterValue, MissingParameter],
@@ -78251,7 +78251,7 @@ export const deleteNetworkInterface: API.OperationMethod<
   DeleteNetworkInterfaceResponse,
   DeleteNetworkInterfaceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteNetworkInterfaceRequest,
   output: DeleteNetworkInterfaceResponse,
   errors: [
@@ -78280,7 +78280,7 @@ export const deleteNetworkInterfacePermission: API.OperationMethod<
   DeleteNetworkInterfacePermissionResult,
   DeleteNetworkInterfacePermissionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteNetworkInterfacePermissionRequest,
   output: DeleteNetworkInterfacePermissionResult,
   errors: [
@@ -78304,7 +78304,7 @@ export const deletePlacementGroup: API.OperationMethod<
   DeletePlacementGroupResponse,
   DeletePlacementGroupError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePlacementGroupRequest,
   output: DeletePlacementGroupResponse,
   errors: [RequestLimitExceeded, InvalidPlacementGroupUnknown],
@@ -78322,7 +78322,7 @@ export const deletePublicIpv4Pool: API.OperationMethod<
   DeletePublicIpv4PoolResult,
   DeletePublicIpv4PoolError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePublicIpv4PoolRequest,
   output: DeletePublicIpv4PoolResult,
   errors: [
@@ -78343,7 +78343,7 @@ export const deleteQueuedReservedInstances: API.OperationMethod<
   DeleteQueuedReservedInstancesResult,
   DeleteQueuedReservedInstancesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteQueuedReservedInstancesRequest,
   output: DeleteQueuedReservedInstancesResult,
   errors: [RequestLimitExceeded, InvalidReservedInstancesIDNotFound],
@@ -78365,7 +78365,7 @@ export const deleteRoute: API.OperationMethod<
   DeleteRouteResponse,
   DeleteRouteError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRouteRequest,
   output: DeleteRouteResponse,
   errors: [
@@ -78406,7 +78406,7 @@ export const deleteRouteServer: API.OperationMethod<
   DeleteRouteServerResult,
   DeleteRouteServerError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRouteServerRequest,
   output: DeleteRouteServerResult,
   errors: [RequestLimitExceeded, IncorrectState, InvalidRouteServerIdNotFound],
@@ -78426,7 +78426,7 @@ export const deleteRouteServerEndpoint: API.OperationMethod<
   DeleteRouteServerEndpointResult,
   DeleteRouteServerEndpointError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRouteServerEndpointRequest,
   output: DeleteRouteServerEndpointResult,
   errors: [
@@ -78457,7 +78457,7 @@ export const deleteRouteServerPeer: API.OperationMethod<
   DeleteRouteServerPeerResult,
   DeleteRouteServerPeerError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRouteServerPeerRequest,
   output: DeleteRouteServerPeerResult,
   errors: [
@@ -78481,7 +78481,7 @@ export const deleteRouteTable: API.OperationMethod<
   DeleteRouteTableResponse,
   DeleteRouteTableError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRouteTableRequest,
   output: DeleteRouteTableResponse,
   errors: [
@@ -78500,7 +78500,7 @@ export const deleteSecondaryNetwork: API.OperationMethod<
   DeleteSecondaryNetworkResult,
   DeleteSecondaryNetworkError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSecondaryNetworkRequest,
   output: DeleteSecondaryNetworkResult,
   errors: [],
@@ -78514,7 +78514,7 @@ export const deleteSecondarySubnet: API.OperationMethod<
   DeleteSecondarySubnetResult,
   DeleteSecondarySubnetError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSecondarySubnetRequest,
   output: DeleteSecondarySubnetResult,
   errors: [],
@@ -78540,7 +78540,7 @@ export const deleteSecurityGroup: API.OperationMethod<
   DeleteSecurityGroupResult,
   DeleteSecurityGroupError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSecurityGroupRequest,
   output: DeleteSecurityGroupResult,
   errors: [
@@ -78579,7 +78579,7 @@ export const deleteSnapshot: API.OperationMethod<
   DeleteSnapshotResponse,
   DeleteSnapshotError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSnapshotRequest,
   output: DeleteSnapshotResponse,
   errors: [
@@ -78598,7 +78598,7 @@ export const deleteSpotDatafeedSubscription: API.OperationMethod<
   DeleteSpotDatafeedSubscriptionResponse,
   DeleteSpotDatafeedSubscriptionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSpotDatafeedSubscriptionRequest,
   output: DeleteSpotDatafeedSubscriptionResponse,
   errors: [],
@@ -78618,7 +78618,7 @@ export const deleteSubnet: API.OperationMethod<
   DeleteSubnetResponse,
   DeleteSubnetError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSubnetRequest,
   output: DeleteSubnetResponse,
   errors: [
@@ -78643,7 +78643,7 @@ export const deleteSubnetCidrReservation: API.OperationMethod<
   DeleteSubnetCidrReservationResult,
   DeleteSubnetCidrReservationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSubnetCidrReservationRequest,
   output: DeleteSubnetCidrReservationResult,
   errors: [
@@ -78671,7 +78671,7 @@ export const deleteTags: API.OperationMethod<
   DeleteTagsResponse,
   DeleteTagsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTagsRequest,
   output: DeleteTagsResponse,
   errors: [RequestLimitExceeded, InvalidID, MissingParameter],
@@ -78691,7 +78691,7 @@ export const deleteTrafficMirrorFilter: API.OperationMethod<
   DeleteTrafficMirrorFilterResult,
   DeleteTrafficMirrorFilterError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTrafficMirrorFilterRequest,
   output: DeleteTrafficMirrorFilterResult,
   errors: [
@@ -78714,7 +78714,7 @@ export const deleteTrafficMirrorFilterRule: API.OperationMethod<
   DeleteTrafficMirrorFilterRuleResult,
   DeleteTrafficMirrorFilterRuleError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTrafficMirrorFilterRuleRequest,
   output: DeleteTrafficMirrorFilterRuleResult,
   errors: [
@@ -78738,7 +78738,7 @@ export const deleteTrafficMirrorSession: API.OperationMethod<
   DeleteTrafficMirrorSessionResult,
   DeleteTrafficMirrorSessionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTrafficMirrorSessionRequest,
   output: DeleteTrafficMirrorSessionResult,
   errors: [
@@ -78764,7 +78764,7 @@ export const deleteTrafficMirrorTarget: API.OperationMethod<
   DeleteTrafficMirrorTargetResult,
   DeleteTrafficMirrorTargetError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTrafficMirrorTargetRequest,
   output: DeleteTrafficMirrorTargetResult,
   errors: [
@@ -78790,7 +78790,7 @@ export const deleteTransitGateway: API.OperationMethod<
   DeleteTransitGatewayResult,
   DeleteTransitGatewayError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTransitGatewayRequest,
   output: DeleteTransitGatewayResult,
   errors: [
@@ -78815,7 +78815,7 @@ export const deleteTransitGatewayConnect: API.OperationMethod<
   DeleteTransitGatewayConnectResult,
   DeleteTransitGatewayConnectError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTransitGatewayConnectRequest,
   output: DeleteTransitGatewayConnectResult,
   errors: [RequestLimitExceeded, InvalidTransitGatewayAttachmentIDNotFound],
@@ -78833,7 +78833,7 @@ export const deleteTransitGatewayConnectPeer: API.OperationMethod<
   DeleteTransitGatewayConnectPeerResult,
   DeleteTransitGatewayConnectPeerError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTransitGatewayConnectPeerRequest,
   output: DeleteTransitGatewayConnectPeerResult,
   errors: [
@@ -78856,7 +78856,7 @@ export const deleteTransitGatewayMeteringPolicy: API.OperationMethod<
   DeleteTransitGatewayMeteringPolicyResult,
   DeleteTransitGatewayMeteringPolicyError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTransitGatewayMeteringPolicyRequest,
   output: DeleteTransitGatewayMeteringPolicyResult,
   errors: [
@@ -78880,7 +78880,7 @@ export const deleteTransitGatewayMeteringPolicyEntry: API.OperationMethod<
   DeleteTransitGatewayMeteringPolicyEntryResult,
   DeleteTransitGatewayMeteringPolicyEntryError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTransitGatewayMeteringPolicyEntryRequest,
   output: DeleteTransitGatewayMeteringPolicyEntryResult,
   errors: [
@@ -78903,7 +78903,7 @@ export const deleteTransitGatewayMulticastDomain: API.OperationMethod<
   DeleteTransitGatewayMulticastDomainResult,
   DeleteTransitGatewayMulticastDomainError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTransitGatewayMulticastDomainRequest,
   output: DeleteTransitGatewayMulticastDomainResult,
   errors: [
@@ -78924,7 +78924,7 @@ export const deleteTransitGatewayPeeringAttachment: API.OperationMethod<
   DeleteTransitGatewayPeeringAttachmentResult,
   DeleteTransitGatewayPeeringAttachmentError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTransitGatewayPeeringAttachmentRequest,
   output: DeleteTransitGatewayPeeringAttachmentResult,
   errors: [RequestLimitExceeded, InvalidTransitGatewayAttachmentIDNotFound],
@@ -78943,7 +78943,7 @@ export const deleteTransitGatewayPolicyTable: API.OperationMethod<
   DeleteTransitGatewayPolicyTableResult,
   DeleteTransitGatewayPolicyTableError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTransitGatewayPolicyTableRequest,
   output: DeleteTransitGatewayPolicyTableResult,
   errors: [
@@ -78966,7 +78966,7 @@ export const deleteTransitGatewayPrefixListReference: API.OperationMethod<
   DeleteTransitGatewayPrefixListReferenceResult,
   DeleteTransitGatewayPrefixListReferenceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTransitGatewayPrefixListReferenceRequest,
   output: DeleteTransitGatewayPrefixListReferenceResult,
   errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound, MissingParameter],
@@ -78984,7 +78984,7 @@ export const deleteTransitGatewayRoute: API.OperationMethod<
   DeleteTransitGatewayRouteResult,
   DeleteTransitGatewayRouteError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTransitGatewayRouteRequest,
   output: DeleteTransitGatewayRouteResult,
   errors: [RequestLimitExceeded, InvalidParameterValue, MissingParameter],
@@ -79006,7 +79006,7 @@ export const deleteTransitGatewayRouteTable: API.OperationMethod<
   DeleteTransitGatewayRouteTableResult,
   DeleteTransitGatewayRouteTableError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTransitGatewayRouteTableRequest,
   output: DeleteTransitGatewayRouteTableResult,
   errors: [
@@ -79031,7 +79031,7 @@ export const deleteTransitGatewayRouteTableAnnouncement: API.OperationMethod<
   DeleteTransitGatewayRouteTableAnnouncementResult,
   DeleteTransitGatewayRouteTableAnnouncementError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTransitGatewayRouteTableAnnouncementRequest,
   output: DeleteTransitGatewayRouteTableAnnouncementResult,
   errors: [
@@ -79053,7 +79053,7 @@ export const deleteTransitGatewayVpcAttachment: API.OperationMethod<
   DeleteTransitGatewayVpcAttachmentResult,
   DeleteTransitGatewayVpcAttachmentError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTransitGatewayVpcAttachmentRequest,
   output: DeleteTransitGatewayVpcAttachmentResult,
   errors: [
@@ -79076,7 +79076,7 @@ export const deleteVerifiedAccessEndpoint: API.OperationMethod<
   DeleteVerifiedAccessEndpointResult,
   DeleteVerifiedAccessEndpointError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteVerifiedAccessEndpointRequest,
   output: DeleteVerifiedAccessEndpointResult,
   errors: [
@@ -79099,7 +79099,7 @@ export const deleteVerifiedAccessGroup: API.OperationMethod<
   DeleteVerifiedAccessGroupResult,
   DeleteVerifiedAccessGroupError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteVerifiedAccessGroupRequest,
   output: DeleteVerifiedAccessGroupResult,
   errors: [
@@ -79120,7 +79120,7 @@ export const deleteVerifiedAccessInstance: API.OperationMethod<
   DeleteVerifiedAccessInstanceResult,
   DeleteVerifiedAccessInstanceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteVerifiedAccessInstanceRequest,
   output: DeleteVerifiedAccessInstanceResult,
   errors: [RequestLimitExceeded, InvalidVerifiedAccessInstanceIdNotFound],
@@ -79137,7 +79137,7 @@ export const deleteVerifiedAccessTrustProvider: API.OperationMethod<
   DeleteVerifiedAccessTrustProviderResult,
   DeleteVerifiedAccessTrustProviderError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteVerifiedAccessTrustProviderRequest,
   output: DeleteVerifiedAccessTrustProviderResult,
   errors: [RequestLimitExceeded, InvalidVerifiedAccessTrustProviderIdNotFound],
@@ -79161,7 +79161,7 @@ export const deleteVolume: API.OperationMethod<
   DeleteVolumeResponse,
   DeleteVolumeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteVolumeRequest,
   output: DeleteVolumeResponse,
   errors: [RequestLimitExceeded, InvalidParameterValue, InvalidVolumeNotFound],
@@ -79189,7 +79189,7 @@ export const deleteVpc: API.OperationMethod<
   DeleteVpcResponse,
   DeleteVpcError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteVpcRequest,
   output: DeleteVpcResponse,
   errors: [
@@ -79214,7 +79214,7 @@ export const deleteVpcBlockPublicAccessExclusion: API.OperationMethod<
   DeleteVpcBlockPublicAccessExclusionResult,
   DeleteVpcBlockPublicAccessExclusionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteVpcBlockPublicAccessExclusionRequest,
   output: DeleteVpcBlockPublicAccessExclusionResult,
   errors: [
@@ -79239,7 +79239,7 @@ export const deleteVpcEncryptionControl: API.OperationMethod<
   DeleteVpcEncryptionControlResult,
   DeleteVpcEncryptionControlError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteVpcEncryptionControlRequest,
   output: DeleteVpcEncryptionControlResult,
   errors: [
@@ -79258,7 +79258,7 @@ export const deleteVpcEndpointConnectionNotifications: API.OperationMethod<
   DeleteVpcEndpointConnectionNotificationsResult,
   DeleteVpcEndpointConnectionNotificationsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteVpcEndpointConnectionNotificationsRequest,
   output: DeleteVpcEndpointConnectionNotificationsResult,
   errors: [],
@@ -79283,7 +79283,7 @@ export const deleteVpcEndpoints: API.OperationMethod<
   DeleteVpcEndpointsResult,
   DeleteVpcEndpointsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteVpcEndpointsRequest,
   output: DeleteVpcEndpointsResult,
   errors: [RequestLimitExceeded, InvalidVpcEndpointIdNotFound, ParseError],
@@ -79300,7 +79300,7 @@ export const deleteVpcEndpointServiceConfigurations: API.OperationMethod<
   DeleteVpcEndpointServiceConfigurationsResult,
   DeleteVpcEndpointServiceConfigurationsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteVpcEndpointServiceConfigurationsRequest,
   output: DeleteVpcEndpointServiceConfigurationsResult,
   errors: [],
@@ -79323,7 +79323,7 @@ export const deleteVpcPeeringConnection: API.OperationMethod<
   DeleteVpcPeeringConnectionResult,
   DeleteVpcPeeringConnectionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteVpcPeeringConnectionRequest,
   output: DeleteVpcPeeringConnectionResult,
   errors: [
@@ -79345,7 +79345,7 @@ export const deleteVpnConcentrator: API.OperationMethod<
   DeleteVpnConcentratorResult,
   DeleteVpnConcentratorError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteVpnConcentratorRequest,
   output: DeleteVpnConcentratorResult,
   errors: [RequestLimitExceeded, InvalidVpnConcentratorIDMalformed],
@@ -79375,7 +79375,7 @@ export const deleteVpnConnection: API.OperationMethod<
   DeleteVpnConnectionResponse,
   DeleteVpnConnectionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteVpnConnectionRequest,
   output: DeleteVpnConnectionResponse,
   errors: [
@@ -79400,7 +79400,7 @@ export const deleteVpnConnectionRoute: API.OperationMethod<
   DeleteVpnConnectionRouteResponse,
   DeleteVpnConnectionRouteError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteVpnConnectionRouteRequest,
   output: DeleteVpnConnectionRouteResponse,
   errors: [RequestLimitExceeded, InvalidRouteMalformed, MissingParameter],
@@ -79421,7 +79421,7 @@ export const deleteVpnGateway: API.OperationMethod<
   DeleteVpnGatewayResponse,
   DeleteVpnGatewayError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteVpnGatewayRequest,
   output: DeleteVpnGatewayResponse,
   errors: [RequestLimitExceeded, IncorrectState, InvalidVpnGatewayIDNotFound],
@@ -79439,7 +79439,7 @@ export const deprovisionByoipCidr: API.OperationMethod<
   DeprovisionByoipCidrResult,
   DeprovisionByoipCidrError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeprovisionByoipCidrRequest,
   output: DeprovisionByoipCidrResult,
   errors: [RequestLimitExceeded],
@@ -79458,7 +79458,7 @@ export const deprovisionIpamByoasn: API.OperationMethod<
   DeprovisionIpamByoasnResult,
   DeprovisionIpamByoasnError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeprovisionIpamByoasnRequest,
   output: DeprovisionIpamByoasnResult,
   errors: [RequestLimitExceeded, InvalidIpamIdNotFound, MissingParameter],
@@ -79476,7 +79476,7 @@ export const deprovisionIpamPoolCidr: API.OperationMethod<
   DeprovisionIpamPoolCidrResult,
   DeprovisionIpamPoolCidrError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeprovisionIpamPoolCidrRequest,
   output: DeprovisionIpamPoolCidrResult,
   errors: [RequestLimitExceeded, InvalidIpamPoolIdNotFound, MissingParameter],
@@ -79495,7 +79495,7 @@ export const deprovisionPublicIpv4PoolCidr: API.OperationMethod<
   DeprovisionPublicIpv4PoolCidrResult,
   DeprovisionPublicIpv4PoolCidrError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeprovisionPublicIpv4PoolCidrRequest,
   output: DeprovisionPublicIpv4PoolCidrResult,
   errors: [
@@ -79545,7 +79545,7 @@ export const deregisterImage: API.OperationMethod<
   DeregisterImageResult,
   DeregisterImageError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeregisterImageRequest,
   output: DeregisterImageResult,
   errors: [
@@ -79568,7 +79568,7 @@ export const deregisterInstanceEventNotificationAttributes: API.OperationMethod<
   DeregisterInstanceEventNotificationAttributesResult,
   DeregisterInstanceEventNotificationAttributesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeregisterInstanceEventNotificationAttributesRequest,
   output: DeregisterInstanceEventNotificationAttributesResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -79585,7 +79585,7 @@ export const deregisterTransitGatewayMulticastGroupMembers: API.OperationMethod<
   DeregisterTransitGatewayMulticastGroupMembersResult,
   DeregisterTransitGatewayMulticastGroupMembersError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeregisterTransitGatewayMulticastGroupMembersRequest,
   output: DeregisterTransitGatewayMulticastGroupMembersResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -79602,7 +79602,7 @@ export const deregisterTransitGatewayMulticastGroupSources: API.OperationMethod<
   DeregisterTransitGatewayMulticastGroupSourcesResult,
   DeregisterTransitGatewayMulticastGroupSourcesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeregisterTransitGatewayMulticastGroupSourcesRequest,
   output: DeregisterTransitGatewayMulticastGroupSourcesResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -79636,7 +79636,7 @@ export const describeAccountAttributes: API.OperationMethod<
   DescribeAccountAttributesResult,
   DescribeAccountAttributesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAccountAttributesRequest,
   output: DescribeAccountAttributesResult,
   errors: [],
@@ -79653,7 +79653,7 @@ export const describeAddresses: API.OperationMethod<
   DescribeAddressesResult,
   DescribeAddressesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAddressesRequest,
   output: DescribeAddressesResult,
   errors: [RequestLimitExceeded, InvalidAllocationIDNotFound],
@@ -79685,7 +79685,7 @@ export const describeAddressesAttribute: API.OperationMethod<
     DescribeAddressesAttributeError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAddressesAttributeRequest,
   output: DescribeAddressesAttributeResult,
   errors: [RequestLimitExceeded, InvalidAllocationIDNotFound],
@@ -79730,7 +79730,7 @@ export const describeAddressTransfers: API.OperationMethod<
     DescribeAddressTransfersError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAddressTransfersRequest,
   output: DescribeAddressTransfersResult,
   errors: [],
@@ -79768,7 +79768,7 @@ export const describeAggregateIdFormat: API.OperationMethod<
   DescribeAggregateIdFormatResult,
   DescribeAggregateIdFormatError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAggregateIdFormatRequest,
   output: DescribeAggregateIdFormatResult,
   errors: [],
@@ -79795,7 +79795,7 @@ export const describeAvailabilityZones: API.OperationMethod<
   DescribeAvailabilityZonesResult,
   DescribeAvailabilityZonesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAvailabilityZonesRequest,
   output: DescribeAvailabilityZonesResult,
   errors: [RequestLimitExceeded, InvalidParameterValue, ParseError],
@@ -79825,7 +79825,7 @@ export const describeAwsNetworkPerformanceMetricSubscriptions: API.OperationMeth
     DescribeAwsNetworkPerformanceMetricSubscriptionsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAwsNetworkPerformanceMetricSubscriptionsRequest,
   output: DescribeAwsNetworkPerformanceMetricSubscriptionsResult,
   errors: [],
@@ -79857,7 +79857,7 @@ export const describeBundleTasks: API.OperationMethod<
   DescribeBundleTasksResult,
   DescribeBundleTasksError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeBundleTasksRequest,
   output: DescribeBundleTasksResult,
   errors: [
@@ -79894,7 +79894,7 @@ export const describeByoipCidrs: API.OperationMethod<
     DescribeByoipCidrsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeByoipCidrsRequest,
   output: DescribeByoipCidrsResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -79933,7 +79933,7 @@ export const describeCapacityBlockExtensionHistory: API.OperationMethod<
     DescribeCapacityBlockExtensionHistoryError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCapacityBlockExtensionHistoryRequest,
   output: DescribeCapacityBlockExtensionHistoryResult,
   errors: [RequestLimitExceeded, InvalidCapacityReservationIdMalformed],
@@ -79972,7 +79972,7 @@ export const describeCapacityBlockExtensionOfferings: API.OperationMethod<
     DescribeCapacityBlockExtensionOfferingsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCapacityBlockExtensionOfferingsRequest,
   output: DescribeCapacityBlockExtensionOfferingsResult,
   errors: [RequestLimitExceeded, InvalidCapacityReservationIdNotFound],
@@ -80014,7 +80014,7 @@ export const describeCapacityBlockOfferings: API.OperationMethod<
     DescribeCapacityBlockOfferingsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCapacityBlockOfferingsRequest,
   output: DescribeCapacityBlockOfferingsResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
@@ -80052,7 +80052,7 @@ export const describeCapacityBlocks: API.OperationMethod<
     DescribeCapacityBlocksError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCapacityBlocksRequest,
   output: DescribeCapacityBlocksResult,
   errors: [RequestLimitExceeded, InvalidCapacityBlockIdMalformed],
@@ -80090,7 +80090,7 @@ export const describeCapacityBlockStatus: API.OperationMethod<
     DescribeCapacityBlockStatusError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCapacityBlockStatusRequest,
   output: DescribeCapacityBlockStatusResult,
   errors: [RequestLimitExceeded, InvalidCapacityBlockIdMalformed],
@@ -80128,7 +80128,7 @@ export const describeCapacityManagerDataExports: API.OperationMethod<
     DescribeCapacityManagerDataExportsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCapacityManagerDataExportsRequest,
   output: DescribeCapacityManagerDataExportsResult,
   errors: [RequestLimitExceeded, InvalidCapacityManagerDataExportIdNotFound],
@@ -80168,7 +80168,7 @@ export const describeCapacityReservationBillingRequests: API.OperationMethod<
     DescribeCapacityReservationBillingRequestsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCapacityReservationBillingRequestsRequest,
   output: DescribeCapacityReservationBillingRequestsResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -80206,7 +80206,7 @@ export const describeCapacityReservationFleets: API.OperationMethod<
     DescribeCapacityReservationFleetsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCapacityReservationFleetsRequest,
   output: DescribeCapacityReservationFleetsResult,
   errors: [RequestLimitExceeded, InvalidCapacityReservationFleetIdMalformed],
@@ -80246,7 +80246,7 @@ export const describeCapacityReservations: API.OperationMethod<
     DescribeCapacityReservationsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCapacityReservationsRequest,
   output: DescribeCapacityReservationsResult,
   errors: [RequestLimitExceeded, InvalidCapacityReservationIdMalformed],
@@ -80287,7 +80287,7 @@ export const describeCapacityReservationTopology: API.OperationMethod<
   DescribeCapacityReservationTopologyResult,
   DescribeCapacityReservationTopologyError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeCapacityReservationTopologyRequest,
   output: DescribeCapacityReservationTopologyResult,
   errors: [],
@@ -80321,7 +80321,7 @@ export const describeCarrierGateways: API.OperationMethod<
     DescribeCarrierGatewaysError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCarrierGatewaysRequest,
   output: DescribeCarrierGatewaysResult,
   errors: [
@@ -80368,7 +80368,7 @@ export const describeClassicLinkInstances: API.OperationMethod<
     DescribeClassicLinkInstancesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeClassicLinkInstancesRequest,
   output: DescribeClassicLinkInstancesResult,
   errors: [RequestLimitExceeded, InvalidInstanceIDMalformed],
@@ -80406,7 +80406,7 @@ export const describeClientVpnAuthorizationRules: API.OperationMethod<
     DescribeClientVpnAuthorizationRulesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeClientVpnAuthorizationRulesRequest,
   output: DescribeClientVpnAuthorizationRulesResult,
   errors: [RequestLimitExceeded, InvalidClientVpnEndpointIdNotFound],
@@ -80446,7 +80446,7 @@ export const describeClientVpnConnections: API.OperationMethod<
     DescribeClientVpnConnectionsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeClientVpnConnectionsRequest,
   output: DescribeClientVpnConnectionsResult,
   errors: [
@@ -80488,7 +80488,7 @@ export const describeClientVpnEndpoints: API.OperationMethod<
     DescribeClientVpnEndpointsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeClientVpnEndpointsRequest,
   output: DescribeClientVpnEndpointsResult,
   errors: [RequestLimitExceeded, InvalidClientVpnEndpointIdNotFound],
@@ -80527,7 +80527,7 @@ export const describeClientVpnRoutes: API.OperationMethod<
     DescribeClientVpnRoutesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeClientVpnRoutesRequest,
   output: DescribeClientVpnRoutesResult,
   errors: [
@@ -80570,7 +80570,7 @@ export const describeClientVpnTargetNetworks: API.OperationMethod<
     DescribeClientVpnTargetNetworksError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeClientVpnTargetNetworksRequest,
   output: DescribeClientVpnTargetNetworksResult,
   errors: [
@@ -80612,7 +80612,7 @@ export const describeCoipPools: API.OperationMethod<
     DescribeCoipPoolsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCoipPoolsRequest,
   output: DescribeCoipPoolsResult,
   errors: [RequestLimitExceeded, InvalidPoolIDMalformed],
@@ -80635,7 +80635,7 @@ export const describeConversionTasks: API.OperationMethod<
   DescribeConversionTasksResult,
   DescribeConversionTasksError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeConversionTasksRequest,
   output: DescribeConversionTasksResult,
   errors: [],
@@ -80656,7 +80656,7 @@ export const describeCustomerGateways: API.OperationMethod<
   DescribeCustomerGatewaysResult,
   DescribeCustomerGatewaysError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeCustomerGatewaysRequest,
   output: DescribeCustomerGatewaysResult,
   errors: [RequestLimitExceeded, InvalidCustomerGatewayIDNotFound, ParseError],
@@ -80684,7 +80684,7 @@ export const describeDeclarativePoliciesReports: API.OperationMethod<
   DescribeDeclarativePoliciesReportsResult,
   DescribeDeclarativePoliciesReportsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDeclarativePoliciesReportsRequest,
   output: DescribeDeclarativePoliciesReportsResult,
   errors: [RequestLimitExceeded, InvalidParameter],
@@ -80723,7 +80723,7 @@ export const describeDhcpOptions: API.OperationMethod<
     DescribeDhcpOptionsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDhcpOptionsRequest,
   output: DescribeDhcpOptionsResult,
   errors: [
@@ -80770,7 +80770,7 @@ export const describeEgressOnlyInternetGateways: API.OperationMethod<
     DescribeEgressOnlyInternetGatewaysError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEgressOnlyInternetGatewaysRequest,
   output: DescribeEgressOnlyInternetGatewaysResult,
   errors: [
@@ -80800,7 +80800,7 @@ export const describeElasticGpus: API.OperationMethod<
   DescribeElasticGpusResult,
   DescribeElasticGpusError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeElasticGpusRequest,
   output: DescribeElasticGpusResult,
   errors: [RequestLimitExceeded, UnsupportedOperation],
@@ -80832,7 +80832,7 @@ export const describeExportImageTasks: API.OperationMethod<
     DescribeExportImageTasksError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeExportImageTasksRequest,
   output: DescribeExportImageTasksResult,
   errors: [RequestLimitExceeded, InvalidExportTaskIDMalformed],
@@ -80855,7 +80855,7 @@ export const describeExportTasks: API.OperationMethod<
   DescribeExportTasksResult,
   DescribeExportTasksError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeExportTasksRequest,
   output: DescribeExportTasksResult,
   errors: [RequestLimitExceeded, InvalidExportTaskIDMalformed],
@@ -80887,7 +80887,7 @@ export const describeFastLaunchImages: API.OperationMethod<
     DescribeFastLaunchImagesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFastLaunchImagesRequest,
   output: DescribeFastLaunchImagesResult,
   errors: [RequestLimitExceeded, InvalidRequest],
@@ -80922,7 +80922,7 @@ export const describeFastSnapshotRestores: API.OperationMethod<
     DescribeFastSnapshotRestoresError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFastSnapshotRestoresRequest,
   output: DescribeFastSnapshotRestoresResult,
   errors: [],
@@ -80952,7 +80952,7 @@ export const describeFleetHistory: API.OperationMethod<
   DescribeFleetHistoryResult,
   DescribeFleetHistoryError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeFleetHistoryRequest,
   output: DescribeFleetHistoryResult,
   errors: [RequestLimitExceeded, InvalidFleetIdMalformed],
@@ -80976,7 +80976,7 @@ export const describeFleetInstances: API.OperationMethod<
   DescribeFleetInstancesResult,
   DescribeFleetInstancesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeFleetInstancesRequest,
   output: DescribeFleetInstancesResult,
   errors: [RequestLimitExceeded, InvalidFleetIdMalformed],
@@ -81014,7 +81014,7 @@ export const describeFleets: API.OperationMethod<
     DescribeFleetsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFleetsRequest,
   output: DescribeFleetsResult,
   errors: [RequestLimitExceeded, InvalidFleetIdMalformed],
@@ -81055,7 +81055,7 @@ export const describeFlowLogs: API.OperationMethod<
     DescribeFlowLogsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFlowLogsRequest,
   output: DescribeFlowLogsResult,
   errors: [RequestLimitExceeded, ParseError],
@@ -81079,7 +81079,7 @@ export const describeFpgaImageAttribute: API.OperationMethod<
   DescribeFpgaImageAttributeResult,
   DescribeFpgaImageAttributeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeFpgaImageAttributeRequest,
   output: DescribeFpgaImageAttributeResult,
   errors: [
@@ -81117,7 +81117,7 @@ export const describeFpgaImages: API.OperationMethod<
     DescribeFpgaImagesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFpgaImagesRequest,
   output: DescribeFpgaImagesResult,
   errors: [RequestLimitExceeded, InvalidFpgaImageIDMalformed],
@@ -81162,7 +81162,7 @@ export const describeHostReservationOfferings: API.OperationMethod<
     DescribeHostReservationOfferingsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeHostReservationOfferingsRequest,
   output: DescribeHostReservationOfferingsResult,
   errors: [RequestLimitExceeded, InvalidHostReservationOfferingIdMalformed],
@@ -81198,7 +81198,7 @@ export const describeHostReservations: API.OperationMethod<
     DescribeHostReservationsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeHostReservationsRequest,
   output: DescribeHostReservationsResult,
   errors: [],
@@ -81240,7 +81240,7 @@ export const describeHosts: API.OperationMethod<
     DescribeHostsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeHostsRequest,
   output: DescribeHostsResult,
   errors: [RequestLimitExceeded, InvalidHostIDMalformed],
@@ -81278,7 +81278,7 @@ export const describeIamInstanceProfileAssociations: API.OperationMethod<
     DescribeIamInstanceProfileAssociationsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeIamInstanceProfileAssociationsRequest,
   output: DescribeIamInstanceProfileAssociationsResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
@@ -81321,7 +81321,7 @@ export const describeIdentityIdFormat: API.OperationMethod<
   DescribeIdentityIdFormatResult,
   DescribeIdentityIdFormatError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeIdentityIdFormatRequest,
   output: DescribeIdentityIdFormatResult,
   errors: [RequestLimitExceeded, InvalidTargetArnUnknown],
@@ -81356,7 +81356,7 @@ export const describeIdFormat: API.OperationMethod<
   DescribeIdFormatResult,
   DescribeIdFormatError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeIdFormatRequest,
   output: DescribeIdFormatResult,
   errors: [],
@@ -81378,7 +81378,7 @@ export const describeImageAttribute: API.OperationMethod<
   ImageAttribute,
   DescribeImageAttributeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeImageAttributeRequest,
   output: ImageAttribute,
   errors: [RequestLimitExceeded, InvalidAMIIDMalformed, MissingParameter],
@@ -81413,7 +81413,7 @@ export const describeImageReferences: API.OperationMethod<
     DescribeImageReferencesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeImageReferencesRequest,
   output: DescribeImageReferencesResult,
   errors: [RequestLimitExceeded, InvalidAMIIDMalformed],
@@ -81480,7 +81480,7 @@ export const describeImages: API.OperationMethod<
     DescribeImagesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeImagesRequest,
   output: DescribeImagesResult,
   errors: [RequestLimitExceeded, InvalidAMIIDMalformed, InvalidAMIIDNotFound],
@@ -81522,7 +81522,7 @@ export const describeImageUsageReportEntries: API.OperationMethod<
     DescribeImageUsageReportEntriesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeImageUsageReportEntriesRequest,
   output: DescribeImageUsageReportEntriesResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
@@ -81564,7 +81564,7 @@ export const describeImageUsageReports: API.OperationMethod<
     DescribeImageUsageReportsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeImageUsageReportsRequest,
   output: DescribeImageUsageReportsResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
@@ -81602,7 +81602,7 @@ export const describeImportImageTasks: API.OperationMethod<
     DescribeImportImageTasksError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeImportImageTasksRequest,
   output: DescribeImportImageTasksResult,
   errors: [RequestLimitExceeded, InvalidParameter],
@@ -81640,7 +81640,7 @@ export const describeImportSnapshotTasks: API.OperationMethod<
     DescribeImportSnapshotTasksError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeImportSnapshotTasksRequest,
   output: DescribeImportSnapshotTasksResult,
   errors: [RequestLimitExceeded, InvalidParameter],
@@ -81666,7 +81666,7 @@ export const describeInstanceAttribute: API.OperationMethod<
   InstanceAttribute,
   DescribeInstanceAttributeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeInstanceAttributeRequest,
   output: InstanceAttribute,
   errors: [
@@ -81702,7 +81702,7 @@ export const describeInstanceConnectEndpoints: API.OperationMethod<
     DescribeInstanceConnectEndpointsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstanceConnectEndpointsRequest,
   output: DescribeInstanceConnectEndpointsResult,
   errors: [RequestLimitExceeded, InvalidInstanceConnectEndpointIdNotFound],
@@ -81764,7 +81764,7 @@ export const describeInstanceCreditSpecifications: API.OperationMethod<
     DescribeInstanceCreditSpecificationsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstanceCreditSpecificationsRequest,
   output: DescribeInstanceCreditSpecificationsResult,
   errors: [RequestLimitExceeded, InvalidInstanceIDMalformed],
@@ -81785,7 +81785,7 @@ export const describeInstanceEventNotificationAttributes: API.OperationMethod<
   DescribeInstanceEventNotificationAttributesResult,
   DescribeInstanceEventNotificationAttributesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeInstanceEventNotificationAttributesRequest,
   output: DescribeInstanceEventNotificationAttributesResult,
   errors: [],
@@ -81827,7 +81827,7 @@ export const describeInstanceEventWindows: API.OperationMethod<
     DescribeInstanceEventWindowsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstanceEventWindowsRequest,
   output: DescribeInstanceEventWindowsResult,
   errors: [RequestLimitExceeded, InvalidInstanceEventWindowIDNotFound],
@@ -81887,7 +81887,7 @@ export const describeInstanceImageMetadata: API.OperationMethod<
     DescribeInstanceImageMetadataError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstanceImageMetadataRequest,
   output: DescribeInstanceImageMetadataResult,
   errors: [RequestLimitExceeded, InvalidInstanceIDMalformed],
@@ -81963,7 +81963,7 @@ export const describeInstances: API.OperationMethod<
     DescribeInstancesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstancesRequest,
   output: DescribeInstancesResult,
   errors: [
@@ -81992,7 +81992,7 @@ export const describeInstanceSqlHaHistoryStates: API.OperationMethod<
   DescribeInstanceSqlHaHistoryStatesResult,
   DescribeInstanceSqlHaHistoryStatesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeInstanceSqlHaHistoryStatesRequest,
   output: DescribeInstanceSqlHaHistoryStatesResult,
   errors: [RequestLimitExceeded, InvalidInstanceIDNotFound],
@@ -82010,7 +82010,7 @@ export const describeInstanceSqlHaStates: API.OperationMethod<
   DescribeInstanceSqlHaStatesResult,
   DescribeInstanceSqlHaStatesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeInstanceSqlHaStatesRequest,
   output: DescribeInstanceSqlHaStatesResult,
   errors: [RequestLimitExceeded, InvalidInstanceIDNotFound],
@@ -82075,7 +82075,7 @@ export const describeInstanceStatus: API.OperationMethod<
     DescribeInstanceStatusError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstanceStatusRequest,
   output: DescribeInstanceStatusResult,
   errors: [
@@ -82134,7 +82134,7 @@ export const describeInstanceTopology: API.OperationMethod<
     DescribeInstanceTopologyError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstanceTopologyRequest,
   output: DescribeInstanceTopologyResult,
   errors: [],
@@ -82171,7 +82171,7 @@ export const describeInstanceTypeOfferings: API.OperationMethod<
     DescribeInstanceTypeOfferingsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstanceTypeOfferingsRequest,
   output: DescribeInstanceTypeOfferingsResult,
   errors: [],
@@ -82207,7 +82207,7 @@ export const describeInstanceTypes: API.OperationMethod<
     DescribeInstanceTypesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstanceTypesRequest,
   output: DescribeInstanceTypesResult,
   errors: [],
@@ -82248,7 +82248,7 @@ export const describeInternetGateways: API.OperationMethod<
     DescribeInternetGatewaysError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInternetGatewaysRequest,
   output: DescribeInternetGatewaysResult,
   errors: [RequestLimitExceeded, InvalidInternetGatewayIDNotFound, ParseError],
@@ -82268,7 +82268,7 @@ export const describeIpamByoasn: API.OperationMethod<
   DescribeIpamByoasnResult,
   DescribeIpamByoasnError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeIpamByoasnRequest,
   output: DescribeIpamByoasnResult,
   errors: [],
@@ -82287,7 +82287,7 @@ export const describeIpamExternalResourceVerificationTokens: API.OperationMethod
   DescribeIpamExternalResourceVerificationTokensResult,
   DescribeIpamExternalResourceVerificationTokensError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeIpamExternalResourceVerificationTokensRequest,
   output: DescribeIpamExternalResourceVerificationTokensResult,
   errors: [
@@ -82309,7 +82309,7 @@ export const describeIpamPolicies: API.OperationMethod<
   DescribeIpamPoliciesResult,
   DescribeIpamPoliciesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeIpamPoliciesRequest,
   output: DescribeIpamPoliciesResult,
   errors: [RequestLimitExceeded, InvalidIpamPolicyIdNotFound],
@@ -82341,7 +82341,7 @@ export const describeIpamPools: API.OperationMethod<
     DescribeIpamPoolsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeIpamPoolsRequest,
   output: DescribeIpamPoolsResult,
   errors: [RequestLimitExceeded, InvalidIpamPoolIdNotFound],
@@ -82379,7 +82379,7 @@ export const describeIpamPrefixListResolvers: API.OperationMethod<
     DescribeIpamPrefixListResolversError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeIpamPrefixListResolversRequest,
   output: DescribeIpamPrefixListResolversResult,
   errors: [RequestLimitExceeded, InvalidIpamPrefixListResolverIdNotFound],
@@ -82417,7 +82417,7 @@ export const describeIpamPrefixListResolverTargets: API.OperationMethod<
     DescribeIpamPrefixListResolverTargetsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeIpamPrefixListResolverTargetsRequest,
   output: DescribeIpamPrefixListResolverTargetsResult,
   errors: [
@@ -82458,7 +82458,7 @@ export const describeIpamResourceDiscoveries: API.OperationMethod<
     DescribeIpamResourceDiscoveriesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeIpamResourceDiscoveriesRequest,
   output: DescribeIpamResourceDiscoveriesResult,
   errors: [RequestLimitExceeded, InvalidIpamResourceDiscoveryIdNotFound],
@@ -82496,7 +82496,7 @@ export const describeIpamResourceDiscoveryAssociations: API.OperationMethod<
     DescribeIpamResourceDiscoveryAssociationsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeIpamResourceDiscoveryAssociationsRequest,
   output: DescribeIpamResourceDiscoveryAssociationsResult,
   errors: [
@@ -82539,7 +82539,7 @@ export const describeIpams: API.OperationMethod<
     DescribeIpamsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeIpamsRequest,
   output: DescribeIpamsResult,
   errors: [RequestLimitExceeded, InvalidIpamIdNotFound],
@@ -82577,7 +82577,7 @@ export const describeIpamScopes: API.OperationMethod<
     DescribeIpamScopesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeIpamScopesRequest,
   output: DescribeIpamScopesResult,
   errors: [RequestLimitExceeded, InvalidIpamScopeIdNotFound],
@@ -82615,7 +82615,7 @@ export const describeIpv6Pools: API.OperationMethod<
     DescribeIpv6PoolsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeIpv6PoolsRequest,
   output: DescribeIpv6PoolsResult,
   errors: [RequestLimitExceeded, InvalidIpv6PoolIDNotFound],
@@ -82642,7 +82642,7 @@ export const describeKeyPairs: API.OperationMethod<
   DescribeKeyPairsResult,
   DescribeKeyPairsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeKeyPairsRequest,
   output: DescribeKeyPairsResult,
   errors: [RequestLimitExceeded, InvalidKeyPairNotFound, InvalidParameterValue],
@@ -82675,7 +82675,7 @@ export const describeLaunchTemplates: API.OperationMethod<
     DescribeLaunchTemplatesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeLaunchTemplatesRequest,
   output: DescribeLaunchTemplatesResult,
   errors: [RequestLimitExceeded, InvalidLaunchTemplateIdMalformed, ParseError],
@@ -82717,7 +82717,7 @@ export const describeLaunchTemplateVersions: API.OperationMethod<
     DescribeLaunchTemplateVersionsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeLaunchTemplateVersionsRequest,
   output: DescribeLaunchTemplateVersionsResult,
   errors: [
@@ -82757,7 +82757,7 @@ export const describeLocalGatewayRouteTables: API.OperationMethod<
     DescribeLocalGatewayRouteTablesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeLocalGatewayRouteTablesRequest,
   output: DescribeLocalGatewayRouteTablesResult,
   errors: [],
@@ -82793,7 +82793,7 @@ export const describeLocalGatewayRouteTableVirtualInterfaceGroupAssociations: AP
     DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsRequest,
   output: DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResult,
   errors: [],
@@ -82828,7 +82828,7 @@ export const describeLocalGatewayRouteTableVpcAssociations: API.OperationMethod<
     DescribeLocalGatewayRouteTableVpcAssociationsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeLocalGatewayRouteTableVpcAssociationsRequest,
   output: DescribeLocalGatewayRouteTableVpcAssociationsResult,
   errors: [],
@@ -82864,7 +82864,7 @@ export const describeLocalGateways: API.OperationMethod<
     DescribeLocalGatewaysError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeLocalGatewaysRequest,
   output: DescribeLocalGatewaysResult,
   errors: [],
@@ -82899,7 +82899,7 @@ export const describeLocalGatewayVirtualInterfaceGroups: API.OperationMethod<
     DescribeLocalGatewayVirtualInterfaceGroupsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeLocalGatewayVirtualInterfaceGroupsRequest,
   output: DescribeLocalGatewayVirtualInterfaceGroupsResult,
   errors: [],
@@ -82934,7 +82934,7 @@ export const describeLocalGatewayVirtualInterfaces: API.OperationMethod<
     DescribeLocalGatewayVirtualInterfacesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeLocalGatewayVirtualInterfacesRequest,
   output: DescribeLocalGatewayVirtualInterfacesResult,
   errors: [],
@@ -82957,7 +82957,7 @@ export const describeLockedSnapshots: API.OperationMethod<
   DescribeLockedSnapshotsResult,
   DescribeLockedSnapshotsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeLockedSnapshotsRequest,
   output: DescribeLockedSnapshotsResult,
   errors: [RequestLimitExceeded, InvalidRequest],
@@ -82989,7 +82989,7 @@ export const describeMacHosts: API.OperationMethod<
     DescribeMacHostsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMacHostsRequest,
   output: DescribeMacHostsResult,
   errors: [RequestLimitExceeded, InvalidHostIDMalformed],
@@ -83029,7 +83029,7 @@ export const describeMacModificationTasks: API.OperationMethod<
     DescribeMacModificationTasksError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMacModificationTasksRequest,
   output: DescribeMacModificationTasksResult,
   errors: [RequestLimitExceeded, InvalidParameter],
@@ -83068,7 +83068,7 @@ export const describeManagedPrefixLists: API.OperationMethod<
     DescribeManagedPrefixListsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeManagedPrefixListsRequest,
   output: DescribeManagedPrefixListsResult,
   errors: [RequestLimitExceeded, InvalidPrefixListIDNotFound, ParseError],
@@ -83109,7 +83109,7 @@ export const describeMovingAddresses: API.OperationMethod<
     DescribeMovingAddressesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMovingAddressesRequest,
   output: DescribeMovingAddressesResult,
   errors: [RequestLimitExceeded, UnsupportedOperation],
@@ -83154,7 +83154,7 @@ export const describeNatGateways: API.OperationMethod<
     DescribeNatGatewaysError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeNatGatewaysRequest,
   output: DescribeNatGatewaysResult,
   errors: [
@@ -83207,7 +83207,7 @@ export const describeNetworkAcls: API.OperationMethod<
     DescribeNetworkAclsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeNetworkAclsRequest,
   output: DescribeNetworkAclsResult,
   errors: [
@@ -83250,7 +83250,7 @@ export const describeNetworkInsightsAccessScopeAnalyses: API.OperationMethod<
     DescribeNetworkInsightsAccessScopeAnalysesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeNetworkInsightsAccessScopeAnalysesRequest,
   output: DescribeNetworkInsightsAccessScopeAnalysesResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
@@ -83288,7 +83288,7 @@ export const describeNetworkInsightsAccessScopes: API.OperationMethod<
     DescribeNetworkInsightsAccessScopesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeNetworkInsightsAccessScopesRequest,
   output: DescribeNetworkInsightsAccessScopesResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
@@ -83326,7 +83326,7 @@ export const describeNetworkInsightsAnalyses: API.OperationMethod<
     DescribeNetworkInsightsAnalysesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeNetworkInsightsAnalysesRequest,
   output: DescribeNetworkInsightsAnalysesResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
@@ -83364,7 +83364,7 @@ export const describeNetworkInsightsPaths: API.OperationMethod<
     DescribeNetworkInsightsPathsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeNetworkInsightsPathsRequest,
   output: DescribeNetworkInsightsPathsResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
@@ -83390,7 +83390,7 @@ export const describeNetworkInterfaceAttribute: API.OperationMethod<
   DescribeNetworkInterfaceAttributeResult,
   DescribeNetworkInterfaceAttributeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeNetworkInterfaceAttributeRequest,
   output: DescribeNetworkInterfaceAttributeResult,
   errors: [
@@ -83427,7 +83427,7 @@ export const describeNetworkInterfacePermissions: API.OperationMethod<
     DescribeNetworkInterfacePermissionsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeNetworkInterfacePermissionsRequest,
   output: DescribeNetworkInterfacePermissionsResult,
   errors: [RequestLimitExceeded, InvalidPermissionIDNotFound],
@@ -83476,7 +83476,7 @@ export const describeNetworkInterfaces: API.OperationMethod<
     DescribeNetworkInterfacesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeNetworkInterfacesRequest,
   output: DescribeNetworkInterfacesResult,
   errors: [
@@ -83506,7 +83506,7 @@ export const describeOutpostLags: API.OperationMethod<
   DescribeOutpostLagsResult,
   DescribeOutpostLagsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeOutpostLagsRequest,
   output: DescribeOutpostLagsResult,
   errors: [RequestLimitExceeded, InvalidOutpostLagIDMalformed],
@@ -83533,7 +83533,7 @@ export const describePlacementGroups: API.OperationMethod<
   DescribePlacementGroupsResult,
   DescribePlacementGroupsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribePlacementGroupsRequest,
   output: DescribePlacementGroupsResult,
   errors: [
@@ -83570,7 +83570,7 @@ export const describePrefixLists: API.OperationMethod<
     DescribePrefixListsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribePrefixListsRequest,
   output: DescribePrefixListsResult,
   errors: [RequestLimitExceeded, InvalidPrefixListIdNotFound],
@@ -83624,7 +83624,7 @@ export const describePrincipalIdFormat: API.OperationMethod<
     DescribePrincipalIdFormatError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribePrincipalIdFormatRequest,
   output: DescribePrincipalIdFormatResult,
   errors: [],
@@ -83662,7 +83662,7 @@ export const describePublicIpv4Pools: API.OperationMethod<
     DescribePublicIpv4PoolsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribePublicIpv4PoolsRequest,
   output: DescribePublicIpv4PoolsResult,
   errors: [RequestLimitExceeded, InvalidPublicIpv4PoolIDNotFound],
@@ -83693,7 +83693,7 @@ export const describeRegions: API.OperationMethod<
   DescribeRegionsResult,
   DescribeRegionsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeRegionsRequest,
   output: DescribeRegionsResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
@@ -83726,7 +83726,7 @@ export const describeReplaceRootVolumeTasks: API.OperationMethod<
     DescribeReplaceRootVolumeTasksError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReplaceRootVolumeTasksRequest,
   output: DescribeReplaceRootVolumeTasksResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
@@ -83755,7 +83755,7 @@ export const describeReservedInstances: API.OperationMethod<
   DescribeReservedInstancesResult,
   DescribeReservedInstancesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeReservedInstancesRequest,
   output: DescribeReservedInstancesResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
@@ -83791,7 +83791,7 @@ export const describeReservedInstancesListings: API.OperationMethod<
   DescribeReservedInstancesListingsResult,
   DescribeReservedInstancesListingsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeReservedInstancesListingsRequest,
   output: DescribeReservedInstancesListingsResult,
   errors: [],
@@ -83832,7 +83832,7 @@ export const describeReservedInstancesModifications: API.OperationMethod<
     DescribeReservedInstancesModificationsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReservedInstancesModificationsRequest,
   output: DescribeReservedInstancesModificationsResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
@@ -83882,7 +83882,7 @@ export const describeReservedInstancesOfferings: API.OperationMethod<
     DescribeReservedInstancesOfferingsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReservedInstancesOfferingsRequest,
   output: DescribeReservedInstancesOfferingsResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
@@ -83924,7 +83924,7 @@ export const describeRouteServerEndpoints: API.OperationMethod<
     DescribeRouteServerEndpointsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRouteServerEndpointsRequest,
   output: DescribeRouteServerEndpointsResult,
   errors: [RequestLimitExceeded, InvalidRouteServerEndpointIdNotFound],
@@ -83972,7 +83972,7 @@ export const describeRouteServerPeers: API.OperationMethod<
     DescribeRouteServerPeersError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRouteServerPeersRequest,
   output: DescribeRouteServerPeersResult,
   errors: [RequestLimitExceeded, InvalidRouteServerPeerIdNotFound],
@@ -84025,7 +84025,7 @@ export const describeRouteServers: API.OperationMethod<
     DescribeRouteServersError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRouteServersRequest,
   output: DescribeRouteServersResult,
   errors: [RequestLimitExceeded, InvalidRouteServerIdNotFound],
@@ -84071,7 +84071,7 @@ export const describeRouteTables: API.OperationMethod<
     DescribeRouteTablesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRouteTablesRequest,
   output: DescribeRouteTablesResult,
   errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound, ParseError],
@@ -84111,7 +84111,7 @@ export const describeScheduledInstanceAvailability: API.OperationMethod<
     DescribeScheduledInstanceAvailabilityError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeScheduledInstanceAvailabilityRequest,
   output: DescribeScheduledInstanceAvailabilityResult,
   errors: [],
@@ -84146,7 +84146,7 @@ export const describeScheduledInstances: API.OperationMethod<
     DescribeScheduledInstancesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeScheduledInstancesRequest,
   output: DescribeScheduledInstancesResult,
   errors: [],
@@ -84181,7 +84181,7 @@ export const describeSecondaryInterfaces: API.OperationMethod<
     DescribeSecondaryInterfacesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSecondaryInterfacesRequest,
   output: DescribeSecondaryInterfacesResult,
   errors: [],
@@ -84216,7 +84216,7 @@ export const describeSecondaryNetworks: API.OperationMethod<
     DescribeSecondaryNetworksError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSecondaryNetworksRequest,
   output: DescribeSecondaryNetworksResult,
   errors: [],
@@ -84251,7 +84251,7 @@ export const describeSecondarySubnets: API.OperationMethod<
     DescribeSecondarySubnetsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSecondarySubnetsRequest,
   output: DescribeSecondarySubnetsResult,
   errors: [],
@@ -84271,7 +84271,7 @@ export const describeSecurityGroupReferences: API.OperationMethod<
   DescribeSecurityGroupReferencesResult,
   DescribeSecurityGroupReferencesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeSecurityGroupReferencesRequest,
   output: DescribeSecurityGroupReferencesResult,
   errors: [],
@@ -84303,7 +84303,7 @@ export const describeSecurityGroupRules: API.OperationMethod<
     DescribeSecurityGroupRulesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSecurityGroupRulesRequest,
   output: DescribeSecurityGroupRulesResult,
   errors: [RequestLimitExceeded, InvalidSecurityGroupRuleIdNotFound],
@@ -84344,7 +84344,7 @@ export const describeSecurityGroups: API.OperationMethod<
     DescribeSecurityGroupsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSecurityGroupsRequest,
   output: DescribeSecurityGroupsResult,
   errors: [
@@ -84385,7 +84385,7 @@ export const describeSecurityGroupVpcAssociations: API.OperationMethod<
     DescribeSecurityGroupVpcAssociationsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSecurityGroupVpcAssociationsRequest,
   output: DescribeSecurityGroupVpcAssociationsResult,
   errors: [],
@@ -84408,7 +84408,7 @@ export const describeServiceLinkVirtualInterfaces: API.OperationMethod<
   DescribeServiceLinkVirtualInterfacesResult,
   DescribeServiceLinkVirtualInterfacesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeServiceLinkVirtualInterfacesRequest,
   output: DescribeServiceLinkVirtualInterfacesResult,
   errors: [RequestLimitExceeded, InvalidServiceLinkVirtualInterfaceIDMalformed],
@@ -84430,7 +84430,7 @@ export const describeSnapshotAttribute: API.OperationMethod<
   DescribeSnapshotAttributeResult,
   DescribeSnapshotAttributeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeSnapshotAttributeRequest,
   output: DescribeSnapshotAttributeResult,
   errors: [
@@ -84512,7 +84512,7 @@ export const describeSnapshots: API.OperationMethod<
     DescribeSnapshotsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSnapshotsRequest,
   output: DescribeSnapshotsResult,
   errors: [
@@ -84551,7 +84551,7 @@ export const describeSnapshotTierStatus: API.OperationMethod<
     DescribeSnapshotTierStatusError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSnapshotTierStatusRequest,
   output: DescribeSnapshotTierStatusResult,
   errors: [],
@@ -84575,7 +84575,7 @@ export const describeSpotDatafeedSubscription: API.OperationMethod<
   DescribeSpotDatafeedSubscriptionResult,
   DescribeSpotDatafeedSubscriptionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeSpotDatafeedSubscriptionRequest,
   output: DescribeSpotDatafeedSubscriptionResult,
   errors: [RequestLimitExceeded, InvalidSpotDatafeedNotFound],
@@ -84592,7 +84592,7 @@ export const describeSpotFleetInstances: API.OperationMethod<
   DescribeSpotFleetInstancesResponse,
   DescribeSpotFleetInstancesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeSpotFleetInstancesRequest,
   output: DescribeSpotFleetInstancesResponse,
   errors: [RequestLimitExceeded, InvalidParameterValue],
@@ -84617,7 +84617,7 @@ export const describeSpotFleetRequestHistory: API.OperationMethod<
   DescribeSpotFleetRequestHistoryResponse,
   DescribeSpotFleetRequestHistoryError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeSpotFleetRequestHistoryRequest,
   output: DescribeSpotFleetRequestHistoryResponse,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -84653,7 +84653,7 @@ export const describeSpotFleetRequests: API.OperationMethod<
     DescribeSpotFleetRequestsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSpotFleetRequestsRequest,
   output: DescribeSpotFleetRequestsResponse,
   errors: [RequestLimitExceeded, InvalidParameterValue, ParseError],
@@ -84710,7 +84710,7 @@ export const describeSpotInstanceRequests: API.OperationMethod<
     DescribeSpotInstanceRequestsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSpotInstanceRequestsRequest,
   output: DescribeSpotInstanceRequestsResult,
   errors: [
@@ -84754,7 +84754,7 @@ export const describeSpotPriceHistory: API.OperationMethod<
     DescribeSpotPriceHistoryError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSpotPriceHistoryRequest,
   output: DescribeSpotPriceHistoryResult,
   errors: [],
@@ -84799,7 +84799,7 @@ export const describeStaleSecurityGroups: API.OperationMethod<
     DescribeStaleSecurityGroupsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeStaleSecurityGroupsRequest,
   output: DescribeStaleSecurityGroupsResult,
   errors: [RequestLimitExceeded, InvalidVpcIDNotFound],
@@ -84849,7 +84849,7 @@ export const describeStoreImageTasks: API.OperationMethod<
     DescribeStoreImageTasksError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeStoreImageTasksRequest,
   output: DescribeStoreImageTasksResult,
   errors: [],
@@ -84893,7 +84893,7 @@ export const describeSubnets: API.OperationMethod<
     DescribeSubnetsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSubnetsRequest,
   output: DescribeSubnetsResult,
   errors: [RequestLimitExceeded, InvalidSubnetIDNotFound, ParseError],
@@ -84941,7 +84941,7 @@ export const describeTags: API.OperationMethod<
     DescribeTagsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTagsRequest,
   output: DescribeTagsResult,
   errors: [RequestLimitExceeded, ParseError],
@@ -84961,7 +84961,7 @@ export const describeTrafficMirrorFilterRules: API.OperationMethod<
   DescribeTrafficMirrorFilterRulesResult,
   DescribeTrafficMirrorFilterRulesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeTrafficMirrorFilterRulesRequest,
   output: DescribeTrafficMirrorFilterRulesResult,
   errors: [],
@@ -84993,7 +84993,7 @@ export const describeTrafficMirrorFilters: API.OperationMethod<
     DescribeTrafficMirrorFiltersError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTrafficMirrorFiltersRequest,
   output: DescribeTrafficMirrorFiltersResult,
   errors: [RequestLimitExceeded, InvalidTrafficMirrorFilterIdNotFound],
@@ -85031,7 +85031,7 @@ export const describeTrafficMirrorSessions: API.OperationMethod<
     DescribeTrafficMirrorSessionsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTrafficMirrorSessionsRequest,
   output: DescribeTrafficMirrorSessionsResult,
   errors: [RequestLimitExceeded, InvalidTrafficMirrorSessionIdNotFound],
@@ -85069,7 +85069,7 @@ export const describeTrafficMirrorTargets: API.OperationMethod<
     DescribeTrafficMirrorTargetsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTrafficMirrorTargetsRequest,
   output: DescribeTrafficMirrorTargetsResult,
   errors: [RequestLimitExceeded, InvalidTrafficMirrorTargetIdNotFound],
@@ -85109,7 +85109,7 @@ export const describeTransitGatewayAttachments: API.OperationMethod<
     DescribeTransitGatewayAttachmentsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTransitGatewayAttachmentsRequest,
   output: DescribeTransitGatewayAttachmentsResult,
   errors: [
@@ -85151,7 +85151,7 @@ export const describeTransitGatewayConnectPeers: API.OperationMethod<
     DescribeTransitGatewayConnectPeersError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTransitGatewayConnectPeersRequest,
   output: DescribeTransitGatewayConnectPeersResult,
   errors: [RequestLimitExceeded, InvalidTransitGatewayConnectPeerIDNotFound],
@@ -85189,7 +85189,7 @@ export const describeTransitGatewayConnects: API.OperationMethod<
     DescribeTransitGatewayConnectsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTransitGatewayConnectsRequest,
   output: DescribeTransitGatewayConnectsResult,
   errors: [RequestLimitExceeded, InvalidTransitGatewayAttachmentIDNotFound],
@@ -85212,7 +85212,7 @@ export const describeTransitGatewayMeteringPolicies: API.OperationMethod<
   DescribeTransitGatewayMeteringPoliciesResult,
   DescribeTransitGatewayMeteringPoliciesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeTransitGatewayMeteringPoliciesRequest,
   output: DescribeTransitGatewayMeteringPoliciesResult,
   errors: [RequestLimitExceeded, InvalidTransitGatewayMeteringPolicyIdNotFound],
@@ -85244,7 +85244,7 @@ export const describeTransitGatewayMulticastDomains: API.OperationMethod<
     DescribeTransitGatewayMulticastDomainsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTransitGatewayMulticastDomainsRequest,
   output: DescribeTransitGatewayMulticastDomainsResult,
   errors: [
@@ -85285,7 +85285,7 @@ export const describeTransitGatewayPeeringAttachments: API.OperationMethod<
     DescribeTransitGatewayPeeringAttachmentsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTransitGatewayPeeringAttachmentsRequest,
   output: DescribeTransitGatewayPeeringAttachmentsResult,
   errors: [RequestLimitExceeded, InvalidTransitGatewayAttachmentIDNotFound],
@@ -85323,7 +85323,7 @@ export const describeTransitGatewayPolicyTables: API.OperationMethod<
     DescribeTransitGatewayPolicyTablesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTransitGatewayPolicyTablesRequest,
   output: DescribeTransitGatewayPolicyTablesResult,
   errors: [RequestLimitExceeded, InvalidTransitGatewayPolicyTableIdNotFound],
@@ -85361,7 +85361,7 @@ export const describeTransitGatewayRouteTableAnnouncements: API.OperationMethod<
     DescribeTransitGatewayRouteTableAnnouncementsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTransitGatewayRouteTableAnnouncementsRequest,
   output: DescribeTransitGatewayRouteTableAnnouncementsResult,
   errors: [
@@ -85404,7 +85404,7 @@ export const describeTransitGatewayRouteTables: API.OperationMethod<
     DescribeTransitGatewayRouteTablesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTransitGatewayRouteTablesRequest,
   output: DescribeTransitGatewayRouteTablesResult,
   errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound, ParseError],
@@ -85444,7 +85444,7 @@ export const describeTransitGateways: API.OperationMethod<
     DescribeTransitGatewaysError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTransitGatewaysRequest,
   output: DescribeTransitGatewaysResult,
   errors: [RequestLimitExceeded, InvalidTransitGatewayIDNotFound, ParseError],
@@ -85483,7 +85483,7 @@ export const describeTransitGatewayVpcAttachments: API.OperationMethod<
     DescribeTransitGatewayVpcAttachmentsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTransitGatewayVpcAttachmentsRequest,
   output: DescribeTransitGatewayVpcAttachmentsResult,
   errors: [RequestLimitExceeded, InvalidTransitGatewayAttachmentIDNotFound],
@@ -85521,7 +85521,7 @@ export const describeTrunkInterfaceAssociations: API.OperationMethod<
     DescribeTrunkInterfaceAssociationsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTrunkInterfaceAssociationsRequest,
   output: DescribeTrunkInterfaceAssociationsResult,
   errors: [RequestLimitExceeded, OperationNotPermitted],
@@ -85559,7 +85559,7 @@ export const describeVerifiedAccessEndpoints: API.OperationMethod<
     DescribeVerifiedAccessEndpointsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVerifiedAccessEndpointsRequest,
   output: DescribeVerifiedAccessEndpointsResult,
   errors: [RequestLimitExceeded, InvalidParameterCombination],
@@ -85597,7 +85597,7 @@ export const describeVerifiedAccessGroups: API.OperationMethod<
     DescribeVerifiedAccessGroupsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVerifiedAccessGroupsRequest,
   output: DescribeVerifiedAccessGroupsResult,
   errors: [RequestLimitExceeded, InvalidVerifiedAccessGroupIdNotFound],
@@ -85635,7 +85635,7 @@ export const describeVerifiedAccessInstanceLoggingConfigurations: API.OperationM
     DescribeVerifiedAccessInstanceLoggingConfigurationsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVerifiedAccessInstanceLoggingConfigurationsRequest,
   output: DescribeVerifiedAccessInstanceLoggingConfigurationsResult,
   errors: [RequestLimitExceeded, InvalidVerifiedAccessInstanceIdNotFound],
@@ -85673,7 +85673,7 @@ export const describeVerifiedAccessInstances: API.OperationMethod<
     DescribeVerifiedAccessInstancesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVerifiedAccessInstancesRequest,
   output: DescribeVerifiedAccessInstancesResult,
   errors: [RequestLimitExceeded, InvalidVerifiedAccessInstanceIdNotFound],
@@ -85711,7 +85711,7 @@ export const describeVerifiedAccessTrustProviders: API.OperationMethod<
     DescribeVerifiedAccessTrustProvidersError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVerifiedAccessTrustProvidersRequest,
   output: DescribeVerifiedAccessTrustProvidersResult,
   errors: [RequestLimitExceeded, InvalidVerifiedAccessTrustProviderIdNotFound],
@@ -85739,7 +85739,7 @@ export const describeVolumeAttribute: API.OperationMethod<
   DescribeVolumeAttributeResult,
   DescribeVolumeAttributeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeVolumeAttributeRequest,
   output: DescribeVolumeAttributeResult,
   errors: [
@@ -85790,7 +85790,7 @@ export const describeVolumes: API.OperationMethod<
     DescribeVolumesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVolumesRequest,
   output: DescribeVolumesResult,
   errors: [
@@ -85836,7 +85836,7 @@ export const describeVolumesModifications: API.OperationMethod<
     DescribeVolumesModificationsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVolumesModificationsRequest,
   output: DescribeVolumesModificationsResult,
   errors: [RequestLimitExceeded, InvalidVolumeIDMalformed],
@@ -85913,7 +85913,7 @@ export const describeVolumeStatus: API.OperationMethod<
     DescribeVolumeStatusError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVolumeStatusRequest,
   output: DescribeVolumeStatusResult,
   errors: [RequestLimitExceeded, InvalidVolumeIDMalformed],
@@ -85937,7 +85937,7 @@ export const describeVpcAttribute: API.OperationMethod<
   DescribeVpcAttributeResult,
   DescribeVpcAttributeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeVpcAttributeRequest,
   output: DescribeVpcAttributeResult,
   errors: [
@@ -85959,7 +85959,7 @@ export const describeVpcBlockPublicAccessExclusions: API.OperationMethod<
   DescribeVpcBlockPublicAccessExclusionsResult,
   DescribeVpcBlockPublicAccessExclusionsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeVpcBlockPublicAccessExclusionsRequest,
   output: DescribeVpcBlockPublicAccessExclusionsResult,
   errors: [
@@ -85977,7 +85977,7 @@ export const describeVpcBlockPublicAccessOptions: API.OperationMethod<
   DescribeVpcBlockPublicAccessOptionsResult,
   DescribeVpcBlockPublicAccessOptionsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeVpcBlockPublicAccessOptionsRequest,
   output: DescribeVpcBlockPublicAccessOptionsResult,
   errors: [],
@@ -85997,7 +85997,7 @@ export const describeVpcClassicLink: API.OperationMethod<
   DescribeVpcClassicLinkResult,
   DescribeVpcClassicLinkError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeVpcClassicLinkRequest,
   output: DescribeVpcClassicLinkResult,
   errors: [RequestLimitExceeded, InvalidVpcIDNotFound, InvalidVpcIdMalformed],
@@ -86035,7 +86035,7 @@ export const describeVpcClassicLinkDnsSupport: API.OperationMethod<
     DescribeVpcClassicLinkDnsSupportError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVpcClassicLinkDnsSupportRequest,
   output: DescribeVpcClassicLinkDnsSupportResult,
   errors: [RequestLimitExceeded, InvalidVpcIDNotFound],
@@ -86060,7 +86060,7 @@ export const describeVpcEncryptionControls: API.OperationMethod<
   DescribeVpcEncryptionControlsResult,
   DescribeVpcEncryptionControlsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeVpcEncryptionControlsRequest,
   output: DescribeVpcEncryptionControlsResult,
   errors: [RequestLimitExceeded, InvalidParameterCombination],
@@ -86075,7 +86075,7 @@ export const describeVpcEndpointAssociations: API.OperationMethod<
   DescribeVpcEndpointAssociationsResult,
   DescribeVpcEndpointAssociationsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeVpcEndpointAssociationsRequest,
   output: DescribeVpcEndpointAssociationsResult,
   errors: [],
@@ -86108,7 +86108,7 @@ export const describeVpcEndpointConnectionNotifications: API.OperationMethod<
     DescribeVpcEndpointConnectionNotificationsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVpcEndpointConnectionNotificationsRequest,
   output: DescribeVpcEndpointConnectionNotificationsResult,
   errors: [RequestLimitExceeded, InvalidConnectionNotification],
@@ -86144,7 +86144,7 @@ export const describeVpcEndpointConnections: API.OperationMethod<
     DescribeVpcEndpointConnectionsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVpcEndpointConnectionsRequest,
   output: DescribeVpcEndpointConnectionsResult,
   errors: [],
@@ -86185,7 +86185,7 @@ export const describeVpcEndpoints: API.OperationMethod<
     DescribeVpcEndpointsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVpcEndpointsRequest,
   output: DescribeVpcEndpointsResult,
   errors: [RequestLimitExceeded, InvalidVpcEndpointIdNotFound, ParseError],
@@ -86223,7 +86223,7 @@ export const describeVpcEndpointServiceConfigurations: API.OperationMethod<
     DescribeVpcEndpointServiceConfigurationsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVpcEndpointServiceConfigurationsRequest,
   output: DescribeVpcEndpointServiceConfigurationsResult,
   errors: [RequestLimitExceeded, InvalidVpcEndpointServiceIdNotFound],
@@ -86263,7 +86263,7 @@ export const describeVpcEndpointServicePermissions: API.OperationMethod<
     DescribeVpcEndpointServicePermissionsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVpcEndpointServicePermissionsRequest,
   output: DescribeVpcEndpointServicePermissionsResult,
   errors: [
@@ -86298,7 +86298,7 @@ export const describeVpcEndpointServices: API.OperationMethod<
   DescribeVpcEndpointServicesResult,
   DescribeVpcEndpointServicesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeVpcEndpointServicesRequest,
   output: DescribeVpcEndpointServicesResult,
   errors: [RequestLimitExceeded, ParseError],
@@ -86333,7 +86333,7 @@ export const describeVpcPeeringConnections: API.OperationMethod<
     DescribeVpcPeeringConnectionsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVpcPeeringConnectionsRequest,
   output: DescribeVpcPeeringConnectionsResult,
   errors: [
@@ -86379,7 +86379,7 @@ export const describeVpcs: API.OperationMethod<
     DescribeVpcsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVpcsRequest,
   output: DescribeVpcsResult,
   errors: [
@@ -86422,7 +86422,7 @@ export const describeVpnConcentrators: API.OperationMethod<
     DescribeVpnConcentratorsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVpnConcentratorsRequest,
   output: DescribeVpnConcentratorsResult,
   errors: [RequestLimitExceeded, InvalidVpnConcentratorIdMalformed],
@@ -86448,7 +86448,7 @@ export const describeVpnConnections: API.OperationMethod<
   DescribeVpnConnectionsResult,
   DescribeVpnConnectionsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeVpnConnectionsRequest,
   output: DescribeVpnConnectionsResult,
   errors: [RequestLimitExceeded, InvalidVpnConnectionIDNotFound],
@@ -86469,7 +86469,7 @@ export const describeVpnGateways: API.OperationMethod<
   DescribeVpnGatewaysResult,
   DescribeVpnGatewaysError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeVpnGatewaysRequest,
   output: DescribeVpnGatewaysResult,
   errors: [RequestLimitExceeded, InvalidVpnGatewayIDNotFound, ParseError],
@@ -86493,7 +86493,7 @@ export const detachClassicLinkVpc: API.OperationMethod<
   DetachClassicLinkVpcResult,
   DetachClassicLinkVpcError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetachClassicLinkVpcRequest,
   output: DetachClassicLinkVpcResult,
   errors: [
@@ -86522,7 +86522,7 @@ export const detachInternetGateway: API.OperationMethod<
   DetachInternetGatewayResponse,
   DetachInternetGatewayError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetachInternetGatewayRequest,
   output: DetachInternetGatewayResponse,
   errors: [
@@ -86548,7 +86548,7 @@ export const detachNetworkInterface: API.OperationMethod<
   DetachNetworkInterfaceResponse,
   DetachNetworkInterfaceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetachNetworkInterfaceRequest,
   output: DetachNetworkInterfaceResponse,
   errors: [
@@ -86571,7 +86571,7 @@ export const detachVerifiedAccessTrustProvider: API.OperationMethod<
   DetachVerifiedAccessTrustProviderResult,
   DetachVerifiedAccessTrustProviderError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetachVerifiedAccessTrustProviderRequest,
   output: DetachVerifiedAccessTrustProviderResult,
   errors: [
@@ -86611,7 +86611,7 @@ export const detachVolume: API.OperationMethod<
   VolumeAttachment,
   DetachVolumeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetachVolumeRequest,
   output: VolumeAttachment,
   errors: [
@@ -86643,7 +86643,7 @@ export const detachVpnGateway: API.OperationMethod<
   DetachVpnGatewayResponse,
   DetachVpnGatewayError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetachVpnGatewayRequest,
   output: DetachVpnGatewayResponse,
   errors: [
@@ -86666,7 +86666,7 @@ export const disableAddressTransfer: API.OperationMethod<
   DisableAddressTransferResult,
   DisableAddressTransferError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableAddressTransferRequest,
   output: DisableAddressTransferResult,
   errors: [RequestLimitExceeded, InvalidElasticIpIDNotFound],
@@ -86691,7 +86691,7 @@ export const disableAllowedImagesSettings: API.OperationMethod<
   DisableAllowedImagesSettingsResult,
   DisableAllowedImagesSettingsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableAllowedImagesSettingsRequest,
   output: DisableAllowedImagesSettingsResult,
   errors: [],
@@ -86708,7 +86708,7 @@ export const disableAwsNetworkPerformanceMetricSubscription: API.OperationMethod
   DisableAwsNetworkPerformanceMetricSubscriptionResult,
   DisableAwsNetworkPerformanceMetricSubscriptionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableAwsNetworkPerformanceMetricSubscriptionRequest,
   output: DisableAwsNetworkPerformanceMetricSubscriptionResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -86726,7 +86726,7 @@ export const disableCapacityManager: API.OperationMethod<
   DisableCapacityManagerResult,
   DisableCapacityManagerError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableCapacityManagerRequest,
   output: DisableCapacityManagerResult,
   errors: [RequestLimitExceeded, CapacityManagerDisabled],
@@ -86749,7 +86749,7 @@ export const disableEbsEncryptionByDefault: API.OperationMethod<
   DisableEbsEncryptionByDefaultResult,
   DisableEbsEncryptionByDefaultError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableEbsEncryptionByDefaultRequest,
   output: DisableEbsEncryptionByDefaultResult,
   errors: [],
@@ -86772,7 +86772,7 @@ export const disableFastLaunch: API.OperationMethod<
   DisableFastLaunchResult,
   DisableFastLaunchError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableFastLaunchRequest,
   output: DisableFastLaunchResult,
   errors: [RequestLimitExceeded, InvalidRequest],
@@ -86789,7 +86789,7 @@ export const disableFastSnapshotRestores: API.OperationMethod<
   DisableFastSnapshotRestoresResult,
   DisableFastSnapshotRestoresError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableFastSnapshotRestoresRequest,
   output: DisableFastSnapshotRestoresResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -86821,7 +86821,7 @@ export const disableImage: API.OperationMethod<
   DisableImageResult,
   DisableImageError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableImageRequest,
   output: DisableImageResult,
   errors: [RequestLimitExceeded, InvalidAMIIDMalformed],
@@ -86841,7 +86841,7 @@ export const disableImageBlockPublicAccess: API.OperationMethod<
   DisableImageBlockPublicAccessResult,
   DisableImageBlockPublicAccessError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableImageBlockPublicAccessRequest,
   output: DisableImageBlockPublicAccessResult,
   errors: [],
@@ -86861,7 +86861,7 @@ export const disableImageDeprecation: API.OperationMethod<
   DisableImageDeprecationResult,
   DisableImageDeprecationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableImageDeprecationRequest,
   output: DisableImageDeprecationResult,
   errors: [RequestLimitExceeded, InvalidAMIIDMalformed],
@@ -86886,7 +86886,7 @@ export const disableImageDeregistrationProtection: API.OperationMethod<
   DisableImageDeregistrationProtectionResult,
   DisableImageDeregistrationProtectionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableImageDeregistrationProtectionRequest,
   output: DisableImageDeregistrationProtectionResult,
   errors: [RequestLimitExceeded, InvalidAMIIDMalformed],
@@ -86906,7 +86906,7 @@ export const disableInstanceSqlHaStandbyDetections: API.OperationMethod<
   DisableInstanceSqlHaStandbyDetectionsResult,
   DisableInstanceSqlHaStandbyDetectionsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableInstanceSqlHaStandbyDetectionsRequest,
   output: DisableInstanceSqlHaStandbyDetectionsResult,
   errors: [RequestLimitExceeded, InvalidInstanceIDMalformed],
@@ -86923,7 +86923,7 @@ export const disableIpamOrganizationAdminAccount: API.OperationMethod<
   DisableIpamOrganizationAdminAccountResult,
   DisableIpamOrganizationAdminAccountError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableIpamOrganizationAdminAccountRequest,
   output: DisableIpamOrganizationAdminAccountResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
@@ -86943,7 +86943,7 @@ export const disableIpamPolicy: API.OperationMethod<
   DisableIpamPolicyResult,
   DisableIpamPolicyError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableIpamPolicyRequest,
   output: DisableIpamPolicyResult,
   errors: [
@@ -86981,7 +86981,7 @@ export const disableRouteServerPropagation: API.OperationMethod<
   DisableRouteServerPropagationResult,
   DisableRouteServerPropagationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableRouteServerPropagationRequest,
   output: DisableRouteServerPropagationResult,
   errors: [RequestLimitExceeded, InvalidRouteServerIdNotFound],
@@ -86998,7 +86998,7 @@ export const disableSerialConsoleAccess: API.OperationMethod<
   DisableSerialConsoleAccessResult,
   DisableSerialConsoleAccessError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableSerialConsoleAccessRequest,
   output: DisableSerialConsoleAccessResult,
   errors: [],
@@ -87026,7 +87026,7 @@ export const disableSnapshotBlockPublicAccess: API.OperationMethod<
   DisableSnapshotBlockPublicAccessResult,
   DisableSnapshotBlockPublicAccessError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableSnapshotBlockPublicAccessRequest,
   output: DisableSnapshotBlockPublicAccessResult,
   errors: [],
@@ -87044,7 +87044,7 @@ export const disableTransitGatewayRouteTablePropagation: API.OperationMethod<
   DisableTransitGatewayRouteTablePropagationResult,
   DisableTransitGatewayRouteTablePropagationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableTransitGatewayRouteTablePropagationRequest,
   output: DisableTransitGatewayRouteTablePropagationResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -87062,7 +87062,7 @@ export const disableVgwRoutePropagation: API.OperationMethod<
   DisableVgwRoutePropagationResponse,
   DisableVgwRoutePropagationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableVgwRoutePropagationRequest,
   output: DisableVgwRoutePropagationResponse,
   errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound],
@@ -87083,7 +87083,7 @@ export const disableVpcClassicLink: API.OperationMethod<
   DisableVpcClassicLinkResult,
   DisableVpcClassicLinkError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableVpcClassicLinkRequest,
   output: DisableVpcClassicLinkResult,
   errors: [RequestLimitExceeded, InvalidVpcIDNotFound, InvalidVpcIdMalformed],
@@ -87107,7 +87107,7 @@ export const disableVpcClassicLinkDnsSupport: API.OperationMethod<
   DisableVpcClassicLinkDnsSupportResult,
   DisableVpcClassicLinkDnsSupportError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableVpcClassicLinkDnsSupportRequest,
   output: DisableVpcClassicLinkDnsSupportResult,
   errors: [RequestLimitExceeded, InvalidVpcIDNotFound, MissingParameter],
@@ -87135,7 +87135,7 @@ export const disassociateAddress: API.OperationMethod<
   DisassociateAddressResponse,
   DisassociateAddressError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateAddressRequest,
   output: DisassociateAddressResponse,
   errors: [
@@ -87160,7 +87160,7 @@ export const disassociateCapacityReservationBillingOwner: API.OperationMethod<
   DisassociateCapacityReservationBillingOwnerResult,
   DisassociateCapacityReservationBillingOwnerError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateCapacityReservationBillingOwnerRequest,
   output: DisassociateCapacityReservationBillingOwnerResult,
   errors: [
@@ -87191,7 +87191,7 @@ export const disassociateClientVpnTargetNetwork: API.OperationMethod<
   DisassociateClientVpnTargetNetworkResult,
   DisassociateClientVpnTargetNetworkError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateClientVpnTargetNetworkRequest,
   output: DisassociateClientVpnTargetNetworkResult,
   errors: [
@@ -87217,7 +87217,7 @@ export const disassociateEnclaveCertificateIamRole: API.OperationMethod<
   DisassociateEnclaveCertificateIamRoleResult,
   DisassociateEnclaveCertificateIamRoleError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateEnclaveCertificateIamRoleRequest,
   output: DisassociateEnclaveCertificateIamRoleResult,
   errors: [
@@ -87241,7 +87241,7 @@ export const disassociateIamInstanceProfile: API.OperationMethod<
   DisassociateIamInstanceProfileResult,
   DisassociateIamInstanceProfileError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateIamInstanceProfileRequest,
   output: DisassociateIamInstanceProfileResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
@@ -87262,7 +87262,7 @@ export const disassociateInstanceEventWindow: API.OperationMethod<
   DisassociateInstanceEventWindowResult,
   DisassociateInstanceEventWindowError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateInstanceEventWindowRequest,
   output: DisassociateInstanceEventWindowResult,
   errors: [RequestLimitExceeded, DependencyViolation, MissingParameter],
@@ -87280,7 +87280,7 @@ export const disassociateIpamByoasn: API.OperationMethod<
   DisassociateIpamByoasnResult,
   DisassociateIpamByoasnError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateIpamByoasnRequest,
   output: DisassociateIpamByoasnResult,
   errors: [RequestLimitExceeded, InvalidCidrNotFound],
@@ -87298,7 +87298,7 @@ export const disassociateIpamResourceDiscovery: API.OperationMethod<
   DisassociateIpamResourceDiscoveryResult,
   DisassociateIpamResourceDiscoveryError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateIpamResourceDiscoveryRequest,
   output: DisassociateIpamResourceDiscoveryResult,
   errors: [
@@ -87330,7 +87330,7 @@ export const disassociateNatGatewayAddress: API.OperationMethod<
   DisassociateNatGatewayAddressResult,
   DisassociateNatGatewayAddressError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateNatGatewayAddressRequest,
   output: DisassociateNatGatewayAddressResult,
   errors: [
@@ -87358,7 +87358,7 @@ export const disassociateRouteServer: API.OperationMethod<
   DisassociateRouteServerResult,
   DisassociateRouteServerError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateRouteServerRequest,
   output: DisassociateRouteServerResult,
   errors: [
@@ -87387,7 +87387,7 @@ export const disassociateRouteTable: API.OperationMethod<
   DisassociateRouteTableResponse,
   DisassociateRouteTableError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateRouteTableRequest,
   output: DisassociateRouteTableResponse,
   errors: [
@@ -87412,7 +87412,7 @@ export const disassociateSecurityGroupVpc: API.OperationMethod<
   DisassociateSecurityGroupVpcResult,
   DisassociateSecurityGroupVpcError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateSecurityGroupVpcRequest,
   output: DisassociateSecurityGroupVpcResult,
   errors: [RequestLimitExceeded, InvalidGroupIdMalformed, MissingParameter],
@@ -87430,7 +87430,7 @@ export const disassociateSubnetCidrBlock: API.OperationMethod<
   DisassociateSubnetCidrBlockResult,
   DisassociateSubnetCidrBlockError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateSubnetCidrBlockRequest,
   output: DisassociateSubnetCidrBlockResult,
   errors: [
@@ -87452,7 +87452,7 @@ export const disassociateTransitGatewayMulticastDomain: API.OperationMethod<
   DisassociateTransitGatewayMulticastDomainResult,
   DisassociateTransitGatewayMulticastDomainError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateTransitGatewayMulticastDomainRequest,
   output: DisassociateTransitGatewayMulticastDomainResult,
   errors: [
@@ -87475,7 +87475,7 @@ export const disassociateTransitGatewayPolicyTable: API.OperationMethod<
   DisassociateTransitGatewayPolicyTableResult,
   DisassociateTransitGatewayPolicyTableError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateTransitGatewayPolicyTableRequest,
   output: DisassociateTransitGatewayPolicyTableResult,
   errors: [
@@ -87498,7 +87498,7 @@ export const disassociateTransitGatewayRouteTable: API.OperationMethod<
   DisassociateTransitGatewayRouteTableResult,
   DisassociateTransitGatewayRouteTableError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateTransitGatewayRouteTableRequest,
   output: DisassociateTransitGatewayRouteTableResult,
   errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound, MissingParameter],
@@ -87515,7 +87515,7 @@ export const disassociateTrunkInterface: API.OperationMethod<
   DisassociateTrunkInterfaceResult,
   DisassociateTrunkInterfaceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateTrunkInterfaceRequest,
   output: DisassociateTrunkInterfaceResult,
   errors: [RequestLimitExceeded, OperationNotPermitted],
@@ -87541,7 +87541,7 @@ export const disassociateVpcCidrBlock: API.OperationMethod<
   DisassociateVpcCidrBlockResult,
   DisassociateVpcCidrBlockError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateVpcCidrBlockRequest,
   output: DisassociateVpcCidrBlockResult,
   errors: [
@@ -87564,7 +87564,7 @@ export const enableAddressTransfer: API.OperationMethod<
   EnableAddressTransferResult,
   EnableAddressTransferError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableAddressTransferRequest,
   output: EnableAddressTransferResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
@@ -87601,7 +87601,7 @@ export const enableAllowedImagesSettings: API.OperationMethod<
   EnableAllowedImagesSettingsResult,
   EnableAllowedImagesSettingsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableAllowedImagesSettingsRequest,
   output: EnableAllowedImagesSettingsResult,
   errors: [],
@@ -87618,7 +87618,7 @@ export const enableAwsNetworkPerformanceMetricSubscription: API.OperationMethod<
   EnableAwsNetworkPerformanceMetricSubscriptionResult,
   EnableAwsNetworkPerformanceMetricSubscriptionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableAwsNetworkPerformanceMetricSubscriptionRequest,
   output: EnableAwsNetworkPerformanceMetricSubscriptionResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -87633,7 +87633,7 @@ export const enableCapacityManager: API.OperationMethod<
   EnableCapacityManagerResult,
   EnableCapacityManagerError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableCapacityManagerRequest,
   output: EnableCapacityManagerResult,
   errors: [],
@@ -87659,7 +87659,7 @@ export const enableEbsEncryptionByDefault: API.OperationMethod<
   EnableEbsEncryptionByDefaultResult,
   EnableEbsEncryptionByDefaultError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableEbsEncryptionByDefaultRequest,
   output: EnableEbsEncryptionByDefaultResult,
   errors: [],
@@ -87684,7 +87684,7 @@ export const enableFastLaunch: API.OperationMethod<
   EnableFastLaunchResult,
   EnableFastLaunchError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableFastLaunchRequest,
   output: EnableFastLaunchResult,
   errors: [RequestLimitExceeded, InvalidRequest],
@@ -87706,7 +87706,7 @@ export const enableFastSnapshotRestores: API.OperationMethod<
   EnableFastSnapshotRestoresResult,
   EnableFastSnapshotRestoresError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableFastSnapshotRestoresRequest,
   output: EnableFastSnapshotRestoresResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -87732,7 +87732,7 @@ export const enableImage: API.OperationMethod<
   EnableImageResult,
   EnableImageError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableImageRequest,
   output: EnableImageResult,
   errors: [RequestLimitExceeded, InvalidAMIIDMalformed],
@@ -87759,7 +87759,7 @@ export const enableImageBlockPublicAccess: API.OperationMethod<
   EnableImageBlockPublicAccessResult,
   EnableImageBlockPublicAccessError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableImageBlockPublicAccessRequest,
   output: EnableImageBlockPublicAccessResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
@@ -87779,7 +87779,7 @@ export const enableImageDeprecation: API.OperationMethod<
   EnableImageDeprecationResult,
   EnableImageDeprecationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableImageDeprecationRequest,
   output: EnableImageDeprecationResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -87802,7 +87802,7 @@ export const enableImageDeregistrationProtection: API.OperationMethod<
   EnableImageDeregistrationProtectionResult,
   EnableImageDeregistrationProtectionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableImageDeregistrationProtectionRequest,
   output: EnableImageDeregistrationProtectionResult,
   errors: [RequestLimitExceeded, InvalidAMIIDMalformed],
@@ -87829,7 +87829,7 @@ export const enableInstanceSqlHaStandbyDetections: API.OperationMethod<
   EnableInstanceSqlHaStandbyDetectionsResult,
   EnableInstanceSqlHaStandbyDetectionsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableInstanceSqlHaStandbyDetectionsRequest,
   output: EnableInstanceSqlHaStandbyDetectionsResult,
   errors: [RequestLimitExceeded, InvalidInstanceIDMalformed],
@@ -87846,7 +87846,7 @@ export const enableIpamOrganizationAdminAccount: API.OperationMethod<
   EnableIpamOrganizationAdminAccountResult,
   EnableIpamOrganizationAdminAccountError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableIpamOrganizationAdminAccountRequest,
   output: EnableIpamOrganizationAdminAccountResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
@@ -87868,7 +87868,7 @@ export const enableIpamPolicy: API.OperationMethod<
   EnableIpamPolicyResult,
   EnableIpamPolicyError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableIpamPolicyRequest,
   output: EnableIpamPolicyResult,
   errors: [
@@ -87891,7 +87891,7 @@ export const enableReachabilityAnalyzerOrganizationSharing: API.OperationMethod<
   EnableReachabilityAnalyzerOrganizationSharingResult,
   EnableReachabilityAnalyzerOrganizationSharingError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableReachabilityAnalyzerOrganizationSharingRequest,
   output: EnableReachabilityAnalyzerOrganizationSharingResult,
   errors: [],
@@ -87912,7 +87912,7 @@ export const enableRouteServerPropagation: API.OperationMethod<
   EnableRouteServerPropagationResult,
   EnableRouteServerPropagationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableRouteServerPropagationRequest,
   output: EnableRouteServerPropagationResult,
   errors: [RequestLimitExceeded, InvalidRouteServerIdNotFound],
@@ -87928,7 +87928,7 @@ export const enableSerialConsoleAccess: API.OperationMethod<
   EnableSerialConsoleAccessResult,
   EnableSerialConsoleAccessError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableSerialConsoleAccessRequest,
   output: EnableSerialConsoleAccessResult,
   errors: [],
@@ -87962,7 +87962,7 @@ export const enableSnapshotBlockPublicAccess: API.OperationMethod<
   EnableSnapshotBlockPublicAccessResult,
   EnableSnapshotBlockPublicAccessError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableSnapshotBlockPublicAccessRequest,
   output: EnableSnapshotBlockPublicAccessResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -87980,7 +87980,7 @@ export const enableTransitGatewayRouteTablePropagation: API.OperationMethod<
   EnableTransitGatewayRouteTablePropagationResult,
   EnableTransitGatewayRouteTablePropagationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableTransitGatewayRouteTablePropagationRequest,
   output: EnableTransitGatewayRouteTablePropagationResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -87998,7 +87998,7 @@ export const enableVgwRoutePropagation: API.OperationMethod<
   EnableVgwRoutePropagationResponse,
   EnableVgwRoutePropagationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableVgwRoutePropagationRequest,
   output: EnableVgwRoutePropagationResponse,
   errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound],
@@ -88013,7 +88013,7 @@ export const enableVolumeIO: API.OperationMethod<
   EnableVolumeIOResponse,
   EnableVolumeIOError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableVolumeIORequest,
   output: EnableVolumeIOResponse,
   errors: [],
@@ -88038,7 +88038,7 @@ export const enableVpcClassicLink: API.OperationMethod<
   EnableVpcClassicLinkResult,
   EnableVpcClassicLinkError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableVpcClassicLinkRequest,
   output: EnableVpcClassicLinkResult,
   errors: [RequestLimitExceeded, InvalidVpcIDNotFound, InvalidVpcIdMalformed],
@@ -88064,7 +88064,7 @@ export const enableVpcClassicLinkDnsSupport: API.OperationMethod<
   EnableVpcClassicLinkDnsSupportResult,
   EnableVpcClassicLinkDnsSupportError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableVpcClassicLinkDnsSupportRequest,
   output: EnableVpcClassicLinkDnsSupportResult,
   errors: [RequestLimitExceeded, InvalidVpcIDNotFound, MissingParameter],
@@ -88081,7 +88081,7 @@ export const exportClientVpnClientCertificateRevocationList: API.OperationMethod
   ExportClientVpnClientCertificateRevocationListResult,
   ExportClientVpnClientCertificateRevocationListError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExportClientVpnClientCertificateRevocationListRequest,
   output: ExportClientVpnClientCertificateRevocationListResult,
   errors: [RequestLimitExceeded, InvalidClientVpnEndpointIdNotFound],
@@ -88100,7 +88100,7 @@ export const exportClientVpnClientConfiguration: API.OperationMethod<
   ExportClientVpnClientConfigurationResult,
   ExportClientVpnClientConfigurationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExportClientVpnClientConfigurationRequest,
   output: ExportClientVpnClientConfigurationResult,
   errors: [RequestLimitExceeded, InvalidClientVpnEndpointIdNotFound],
@@ -88119,7 +88119,7 @@ export const exportImage: API.OperationMethod<
   ExportImageResult,
   ExportImageError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExportImageRequest,
   output: ExportImageResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -88141,7 +88141,7 @@ export const exportTransitGatewayRoutes: API.OperationMethod<
   ExportTransitGatewayRoutesResult,
   ExportTransitGatewayRoutesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExportTransitGatewayRoutesRequest,
   output: ExportTransitGatewayRoutesResult,
   errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound],
@@ -88158,7 +88158,7 @@ export const exportVerifiedAccessInstanceClientConfiguration: API.OperationMetho
   ExportVerifiedAccessInstanceClientConfigurationResult,
   ExportVerifiedAccessInstanceClientConfigurationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExportVerifiedAccessInstanceClientConfigurationRequest,
   output: ExportVerifiedAccessInstanceClientConfigurationResult,
   errors: [RequestLimitExceeded, InvalidVerifiedAccessInstanceIdNotFound],
@@ -88175,7 +88175,7 @@ export const getActiveVpnTunnelStatus: API.OperationMethod<
   GetActiveVpnTunnelStatusResult,
   GetActiveVpnTunnelStatusError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetActiveVpnTunnelStatusRequest,
   output: GetActiveVpnTunnelStatusResult,
   errors: [RequestLimitExceeded, InvalidVpnConnectionIDNotFound],
@@ -88198,7 +88198,7 @@ export const getAllowedImagesSettings: API.OperationMethod<
   GetAllowedImagesSettingsResult,
   GetAllowedImagesSettingsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAllowedImagesSettingsRequest,
   output: GetAllowedImagesSettingsResult,
   errors: [],
@@ -88219,7 +88219,7 @@ export const getAssociatedEnclaveCertificateIamRoles: API.OperationMethod<
   GetAssociatedEnclaveCertificateIamRolesResult,
   GetAssociatedEnclaveCertificateIamRolesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAssociatedEnclaveCertificateIamRolesRequest,
   output: GetAssociatedEnclaveCertificateIamRolesResult,
   errors: [
@@ -88255,7 +88255,7 @@ export const getAssociatedIpv6PoolCidrs: API.OperationMethod<
     GetAssociatedIpv6PoolCidrsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetAssociatedIpv6PoolCidrsRequest,
   output: GetAssociatedIpv6PoolCidrsResult,
   errors: [RequestLimitExceeded, InvalidIpv6PoolIDMalformed],
@@ -88293,7 +88293,7 @@ export const getAwsNetworkPerformanceData: API.OperationMethod<
     GetAwsNetworkPerformanceDataError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetAwsNetworkPerformanceDataRequest,
   output: GetAwsNetworkPerformanceDataResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -88313,7 +88313,7 @@ export const getCapacityManagerAttributes: API.OperationMethod<
   GetCapacityManagerAttributesResult,
   GetCapacityManagerAttributesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCapacityManagerAttributesRequest,
   output: GetCapacityManagerAttributesResult,
   errors: [],
@@ -88346,7 +88346,7 @@ export const getCapacityManagerMetricData: API.OperationMethod<
     GetCapacityManagerMetricDataError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetCapacityManagerMetricDataRequest,
   output: GetCapacityManagerMetricDataResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -88385,7 +88385,7 @@ export const getCapacityManagerMetricDimensions: API.OperationMethod<
     GetCapacityManagerMetricDimensionsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetCapacityManagerMetricDimensionsRequest,
   output: GetCapacityManagerMetricDimensionsResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -88420,7 +88420,7 @@ export const getCapacityManagerMonitoredTagKeys: API.OperationMethod<
     GetCapacityManagerMonitoredTagKeysError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetCapacityManagerMonitoredTagKeysRequest,
   output: GetCapacityManagerMonitoredTagKeysResult,
   errors: [],
@@ -88445,7 +88445,7 @@ export const getCapacityReservationUsage: API.OperationMethod<
   GetCapacityReservationUsageResult,
   GetCapacityReservationUsageError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCapacityReservationUsageRequest,
   output: GetCapacityReservationUsageResult,
   errors: [RequestLimitExceeded, InvalidCapacityReservationIdMalformed],
@@ -88462,7 +88462,7 @@ export const getCoipPoolUsage: API.OperationMethod<
   GetCoipPoolUsageResult,
   GetCoipPoolUsageError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCoipPoolUsageRequest,
   output: GetCoipPoolUsageResult,
   errors: [RequestLimitExceeded, InvalidPoolIDMalformed],
@@ -88486,7 +88486,7 @@ export const getConsoleOutput: API.OperationMethod<
   GetConsoleOutputResult,
   GetConsoleOutputError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConsoleOutputRequest,
   output: GetConsoleOutputResult,
   errors: [
@@ -88513,7 +88513,7 @@ export const getConsoleScreenshot: API.OperationMethod<
   GetConsoleScreenshotResult,
   GetConsoleScreenshotError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConsoleScreenshotRequest,
   output: GetConsoleScreenshotResult,
   errors: [
@@ -88544,7 +88544,7 @@ export const getDeclarativePoliciesReportSummary: API.OperationMethod<
   GetDeclarativePoliciesReportSummaryResult,
   GetDeclarativePoliciesReportSummaryError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDeclarativePoliciesReportSummaryRequest,
   output: GetDeclarativePoliciesReportSummaryResult,
   errors: [RequestLimitExceeded, InvalidDeclarativePoliciesReportIdMalformed],
@@ -88565,7 +88565,7 @@ export const getDefaultCreditSpecification: API.OperationMethod<
   GetDefaultCreditSpecificationResult,
   GetDefaultCreditSpecificationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDefaultCreditSpecificationRequest,
   output: GetDefaultCreditSpecificationResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -88582,7 +88582,7 @@ export const getEbsDefaultKmsKeyId: API.OperationMethod<
   GetEbsDefaultKmsKeyIdResult,
   GetEbsDefaultKmsKeyIdError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEbsDefaultKmsKeyIdRequest,
   output: GetEbsDefaultKmsKeyIdResult,
   errors: [],
@@ -88600,7 +88600,7 @@ export const getEbsEncryptionByDefault: API.OperationMethod<
   GetEbsEncryptionByDefaultResult,
   GetEbsEncryptionByDefaultError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEbsEncryptionByDefaultRequest,
   output: GetEbsEncryptionByDefaultResult,
   errors: [],
@@ -88616,7 +88616,7 @@ export const getEnabledIpamPolicy: API.OperationMethod<
   GetEnabledIpamPolicyResult,
   GetEnabledIpamPolicyError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEnabledIpamPolicyRequest,
   output: GetEnabledIpamPolicyResult,
   errors: [],
@@ -88644,7 +88644,7 @@ export const getFlowLogsIntegrationTemplate: API.OperationMethod<
   GetFlowLogsIntegrationTemplateResult,
   GetFlowLogsIntegrationTemplateError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFlowLogsIntegrationTemplateRequest,
   output: GetFlowLogsIntegrationTemplateResult,
   errors: [],
@@ -88676,7 +88676,7 @@ export const getGroupsForCapacityReservation: API.OperationMethod<
     GetGroupsForCapacityReservationError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetGroupsForCapacityReservationRequest,
   output: GetGroupsForCapacityReservationResult,
   errors: [RequestLimitExceeded, InvalidCapacityReservationIdMalformed],
@@ -88701,7 +88701,7 @@ export const getHostReservationPurchasePreview: API.OperationMethod<
   GetHostReservationPurchasePreviewResult,
   GetHostReservationPurchasePreviewError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetHostReservationPurchasePreviewRequest,
   output: GetHostReservationPurchasePreviewResult,
   errors: [],
@@ -88720,7 +88720,7 @@ export const getImageAncestry: API.OperationMethod<
   GetImageAncestryResult,
   GetImageAncestryError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetImageAncestryRequest,
   output: GetImageAncestryResult,
   errors: [RequestLimitExceeded, InvalidAMIIDMalformed],
@@ -88738,7 +88738,7 @@ export const getImageBlockPublicAccessState: API.OperationMethod<
   GetImageBlockPublicAccessStateResult,
   GetImageBlockPublicAccessStateError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetImageBlockPublicAccessStateRequest,
   output: GetImageBlockPublicAccessStateResult,
   errors: [],
@@ -88757,7 +88757,7 @@ export const getInstanceMetadataDefaults: API.OperationMethod<
   GetInstanceMetadataDefaultsResult,
   GetInstanceMetadataDefaultsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInstanceMetadataDefaultsRequest,
   output: GetInstanceMetadataDefaultsResult,
   errors: [],
@@ -88775,7 +88775,7 @@ export const getInstanceTpmEkPub: API.OperationMethod<
   GetInstanceTpmEkPubResult,
   GetInstanceTpmEkPubError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInstanceTpmEkPubRequest,
   output: GetInstanceTpmEkPubResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -88818,7 +88818,7 @@ export const getInstanceTypesFromInstanceRequirements: API.OperationMethod<
     GetInstanceTypesFromInstanceRequirementsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetInstanceTypesFromInstanceRequirementsRequest,
   output: GetInstanceTypesFromInstanceRequirementsResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -88853,7 +88853,7 @@ export const getInstanceUefiData: API.OperationMethod<
   GetInstanceUefiDataResult,
   GetInstanceUefiDataError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInstanceUefiDataRequest,
   output: GetInstanceUefiDataResult,
   errors: [RequestLimitExceeded, InvalidInstanceIDMalformed],
@@ -88885,7 +88885,7 @@ export const getIpamAddressHistory: API.OperationMethod<
     GetIpamAddressHistoryError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetIpamAddressHistoryRequest,
   output: GetIpamAddressHistoryResult,
   errors: [RequestLimitExceeded, InvalidIpamScopeIdNotFound],
@@ -88924,7 +88924,7 @@ export const getIpamDiscoveredAccounts: API.OperationMethod<
     GetIpamDiscoveredAccountsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetIpamDiscoveredAccountsRequest,
   output: GetIpamDiscoveredAccountsResult,
   errors: [
@@ -88952,7 +88952,7 @@ export const getIpamDiscoveredPublicAddresses: API.OperationMethod<
   GetIpamDiscoveredPublicAddressesResult,
   GetIpamDiscoveredPublicAddressesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIpamDiscoveredPublicAddressesRequest,
   output: GetIpamDiscoveredPublicAddressesResult,
   errors: [
@@ -88989,7 +88989,7 @@ export const getIpamDiscoveredResourceCidrs: API.OperationMethod<
     GetIpamDiscoveredResourceCidrsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetIpamDiscoveredResourceCidrsRequest,
   output: GetIpamDiscoveredResourceCidrsResult,
   errors: [
@@ -89021,7 +89021,7 @@ export const getIpamPolicyAllocationRules: API.OperationMethod<
   GetIpamPolicyAllocationRulesResult,
   GetIpamPolicyAllocationRulesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIpamPolicyAllocationRulesRequest,
   output: GetIpamPolicyAllocationRulesResult,
   errors: [
@@ -89047,7 +89047,7 @@ export const getIpamPolicyOrganizationTargets: API.OperationMethod<
   GetIpamPolicyOrganizationTargetsResult,
   GetIpamPolicyOrganizationTargetsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIpamPolicyOrganizationTargetsRequest,
   output: GetIpamPolicyOrganizationTargetsResult,
   errors: [
@@ -89086,7 +89086,7 @@ export const getIpamPoolAllocations: API.OperationMethod<
     GetIpamPoolAllocationsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetIpamPoolAllocationsRequest,
   output: GetIpamPoolAllocationsResult,
   errors: [RequestLimitExceeded, InvalidIpamPoolIdNotFound, MissingParameter],
@@ -89125,7 +89125,7 @@ export const getIpamPoolCidrs: API.OperationMethod<
     GetIpamPoolCidrsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetIpamPoolCidrsRequest,
   output: GetIpamPoolCidrsResult,
   errors: [RequestLimitExceeded, InvalidIpamPoolIdNotFound, MissingParameter],
@@ -89164,7 +89164,7 @@ export const getIpamPrefixListResolverRules: API.OperationMethod<
     GetIpamPrefixListResolverRulesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetIpamPrefixListResolverRulesRequest,
   output: GetIpamPrefixListResolverRulesResult,
   errors: [
@@ -89206,7 +89206,7 @@ export const getIpamPrefixListResolverVersionEntries: API.OperationMethod<
     GetIpamPrefixListResolverVersionEntriesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetIpamPrefixListResolverVersionEntriesRequest,
   output: GetIpamPrefixListResolverVersionEntriesResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -89272,7 +89272,7 @@ export const getIpamPrefixListResolverVersions: API.OperationMethod<
     GetIpamPrefixListResolverVersionsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetIpamPrefixListResolverVersionsRequest,
   output: GetIpamPrefixListResolverVersionsResult,
   errors: [
@@ -89315,7 +89315,7 @@ export const getIpamResourceCidrs: API.OperationMethod<
     GetIpamResourceCidrsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetIpamResourceCidrsRequest,
   output: GetIpamResourceCidrsResult,
   errors: [
@@ -89350,7 +89350,7 @@ export const getLaunchTemplateData: API.OperationMethod<
   GetLaunchTemplateDataResult,
   GetLaunchTemplateDataError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLaunchTemplateDataRequest,
   output: GetLaunchTemplateDataResult,
   errors: [RequestLimitExceeded, InvalidInstanceIDMalformed],
@@ -89383,7 +89383,7 @@ export const getManagedPrefixListAssociations: API.OperationMethod<
     GetManagedPrefixListAssociationsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetManagedPrefixListAssociationsRequest,
   output: GetManagedPrefixListAssociationsResult,
   errors: [
@@ -89427,7 +89427,7 @@ export const getManagedPrefixListEntries: API.OperationMethod<
     GetManagedPrefixListEntriesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetManagedPrefixListEntriesRequest,
   output: GetManagedPrefixListEntriesResult,
   errors: [
@@ -89470,7 +89470,7 @@ export const getNetworkInsightsAccessScopeAnalysisFindings: API.OperationMethod<
     GetNetworkInsightsAccessScopeAnalysisFindingsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetNetworkInsightsAccessScopeAnalysisFindingsRequest,
   output: GetNetworkInsightsAccessScopeAnalysisFindingsResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
@@ -89493,7 +89493,7 @@ export const getNetworkInsightsAccessScopeContent: API.OperationMethod<
   GetNetworkInsightsAccessScopeContentResult,
   GetNetworkInsightsAccessScopeContentError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetNetworkInsightsAccessScopeContentRequest,
   output: GetNetworkInsightsAccessScopeContentResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
@@ -89527,7 +89527,7 @@ export const getPasswordData: API.OperationMethod<
   GetPasswordDataResult,
   GetPasswordDataError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPasswordDataRequest,
   output: GetPasswordDataResult,
   errors: [
@@ -89550,7 +89550,7 @@ export const getReservedInstancesExchangeQuote: API.OperationMethod<
   GetReservedInstancesExchangeQuoteResult,
   GetReservedInstancesExchangeQuoteError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetReservedInstancesExchangeQuoteRequest,
   output: GetReservedInstancesExchangeQuoteResult,
   errors: [RequestLimitExceeded, InvalidReservedInstancesIDNotFound],
@@ -89571,7 +89571,7 @@ export const getRouteServerAssociations: API.OperationMethod<
   GetRouteServerAssociationsResult,
   GetRouteServerAssociationsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRouteServerAssociationsRequest,
   output: GetRouteServerAssociationsResult,
   errors: [RequestLimitExceeded, InvalidRouteServerIdNotFound],
@@ -89603,7 +89603,7 @@ export const getRouteServerPropagations: API.OperationMethod<
   GetRouteServerPropagationsResult,
   GetRouteServerPropagationsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRouteServerPropagationsRequest,
   output: GetRouteServerPropagationsResult,
   errors: [RequestLimitExceeded, InvalidRouteServerIdNotFound],
@@ -89633,7 +89633,7 @@ export const getRouteServerRoutingDatabase: API.OperationMethod<
   GetRouteServerRoutingDatabaseResult,
   GetRouteServerRoutingDatabaseError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRouteServerRoutingDatabaseRequest,
   output: GetRouteServerRoutingDatabaseResult,
   errors: [RequestLimitExceeded, InvalidRouteServerIdNotFound],
@@ -89666,7 +89666,7 @@ export const getSecurityGroupsForVpc: API.OperationMethod<
     GetSecurityGroupsForVpcError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetSecurityGroupsForVpcRequest,
   output: GetSecurityGroupsForVpcResult,
   errors: [RequestLimitExceeded, InvalidVpcIdMalformed, ParseError],
@@ -89689,7 +89689,7 @@ export const getSerialConsoleAccessStatus: API.OperationMethod<
   GetSerialConsoleAccessStatusResult,
   GetSerialConsoleAccessStatusError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSerialConsoleAccessStatusRequest,
   output: GetSerialConsoleAccessStatusResult,
   errors: [],
@@ -89707,7 +89707,7 @@ export const getSnapshotBlockPublicAccessState: API.OperationMethod<
   GetSnapshotBlockPublicAccessStateResult,
   GetSnapshotBlockPublicAccessStateError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSnapshotBlockPublicAccessStateRequest,
   output: GetSnapshotBlockPublicAccessStateResult,
   errors: [],
@@ -89745,7 +89745,7 @@ export const getSpotPlacementScores: API.OperationMethod<
     GetSpotPlacementScoresError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetSpotPlacementScoresRequest,
   output: GetSpotPlacementScoresResult,
   errors: [],
@@ -89769,7 +89769,7 @@ export const getSubnetCidrReservations: API.OperationMethod<
   GetSubnetCidrReservationsResult,
   GetSubnetCidrReservationsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSubnetCidrReservationsRequest,
   output: GetSubnetCidrReservationsResult,
   errors: [RequestLimitExceeded, InvalidSubnetIDNotFound, MissingParameter],
@@ -89801,7 +89801,7 @@ export const getTransitGatewayAttachmentPropagations: API.OperationMethod<
     GetTransitGatewayAttachmentPropagationsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTransitGatewayAttachmentPropagationsRequest,
   output: GetTransitGatewayAttachmentPropagationsResult,
   errors: [RequestLimitExceeded, InvalidTransitGatewayAttachmentIDNotFound],
@@ -89825,7 +89825,7 @@ export const getTransitGatewayMeteringPolicyEntries: API.OperationMethod<
   GetTransitGatewayMeteringPolicyEntriesResult,
   GetTransitGatewayMeteringPolicyEntriesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTransitGatewayMeteringPolicyEntriesRequest,
   output: GetTransitGatewayMeteringPolicyEntriesResult,
   errors: [
@@ -89863,7 +89863,7 @@ export const getTransitGatewayMulticastDomainAssociations: API.OperationMethod<
     GetTransitGatewayMulticastDomainAssociationsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTransitGatewayMulticastDomainAssociationsRequest,
   output: GetTransitGatewayMulticastDomainAssociationsResult,
   errors: [
@@ -89907,7 +89907,7 @@ export const getTransitGatewayPolicyTableAssociations: API.OperationMethod<
     GetTransitGatewayPolicyTableAssociationsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTransitGatewayPolicyTableAssociationsRequest,
   output: GetTransitGatewayPolicyTableAssociationsResult,
   errors: [
@@ -89935,7 +89935,7 @@ export const getTransitGatewayPolicyTableEntries: API.OperationMethod<
   GetTransitGatewayPolicyTableEntriesResult,
   GetTransitGatewayPolicyTableEntriesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTransitGatewayPolicyTableEntriesRequest,
   output: GetTransitGatewayPolicyTableEntriesResult,
   errors: [
@@ -89972,7 +89972,7 @@ export const getTransitGatewayPrefixListReferences: API.OperationMethod<
     GetTransitGatewayPrefixListReferencesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTransitGatewayPrefixListReferencesRequest,
   output: GetTransitGatewayPrefixListReferencesResult,
   errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound, MissingParameter],
@@ -90010,7 +90010,7 @@ export const getTransitGatewayRouteTableAssociations: API.OperationMethod<
     GetTransitGatewayRouteTableAssociationsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTransitGatewayRouteTableAssociationsRequest,
   output: GetTransitGatewayRouteTableAssociationsResult,
   errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound],
@@ -90048,7 +90048,7 @@ export const getTransitGatewayRouteTablePropagations: API.OperationMethod<
     GetTransitGatewayRouteTablePropagationsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTransitGatewayRouteTablePropagationsRequest,
   output: GetTransitGatewayRouteTablePropagationsResult,
   errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound],
@@ -90072,7 +90072,7 @@ export const getVerifiedAccessEndpointPolicy: API.OperationMethod<
   GetVerifiedAccessEndpointPolicyResult,
   GetVerifiedAccessEndpointPolicyError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetVerifiedAccessEndpointPolicyRequest,
   output: GetVerifiedAccessEndpointPolicyResult,
   errors: [
@@ -90093,7 +90093,7 @@ export const getVerifiedAccessEndpointTargets: API.OperationMethod<
   GetVerifiedAccessEndpointTargetsResult,
   GetVerifiedAccessEndpointTargetsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetVerifiedAccessEndpointTargetsRequest,
   output: GetVerifiedAccessEndpointTargetsResult,
   errors: [RequestLimitExceeded, InvalidVerifiedAccessEndpointIdNotFound],
@@ -90110,7 +90110,7 @@ export const getVerifiedAccessGroupPolicy: API.OperationMethod<
   GetVerifiedAccessGroupPolicyResult,
   GetVerifiedAccessGroupPolicyError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetVerifiedAccessGroupPolicyRequest,
   output: GetVerifiedAccessGroupPolicyResult,
   errors: [RequestLimitExceeded, InvalidVerifiedAccessGroupIdNotFound],
@@ -90129,7 +90129,7 @@ export const getVpcResourcesBlockingEncryptionEnforcement: API.OperationMethod<
   GetVpcResourcesBlockingEncryptionEnforcementResult,
   GetVpcResourcesBlockingEncryptionEnforcementError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetVpcResourcesBlockingEncryptionEnforcementRequest,
   output: GetVpcResourcesBlockingEncryptionEnforcementResult,
   errors: [RequestLimitExceeded, InvalidVpcIdMalformed],
@@ -90147,7 +90147,7 @@ export const getVpnConnectionDeviceSampleConfiguration: API.OperationMethod<
   GetVpnConnectionDeviceSampleConfigurationResult,
   GetVpnConnectionDeviceSampleConfigurationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetVpnConnectionDeviceSampleConfigurationRequest,
   output: GetVpnConnectionDeviceSampleConfigurationResult,
   errors: [RequestLimitExceeded, InvalidVpnConnectionDeviceTypeIdNotFound],
@@ -90179,7 +90179,7 @@ export const getVpnConnectionDeviceTypes: API.OperationMethod<
     GetVpnConnectionDeviceTypesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetVpnConnectionDeviceTypesRequest,
   output: GetVpnConnectionDeviceTypesResult,
   errors: [],
@@ -90202,7 +90202,7 @@ export const getVpnTunnelReplacementStatus: API.OperationMethod<
   GetVpnTunnelReplacementStatusResult,
   GetVpnTunnelReplacementStatusError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetVpnTunnelReplacementStatusRequest,
   output: GetVpnTunnelReplacementStatusResult,
   errors: [RequestLimitExceeded, InvalidVpnConnectionId],
@@ -90221,7 +90221,7 @@ export const importClientVpnClientCertificateRevocationList: API.OperationMethod
   ImportClientVpnClientCertificateRevocationListResult,
   ImportClientVpnClientCertificateRevocationListError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportClientVpnClientCertificateRevocationListRequest,
   output: ImportClientVpnClientCertificateRevocationListResult,
   errors: [RequestLimitExceeded, InvalidClientVpnEndpointIdNotFound],
@@ -90252,7 +90252,7 @@ export const importImage: API.OperationMethod<
   ImportImageResult,
   ImportImageError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportImageRequest,
   output: ImportImageResult,
   errors: [RequestLimitExceeded, MissingRequiredParameter],
@@ -90282,7 +90282,7 @@ export const importInstance: API.OperationMethod<
   ImportInstanceResult,
   ImportInstanceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportInstanceRequest,
   output: ImportInstanceResult,
   errors: [RequestLimitExceeded, InvalidParameter],
@@ -90302,7 +90302,7 @@ export const importKeyPair: API.OperationMethod<
   ImportKeyPairResult,
   ImportKeyPairError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportKeyPairRequest,
   output: ImportKeyPairResult,
   errors: [RequestLimitExceeded, InvalidKeyPairDuplicate],
@@ -90322,7 +90322,7 @@ export const importSnapshot: API.OperationMethod<
   ImportSnapshotResult,
   ImportSnapshotError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportSnapshotRequest,
   output: ImportSnapshotResult,
   errors: [RequestLimitExceeded, InvalidParameter],
@@ -90344,7 +90344,7 @@ export const importVolume: API.OperationMethod<
   ImportVolumeResult,
   ImportVolumeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportVolumeRequest,
   output: ImportVolumeResult,
   errors: [],
@@ -90378,7 +90378,7 @@ export const listImagesInRecycleBin: API.OperationMethod<
     ListImagesInRecycleBinError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImagesInRecycleBinRequest,
   output: ListImagesInRecycleBinResult,
   errors: [RequestLimitExceeded, InvalidAMIIDNotFound],
@@ -90416,7 +90416,7 @@ export const listSnapshotsInRecycleBin: API.OperationMethod<
     ListSnapshotsInRecycleBinError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSnapshotsInRecycleBinRequest,
   output: ListSnapshotsInRecycleBinResult,
   errors: [RequestLimitExceeded, InvalidSnapshotIDMalformed],
@@ -90439,7 +90439,7 @@ export const listVolumesInRecycleBin: API.OperationMethod<
   ListVolumesInRecycleBinResult,
   ListVolumesInRecycleBinError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListVolumesInRecycleBinRequest,
   output: ListVolumesInRecycleBinResult,
   errors: [RequestLimitExceeded, InvalidVolumeIDMalformed],
@@ -90470,7 +90470,7 @@ export const lockSnapshot: API.OperationMethod<
   LockSnapshotResult,
   LockSnapshotError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: LockSnapshotRequest,
   output: LockSnapshotResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -90488,7 +90488,7 @@ export const modifyAddressAttribute: API.OperationMethod<
   ModifyAddressAttributeResult,
   ModifyAddressAttributeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyAddressAttributeRequest,
   output: ModifyAddressAttributeResult,
   errors: [
@@ -90509,7 +90509,7 @@ export const modifyAvailabilityZoneGroup: API.OperationMethod<
   ModifyAvailabilityZoneGroupResult,
   ModifyAvailabilityZoneGroupError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyAvailabilityZoneGroupRequest,
   output: ModifyAvailabilityZoneGroupResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -90551,7 +90551,7 @@ export const modifyCapacityReservation: API.OperationMethod<
   ModifyCapacityReservationResult,
   ModifyCapacityReservationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyCapacityReservationRequest,
   output: ModifyCapacityReservationResult,
   errors: [RequestLimitExceeded, InvalidCapacityReservationIdMalformed],
@@ -90574,7 +90574,7 @@ export const modifyCapacityReservationFleet: API.OperationMethod<
   ModifyCapacityReservationFleetResult,
   ModifyCapacityReservationFleetError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyCapacityReservationFleetRequest,
   output: ModifyCapacityReservationFleetResult,
   errors: [RequestLimitExceeded, InvalidCapacityReservationFleetIdMalformed],
@@ -90591,7 +90591,7 @@ export const modifyClientVpnEndpoint: API.OperationMethod<
   ModifyClientVpnEndpointResult,
   ModifyClientVpnEndpointError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyClientVpnEndpointRequest,
   output: ModifyClientVpnEndpointResult,
   errors: [RequestLimitExceeded, InvalidClientVpnEndpointIdNotFound],
@@ -90622,7 +90622,7 @@ export const modifyDefaultCreditSpecification: API.OperationMethod<
   ModifyDefaultCreditSpecificationResult,
   ModifyDefaultCreditSpecificationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyDefaultCreditSpecificationRequest,
   output: ModifyDefaultCreditSpecificationResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -90649,7 +90649,7 @@ export const modifyEbsDefaultKmsKeyId: API.OperationMethod<
   ModifyEbsDefaultKmsKeyIdResult,
   ModifyEbsDefaultKmsKeyIdError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyEbsDefaultKmsKeyIdRequest,
   output: ModifyEbsDefaultKmsKeyIdResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
@@ -90692,7 +90692,7 @@ export const modifyFleet: API.OperationMethod<
   ModifyFleetResult,
   ModifyFleetError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyFleetRequest,
   output: ModifyFleetResult,
   errors: [RequestLimitExceeded, InvalidFleetIdMalformed],
@@ -90710,7 +90710,7 @@ export const modifyFpgaImageAttribute: API.OperationMethod<
   ModifyFpgaImageAttributeResult,
   ModifyFpgaImageAttributeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyFpgaImageAttributeRequest,
   output: ModifyFpgaImageAttributeResult,
   errors: [
@@ -90737,7 +90737,7 @@ export const modifyHosts: API.OperationMethod<
   ModifyHostsResult,
   ModifyHostsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyHostsRequest,
   output: ModifyHostsResult,
   errors: [],
@@ -90776,7 +90776,7 @@ export const modifyIdentityIdFormat: API.OperationMethod<
   ModifyIdentityIdFormatResponse,
   ModifyIdentityIdFormatError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyIdentityIdFormatRequest,
   output: ModifyIdentityIdFormatResponse,
   errors: [],
@@ -90816,7 +90816,7 @@ export const modifyIdFormat: API.OperationMethod<
   ModifyIdFormatResponse,
   ModifyIdFormatError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyIdFormatRequest,
   output: ModifyIdFormatResponse,
   errors: [],
@@ -90845,7 +90845,7 @@ export const modifyImageAttribute: API.OperationMethod<
   ModifyImageAttributeResponse,
   ModifyImageAttributeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyImageAttributeRequest,
   output: ModifyImageAttributeResponse,
   errors: [
@@ -90879,7 +90879,7 @@ export const modifyInstanceAttribute: API.OperationMethod<
   ModifyInstanceAttributeResponse,
   ModifyInstanceAttributeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyInstanceAttributeRequest,
   output: ModifyInstanceAttributeResponse,
   errors: [
@@ -90903,7 +90903,7 @@ export const modifyInstanceCapacityReservationAttributes: API.OperationMethod<
   ModifyInstanceCapacityReservationAttributesResult,
   ModifyInstanceCapacityReservationAttributesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyInstanceCapacityReservationAttributesRequest,
   output: ModifyInstanceCapacityReservationAttributesResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
@@ -90925,7 +90925,7 @@ export const modifyInstanceConnectEndpoint: API.OperationMethod<
   ModifyInstanceConnectEndpointResult,
   ModifyInstanceConnectEndpointError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyInstanceConnectEndpointRequest,
   output: ModifyInstanceConnectEndpointResult,
   errors: [
@@ -90955,7 +90955,7 @@ export const modifyInstanceCpuOptions: API.OperationMethod<
   ModifyInstanceCpuOptionsResult,
   ModifyInstanceCpuOptionsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyInstanceCpuOptionsRequest,
   output: ModifyInstanceCpuOptionsResult,
   errors: [RequestLimitExceeded, InvalidInstanceIDMalformed],
@@ -90974,7 +90974,7 @@ export const modifyInstanceCreditSpecification: API.OperationMethod<
   ModifyInstanceCreditSpecificationResult,
   ModifyInstanceCreditSpecificationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyInstanceCreditSpecificationRequest,
   output: ModifyInstanceCreditSpecificationResult,
   errors: [],
@@ -90991,7 +90991,7 @@ export const modifyInstanceEventStartTime: API.OperationMethod<
   ModifyInstanceEventStartTimeResult,
   ModifyInstanceEventStartTimeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyInstanceEventStartTimeRequest,
   output: ModifyInstanceEventStartTimeResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -91020,7 +91020,7 @@ export const modifyInstanceEventWindow: API.OperationMethod<
   ModifyInstanceEventWindowResult,
   ModifyInstanceEventWindowError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyInstanceEventWindowRequest,
   output: ModifyInstanceEventWindowResult,
   errors: [
@@ -91047,7 +91047,7 @@ export const modifyInstanceMaintenanceOptions: API.OperationMethod<
   ModifyInstanceMaintenanceOptionsResult,
   ModifyInstanceMaintenanceOptionsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyInstanceMaintenanceOptionsRequest,
   output: ModifyInstanceMaintenanceOptionsResult,
   errors: [RequestLimitExceeded, InvalidInstanceIDMalformed],
@@ -91072,7 +91072,7 @@ export const modifyInstanceMetadataDefaults: API.OperationMethod<
   ModifyInstanceMetadataDefaultsResult,
   ModifyInstanceMetadataDefaultsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyInstanceMetadataDefaultsRequest,
   output: ModifyInstanceMetadataDefaultsResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -91095,7 +91095,7 @@ export const modifyInstanceMetadataOptions: API.OperationMethod<
   ModifyInstanceMetadataOptionsResult,
   ModifyInstanceMetadataOptionsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyInstanceMetadataOptionsRequest,
   output: ModifyInstanceMetadataOptionsResult,
   errors: [RequestLimitExceeded, InvalidInstanceIDMalformed],
@@ -91113,7 +91113,7 @@ export const modifyInstanceNetworkPerformanceOptions: API.OperationMethod<
   ModifyInstanceNetworkPerformanceResult,
   ModifyInstanceNetworkPerformanceOptionsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyInstanceNetworkPerformanceRequest,
   output: ModifyInstanceNetworkPerformanceResult,
   errors: [RequestLimitExceeded, InvalidAction],
@@ -91151,7 +91151,7 @@ export const modifyInstancePlacement: API.OperationMethod<
   ModifyInstancePlacementResult,
   ModifyInstancePlacementError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyInstancePlacementRequest,
   output: ModifyInstancePlacementResult,
   errors: [RequestLimitExceeded, InvalidInstanceIDMalformed],
@@ -91168,7 +91168,7 @@ export const modifyIpam: API.OperationMethod<
   ModifyIpamResult,
   ModifyIpamError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyIpamRequest,
   output: ModifyIpamResult,
   errors: [RequestLimitExceeded, InvalidParameterCombination],
@@ -91189,7 +91189,7 @@ export const modifyIpamPolicyAllocationRules: API.OperationMethod<
   ModifyIpamPolicyAllocationRulesResult,
   ModifyIpamPolicyAllocationRulesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyIpamPolicyAllocationRulesRequest,
   output: ModifyIpamPolicyAllocationRulesResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -91208,7 +91208,7 @@ export const modifyIpamPool: API.OperationMethod<
   ModifyIpamPoolResult,
   ModifyIpamPoolError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyIpamPoolRequest,
   output: ModifyIpamPoolResult,
   errors: [RequestLimitExceeded, InvalidIpamPoolIdNotFound],
@@ -91226,7 +91226,7 @@ export const modifyIpamPrefixListResolver: API.OperationMethod<
   ModifyIpamPrefixListResolverResult,
   ModifyIpamPrefixListResolverError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyIpamPrefixListResolverRequest,
   output: ModifyIpamPrefixListResolverResult,
   errors: [
@@ -91247,7 +91247,7 @@ export const modifyIpamPrefixListResolverTarget: API.OperationMethod<
   ModifyIpamPrefixListResolverTargetResult,
   ModifyIpamPrefixListResolverTargetError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyIpamPrefixListResolverTargetRequest,
   output: ModifyIpamPrefixListResolverTargetResult,
   errors: [
@@ -91270,7 +91270,7 @@ export const modifyIpamResourceCidr: API.OperationMethod<
   ModifyIpamResourceCidrResult,
   ModifyIpamResourceCidrError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyIpamResourceCidrRequest,
   output: ModifyIpamResourceCidrResult,
   errors: [
@@ -91292,7 +91292,7 @@ export const modifyIpamResourceDiscovery: API.OperationMethod<
   ModifyIpamResourceDiscoveryResult,
   ModifyIpamResourceDiscoveryError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyIpamResourceDiscoveryRequest,
   output: ModifyIpamResourceDiscoveryResult,
   errors: [
@@ -91313,7 +91313,7 @@ export const modifyIpamScope: API.OperationMethod<
   ModifyIpamScopeResult,
   ModifyIpamScopeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyIpamScopeRequest,
   output: ModifyIpamScopeResult,
   errors: [RequestLimitExceeded, InvalidParameterCombination],
@@ -91332,7 +91332,7 @@ export const modifyLaunchTemplate: API.OperationMethod<
   ModifyLaunchTemplateResult,
   ModifyLaunchTemplateError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyLaunchTemplateRequest,
   output: ModifyLaunchTemplateResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -91349,7 +91349,7 @@ export const modifyLocalGatewayRoute: API.OperationMethod<
   ModifyLocalGatewayRouteResult,
   ModifyLocalGatewayRouteError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyLocalGatewayRouteRequest,
   output: ModifyLocalGatewayRouteResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -91374,7 +91374,7 @@ export const modifyManagedPrefixList: API.OperationMethod<
   ModifyManagedPrefixListResult,
   ModifyManagedPrefixListError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyManagedPrefixListRequest,
   output: ModifyManagedPrefixListResult,
   errors: [
@@ -91400,7 +91400,7 @@ export const modifyNetworkInterfaceAttribute: API.OperationMethod<
   ModifyNetworkInterfaceAttributeResponse,
   ModifyNetworkInterfaceAttributeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyNetworkInterfaceAttributeRequest,
   output: ModifyNetworkInterfaceAttributeResponse,
   errors: [
@@ -91422,7 +91422,7 @@ export const modifyPrivateDnsNameOptions: API.OperationMethod<
   ModifyPrivateDnsNameOptionsResult,
   ModifyPrivateDnsNameOptionsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyPrivateDnsNameOptionsRequest,
   output: ModifyPrivateDnsNameOptionsResult,
   errors: [RequestLimitExceeded, UnknownResource],
@@ -91439,7 +91439,7 @@ export const modifyPublicIpDnsNameOptions: API.OperationMethod<
   ModifyPublicIpDnsNameOptionsResult,
   ModifyPublicIpDnsNameOptionsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyPublicIpDnsNameOptionsRequest,
   output: ModifyPublicIpDnsNameOptionsResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -91461,7 +91461,7 @@ export const modifyReservedInstances: API.OperationMethod<
   ModifyReservedInstancesResult,
   ModifyReservedInstancesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyReservedInstancesRequest,
   output: ModifyReservedInstancesResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
@@ -91493,7 +91493,7 @@ export const modifyRouteServer: API.OperationMethod<
   ModifyRouteServerResult,
   ModifyRouteServerError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyRouteServerRequest,
   output: ModifyRouteServerResult,
   errors: [RequestLimitExceeded, InvalidRouteServerIdNotFound],
@@ -91510,7 +91510,7 @@ export const modifySecurityGroupRules: API.OperationMethod<
   ModifySecurityGroupRulesResult,
   ModifySecurityGroupRulesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifySecurityGroupRulesRequest,
   output: ModifySecurityGroupRulesResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -91537,7 +91537,7 @@ export const modifySnapshotAttribute: API.OperationMethod<
   ModifySnapshotAttributeResponse,
   ModifySnapshotAttributeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifySnapshotAttributeRequest,
   output: ModifySnapshotAttributeResponse,
   errors: [
@@ -91562,7 +91562,7 @@ export const modifySnapshotTier: API.OperationMethod<
   ModifySnapshotTierResult,
   ModifySnapshotTierError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifySnapshotTierRequest,
   output: ModifySnapshotTierResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
@@ -91608,7 +91608,7 @@ export const modifySpotFleetRequest: API.OperationMethod<
   ModifySpotFleetRequestResponse,
   ModifySpotFleetRequestError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifySpotFleetRequestRequest,
   output: ModifySpotFleetRequestResponse,
   errors: [RequestLimitExceeded, InvalidParameterValue],
@@ -91643,7 +91643,7 @@ export const modifySubnetAttribute: API.OperationMethod<
   ModifySubnetAttributeResponse,
   ModifySubnetAttributeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifySubnetAttributeRequest,
   output: ModifySubnetAttributeResponse,
   errors: [RequestLimitExceeded, InvalidSubnetIDNotFound, MissingParameter],
@@ -91663,7 +91663,7 @@ export const modifyTrafficMirrorFilterNetworkServices: API.OperationMethod<
   ModifyTrafficMirrorFilterNetworkServicesResult,
   ModifyTrafficMirrorFilterNetworkServicesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyTrafficMirrorFilterNetworkServicesRequest,
   output: ModifyTrafficMirrorFilterNetworkServicesResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
@@ -91684,7 +91684,7 @@ export const modifyTrafficMirrorFilterRule: API.OperationMethod<
   ModifyTrafficMirrorFilterRuleResult,
   ModifyTrafficMirrorFilterRuleError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyTrafficMirrorFilterRuleRequest,
   output: ModifyTrafficMirrorFilterRuleResult,
   errors: [
@@ -91705,7 +91705,7 @@ export const modifyTrafficMirrorSession: API.OperationMethod<
   ModifyTrafficMirrorSessionResult,
   ModifyTrafficMirrorSessionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyTrafficMirrorSessionRequest,
   output: ModifyTrafficMirrorSessionResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
@@ -91722,7 +91722,7 @@ export const modifyTransitGateway: API.OperationMethod<
   ModifyTransitGatewayResult,
   ModifyTransitGatewayError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyTransitGatewayRequest,
   output: ModifyTransitGatewayResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -91740,7 +91740,7 @@ export const modifyTransitGatewayMeteringPolicy: API.OperationMethod<
   ModifyTransitGatewayMeteringPolicyResult,
   ModifyTransitGatewayMeteringPolicyError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyTransitGatewayMeteringPolicyRequest,
   output: ModifyTransitGatewayMeteringPolicyResult,
   errors: [
@@ -91761,7 +91761,7 @@ export const modifyTransitGatewayPrefixListReference: API.OperationMethod<
   ModifyTransitGatewayPrefixListReferenceResult,
   ModifyTransitGatewayPrefixListReferenceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyTransitGatewayPrefixListReferenceRequest,
   output: ModifyTransitGatewayPrefixListReferenceResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -91778,7 +91778,7 @@ export const modifyTransitGatewayVpcAttachment: API.OperationMethod<
   ModifyTransitGatewayVpcAttachmentResult,
   ModifyTransitGatewayVpcAttachmentError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyTransitGatewayVpcAttachmentRequest,
   output: ModifyTransitGatewayVpcAttachmentResult,
   errors: [RequestLimitExceeded, InvalidTransitGatewayAttachmentIDNotFound],
@@ -91796,7 +91796,7 @@ export const modifyVerifiedAccessEndpoint: API.OperationMethod<
   ModifyVerifiedAccessEndpointResult,
   ModifyVerifiedAccessEndpointError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyVerifiedAccessEndpointRequest,
   output: ModifyVerifiedAccessEndpointResult,
   errors: [
@@ -91818,7 +91818,7 @@ export const modifyVerifiedAccessEndpointPolicy: API.OperationMethod<
   ModifyVerifiedAccessEndpointPolicyResult,
   ModifyVerifiedAccessEndpointPolicyError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyVerifiedAccessEndpointPolicyRequest,
   output: ModifyVerifiedAccessEndpointPolicyResult,
   errors: [
@@ -91839,7 +91839,7 @@ export const modifyVerifiedAccessGroup: API.OperationMethod<
   ModifyVerifiedAccessGroupResult,
   ModifyVerifiedAccessGroupError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyVerifiedAccessGroupRequest,
   output: ModifyVerifiedAccessGroupResult,
   errors: [RequestLimitExceeded, InvalidVerifiedAccessGroupIdNotFound],
@@ -91856,7 +91856,7 @@ export const modifyVerifiedAccessGroupPolicy: API.OperationMethod<
   ModifyVerifiedAccessGroupPolicyResult,
   ModifyVerifiedAccessGroupPolicyError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyVerifiedAccessGroupPolicyRequest,
   output: ModifyVerifiedAccessGroupPolicyResult,
   errors: [RequestLimitExceeded, InvalidVerifiedAccessGroupIdNotFound],
@@ -91873,7 +91873,7 @@ export const modifyVerifiedAccessInstance: API.OperationMethod<
   ModifyVerifiedAccessInstanceResult,
   ModifyVerifiedAccessInstanceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyVerifiedAccessInstanceRequest,
   output: ModifyVerifiedAccessInstanceResult,
   errors: [RequestLimitExceeded, InvalidVerifiedAccessInstanceIdNotFound],
@@ -91890,7 +91890,7 @@ export const modifyVerifiedAccessInstanceLoggingConfiguration: API.OperationMeth
   ModifyVerifiedAccessInstanceLoggingConfigurationResult,
   ModifyVerifiedAccessInstanceLoggingConfigurationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyVerifiedAccessInstanceLoggingConfigurationRequest,
   output: ModifyVerifiedAccessInstanceLoggingConfigurationResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -91907,7 +91907,7 @@ export const modifyVerifiedAccessTrustProvider: API.OperationMethod<
   ModifyVerifiedAccessTrustProviderResult,
   ModifyVerifiedAccessTrustProviderError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyVerifiedAccessTrustProviderRequest,
   output: ModifyVerifiedAccessTrustProviderResult,
   errors: [RequestLimitExceeded, InvalidVerifiedAccessTrustProviderIdNotFound],
@@ -91945,7 +91945,7 @@ export const modifyVolume: API.OperationMethod<
   ModifyVolumeResult,
   ModifyVolumeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyVolumeRequest,
   output: ModifyVolumeResult,
   errors: [
@@ -91976,7 +91976,7 @@ export const modifyVolumeAttribute: API.OperationMethod<
   ModifyVolumeAttributeResponse,
   ModifyVolumeAttributeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyVolumeAttributeRequest,
   output: ModifyVolumeAttributeResponse,
   errors: [
@@ -91998,7 +91998,7 @@ export const modifyVpcAttribute: API.OperationMethod<
   ModifyVpcAttributeResponse,
   ModifyVpcAttributeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyVpcAttributeRequest,
   output: ModifyVpcAttributeResponse,
   errors: [
@@ -92016,7 +92016,7 @@ export const modifyVpcBlockPublicAccessExclusion: API.OperationMethod<
   ModifyVpcBlockPublicAccessExclusionResult,
   ModifyVpcBlockPublicAccessExclusionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyVpcBlockPublicAccessExclusionRequest,
   output: ModifyVpcBlockPublicAccessExclusionResult,
   errors: [],
@@ -92030,7 +92030,7 @@ export const modifyVpcBlockPublicAccessOptions: API.OperationMethod<
   ModifyVpcBlockPublicAccessOptionsResult,
   ModifyVpcBlockPublicAccessOptionsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyVpcBlockPublicAccessOptionsRequest,
   output: ModifyVpcBlockPublicAccessOptionsResult,
   errors: [],
@@ -92050,7 +92050,7 @@ export const modifyVpcEncryptionControl: API.OperationMethod<
   ModifyVpcEncryptionControlResult,
   ModifyVpcEncryptionControlError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyVpcEncryptionControlRequest,
   output: ModifyVpcEncryptionControlResult,
   errors: [
@@ -92074,7 +92074,7 @@ export const modifyVpcEndpoint: API.OperationMethod<
   ModifyVpcEndpointResult,
   ModifyVpcEndpointError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyVpcEndpointRequest,
   output: ModifyVpcEndpointResult,
   errors: [RequestLimitExceeded, InvalidVpcEndpointIdNotFound],
@@ -92093,7 +92093,7 @@ export const modifyVpcEndpointConnectionNotification: API.OperationMethod<
   ModifyVpcEndpointConnectionNotificationResult,
   ModifyVpcEndpointConnectionNotificationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyVpcEndpointConnectionNotificationRequest,
   output: ModifyVpcEndpointConnectionNotificationResult,
   errors: [
@@ -92118,7 +92118,7 @@ export const modifyVpcEndpointServiceConfiguration: API.OperationMethod<
   ModifyVpcEndpointServiceConfigurationResult,
   ModifyVpcEndpointServiceConfigurationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyVpcEndpointServiceConfigurationRequest,
   output: ModifyVpcEndpointServiceConfigurationResult,
   errors: [
@@ -92139,7 +92139,7 @@ export const modifyVpcEndpointServicePayerResponsibility: API.OperationMethod<
   ModifyVpcEndpointServicePayerResponsibilityResult,
   ModifyVpcEndpointServicePayerResponsibilityError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyVpcEndpointServicePayerResponsibilityRequest,
   output: ModifyVpcEndpointServicePayerResponsibilityResult,
   errors: [RequestLimitExceeded, UnsupportedOperation],
@@ -92163,7 +92163,7 @@ export const modifyVpcEndpointServicePermissions: API.OperationMethod<
   ModifyVpcEndpointServicePermissionsResult,
   ModifyVpcEndpointServicePermissionsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyVpcEndpointServicePermissionsRequest,
   output: ModifyVpcEndpointServicePermissionsResult,
   errors: [
@@ -92196,7 +92196,7 @@ export const modifyVpcPeeringConnectionOptions: API.OperationMethod<
   ModifyVpcPeeringConnectionOptionsResult,
   ModifyVpcPeeringConnectionOptionsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyVpcPeeringConnectionOptionsRequest,
   output: ModifyVpcPeeringConnectionOptionsResult,
   errors: [
@@ -92227,7 +92227,7 @@ export const modifyVpcTenancy: API.OperationMethod<
   ModifyVpcTenancyResult,
   ModifyVpcTenancyError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyVpcTenancyRequest,
   output: ModifyVpcTenancyResult,
   errors: [RequestLimitExceeded, InvalidVpcIDNotFound, InvalidVpcIdMalformed],
@@ -92281,7 +92281,7 @@ export const modifyVpnConnection: API.OperationMethod<
   ModifyVpnConnectionResult,
   ModifyVpnConnectionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyVpnConnectionRequest,
   output: ModifyVpnConnectionResult,
   errors: [RequestLimitExceeded, InvalidVpnConnectionId],
@@ -92303,7 +92303,7 @@ export const modifyVpnConnectionOptions: API.OperationMethod<
   ModifyVpnConnectionOptionsResult,
   ModifyVpnConnectionOptionsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyVpnConnectionOptionsRequest,
   output: ModifyVpnConnectionOptionsResult,
   errors: [RequestLimitExceeded, InvalidVpnConnectionIDNotFound],
@@ -92320,7 +92320,7 @@ export const modifyVpnTunnelCertificate: API.OperationMethod<
   ModifyVpnTunnelCertificateResult,
   ModifyVpnTunnelCertificateError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyVpnTunnelCertificateRequest,
   output: ModifyVpnTunnelCertificateResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
@@ -92340,7 +92340,7 @@ export const modifyVpnTunnelOptions: API.OperationMethod<
   ModifyVpnTunnelOptionsResult,
   ModifyVpnTunnelOptionsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyVpnTunnelOptionsRequest,
   output: ModifyVpnTunnelOptionsResult,
   errors: [RequestLimitExceeded, InvalidVpnConnectionId],
@@ -92362,7 +92362,7 @@ export const monitorInstances: API.OperationMethod<
   MonitorInstancesResult,
   MonitorInstancesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MonitorInstancesRequest,
   output: MonitorInstancesResult,
   errors: [RequestLimitExceeded, InvalidParameterValue, MissingParameter],
@@ -92385,7 +92385,7 @@ export const moveAddressToVpc: API.OperationMethod<
   MoveAddressToVpcResult,
   MoveAddressToVpcError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MoveAddressToVpcRequest,
   output: MoveAddressToVpcResult,
   errors: [RequestLimitExceeded, UnsupportedOperation],
@@ -92404,7 +92404,7 @@ export const moveByoipCidrToIpam: API.OperationMethod<
   MoveByoipCidrToIpamResult,
   MoveByoipCidrToIpamError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MoveByoipCidrToIpamRequest,
   output: MoveByoipCidrToIpamResult,
   errors: [RequestLimitExceeded, InvalidIpamPoolIdNotFound],
@@ -92436,7 +92436,7 @@ export const moveCapacityReservationInstances: API.OperationMethod<
   MoveCapacityReservationInstancesResult,
   MoveCapacityReservationInstancesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MoveCapacityReservationInstancesRequest,
   output: MoveCapacityReservationInstancesResult,
   errors: [RequestLimitExceeded, InvalidCapacityReservationIdMalformed],
@@ -92464,7 +92464,7 @@ export const provisionByoipCidr: API.OperationMethod<
   ProvisionByoipCidrResult,
   ProvisionByoipCidrError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ProvisionByoipCidrRequest,
   output: ProvisionByoipCidrResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
@@ -92481,7 +92481,7 @@ export const provisionIpamByoasn: API.OperationMethod<
   ProvisionIpamByoasnResult,
   ProvisionIpamByoasnError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ProvisionIpamByoasnRequest,
   output: ProvisionIpamByoasnResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -92501,7 +92501,7 @@ export const provisionIpamPoolCidr: API.OperationMethod<
   ProvisionIpamPoolCidrResult,
   ProvisionIpamPoolCidrError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ProvisionIpamPoolCidrRequest,
   output: ProvisionIpamPoolCidrResult,
   errors: [RequestLimitExceeded, InvalidIpamPoolIdNotFound, MissingParameter],
@@ -92521,7 +92521,7 @@ export const provisionPublicIpv4PoolCidr: API.OperationMethod<
   ProvisionPublicIpv4PoolCidrResult,
   ProvisionPublicIpv4PoolCidrError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ProvisionPublicIpv4PoolCidrRequest,
   output: ProvisionPublicIpv4PoolCidrResult,
   errors: [RequestLimitExceeded, InvalidIpamPoolIdNotFound, MissingParameter],
@@ -92540,7 +92540,7 @@ export const purchaseCapacityBlock: API.OperationMethod<
   PurchaseCapacityBlockResult,
   PurchaseCapacityBlockError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PurchaseCapacityBlockRequest,
   output: PurchaseCapacityBlockResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -92558,7 +92558,7 @@ export const purchaseCapacityBlockExtension: API.OperationMethod<
   PurchaseCapacityBlockExtensionResult,
   PurchaseCapacityBlockExtensionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PurchaseCapacityBlockExtensionRequest,
   output: PurchaseCapacityBlockExtensionResult,
   errors: [RequestLimitExceeded, InvalidCapacityReservationIdNotFound],
@@ -92575,7 +92575,7 @@ export const purchaseHostReservation: API.OperationMethod<
   PurchaseHostReservationResult,
   PurchaseHostReservationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PurchaseHostReservationRequest,
   output: PurchaseHostReservationResult,
   errors: [],
@@ -92604,7 +92604,7 @@ export const purchaseReservedInstancesOffering: API.OperationMethod<
   PurchaseReservedInstancesOfferingResult,
   PurchaseReservedInstancesOfferingError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PurchaseReservedInstancesOfferingRequest,
   output: PurchaseReservedInstancesOfferingResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
@@ -92630,7 +92630,7 @@ export const purchaseScheduledInstances: API.OperationMethod<
   PurchaseScheduledInstancesResult,
   PurchaseScheduledInstancesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PurchaseScheduledInstancesRequest,
   output: PurchaseScheduledInstancesResult,
   errors: [RequestLimitExceeded, InvalidPurchaseTokenMalformed],
@@ -92658,7 +92658,7 @@ export const rebootInstances: API.OperationMethod<
   RebootInstancesResponse,
   RebootInstancesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RebootInstancesRequest,
   output: RebootInstancesResponse,
   errors: [
@@ -92721,7 +92721,7 @@ export const registerImage: API.OperationMethod<
   RegisterImageResult,
   RegisterImageError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterImageRequest,
   output: RegisterImageResult,
   errors: [RequestLimitExceeded, InvalidParameterCombination],
@@ -92741,7 +92741,7 @@ export const registerInstanceEventNotificationAttributes: API.OperationMethod<
   RegisterInstanceEventNotificationAttributesResult,
   RegisterInstanceEventNotificationAttributesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterInstanceEventNotificationAttributesRequest,
   output: RegisterInstanceEventNotificationAttributesResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -92765,7 +92765,7 @@ export const registerTransitGatewayMulticastGroupMembers: API.OperationMethod<
   RegisterTransitGatewayMulticastGroupMembersResult,
   RegisterTransitGatewayMulticastGroupMembersError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterTransitGatewayMulticastGroupMembersRequest,
   output: RegisterTransitGatewayMulticastGroupMembersResult,
   errors: [
@@ -92794,7 +92794,7 @@ export const registerTransitGatewayMulticastGroupSources: API.OperationMethod<
   RegisterTransitGatewayMulticastGroupSourcesResult,
   RegisterTransitGatewayMulticastGroupSourcesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterTransitGatewayMulticastGroupSourcesRequest,
   output: RegisterTransitGatewayMulticastGroupSourcesResult,
   errors: [
@@ -92817,7 +92817,7 @@ export const rejectCapacityReservationBillingOwnership: API.OperationMethod<
   RejectCapacityReservationBillingOwnershipResult,
   RejectCapacityReservationBillingOwnershipError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RejectCapacityReservationBillingOwnershipRequest,
   output: RejectCapacityReservationBillingOwnershipResult,
   errors: [RequestLimitExceeded, InvalidCapacityReservationIdMalformed],
@@ -92834,7 +92834,7 @@ export const rejectTransitGatewayMulticastDomainAssociations: API.OperationMetho
   RejectTransitGatewayMulticastDomainAssociationsResult,
   RejectTransitGatewayMulticastDomainAssociationsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RejectTransitGatewayMulticastDomainAssociationsRequest,
   output: RejectTransitGatewayMulticastDomainAssociationsResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -92852,7 +92852,7 @@ export const rejectTransitGatewayPeeringAttachment: API.OperationMethod<
   RejectTransitGatewayPeeringAttachmentResult,
   RejectTransitGatewayPeeringAttachmentError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RejectTransitGatewayPeeringAttachmentRequest,
   output: RejectTransitGatewayPeeringAttachmentResult,
   errors: [
@@ -92878,7 +92878,7 @@ export const rejectTransitGatewayVpcAttachment: API.OperationMethod<
   RejectTransitGatewayVpcAttachmentResult,
   RejectTransitGatewayVpcAttachmentError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RejectTransitGatewayVpcAttachmentRequest,
   output: RejectTransitGatewayVpcAttachmentResult,
   errors: [
@@ -92900,7 +92900,7 @@ export const rejectVpcEndpointConnections: API.OperationMethod<
   RejectVpcEndpointConnectionsResult,
   RejectVpcEndpointConnectionsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RejectVpcEndpointConnectionsRequest,
   output: RejectVpcEndpointConnectionsResult,
   errors: [
@@ -92926,7 +92926,7 @@ export const rejectVpcPeeringConnection: API.OperationMethod<
   RejectVpcPeeringConnectionResult,
   RejectVpcPeeringConnectionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RejectVpcPeeringConnectionRequest,
   output: RejectVpcPeeringConnectionResult,
   errors: [
@@ -92971,7 +92971,7 @@ export const releaseAddress: API.OperationMethod<
   ReleaseAddressResponse,
   ReleaseAddressError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReleaseAddressRequest,
   output: ReleaseAddressResponse,
   errors: [
@@ -93009,7 +93009,7 @@ export const releaseHosts: API.OperationMethod<
   ReleaseHostsResult,
   ReleaseHostsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReleaseHostsRequest,
   output: ReleaseHostsResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -93028,7 +93028,7 @@ export const releaseIpamPoolAllocation: API.OperationMethod<
   ReleaseIpamPoolAllocationResult,
   ReleaseIpamPoolAllocationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReleaseIpamPoolAllocationRequest,
   output: ReleaseIpamPoolAllocationResult,
   errors: [RequestLimitExceeded, InvalidIpamPoolIdNotFound],
@@ -93047,7 +93047,7 @@ export const replaceIamInstanceProfileAssociation: API.OperationMethod<
   ReplaceIamInstanceProfileAssociationResult,
   ReplaceIamInstanceProfileAssociationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReplaceIamInstanceProfileAssociationRequest,
   output: ReplaceIamInstanceProfileAssociationResult,
   errors: [],
@@ -93069,7 +93069,7 @@ export const replaceImageCriteriaInAllowedImagesSettings: API.OperationMethod<
   ReplaceImageCriteriaInAllowedImagesSettingsResult,
   ReplaceImageCriteriaInAllowedImagesSettingsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReplaceImageCriteriaInAllowedImagesSettingsRequest,
   output: ReplaceImageCriteriaInAllowedImagesSettingsResult,
   errors: [],
@@ -93092,7 +93092,7 @@ export const replaceNetworkAclAssociation: API.OperationMethod<
   ReplaceNetworkAclAssociationResult,
   ReplaceNetworkAclAssociationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReplaceNetworkAclAssociationRequest,
   output: ReplaceNetworkAclAssociationResult,
   errors: [
@@ -93116,7 +93116,7 @@ export const replaceNetworkAclEntry: API.OperationMethod<
   ReplaceNetworkAclEntryResponse,
   ReplaceNetworkAclEntryError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReplaceNetworkAclEntryRequest,
   output: ReplaceNetworkAclEntryResponse,
   errors: [
@@ -93145,7 +93145,7 @@ export const replaceRoute: API.OperationMethod<
   ReplaceRouteResponse,
   ReplaceRouteError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReplaceRouteRequest,
   output: ReplaceRouteResponse,
   errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound, MissingParameter],
@@ -93168,7 +93168,7 @@ export const replaceRouteTableAssociation: API.OperationMethod<
   ReplaceRouteTableAssociationResult,
   ReplaceRouteTableAssociationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReplaceRouteTableAssociationRequest,
   output: ReplaceRouteTableAssociationResult,
   errors: [
@@ -93189,7 +93189,7 @@ export const replaceTransitGatewayRoute: API.OperationMethod<
   ReplaceTransitGatewayRouteResult,
   ReplaceTransitGatewayRouteError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReplaceTransitGatewayRouteRequest,
   output: ReplaceTransitGatewayRouteResult,
   errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound],
@@ -93206,7 +93206,7 @@ export const replaceVpnTunnel: API.OperationMethod<
   ReplaceVpnTunnelResult,
   ReplaceVpnTunnelError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReplaceVpnTunnelRequest,
   output: ReplaceVpnTunnelResult,
   errors: [RequestLimitExceeded, InvalidVpnConnectionId],
@@ -93228,7 +93228,7 @@ export const reportInstanceStatus: API.OperationMethod<
   ReportInstanceStatusResponse,
   ReportInstanceStatusError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReportInstanceStatusRequest,
   output: ReportInstanceStatusResponse,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -93276,7 +93276,7 @@ export const requestSpotFleet: API.OperationMethod<
   RequestSpotFleetResponse,
   RequestSpotFleetError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RequestSpotFleetRequest,
   output: RequestSpotFleetResponse,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -93302,7 +93302,7 @@ export const requestSpotInstances: API.OperationMethod<
   RequestSpotInstancesResult,
   RequestSpotInstancesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RequestSpotInstancesRequest,
   output: RequestSpotInstancesResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -93319,7 +93319,7 @@ export const resetAddressAttribute: API.OperationMethod<
   ResetAddressAttributeResult,
   ResetAddressAttributeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetAddressAttributeRequest,
   output: ResetAddressAttributeResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -93339,7 +93339,7 @@ export const resetEbsDefaultKmsKeyId: API.OperationMethod<
   ResetEbsDefaultKmsKeyIdResult,
   ResetEbsDefaultKmsKeyIdError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetEbsDefaultKmsKeyIdRequest,
   output: ResetEbsDefaultKmsKeyIdResult,
   errors: [],
@@ -93357,7 +93357,7 @@ export const resetFpgaImageAttribute: API.OperationMethod<
   ResetFpgaImageAttributeResult,
   ResetFpgaImageAttributeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetFpgaImageAttributeRequest,
   output: ResetFpgaImageAttributeResult,
   errors: [RequestLimitExceeded, InvalidFpgaImageIDMalformed],
@@ -93376,7 +93376,7 @@ export const resetImageAttribute: API.OperationMethod<
   ResetImageAttributeResponse,
   ResetImageAttributeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetImageAttributeRequest,
   output: ResetImageAttributeResponse,
   errors: [
@@ -93407,7 +93407,7 @@ export const resetInstanceAttribute: API.OperationMethod<
   ResetInstanceAttributeResponse,
   ResetInstanceAttributeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetInstanceAttributeRequest,
   output: ResetInstanceAttributeResponse,
   errors: [RequestLimitExceeded, InvalidParameterValue],
@@ -93425,7 +93425,7 @@ export const resetNetworkInterfaceAttribute: API.OperationMethod<
   ResetNetworkInterfaceAttributeResponse,
   ResetNetworkInterfaceAttributeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetNetworkInterfaceAttributeRequest,
   output: ResetNetworkInterfaceAttributeResponse,
   errors: [RequestLimitExceeded, InvalidParameterCombination],
@@ -93447,7 +93447,7 @@ export const resetSnapshotAttribute: API.OperationMethod<
   ResetSnapshotAttributeResponse,
   ResetSnapshotAttributeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetSnapshotAttributeRequest,
   output: ResetSnapshotAttributeResponse,
   errors: [
@@ -93471,7 +93471,7 @@ export const restoreAddressToClassic: API.OperationMethod<
   RestoreAddressToClassicResult,
   RestoreAddressToClassicError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RestoreAddressToClassicRequest,
   output: RestoreAddressToClassicResult,
   errors: [RequestLimitExceeded, UnsupportedOperation],
@@ -93490,7 +93490,7 @@ export const restoreImageFromRecycleBin: API.OperationMethod<
   RestoreImageFromRecycleBinResult,
   RestoreImageFromRecycleBinError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RestoreImageFromRecycleBinRequest,
   output: RestoreImageFromRecycleBinResult,
   errors: [RequestLimitExceeded, InvalidAMIIDMalformed],
@@ -93507,7 +93507,7 @@ export const restoreManagedPrefixListVersion: API.OperationMethod<
   RestoreManagedPrefixListVersionResult,
   RestoreManagedPrefixListVersionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RestoreManagedPrefixListVersionRequest,
   output: RestoreManagedPrefixListVersionResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -93525,7 +93525,7 @@ export const restoreSnapshotFromRecycleBin: API.OperationMethod<
   RestoreSnapshotFromRecycleBinResult,
   RestoreSnapshotFromRecycleBinError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RestoreSnapshotFromRecycleBinRequest,
   output: RestoreSnapshotFromRecycleBinResult,
   errors: [RequestLimitExceeded, InvalidSnapshotIDMalformed],
@@ -93547,7 +93547,7 @@ export const restoreSnapshotTier: API.OperationMethod<
   RestoreSnapshotTierResult,
   RestoreSnapshotTierError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RestoreSnapshotTierRequest,
   output: RestoreSnapshotTierResult,
   errors: [RequestLimitExceeded, InvalidSnapshotIDMalformed],
@@ -93565,7 +93565,7 @@ export const restoreVolumeFromRecycleBin: API.OperationMethod<
   RestoreVolumeFromRecycleBinResult,
   RestoreVolumeFromRecycleBinError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RestoreVolumeFromRecycleBinRequest,
   output: RestoreVolumeFromRecycleBinResult,
   errors: [RequestLimitExceeded, InvalidVolumeIDMalformed],
@@ -93582,7 +93582,7 @@ export const revokeClientVpnIngress: API.OperationMethod<
   RevokeClientVpnIngressResult,
   RevokeClientVpnIngressError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RevokeClientVpnIngressRequest,
   output: RevokeClientVpnIngressResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -93622,7 +93622,7 @@ export const revokeSecurityGroupEgress: API.OperationMethod<
   RevokeSecurityGroupEgressResult,
   RevokeSecurityGroupEgressError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RevokeSecurityGroupEgressRequest,
   output: RevokeSecurityGroupEgressResult,
   errors: [
@@ -93674,7 +93674,7 @@ export const revokeSecurityGroupIngress: API.OperationMethod<
   RevokeSecurityGroupIngressResult,
   RevokeSecurityGroupIngressError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RevokeSecurityGroupIngressRequest,
   output: RevokeSecurityGroupIngressResult,
   errors: [
@@ -93751,7 +93751,7 @@ export const runInstances: API.OperationMethod<
   Reservation,
   RunInstancesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RunInstancesRequest,
   output: Reservation,
   errors: [
@@ -93782,7 +93782,7 @@ export const runScheduledInstances: API.OperationMethod<
   RunScheduledInstancesResult,
   RunScheduledInstancesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RunScheduledInstancesRequest,
   output: RunScheduledInstancesResult,
   errors: [RequestLimitExceeded, InvalidScheduledInstance],
@@ -93815,7 +93815,7 @@ export const searchLocalGatewayRoutes: API.OperationMethod<
     SearchLocalGatewayRoutesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchLocalGatewayRoutesRequest,
   output: SearchLocalGatewayRoutesResult,
   errors: [
@@ -93858,7 +93858,7 @@ export const searchTransitGatewayMulticastGroups: API.OperationMethod<
     SearchTransitGatewayMulticastGroupsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchTransitGatewayMulticastGroupsRequest,
   output: SearchTransitGatewayMulticastGroupsResult,
   errors: [
@@ -93901,7 +93901,7 @@ export const searchTransitGatewayRoutes: API.OperationMethod<
     SearchTransitGatewayRoutesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchTransitGatewayRoutesRequest,
   output: SearchTransitGatewayRoutesResult,
   errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound, MissingParameter],
@@ -93940,7 +93940,7 @@ export const sendDiagnosticInterrupt: API.OperationMethod<
   SendDiagnosticInterruptResponse,
   SendDiagnosticInterruptError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendDiagnosticInterruptRequest,
   output: SendDiagnosticInterruptResponse,
   errors: [RequestLimitExceeded, InvalidInstanceIDMalformed],
@@ -93995,7 +93995,7 @@ export const startDeclarativePoliciesReport: API.OperationMethod<
   StartDeclarativePoliciesReportResult,
   StartDeclarativePoliciesReportError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartDeclarativePoliciesReportRequest,
   output: StartDeclarativePoliciesReportResult,
   errors: [RequestLimitExceeded, DeclarativePoliciesAccessDenied],
@@ -94037,7 +94037,7 @@ export const startInstances: API.OperationMethod<
   StartInstancesResult,
   StartInstancesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartInstancesRequest,
   output: StartInstancesResult,
   errors: [
@@ -94060,7 +94060,7 @@ export const startNetworkInsightsAccessScopeAnalysis: API.OperationMethod<
   StartNetworkInsightsAccessScopeAnalysisResult,
   StartNetworkInsightsAccessScopeAnalysisError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartNetworkInsightsAccessScopeAnalysisRequest,
   output: StartNetworkInsightsAccessScopeAnalysisResult,
   errors: [
@@ -94083,7 +94083,7 @@ export const startNetworkInsightsAnalysis: API.OperationMethod<
   StartNetworkInsightsAnalysisResult,
   StartNetworkInsightsAnalysisError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartNetworkInsightsAnalysisRequest,
   output: StartNetworkInsightsAnalysisResult,
   errors: [RequestLimitExceeded, InvalidParameterValue, MissingParameter],
@@ -94106,7 +94106,7 @@ export const startVpcEndpointServicePrivateDnsVerification: API.OperationMethod<
   StartVpcEndpointServicePrivateDnsVerificationResult,
   StartVpcEndpointServicePrivateDnsVerificationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartVpcEndpointServicePrivateDnsVerificationRequest,
   output: StartVpcEndpointServicePrivateDnsVerificationResult,
   errors: [
@@ -94165,7 +94165,7 @@ export const stopInstances: API.OperationMethod<
   StopInstancesResult,
   StopInstancesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopInstancesRequest,
   output: StopInstancesResult,
   errors: [
@@ -94187,7 +94187,7 @@ export const terminateClientVpnConnections: API.OperationMethod<
   TerminateClientVpnConnectionsResult,
   TerminateClientVpnConnectionsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TerminateClientVpnConnectionsRequest,
   output: TerminateClientVpnConnectionsResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -94278,7 +94278,7 @@ export const terminateInstances: API.OperationMethod<
   TerminateInstancesResult,
   TerminateInstancesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TerminateInstancesRequest,
   output: TerminateInstancesResult,
   errors: [
@@ -94302,7 +94302,7 @@ export const unassignIpv6Addresses: API.OperationMethod<
   UnassignIpv6AddressesResult,
   UnassignIpv6AddressesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UnassignIpv6AddressesRequest,
   output: UnassignIpv6AddressesResult,
   errors: [
@@ -94326,7 +94326,7 @@ export const unassignPrivateIpAddresses: API.OperationMethod<
   UnassignPrivateIpAddressesResponse,
   UnassignPrivateIpAddressesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UnassignPrivateIpAddressesRequest,
   output: UnassignPrivateIpAddressesResponse,
   errors: [
@@ -94355,7 +94355,7 @@ export const unassignPrivateNatGatewayAddress: API.OperationMethod<
   UnassignPrivateNatGatewayAddressResult,
   UnassignPrivateNatGatewayAddressError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UnassignPrivateNatGatewayAddressRequest,
   output: UnassignPrivateNatGatewayAddressResult,
   errors: [],
@@ -94374,7 +94374,7 @@ export const unlockSnapshot: API.OperationMethod<
   UnlockSnapshotResult,
   UnlockSnapshotError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UnlockSnapshotRequest,
   output: UnlockSnapshotResult,
   errors: [RequestLimitExceeded, InvalidSnapshotIDMalformed],
@@ -94394,7 +94394,7 @@ export const unmonitorInstances: API.OperationMethod<
   UnmonitorInstancesResult,
   UnmonitorInstancesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UnmonitorInstancesRequest,
   output: UnmonitorInstancesResult,
   errors: [RequestLimitExceeded, InvalidInstanceIDMalformed, MissingParameter],
@@ -94408,7 +94408,7 @@ export const updateCapacityManagerMonitoredTagKeys: API.OperationMethod<
   UpdateCapacityManagerMonitoredTagKeysResult,
   UpdateCapacityManagerMonitoredTagKeysError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCapacityManagerMonitoredTagKeysRequest,
   output: UpdateCapacityManagerMonitoredTagKeysResult,
   errors: [],
@@ -94426,7 +94426,7 @@ export const updateCapacityManagerOrganizationsAccess: API.OperationMethod<
   UpdateCapacityManagerOrganizationsAccessResult,
   UpdateCapacityManagerOrganizationsAccessError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCapacityManagerOrganizationsAccessRequest,
   output: UpdateCapacityManagerOrganizationsAccessResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -94443,7 +94443,7 @@ export const updateInterruptibleCapacityReservationAllocation: API.OperationMeth
   UpdateInterruptibleCapacityReservationAllocationResult,
   UpdateInterruptibleCapacityReservationAllocationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateInterruptibleCapacityReservationAllocationRequest,
   output: UpdateInterruptibleCapacityReservationAllocationResult,
   errors: [RequestLimitExceeded, InvalidCapacityReservationIdNotFound],
@@ -94463,7 +94463,7 @@ export const updateSecurityGroupRuleDescriptionsEgress: API.OperationMethod<
   UpdateSecurityGroupRuleDescriptionsEgressResult,
   UpdateSecurityGroupRuleDescriptionsEgressError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSecurityGroupRuleDescriptionsEgressRequest,
   output: UpdateSecurityGroupRuleDescriptionsEgressResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -94483,7 +94483,7 @@ export const updateSecurityGroupRuleDescriptionsIngress: API.OperationMethod<
   UpdateSecurityGroupRuleDescriptionsIngressResult,
   UpdateSecurityGroupRuleDescriptionsIngressError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSecurityGroupRuleDescriptionsIngressRequest,
   output: UpdateSecurityGroupRuleDescriptionsIngressResult,
   errors: [RequestLimitExceeded, MissingParameter],
@@ -94503,7 +94503,7 @@ export const withdrawByoipCidr: API.OperationMethod<
   WithdrawByoipCidrResult,
   WithdrawByoipCidrError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: WithdrawByoipCidrRequest,
   output: WithdrawByoipCidrResult,
   errors: [RequestLimitExceeded],

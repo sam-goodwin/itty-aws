@@ -5319,7 +5319,7 @@ export const addTagsToResource: API.OperationMethod<
   TagListMessage,
   AddTagsToResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddTagsToResourceMessage,
   output: TagListMessage,
   errors: [
@@ -5361,7 +5361,7 @@ export const authorizeCacheSecurityGroupIngress: API.OperationMethod<
   AuthorizeCacheSecurityGroupIngressResult,
   AuthorizeCacheSecurityGroupIngressError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AuthorizeCacheSecurityGroupIngressMessage,
   output: AuthorizeCacheSecurityGroupIngressResult,
   errors: [
@@ -5386,7 +5386,7 @@ export const batchApplyUpdateAction: API.OperationMethod<
   UpdateActionResultsMessage,
   BatchApplyUpdateActionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchApplyUpdateActionMessage,
   output: UpdateActionResultsMessage,
   errors: [InvalidParameterValueException, ServiceUpdateNotFoundFault],
@@ -5405,7 +5405,7 @@ export const batchStopUpdateAction: API.OperationMethod<
   UpdateActionResultsMessage,
   BatchStopUpdateActionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchStopUpdateActionMessage,
   output: UpdateActionResultsMessage,
   errors: [InvalidParameterValueException, ServiceUpdateNotFoundFault],
@@ -5423,7 +5423,7 @@ export const completeMigration: API.OperationMethod<
   CompleteMigrationResponse,
   CompleteMigrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CompleteMigrationMessage,
   output: CompleteMigrationResponse,
   errors: [
@@ -5450,7 +5450,7 @@ export const copyServerlessCacheSnapshot: API.OperationMethod<
   CopyServerlessCacheSnapshotResponse,
   CopyServerlessCacheSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CopyServerlessCacheSnapshotRequest,
   output: CopyServerlessCacheSnapshotResponse,
   errors: [
@@ -5551,7 +5551,7 @@ export const copySnapshot: API.OperationMethod<
   CopySnapshotResult,
   CopySnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CopySnapshotMessage,
   output: CopySnapshotResult,
   errors: [
@@ -5591,7 +5591,7 @@ export const createCacheCluster: API.OperationMethod<
   CreateCacheClusterResult,
   CreateCacheClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCacheClusterMessage,
   output: CreateCacheClusterResult,
   errors: [
@@ -5639,7 +5639,7 @@ export const createCacheParameterGroup: API.OperationMethod<
   CreateCacheParameterGroupResult,
   CreateCacheParameterGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCacheParameterGroupMessage,
   output: CreateCacheParameterGroupResult,
   errors: [
@@ -5671,7 +5671,7 @@ export const createCacheSecurityGroup: API.OperationMethod<
   CreateCacheSecurityGroupResult,
   CreateCacheSecurityGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCacheSecurityGroupMessage,
   output: CreateCacheSecurityGroupResult,
   errors: [
@@ -5701,7 +5701,7 @@ export const createCacheSubnetGroup: API.OperationMethod<
   CreateCacheSubnetGroupResult,
   CreateCacheSubnetGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCacheSubnetGroupMessage,
   output: CreateCacheSubnetGroupResult,
   errors: [
@@ -5739,7 +5739,7 @@ export const createGlobalReplicationGroup: API.OperationMethod<
   CreateGlobalReplicationGroupResult,
   CreateGlobalReplicationGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateGlobalReplicationGroupMessage,
   output: CreateGlobalReplicationGroupResult,
   errors: [
@@ -5813,7 +5813,7 @@ export const createReplicationGroup: API.OperationMethod<
   CreateReplicationGroupResult,
   CreateReplicationGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateReplicationGroupMessage,
   output: CreateReplicationGroupResult,
   errors: [
@@ -5859,7 +5859,7 @@ export const createServerlessCache: API.OperationMethod<
   CreateServerlessCacheResponse,
   CreateServerlessCacheError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateServerlessCacheRequest,
   output: CreateServerlessCacheResponse,
   errors: [
@@ -5894,7 +5894,7 @@ export const createServerlessCacheSnapshot: API.OperationMethod<
   CreateServerlessCacheSnapshotResponse,
   CreateServerlessCacheSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateServerlessCacheSnapshotRequest,
   output: CreateServerlessCacheSnapshotResponse,
   errors: [
@@ -5931,7 +5931,7 @@ export const createSnapshot: API.OperationMethod<
   CreateSnapshotResult,
   CreateSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSnapshotMessage,
   output: CreateSnapshotResult,
   errors: [
@@ -5965,7 +5965,7 @@ export const createUser: API.OperationMethod<
   User,
   CreateUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateUserMessage,
   output: User,
   errors: [
@@ -5997,7 +5997,7 @@ export const createUserGroup: API.OperationMethod<
   UserGroup,
   CreateUserGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateUserGroupMessage,
   output: UserGroup,
   errors: [
@@ -6025,7 +6025,7 @@ export const decreaseNodeGroupsInGlobalReplicationGroup: API.OperationMethod<
   DecreaseNodeGroupsInGlobalReplicationGroupResult,
   DecreaseNodeGroupsInGlobalReplicationGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DecreaseNodeGroupsInGlobalReplicationGroupMessage,
   output: DecreaseNodeGroupsInGlobalReplicationGroupResult,
   errors: [
@@ -6060,7 +6060,7 @@ export const decreaseReplicaCount: API.OperationMethod<
   DecreaseReplicaCountResult,
   DecreaseReplicaCountError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DecreaseReplicaCountMessage,
   output: DecreaseReplicaCountResult,
   errors: [
@@ -6114,7 +6114,7 @@ export const deleteCacheCluster: API.OperationMethod<
   DeleteCacheClusterResult,
   DeleteCacheClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCacheClusterMessage,
   output: DeleteCacheClusterResult,
   errors: [
@@ -6143,7 +6143,7 @@ export const deleteCacheParameterGroup: API.OperationMethod<
   DeleteCacheParameterGroupResponse,
   DeleteCacheParameterGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCacheParameterGroupMessage,
   output: DeleteCacheParameterGroupResponse,
   errors: [
@@ -6170,7 +6170,7 @@ export const deleteCacheSecurityGroup: API.OperationMethod<
   DeleteCacheSecurityGroupResponse,
   DeleteCacheSecurityGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCacheSecurityGroupMessage,
   output: DeleteCacheSecurityGroupResponse,
   errors: [
@@ -6195,7 +6195,7 @@ export const deleteCacheSubnetGroup: API.OperationMethod<
   DeleteCacheSubnetGroupResponse,
   DeleteCacheSubnetGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCacheSubnetGroupMessage,
   output: DeleteCacheSubnetGroupResponse,
   errors: [CacheSubnetGroupInUse, CacheSubnetGroupNotFoundFault],
@@ -6231,7 +6231,7 @@ export const deleteGlobalReplicationGroup: API.OperationMethod<
   DeleteGlobalReplicationGroupResult,
   DeleteGlobalReplicationGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteGlobalReplicationGroupMessage,
   output: DeleteGlobalReplicationGroupResult,
   errors: [
@@ -6270,7 +6270,7 @@ export const deleteReplicationGroup: API.OperationMethod<
   DeleteReplicationGroupResult,
   DeleteReplicationGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteReplicationGroupMessage,
   output: DeleteReplicationGroupResult,
   errors: [
@@ -6303,7 +6303,7 @@ export const deleteServerlessCache: API.OperationMethod<
   DeleteServerlessCacheResponse,
   DeleteServerlessCacheError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteServerlessCacheRequest,
   output: DeleteServerlessCacheResponse,
   errors: [
@@ -6330,7 +6330,7 @@ export const deleteServerlessCacheSnapshot: API.OperationMethod<
   DeleteServerlessCacheSnapshotResponse,
   DeleteServerlessCacheSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteServerlessCacheSnapshotRequest,
   output: DeleteServerlessCacheSnapshotResponse,
   errors: [
@@ -6358,7 +6358,7 @@ export const deleteSnapshot: API.OperationMethod<
   DeleteSnapshotResult,
   DeleteSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSnapshotMessage,
   output: DeleteSnapshotResult,
   errors: [
@@ -6385,7 +6385,7 @@ export const deleteUser: API.OperationMethod<
   User,
   DeleteUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteUserMessage,
   output: User,
   errors: [
@@ -6412,7 +6412,7 @@ export const deleteUserGroup: API.OperationMethod<
   UserGroup,
   DeleteUserGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteUserGroupMessage,
   output: UserGroup,
   errors: [
@@ -6470,7 +6470,7 @@ export const describeCacheClusters: API.OperationMethod<
     DescribeCacheClustersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCacheClustersMessage,
   output: CacheClusterMessage,
   errors: [
@@ -6509,7 +6509,7 @@ export const describeCacheEngineVersions: API.OperationMethod<
     DescribeCacheEngineVersionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCacheEngineVersionsMessage,
   output: CacheEngineVersionMessage,
   errors: [],
@@ -6549,7 +6549,7 @@ export const describeCacheParameterGroups: API.OperationMethod<
     DescribeCacheParameterGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCacheParameterGroupsMessage,
   output: CacheParameterGroupsMessage,
   errors: [
@@ -6592,7 +6592,7 @@ export const describeCacheParameters: API.OperationMethod<
     DescribeCacheParametersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCacheParametersMessage,
   output: CacheParameterGroupDetails,
   errors: [
@@ -6637,7 +6637,7 @@ export const describeCacheSecurityGroups: API.OperationMethod<
     DescribeCacheSecurityGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCacheSecurityGroupsMessage,
   output: CacheSecurityGroupMessage,
   errors: [
@@ -6681,7 +6681,7 @@ export const describeCacheSubnetGroups: API.OperationMethod<
     DescribeCacheSubnetGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCacheSubnetGroupsMessage,
   output: CacheSubnetGroupMessage,
   errors: [CacheSubnetGroupNotFoundFault],
@@ -6720,7 +6720,7 @@ export const describeEngineDefaultParameters: API.OperationMethod<
     DescribeEngineDefaultParametersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEngineDefaultParametersMessage,
   output: DescribeEngineDefaultParametersResult,
   errors: [
@@ -6766,7 +6766,7 @@ export const describeEvents: API.OperationMethod<
     DescribeEventsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEventsMessage,
   output: EventsMessage,
   errors: [
@@ -6809,7 +6809,7 @@ export const describeGlobalReplicationGroups: API.OperationMethod<
     DescribeGlobalReplicationGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeGlobalReplicationGroupsMessage,
   output: DescribeGlobalReplicationGroupsResult,
   errors: [
@@ -6856,7 +6856,7 @@ export const describeReplicationGroups: API.OperationMethod<
     DescribeReplicationGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReplicationGroupsMessage,
   output: ReplicationGroupMessage,
   errors: [
@@ -6900,7 +6900,7 @@ export const describeReservedCacheNodes: API.OperationMethod<
     DescribeReservedCacheNodesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReservedCacheNodesMessage,
   output: ReservedCacheNodeMessage,
   errors: [
@@ -6943,7 +6943,7 @@ export const describeReservedCacheNodesOfferings: API.OperationMethod<
     DescribeReservedCacheNodesOfferingsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReservedCacheNodesOfferingsMessage,
   output: ReservedCacheNodesOfferingMessage,
   errors: [
@@ -6988,7 +6988,7 @@ export const describeServerlessCaches: API.OperationMethod<
     DescribeServerlessCachesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeServerlessCachesRequest,
   output: DescribeServerlessCachesResponse,
   errors: [
@@ -7035,7 +7035,7 @@ export const describeServerlessCacheSnapshots: API.OperationMethod<
     DescribeServerlessCacheSnapshotsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeServerlessCacheSnapshotsRequest,
   output: DescribeServerlessCacheSnapshotsResponse,
   errors: [
@@ -7079,7 +7079,7 @@ export const describeServiceUpdates: API.OperationMethod<
     DescribeServiceUpdatesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeServiceUpdatesMessage,
   output: ServiceUpdatesMessage,
   errors: [
@@ -7128,7 +7128,7 @@ export const describeSnapshots: API.OperationMethod<
     DescribeSnapshotsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSnapshotsMessage,
   output: DescribeSnapshotsListMessage,
   errors: [
@@ -7171,7 +7171,7 @@ export const describeUpdateActions: API.OperationMethod<
     DescribeUpdateActionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeUpdateActionsMessage,
   output: UpdateActionsMessage,
   errors: [
@@ -7213,7 +7213,7 @@ export const describeUserGroups: API.OperationMethod<
     DescribeUserGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeUserGroupsMessage,
   output: DescribeUserGroupsResult,
   errors: [
@@ -7256,7 +7256,7 @@ export const describeUsers: API.OperationMethod<
     DescribeUsersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeUsersMessage,
   output: DescribeUsersResult,
   errors: [
@@ -7287,7 +7287,7 @@ export const disassociateGlobalReplicationGroup: API.OperationMethod<
   DisassociateGlobalReplicationGroupResult,
   DisassociateGlobalReplicationGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateGlobalReplicationGroupMessage,
   output: DisassociateGlobalReplicationGroupResult,
   errors: [
@@ -7311,7 +7311,7 @@ export const exportServerlessCacheSnapshot: API.OperationMethod<
   ExportServerlessCacheSnapshotResponse,
   ExportServerlessCacheSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExportServerlessCacheSnapshotRequest,
   output: ExportServerlessCacheSnapshotResponse,
   errors: [
@@ -7336,7 +7336,7 @@ export const failoverGlobalReplicationGroup: API.OperationMethod<
   FailoverGlobalReplicationGroupResult,
   FailoverGlobalReplicationGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: FailoverGlobalReplicationGroupMessage,
   output: FailoverGlobalReplicationGroupResult,
   errors: [
@@ -7359,7 +7359,7 @@ export const increaseNodeGroupsInGlobalReplicationGroup: API.OperationMethod<
   IncreaseNodeGroupsInGlobalReplicationGroupResult,
   IncreaseNodeGroupsInGlobalReplicationGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: IncreaseNodeGroupsInGlobalReplicationGroupMessage,
   output: IncreaseNodeGroupsInGlobalReplicationGroupResult,
   errors: [
@@ -7393,7 +7393,7 @@ export const increaseReplicaCount: API.OperationMethod<
   IncreaseReplicaCountResult,
   IncreaseReplicaCountError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: IncreaseReplicaCountMessage,
   output: IncreaseReplicaCountResult,
   errors: [
@@ -7431,7 +7431,7 @@ export const listAllowedNodeTypeModifications: API.OperationMethod<
   AllowedNodeTypeModificationsMessage,
   ListAllowedNodeTypeModificationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListAllowedNodeTypeModificationsMessage,
   output: AllowedNodeTypeModificationsMessage,
   errors: [
@@ -7475,7 +7475,7 @@ export const listTagsForResource: API.OperationMethod<
   TagListMessage,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceMessage,
   output: TagListMessage,
   errors: [
@@ -7518,7 +7518,7 @@ export const modifyCacheCluster: API.OperationMethod<
   ModifyCacheClusterResult,
   ModifyCacheClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyCacheClusterMessage,
   output: ModifyCacheClusterResult,
   errors: [
@@ -7551,7 +7551,7 @@ export const modifyCacheParameterGroup: API.OperationMethod<
   CacheParameterGroupNameMessage,
   ModifyCacheParameterGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyCacheParameterGroupMessage,
   output: CacheParameterGroupNameMessage,
   errors: [
@@ -7577,7 +7577,7 @@ export const modifyCacheSubnetGroup: API.OperationMethod<
   ModifyCacheSubnetGroupResult,
   ModifyCacheSubnetGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyCacheSubnetGroupMessage,
   output: ModifyCacheSubnetGroupResult,
   errors: [
@@ -7601,7 +7601,7 @@ export const modifyGlobalReplicationGroup: API.OperationMethod<
   ModifyGlobalReplicationGroupResult,
   ModifyGlobalReplicationGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyGlobalReplicationGroupMessage,
   output: ModifyGlobalReplicationGroupResult,
   errors: [
@@ -7644,7 +7644,7 @@ export const modifyReplicationGroup: API.OperationMethod<
   ModifyReplicationGroupResult,
   ModifyReplicationGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyReplicationGroupMessage,
   output: ModifyReplicationGroupResult,
   errors: [
@@ -7687,7 +7687,7 @@ export const modifyReplicationGroupShardConfiguration: API.OperationMethod<
   ModifyReplicationGroupShardConfigurationResult,
   ModifyReplicationGroupShardConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyReplicationGroupShardConfigurationMessage,
   output: ModifyReplicationGroupShardConfigurationResult,
   errors: [
@@ -7721,7 +7721,7 @@ export const modifyServerlessCache: API.OperationMethod<
   ModifyServerlessCacheResponse,
   ModifyServerlessCacheError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyServerlessCacheRequest,
   output: ModifyServerlessCacheResponse,
   errors: [
@@ -7750,7 +7750,7 @@ export const modifyUser: API.OperationMethod<
   User,
   ModifyUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyUserMessage,
   output: User,
   errors: [
@@ -7779,7 +7779,7 @@ export const modifyUserGroup: API.OperationMethod<
   UserGroup,
   ModifyUserGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyUserGroupMessage,
   output: UserGroup,
   errors: [
@@ -7810,7 +7810,7 @@ export const purchaseReservedCacheNodesOffering: API.OperationMethod<
   PurchaseReservedCacheNodesOfferingResult,
   PurchaseReservedCacheNodesOfferingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PurchaseReservedCacheNodesOfferingMessage,
   output: PurchaseReservedCacheNodesOfferingResult,
   errors: [
@@ -7836,7 +7836,7 @@ export const rebalanceSlotsInGlobalReplicationGroup: API.OperationMethod<
   RebalanceSlotsInGlobalReplicationGroupResult,
   RebalanceSlotsInGlobalReplicationGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RebalanceSlotsInGlobalReplicationGroupMessage,
   output: RebalanceSlotsInGlobalReplicationGroupResult,
   errors: [
@@ -7872,7 +7872,7 @@ export const rebootCacheCluster: API.OperationMethod<
   RebootCacheClusterResult,
   RebootCacheClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RebootCacheClusterMessage,
   output: RebootCacheClusterResult,
   errors: [CacheClusterNotFoundFault, InvalidCacheClusterStateFault],
@@ -7907,7 +7907,7 @@ export const removeTagsFromResource: API.OperationMethod<
   TagListMessage,
   RemoveTagsFromResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveTagsFromResourceMessage,
   output: TagListMessage,
   errors: [
@@ -7947,7 +7947,7 @@ export const resetCacheParameterGroup: API.OperationMethod<
   CacheParameterGroupNameMessage,
   ResetCacheParameterGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetCacheParameterGroupMessage,
   output: CacheParameterGroupNameMessage,
   errors: [
@@ -7974,7 +7974,7 @@ export const revokeCacheSecurityGroupIngress: API.OperationMethod<
   RevokeCacheSecurityGroupIngressResult,
   RevokeCacheSecurityGroupIngressError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RevokeCacheSecurityGroupIngressMessage,
   output: RevokeCacheSecurityGroupIngressResult,
   errors: [
@@ -7999,7 +7999,7 @@ export const startMigration: API.OperationMethod<
   StartMigrationResponse,
   StartMigrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartMigrationMessage,
   output: StartMigrationResponse,
   errors: [
@@ -8078,7 +8078,7 @@ export const testFailover: API.OperationMethod<
   TestFailoverResult,
   TestFailoverError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestFailoverMessage,
   output: TestFailoverResult,
   errors: [
@@ -8107,7 +8107,7 @@ export const testMigration: API.OperationMethod<
   TestMigrationResponse,
   TestMigrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestMigrationMessage,
   output: TestMigrationResponse,
   errors: [

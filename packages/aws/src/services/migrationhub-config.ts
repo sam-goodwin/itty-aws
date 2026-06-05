@@ -257,7 +257,7 @@ export const createHomeRegionControl: API.OperationMethod<
   CreateHomeRegionControlResult,
   CreateHomeRegionControlError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateHomeRegionControlRequest,
   output: CreateHomeRegionControlResult,
   errors: [
@@ -284,7 +284,7 @@ export const deleteHomeRegionControl: API.OperationMethod<
   DeleteHomeRegionControlResult,
   DeleteHomeRegionControlError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteHomeRegionControlRequest,
   output: DeleteHomeRegionControlResult,
   errors: [
@@ -326,7 +326,7 @@ export const describeHomeRegionControls: API.OperationMethod<
     DescribeHomeRegionControlsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeHomeRegionControlsRequest,
   output: DescribeHomeRegionControlsResult,
   errors: [
@@ -361,7 +361,7 @@ export const getHomeRegion: API.OperationMethod<
   GetHomeRegionResult,
   GetHomeRegionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetHomeRegionRequest,
   output: GetHomeRegionResult,
   errors: [

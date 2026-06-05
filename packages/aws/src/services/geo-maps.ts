@@ -509,7 +509,7 @@ export const getGlyphs: API.OperationMethod<
   GetGlyphsResponse,
   GetGlyphsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetGlyphsRequest,
   output: GetGlyphsResponse,
   errors: [],
@@ -525,7 +525,7 @@ export const getSprites: API.OperationMethod<
   GetSpritesResponse,
   GetSpritesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSpritesRequest,
   output: GetSpritesResponse,
   errors: [],
@@ -554,7 +554,7 @@ export const getStaticMap: API.OperationMethod<
   GetStaticMapResponse,
   GetStaticMapError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetStaticMapRequest,
   output: GetStaticMapResponse,
   errors: [
@@ -575,7 +575,7 @@ export const getStyleDescriptor: API.OperationMethod<
   GetStyleDescriptorResponse,
   GetStyleDescriptorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetStyleDescriptorRequest,
   output: GetStyleDescriptorResponse,
   errors: [],
@@ -597,7 +597,7 @@ export const getTile: API.OperationMethod<
   GetTileResponse,
   GetTileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTileRequest,
   output: GetTileResponse,
   errors: [

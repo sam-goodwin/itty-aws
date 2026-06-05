@@ -1831,7 +1831,7 @@ export const getDataIntegrationEvent: API.OperationMethod<
   GetDataIntegrationEventResponse,
   GetDataIntegrationEventError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDataIntegrationEventRequest,
   output: GetDataIntegrationEventResponse,
   errors: [
@@ -1857,7 +1857,7 @@ export const getDataIntegrationFlowExecution: API.OperationMethod<
   GetDataIntegrationFlowExecutionResponse,
   GetDataIntegrationFlowExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDataIntegrationFlowExecutionRequest,
   output: GetDataIntegrationFlowExecutionResponse,
   errors: [
@@ -1897,7 +1897,7 @@ export const listDataIntegrationEvents: API.OperationMethod<
     ListDataIntegrationEventsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataIntegrationEventsRequest,
   output: ListDataIntegrationEventsResponse,
   errors: [
@@ -1943,7 +1943,7 @@ export const listDataIntegrationFlowExecutions: API.OperationMethod<
     ListDataIntegrationFlowExecutionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataIntegrationFlowExecutionsRequest,
   output: ListDataIntegrationFlowExecutionsResponse,
   errors: [
@@ -1975,7 +1975,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -2003,7 +2003,7 @@ export const sendDataIntegrationEvent: API.OperationMethod<
   SendDataIntegrationEventResponse,
   SendDataIntegrationEventError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendDataIntegrationEventRequest,
   output: SendDataIntegrationEventResponse,
   errors: [
@@ -2031,7 +2031,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -2057,7 +2057,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -2086,7 +2086,7 @@ export const createBillOfMaterialsImportJob: API.OperationMethod<
   CreateBillOfMaterialsImportJobResponse,
   CreateBillOfMaterialsImportJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateBillOfMaterialsImportJobRequest,
   output: CreateBillOfMaterialsImportJobResponse,
   errors: [
@@ -2113,7 +2113,7 @@ export const getBillOfMaterialsImportJob: API.OperationMethod<
   GetBillOfMaterialsImportJobResponse,
   GetBillOfMaterialsImportJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetBillOfMaterialsImportJobRequest,
   output: GetBillOfMaterialsImportJobResponse,
   errors: [
@@ -2140,7 +2140,7 @@ export const createDataIntegrationFlow: API.OperationMethod<
   CreateDataIntegrationFlowResponse,
   CreateDataIntegrationFlowError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDataIntegrationFlowRequest,
   output: CreateDataIntegrationFlowResponse,
   errors: [
@@ -2167,7 +2167,7 @@ export const getDataIntegrationFlow: API.OperationMethod<
   GetDataIntegrationFlowResponse,
   GetDataIntegrationFlowError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDataIntegrationFlowRequest,
   output: GetDataIntegrationFlowResponse,
   errors: [
@@ -2193,7 +2193,7 @@ export const updateDataIntegrationFlow: API.OperationMethod<
   UpdateDataIntegrationFlowResponse,
   UpdateDataIntegrationFlowError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDataIntegrationFlowRequest,
   output: UpdateDataIntegrationFlowResponse,
   errors: [
@@ -2218,7 +2218,7 @@ export const deleteDataIntegrationFlow: API.OperationMethod<
   DeleteDataIntegrationFlowResponse,
   DeleteDataIntegrationFlowError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDataIntegrationFlowRequest,
   output: DeleteDataIntegrationFlowResponse,
   errors: [
@@ -2257,7 +2257,7 @@ export const listDataIntegrationFlows: API.OperationMethod<
     ListDataIntegrationFlowsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataIntegrationFlowsRequest,
   output: ListDataIntegrationFlowsResponse,
   errors: [
@@ -2290,7 +2290,7 @@ export const createDataLakeDataset: API.OperationMethod<
   CreateDataLakeDatasetResponse,
   CreateDataLakeDatasetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDataLakeDatasetRequest,
   output: CreateDataLakeDatasetResponse,
   errors: [
@@ -2318,7 +2318,7 @@ export const getDataLakeDataset: API.OperationMethod<
   GetDataLakeDatasetResponse,
   GetDataLakeDatasetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDataLakeDatasetRequest,
   output: GetDataLakeDatasetResponse,
   errors: [
@@ -2344,7 +2344,7 @@ export const updateDataLakeDataset: API.OperationMethod<
   UpdateDataLakeDatasetResponse,
   UpdateDataLakeDatasetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDataLakeDatasetRequest,
   output: UpdateDataLakeDatasetResponse,
   errors: [
@@ -2370,7 +2370,7 @@ export const deleteDataLakeDataset: API.OperationMethod<
   DeleteDataLakeDatasetResponse,
   DeleteDataLakeDatasetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDataLakeDatasetRequest,
   output: DeleteDataLakeDatasetResponse,
   errors: [
@@ -2411,7 +2411,7 @@ export const listDataLakeDatasets: API.OperationMethod<
     ListDataLakeDatasetsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataLakeDatasetsRequest,
   output: ListDataLakeDatasetsResponse,
   errors: [
@@ -2444,7 +2444,7 @@ export const createDataLakeNamespace: API.OperationMethod<
   CreateDataLakeNamespaceResponse,
   CreateDataLakeNamespaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDataLakeNamespaceRequest,
   output: CreateDataLakeNamespaceResponse,
   errors: [
@@ -2471,7 +2471,7 @@ export const getDataLakeNamespace: API.OperationMethod<
   GetDataLakeNamespaceResponse,
   GetDataLakeNamespaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDataLakeNamespaceRequest,
   output: GetDataLakeNamespaceResponse,
   errors: [
@@ -2497,7 +2497,7 @@ export const updateDataLakeNamespace: API.OperationMethod<
   UpdateDataLakeNamespaceResponse,
   UpdateDataLakeNamespaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDataLakeNamespaceRequest,
   output: UpdateDataLakeNamespaceResponse,
   errors: [
@@ -2523,7 +2523,7 @@ export const deleteDataLakeNamespace: API.OperationMethod<
   DeleteDataLakeNamespaceResponse,
   DeleteDataLakeNamespaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDataLakeNamespaceRequest,
   output: DeleteDataLakeNamespaceResponse,
   errors: [
@@ -2563,7 +2563,7 @@ export const listDataLakeNamespaces: API.OperationMethod<
     ListDataLakeNamespacesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataLakeNamespacesRequest,
   output: ListDataLakeNamespacesResponse,
   errors: [
@@ -2597,7 +2597,7 @@ export const createInstance: API.OperationMethod<
   CreateInstanceResponse,
   CreateInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateInstanceRequest,
   output: CreateInstanceResponse,
   errors: [
@@ -2624,7 +2624,7 @@ export const getInstance: API.OperationMethod<
   GetInstanceResponse,
   GetInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInstanceRequest,
   output: GetInstanceResponse,
   errors: [
@@ -2650,7 +2650,7 @@ export const updateInstance: API.OperationMethod<
   UpdateInstanceResponse,
   UpdateInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateInstanceRequest,
   output: UpdateInstanceResponse,
   errors: [
@@ -2678,7 +2678,7 @@ export const deleteInstance: API.OperationMethod<
   DeleteInstanceResponse,
   DeleteInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteInstanceRequest,
   output: DeleteInstanceResponse,
   errors: [
@@ -2718,7 +2718,7 @@ export const listInstances: API.OperationMethod<
     ListInstancesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInstancesRequest,
   output: ListInstancesResponse,
   errors: [

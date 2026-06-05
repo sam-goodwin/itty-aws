@@ -470,7 +470,7 @@ export const describeJobExecution: API.OperationMethod<
   DescribeJobExecutionResponse,
   DescribeJobExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeJobExecutionRequest,
   output: DescribeJobExecutionResponse,
   errors: [
@@ -499,7 +499,7 @@ export const getPendingJobExecutions: API.OperationMethod<
   GetPendingJobExecutionsResponse,
   GetPendingJobExecutionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPendingJobExecutionsRequest,
   output: GetPendingJobExecutionsResponse,
   errors: [
@@ -527,7 +527,7 @@ export const startCommandExecution: API.OperationMethod<
   StartCommandExecutionResponse,
   StartCommandExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartCommandExecutionRequest,
   output: StartCommandExecutionResponse,
   errors: [
@@ -557,7 +557,7 @@ export const startNextPendingJobExecution: API.OperationMethod<
   StartNextPendingJobExecutionResponse,
   StartNextPendingJobExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartNextPendingJobExecutionRequest,
   output: StartNextPendingJobExecutionResponse,
   errors: [
@@ -586,7 +586,7 @@ export const updateJobExecution: API.OperationMethod<
   UpdateJobExecutionResponse,
   UpdateJobExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateJobExecutionRequest,
   output: UpdateJobExecutionResponse,
   errors: [

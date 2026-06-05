@@ -6485,7 +6485,7 @@ export const activateOrganizationsAccess: API.OperationMethod<
   ActivateOrganizationsAccessOutput,
   ActivateOrganizationsAccessError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ActivateOrganizationsAccessInput,
   output: ActivateOrganizationsAccessOutput,
   errors: [InvalidOperationException, OperationNotFoundException],
@@ -6515,7 +6515,7 @@ export const activateType: API.OperationMethod<
   ActivateTypeOutput,
   ActivateTypeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ActivateTypeInput,
   output: ActivateTypeOutput,
   errors: [CFNRegistryException, TypeNotFoundException],
@@ -6537,7 +6537,7 @@ export const batchDescribeTypeConfigurations: API.OperationMethod<
   BatchDescribeTypeConfigurationsOutput,
   BatchDescribeTypeConfigurationsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchDescribeTypeConfigurationsInput,
   output: BatchDescribeTypeConfigurationsOutput,
   errors: [CFNRegistryException, TypeConfigurationNotFoundException],
@@ -6554,7 +6554,7 @@ export const cancelUpdateStack: API.OperationMethod<
   CancelUpdateStackResponse,
   CancelUpdateStackError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelUpdateStackInput,
   output: CancelUpdateStackResponse,
   errors: [TokenAlreadyExistsException],
@@ -6583,7 +6583,7 @@ export const continueUpdateRollback: API.OperationMethod<
   ContinueUpdateRollbackOutput,
   ContinueUpdateRollbackError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ContinueUpdateRollbackInput,
   output: ContinueUpdateRollbackOutput,
   errors: [TokenAlreadyExistsException],
@@ -6622,7 +6622,7 @@ export const createChangeSet: API.OperationMethod<
   CreateChangeSetOutput,
   CreateChangeSetError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateChangeSetInput,
   output: CreateChangeSetOutput,
   errors: [
@@ -6646,7 +6646,7 @@ export const createGeneratedTemplate: API.OperationMethod<
   CreateGeneratedTemplateOutput,
   CreateGeneratedTemplateError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateGeneratedTemplateInput,
   output: CreateGeneratedTemplateOutput,
   errors: [
@@ -6674,7 +6674,7 @@ export const createStack: API.OperationMethod<
   CreateStackOutput,
   CreateStackError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateStackInput,
   output: CreateStackOutput,
   errors: [
@@ -6715,7 +6715,7 @@ export const createStackInstances: API.OperationMethod<
   CreateStackInstancesOutput,
   CreateStackInstancesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateStackInstancesInput,
   output: CreateStackInstancesOutput,
   errors: [
@@ -6737,7 +6737,7 @@ export const createStackRefactor: API.OperationMethod<
   CreateStackRefactorOutput,
   CreateStackRefactorError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateStackRefactorInput,
   output: CreateStackRefactorOutput,
   errors: [],
@@ -6755,7 +6755,7 @@ export const createStackSet: API.OperationMethod<
   CreateStackSetOutput,
   CreateStackSetError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateStackSetInput,
   output: CreateStackSetOutput,
   errors: [
@@ -6778,7 +6778,7 @@ export const deactivateOrganizationsAccess: API.OperationMethod<
   DeactivateOrganizationsAccessOutput,
   DeactivateOrganizationsAccessError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeactivateOrganizationsAccessInput,
   output: DeactivateOrganizationsAccessOutput,
   errors: [InvalidOperationException, OperationNotFoundException],
@@ -6806,7 +6806,7 @@ export const deactivateType: API.OperationMethod<
   DeactivateTypeOutput,
   DeactivateTypeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeactivateTypeInput,
   output: DeactivateTypeOutput,
   errors: [CFNRegistryException, TypeNotFoundException],
@@ -6830,7 +6830,7 @@ export const deleteChangeSet: API.OperationMethod<
   DeleteChangeSetOutput,
   DeleteChangeSetError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteChangeSetInput,
   output: DeleteChangeSetOutput,
   errors: [InvalidChangeSetStatusException],
@@ -6847,7 +6847,7 @@ export const deleteGeneratedTemplate: API.OperationMethod<
   DeleteGeneratedTemplateResponse,
   DeleteGeneratedTemplateError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteGeneratedTemplateInput,
   output: DeleteGeneratedTemplateResponse,
   errors: [
@@ -6869,7 +6869,7 @@ export const deleteStack: API.OperationMethod<
   DeleteStackResponse,
   DeleteStackError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteStackInput,
   output: DeleteStackResponse,
   errors: [TokenAlreadyExistsException],
@@ -6901,7 +6901,7 @@ export const deleteStackInstances: API.OperationMethod<
   DeleteStackInstancesOutput,
   DeleteStackInstancesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteStackInstancesInput,
   output: DeleteStackInstancesOutput,
   errors: [
@@ -6925,7 +6925,7 @@ export const deleteStackSet: API.OperationMethod<
   DeleteStackSetOutput,
   DeleteStackSetError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteStackSetInput,
   output: DeleteStackSetOutput,
   errors: [OperationInProgressException, StackSetNotEmptyException],
@@ -6959,7 +6959,7 @@ export const deregisterType: API.OperationMethod<
   DeregisterTypeOutput,
   DeregisterTypeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeregisterTypeInput,
   output: DeregisterTypeOutput,
   errors: [CFNRegistryException, TypeNotFoundException],
@@ -6989,7 +6989,7 @@ export const describeAccountLimits: API.OperationMethod<
     DescribeAccountLimitsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAccountLimitsInput,
   output: DescribeAccountLimitsOutput,
   errors: [],
@@ -7026,7 +7026,7 @@ export const describeChangeSet: API.OperationMethod<
     DescribeChangeSetError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeChangeSetInput,
   output: DescribeChangeSetOutput,
   errors: [ChangeSetNotFoundException],
@@ -7048,7 +7048,7 @@ export const describeChangeSetHooks: API.OperationMethod<
   DescribeChangeSetHooksOutput,
   DescribeChangeSetHooksError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeChangeSetHooksInput,
   output: DescribeChangeSetHooksOutput,
   errors: [ChangeSetNotFoundException],
@@ -7100,7 +7100,7 @@ export const describeEvents: API.OperationMethod<
     DescribeEventsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEventsInput,
   output: DescribeEventsOutput,
   errors: [],
@@ -7124,7 +7124,7 @@ export const describeGeneratedTemplate: API.OperationMethod<
   DescribeGeneratedTemplateOutput,
   DescribeGeneratedTemplateError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeGeneratedTemplateInput,
   output: DescribeGeneratedTemplateOutput,
   errors: [GeneratedTemplateNotFoundException],
@@ -7144,7 +7144,7 @@ export const describeOrganizationsAccess: API.OperationMethod<
   DescribeOrganizationsAccessOutput,
   DescribeOrganizationsAccessError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeOrganizationsAccessInput,
   output: DescribeOrganizationsAccessOutput,
   errors: [InvalidOperationException, OperationNotFoundException],
@@ -7170,7 +7170,7 @@ export const describePublisher: API.OperationMethod<
   DescribePublisherOutput,
   DescribePublisherError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribePublisherInput,
   output: DescribePublisherOutput,
   errors: [CFNRegistryException],
@@ -7186,7 +7186,7 @@ export const describeResourceScan: API.OperationMethod<
   DescribeResourceScanOutput,
   DescribeResourceScanError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeResourceScanInput,
   output: DescribeResourceScanOutput,
   errors: [ResourceScanNotFoundException],
@@ -7212,7 +7212,7 @@ export const describeStackDriftDetectionStatus: API.OperationMethod<
   DescribeStackDriftDetectionStatusOutput,
   DescribeStackDriftDetectionStatusError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeStackDriftDetectionStatusInput,
   output: DescribeStackDriftDetectionStatusOutput,
   errors: [],
@@ -7246,7 +7246,7 @@ export const describeStackEvents: API.OperationMethod<
     DescribeStackEventsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeStackEventsInput,
   output: DescribeStackEventsOutput,
   errors: [],
@@ -7271,7 +7271,7 @@ export const describeStackInstance: API.OperationMethod<
   DescribeStackInstanceOutput,
   DescribeStackInstanceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeStackInstanceInput,
   output: DescribeStackInstanceOutput,
   errors: [StackInstanceNotFoundException, StackSetNotFoundException],
@@ -7287,7 +7287,7 @@ export const describeStackRefactor: API.OperationMethod<
   DescribeStackRefactorOutput,
   DescribeStackRefactorError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeStackRefactorInput,
   output: DescribeStackRefactorOutput,
   errors: [StackRefactorNotFoundException],
@@ -7304,7 +7304,7 @@ export const describeStackResource: API.OperationMethod<
   DescribeStackResourceOutput,
   DescribeStackResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeStackResourceInput,
   output: DescribeStackResourceOutput,
   errors: [],
@@ -7345,7 +7345,7 @@ export const describeStackResourceDrifts: API.OperationMethod<
     DescribeStackResourceDriftsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeStackResourceDriftsInput,
   output: DescribeStackResourceDriftsOutput,
   errors: [],
@@ -7381,7 +7381,7 @@ export const describeStackResources: API.OperationMethod<
   DescribeStackResourcesOutput,
   DescribeStackResourcesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeStackResourcesInput,
   output: DescribeStackResourcesOutput,
   errors: [],
@@ -7415,7 +7415,7 @@ export const describeStacks: API.OperationMethod<
     DescribeStacksError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeStacksInput,
   output: DescribeStacksOutput,
   errors: [],
@@ -7437,7 +7437,7 @@ export const describeStackSet: API.OperationMethod<
   DescribeStackSetOutput,
   DescribeStackSetError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeStackSetInput,
   output: DescribeStackSetOutput,
   errors: [StackSetNotFoundException],
@@ -7457,7 +7457,7 @@ export const describeStackSetOperation: API.OperationMethod<
   DescribeStackSetOperationOutput,
   DescribeStackSetOperationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeStackSetOperationInput,
   output: DescribeStackSetOperationOutput,
   errors: [OperationNotFoundException, StackSetNotFoundException],
@@ -7483,7 +7483,7 @@ export const describeType: API.OperationMethod<
   DescribeTypeOutput,
   DescribeTypeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeTypeInput,
   output: DescribeTypeOutput,
   errors: [CFNRegistryException, TypeNotFoundException],
@@ -7505,7 +7505,7 @@ export const describeTypeRegistration: API.OperationMethod<
   DescribeTypeRegistrationOutput,
   DescribeTypeRegistrationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeTypeRegistrationInput,
   output: DescribeTypeRegistrationOutput,
   errors: [CFNRegistryException],
@@ -7543,7 +7543,7 @@ export const detectStackDrift: API.OperationMethod<
   DetectStackDriftOutput,
   DetectStackDriftError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetectStackDriftInput,
   output: DetectStackDriftOutput,
   errors: [],
@@ -7571,7 +7571,7 @@ export const detectStackResourceDrift: API.OperationMethod<
   DetectStackResourceDriftOutput,
   DetectStackResourceDriftError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetectStackResourceDriftInput,
   output: DetectStackResourceDriftOutput,
   errors: [],
@@ -7618,7 +7618,7 @@ export const detectStackSetDrift: API.OperationMethod<
   DetectStackSetDriftOutput,
   DetectStackSetDriftError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetectStackSetDriftInput,
   output: DetectStackSetDriftOutput,
   errors: [
@@ -7638,7 +7638,7 @@ export const estimateTemplateCost: API.OperationMethod<
   EstimateTemplateCostOutput,
   EstimateTemplateCostError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EstimateTemplateCostInput,
   output: EstimateTemplateCostOutput,
   errors: [],
@@ -7668,7 +7668,7 @@ export const executeChangeSet: API.OperationMethod<
   ExecuteChangeSetOutput,
   ExecuteChangeSetError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExecuteChangeSetInput,
   output: ExecuteChangeSetOutput,
   errors: [
@@ -7687,7 +7687,7 @@ export const executeStackRefactor: API.OperationMethod<
   ExecuteStackRefactorResponse,
   ExecuteStackRefactorError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExecuteStackRefactorInput,
   output: ExecuteStackRefactorResponse,
   errors: [],
@@ -7706,7 +7706,7 @@ export const getGeneratedTemplate: API.OperationMethod<
   GetGeneratedTemplateOutput,
   GetGeneratedTemplateError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetGeneratedTemplateInput,
   output: GetGeneratedTemplateOutput,
   errors: [GeneratedTemplateNotFoundException],
@@ -7727,7 +7727,7 @@ export const getHookResult: API.OperationMethod<
   GetHookResultOutput,
   GetHookResultError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetHookResultInput,
   output: GetHookResultOutput,
   errors: [HookResultNotFoundException],
@@ -7742,7 +7742,7 @@ export const getStackPolicy: API.OperationMethod<
   GetStackPolicyOutput,
   GetStackPolicyError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetStackPolicyInput,
   output: GetStackPolicyOutput,
   errors: [],
@@ -7762,7 +7762,7 @@ export const getTemplate: API.OperationMethod<
   GetTemplateOutput,
   GetTemplateError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTemplateInput,
   output: GetTemplateOutput,
   errors: [ChangeSetNotFoundException],
@@ -7785,7 +7785,7 @@ export const getTemplateSummary: API.OperationMethod<
   GetTemplateSummaryOutput,
   GetTemplateSummaryError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTemplateSummaryInput,
   output: GetTemplateSummaryOutput,
   errors: [StackSetNotFoundException],
@@ -7810,7 +7810,7 @@ export const importStacksToStackSet: API.OperationMethod<
   ImportStacksToStackSetOutput,
   ImportStacksToStackSetError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportStacksToStackSetInput,
   output: ImportStacksToStackSetOutput,
   errors: [
@@ -7849,7 +7849,7 @@ export const listChangeSets: API.OperationMethod<
     ListChangeSetsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChangeSetsInput,
   output: ListChangeSetsOutput,
   errors: [],
@@ -7888,7 +7888,7 @@ export const listExports: API.OperationMethod<
     ListExportsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExportsInput,
   output: ListExportsOutput,
   errors: [],
@@ -7922,7 +7922,7 @@ export const listGeneratedTemplates: API.OperationMethod<
     ListGeneratedTemplatesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGeneratedTemplatesInput,
   output: ListGeneratedTemplatesOutput,
   errors: [],
@@ -7955,7 +7955,7 @@ export const listHookResults: API.OperationMethod<
   ListHookResultsOutput,
   ListHookResultsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListHookResultsInput,
   output: ListHookResultsOutput,
   errors: [HookResultNotFoundException],
@@ -7988,7 +7988,7 @@ export const listImports: API.OperationMethod<
     ListImportsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImportsInput,
   output: ListImportsOutput,
   errors: [],
@@ -8026,7 +8026,7 @@ export const listResourceScanRelatedResources: API.OperationMethod<
     ListResourceScanRelatedResourcesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceScanRelatedResourcesInput,
   output: ListResourceScanRelatedResourcesOutput,
   errors: [ResourceScanInProgressException, ResourceScanNotFoundException],
@@ -8067,7 +8067,7 @@ export const listResourceScanResources: API.OperationMethod<
     ListResourceScanResourcesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceScanResourcesInput,
   output: ListResourceScanResourcesOutput,
   errors: [ResourceScanInProgressException, ResourceScanNotFoundException],
@@ -8103,7 +8103,7 @@ export const listResourceScans: API.OperationMethod<
     ListResourceScansError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceScansInput,
   output: ListResourceScansOutput,
   errors: [],
@@ -8131,7 +8131,7 @@ export const listStackInstanceResourceDrifts: API.OperationMethod<
   ListStackInstanceResourceDriftsOutput,
   ListStackInstanceResourceDriftsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListStackInstanceResourceDriftsInput,
   output: ListStackInstanceResourceDriftsOutput,
   errors: [
@@ -8166,7 +8166,7 @@ export const listStackInstances: API.OperationMethod<
     ListStackInstancesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStackInstancesInput,
   output: ListStackInstancesOutput,
   errors: [StackSetNotFoundException],
@@ -8201,7 +8201,7 @@ export const listStackRefactorActions: API.OperationMethod<
     ListStackRefactorActionsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStackRefactorActionsInput,
   output: ListStackRefactorActionsOutput,
   errors: [],
@@ -8236,7 +8236,7 @@ export const listStackRefactors: API.OperationMethod<
     ListStackRefactorsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStackRefactorsInput,
   output: ListStackRefactorsOutput,
   errors: [],
@@ -8274,7 +8274,7 @@ export const listStackResources: API.OperationMethod<
     ListStackResourcesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStackResourcesInput,
   output: ListStackResourcesOutput,
   errors: [],
@@ -8312,7 +8312,7 @@ export const listStacks: API.OperationMethod<
     ListStacksError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStacksInput,
   output: ListStacksOutput,
   errors: [],
@@ -8333,7 +8333,7 @@ export const listStackSetAutoDeploymentTargets: API.OperationMethod<
   ListStackSetAutoDeploymentTargetsOutput,
   ListStackSetAutoDeploymentTargetsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListStackSetAutoDeploymentTargetsInput,
   output: ListStackSetAutoDeploymentTargetsOutput,
   errors: [StackSetNotFoundException],
@@ -8368,7 +8368,7 @@ export const listStackSetOperationResults: API.OperationMethod<
     ListStackSetOperationResultsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStackSetOperationResultsInput,
   output: ListStackSetOperationResultsOutput,
   errors: [OperationNotFoundException, StackSetNotFoundException],
@@ -8408,7 +8408,7 @@ export const listStackSetOperations: API.OperationMethod<
     ListStackSetOperationsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStackSetOperationsInput,
   output: ListStackSetOperationsOutput,
   errors: [StackSetNotFoundException],
@@ -8459,7 +8459,7 @@ export const listStackSets: API.OperationMethod<
     ListStackSetsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStackSetsInput,
   output: ListStackSetsOutput,
   errors: [],
@@ -8494,7 +8494,7 @@ export const listTypeRegistrations: API.OperationMethod<
     ListTypeRegistrationsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTypeRegistrationsInput,
   output: ListTypeRegistrationsOutput,
   errors: [CFNRegistryException],
@@ -8530,7 +8530,7 @@ export const listTypes: API.OperationMethod<
     ListTypesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTypesInput,
   output: ListTypesOutput,
   errors: [CFNRegistryException],
@@ -8565,7 +8565,7 @@ export const listTypeVersions: API.OperationMethod<
     ListTypeVersionsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTypeVersionsInput,
   output: ListTypeVersionsOutput,
   errors: [CFNRegistryException],
@@ -8594,7 +8594,7 @@ export const publishType: API.OperationMethod<
   PublishTypeOutput,
   PublishTypeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PublishTypeInput,
   output: PublishTypeOutput,
   errors: [CFNRegistryException, TypeNotFoundException],
@@ -8614,7 +8614,7 @@ export const recordHandlerProgress: API.OperationMethod<
   RecordHandlerProgressOutput,
   RecordHandlerProgressError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RecordHandlerProgressInput,
   output: RecordHandlerProgressOutput,
   errors: [
@@ -8637,7 +8637,7 @@ export const registerPublisher: API.OperationMethod<
   RegisterPublisherOutput,
   RegisterPublisherError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterPublisherInput,
   output: RegisterPublisherOutput,
   errors: [CFNRegistryException],
@@ -8675,7 +8675,7 @@ export const registerType: API.OperationMethod<
   RegisterTypeOutput,
   RegisterTypeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterTypeInput,
   output: RegisterTypeOutput,
   errors: [CFNRegistryException],
@@ -8708,7 +8708,7 @@ export const rollbackStack: API.OperationMethod<
   RollbackStackOutput,
   RollbackStackError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RollbackStackInput,
   output: RollbackStackOutput,
   errors: [TokenAlreadyExistsException],
@@ -8722,7 +8722,7 @@ export const setStackPolicy: API.OperationMethod<
   SetStackPolicyResponse,
   SetStackPolicyError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetStackPolicyInput,
   output: SetStackPolicyResponse,
   errors: [],
@@ -8755,7 +8755,7 @@ export const setTypeConfiguration: API.OperationMethod<
   SetTypeConfigurationOutput,
   SetTypeConfigurationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetTypeConfigurationInput,
   output: SetTypeConfigurationOutput,
   errors: [CFNRegistryException, TypeNotFoundException],
@@ -8773,7 +8773,7 @@ export const setTypeDefaultVersion: API.OperationMethod<
   SetTypeDefaultVersionOutput,
   SetTypeDefaultVersionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetTypeDefaultVersionInput,
   output: SetTypeDefaultVersionOutput,
   errors: [CFNRegistryException, TypeNotFoundException],
@@ -8792,7 +8792,7 @@ export const signalResource: API.OperationMethod<
   SignalResourceResponse,
   SignalResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SignalResourceInput,
   output: SignalResourceResponse,
   errors: [],
@@ -8810,7 +8810,7 @@ export const startResourceScan: API.OperationMethod<
   StartResourceScanOutput,
   StartResourceScanError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartResourceScanInput,
   output: StartResourceScanOutput,
   errors: [ResourceScanInProgressException, ResourceScanLimitExceededException],
@@ -8830,7 +8830,7 @@ export const stopStackSetOperation: API.OperationMethod<
   StopStackSetOperationOutput,
   StopStackSetOperationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopStackSetOperationInput,
   output: StopStackSetOperationOutput,
   errors: [
@@ -8876,7 +8876,7 @@ export const testType: API.OperationMethod<
   TestTypeOutput,
   TestTypeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestTypeInput,
   output: TestTypeOutput,
   errors: [CFNRegistryException, TypeNotFoundException],
@@ -8897,7 +8897,7 @@ export const updateGeneratedTemplate: API.OperationMethod<
   UpdateGeneratedTemplateOutput,
   UpdateGeneratedTemplateError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateGeneratedTemplateInput,
   output: UpdateGeneratedTemplateOutput,
   errors: [
@@ -8926,7 +8926,7 @@ export const updateStack: API.OperationMethod<
   UpdateStackOutput,
   UpdateStackError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateStackInput,
   output: UpdateStackOutput,
   errors: [InsufficientCapabilitiesException, TokenAlreadyExistsException],
@@ -8975,7 +8975,7 @@ export const updateStackInstances: API.OperationMethod<
   UpdateStackInstancesOutput,
   UpdateStackInstancesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateStackInstancesInput,
   output: UpdateStackInstancesOutput,
   errors: [
@@ -9021,7 +9021,7 @@ export const updateStackSet: API.OperationMethod<
   UpdateStackSetOutput,
   UpdateStackSetError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateStackSetInput,
   output: UpdateStackSetOutput,
   errors: [
@@ -9049,7 +9049,7 @@ export const updateTerminationProtection: API.OperationMethod<
   UpdateTerminationProtectionOutput,
   UpdateTerminationProtectionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTerminationProtectionInput,
   output: UpdateTerminationProtectionOutput,
   errors: [],
@@ -9065,7 +9065,7 @@ export const validateTemplate: API.OperationMethod<
   ValidateTemplateOutput,
   ValidateTemplateError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ValidateTemplateInput,
   output: ValidateTemplateOutput,
   errors: [],

@@ -2695,7 +2695,7 @@ export const associateExternalConnection: API.OperationMethod<
   AssociateExternalConnectionResult,
   AssociateExternalConnectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateExternalConnectionRequest,
   output: AssociateExternalConnectionResult,
   errors: [
@@ -2727,7 +2727,7 @@ export const copyPackageVersions: API.OperationMethod<
   CopyPackageVersionsResult,
   CopyPackageVersionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CopyPackageVersionsRequest,
   output: CopyPackageVersionsResult,
   errors: [
@@ -2764,7 +2764,7 @@ export const createDomain: API.OperationMethod<
   CreateDomainResult,
   CreateDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDomainRequest,
   output: CreateDomainResult,
   errors: [
@@ -2794,7 +2794,7 @@ export const createPackageGroup: API.OperationMethod<
   CreatePackageGroupResult,
   CreatePackageGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePackageGroupRequest,
   output: CreatePackageGroupResult,
   errors: [
@@ -2824,7 +2824,7 @@ export const createRepository: API.OperationMethod<
   CreateRepositoryResult,
   CreateRepositoryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRepositoryRequest,
   output: CreateRepositoryResult,
   errors: [
@@ -2853,7 +2853,7 @@ export const deleteDomain: API.OperationMethod<
   DeleteDomainResult,
   DeleteDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDomainRequest,
   output: DeleteDomainResult,
   errors: [
@@ -2880,7 +2880,7 @@ export const deleteDomainPermissionsPolicy: API.OperationMethod<
   DeleteDomainPermissionsPolicyResult,
   DeleteDomainPermissionsPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDomainPermissionsPolicyRequest,
   output: DeleteDomainPermissionsPolicyResult,
   errors: [
@@ -2909,7 +2909,7 @@ export const deletePackage: API.OperationMethod<
   DeletePackageResult,
   DeletePackageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePackageRequest,
   output: DeletePackageResult,
   errors: [
@@ -2942,7 +2942,7 @@ export const deletePackageGroup: API.OperationMethod<
   DeletePackageGroupResult,
   DeletePackageGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePackageGroupRequest,
   output: DeletePackageGroupResult,
   errors: [
@@ -2975,7 +2975,7 @@ export const deletePackageVersions: API.OperationMethod<
   DeletePackageVersionsResult,
   DeletePackageVersionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePackageVersionsRequest,
   output: DeletePackageVersionsResult,
   errors: [
@@ -3003,7 +3003,7 @@ export const deleteRepository: API.OperationMethod<
   DeleteRepositoryResult,
   DeleteRepositoryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRepositoryRequest,
   output: DeleteRepositoryResult,
   errors: [
@@ -3035,7 +3035,7 @@ export const deleteRepositoryPermissionsPolicy: API.OperationMethod<
   DeleteRepositoryPermissionsPolicyResult,
   DeleteRepositoryPermissionsPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRepositoryPermissionsPolicyRequest,
   output: DeleteRepositoryPermissionsPolicyResult,
   errors: [
@@ -3064,7 +3064,7 @@ export const describeDomain: API.OperationMethod<
   DescribeDomainResult,
   DescribeDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDomainRequest,
   output: DescribeDomainResult,
   errors: [
@@ -3092,7 +3092,7 @@ export const describePackage: API.OperationMethod<
   DescribePackageResult,
   DescribePackageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribePackageRequest,
   output: DescribePackageResult,
   errors: [
@@ -3119,7 +3119,7 @@ export const describePackageGroup: API.OperationMethod<
   DescribePackageGroupResult,
   DescribePackageGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribePackageGroupRequest,
   output: DescribePackageGroupResult,
   errors: [
@@ -3148,7 +3148,7 @@ export const describePackageVersion: API.OperationMethod<
   DescribePackageVersionResult,
   DescribePackageVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribePackageVersionRequest,
   output: DescribePackageVersionResult,
   errors: [
@@ -3176,7 +3176,7 @@ export const describeRepository: API.OperationMethod<
   DescribeRepositoryResult,
   DescribeRepositoryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeRepositoryRequest,
   output: DescribeRepositoryResult,
   errors: [
@@ -3204,7 +3204,7 @@ export const disassociateExternalConnection: API.OperationMethod<
   DisassociateExternalConnectionResult,
   DisassociateExternalConnectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateExternalConnectionRequest,
   output: DisassociateExternalConnectionResult,
   errors: [
@@ -3240,7 +3240,7 @@ export const disposePackageVersions: API.OperationMethod<
   DisposePackageVersionsResult,
   DisposePackageVersionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisposePackageVersionsRequest,
   output: DisposePackageVersionsResult,
   errors: [
@@ -3272,7 +3272,7 @@ export const getAssociatedPackageGroup: API.OperationMethod<
   GetAssociatedPackageGroupResult,
   GetAssociatedPackageGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAssociatedPackageGroupRequest,
   output: GetAssociatedPackageGroupResult,
   errors: [
@@ -3316,7 +3316,7 @@ export const getAuthorizationToken: API.OperationMethod<
   GetAuthorizationTokenResult,
   GetAuthorizationTokenError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAuthorizationTokenRequest,
   output: GetAuthorizationTokenResult,
   errors: [
@@ -3346,7 +3346,7 @@ export const getDomainPermissionsPolicy: API.OperationMethod<
   GetDomainPermissionsPolicyResult,
   GetDomainPermissionsPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDomainPermissionsPolicyRequest,
   output: GetDomainPermissionsPolicyResult,
   errors: [
@@ -3375,7 +3375,7 @@ export const getPackageVersionAsset: API.OperationMethod<
   GetPackageVersionAssetResult,
   GetPackageVersionAssetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPackageVersionAssetRequest,
   output: GetPackageVersionAssetResult,
   errors: [
@@ -3404,7 +3404,7 @@ export const getPackageVersionReadme: API.OperationMethod<
   GetPackageVersionReadmeResult,
   GetPackageVersionReadmeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPackageVersionReadmeRequest,
   output: GetPackageVersionReadmeResult,
   errors: [
@@ -3447,7 +3447,7 @@ export const getRepositoryEndpoint: API.OperationMethod<
   GetRepositoryEndpointResult,
   GetRepositoryEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRepositoryEndpointRequest,
   output: GetRepositoryEndpointResult,
   errors: [
@@ -3473,7 +3473,7 @@ export const getRepositoryPermissionsPolicy: API.OperationMethod<
   GetRepositoryPermissionsPolicyResult,
   GetRepositoryPermissionsPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRepositoryPermissionsPolicyRequest,
   output: GetRepositoryPermissionsPolicyResult,
   errors: [
@@ -3516,7 +3516,7 @@ export const listAllowedRepositoriesForGroup: API.OperationMethod<
     ListAllowedRepositoriesForGroupError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAllowedRepositoriesForGroupRequest,
   output: ListAllowedRepositoriesForGroupResult,
   errors: [
@@ -3565,7 +3565,7 @@ export const listAssociatedPackages: API.OperationMethod<
     ListAssociatedPackagesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssociatedPackagesRequest,
   output: ListAssociatedPackagesResult,
   errors: [
@@ -3612,7 +3612,7 @@ export const listDomains: API.OperationMethod<
     ListDomainsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDomainsRequest,
   output: ListDomainsResult,
   errors: [
@@ -3658,7 +3658,7 @@ export const listPackageGroups: API.OperationMethod<
     ListPackageGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPackageGroupsRequest,
   output: ListPackageGroupsResult,
   errors: [
@@ -3707,7 +3707,7 @@ export const listPackages: API.OperationMethod<
     ListPackagesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPackagesRequest,
   output: ListPackagesResult,
   errors: [
@@ -3756,7 +3756,7 @@ export const listPackageVersionAssets: API.OperationMethod<
     ListPackageVersionAssetsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPackageVersionAssetsRequest,
   output: ListPackageVersionAssetsResult,
   errors: [
@@ -3792,7 +3792,7 @@ export const listPackageVersionDependencies: API.OperationMethod<
   ListPackageVersionDependenciesResult,
   ListPackageVersionDependenciesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListPackageVersionDependenciesRequest,
   output: ListPackageVersionDependenciesResult,
   errors: [
@@ -3835,7 +3835,7 @@ export const listPackageVersions: API.OperationMethod<
     ListPackageVersionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPackageVersionsRequest,
   output: ListPackageVersionsResult,
   errors: [
@@ -3884,7 +3884,7 @@ export const listRepositories: API.OperationMethod<
     ListRepositoriesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRepositoriesRequest,
   output: ListRepositoriesResult,
   errors: [
@@ -3933,7 +3933,7 @@ export const listRepositoriesInDomain: API.OperationMethod<
     ListRepositoriesInDomainError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRepositoriesInDomainRequest,
   output: ListRepositoriesInDomainResult,
   errors: [
@@ -3984,7 +3984,7 @@ export const listSubPackageGroups: API.OperationMethod<
     ListSubPackageGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSubPackageGroupsRequest,
   output: ListSubPackageGroupsResult,
   errors: [
@@ -4015,7 +4015,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResult,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResult,
   errors: [
@@ -4051,7 +4051,7 @@ export const publishPackageVersion: API.OperationMethod<
   PublishPackageVersionResult,
   PublishPackageVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PublishPackageVersionRequest,
   output: PublishPackageVersionResult,
   errors: [
@@ -4085,7 +4085,7 @@ export const putDomainPermissionsPolicy: API.OperationMethod<
   PutDomainPermissionsPolicyResult,
   PutDomainPermissionsPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutDomainPermissionsPolicyRequest,
   output: PutDomainPermissionsPolicyResult,
   errors: [
@@ -4122,7 +4122,7 @@ export const putPackageOriginConfiguration: API.OperationMethod<
   PutPackageOriginConfigurationResult,
   PutPackageOriginConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutPackageOriginConfigurationRequest,
   output: PutPackageOriginConfigurationResult,
   errors: [
@@ -4154,7 +4154,7 @@ export const putRepositoryPermissionsPolicy: API.OperationMethod<
   PutRepositoryPermissionsPolicyResult,
   PutRepositoryPermissionsPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutRepositoryPermissionsPolicyRequest,
   output: PutRepositoryPermissionsPolicyResult,
   errors: [
@@ -4182,7 +4182,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResult,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResult,
   errors: [
@@ -4207,7 +4207,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResult,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResult,
   errors: [
@@ -4234,7 +4234,7 @@ export const updatePackageGroup: API.OperationMethod<
   UpdatePackageGroupResult,
   UpdatePackageGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePackageGroupRequest,
   output: UpdatePackageGroupResult,
   errors: [
@@ -4268,7 +4268,7 @@ export const updatePackageGroupOriginConfiguration: API.OperationMethod<
   UpdatePackageGroupOriginConfigurationResult,
   UpdatePackageGroupOriginConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePackageGroupOriginConfigurationRequest,
   output: UpdatePackageGroupOriginConfigurationResult,
   errors: [
@@ -4299,7 +4299,7 @@ export const updatePackageVersionsStatus: API.OperationMethod<
   UpdatePackageVersionsStatusResult,
   UpdatePackageVersionsStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePackageVersionsStatusRequest,
   output: UpdatePackageVersionsStatusResult,
   errors: [
@@ -4328,7 +4328,7 @@ export const updateRepository: API.OperationMethod<
   UpdateRepositoryResult,
   UpdateRepositoryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRepositoryRequest,
   output: UpdateRepositoryResult,
   errors: [

@@ -1438,7 +1438,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -1479,7 +1479,7 @@ export const listVersions: API.OperationMethod<
     ListVersionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVersionsRequest,
   output: ListVersionsResponse,
   errors: [
@@ -1513,7 +1513,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -1539,7 +1539,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -1569,7 +1569,7 @@ export const createWorkspaceApiKey: API.OperationMethod<
   CreateWorkspaceApiKeyResponse,
   CreateWorkspaceApiKeyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateWorkspaceApiKeyRequest,
   output: CreateWorkspaceApiKeyResponse,
   errors: [
@@ -1600,7 +1600,7 @@ export const deleteWorkspaceApiKey: API.OperationMethod<
   DeleteWorkspaceApiKeyResponse,
   DeleteWorkspaceApiKeyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteWorkspaceApiKeyRequest,
   output: DeleteWorkspaceApiKeyResponse,
   errors: [
@@ -1628,7 +1628,7 @@ export const describeWorkspaceAuthentication: API.OperationMethod<
   DescribeWorkspaceAuthenticationResponse,
   DescribeWorkspaceAuthenticationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeWorkspaceAuthenticationRequest,
   output: DescribeWorkspaceAuthenticationResponse,
   errors: [
@@ -1658,7 +1658,7 @@ export const updateWorkspaceAuthentication: API.OperationMethod<
   UpdateWorkspaceAuthenticationResponse,
   UpdateWorkspaceAuthenticationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateWorkspaceAuthenticationRequest,
   output: UpdateWorkspaceAuthenticationResponse,
   errors: [
@@ -1684,7 +1684,7 @@ export const describeWorkspaceConfiguration: API.OperationMethod<
   DescribeWorkspaceConfigurationResponse,
   DescribeWorkspaceConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeWorkspaceConfigurationRequest,
   output: DescribeWorkspaceConfigurationResponse,
   errors: [
@@ -1710,7 +1710,7 @@ export const updateWorkspaceConfiguration: API.OperationMethod<
   UpdateWorkspaceConfigurationResponse,
   UpdateWorkspaceConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateWorkspaceConfigurationRequest,
   output: UpdateWorkspaceConfigurationResponse,
   errors: [
@@ -1737,7 +1737,7 @@ export const associateLicense: API.OperationMethod<
   AssociateLicenseResponse,
   AssociateLicenseError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateLicenseRequest,
   output: AssociateLicenseResponse,
   errors: [
@@ -1763,7 +1763,7 @@ export const disassociateLicense: API.OperationMethod<
   DisassociateLicenseResponse,
   DisassociateLicenseError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateLicenseRequest,
   output: DisassociateLicenseResponse,
   errors: [
@@ -1804,7 +1804,7 @@ export const listPermissions: API.OperationMethod<
     ListPermissionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPermissionsRequest,
   output: ListPermissionsResponse,
   errors: [
@@ -1836,7 +1836,7 @@ export const updatePermissions: API.OperationMethod<
   UpdatePermissionsResponse,
   UpdatePermissionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePermissionsRequest,
   output: UpdatePermissionsResponse,
   errors: [
@@ -1870,7 +1870,7 @@ export const createWorkspaceServiceAccount: API.OperationMethod<
   CreateWorkspaceServiceAccountResponse,
   CreateWorkspaceServiceAccountError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateWorkspaceServiceAccountRequest,
   output: CreateWorkspaceServiceAccountResponse,
   errors: [
@@ -1903,7 +1903,7 @@ export const deleteWorkspaceServiceAccount: API.OperationMethod<
   DeleteWorkspaceServiceAccountResponse,
   DeleteWorkspaceServiceAccountError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteWorkspaceServiceAccountRequest,
   output: DeleteWorkspaceServiceAccountResponse,
   errors: [
@@ -1948,7 +1948,7 @@ export const listWorkspaceServiceAccounts: API.OperationMethod<
     ListWorkspaceServiceAccountsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkspaceServiceAccountsRequest,
   output: ListWorkspaceServiceAccountsResponse,
   errors: [
@@ -1989,7 +1989,7 @@ export const createWorkspaceServiceAccountToken: API.OperationMethod<
   CreateWorkspaceServiceAccountTokenResponse,
   CreateWorkspaceServiceAccountTokenError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateWorkspaceServiceAccountTokenRequest,
   output: CreateWorkspaceServiceAccountTokenResponse,
   errors: [
@@ -2022,7 +2022,7 @@ export const deleteWorkspaceServiceAccountToken: API.OperationMethod<
   DeleteWorkspaceServiceAccountTokenResponse,
   DeleteWorkspaceServiceAccountTokenError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteWorkspaceServiceAccountTokenRequest,
   output: DeleteWorkspaceServiceAccountTokenResponse,
   errors: [
@@ -2069,7 +2069,7 @@ export const listWorkspaceServiceAccountTokens: API.OperationMethod<
     ListWorkspaceServiceAccountTokensError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkspaceServiceAccountTokensRequest,
   output: ListWorkspaceServiceAccountTokensResponse,
   errors: [
@@ -2105,7 +2105,7 @@ export const createWorkspace: API.OperationMethod<
   CreateWorkspaceResponse,
   CreateWorkspaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateWorkspaceRequest,
   output: CreateWorkspaceResponse,
   errors: [
@@ -2132,7 +2132,7 @@ export const describeWorkspace: API.OperationMethod<
   DescribeWorkspaceResponse,
   DescribeWorkspaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeWorkspaceRequest,
   output: DescribeWorkspaceResponse,
   errors: [
@@ -2163,7 +2163,7 @@ export const updateWorkspace: API.OperationMethod<
   UpdateWorkspaceResponse,
   UpdateWorkspaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateWorkspaceRequest,
   output: UpdateWorkspaceResponse,
   errors: [
@@ -2191,7 +2191,7 @@ export const deleteWorkspace: API.OperationMethod<
   DeleteWorkspaceResponse,
   DeleteWorkspaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteWorkspaceRequest,
   output: DeleteWorkspaceResponse,
   errors: [
@@ -2231,7 +2231,7 @@ export const listWorkspaces: API.OperationMethod<
     ListWorkspacesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkspacesRequest,
   output: ListWorkspacesResponse,
   errors: [AccessDeniedException, InternalServerException, ThrottlingException],

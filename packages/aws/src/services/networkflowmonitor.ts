@@ -1335,7 +1335,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceOutput,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [
@@ -1363,7 +1363,7 @@ export const tagResource: API.OperationMethod<
   TagResourceOutput,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
   errors: [
@@ -1391,7 +1391,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceOutput,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
   errors: [
@@ -1419,7 +1419,7 @@ export const createMonitor: API.OperationMethod<
   CreateMonitorOutput,
   CreateMonitorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMonitorInput,
   output: CreateMonitorOutput,
   errors: [
@@ -1446,7 +1446,7 @@ export const getMonitor: API.OperationMethod<
   GetMonitorOutput,
   GetMonitorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMonitorInput,
   output: GetMonitorOutput,
   errors: [
@@ -1472,7 +1472,7 @@ export const updateMonitor: API.OperationMethod<
   UpdateMonitorOutput,
   UpdateMonitorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateMonitorInput,
   output: UpdateMonitorOutput,
   errors: [
@@ -1499,7 +1499,7 @@ export const deleteMonitor: API.OperationMethod<
   DeleteMonitorOutput,
   DeleteMonitorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMonitorInput,
   output: DeleteMonitorOutput,
   errors: [
@@ -1540,7 +1540,7 @@ export const listMonitors: API.OperationMethod<
     ListMonitorsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMonitorsInput,
   output: ListMonitorsOutput,
   errors: [
@@ -1591,7 +1591,7 @@ export const getQueryResultsMonitorTopContributors: API.OperationMethod<
     GetQueryResultsMonitorTopContributorsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetQueryResultsMonitorTopContributorsInput,
   output: GetQueryResultsMonitorTopContributorsOutput,
   errors: [
@@ -1628,7 +1628,7 @@ export const getQueryStatusMonitorTopContributors: API.OperationMethod<
   GetQueryStatusMonitorTopContributorsOutput,
   GetQueryStatusMonitorTopContributorsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetQueryStatusMonitorTopContributorsInput,
   output: GetQueryStatusMonitorTopContributorsOutput,
   errors: [
@@ -1658,7 +1658,7 @@ export const startQueryMonitorTopContributors: API.OperationMethod<
   StartQueryMonitorTopContributorsOutput,
   StartQueryMonitorTopContributorsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartQueryMonitorTopContributorsInput,
   output: StartQueryMonitorTopContributorsOutput,
   errors: [
@@ -1686,7 +1686,7 @@ export const stopQueryMonitorTopContributors: API.OperationMethod<
   StopQueryMonitorTopContributorsOutput,
   StopQueryMonitorTopContributorsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopQueryMonitorTopContributorsInput,
   output: StopQueryMonitorTopContributorsOutput,
   errors: [
@@ -1723,7 +1723,7 @@ export const createScope: API.OperationMethod<
   CreateScopeOutput,
   CreateScopeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateScopeInput,
   output: CreateScopeOutput,
   errors: [
@@ -1751,7 +1751,7 @@ export const getScope: API.OperationMethod<
   GetScopeOutput,
   GetScopeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetScopeInput,
   output: GetScopeOutput,
   errors: [
@@ -1780,7 +1780,7 @@ export const updateScope: API.OperationMethod<
   UpdateScopeOutput,
   UpdateScopeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateScopeInput,
   output: UpdateScopeOutput,
   errors: [
@@ -1810,7 +1810,7 @@ export const deleteScope: API.OperationMethod<
   DeleteScopeOutput,
   DeleteScopeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteScopeInput,
   output: DeleteScopeOutput,
   errors: [
@@ -1853,7 +1853,7 @@ export const listScopes: API.OperationMethod<
     ListScopesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListScopesInput,
   output: ListScopesOutput,
   errors: [
@@ -1907,7 +1907,7 @@ export const getQueryResultsWorkloadInsightsTopContributors: API.OperationMethod
     GetQueryResultsWorkloadInsightsTopContributorsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetQueryResultsWorkloadInsightsTopContributorsInput,
   output: GetQueryResultsWorkloadInsightsTopContributorsOutput,
   errors: [
@@ -1964,7 +1964,7 @@ export const getQueryResultsWorkloadInsightsTopContributorsData: API.OperationMe
     GetQueryResultsWorkloadInsightsTopContributorsDataError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetQueryResultsWorkloadInsightsTopContributorsDataInput,
   output: GetQueryResultsWorkloadInsightsTopContributorsDataOutput,
   errors: [
@@ -2001,7 +2001,7 @@ export const getQueryStatusWorkloadInsightsTopContributors: API.OperationMethod<
   GetQueryStatusWorkloadInsightsTopContributorsOutput,
   GetQueryStatusWorkloadInsightsTopContributorsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetQueryStatusWorkloadInsightsTopContributorsInput,
   output: GetQueryStatusWorkloadInsightsTopContributorsOutput,
   errors: [
@@ -2033,7 +2033,7 @@ export const getQueryStatusWorkloadInsightsTopContributorsData: API.OperationMet
   GetQueryStatusWorkloadInsightsTopContributorsDataOutput,
   GetQueryStatusWorkloadInsightsTopContributorsDataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetQueryStatusWorkloadInsightsTopContributorsDataInput,
   output: GetQueryStatusWorkloadInsightsTopContributorsDataOutput,
   errors: [
@@ -2063,7 +2063,7 @@ export const startQueryWorkloadInsightsTopContributors: API.OperationMethod<
   StartQueryWorkloadInsightsTopContributorsOutput,
   StartQueryWorkloadInsightsTopContributorsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartQueryWorkloadInsightsTopContributorsInput,
   output: StartQueryWorkloadInsightsTopContributorsOutput,
   errors: [
@@ -2093,7 +2093,7 @@ export const startQueryWorkloadInsightsTopContributorsData: API.OperationMethod<
   StartQueryWorkloadInsightsTopContributorsDataOutput,
   StartQueryWorkloadInsightsTopContributorsDataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartQueryWorkloadInsightsTopContributorsDataInput,
   output: StartQueryWorkloadInsightsTopContributorsDataOutput,
   errors: [
@@ -2121,7 +2121,7 @@ export const stopQueryWorkloadInsightsTopContributors: API.OperationMethod<
   StopQueryWorkloadInsightsTopContributorsOutput,
   StopQueryWorkloadInsightsTopContributorsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopQueryWorkloadInsightsTopContributorsInput,
   output: StopQueryWorkloadInsightsTopContributorsOutput,
   errors: [
@@ -2149,7 +2149,7 @@ export const stopQueryWorkloadInsightsTopContributorsData: API.OperationMethod<
   StopQueryWorkloadInsightsTopContributorsDataOutput,
   StopQueryWorkloadInsightsTopContributorsDataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopQueryWorkloadInsightsTopContributorsDataInput,
   output: StopQueryWorkloadInsightsTopContributorsDataOutput,
   errors: [

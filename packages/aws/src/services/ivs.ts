@@ -1820,7 +1820,7 @@ export const batchGetChannel: API.OperationMethod<
   BatchGetChannelResponse,
   BatchGetChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetChannelRequest,
   output: BatchGetChannelResponse,
   errors: [],
@@ -1834,7 +1834,7 @@ export const batchGetStreamKey: API.OperationMethod<
   BatchGetStreamKeyResponse,
   BatchGetStreamKeyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetStreamKeyRequest,
   output: BatchGetStreamKeyResponse,
   errors: [],
@@ -1854,7 +1854,7 @@ export const batchStartViewerSessionRevocation: API.OperationMethod<
   BatchStartViewerSessionRevocationResponse,
   BatchStartViewerSessionRevocationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchStartViewerSessionRevocationRequest,
   output: BatchStartViewerSessionRevocationResponse,
   errors: [
@@ -1879,7 +1879,7 @@ export const createChannel: API.OperationMethod<
   CreateChannelResponse,
   CreateChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateChannelRequest,
   output: CreateChannelResponse,
   errors: [
@@ -1906,7 +1906,7 @@ export const createPlaybackRestrictionPolicy: API.OperationMethod<
   CreatePlaybackRestrictionPolicyResponse,
   CreatePlaybackRestrictionPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePlaybackRestrictionPolicyRequest,
   output: CreatePlaybackRestrictionPolicyResponse,
   errors: [
@@ -1944,7 +1944,7 @@ export const createRecordingConfiguration: API.OperationMethod<
   CreateRecordingConfigurationResponse,
   CreateRecordingConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRecordingConfigurationRequest,
   output: CreateRecordingConfigurationResponse,
   errors: [
@@ -1975,7 +1975,7 @@ export const createStreamKey: API.OperationMethod<
   CreateStreamKeyResponse,
   CreateStreamKeyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateStreamKeyRequest,
   output: CreateStreamKeyResponse,
   errors: [
@@ -2006,7 +2006,7 @@ export const deleteChannel: API.OperationMethod<
   DeleteChannelResponse,
   DeleteChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteChannelRequest,
   output: DeleteChannelResponse,
   errors: [
@@ -2033,7 +2033,7 @@ export const deletePlaybackKeyPair: API.OperationMethod<
   DeletePlaybackKeyPairResponse,
   DeletePlaybackKeyPairError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePlaybackKeyPairRequest,
   output: DeletePlaybackKeyPairResponse,
   errors: [
@@ -2058,7 +2058,7 @@ export const deletePlaybackRestrictionPolicy: API.OperationMethod<
   DeletePlaybackRestrictionPolicyResponse,
   DeletePlaybackRestrictionPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePlaybackRestrictionPolicyRequest,
   output: DeletePlaybackRestrictionPolicyResponse,
   errors: [
@@ -2090,7 +2090,7 @@ export const deleteRecordingConfiguration: API.OperationMethod<
   DeleteRecordingConfigurationResponse,
   DeleteRecordingConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRecordingConfigurationRequest,
   output: DeleteRecordingConfigurationResponse,
   errors: [
@@ -2116,7 +2116,7 @@ export const deleteStreamKey: API.OperationMethod<
   DeleteStreamKeyResponse,
   DeleteStreamKeyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteStreamKeyRequest,
   output: DeleteStreamKeyResponse,
   errors: [
@@ -2139,7 +2139,7 @@ export const getChannel: API.OperationMethod<
   GetChannelResponse,
   GetChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetChannelRequest,
   output: GetChannelResponse,
   errors: [
@@ -2165,7 +2165,7 @@ export const getPlaybackKeyPair: API.OperationMethod<
   GetPlaybackKeyPairResponse,
   GetPlaybackKeyPairError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPlaybackKeyPairRequest,
   output: GetPlaybackKeyPairResponse,
   errors: [
@@ -2188,7 +2188,7 @@ export const getPlaybackRestrictionPolicy: API.OperationMethod<
   GetPlaybackRestrictionPolicyResponse,
   GetPlaybackRestrictionPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPlaybackRestrictionPolicyRequest,
   output: GetPlaybackRestrictionPolicyResponse,
   errors: [
@@ -2212,7 +2212,7 @@ export const getRecordingConfiguration: API.OperationMethod<
   GetRecordingConfigurationResponse,
   GetRecordingConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRecordingConfigurationRequest,
   output: GetRecordingConfigurationResponse,
   errors: [
@@ -2236,7 +2236,7 @@ export const getStream: API.OperationMethod<
   GetStreamResponse,
   GetStreamError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetStreamRequest,
   output: GetStreamResponse,
   errors: [
@@ -2259,7 +2259,7 @@ export const getStreamKey: API.OperationMethod<
   GetStreamKeyResponse,
   GetStreamKeyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetStreamKeyRequest,
   output: GetStreamKeyResponse,
   errors: [
@@ -2281,7 +2281,7 @@ export const getStreamSession: API.OperationMethod<
   GetStreamSessionResponse,
   GetStreamSessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetStreamSessionRequest,
   output: GetStreamSessionResponse,
   errors: [
@@ -2309,7 +2309,7 @@ export const importPlaybackKeyPair: API.OperationMethod<
   ImportPlaybackKeyPairResponse,
   ImportPlaybackKeyPairError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportPlaybackKeyPairRequest,
   output: ImportPlaybackKeyPairResponse,
   errors: [
@@ -2351,7 +2351,7 @@ export const listChannels: API.OperationMethod<
     ListChannelsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChannelsRequest,
   output: ListChannelsResponse,
   errors: [AccessDeniedException, ConflictException, ValidationException],
@@ -2389,7 +2389,7 @@ export const listPlaybackKeyPairs: API.OperationMethod<
     ListPlaybackKeyPairsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlaybackKeyPairsRequest,
   output: ListPlaybackKeyPairsResponse,
   errors: [AccessDeniedException, ValidationException],
@@ -2428,7 +2428,7 @@ export const listPlaybackRestrictionPolicies: API.OperationMethod<
     ListPlaybackRestrictionPoliciesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlaybackRestrictionPoliciesRequest,
   output: ListPlaybackRestrictionPoliciesResponse,
   errors: [
@@ -2472,7 +2472,7 @@ export const listRecordingConfigurations: API.OperationMethod<
     ListRecordingConfigurationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecordingConfigurationsRequest,
   output: ListRecordingConfigurationsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
@@ -2510,7 +2510,7 @@ export const listStreamKeys: API.OperationMethod<
     ListStreamKeysError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStreamKeysRequest,
   output: ListStreamKeysResponse,
   errors: [
@@ -2552,7 +2552,7 @@ export const listStreams: API.OperationMethod<
     ListStreamsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStreamsRequest,
   output: ListStreamsResponse,
   errors: [AccessDeniedException, ValidationException],
@@ -2591,7 +2591,7 @@ export const listStreamSessions: API.OperationMethod<
     ListStreamSessionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStreamSessionsRequest,
   output: ListStreamSessionsResponse,
   errors: [
@@ -2618,7 +2618,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -2646,7 +2646,7 @@ export const putMetadata: API.OperationMethod<
   PutMetadataResponse,
   PutMetadataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutMetadataRequest,
   output: PutMetadataResponse,
   errors: [
@@ -2677,7 +2677,7 @@ export const startViewerSessionRevocation: API.OperationMethod<
   StartViewerSessionRevocationResponse,
   StartViewerSessionRevocationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartViewerSessionRevocationRequest,
   output: StartViewerSessionRevocationResponse,
   errors: [
@@ -2710,7 +2710,7 @@ export const stopStream: API.OperationMethod<
   StopStreamResponse,
   StopStreamError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopStreamRequest,
   output: StopStreamResponse,
   errors: [
@@ -2734,7 +2734,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -2756,7 +2756,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -2782,7 +2782,7 @@ export const updateChannel: API.OperationMethod<
   UpdateChannelResponse,
   UpdateChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateChannelRequest,
   output: UpdateChannelResponse,
   errors: [
@@ -2808,7 +2808,7 @@ export const updatePlaybackRestrictionPolicy: API.OperationMethod<
   UpdatePlaybackRestrictionPolicyResponse,
   UpdatePlaybackRestrictionPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePlaybackRestrictionPolicyRequest,
   output: UpdatePlaybackRestrictionPolicyResponse,
   errors: [

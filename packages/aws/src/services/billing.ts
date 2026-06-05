@@ -713,7 +713,7 @@ export const associateSourceViews: API.OperationMethod<
   AssociateSourceViewsResponse,
   AssociateSourceViewsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateSourceViewsRequest,
   output: AssociateSourceViewsResponse,
   errors: [
@@ -745,7 +745,7 @@ export const createBillingView: API.OperationMethod<
   CreateBillingViewResponse,
   CreateBillingViewError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateBillingViewRequest,
   output: CreateBillingViewResponse,
   errors: [
@@ -774,7 +774,7 @@ export const deleteBillingView: API.OperationMethod<
   DeleteBillingViewResponse,
   DeleteBillingViewError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteBillingViewRequest,
   output: DeleteBillingViewResponse,
   errors: [
@@ -802,7 +802,7 @@ export const disassociateSourceViews: API.OperationMethod<
   DisassociateSourceViewsResponse,
   DisassociateSourceViewsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateSourceViewsRequest,
   output: DisassociateSourceViewsResponse,
   errors: [
@@ -830,7 +830,7 @@ export const getBillingView: API.OperationMethod<
   GetBillingViewResponse,
   GetBillingViewError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetBillingViewRequest,
   output: GetBillingViewResponse,
   errors: [
@@ -856,7 +856,7 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyResponse,
   GetResourcePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResourcePolicyRequest,
   output: GetResourcePolicyResponse,
   errors: [
@@ -898,7 +898,7 @@ export const listBillingViews: API.OperationMethod<
     ListBillingViewsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBillingViewsRequest,
   output: ListBillingViewsResponse,
   errors: [
@@ -944,7 +944,7 @@ export const listSourceViewsForBillingView: API.OperationMethod<
     ListSourceViewsForBillingViewError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSourceViewsForBillingViewRequest,
   output: ListSourceViewsForBillingViewResponse,
   errors: [
@@ -976,7 +976,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -1002,7 +1002,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -1028,7 +1028,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -1057,7 +1057,7 @@ export const updateBillingView: API.OperationMethod<
   UpdateBillingViewResponse,
   UpdateBillingViewError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateBillingViewRequest,
   output: UpdateBillingViewResponse,
   errors: [

@@ -55,81 +55,77 @@ export interface SendEmailSendingRequest {
   text?: string;
 }
 
-export const SendEmailSendingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    from: Schema.Union([
+export const SendEmailSendingRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  from: Schema.Union([
+    Schema.Struct({
+      address: Schema.String,
+      name: Schema.String,
+    }),
+    Schema.String,
+  ]),
+  subject: Schema.String,
+  to: Schema.Union([Schema.String, Schema.Array(Schema.String)]),
+  attachments: Schema.optional(
+    Schema.Array(
+      Schema.Union([
+        Schema.Struct({
+          content: Schema.String,
+          contentId: Schema.String,
+          disposition: Schema.Literal("inline"),
+          filename: Schema.String,
+          type: Schema.String,
+        }).pipe(
+          Schema.encodeKeys({
+            content: "content",
+            contentId: "content_id",
+            disposition: "disposition",
+            filename: "filename",
+            type: "type",
+          }),
+        ),
+        Schema.Struct({
+          content: Schema.String,
+          disposition: Schema.Literal("attachment"),
+          filename: Schema.String,
+          type: Schema.String,
+        }),
+      ]),
+    ),
+  ),
+  bcc: Schema.optional(
+    Schema.Union([Schema.String, Schema.Array(Schema.String)]),
+  ),
+  cc: Schema.optional(
+    Schema.Union([Schema.String, Schema.Array(Schema.String)]),
+  ),
+  headers: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  html: Schema.optional(Schema.String),
+  replyTo: Schema.optional(
+    Schema.Union([
       Schema.Struct({
         address: Schema.String,
         name: Schema.String,
       }),
       Schema.String,
     ]),
-    subject: Schema.String,
-    to: Schema.Union([Schema.String, Schema.Array(Schema.String)]),
-    attachments: Schema.optional(
-      Schema.Array(
-        Schema.Union([
-          Schema.Struct({
-            content: Schema.String,
-            contentId: Schema.String,
-            disposition: Schema.Literal("inline"),
-            filename: Schema.String,
-            type: Schema.String,
-          }).pipe(
-            Schema.encodeKeys({
-              content: "content",
-              contentId: "content_id",
-              disposition: "disposition",
-              filename: "filename",
-              type: "type",
-            }),
-          ),
-          Schema.Struct({
-            content: Schema.String,
-            disposition: Schema.Literal("attachment"),
-            filename: Schema.String,
-            type: Schema.String,
-          }),
-        ]),
-      ),
-    ),
-    bcc: Schema.optional(
-      Schema.Union([Schema.String, Schema.Array(Schema.String)]),
-    ),
-    cc: Schema.optional(
-      Schema.Union([Schema.String, Schema.Array(Schema.String)]),
-    ),
-    headers: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    html: Schema.optional(Schema.String),
-    replyTo: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          address: Schema.String,
-          name: Schema.String,
-        }),
-        Schema.String,
-      ]),
-    ),
-    text: Schema.optional(Schema.String),
-  }).pipe(
-    Schema.encodeKeys({
-      from: "from",
-      subject: "subject",
-      to: "to",
-      attachments: "attachments",
-      bcc: "bcc",
-      cc: "cc",
-      headers: "headers",
-      html: "html",
-      replyTo: "reply_to",
-      text: "text",
-    }),
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/email/sending/send",
-    }),
-  ) as unknown as Schema.Schema<SendEmailSendingRequest>;
+  ),
+  text: Schema.optional(Schema.String),
+}).pipe(
+  Schema.encodeKeys({
+    from: "from",
+    subject: "subject",
+    to: "to",
+    attachments: "attachments",
+    bcc: "bcc",
+    cc: "cc",
+    headers: "headers",
+    html: "html",
+    replyTo: "reply_to",
+    text: "text",
+  }),
+  T.Http({ method: "POST", path: "/accounts/{account_id}/email/sending/send" }),
+) as unknown as Schema.Schema<SendEmailSendingRequest>;
 
 export interface SendEmailSendingResponse {
   /** Email addresses to which the message was delivered immediately. */
@@ -140,22 +136,21 @@ export interface SendEmailSendingResponse {
   queued: string[];
 }
 
-export const SendEmailSendingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    delivered: Schema.Array(Schema.String),
-    permanentBounces: Schema.Array(Schema.String),
-    queued: Schema.Array(Schema.String),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        delivered: "delivered",
-        permanentBounces: "permanent_bounces",
-        queued: "queued",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<SendEmailSendingResponse>;
+export const SendEmailSendingResponse = /*@__PURE__*/ Schema.Struct({
+  delivered: Schema.Array(Schema.String),
+  permanentBounces: Schema.Array(Schema.String),
+  queued: Schema.Array(Schema.String),
+})
+  .pipe(
+    Schema.encodeKeys({
+      delivered: "delivered",
+      permanentBounces: "permanent_bounces",
+      queued: "queued",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<SendEmailSendingResponse>;
 
 export type SendEmailSendingError = DefaultErrors;
 
@@ -164,7 +159,7 @@ export const sendEmailSending: API.OperationMethod<
   SendEmailSendingResponse,
   SendEmailSendingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendEmailSendingRequest,
   output: SendEmailSendingResponse,
   errors: [],
@@ -185,23 +180,22 @@ export interface SendRawEmailSendingRequest {
   recipients: string[];
 }
 
-export const SendRawEmailSendingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    from: Schema.String,
-    mimeMessage: Schema.String,
-    recipients: Schema.Array(Schema.String),
-  }).pipe(
-    Schema.encodeKeys({
-      from: "from",
-      mimeMessage: "mime_message",
-      recipients: "recipients",
-    }),
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/email/sending/send_raw",
-    }),
-  ) as unknown as Schema.Schema<SendRawEmailSendingRequest>;
+export const SendRawEmailSendingRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  from: Schema.String,
+  mimeMessage: Schema.String,
+  recipients: Schema.Array(Schema.String),
+}).pipe(
+  Schema.encodeKeys({
+    from: "from",
+    mimeMessage: "mime_message",
+    recipients: "recipients",
+  }),
+  T.Http({
+    method: "POST",
+    path: "/accounts/{account_id}/email/sending/send_raw",
+  }),
+) as unknown as Schema.Schema<SendRawEmailSendingRequest>;
 
 export interface SendRawEmailSendingResponse {
   /** Email addresses to which the message was delivered immediately. */
@@ -212,22 +206,21 @@ export interface SendRawEmailSendingResponse {
   queued: string[];
 }
 
-export const SendRawEmailSendingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    delivered: Schema.Array(Schema.String),
-    permanentBounces: Schema.Array(Schema.String),
-    queued: Schema.Array(Schema.String),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        delivered: "delivered",
-        permanentBounces: "permanent_bounces",
-        queued: "queued",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<SendRawEmailSendingResponse>;
+export const SendRawEmailSendingResponse = /*@__PURE__*/ Schema.Struct({
+  delivered: Schema.Array(Schema.String),
+  permanentBounces: Schema.Array(Schema.String),
+  queued: Schema.Array(Schema.String),
+})
+  .pipe(
+    Schema.encodeKeys({
+      delivered: "delivered",
+      permanentBounces: "permanent_bounces",
+      queued: "queued",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<SendRawEmailSendingResponse>;
 
 export type SendRawEmailSendingError = DefaultErrors;
 
@@ -236,7 +229,7 @@ export const sendRawEmailSending: API.OperationMethod<
   SendRawEmailSendingResponse,
   SendRawEmailSendingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendRawEmailSendingRequest,
   output: SendRawEmailSendingResponse,
   errors: [],
@@ -252,7 +245,7 @@ export interface GetSubdomainRequest {
   zoneId: string;
 }
 
-export const GetSubdomainRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetSubdomainRequest = /*@__PURE__*/ Schema.Struct({
   subdomainId: Schema.String.pipe(T.HttpPath("subdomainId")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
 }).pipe(
@@ -279,7 +272,7 @@ export interface GetSubdomainResponse {
   returnPathDomain?: string | null;
 }
 
-export const GetSubdomainResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetSubdomainResponse = /*@__PURE__*/ Schema.Struct({
   enabled: Schema.Boolean,
   name: Schema.String,
   tag: Schema.String,
@@ -310,7 +303,7 @@ export const getSubdomain: API.OperationMethod<
   GetSubdomainResponse,
   GetSubdomainError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSubdomainRequest,
   output: GetSubdomainResponse,
   errors: [],
@@ -321,7 +314,7 @@ export interface ListSubdomainsRequest {
   zoneId: string;
 }
 
-export const ListSubdomainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListSubdomainsRequest = /*@__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
 }).pipe(
   T.Http({ method: "GET", path: "/zones/{zone_id}/email/sending/subdomains" }),
@@ -339,35 +332,31 @@ export interface ListSubdomainsResponse {
   }[];
 }
 
-export const ListSubdomainsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    result: Schema.Array(
-      Schema.Struct({
-        enabled: Schema.Boolean,
-        name: Schema.String,
-        tag: Schema.String,
-        created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        dkimSelector: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        returnPathDomain: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          enabled: "enabled",
-          name: "name",
-          tag: "tag",
-          created: "created",
-          dkimSelector: "dkim_selector",
-          modified: "modified",
-          returnPathDomain: "return_path_domain",
-        }),
+export const ListSubdomainsResponse = /*@__PURE__*/ Schema.Struct({
+  result: Schema.Array(
+    Schema.Struct({
+      enabled: Schema.Boolean,
+      name: Schema.String,
+      tag: Schema.String,
+      created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      dkimSelector: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      returnPathDomain: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
       ),
+    }).pipe(
+      Schema.encodeKeys({
+        enabled: "enabled",
+        name: "name",
+        tag: "tag",
+        created: "created",
+        dkimSelector: "dkim_selector",
+        modified: "modified",
+        returnPathDomain: "return_path_domain",
+      }),
     ),
-  },
-) as unknown as Schema.Schema<ListSubdomainsResponse>;
+  ),
+}) as unknown as Schema.Schema<ListSubdomainsResponse>;
 
 export type ListSubdomainsError = DefaultErrors;
 
@@ -376,7 +365,7 @@ export const listSubdomains: API.PaginatedOperationMethod<
   ListSubdomainsResponse,
   ListSubdomainsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSubdomainsRequest,
   output: ListSubdomainsResponse,
   errors: [],
@@ -393,12 +382,10 @@ export interface CreateSubdomainRequest {
   name: string;
 }
 
-export const CreateSubdomainRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    name: Schema.String,
-  },
-).pipe(
+export const CreateSubdomainRequest = /*@__PURE__*/ Schema.Struct({
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  name: Schema.String,
+}).pipe(
   T.Http({ method: "POST", path: "/zones/{zone_id}/email/sending/subdomains" }),
 ) as unknown as Schema.Schema<CreateSubdomainRequest>;
 
@@ -419,32 +406,29 @@ export interface CreateSubdomainResponse {
   returnPathDomain?: string | null;
 }
 
-export const CreateSubdomainResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    enabled: Schema.Boolean,
-    name: Schema.String,
-    tag: Schema.String,
-    created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    dkimSelector: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    returnPathDomain: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        enabled: "enabled",
-        name: "name",
-        tag: "tag",
-        created: "created",
-        dkimSelector: "dkim_selector",
-        modified: "modified",
-        returnPathDomain: "return_path_domain",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<CreateSubdomainResponse>;
+export const CreateSubdomainResponse = /*@__PURE__*/ Schema.Struct({
+  enabled: Schema.Boolean,
+  name: Schema.String,
+  tag: Schema.String,
+  created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  dkimSelector: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  returnPathDomain: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+})
+  .pipe(
+    Schema.encodeKeys({
+      enabled: "enabled",
+      name: "name",
+      tag: "tag",
+      created: "created",
+      dkimSelector: "dkim_selector",
+      modified: "modified",
+      returnPathDomain: "return_path_domain",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<CreateSubdomainResponse>;
 
 export type CreateSubdomainError = DefaultErrors;
 
@@ -453,7 +437,7 @@ export const createSubdomain: API.OperationMethod<
   CreateSubdomainResponse,
   CreateSubdomainError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSubdomainRequest,
   output: CreateSubdomainResponse,
   errors: [],
@@ -465,12 +449,10 @@ export interface DeleteSubdomainRequest {
   zoneId: string;
 }
 
-export const DeleteSubdomainRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subdomainId: Schema.String.pipe(T.HttpPath("subdomainId")),
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  },
-).pipe(
+export const DeleteSubdomainRequest = /*@__PURE__*/ Schema.Struct({
+  subdomainId: Schema.String.pipe(T.HttpPath("subdomainId")),
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/zones/{zone_id}/email/sending/subdomains/{subdomainId}",
@@ -494,62 +476,61 @@ export interface DeleteSubdomainResponse {
   success: true;
 }
 
-export const DeleteSubdomainResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    errors: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
+export const DeleteSubdomainResponse = /*@__PURE__*/ Schema.Struct({
+  errors: Schema.Array(
+    Schema.Struct({
+      code: Schema.Number,
+      message: Schema.String,
+      documentationUrl: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
       ),
-    ),
-    messages: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
+      source: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            pointer: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }),
+          Schema.Null,
+        ]),
       ),
+    }).pipe(
+      Schema.encodeKeys({
+        code: "code",
+        message: "message",
+        documentationUrl: "documentation_url",
+        source: "source",
+      }),
     ),
-    success: Schema.Literal(true),
-  }) as unknown as Schema.Schema<DeleteSubdomainResponse>;
+  ),
+  messages: Schema.Array(
+    Schema.Struct({
+      code: Schema.Number,
+      message: Schema.String,
+      documentationUrl: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      source: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            pointer: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        code: "code",
+        message: "message",
+        documentationUrl: "documentation_url",
+        source: "source",
+      }),
+    ),
+  ),
+  success: Schema.Literal(true),
+}) as unknown as Schema.Schema<DeleteSubdomainResponse>;
 
 export type DeleteSubdomainError = DefaultErrors;
 
@@ -558,7 +539,7 @@ export const deleteSubdomain: API.OperationMethod<
   DeleteSubdomainResponse,
   DeleteSubdomainError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSubdomainRequest,
   output: DeleteSubdomainResponse,
   errors: [],
@@ -574,12 +555,10 @@ export interface GetSubdomainDnsRequest {
   zoneId: string;
 }
 
-export const GetSubdomainDnsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subdomainId: Schema.String.pipe(T.HttpPath("subdomainId")),
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  },
-).pipe(
+export const GetSubdomainDnsRequest = /*@__PURE__*/ Schema.Struct({
+  subdomainId: Schema.String.pipe(T.HttpPath("subdomainId")),
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/zones/{zone_id}/email/sending/subdomains/{subdomainId}/dns",
@@ -616,50 +595,49 @@ export interface GetSubdomainDnsResponse {
   }[];
 }
 
-export const GetSubdomainDnsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
-      Schema.Struct({
-        content: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        ttl: Schema.optional(
+export const GetSubdomainDnsResponse = /*@__PURE__*/ Schema.Struct({
+  result: Schema.Array(
+    Schema.Struct({
+      content: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      ttl: Schema.optional(
+        Schema.Union([
+          Schema.Union([Schema.Number, Schema.Literal("1")]),
+          Schema.Null,
+        ]),
+      ),
+      type: Schema.optional(
+        Schema.Union([
           Schema.Union([
-            Schema.Union([Schema.Number, Schema.Literal("1")]),
-            Schema.Null,
-          ]),
-        ),
-        type: Schema.optional(
-          Schema.Union([
-            Schema.Union([
-              Schema.Literals([
-                "A",
-                "AAAA",
-                "CNAME",
-                "HTTPS",
-                "TXT",
-                "SRV",
-                "LOC",
-                "MX",
-                "NS",
-                "CERT",
-                "DNSKEY",
-                "DS",
-                "NAPTR",
-                "SMIMEA",
-                "SSHFP",
-                "SVCB",
-                "TLSA",
-                "URI",
-              ]),
-              Schema.String,
+            Schema.Literals([
+              "A",
+              "AAAA",
+              "CNAME",
+              "HTTPS",
+              "TXT",
+              "SRV",
+              "LOC",
+              "MX",
+              "NS",
+              "CERT",
+              "DNSKEY",
+              "DS",
+              "NAPTR",
+              "SMIMEA",
+              "SSHFP",
+              "SVCB",
+              "TLSA",
+              "URI",
             ]),
-            Schema.Null,
+            Schema.String,
           ]),
-        ),
-      }),
-    ),
-  }) as unknown as Schema.Schema<GetSubdomainDnsResponse>;
+          Schema.Null,
+        ]),
+      ),
+    }),
+  ),
+}) as unknown as Schema.Schema<GetSubdomainDnsResponse>;
 
 export type GetSubdomainDnsError = DefaultErrors;
 
@@ -668,7 +646,7 @@ export const getSubdomainDns: API.PaginatedOperationMethod<
   GetSubdomainDnsResponse,
   GetSubdomainDnsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetSubdomainDnsRequest,
   output: GetSubdomainDnsResponse,
   errors: [],

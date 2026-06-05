@@ -250,7 +250,7 @@ export const sendSerialConsoleSSHPublicKey: API.OperationMethod<
   SendSerialConsoleSSHPublicKeyResponse,
   SendSerialConsoleSSHPublicKeyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendSerialConsoleSSHPublicKeyRequest,
   output: SendSerialConsoleSSHPublicKeyResponse,
   errors: [
@@ -288,7 +288,7 @@ export const sendSSHPublicKey: API.OperationMethod<
   SendSSHPublicKeyResponse,
   SendSSHPublicKeyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendSSHPublicKeyRequest,
   output: SendSSHPublicKeyResponse,
   errors: [

@@ -898,7 +898,7 @@ export const associateCreatedArtifact: API.OperationMethod<
   AssociateCreatedArtifactResult,
   AssociateCreatedArtifactError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateCreatedArtifactRequest,
   output: AssociateCreatedArtifactResult,
   errors: [
@@ -934,7 +934,7 @@ export const associateDiscoveredResource: API.OperationMethod<
   AssociateDiscoveredResourceResult,
   AssociateDiscoveredResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateDiscoveredResourceRequest,
   output: AssociateDiscoveredResourceResult,
   errors: [
@@ -969,7 +969,7 @@ export const associateSourceResource: API.OperationMethod<
   AssociateSourceResourceResult,
   AssociateSourceResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateSourceResourceRequest,
   output: AssociateSourceResourceResult,
   errors: [
@@ -1005,7 +1005,7 @@ export const createProgressUpdateStream: API.OperationMethod<
   CreateProgressUpdateStreamResult,
   CreateProgressUpdateStreamError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProgressUpdateStreamRequest,
   output: CreateProgressUpdateStreamResult,
   errors: [
@@ -1060,7 +1060,7 @@ export const deleteProgressUpdateStream: API.OperationMethod<
   DeleteProgressUpdateStreamResult,
   DeleteProgressUpdateStreamError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProgressUpdateStreamRequest,
   output: DeleteProgressUpdateStreamResult,
   errors: [
@@ -1093,7 +1093,7 @@ export const describeApplicationState: API.OperationMethod<
   DescribeApplicationStateResult,
   DescribeApplicationStateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeApplicationStateRequest,
   output: DescribeApplicationStateResult,
   errors: [
@@ -1124,7 +1124,7 @@ export const describeMigrationTask: API.OperationMethod<
   DescribeMigrationTaskResult,
   DescribeMigrationTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeMigrationTaskRequest,
   output: DescribeMigrationTaskResult,
   errors: [
@@ -1167,7 +1167,7 @@ export const disassociateCreatedArtifact: API.OperationMethod<
   DisassociateCreatedArtifactResult,
   DisassociateCreatedArtifactError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateCreatedArtifactRequest,
   output: DisassociateCreatedArtifactResult,
   errors: [
@@ -1202,7 +1202,7 @@ export const disassociateDiscoveredResource: API.OperationMethod<
   DisassociateDiscoveredResourceResult,
   DisassociateDiscoveredResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateDiscoveredResourceRequest,
   output: DisassociateDiscoveredResourceResult,
   errors: [
@@ -1235,7 +1235,7 @@ export const disassociateSourceResource: API.OperationMethod<
   DisassociateSourceResourceResult,
   DisassociateSourceResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateSourceResourceRequest,
   output: DisassociateSourceResourceResult,
   errors: [
@@ -1272,7 +1272,7 @@ export const importMigrationTask: API.OperationMethod<
   ImportMigrationTaskResult,
   ImportMigrationTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportMigrationTaskRequest,
   output: ImportMigrationTaskResult,
   errors: [
@@ -1320,7 +1320,7 @@ export const listApplicationStates: API.OperationMethod<
     ListApplicationStatesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationStatesRequest,
   output: ListApplicationStatesResult,
   errors: [
@@ -1379,7 +1379,7 @@ export const listCreatedArtifacts: API.OperationMethod<
     ListCreatedArtifactsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCreatedArtifactsRequest,
   output: ListCreatedArtifactsResult,
   errors: [
@@ -1430,7 +1430,7 @@ export const listDiscoveredResources: API.OperationMethod<
     ListDiscoveredResourcesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDiscoveredResourcesRequest,
   output: ListDiscoveredResourcesResult,
   errors: [
@@ -1490,7 +1490,7 @@ export const listMigrationTasks: API.OperationMethod<
     ListMigrationTasksError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMigrationTasksRequest,
   output: ListMigrationTasksResult,
   errors: [
@@ -1542,7 +1542,7 @@ export const listMigrationTaskUpdates: API.OperationMethod<
     ListMigrationTaskUpdatesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMigrationTaskUpdatesRequest,
   output: ListMigrationTaskUpdatesResult,
   errors: [
@@ -1591,7 +1591,7 @@ export const listProgressUpdateStreams: API.OperationMethod<
     ListProgressUpdateStreamsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProgressUpdateStreamsRequest,
   output: ListProgressUpdateStreamsResult,
   errors: [
@@ -1641,7 +1641,7 @@ export const listSourceResources: API.OperationMethod<
     ListSourceResourcesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSourceResourcesRequest,
   output: ListSourceResourcesResult,
   errors: [
@@ -1682,7 +1682,7 @@ export const notifyApplicationState: API.OperationMethod<
   NotifyApplicationStateResult,
   NotifyApplicationStateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: NotifyApplicationStateRequest,
   output: NotifyApplicationStateResult,
   errors: [
@@ -1727,7 +1727,7 @@ export const notifyMigrationTaskState: API.OperationMethod<
   NotifyMigrationTaskStateResult,
   NotifyMigrationTaskStateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: NotifyMigrationTaskStateRequest,
   output: NotifyMigrationTaskStateResult,
   errors: [
@@ -1778,7 +1778,7 @@ export const putResourceAttributes: API.OperationMethod<
   PutResourceAttributesResult,
   PutResourceAttributesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutResourceAttributesRequest,
   output: PutResourceAttributesResult,
   errors: [

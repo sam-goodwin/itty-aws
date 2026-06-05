@@ -3641,7 +3641,7 @@ export const createByteMatchSet: API.OperationMethod<
   CreateByteMatchSetResponse,
   CreateByteMatchSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateByteMatchSetRequest,
   output: CreateByteMatchSetResponse,
   errors: [
@@ -3692,7 +3692,7 @@ export const createGeoMatchSet: API.OperationMethod<
   CreateGeoMatchSetResponse,
   CreateGeoMatchSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateGeoMatchSetRequest,
   output: CreateGeoMatchSetResponse,
   errors: [
@@ -3748,7 +3748,7 @@ export const createIPSet: API.OperationMethod<
   CreateIPSetResponse,
   CreateIPSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateIPSetRequest,
   output: CreateIPSetResponse,
   errors: [
@@ -3852,7 +3852,7 @@ export const createRateBasedRule: API.OperationMethod<
   CreateRateBasedRuleResponse,
   CreateRateBasedRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRateBasedRuleRequest,
   output: CreateRateBasedRuleResponse,
   errors: [
@@ -3906,7 +3906,7 @@ export const createRegexMatchSet: API.OperationMethod<
   CreateRegexMatchSetResponse,
   CreateRegexMatchSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRegexMatchSetRequest,
   output: CreateRegexMatchSetResponse,
   errors: [
@@ -3952,7 +3952,7 @@ export const createRegexPatternSet: API.OperationMethod<
   CreateRegexPatternSetResponse,
   CreateRegexPatternSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRegexPatternSetRequest,
   output: CreateRegexPatternSetResponse,
   errors: [
@@ -4020,7 +4020,7 @@ export const createRule: API.OperationMethod<
   CreateRuleResponse,
   CreateRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRuleRequest,
   output: CreateRuleResponse,
   errors: [
@@ -4069,7 +4069,7 @@ export const createRuleGroup: API.OperationMethod<
   CreateRuleGroupResponse,
   CreateRuleGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRuleGroupRequest,
   output: CreateRuleGroupResponse,
   errors: [
@@ -4124,7 +4124,7 @@ export const createSizeConstraintSet: API.OperationMethod<
   CreateSizeConstraintSetResponse,
   CreateSizeConstraintSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSizeConstraintSetRequest,
   output: CreateSizeConstraintSetResponse,
   errors: [
@@ -4176,7 +4176,7 @@ export const createSqlInjectionMatchSet: API.OperationMethod<
   CreateSqlInjectionMatchSetResponse,
   CreateSqlInjectionMatchSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSqlInjectionMatchSetRequest,
   output: CreateSqlInjectionMatchSetResponse,
   errors: [
@@ -4240,7 +4240,7 @@ export const createWebACL: API.OperationMethod<
   CreateWebACLResponse,
   CreateWebACLError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateWebACLRequest,
   output: CreateWebACLResponse,
   errors: [
@@ -4278,7 +4278,7 @@ export const createWebACLMigrationStack: API.OperationMethod<
   CreateWebACLMigrationStackResponse,
   CreateWebACLMigrationStackError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateWebACLMigrationStackRequest,
   output: CreateWebACLMigrationStackResponse,
   errors: [
@@ -4329,7 +4329,7 @@ export const createXssMatchSet: API.OperationMethod<
   CreateXssMatchSetResponse,
   CreateXssMatchSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateXssMatchSetRequest,
   output: CreateXssMatchSetResponse,
   errors: [
@@ -4376,7 +4376,7 @@ export const deleteByteMatchSet: API.OperationMethod<
   DeleteByteMatchSetResponse,
   DeleteByteMatchSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteByteMatchSetRequest,
   output: DeleteByteMatchSetResponse,
   errors: [
@@ -4423,7 +4423,7 @@ export const deleteGeoMatchSet: API.OperationMethod<
   DeleteGeoMatchSetResponse,
   DeleteGeoMatchSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteGeoMatchSetRequest,
   output: DeleteGeoMatchSetResponse,
   errors: [
@@ -4470,7 +4470,7 @@ export const deleteIPSet: API.OperationMethod<
   DeleteIPSetResponse,
   DeleteIPSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteIPSetRequest,
   output: DeleteIPSetResponse,
   errors: [
@@ -4503,7 +4503,7 @@ export const deleteLoggingConfiguration: API.OperationMethod<
   DeleteLoggingConfigurationResponse,
   DeleteLoggingConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLoggingConfigurationRequest,
   output: DeleteLoggingConfigurationResponse,
   errors: [
@@ -4534,7 +4534,7 @@ export const deletePermissionPolicy: API.OperationMethod<
   DeletePermissionPolicyResponse,
   DeletePermissionPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePermissionPolicyRequest,
   output: DeletePermissionPolicyResponse,
   errors: [
@@ -4584,7 +4584,7 @@ export const deleteRateBasedRule: API.OperationMethod<
   DeleteRateBasedRuleResponse,
   DeleteRateBasedRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRateBasedRuleRequest,
   output: DeleteRateBasedRuleResponse,
   errors: [
@@ -4633,7 +4633,7 @@ export const deleteRegexMatchSet: API.OperationMethod<
   DeleteRegexMatchSetResponse,
   DeleteRegexMatchSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRegexMatchSetRequest,
   output: DeleteRegexMatchSetResponse,
   errors: [
@@ -4669,7 +4669,7 @@ export const deleteRegexPatternSet: API.OperationMethod<
   DeleteRegexPatternSetResponse,
   DeleteRegexPatternSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRegexPatternSetRequest,
   output: DeleteRegexPatternSetResponse,
   errors: [
@@ -4718,7 +4718,7 @@ export const deleteRule: API.OperationMethod<
   DeleteRuleResponse,
   DeleteRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRuleRequest,
   output: DeleteRuleResponse,
   errors: [
@@ -4769,7 +4769,7 @@ export const deleteRuleGroup: API.OperationMethod<
   DeleteRuleGroupResponse,
   DeleteRuleGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRuleGroupRequest,
   output: DeleteRuleGroupResponse,
   errors: [
@@ -4818,7 +4818,7 @@ export const deleteSizeConstraintSet: API.OperationMethod<
   DeleteSizeConstraintSetResponse,
   DeleteSizeConstraintSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSizeConstraintSetRequest,
   output: DeleteSizeConstraintSetResponse,
   errors: [
@@ -4866,7 +4866,7 @@ export const deleteSqlInjectionMatchSet: API.OperationMethod<
   DeleteSqlInjectionMatchSetResponse,
   DeleteSqlInjectionMatchSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSqlInjectionMatchSetRequest,
   output: DeleteSqlInjectionMatchSetResponse,
   errors: [
@@ -4912,7 +4912,7 @@ export const deleteWebACL: API.OperationMethod<
   DeleteWebACLResponse,
   DeleteWebACLError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteWebACLRequest,
   output: DeleteWebACLResponse,
   errors: [
@@ -4962,7 +4962,7 @@ export const deleteXssMatchSet: API.OperationMethod<
   DeleteXssMatchSetResponse,
   DeleteXssMatchSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteXssMatchSetRequest,
   output: DeleteXssMatchSetResponse,
   errors: [
@@ -4994,7 +4994,7 @@ export const getByteMatchSet: API.OperationMethod<
   GetByteMatchSetResponse,
   GetByteMatchSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetByteMatchSetRequest,
   output: GetByteMatchSetResponse,
   errors: [
@@ -5027,7 +5027,7 @@ export const getChangeToken: API.OperationMethod<
   GetChangeTokenResponse,
   GetChangeTokenError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetChangeTokenRequest,
   output: GetChangeTokenResponse,
   errors: [WAFInternalErrorException],
@@ -5059,7 +5059,7 @@ export const getChangeTokenStatus: API.OperationMethod<
   GetChangeTokenStatusResponse,
   GetChangeTokenStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetChangeTokenStatusRequest,
   output: GetChangeTokenStatusResponse,
   errors: [WAFInternalErrorException, WAFNonexistentItemException],
@@ -5084,7 +5084,7 @@ export const getGeoMatchSet: API.OperationMethod<
   GetGeoMatchSetResponse,
   GetGeoMatchSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetGeoMatchSetRequest,
   output: GetGeoMatchSetResponse,
   errors: [
@@ -5113,7 +5113,7 @@ export const getIPSet: API.OperationMethod<
   GetIPSetResponse,
   GetIPSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIPSetRequest,
   output: GetIPSetResponse,
   errors: [
@@ -5141,7 +5141,7 @@ export const getLoggingConfiguration: API.OperationMethod<
   GetLoggingConfigurationResponse,
   GetLoggingConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLoggingConfigurationRequest,
   output: GetLoggingConfigurationResponse,
   errors: [WAFInternalErrorException, WAFNonexistentItemException],
@@ -5165,7 +5165,7 @@ export const getPermissionPolicy: API.OperationMethod<
   GetPermissionPolicyResponse,
   GetPermissionPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPermissionPolicyRequest,
   output: GetPermissionPolicyResponse,
   errors: [WAFInternalErrorException, WAFNonexistentItemException],
@@ -5192,7 +5192,7 @@ export const getRateBasedRule: API.OperationMethod<
   GetRateBasedRuleResponse,
   GetRateBasedRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRateBasedRuleRequest,
   output: GetRateBasedRuleResponse,
   errors: [
@@ -5224,7 +5224,7 @@ export const getRateBasedRuleManagedKeys: API.OperationMethod<
   GetRateBasedRuleManagedKeysResponse,
   GetRateBasedRuleManagedKeysError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRateBasedRuleManagedKeysRequest,
   output: GetRateBasedRuleManagedKeysResponse,
   errors: [
@@ -5254,7 +5254,7 @@ export const getRegexMatchSet: API.OperationMethod<
   GetRegexMatchSetResponse,
   GetRegexMatchSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRegexMatchSetRequest,
   output: GetRegexMatchSetResponse,
   errors: [
@@ -5283,7 +5283,7 @@ export const getRegexPatternSet: API.OperationMethod<
   GetRegexPatternSetResponse,
   GetRegexPatternSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRegexPatternSetRequest,
   output: GetRegexPatternSetResponse,
   errors: [
@@ -5312,7 +5312,7 @@ export const getRule: API.OperationMethod<
   GetRuleResponse,
   GetRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRuleRequest,
   output: GetRuleResponse,
   errors: [
@@ -5342,7 +5342,7 @@ export const getRuleGroup: API.OperationMethod<
   GetRuleGroupResponse,
   GetRuleGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRuleGroupRequest,
   output: GetRuleGroupResponse,
   errors: [WAFInternalErrorException, WAFNonexistentItemException],
@@ -5370,7 +5370,7 @@ export const getSampledRequests: API.OperationMethod<
   GetSampledRequestsResponse,
   GetSampledRequestsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSampledRequestsRequest,
   output: GetSampledRequestsResponse,
   errors: [WAFInternalErrorException, WAFNonexistentItemException],
@@ -5395,7 +5395,7 @@ export const getSizeConstraintSet: API.OperationMethod<
   GetSizeConstraintSetResponse,
   GetSizeConstraintSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSizeConstraintSetRequest,
   output: GetSizeConstraintSetResponse,
   errors: [
@@ -5424,7 +5424,7 @@ export const getSqlInjectionMatchSet: API.OperationMethod<
   GetSqlInjectionMatchSetResponse,
   GetSqlInjectionMatchSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSqlInjectionMatchSetRequest,
   output: GetSqlInjectionMatchSetResponse,
   errors: [
@@ -5453,7 +5453,7 @@ export const getWebACL: API.OperationMethod<
   GetWebACLResponse,
   GetWebACLError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetWebACLRequest,
   output: GetWebACLResponse,
   errors: [
@@ -5482,7 +5482,7 @@ export const getXssMatchSet: API.OperationMethod<
   GetXssMatchSetResponse,
   GetXssMatchSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetXssMatchSetRequest,
   output: GetXssMatchSetResponse,
   errors: [
@@ -5511,7 +5511,7 @@ export const listActivatedRulesInRuleGroup: API.OperationMethod<
   ListActivatedRulesInRuleGroupResponse,
   ListActivatedRulesInRuleGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListActivatedRulesInRuleGroupRequest,
   output: ListActivatedRulesInRuleGroupResponse,
   errors: [
@@ -5539,7 +5539,7 @@ export const listByteMatchSets: API.OperationMethod<
   ListByteMatchSetsResponse,
   ListByteMatchSetsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListByteMatchSetsRequest,
   output: ListByteMatchSetsResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException],
@@ -5563,7 +5563,7 @@ export const listGeoMatchSets: API.OperationMethod<
   ListGeoMatchSetsResponse,
   ListGeoMatchSetsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListGeoMatchSetsRequest,
   output: ListGeoMatchSetsResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException],
@@ -5587,7 +5587,7 @@ export const listIPSets: API.OperationMethod<
   ListIPSetsResponse,
   ListIPSetsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListIPSetsRequest,
   output: ListIPSetsResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException],
@@ -5612,7 +5612,7 @@ export const listLoggingConfigurations: API.OperationMethod<
   ListLoggingConfigurationsResponse,
   ListLoggingConfigurationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListLoggingConfigurationsRequest,
   output: ListLoggingConfigurationsResponse,
   errors: [
@@ -5640,7 +5640,7 @@ export const listRateBasedRules: API.OperationMethod<
   ListRateBasedRulesResponse,
   ListRateBasedRulesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListRateBasedRulesRequest,
   output: ListRateBasedRulesResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException],
@@ -5664,7 +5664,7 @@ export const listRegexMatchSets: API.OperationMethod<
   ListRegexMatchSetsResponse,
   ListRegexMatchSetsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListRegexMatchSetsRequest,
   output: ListRegexMatchSetsResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException],
@@ -5688,7 +5688,7 @@ export const listRegexPatternSets: API.OperationMethod<
   ListRegexPatternSetsResponse,
   ListRegexPatternSetsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListRegexPatternSetsRequest,
   output: ListRegexPatternSetsResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException],
@@ -5709,7 +5709,7 @@ export const listRuleGroups: API.OperationMethod<
   ListRuleGroupsResponse,
   ListRuleGroupsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListRuleGroupsRequest,
   output: ListRuleGroupsResponse,
   errors: [WAFInternalErrorException],
@@ -5733,7 +5733,7 @@ export const listRules: API.OperationMethod<
   ListRulesResponse,
   ListRulesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListRulesRequest,
   output: ListRulesResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException],
@@ -5757,7 +5757,7 @@ export const listSizeConstraintSets: API.OperationMethod<
   ListSizeConstraintSetsResponse,
   ListSizeConstraintSetsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListSizeConstraintSetsRequest,
   output: ListSizeConstraintSetsResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException],
@@ -5781,7 +5781,7 @@ export const listSqlInjectionMatchSets: API.OperationMethod<
   ListSqlInjectionMatchSetsResponse,
   ListSqlInjectionMatchSetsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListSqlInjectionMatchSetsRequest,
   output: ListSqlInjectionMatchSetsResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException],
@@ -5805,7 +5805,7 @@ export const listSubscribedRuleGroups: API.OperationMethod<
   ListSubscribedRuleGroupsResponse,
   ListSubscribedRuleGroupsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListSubscribedRuleGroupsRequest,
   output: ListSubscribedRuleGroupsResponse,
   errors: [WAFInternalErrorException, WAFNonexistentItemException],
@@ -5835,7 +5835,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -5866,7 +5866,7 @@ export const listWebACLs: API.OperationMethod<
   ListWebACLsResponse,
   ListWebACLsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListWebACLsRequest,
   output: ListWebACLsResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException],
@@ -5890,7 +5890,7 @@ export const listXssMatchSets: API.OperationMethod<
   ListXssMatchSetsResponse,
   ListXssMatchSetsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListXssMatchSetsRequest,
   output: ListXssMatchSetsResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException],
@@ -5930,7 +5930,7 @@ export const putLoggingConfiguration: API.OperationMethod<
   PutLoggingConfigurationResponse,
   PutLoggingConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutLoggingConfigurationRequest,
   output: PutLoggingConfigurationResponse,
   errors: [
@@ -5983,7 +5983,7 @@ export const putPermissionPolicy: API.OperationMethod<
   PutPermissionPolicyResponse,
   PutPermissionPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutPermissionPolicyRequest,
   output: PutPermissionPolicyResponse,
   errors: [
@@ -6019,7 +6019,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -6053,7 +6053,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -6119,7 +6119,7 @@ export const updateByteMatchSet: API.OperationMethod<
   UpdateByteMatchSetResponse,
   UpdateByteMatchSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateByteMatchSetRequest,
   output: UpdateByteMatchSetResponse,
   errors: [
@@ -6181,7 +6181,7 @@ export const updateGeoMatchSet: API.OperationMethod<
   UpdateGeoMatchSetResponse,
   UpdateGeoMatchSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateGeoMatchSetRequest,
   output: UpdateGeoMatchSetResponse,
   errors: [
@@ -6278,7 +6278,7 @@ export const updateIPSet: API.OperationMethod<
   UpdateIPSetResponse,
   UpdateIPSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateIPSetRequest,
   output: UpdateIPSetResponse,
   errors: [
@@ -6356,7 +6356,7 @@ export const updateRateBasedRule: API.OperationMethod<
   UpdateRateBasedRuleResponse,
   UpdateRateBasedRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRateBasedRuleRequest,
   output: UpdateRateBasedRuleResponse,
   errors: [
@@ -6422,7 +6422,7 @@ export const updateRegexMatchSet: API.OperationMethod<
   UpdateRegexMatchSetResponse,
   UpdateRegexMatchSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRegexMatchSetRequest,
   output: UpdateRegexMatchSetResponse,
   errors: [
@@ -6488,7 +6488,7 @@ export const updateRegexPatternSet: API.OperationMethod<
   UpdateRegexPatternSetResponse,
   UpdateRegexPatternSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRegexPatternSetRequest,
   output: UpdateRegexPatternSetResponse,
   errors: [
@@ -6561,7 +6561,7 @@ export const updateRule: API.OperationMethod<
   UpdateRuleResponse,
   UpdateRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRuleRequest,
   output: UpdateRuleResponse,
   errors: [
@@ -6621,7 +6621,7 @@ export const updateRuleGroup: API.OperationMethod<
   UpdateRuleGroupResponse,
   UpdateRuleGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRuleGroupRequest,
   output: UpdateRuleGroupResponse,
   errors: [
@@ -6694,7 +6694,7 @@ export const updateSizeConstraintSet: API.OperationMethod<
   UpdateSizeConstraintSetResponse,
   UpdateSizeConstraintSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSizeConstraintSetRequest,
   output: UpdateSizeConstraintSetResponse,
   errors: [
@@ -6766,7 +6766,7 @@ export const updateSqlInjectionMatchSet: API.OperationMethod<
   UpdateSqlInjectionMatchSetResponse,
   UpdateSqlInjectionMatchSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSqlInjectionMatchSetRequest,
   output: UpdateSqlInjectionMatchSetResponse,
   errors: [
@@ -6868,7 +6868,7 @@ export const updateWebACL: API.OperationMethod<
   UpdateWebACLResponse,
   UpdateWebACLError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateWebACLRequest,
   output: UpdateWebACLResponse,
   errors: [
@@ -6943,7 +6943,7 @@ export const updateXssMatchSet: API.OperationMethod<
   UpdateXssMatchSetResponse,
   UpdateXssMatchSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateXssMatchSetRequest,
   output: UpdateXssMatchSetResponse,
   errors: [

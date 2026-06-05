@@ -22,7 +22,7 @@ export interface GetDomainRequest {
   accountId: string;
 }
 
-export const GetDomainRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetDomainRequest = /*@__PURE__*/ Schema.Struct({
   domainName: Schema.String.pipe(T.HttpPath("domainName")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -34,10 +34,9 @@ export const GetDomainRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type GetDomainResponse = unknown;
 
-export const GetDomainResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<GetDomainResponse>;
+export const GetDomainResponse = /*@__PURE__*/ Schema.Unknown.pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<GetDomainResponse>;
 
 export type GetDomainError = DefaultErrors;
 
@@ -46,7 +45,7 @@ export const getDomain: API.OperationMethod<
   GetDomainResponse,
   GetDomainError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDomainRequest,
   output: GetDomainResponse,
   errors: [],
@@ -57,7 +56,7 @@ export interface ListDomainsRequest {
   accountId: string;
 }
 
-export const ListDomainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListDomainsRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
   T.Http({ method: "GET", path: "/accounts/{account_id}/registrar/domains" }),
@@ -123,7 +122,7 @@ export interface ListDomainsResponse {
   }[];
 }
 
-export const ListDomainsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListDomainsResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -289,7 +288,7 @@ export const listDomains: API.PaginatedOperationMethod<
   ListDomainsResponse,
   ListDomainsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDomainsRequest,
   output: ListDomainsResponse,
   errors: [],
@@ -311,7 +310,7 @@ export interface PutDomainRequest {
   privacy?: boolean;
 }
 
-export const PutDomainRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PutDomainRequest = /*@__PURE__*/ Schema.Struct({
   domainName: Schema.String.pipe(T.HttpPath("domainName")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   autoRenew: Schema.optional(Schema.Boolean),
@@ -331,10 +330,9 @@ export const PutDomainRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type PutDomainResponse = unknown;
 
-export const PutDomainResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<PutDomainResponse>;
+export const PutDomainResponse = /*@__PURE__*/ Schema.Unknown.pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<PutDomainResponse>;
 
 export type PutDomainError = DefaultErrors;
 
@@ -343,7 +341,7 @@ export const putDomain: API.OperationMethod<
   PutDomainResponse,
   PutDomainError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutDomainRequest,
   output: PutDomainResponse,
   errors: [],
@@ -360,7 +358,7 @@ export interface CheckRegistrarRequest {
   domains: string[];
 }
 
-export const CheckRegistrarRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CheckRegistrarRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   domains: Schema.Array(Schema.String),
 }).pipe(
@@ -392,56 +390,54 @@ export interface CheckRegistrarResponse {
   }[];
 }
 
-export const CheckRegistrarResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    domains: Schema.Array(
-      Schema.Struct({
-        name: Schema.String,
-        registrable: Schema.Boolean,
-        pricing: Schema.optional(
+export const CheckRegistrarResponse = /*@__PURE__*/ Schema.Struct({
+  domains: Schema.Array(
+    Schema.Struct({
+      name: Schema.String,
+      registrable: Schema.Boolean,
+      pricing: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            currency: Schema.String,
+            registrationCost: Schema.String,
+            renewalCost: Schema.String,
+          }).pipe(
+            Schema.encodeKeys({
+              currency: "currency",
+              registrationCost: "registration_cost",
+              renewalCost: "renewal_cost",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      reason: Schema.optional(
+        Schema.Union([
           Schema.Union([
-            Schema.Struct({
-              currency: Schema.String,
-              registrationCost: Schema.String,
-              renewalCost: Schema.String,
-            }).pipe(
-              Schema.encodeKeys({
-                currency: "currency",
-                registrationCost: "registration_cost",
-                renewalCost: "renewal_cost",
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-        reason: Schema.optional(
-          Schema.Union([
-            Schema.Union([
-              Schema.Literals([
-                "extension_not_supported_via_api",
-                "extension_not_supported",
-                "extension_disallows_registration",
-                "domain_premium",
-                "domain_unavailable",
-              ]),
-              Schema.String,
+            Schema.Literals([
+              "extension_not_supported_via_api",
+              "extension_not_supported",
+              "extension_disallows_registration",
+              "domain_premium",
+              "domain_unavailable",
             ]),
-            Schema.Null,
+            Schema.String,
           ]),
-        ),
-        tier: Schema.optional(
+          Schema.Null,
+        ]),
+      ),
+      tier: Schema.optional(
+        Schema.Union([
           Schema.Union([
-            Schema.Union([
-              Schema.Literals(["standard", "premium"]),
-              Schema.String,
-            ]),
-            Schema.Null,
+            Schema.Literals(["standard", "premium"]),
+            Schema.String,
           ]),
-        ),
-      }),
-    ),
-  },
-).pipe(
+          Schema.Null,
+        ]),
+      ),
+    }),
+  ),
+}).pipe(
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<CheckRegistrarResponse>;
 
@@ -452,7 +448,7 @@ export const checkRegistrar: API.OperationMethod<
   CheckRegistrarResponse,
   CheckRegistrarError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CheckRegistrarRequest,
   output: CheckRegistrarResponse,
   errors: [],
@@ -469,16 +465,14 @@ export interface SearchRegistrarRequest {
   limit?: number;
 }
 
-export const SearchRegistrarRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    q: Schema.String.pipe(T.HttpQuery("q")),
-    extensions: Schema.optional(Schema.Array(Schema.String)).pipe(
-      T.HttpQuery("extensions"),
-    ),
-    limit: Schema.optional(Schema.Number).pipe(T.HttpQuery("limit")),
-  },
-).pipe(
+export const SearchRegistrarRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  q: Schema.String.pipe(T.HttpQuery("q")),
+  extensions: Schema.optional(Schema.Array(Schema.String)).pipe(
+    T.HttpQuery("extensions"),
+  ),
+  limit: Schema.optional(Schema.Number).pipe(T.HttpQuery("limit")),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/accounts/{account_id}/registrar/domain-search",
@@ -507,57 +501,56 @@ export interface SearchRegistrarResponse {
   }[];
 }
 
-export const SearchRegistrarResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    domains: Schema.Array(
-      Schema.Struct({
-        name: Schema.String,
-        registrable: Schema.Boolean,
-        pricing: Schema.optional(
+export const SearchRegistrarResponse = /*@__PURE__*/ Schema.Struct({
+  domains: Schema.Array(
+    Schema.Struct({
+      name: Schema.String,
+      registrable: Schema.Boolean,
+      pricing: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            currency: Schema.String,
+            registrationCost: Schema.String,
+            renewalCost: Schema.String,
+          }).pipe(
+            Schema.encodeKeys({
+              currency: "currency",
+              registrationCost: "registration_cost",
+              renewalCost: "renewal_cost",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      reason: Schema.optional(
+        Schema.Union([
           Schema.Union([
-            Schema.Struct({
-              currency: Schema.String,
-              registrationCost: Schema.String,
-              renewalCost: Schema.String,
-            }).pipe(
-              Schema.encodeKeys({
-                currency: "currency",
-                registrationCost: "registration_cost",
-                renewalCost: "renewal_cost",
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-        reason: Schema.optional(
-          Schema.Union([
-            Schema.Union([
-              Schema.Literals([
-                "extension_not_supported_via_api",
-                "extension_not_supported",
-                "extension_disallows_registration",
-                "domain_premium",
-                "domain_unavailable",
-              ]),
-              Schema.String,
+            Schema.Literals([
+              "extension_not_supported_via_api",
+              "extension_not_supported",
+              "extension_disallows_registration",
+              "domain_premium",
+              "domain_unavailable",
             ]),
-            Schema.Null,
+            Schema.String,
           ]),
-        ),
-        tier: Schema.optional(
+          Schema.Null,
+        ]),
+      ),
+      tier: Schema.optional(
+        Schema.Union([
           Schema.Union([
-            Schema.Union([
-              Schema.Literals(["standard", "premium"]),
-              Schema.String,
-            ]),
-            Schema.Null,
+            Schema.Literals(["standard", "premium"]),
+            Schema.String,
           ]),
-        ),
-      }),
-    ),
-  }).pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<SearchRegistrarResponse>;
+          Schema.Null,
+        ]),
+      ),
+    }),
+  ),
+}).pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<SearchRegistrarResponse>;
 
 export type SearchRegistrarError = DefaultErrors;
 
@@ -566,7 +559,7 @@ export const searchRegistrar: API.OperationMethod<
   SearchRegistrarResponse,
   SearchRegistrarError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SearchRegistrarRequest,
   output: SearchRegistrarResponse,
   errors: [],
@@ -582,16 +575,15 @@ export interface GetRegistrationStatusRequest {
   accountId: string;
 }
 
-export const GetRegistrationStatusRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    domainName: Schema.String.pipe(T.HttpPath("domainName")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/registrar/registrations/{domainName}/registration-status",
-    }),
-  ) as unknown as Schema.Schema<GetRegistrationStatusRequest>;
+export const GetRegistrationStatusRequest = /*@__PURE__*/ Schema.Struct({
+  domainName: Schema.String.pipe(T.HttpPath("domainName")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/registrar/registrations/{domainName}/registration-status",
+  }),
+) as unknown as Schema.Schema<GetRegistrationStatusRequest>;
 
 export interface GetRegistrationStatusResponse {
   /** Whether the workflow has reached a terminal state. `true` when `state` is `succeeded` or `failed`. `false` for `pending`, `in_progress`, `action_required`, and `blocked`. */
@@ -614,53 +606,52 @@ export interface GetRegistrationStatusResponse {
   error?: { code: string; message: string } | null;
 }
 
-export const GetRegistrationStatusResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    completed: Schema.Boolean,
-    createdAt: Schema.String,
-    links: Schema.Struct({
-      self: Schema.String,
-      resource: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }),
-    state: Schema.Union([
-      Schema.Literals([
-        "pending",
-        "in_progress",
-        "action_required",
-        "blocked",
-        "succeeded",
-        "failed",
-      ]),
-      Schema.String,
+export const GetRegistrationStatusResponse = /*@__PURE__*/ Schema.Struct({
+  completed: Schema.Boolean,
+  createdAt: Schema.String,
+  links: Schema.Struct({
+    self: Schema.String,
+    resource: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
+  state: Schema.Union([
+    Schema.Literals([
+      "pending",
+      "in_progress",
+      "action_required",
+      "blocked",
+      "succeeded",
+      "failed",
     ]),
-    updatedAt: Schema.String,
-    context: Schema.optional(
-      Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
-    ),
-    error: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          code: Schema.String,
-          message: Schema.String,
-        }),
-        Schema.Null,
-      ]),
-    ),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        completed: "completed",
-        createdAt: "created_at",
-        links: "links",
-        state: "state",
-        updatedAt: "updated_at",
-        context: "context",
-        error: "error",
+    Schema.String,
+  ]),
+  updatedAt: Schema.String,
+  context: Schema.optional(
+    Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
+  ),
+  error: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        code: Schema.String,
+        message: Schema.String,
       }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<GetRegistrationStatusResponse>;
+      Schema.Null,
+    ]),
+  ),
+})
+  .pipe(
+    Schema.encodeKeys({
+      completed: "completed",
+      createdAt: "created_at",
+      links: "links",
+      state: "state",
+      updatedAt: "updated_at",
+      context: "context",
+      error: "error",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<GetRegistrationStatusResponse>;
 
 export type GetRegistrationStatusError = DefaultErrors;
 
@@ -669,7 +660,7 @@ export const getRegistrationStatus: API.OperationMethod<
   GetRegistrationStatusResponse,
   GetRegistrationStatusError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRegistrationStatusRequest,
   output: GetRegistrationStatusResponse,
   errors: [],
@@ -685,12 +676,10 @@ export interface GetUpdateStatusRequest {
   accountId: string;
 }
 
-export const GetUpdateStatusRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    domainName: Schema.String.pipe(T.HttpPath("domainName")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  },
-).pipe(
+export const GetUpdateStatusRequest = /*@__PURE__*/ Schema.Struct({
+  domainName: Schema.String.pipe(T.HttpPath("domainName")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/accounts/{account_id}/registrar/registrations/{domainName}/update-status",
@@ -718,53 +707,52 @@ export interface GetUpdateStatusResponse {
   error?: { code: string; message: string } | null;
 }
 
-export const GetUpdateStatusResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    completed: Schema.Boolean,
-    createdAt: Schema.String,
-    links: Schema.Struct({
-      self: Schema.String,
-      resource: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }),
-    state: Schema.Union([
-      Schema.Literals([
-        "pending",
-        "in_progress",
-        "action_required",
-        "blocked",
-        "succeeded",
-        "failed",
-      ]),
-      Schema.String,
+export const GetUpdateStatusResponse = /*@__PURE__*/ Schema.Struct({
+  completed: Schema.Boolean,
+  createdAt: Schema.String,
+  links: Schema.Struct({
+    self: Schema.String,
+    resource: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
+  state: Schema.Union([
+    Schema.Literals([
+      "pending",
+      "in_progress",
+      "action_required",
+      "blocked",
+      "succeeded",
+      "failed",
     ]),
-    updatedAt: Schema.String,
-    context: Schema.optional(
-      Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
-    ),
-    error: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          code: Schema.String,
-          message: Schema.String,
-        }),
-        Schema.Null,
-      ]),
-    ),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        completed: "completed",
-        createdAt: "created_at",
-        links: "links",
-        state: "state",
-        updatedAt: "updated_at",
-        context: "context",
-        error: "error",
+    Schema.String,
+  ]),
+  updatedAt: Schema.String,
+  context: Schema.optional(
+    Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
+  ),
+  error: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        code: Schema.String,
+        message: Schema.String,
       }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<GetUpdateStatusResponse>;
+      Schema.Null,
+    ]),
+  ),
+})
+  .pipe(
+    Schema.encodeKeys({
+      completed: "completed",
+      createdAt: "created_at",
+      links: "links",
+      state: "state",
+      updatedAt: "updated_at",
+      context: "context",
+      error: "error",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<GetUpdateStatusResponse>;
 
 export type GetUpdateStatusError = DefaultErrors;
 
@@ -773,7 +761,7 @@ export const getUpdateStatus: API.OperationMethod<
   GetUpdateStatusResponse,
   GetUpdateStatusError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUpdateStatusRequest,
   output: GetUpdateStatusResponse,
   errors: [],

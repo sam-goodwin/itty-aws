@@ -45,7 +45,7 @@ export interface ListNamespacesRequest {
   perPage?: number;
 }
 
-export const ListNamespacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListNamespacesRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
   perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
@@ -72,47 +72,43 @@ export interface ListNamespacesResponse {
   } | null;
 }
 
-export const ListNamespacesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    result: Schema.Array(
+export const ListNamespacesResponse = /*@__PURE__*/ Schema.Struct({
+  result: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      class: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      script: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      useSqlite: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        class: "class",
+        name: "name",
+        script: "script",
+        useSqlite: "use_sqlite",
+      }),
+    ),
+  ),
+  resultInfo: Schema.optional(
+    Schema.Union([
       Schema.Struct({
-        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        class: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        script: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        useSqlite: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+        count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       }).pipe(
         Schema.encodeKeys({
-          id: "id",
-          class: "class",
-          name: "name",
-          script: "script",
-          useSqlite: "use_sqlite",
+          count: "count",
+          page: "page",
+          perPage: "per_page",
+          totalCount: "total_count",
         }),
       ),
-    ),
-    resultInfo: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          totalCount: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            count: "count",
-            page: "page",
-            perPage: "per_page",
-            totalCount: "total_count",
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
-  },
-).pipe(
+      Schema.Null,
+    ]),
+  ),
+}).pipe(
   Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
 ) as unknown as Schema.Schema<ListNamespacesResponse>;
 
@@ -123,7 +119,7 @@ export const listNamespaces: API.PaginatedOperationMethod<
   ListNamespacesResponse,
   ListNamespacesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNamespacesRequest,
   output: ListNamespacesResponse,
   errors: [InvalidIdentifier],
@@ -149,54 +145,52 @@ export interface ListNamespaceObjectsRequest {
   limit?: number;
 }
 
-export const ListNamespaceObjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String.pipe(T.HttpPath("id")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    cursor: Schema.optional(Schema.String).pipe(T.HttpQuery("cursor")),
-    limit: Schema.optional(Schema.Number).pipe(T.HttpQuery("limit")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/workers/durable_objects/namespaces/{id}/objects",
-    }),
-  ) as unknown as Schema.Schema<ListNamespaceObjectsRequest>;
+export const ListNamespaceObjectsRequest = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String.pipe(T.HttpPath("id")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  cursor: Schema.optional(Schema.String).pipe(T.HttpQuery("cursor")),
+  limit: Schema.optional(Schema.Number).pipe(T.HttpQuery("limit")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/workers/durable_objects/namespaces/{id}/objects",
+  }),
+) as unknown as Schema.Schema<ListNamespaceObjectsRequest>;
 
 export interface ListNamespaceObjectsResponse {
   result: { id?: string | null; hasStoredData?: boolean | null }[];
   resultInfo?: { cursors?: { after?: string | null } | null } | null;
 }
 
-export const ListNamespaceObjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
+export const ListNamespaceObjectsResponse = /*@__PURE__*/ Schema.Struct({
+  result: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      hasStoredData: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+    }),
+  ),
+  resultInfo: Schema.optional(
+    Schema.Union([
       Schema.Struct({
-        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        hasStoredData: Schema.optional(
-          Schema.Union([Schema.Boolean, Schema.Null]),
+        cursors: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              after: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }),
+            Schema.Null,
+          ]),
         ),
       }),
-    ),
-    resultInfo: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          cursors: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                after: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Null,
-      ]),
-    ),
-  }).pipe(
-    Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
-  ) as unknown as Schema.Schema<ListNamespaceObjectsResponse>;
+      Schema.Null,
+    ]),
+  ),
+}).pipe(
+  Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
+) as unknown as Schema.Schema<ListNamespaceObjectsResponse>;
 
 export type ListNamespaceObjectsError =
   | DefaultErrors
@@ -209,7 +203,7 @@ export const listNamespaceObjects: API.PaginatedOperationMethod<
   ListNamespaceObjectsResponse,
   ListNamespaceObjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNamespaceObjectsRequest,
   output: ListNamespaceObjectsResponse,
   errors: [NamespaceNotFound, InvalidIdentifier, MalformedParameter],

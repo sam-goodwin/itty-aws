@@ -2246,7 +2246,7 @@ export const cancelQuery: API.OperationMethod<
   CancelQueryResponse,
   CancelQueryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelQueryInput,
   output: CancelQueryResponse,
   errors: [
@@ -2281,7 +2281,7 @@ export const executeQuery: API.OperationMethod<
   ExecuteQueryOutput,
   ExecuteQueryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExecuteQueryInput,
   output: ExecuteQueryOutput,
   errors: [
@@ -2308,7 +2308,7 @@ export const getGraphSummary: API.OperationMethod<
   GetGraphSummaryOutput,
   GetGraphSummaryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetGraphSummaryInput,
   output: GetGraphSummaryOutput,
   errors: [
@@ -2336,7 +2336,7 @@ export const getQuery: API.OperationMethod<
   GetQueryOutput,
   GetQueryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetQueryInput,
   output: GetQueryOutput,
   errors: [
@@ -2361,7 +2361,7 @@ export const listQueries: API.OperationMethod<
   ListQueriesOutput,
   ListQueriesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListQueriesInput,
   output: ListQueriesOutput,
   errors: [
@@ -2385,7 +2385,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceOutput,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [
@@ -2409,7 +2409,7 @@ export const tagResource: API.OperationMethod<
   TagResourceOutput,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
   errors: [
@@ -2433,7 +2433,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceOutput,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
   errors: [
@@ -2458,7 +2458,7 @@ export const createGraph: API.OperationMethod<
   CreateGraphOutput,
   CreateGraphError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateGraphInput,
   output: CreateGraphOutput,
   errors: [
@@ -2484,7 +2484,7 @@ export const deleteGraph: API.OperationMethod<
   DeleteGraphOutput,
   DeleteGraphError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteGraphInput,
   output: DeleteGraphOutput,
   errors: [
@@ -2509,7 +2509,7 @@ export const getGraph: API.OperationMethod<
   GetGraphOutput,
   GetGraphError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetGraphInput,
   output: GetGraphOutput,
   errors: [
@@ -2547,7 +2547,7 @@ export const listGraphs: API.OperationMethod<
     ListGraphsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGraphsInput,
   output: ListGraphsOutput,
   errors: [
@@ -2577,7 +2577,7 @@ export const resetGraph: API.OperationMethod<
   ResetGraphOutput,
   ResetGraphError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetGraphInput,
   output: ResetGraphOutput,
   errors: [
@@ -2604,7 +2604,7 @@ export const restoreGraphFromSnapshot: API.OperationMethod<
   RestoreGraphFromSnapshotOutput,
   RestoreGraphFromSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RestoreGraphFromSnapshotInput,
   output: RestoreGraphFromSnapshotOutput,
   errors: [
@@ -2631,7 +2631,7 @@ export const startGraph: API.OperationMethod<
   StartGraphOutput,
   StartGraphError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartGraphInput,
   output: StartGraphOutput,
   errors: [
@@ -2657,7 +2657,7 @@ export const stopGraph: API.OperationMethod<
   StopGraphOutput,
   StopGraphError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopGraphInput,
   output: StopGraphOutput,
   errors: [
@@ -2683,7 +2683,7 @@ export const updateGraph: API.OperationMethod<
   UpdateGraphOutput,
   UpdateGraphError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateGraphInput,
   output: UpdateGraphOutput,
   errors: [
@@ -2712,7 +2712,7 @@ export const createPrivateGraphEndpoint: API.OperationMethod<
   CreatePrivateGraphEndpointOutput,
   CreatePrivateGraphEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePrivateGraphEndpointInput,
   output: CreatePrivateGraphEndpointOutput,
   errors: [
@@ -2739,7 +2739,7 @@ export const deletePrivateGraphEndpoint: API.OperationMethod<
   DeletePrivateGraphEndpointOutput,
   DeletePrivateGraphEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePrivateGraphEndpointInput,
   output: DeletePrivateGraphEndpointOutput,
   errors: [
@@ -2764,7 +2764,7 @@ export const getPrivateGraphEndpoint: API.OperationMethod<
   GetPrivateGraphEndpointOutput,
   GetPrivateGraphEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPrivateGraphEndpointInput,
   output: GetPrivateGraphEndpointOutput,
   errors: [
@@ -2803,7 +2803,7 @@ export const listPrivateGraphEndpoints: API.OperationMethod<
     ListPrivateGraphEndpointsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPrivateGraphEndpointsInput,
   output: ListPrivateGraphEndpointsOutput,
   errors: [
@@ -2835,7 +2835,7 @@ export const createGraphSnapshot: API.OperationMethod<
   CreateGraphSnapshotOutput,
   CreateGraphSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateGraphSnapshotInput,
   output: CreateGraphSnapshotOutput,
   errors: [
@@ -2862,7 +2862,7 @@ export const deleteGraphSnapshot: API.OperationMethod<
   DeleteGraphSnapshotOutput,
   DeleteGraphSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteGraphSnapshotInput,
   output: DeleteGraphSnapshotOutput,
   errors: [
@@ -2887,7 +2887,7 @@ export const getGraphSnapshot: API.OperationMethod<
   GetGraphSnapshotOutput,
   GetGraphSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetGraphSnapshotInput,
   output: GetGraphSnapshotOutput,
   errors: [
@@ -2926,7 +2926,7 @@ export const listGraphSnapshots: API.OperationMethod<
     ListGraphSnapshotsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGraphSnapshotsInput,
   output: ListGraphSnapshotsOutput,
   errors: [
@@ -2957,7 +2957,7 @@ export const cancelExportTask: API.OperationMethod<
   CancelExportTaskOutput,
   CancelExportTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelExportTaskInput,
   output: CancelExportTaskOutput,
   errors: [
@@ -2983,7 +2983,7 @@ export const cancelImportTask: API.OperationMethod<
   CancelImportTaskOutput,
   CancelImportTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelImportTaskInput,
   output: CancelImportTaskOutput,
   errors: [
@@ -3011,7 +3011,7 @@ export const createGraphUsingImportTask: API.OperationMethod<
   CreateGraphUsingImportTaskOutput,
   CreateGraphUsingImportTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateGraphUsingImportTaskInput,
   output: CreateGraphUsingImportTaskOutput,
   errors: [
@@ -3036,7 +3036,7 @@ export const getExportTask: API.OperationMethod<
   GetExportTaskOutput,
   GetExportTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetExportTaskInput,
   output: GetExportTaskOutput,
   errors: [
@@ -3060,7 +3060,7 @@ export const getImportTask: API.OperationMethod<
   GetImportTaskOutput,
   GetImportTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetImportTaskInput,
   output: GetImportTaskOutput,
   errors: [
@@ -3099,7 +3099,7 @@ export const listExportTasks: API.OperationMethod<
     ListExportTasksError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExportTasksInput,
   output: ListExportTasksOutput,
   errors: [
@@ -3144,7 +3144,7 @@ export const listImportTasks: API.OperationMethod<
     ListImportTasksError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImportTasksInput,
   output: ListImportTasksOutput,
   errors: [
@@ -3175,7 +3175,7 @@ export const startExportTask: API.OperationMethod<
   StartExportTaskOutput,
   StartExportTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartExportTaskInput,
   output: StartExportTaskOutput,
   errors: [
@@ -3201,7 +3201,7 @@ export const startImportTask: API.OperationMethod<
   StartImportTaskOutput,
   StartImportTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartImportTaskInput,
   output: StartImportTaskOutput,
   errors: [

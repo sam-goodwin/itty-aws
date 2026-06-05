@@ -4620,7 +4620,7 @@ export const attachInstances: API.OperationMethod<
   AttachInstancesResponse,
   AttachInstancesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AttachInstancesQuery,
   output: AttachInstancesResponse,
   errors: [ResourceContentionFault, ServiceLinkedRoleFailure],
@@ -4657,7 +4657,7 @@ export const attachLoadBalancers: API.OperationMethod<
   AttachLoadBalancersResultType,
   AttachLoadBalancersError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AttachLoadBalancersType,
   output: AttachLoadBalancersResultType,
   errors: [
@@ -4707,7 +4707,7 @@ export const attachLoadBalancerTargetGroups: API.OperationMethod<
   AttachLoadBalancerTargetGroupsResultType,
   AttachLoadBalancerTargetGroupsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AttachLoadBalancerTargetGroupsType,
   output: AttachLoadBalancerTargetGroupsResultType,
   errors: [
@@ -4749,7 +4749,7 @@ export const attachTrafficSources: API.OperationMethod<
   AttachTrafficSourcesResultType,
   AttachTrafficSourcesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AttachTrafficSourcesType,
   output: AttachTrafficSourcesResultType,
   errors: [
@@ -4769,7 +4769,7 @@ export const batchDeleteScheduledAction: API.OperationMethod<
   BatchDeleteScheduledActionAnswer,
   BatchDeleteScheduledActionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchDeleteScheduledActionType,
   output: BatchDeleteScheduledActionAnswer,
   errors: [ResourceContentionFault],
@@ -4787,7 +4787,7 @@ export const batchPutScheduledUpdateGroupAction: API.OperationMethod<
   BatchPutScheduledUpdateGroupActionAnswer,
   BatchPutScheduledUpdateGroupActionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchPutScheduledUpdateGroupActionType,
   output: BatchPutScheduledUpdateGroupActionAnswer,
   errors: [AlreadyExistsFault, LimitExceededFault, ResourceContentionFault],
@@ -4814,7 +4814,7 @@ export const cancelInstanceRefresh: API.OperationMethod<
   CancelInstanceRefreshAnswer,
   CancelInstanceRefreshError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelInstanceRefreshType,
   output: CancelInstanceRefreshAnswer,
   errors: [
@@ -4863,7 +4863,7 @@ export const completeLifecycleAction: API.OperationMethod<
   CompleteLifecycleActionAnswer,
   CompleteLifecycleActionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CompleteLifecycleActionType,
   output: CompleteLifecycleActionAnswer,
   errors: [ResourceContentionFault],
@@ -4898,7 +4898,7 @@ export const createAutoScalingGroup: API.OperationMethod<
   CreateAutoScalingGroupResponse,
   CreateAutoScalingGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAutoScalingGroupType,
   output: CreateAutoScalingGroupResponse,
   errors: [
@@ -4934,7 +4934,7 @@ export const createLaunchConfiguration: API.OperationMethod<
   CreateLaunchConfigurationResponse,
   CreateLaunchConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLaunchConfigurationType,
   output: CreateLaunchConfigurationResponse,
   errors: [AlreadyExistsFault, LimitExceededFault, ResourceContentionFault],
@@ -4959,7 +4959,7 @@ export const createOrUpdateTags: API.OperationMethod<
   CreateOrUpdateTagsResponse,
   CreateOrUpdateTagsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrUpdateTagsType,
   output: CreateOrUpdateTagsResponse,
   errors: [
@@ -5003,7 +5003,7 @@ export const deleteAutoScalingGroup: API.OperationMethod<
   DeleteAutoScalingGroupResponse,
   DeleteAutoScalingGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAutoScalingGroupType,
   output: DeleteAutoScalingGroupResponse,
   errors: [
@@ -5027,7 +5027,7 @@ export const deleteLaunchConfiguration: API.OperationMethod<
   DeleteLaunchConfigurationResponse,
   DeleteLaunchConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: LaunchConfigurationNameType,
   output: DeleteLaunchConfigurationResponse,
   errors: [ResourceContentionFault, ResourceInUseFault],
@@ -5045,7 +5045,7 @@ export const deleteLifecycleHook: API.OperationMethod<
   DeleteLifecycleHookAnswer,
   DeleteLifecycleHookError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLifecycleHookType,
   output: DeleteLifecycleHookAnswer,
   errors: [ResourceContentionFault],
@@ -5061,7 +5061,7 @@ export const deleteNotificationConfiguration: API.OperationMethod<
   DeleteNotificationConfigurationResponse,
   DeleteNotificationConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteNotificationConfigurationType,
   output: DeleteNotificationConfigurationResponse,
   errors: [ResourceContentionFault],
@@ -5085,7 +5085,7 @@ export const deletePolicy: API.OperationMethod<
   DeletePolicyResponse,
   DeletePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePolicyType,
   output: DeletePolicyResponse,
   errors: [ResourceContentionFault, ServiceLinkedRoleFailure],
@@ -5099,7 +5099,7 @@ export const deleteScheduledAction: API.OperationMethod<
   DeleteScheduledActionResponse,
   DeleteScheduledActionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteScheduledActionType,
   output: DeleteScheduledActionResponse,
   errors: [ResourceContentionFault],
@@ -5116,7 +5116,7 @@ export const deleteTags: API.OperationMethod<
   DeleteTagsResponse,
   DeleteTagsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTagsType,
   output: DeleteTagsResponse,
   errors: [ResourceContentionFault, ResourceInUseFault],
@@ -5138,7 +5138,7 @@ export const deleteWarmPool: API.OperationMethod<
   DeleteWarmPoolAnswer,
   DeleteWarmPoolError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteWarmPoolType,
   output: DeleteWarmPoolAnswer,
   errors: [
@@ -5162,7 +5162,7 @@ export const describeAccountLimits: API.OperationMethod<
   DescribeAccountLimitsAnswer,
   DescribeAccountLimitsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAccountLimitsRequest,
   output: DescribeAccountLimitsAnswer,
   errors: [ResourceContentionFault],
@@ -5187,7 +5187,7 @@ export const describeAdjustmentTypes: API.OperationMethod<
   DescribeAdjustmentTypesAnswer,
   DescribeAdjustmentTypesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAdjustmentTypesRequest,
   output: DescribeAdjustmentTypesAnswer,
   errors: [ResourceContentionFault],
@@ -5228,7 +5228,7 @@ export const describeAutoScalingGroups: API.OperationMethod<
     DescribeAutoScalingGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: AutoScalingGroupNamesType,
   output: AutoScalingGroupsType,
   errors: [InvalidNextToken, ResourceContentionFault],
@@ -5266,7 +5266,7 @@ export const describeAutoScalingInstances: API.OperationMethod<
     DescribeAutoScalingInstancesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAutoScalingInstancesType,
   output: AutoScalingInstancesType,
   errors: [InvalidNextToken, ResourceContentionFault],
@@ -5288,7 +5288,7 @@ export const describeAutoScalingNotificationTypes: API.OperationMethod<
   DescribeAutoScalingNotificationTypesAnswer,
   DescribeAutoScalingNotificationTypesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAutoScalingNotificationTypesRequest,
   output: DescribeAutoScalingNotificationTypesAnswer,
   errors: [ResourceContentionFault],
@@ -5332,7 +5332,7 @@ export const describeInstanceRefreshes: API.OperationMethod<
     DescribeInstanceRefreshesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstanceRefreshesType,
   output: DescribeInstanceRefreshesAnswer,
   errors: [InvalidNextToken, ResourceContentionFault],
@@ -5369,7 +5369,7 @@ export const describeLaunchConfigurations: API.OperationMethod<
     DescribeLaunchConfigurationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: LaunchConfigurationNamesType,
   output: LaunchConfigurationsType,
   errors: [InvalidNextToken, ResourceContentionFault],
@@ -5391,7 +5391,7 @@ export const describeLifecycleHooks: API.OperationMethod<
   DescribeLifecycleHooksAnswer,
   DescribeLifecycleHooksError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeLifecycleHooksType,
   output: DescribeLifecycleHooksAnswer,
   errors: [ResourceContentionFault],
@@ -5413,7 +5413,7 @@ export const describeLifecycleHookTypes: API.OperationMethod<
   DescribeLifecycleHookTypesAnswer,
   DescribeLifecycleHookTypesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeLifecycleHookTypesRequest,
   output: DescribeLifecycleHookTypesAnswer,
   errors: [ResourceContentionFault],
@@ -5478,7 +5478,7 @@ export const describeLoadBalancers: API.OperationMethod<
     DescribeLoadBalancersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeLoadBalancersRequest,
   output: DescribeLoadBalancersResponse,
   errors: [InvalidNextToken, ResourceContentionFault],
@@ -5548,7 +5548,7 @@ export const describeLoadBalancerTargetGroups: API.OperationMethod<
     DescribeLoadBalancerTargetGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeLoadBalancerTargetGroupsRequest,
   output: DescribeLoadBalancerTargetGroupsResponse,
   errors: [InvalidNextToken, ResourceContentionFault],
@@ -5569,7 +5569,7 @@ export const describeMetricCollectionTypes: API.OperationMethod<
   DescribeMetricCollectionTypesAnswer,
   DescribeMetricCollectionTypesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeMetricCollectionTypesRequest,
   output: DescribeMetricCollectionTypesAnswer,
   errors: [ResourceContentionFault],
@@ -5602,7 +5602,7 @@ export const describeNotificationConfigurations: API.OperationMethod<
     DescribeNotificationConfigurationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeNotificationConfigurationsType,
   output: DescribeNotificationConfigurationsAnswer,
   errors: [InvalidNextToken, ResourceContentionFault],
@@ -5641,7 +5641,7 @@ export const describePolicies: API.OperationMethod<
     DescribePoliciesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribePoliciesType,
   output: PoliciesType,
   errors: [InvalidNextToken, ResourceContentionFault, ServiceLinkedRoleFailure],
@@ -5689,7 +5689,7 @@ export const describeScalingActivities: API.OperationMethod<
     DescribeScalingActivitiesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeScalingActivitiesType,
   output: ActivitiesType,
   errors: [InvalidNextToken, ResourceContentionFault],
@@ -5712,7 +5712,7 @@ export const describeScalingProcessTypes: API.OperationMethod<
   ProcessesType,
   DescribeScalingProcessTypesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeScalingProcessTypesRequest,
   output: ProcessesType,
   errors: [ResourceContentionFault],
@@ -5748,7 +5748,7 @@ export const describeScheduledActions: API.OperationMethod<
     DescribeScheduledActionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeScheduledActionsType,
   output: ScheduledActionsType,
   errors: [InvalidNextToken, ResourceContentionFault],
@@ -5797,7 +5797,7 @@ export const describeTags: API.OperationMethod<
     DescribeTagsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTagsType,
   output: TagsType,
   errors: [InvalidNextToken, ResourceContentionFault],
@@ -5823,7 +5823,7 @@ export const describeTerminationPolicyTypes: API.OperationMethod<
   DescribeTerminationPolicyTypesAnswer,
   DescribeTerminationPolicyTypesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeTerminationPolicyTypesRequest,
   output: DescribeTerminationPolicyTypesAnswer,
   errors: [ResourceContentionFault],
@@ -5861,7 +5861,7 @@ export const describeTrafficSources: API.OperationMethod<
     DescribeTrafficSourcesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTrafficSourcesRequest,
   output: DescribeTrafficSourcesResponse,
   errors: [InvalidNextToken, ResourceContentionFault],
@@ -5902,7 +5902,7 @@ export const describeWarmPool: API.OperationMethod<
     DescribeWarmPoolError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeWarmPoolType,
   output: DescribeWarmPoolAnswer,
   errors: [InvalidNextToken, LimitExceededFault, ResourceContentionFault],
@@ -5935,7 +5935,7 @@ export const detachInstances: API.OperationMethod<
   DetachInstancesAnswer,
   DetachInstancesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetachInstancesQuery,
   output: DetachInstancesAnswer,
   errors: [ResourceContentionFault],
@@ -5964,7 +5964,7 @@ export const detachLoadBalancers: API.OperationMethod<
   DetachLoadBalancersResultType,
   DetachLoadBalancersError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetachLoadBalancersType,
   output: DetachLoadBalancersResultType,
   errors: [ResourceContentionFault],
@@ -5997,7 +5997,7 @@ export const detachLoadBalancerTargetGroups: API.OperationMethod<
   DetachLoadBalancerTargetGroupsResultType,
   DetachLoadBalancerTargetGroupsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetachLoadBalancerTargetGroupsType,
   output: DetachLoadBalancerTargetGroupsResultType,
   errors: [ResourceContentionFault],
@@ -6017,7 +6017,7 @@ export const detachTrafficSources: API.OperationMethod<
   DetachTrafficSourcesResultType,
   DetachTrafficSourcesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetachTrafficSourcesType,
   output: DetachTrafficSourcesResultType,
   errors: [ResourceContentionFault],
@@ -6033,7 +6033,7 @@ export const disableMetricsCollection: API.OperationMethod<
   DisableMetricsCollectionResponse,
   DisableMetricsCollectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableMetricsCollectionQuery,
   output: DisableMetricsCollectionResponse,
   errors: [ResourceContentionFault],
@@ -6055,7 +6055,7 @@ export const enableMetricsCollection: API.OperationMethod<
   EnableMetricsCollectionResponse,
   EnableMetricsCollectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableMetricsCollectionQuery,
   output: EnableMetricsCollectionResponse,
   errors: [ResourceContentionFault],
@@ -6081,7 +6081,7 @@ export const enterStandby: API.OperationMethod<
   EnterStandbyAnswer,
   EnterStandbyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnterStandbyQuery,
   output: EnterStandbyAnswer,
   errors: [ResourceContentionFault],
@@ -6099,7 +6099,7 @@ export const executePolicy: API.OperationMethod<
   ExecutePolicyResponse,
   ExecutePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExecutePolicyType,
   output: ExecutePolicyResponse,
   errors: [ResourceContentionFault, ScalingActivityInProgressFault],
@@ -6120,7 +6120,7 @@ export const exitStandby: API.OperationMethod<
   ExitStandbyAnswer,
   ExitStandbyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExitStandbyQuery,
   output: ExitStandbyAnswer,
   errors: [ResourceContentionFault],
@@ -6147,7 +6147,7 @@ export const getPredictiveScalingForecast: API.OperationMethod<
   GetPredictiveScalingForecastAnswer,
   GetPredictiveScalingForecastError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPredictiveScalingForecastType,
   output: GetPredictiveScalingForecastAnswer,
   errors: [ResourceContentionFault],
@@ -6165,7 +6165,7 @@ export const launchInstances: API.OperationMethod<
   LaunchInstancesResult,
   LaunchInstancesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: LaunchInstancesRequest,
   output: LaunchInstancesResult,
   errors: [IdempotentParameterMismatchError, ResourceContentionFault],
@@ -6220,7 +6220,7 @@ export const putLifecycleHook: API.OperationMethod<
   PutLifecycleHookAnswer,
   PutLifecycleHookError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutLifecycleHookType,
   output: PutLifecycleHookAnswer,
   errors: [LimitExceededFault, ResourceContentionFault],
@@ -6249,7 +6249,7 @@ export const putNotificationConfiguration: API.OperationMethod<
   PutNotificationConfigurationResponse,
   PutNotificationConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutNotificationConfigurationType,
   output: PutNotificationConfigurationResponse,
   errors: [
@@ -6284,7 +6284,7 @@ export const putScalingPolicy: API.OperationMethod<
   PolicyARNType,
   PutScalingPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutScalingPolicyType,
   output: PolicyARNType,
   errors: [
@@ -6317,7 +6317,7 @@ export const putScheduledUpdateGroupAction: API.OperationMethod<
   PutScheduledUpdateGroupActionResponse,
   PutScheduledUpdateGroupActionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutScheduledUpdateGroupActionType,
   output: PutScheduledUpdateGroupActionResponse,
   errors: [AlreadyExistsFault, LimitExceededFault, ResourceContentionFault],
@@ -6347,7 +6347,7 @@ export const putWarmPool: API.OperationMethod<
   PutWarmPoolAnswer,
   PutWarmPoolError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutWarmPoolType,
   output: PutWarmPoolAnswer,
   errors: [
@@ -6396,7 +6396,7 @@ export const recordLifecycleActionHeartbeat: API.OperationMethod<
   RecordLifecycleActionHeartbeatAnswer,
   RecordLifecycleActionHeartbeatError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RecordLifecycleActionHeartbeatType,
   output: RecordLifecycleActionHeartbeatAnswer,
   errors: [ResourceContentionFault],
@@ -6417,7 +6417,7 @@ export const resumeProcesses: API.OperationMethod<
   ResumeProcessesResponse,
   ResumeProcessesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ScalingProcessQuery,
   output: ResumeProcessesResponse,
   errors: [ResourceContentionFault, ResourceInUseFault],
@@ -6457,7 +6457,7 @@ export const rollbackInstanceRefresh: API.OperationMethod<
   RollbackInstanceRefreshAnswer,
   RollbackInstanceRefreshError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RollbackInstanceRefreshType,
   output: RollbackInstanceRefreshAnswer,
   errors: [
@@ -6486,7 +6486,7 @@ export const setDesiredCapacity: API.OperationMethod<
   SetDesiredCapacityResponse,
   SetDesiredCapacityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetDesiredCapacityType,
   output: SetDesiredCapacityResponse,
   errors: [ResourceContentionFault, ScalingActivityInProgressFault],
@@ -6504,7 +6504,7 @@ export const setInstanceHealth: API.OperationMethod<
   SetInstanceHealthResponse,
   SetInstanceHealthError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetInstanceHealthQuery,
   output: SetInstanceHealthResponse,
   errors: [ResourceContentionFault],
@@ -6529,7 +6529,7 @@ export const setInstanceProtection: API.OperationMethod<
   SetInstanceProtectionAnswer,
   SetInstanceProtectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetInstanceProtectionQuery,
   output: SetInstanceProtectionAnswer,
   errors: [LimitExceededFault, ResourceContentionFault],
@@ -6573,7 +6573,7 @@ export const startInstanceRefresh: API.OperationMethod<
   StartInstanceRefreshAnswer,
   StartInstanceRefreshError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartInstanceRefreshType,
   output: StartInstanceRefreshAnswer,
   errors: [
@@ -6602,7 +6602,7 @@ export const suspendProcesses: API.OperationMethod<
   SuspendProcessesResponse,
   SuspendProcessesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ScalingProcessQuery,
   output: SuspendProcessesResponse,
   errors: [ResourceContentionFault, ResourceInUseFault],
@@ -6634,7 +6634,7 @@ export const terminateInstanceInAutoScalingGroup: API.OperationMethod<
   ActivityType,
   TerminateInstanceInAutoScalingGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TerminateInstanceInAutoScalingGroupType,
   output: ActivityType,
   errors: [ResourceContentionFault, ScalingActivityInProgressFault],
@@ -6692,7 +6692,7 @@ export const updateAutoScalingGroup: API.OperationMethod<
   UpdateAutoScalingGroupResponse,
   UpdateAutoScalingGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAutoScalingGroupType,
   output: UpdateAutoScalingGroupResponse,
   errors: [

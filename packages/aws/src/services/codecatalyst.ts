@@ -2116,7 +2116,7 @@ export const getUserDetails: API.OperationMethod<
   GetUserDetailsResponse,
   GetUserDetailsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUserDetailsRequest,
   output: GetUserDetailsResponse,
   errors: [],
@@ -2130,7 +2130,7 @@ export const verifySession: API.OperationMethod<
   VerifySessionResponse,
   VerifySessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: VerifySessionRequest,
   output: VerifySessionResponse,
   errors: [],
@@ -2148,7 +2148,7 @@ export const createAccessToken: API.OperationMethod<
   CreateAccessTokenResponse,
   CreateAccessTokenError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessTokenRequest,
   output: CreateAccessTokenResponse,
   errors: [],
@@ -2162,7 +2162,7 @@ export const deleteAccessToken: API.OperationMethod<
   DeleteAccessTokenResponse,
   DeleteAccessTokenError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessTokenRequest,
   output: DeleteAccessTokenResponse,
   errors: [],
@@ -2191,7 +2191,7 @@ export const listAccessTokens: API.OperationMethod<
     ListAccessTokensError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessTokensRequest,
   output: ListAccessTokensResponse,
   errors: [],
@@ -2211,7 +2211,7 @@ export const getSpace: API.OperationMethod<
   GetSpaceResponse,
   GetSpaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSpaceRequest,
   output: GetSpaceResponse,
   errors: [],
@@ -2225,7 +2225,7 @@ export const updateSpace: API.OperationMethod<
   UpdateSpaceResponse,
   UpdateSpaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSpaceRequest,
   output: UpdateSpaceResponse,
   errors: [],
@@ -2241,7 +2241,7 @@ export const deleteSpace: API.OperationMethod<
   DeleteSpaceResponse,
   DeleteSpaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSpaceRequest,
   output: DeleteSpaceResponse,
   errors: [],
@@ -2270,7 +2270,7 @@ export const listSpaces: API.OperationMethod<
     ListSpacesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSpacesRequest,
   output: ListSpacesResponse,
   errors: [],
@@ -2304,7 +2304,7 @@ export const listDevEnvironments: API.OperationMethod<
     ListDevEnvironmentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDevEnvironmentsRequest,
   output: ListDevEnvironmentsResponse,
   errors: [],
@@ -2347,7 +2347,7 @@ export const listEventLogs: API.OperationMethod<
     ListEventLogsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEventLogsRequest,
   output: ListEventLogsResponse,
   errors: [],
@@ -2367,7 +2367,7 @@ export const createProject: API.OperationMethod<
   CreateProjectResponse,
   CreateProjectError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectRequest,
   output: CreateProjectResponse,
   errors: [],
@@ -2381,7 +2381,7 @@ export const getProject: API.OperationMethod<
   GetProjectResponse,
   GetProjectError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectRequest,
   output: GetProjectResponse,
   errors: [],
@@ -2395,7 +2395,7 @@ export const updateProject: API.OperationMethod<
   UpdateProjectResponse,
   UpdateProjectError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateProjectRequest,
   output: UpdateProjectResponse,
   errors: [],
@@ -2409,7 +2409,7 @@ export const deleteProject: API.OperationMethod<
   DeleteProjectResponse,
   DeleteProjectError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectRequest,
   output: DeleteProjectResponse,
   errors: [],
@@ -2438,7 +2438,7 @@ export const listProjects: API.OperationMethod<
     ListProjectsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsRequest,
   output: ListProjectsResponse,
   errors: [],
@@ -2462,7 +2462,7 @@ export const createDevEnvironment: API.OperationMethod<
   CreateDevEnvironmentResponse,
   CreateDevEnvironmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDevEnvironmentRequest,
   output: CreateDevEnvironmentResponse,
   errors: [],
@@ -2476,7 +2476,7 @@ export const getDevEnvironment: API.OperationMethod<
   GetDevEnvironmentResponse,
   GetDevEnvironmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDevEnvironmentRequest,
   output: GetDevEnvironmentResponse,
   errors: [],
@@ -2490,7 +2490,7 @@ export const updateDevEnvironment: API.OperationMethod<
   UpdateDevEnvironmentResponse,
   UpdateDevEnvironmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDevEnvironmentRequest,
   output: UpdateDevEnvironmentResponse,
   errors: [],
@@ -2504,7 +2504,7 @@ export const deleteDevEnvironment: API.OperationMethod<
   DeleteDevEnvironmentResponse,
   DeleteDevEnvironmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDevEnvironmentRequest,
   output: DeleteDevEnvironmentResponse,
   errors: [],
@@ -2533,7 +2533,7 @@ export const listDevEnvironmentSessions: API.OperationMethod<
     ListDevEnvironmentSessionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDevEnvironmentSessionsRequest,
   output: ListDevEnvironmentSessionsResponse,
   errors: [],
@@ -2553,7 +2553,7 @@ export const startDevEnvironment: API.OperationMethod<
   StartDevEnvironmentResponse,
   StartDevEnvironmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartDevEnvironmentRequest,
   output: StartDevEnvironmentResponse,
   errors: [],
@@ -2567,7 +2567,7 @@ export const startDevEnvironmentSession: API.OperationMethod<
   StartDevEnvironmentSessionResponse,
   StartDevEnvironmentSessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartDevEnvironmentSessionRequest,
   output: StartDevEnvironmentSessionResponse,
   errors: [],
@@ -2581,7 +2581,7 @@ export const stopDevEnvironment: API.OperationMethod<
   StopDevEnvironmentResponse,
   StopDevEnvironmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopDevEnvironmentRequest,
   output: StopDevEnvironmentResponse,
   errors: [],
@@ -2595,7 +2595,7 @@ export const stopDevEnvironmentSession: API.OperationMethod<
   StopDevEnvironmentSessionResponse,
   StopDevEnvironmentSessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopDevEnvironmentSessionRequest,
   output: StopDevEnvironmentSessionResponse,
   errors: [],
@@ -2610,7 +2610,7 @@ export const createSourceRepository: API.OperationMethod<
   CreateSourceRepositoryResponse,
   CreateSourceRepositoryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSourceRepositoryRequest,
   output: CreateSourceRepositoryResponse,
   errors: [],
@@ -2624,7 +2624,7 @@ export const getSourceRepository: API.OperationMethod<
   GetSourceRepositoryResponse,
   GetSourceRepositoryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSourceRepositoryRequest,
   output: GetSourceRepositoryResponse,
   errors: [],
@@ -2638,7 +2638,7 @@ export const deleteSourceRepository: API.OperationMethod<
   DeleteSourceRepositoryResponse,
   DeleteSourceRepositoryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSourceRepositoryRequest,
   output: DeleteSourceRepositoryResponse,
   errors: [],
@@ -2667,7 +2667,7 @@ export const listSourceRepositories: API.OperationMethod<
     ListSourceRepositoriesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSourceRepositoriesRequest,
   output: ListSourceRepositoriesResponse,
   errors: [],
@@ -2688,7 +2688,7 @@ export const getSourceRepositoryCloneUrls: API.OperationMethod<
   GetSourceRepositoryCloneUrlsResponse,
   GetSourceRepositoryCloneUrlsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSourceRepositoryCloneUrlsRequest,
   output: GetSourceRepositoryCloneUrlsResponse,
   errors: [],
@@ -2704,7 +2704,7 @@ export const createSourceRepositoryBranch: API.OperationMethod<
   CreateSourceRepositoryBranchResponse,
   CreateSourceRepositoryBranchError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSourceRepositoryBranchRequest,
   output: CreateSourceRepositoryBranchResponse,
   errors: [],
@@ -2733,7 +2733,7 @@ export const listSourceRepositoryBranches: API.OperationMethod<
     ListSourceRepositoryBranchesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSourceRepositoryBranchesRequest,
   output: ListSourceRepositoryBranchesResponse,
   errors: [],
@@ -2753,7 +2753,7 @@ export const getWorkflow: API.OperationMethod<
   GetWorkflowResponse,
   GetWorkflowError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetWorkflowRequest,
   output: GetWorkflowResponse,
   errors: [],
@@ -2782,7 +2782,7 @@ export const listWorkflows: API.OperationMethod<
     ListWorkflowsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkflowsRequest,
   output: ListWorkflowsResponse,
   errors: [],
@@ -2802,7 +2802,7 @@ export const startWorkflowRun: API.OperationMethod<
   StartWorkflowRunResponse,
   StartWorkflowRunError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartWorkflowRunRequest,
   output: StartWorkflowRunResponse,
   errors: [],
@@ -2816,7 +2816,7 @@ export const getWorkflowRun: API.OperationMethod<
   GetWorkflowRunResponse,
   GetWorkflowRunError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetWorkflowRunRequest,
   output: GetWorkflowRunResponse,
   errors: [],
@@ -2845,7 +2845,7 @@ export const listWorkflowRuns: API.OperationMethod<
     ListWorkflowRunsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkflowRunsRequest,
   output: ListWorkflowRunsResponse,
   errors: [],
@@ -2866,7 +2866,7 @@ export const getSubscription: API.OperationMethod<
   GetSubscriptionResponse,
   GetSubscriptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSubscriptionRequest,
   output: GetSubscriptionResponse,
   errors: [],

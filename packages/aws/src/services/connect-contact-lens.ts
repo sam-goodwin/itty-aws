@@ -355,7 +355,7 @@ export const listRealtimeContactAnalysisSegments: API.OperationMethod<
     ListRealtimeContactAnalysisSegmentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRealtimeContactAnalysisSegmentsRequest,
   output: ListRealtimeContactAnalysisSegmentsResponse,
   errors: [

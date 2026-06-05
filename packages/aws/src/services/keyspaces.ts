@@ -1105,7 +1105,7 @@ export const createKeyspace: API.OperationMethod<
   CreateKeyspaceResponse,
   CreateKeyspaceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateKeyspaceRequest,
   output: CreateKeyspaceResponse,
   errors: [
@@ -1136,7 +1136,7 @@ export const createTable: API.OperationMethod<
   CreateTableResponse,
   CreateTableError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTableRequest,
   output: CreateTableResponse,
   errors: [
@@ -1168,7 +1168,7 @@ export const createType: API.OperationMethod<
   CreateTypeResponse,
   CreateTypeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTypeRequest,
   output: CreateTypeResponse,
   errors: [
@@ -1196,7 +1196,7 @@ export const deleteKeyspace: API.OperationMethod<
   DeleteKeyspaceResponse,
   DeleteKeyspaceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteKeyspaceRequest,
   output: DeleteKeyspaceResponse,
   errors: [
@@ -1224,7 +1224,7 @@ export const deleteTable: API.OperationMethod<
   DeleteTableResponse,
   DeleteTableError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTableRequest,
   output: DeleteTableResponse,
   errors: [
@@ -1254,7 +1254,7 @@ export const deleteType: API.OperationMethod<
   DeleteTypeResponse,
   DeleteTypeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTypeRequest,
   output: DeleteTypeResponse,
   errors: [
@@ -1281,7 +1281,7 @@ export const getKeyspace: API.OperationMethod<
   GetKeyspaceResponse,
   GetKeyspaceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetKeyspaceRequest,
   output: GetKeyspaceResponse,
   errors: [
@@ -1309,7 +1309,7 @@ export const getTable: API.OperationMethod<
   GetTableResponse,
   GetTableError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTableRequest,
   output: GetTableResponse,
   errors: [
@@ -1345,7 +1345,7 @@ export const getTableAutoScalingSettings: API.OperationMethod<
   GetTableAutoScalingSettingsResponse,
   GetTableAutoScalingSettingsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTableAutoScalingSettingsRequest,
   output: GetTableAutoScalingSettingsResponse,
   errors: [
@@ -1373,7 +1373,7 @@ export const getType: API.OperationMethod<
   GetTypeResponse,
   GetTypeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTypeRequest,
   output: GetTypeResponse,
   errors: [
@@ -1414,7 +1414,7 @@ export const listKeyspaces: API.OperationMethod<
     ListKeyspacesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListKeyspacesRequest,
   output: ListKeyspacesResponse,
   errors: [
@@ -1463,7 +1463,7 @@ export const listTables: API.OperationMethod<
     ListTablesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTablesRequest,
   output: ListTablesResponse,
   errors: [
@@ -1512,7 +1512,7 @@ export const listTagsForResource: API.OperationMethod<
     ListTagsForResourceError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -1561,7 +1561,7 @@ export const listTypes: API.OperationMethod<
     ListTypesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTypesRequest,
   output: ListTypesResponse,
   errors: [
@@ -1620,7 +1620,7 @@ export const restoreTable: API.OperationMethod<
   RestoreTableResponse,
   RestoreTableError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RestoreTableRequest,
   output: RestoreTableResponse,
   errors: [
@@ -1650,7 +1650,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -1678,7 +1678,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -1746,7 +1746,7 @@ export const updateKeyspace: API.OperationMethod<
   UpdateKeyspaceResponse,
   UpdateKeyspaceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateKeyspaceRequest,
   output: UpdateKeyspaceResponse,
   errors: [
@@ -1774,7 +1774,7 @@ export const updateTable: API.OperationMethod<
   UpdateTableResponse,
   UpdateTableError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTableRequest,
   output: UpdateTableResponse,
   errors: [

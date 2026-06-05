@@ -1342,7 +1342,7 @@ export const getFindingsReportAccountSummary: API.OperationMethod<
     GetFindingsReportAccountSummaryError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetFindingsReportAccountSummaryRequest,
   output: GetFindingsReportAccountSummaryResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
@@ -1365,7 +1365,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -1387,7 +1387,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -1409,7 +1409,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -1433,7 +1433,7 @@ export const createProfilingGroup: API.OperationMethod<
   CreateProfilingGroupResponse,
   CreateProfilingGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProfilingGroupRequest,
   output: CreateProfilingGroupResponse,
   errors: [
@@ -1461,7 +1461,7 @@ export const describeProfilingGroup: API.OperationMethod<
   DescribeProfilingGroupResponse,
   DescribeProfilingGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeProfilingGroupRequest,
   output: DescribeProfilingGroupResponse,
   errors: [
@@ -1486,7 +1486,7 @@ export const updateProfilingGroup: API.OperationMethod<
   UpdateProfilingGroupResponse,
   UpdateProfilingGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateProfilingGroupRequest,
   output: UpdateProfilingGroupResponse,
   errors: [
@@ -1512,7 +1512,7 @@ export const deleteProfilingGroup: API.OperationMethod<
   DeleteProfilingGroupResponse,
   DeleteProfilingGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProfilingGroupRequest,
   output: DeleteProfilingGroupResponse,
   errors: [
@@ -1554,7 +1554,7 @@ export const listProfilingGroups: API.OperationMethod<
     ListProfilingGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProfilingGroupsRequest,
   output: ListProfilingGroupsResponse,
   errors: [InternalServerException, ThrottlingException],
@@ -1580,7 +1580,7 @@ export const addNotificationChannels: API.OperationMethod<
   AddNotificationChannelsResponse,
   AddNotificationChannelsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddNotificationChannelsRequest,
   output: AddNotificationChannelsResponse,
   errors: [
@@ -1607,7 +1607,7 @@ export const batchGetFrameMetricData: API.OperationMethod<
   BatchGetFrameMetricDataResponse,
   BatchGetFrameMetricDataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetFrameMetricDataRequest,
   output: BatchGetFrameMetricDataResponse,
   errors: [
@@ -1633,7 +1633,7 @@ export const configureAgent: API.OperationMethod<
   ConfigureAgentResponse,
   ConfigureAgentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ConfigureAgentRequest,
   output: ConfigureAgentResponse,
   errors: [
@@ -1657,7 +1657,7 @@ export const getNotificationConfiguration: API.OperationMethod<
   GetNotificationConfigurationResponse,
   GetNotificationConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetNotificationConfigurationRequest,
   output: GetNotificationConfigurationResponse,
   errors: [
@@ -1680,7 +1680,7 @@ export const getPolicy: API.OperationMethod<
   GetPolicyResponse,
   GetPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPolicyRequest,
   output: GetPolicyResponse,
   errors: [
@@ -1742,7 +1742,7 @@ export const getProfile: API.OperationMethod<
   GetProfileResponse,
   GetProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProfileRequest,
   output: GetProfileResponse,
   errors: [
@@ -1775,7 +1775,7 @@ export const getRecommendations: API.OperationMethod<
   GetRecommendationsResponse,
   GetRecommendationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRecommendationsRequest,
   output: GetRecommendationsResponse,
   errors: [
@@ -1814,7 +1814,7 @@ export const listFindingsReports: API.OperationMethod<
     ListFindingsReportsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFindingsReportsRequest,
   output: ListFindingsReportsResponse,
   errors: [
@@ -1859,7 +1859,7 @@ export const listProfileTimes: API.OperationMethod<
     ListProfileTimesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProfileTimesRequest,
   output: ListProfileTimesResponse,
   errors: [
@@ -1893,7 +1893,7 @@ export const postAgentProfile: API.OperationMethod<
   PostAgentProfileResponse,
   PostAgentProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PostAgentProfileRequest,
   output: PostAgentProfileResponse,
   errors: [
@@ -1937,7 +1937,7 @@ export const putPermission: API.OperationMethod<
   PutPermissionResponse,
   PutPermissionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutPermissionRequest,
   output: PutPermissionResponse,
   errors: [
@@ -1962,7 +1962,7 @@ export const removeNotificationChannel: API.OperationMethod<
   RemoveNotificationChannelResponse,
   RemoveNotificationChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveNotificationChannelRequest,
   output: RemoveNotificationChannelResponse,
   errors: [
@@ -1995,7 +1995,7 @@ export const removePermission: API.OperationMethod<
   RemovePermissionResponse,
   RemovePermissionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemovePermissionRequest,
   output: RemovePermissionResponse,
   errors: [
@@ -2021,7 +2021,7 @@ export const submitFeedback: API.OperationMethod<
   SubmitFeedbackResponse,
   SubmitFeedbackError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SubmitFeedbackRequest,
   output: SubmitFeedbackResponse,
   errors: [

@@ -824,7 +824,7 @@ export const batchExecuteStatement: API.OperationMethod<
   BatchExecuteStatementOutput,
   BatchExecuteStatementError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchExecuteStatementInput,
   output: BatchExecuteStatementOutput,
   errors: [
@@ -853,7 +853,7 @@ export const cancelStatement: API.OperationMethod<
   CancelStatementResponse,
   CancelStatementError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelStatementRequest,
   output: CancelStatementResponse,
   errors: [
@@ -879,7 +879,7 @@ export const describeStatement: API.OperationMethod<
   DescribeStatementResponse,
   DescribeStatementError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeStatementRequest,
   output: DescribeStatementResponse,
   errors: [
@@ -930,7 +930,7 @@ export const describeTable: API.OperationMethod<
     DescribeTableError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTableRequest,
   output: DescribeTableResponse,
   errors: [
@@ -975,7 +975,7 @@ export const executeStatement: API.OperationMethod<
   ExecuteStatementOutput,
   ExecuteStatementError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExecuteStatementInput,
   output: ExecuteStatementOutput,
   errors: [
@@ -1017,7 +1017,7 @@ export const getStatementResult: API.OperationMethod<
     GetStatementResultError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetStatementResultRequest,
   output: GetStatementResultResponse,
   errors: [
@@ -1061,7 +1061,7 @@ export const getStatementResultV2: API.OperationMethod<
     GetStatementResultV2Error,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetStatementResultV2Request,
   output: GetStatementResultV2Response,
   errors: [
@@ -1117,7 +1117,7 @@ export const listDatabases: API.OperationMethod<
     ListDatabasesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatabasesRequest,
   output: ListDatabasesResponse,
   errors: [
@@ -1176,7 +1176,7 @@ export const listSchemas: API.OperationMethod<
     ListSchemasError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSchemasRequest,
   output: ListSchemasResponse,
   errors: [
@@ -1225,7 +1225,7 @@ export const listStatements: API.OperationMethod<
     ListStatementsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStatementsRequest,
   output: ListStatementsResponse,
   errors: [
@@ -1282,7 +1282,7 @@ export const listTables: API.OperationMethod<
     ListTablesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTablesRequest,
   output: ListTablesResponse,
   errors: [

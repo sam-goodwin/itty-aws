@@ -3060,7 +3060,7 @@ export const abortEnvironmentUpdate: API.OperationMethod<
   AbortEnvironmentUpdateResponse,
   AbortEnvironmentUpdateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AbortEnvironmentUpdateMessage,
   output: AbortEnvironmentUpdateResponse,
   errors: [InsufficientPrivilegesException],
@@ -3079,7 +3079,7 @@ export const applyEnvironmentManagedAction: API.OperationMethod<
   ApplyEnvironmentManagedActionResult,
   ApplyEnvironmentManagedActionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ApplyEnvironmentManagedActionRequest,
   output: ApplyEnvironmentManagedActionResult,
   errors: [
@@ -3101,7 +3101,7 @@ export const associateEnvironmentOperationsRole: API.OperationMethod<
   AssociateEnvironmentOperationsRoleResponse,
   AssociateEnvironmentOperationsRoleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateEnvironmentOperationsRoleMessage,
   output: AssociateEnvironmentOperationsRoleResponse,
   errors: [InsufficientPrivilegesException],
@@ -3115,7 +3115,7 @@ export const checkDNSAvailability: API.OperationMethod<
   CheckDNSAvailabilityResultMessage,
   CheckDNSAvailabilityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CheckDNSAvailabilityMessage,
   output: CheckDNSAvailabilityResultMessage,
   errors: [],
@@ -3137,7 +3137,7 @@ export const composeEnvironments: API.OperationMethod<
   EnvironmentDescriptionsMessage,
   ComposeEnvironmentsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ComposeEnvironmentsMessage,
   output: EnvironmentDescriptionsMessage,
   errors: [InsufficientPrivilegesException, TooManyEnvironmentsException],
@@ -3154,7 +3154,7 @@ export const createApplication: API.OperationMethod<
   ApplicationDescriptionMessage,
   CreateApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateApplicationMessage,
   output: ApplicationDescriptionMessage,
   errors: [TooManyApplicationsException],
@@ -3192,7 +3192,7 @@ export const createApplicationVersion: API.OperationMethod<
   ApplicationVersionDescriptionMessage,
   CreateApplicationVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateApplicationVersionMessage,
   output: ApplicationVersionDescriptionMessage,
   errors: [
@@ -3230,7 +3230,7 @@ export const createConfigurationTemplate: API.OperationMethod<
   ConfigurationSettingsDescription,
   CreateConfigurationTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateConfigurationTemplateMessage,
   output: ConfigurationSettingsDescription,
   errors: [
@@ -3252,7 +3252,7 @@ export const createEnvironment: API.OperationMethod<
   EnvironmentDescription,
   CreateEnvironmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEnvironmentMessage,
   output: EnvironmentDescription,
   errors: [InsufficientPrivilegesException, TooManyEnvironmentsException],
@@ -3270,7 +3270,7 @@ export const createPlatformVersion: API.OperationMethod<
   CreatePlatformVersionResult,
   CreatePlatformVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePlatformVersionRequest,
   output: CreatePlatformVersionResult,
   errors: [
@@ -3296,7 +3296,7 @@ export const createStorageLocation: API.OperationMethod<
   CreateStorageLocationResultMessage,
   CreateStorageLocationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateStorageLocationRequest,
   output: CreateStorageLocationResultMessage,
   errors: [
@@ -3320,7 +3320,7 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationResponse,
   DeleteApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteApplicationMessage,
   output: DeleteApplicationResponse,
   errors: [OperationInProgressException],
@@ -3342,7 +3342,7 @@ export const deleteApplicationVersion: API.OperationMethod<
   DeleteApplicationVersionResponse,
   DeleteApplicationVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteApplicationVersionMessage,
   output: DeleteApplicationVersionResponse,
   errors: [
@@ -3367,7 +3367,7 @@ export const deleteConfigurationTemplate: API.OperationMethod<
   DeleteConfigurationTemplateResponse,
   DeleteConfigurationTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConfigurationTemplateMessage,
   output: DeleteConfigurationTemplateResponse,
   errors: [OperationInProgressException],
@@ -3387,7 +3387,7 @@ export const deleteEnvironmentConfiguration: API.OperationMethod<
   DeleteEnvironmentConfigurationResponse,
   DeleteEnvironmentConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEnvironmentConfigurationMessage,
   output: DeleteEnvironmentConfigurationResponse,
   errors: [],
@@ -3406,7 +3406,7 @@ export const deletePlatformVersion: API.OperationMethod<
   DeletePlatformVersionResult,
   DeletePlatformVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePlatformVersionRequest,
   output: DeletePlatformVersionResult,
   errors: [
@@ -3430,7 +3430,7 @@ export const describeAccountAttributes: API.OperationMethod<
   DescribeAccountAttributesResult,
   DescribeAccountAttributesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAccountAttributesRequest,
   output: DescribeAccountAttributesResult,
   errors: [InsufficientPrivilegesException],
@@ -3444,7 +3444,7 @@ export const describeApplications: API.OperationMethod<
   ApplicationDescriptionsMessage,
   DescribeApplicationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeApplicationsMessage,
   output: ApplicationDescriptionsMessage,
   errors: [],
@@ -3458,7 +3458,7 @@ export const describeApplicationVersions: API.OperationMethod<
   ApplicationVersionDescriptionsMessage,
   DescribeApplicationVersionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeApplicationVersionsMessage,
   output: ApplicationVersionDescriptionsMessage,
   errors: [],
@@ -3477,7 +3477,7 @@ export const describeConfigurationOptions: API.OperationMethod<
   ConfigurationOptionsDescription,
   DescribeConfigurationOptionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeConfigurationOptionsMessage,
   output: ConfigurationOptionsDescription,
   errors: [TooManyBucketsException],
@@ -3504,7 +3504,7 @@ export const describeConfigurationSettings: API.OperationMethod<
   ConfigurationSettingsDescriptions,
   DescribeConfigurationSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeConfigurationSettingsMessage,
   output: ConfigurationSettingsDescriptions,
   errors: [TooManyBucketsException],
@@ -3523,7 +3523,7 @@ export const describeEnvironmentHealth: API.OperationMethod<
   DescribeEnvironmentHealthResult,
   DescribeEnvironmentHealthError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeEnvironmentHealthRequest,
   output: DescribeEnvironmentHealthResult,
   errors: [ElasticBeanstalkServiceException, InvalidRequestException],
@@ -3554,7 +3554,7 @@ export const describeEnvironmentManagedActionHistory: API.OperationMethod<
     DescribeEnvironmentManagedActionHistoryError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEnvironmentManagedActionHistoryRequest,
   output: DescribeEnvironmentManagedActionHistoryResult,
   errors: [ElasticBeanstalkServiceException],
@@ -3576,7 +3576,7 @@ export const describeEnvironmentManagedActions: API.OperationMethod<
   DescribeEnvironmentManagedActionsResult,
   DescribeEnvironmentManagedActionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeEnvironmentManagedActionsRequest,
   output: DescribeEnvironmentManagedActionsResult,
   errors: [ElasticBeanstalkServiceException],
@@ -3592,7 +3592,7 @@ export const describeEnvironmentResources: API.OperationMethod<
   EnvironmentResourceDescriptionsMessage,
   DescribeEnvironmentResourcesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeEnvironmentResourcesMessage,
   output: EnvironmentResourceDescriptionsMessage,
   errors: [InsufficientPrivilegesException],
@@ -3606,7 +3606,7 @@ export const describeEnvironments: API.OperationMethod<
   EnvironmentDescriptionsMessage,
   DescribeEnvironmentsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeEnvironmentsMessage,
   output: EnvironmentDescriptionsMessage,
   errors: [],
@@ -3638,7 +3638,7 @@ export const describeEvents: API.OperationMethod<
     DescribeEventsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEventsMessage,
   output: EventDescriptionsMessage,
   errors: [],
@@ -3663,7 +3663,7 @@ export const describeInstancesHealth: API.OperationMethod<
   DescribeInstancesHealthResult,
   DescribeInstancesHealthError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeInstancesHealthRequest,
   output: DescribeInstancesHealthResult,
   errors: [ElasticBeanstalkServiceException, InvalidRequestException],
@@ -3684,7 +3684,7 @@ export const describePlatformVersion: API.OperationMethod<
   DescribePlatformVersionResult,
   DescribePlatformVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribePlatformVersionRequest,
   output: DescribePlatformVersionResult,
   errors: [ElasticBeanstalkServiceException, InsufficientPrivilegesException],
@@ -3703,7 +3703,7 @@ export const disassociateEnvironmentOperationsRole: API.OperationMethod<
   DisassociateEnvironmentOperationsRoleResponse,
   DisassociateEnvironmentOperationsRoleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateEnvironmentOperationsRoleMessage,
   output: DisassociateEnvironmentOperationsRoleResponse,
   errors: [InsufficientPrivilegesException],
@@ -3718,7 +3718,7 @@ export const listAvailableSolutionStacks: API.OperationMethod<
   ListAvailableSolutionStacksResultMessage,
   ListAvailableSolutionStacksError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListAvailableSolutionStacksRequest,
   output: ListAvailableSolutionStacksResultMessage,
   errors: [],
@@ -3751,7 +3751,7 @@ export const listPlatformBranches: API.OperationMethod<
     ListPlatformBranchesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlatformBranchesRequest,
   output: ListPlatformBranchesResult,
   errors: [],
@@ -3793,7 +3793,7 @@ export const listPlatformVersions: API.OperationMethod<
     ListPlatformVersionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlatformVersionsRequest,
   output: ListPlatformVersionsResult,
   errors: [ElasticBeanstalkServiceException, InsufficientPrivilegesException],
@@ -3821,7 +3821,7 @@ export const listTagsForResource: API.OperationMethod<
   ResourceTagsDescriptionMessage,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceMessage,
   output: ResourceTagsDescriptionMessage,
   errors: [
@@ -3842,7 +3842,7 @@ export const rebuildEnvironment: API.OperationMethod<
   RebuildEnvironmentResponse,
   RebuildEnvironmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RebuildEnvironmentMessage,
   output: RebuildEnvironmentResponse,
   errors: [InsufficientPrivilegesException],
@@ -3874,7 +3874,7 @@ export const requestEnvironmentInfo: API.OperationMethod<
   RequestEnvironmentInfoResponse,
   RequestEnvironmentInfoError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RequestEnvironmentInfoMessage,
   output: RequestEnvironmentInfoResponse,
   errors: [],
@@ -3889,7 +3889,7 @@ export const restartAppServer: API.OperationMethod<
   RestartAppServerResponse,
   RestartAppServerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RestartAppServerMessage,
   output: RestartAppServerResponse,
   errors: [],
@@ -3908,7 +3908,7 @@ export const retrieveEnvironmentInfo: API.OperationMethod<
   RetrieveEnvironmentInfoResultMessage,
   RetrieveEnvironmentInfoError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RetrieveEnvironmentInfoMessage,
   output: RetrieveEnvironmentInfoResultMessage,
   errors: [],
@@ -3922,7 +3922,7 @@ export const swapEnvironmentCNAMEs: API.OperationMethod<
   SwapEnvironmentCNAMEsResponse,
   SwapEnvironmentCNAMEsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SwapEnvironmentCNAMEsMessage,
   output: SwapEnvironmentCNAMEsResponse,
   errors: [],
@@ -3938,7 +3938,7 @@ export const terminateEnvironment: API.OperationMethod<
   EnvironmentDescription,
   TerminateEnvironmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TerminateEnvironmentMessage,
   output: EnvironmentDescription,
   errors: [InsufficientPrivilegesException],
@@ -3955,7 +3955,7 @@ export const updateApplication: API.OperationMethod<
   ApplicationDescriptionMessage,
   UpdateApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateApplicationMessage,
   output: ApplicationDescriptionMessage,
   errors: [],
@@ -3971,7 +3971,7 @@ export const updateApplicationResourceLifecycle: API.OperationMethod<
   ApplicationResourceLifecycleDescriptionMessage,
   UpdateApplicationResourceLifecycleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateApplicationResourceLifecycleMessage,
   output: ApplicationResourceLifecycleDescriptionMessage,
   errors: [InsufficientPrivilegesException],
@@ -3988,7 +3988,7 @@ export const updateApplicationVersion: API.OperationMethod<
   ApplicationVersionDescriptionMessage,
   UpdateApplicationVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateApplicationVersionMessage,
   output: ApplicationVersionDescriptionMessage,
   errors: [],
@@ -4013,7 +4013,7 @@ export const updateConfigurationTemplate: API.OperationMethod<
   ConfigurationSettingsDescription,
   UpdateConfigurationTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateConfigurationTemplateMessage,
   output: ConfigurationSettingsDescription,
   errors: [InsufficientPrivilegesException, TooManyBucketsException],
@@ -4040,7 +4040,7 @@ export const updateEnvironment: API.OperationMethod<
   EnvironmentDescription,
   UpdateEnvironmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEnvironmentMessage,
   output: EnvironmentDescription,
   errors: [InsufficientPrivilegesException, TooManyBucketsException],
@@ -4080,7 +4080,7 @@ export const updateTagsForResource: API.OperationMethod<
   UpdateTagsForResourceResponse,
   UpdateTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTagsForResourceMessage,
   output: UpdateTagsForResourceResponse,
   errors: [
@@ -4107,7 +4107,7 @@ export const validateConfigurationSettings: API.OperationMethod<
   ConfigurationSettingsValidationMessages,
   ValidateConfigurationSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ValidateConfigurationSettingsMessage,
   output: ConfigurationSettingsValidationMessages,
   errors: [InsufficientPrivilegesException, TooManyBucketsException],

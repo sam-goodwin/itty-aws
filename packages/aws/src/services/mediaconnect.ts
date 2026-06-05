@@ -8183,7 +8183,7 @@ export const listEntitlements: API.OperationMethod<
     ListEntitlementsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEntitlementsRequest,
   output: ListEntitlementsResponse,
   errors: [
@@ -8212,7 +8212,7 @@ export const listTagsForGlobalResource: API.OperationMethod<
   ListTagsForGlobalResourceResponse,
   ListTagsForGlobalResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForGlobalResourceRequest,
   output: ListTagsForGlobalResourceResponse,
   errors: [
@@ -8234,7 +8234,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -8256,7 +8256,7 @@ export const tagGlobalResource: API.OperationMethod<
   TagGlobalResourceResponse,
   TagGlobalResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagGlobalResourceRequest,
   output: TagGlobalResourceResponse,
   errors: [
@@ -8278,7 +8278,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -8300,7 +8300,7 @@ export const untagGlobalResource: API.OperationMethod<
   UntagGlobalResourceResponse,
   UntagGlobalResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagGlobalResourceRequest,
   output: UntagGlobalResourceResponse,
   errors: [
@@ -8322,7 +8322,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -8348,7 +8348,7 @@ export const createBridge: API.OperationMethod<
   CreateBridgeResponse,
   CreateBridgeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateBridgeRequest,
   output: CreateBridgeResponse,
   errors: [
@@ -8378,7 +8378,7 @@ export const describeBridge: API.OperationMethod<
   DescribeBridgeResponse,
   DescribeBridgeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeBridgeRequest,
   output: DescribeBridgeResponse,
   errors: [
@@ -8408,7 +8408,7 @@ export const updateBridge: API.OperationMethod<
   UpdateBridgeResponse,
   UpdateBridgeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateBridgeRequest,
   output: UpdateBridgeResponse,
   errors: [
@@ -8438,7 +8438,7 @@ export const deleteBridge: API.OperationMethod<
   DeleteBridgeResponse,
   DeleteBridgeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteBridgeRequest,
   output: DeleteBridgeResponse,
   errors: [
@@ -8481,7 +8481,7 @@ export const listBridges: API.OperationMethod<
     ListBridgesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBridgesRequest,
   output: ListBridgesResponse,
   errors: [
@@ -8515,7 +8515,7 @@ export const addBridgeOutputs: API.OperationMethod<
   AddBridgeOutputsResponse,
   AddBridgeOutputsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddBridgeOutputsRequest,
   output: AddBridgeOutputsResponse,
   errors: [
@@ -8545,7 +8545,7 @@ export const addBridgeSources: API.OperationMethod<
   AddBridgeSourcesResponse,
   AddBridgeSourcesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddBridgeSourcesRequest,
   output: AddBridgeSourcesResponse,
   errors: [
@@ -8575,7 +8575,7 @@ export const removeBridgeOutput: API.OperationMethod<
   RemoveBridgeOutputResponse,
   RemoveBridgeOutputError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveBridgeOutputRequest,
   output: RemoveBridgeOutputResponse,
   errors: [
@@ -8605,7 +8605,7 @@ export const removeBridgeSource: API.OperationMethod<
   RemoveBridgeSourceResponse,
   RemoveBridgeSourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveBridgeSourceRequest,
   output: RemoveBridgeSourceResponse,
   errors: [
@@ -8635,7 +8635,7 @@ export const updateBridgeOutput: API.OperationMethod<
   UpdateBridgeOutputResponse,
   UpdateBridgeOutputError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateBridgeOutputRequest,
   output: UpdateBridgeOutputResponse,
   errors: [
@@ -8665,7 +8665,7 @@ export const updateBridgeSource: API.OperationMethod<
   UpdateBridgeSourceResponse,
   UpdateBridgeSourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateBridgeSourceRequest,
   output: UpdateBridgeSourceResponse,
   errors: [
@@ -8695,7 +8695,7 @@ export const updateBridgeState: API.OperationMethod<
   UpdateBridgeStateResponse,
   UpdateBridgeStateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateBridgeStateRequest,
   output: UpdateBridgeStateResponse,
   errors: [
@@ -8724,7 +8724,7 @@ export const createFlow: API.OperationMethod<
   CreateFlowResponse,
   CreateFlowError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFlowRequest,
   output: CreateFlowResponse,
   errors: [
@@ -8752,7 +8752,7 @@ export const describeFlow: API.OperationMethod<
   DescribeFlowResponse,
   DescribeFlowError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeFlowRequest,
   output: DescribeFlowResponse,
   errors: [
@@ -8794,7 +8794,7 @@ export const updateFlow: API.OperationMethod<
   UpdateFlowResponse,
   UpdateFlowError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateFlowRequest,
   output: UpdateFlowResponse,
   errors: [
@@ -8822,7 +8822,7 @@ export const deleteFlow: API.OperationMethod<
   DeleteFlowResponse,
   DeleteFlowError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFlowRequest,
   output: DeleteFlowResponse,
   errors: [
@@ -8863,7 +8863,7 @@ export const listFlows: API.OperationMethod<
     ListFlowsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFlowsRequest,
   output: ListFlowsResponse,
   errors: [
@@ -8895,7 +8895,7 @@ export const addFlowMediaStreams: API.OperationMethod<
   AddFlowMediaStreamsResponse,
   AddFlowMediaStreamsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddFlowMediaStreamsRequest,
   output: AddFlowMediaStreamsResponse,
   errors: [
@@ -8924,7 +8924,7 @@ export const addFlowOutputs: API.OperationMethod<
   AddFlowOutputsResponse,
   AddFlowOutputsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddFlowOutputsRequest,
   output: AddFlowOutputsResponse,
   errors: [
@@ -8953,7 +8953,7 @@ export const addFlowSources: API.OperationMethod<
   AddFlowSourcesResponse,
   AddFlowSourcesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddFlowSourcesRequest,
   output: AddFlowSourcesResponse,
   errors: [
@@ -8981,7 +8981,7 @@ export const addFlowVpcInterfaces: API.OperationMethod<
   AddFlowVpcInterfacesResponse,
   AddFlowVpcInterfacesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddFlowVpcInterfacesRequest,
   output: AddFlowVpcInterfacesResponse,
   errors: [
@@ -9009,7 +9009,7 @@ export const describeFlowSourceMetadata: API.OperationMethod<
   DescribeFlowSourceMetadataResponse,
   DescribeFlowSourceMetadataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeFlowSourceMetadataRequest,
   output: DescribeFlowSourceMetadataResponse,
   errors: [
@@ -9037,7 +9037,7 @@ export const describeFlowSourceThumbnail: API.OperationMethod<
   DescribeFlowSourceThumbnailResponse,
   DescribeFlowSourceThumbnailError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeFlowSourceThumbnailRequest,
   output: DescribeFlowSourceThumbnailResponse,
   errors: [
@@ -9066,7 +9066,7 @@ export const grantFlowEntitlements: API.OperationMethod<
   GrantFlowEntitlementsResponse,
   GrantFlowEntitlementsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GrantFlowEntitlementsRequest,
   output: GrantFlowEntitlementsResponse,
   errors: [
@@ -9095,7 +9095,7 @@ export const removeFlowMediaStream: API.OperationMethod<
   RemoveFlowMediaStreamResponse,
   RemoveFlowMediaStreamError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveFlowMediaStreamRequest,
   output: RemoveFlowMediaStreamResponse,
   errors: [
@@ -9123,7 +9123,7 @@ export const removeFlowOutput: API.OperationMethod<
   RemoveFlowOutputResponse,
   RemoveFlowOutputError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveFlowOutputRequest,
   output: RemoveFlowOutputResponse,
   errors: [
@@ -9151,7 +9151,7 @@ export const removeFlowSource: API.OperationMethod<
   RemoveFlowSourceResponse,
   RemoveFlowSourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveFlowSourceRequest,
   output: RemoveFlowSourceResponse,
   errors: [
@@ -9179,7 +9179,7 @@ export const removeFlowVpcInterface: API.OperationMethod<
   RemoveFlowVpcInterfaceResponse,
   RemoveFlowVpcInterfaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveFlowVpcInterfaceRequest,
   output: RemoveFlowVpcInterfaceResponse,
   errors: [
@@ -9207,7 +9207,7 @@ export const revokeFlowEntitlement: API.OperationMethod<
   RevokeFlowEntitlementResponse,
   RevokeFlowEntitlementError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RevokeFlowEntitlementRequest,
   output: RevokeFlowEntitlementResponse,
   errors: [
@@ -9235,7 +9235,7 @@ export const startFlow: API.OperationMethod<
   StartFlowResponse,
   StartFlowError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartFlowRequest,
   output: StartFlowResponse,
   errors: [
@@ -9263,7 +9263,7 @@ export const stopFlow: API.OperationMethod<
   StopFlowResponse,
   StopFlowError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopFlowRequest,
   output: StopFlowResponse,
   errors: [
@@ -9291,7 +9291,7 @@ export const updateFlowEntitlement: API.OperationMethod<
   UpdateFlowEntitlementResponse,
   UpdateFlowEntitlementError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateFlowEntitlementRequest,
   output: UpdateFlowEntitlementResponse,
   errors: [
@@ -9319,7 +9319,7 @@ export const updateFlowMediaStream: API.OperationMethod<
   UpdateFlowMediaStreamResponse,
   UpdateFlowMediaStreamError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateFlowMediaStreamRequest,
   output: UpdateFlowMediaStreamResponse,
   errors: [
@@ -9347,7 +9347,7 @@ export const updateFlowOutput: API.OperationMethod<
   UpdateFlowOutputResponse,
   UpdateFlowOutputError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateFlowOutputRequest,
   output: UpdateFlowOutputResponse,
   errors: [
@@ -9389,7 +9389,7 @@ export const updateFlowSource: API.OperationMethod<
   UpdateFlowSourceResponse,
   UpdateFlowSourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateFlowSourceRequest,
   output: UpdateFlowSourceResponse,
   errors: [
@@ -9418,7 +9418,7 @@ export const describeGatewayInstance: API.OperationMethod<
   DescribeGatewayInstanceResponse,
   DescribeGatewayInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeGatewayInstanceRequest,
   output: DescribeGatewayInstanceResponse,
   errors: [
@@ -9448,7 +9448,7 @@ export const updateGatewayInstance: API.OperationMethod<
   UpdateGatewayInstanceResponse,
   UpdateGatewayInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateGatewayInstanceRequest,
   output: UpdateGatewayInstanceResponse,
   errors: [
@@ -9478,7 +9478,7 @@ export const deregisterGatewayInstance: API.OperationMethod<
   DeregisterGatewayInstanceResponse,
   DeregisterGatewayInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeregisterGatewayInstanceRequest,
   output: DeregisterGatewayInstanceResponse,
   errors: [
@@ -9521,7 +9521,7 @@ export const listGatewayInstances: API.OperationMethod<
     ListGatewayInstancesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGatewayInstancesRequest,
   output: ListGatewayInstancesResponse,
   errors: [
@@ -9555,7 +9555,7 @@ export const createGateway: API.OperationMethod<
   CreateGatewayResponse,
   CreateGatewayError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateGatewayRequest,
   output: CreateGatewayResponse,
   errors: [
@@ -9585,7 +9585,7 @@ export const describeGateway: API.OperationMethod<
   DescribeGatewayResponse,
   DescribeGatewayError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeGatewayRequest,
   output: DescribeGatewayResponse,
   errors: [
@@ -9615,7 +9615,7 @@ export const deleteGateway: API.OperationMethod<
   DeleteGatewayResponse,
   DeleteGatewayError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteGatewayRequest,
   output: DeleteGatewayResponse,
   errors: [
@@ -9658,7 +9658,7 @@ export const listGateways: API.OperationMethod<
     ListGatewaysError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGatewaysRequest,
   output: ListGatewaysResponse,
   errors: [
@@ -9690,7 +9690,7 @@ export const describeOffering: API.OperationMethod<
   DescribeOfferingResponse,
   DescribeOfferingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeOfferingRequest,
   output: DescribeOfferingResponse,
   errors: [
@@ -9730,7 +9730,7 @@ export const listOfferings: API.OperationMethod<
     ListOfferingsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOfferingsRequest,
   output: ListOfferingsResponse,
   errors: [
@@ -9762,7 +9762,7 @@ export const purchaseOffering: API.OperationMethod<
   PurchaseOfferingResponse,
   PurchaseOfferingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PurchaseOfferingRequest,
   output: PurchaseOfferingResponse,
   errors: [
@@ -9789,7 +9789,7 @@ export const describeReservation: API.OperationMethod<
   DescribeReservationResponse,
   DescribeReservationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeReservationRequest,
   output: DescribeReservationResponse,
   errors: [
@@ -9829,7 +9829,7 @@ export const listReservations: API.OperationMethod<
     ListReservationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReservationsRequest,
   output: ListReservationsResponse,
   errors: [
@@ -9862,7 +9862,7 @@ export const createRouterInput: API.OperationMethod<
   CreateRouterInputResponse,
   CreateRouterInputError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRouterInputRequest,
   output: CreateRouterInputResponse,
   errors: [
@@ -9892,7 +9892,7 @@ export const getRouterInput: API.OperationMethod<
   GetRouterInputResponse,
   GetRouterInputError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRouterInputRequest,
   output: GetRouterInputResponse,
   errors: [
@@ -9922,7 +9922,7 @@ export const updateRouterInput: API.OperationMethod<
   UpdateRouterInputResponse,
   UpdateRouterInputError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRouterInputRequest,
   output: UpdateRouterInputResponse,
   errors: [
@@ -9952,7 +9952,7 @@ export const deleteRouterInput: API.OperationMethod<
   DeleteRouterInputResponse,
   DeleteRouterInputError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRouterInputRequest,
   output: DeleteRouterInputResponse,
   errors: [
@@ -9995,7 +9995,7 @@ export const listRouterInputs: API.OperationMethod<
     ListRouterInputsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRouterInputsRequest,
   output: ListRouterInputsResponse,
   errors: [
@@ -10028,7 +10028,7 @@ export const getRouterInputSourceMetadata: API.OperationMethod<
   GetRouterInputSourceMetadataResponse,
   GetRouterInputSourceMetadataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRouterInputSourceMetadataRequest,
   output: GetRouterInputSourceMetadataResponse,
   errors: [
@@ -10056,7 +10056,7 @@ export const getRouterInputThumbnail: API.OperationMethod<
   GetRouterInputThumbnailResponse,
   GetRouterInputThumbnailError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRouterInputThumbnailRequest,
   output: GetRouterInputThumbnailResponse,
   errors: [
@@ -10085,7 +10085,7 @@ export const restartRouterInput: API.OperationMethod<
   RestartRouterInputResponse,
   RestartRouterInputError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RestartRouterInputRequest,
   output: RestartRouterInputResponse,
   errors: [
@@ -10115,7 +10115,7 @@ export const startRouterInput: API.OperationMethod<
   StartRouterInputResponse,
   StartRouterInputError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartRouterInputRequest,
   output: StartRouterInputResponse,
   errors: [
@@ -10145,7 +10145,7 @@ export const stopRouterInput: API.OperationMethod<
   StopRouterInputResponse,
   StopRouterInputError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopRouterInputRequest,
   output: StopRouterInputResponse,
   errors: [
@@ -10173,7 +10173,7 @@ export const batchGetRouterInput: API.OperationMethod<
   BatchGetRouterInputResponse,
   BatchGetRouterInputError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetRouterInputRequest,
   output: BatchGetRouterInputResponse,
   errors: [
@@ -10201,7 +10201,7 @@ export const createRouterNetworkInterface: API.OperationMethod<
   CreateRouterNetworkInterfaceResponse,
   CreateRouterNetworkInterfaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRouterNetworkInterfaceRequest,
   output: CreateRouterNetworkInterfaceResponse,
   errors: [
@@ -10231,7 +10231,7 @@ export const getRouterNetworkInterface: API.OperationMethod<
   GetRouterNetworkInterfaceResponse,
   GetRouterNetworkInterfaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRouterNetworkInterfaceRequest,
   output: GetRouterNetworkInterfaceResponse,
   errors: [
@@ -10260,7 +10260,7 @@ export const updateRouterNetworkInterface: API.OperationMethod<
   UpdateRouterNetworkInterfaceResponse,
   UpdateRouterNetworkInterfaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRouterNetworkInterfaceRequest,
   output: UpdateRouterNetworkInterfaceResponse,
   errors: [
@@ -10289,7 +10289,7 @@ export const deleteRouterNetworkInterface: API.OperationMethod<
   DeleteRouterNetworkInterfaceResponse,
   DeleteRouterNetworkInterfaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRouterNetworkInterfaceRequest,
   output: DeleteRouterNetworkInterfaceResponse,
   errors: [
@@ -10332,7 +10332,7 @@ export const listRouterNetworkInterfaces: API.OperationMethod<
     ListRouterNetworkInterfacesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRouterNetworkInterfacesRequest,
   output: ListRouterNetworkInterfacesResponse,
   errors: [
@@ -10364,7 +10364,7 @@ export const batchGetRouterNetworkInterface: API.OperationMethod<
   BatchGetRouterNetworkInterfaceResponse,
   BatchGetRouterNetworkInterfaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetRouterNetworkInterfaceRequest,
   output: BatchGetRouterNetworkInterfaceResponse,
   errors: [
@@ -10392,7 +10392,7 @@ export const createRouterOutput: API.OperationMethod<
   CreateRouterOutputResponse,
   CreateRouterOutputError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRouterOutputRequest,
   output: CreateRouterOutputResponse,
   errors: [
@@ -10422,7 +10422,7 @@ export const getRouterOutput: API.OperationMethod<
   GetRouterOutputResponse,
   GetRouterOutputError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRouterOutputRequest,
   output: GetRouterOutputResponse,
   errors: [
@@ -10452,7 +10452,7 @@ export const updateRouterOutput: API.OperationMethod<
   UpdateRouterOutputResponse,
   UpdateRouterOutputError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRouterOutputRequest,
   output: UpdateRouterOutputResponse,
   errors: [
@@ -10482,7 +10482,7 @@ export const deleteRouterOutput: API.OperationMethod<
   DeleteRouterOutputResponse,
   DeleteRouterOutputError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRouterOutputRequest,
   output: DeleteRouterOutputResponse,
   errors: [
@@ -10525,7 +10525,7 @@ export const listRouterOutputs: API.OperationMethod<
     ListRouterOutputsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRouterOutputsRequest,
   output: ListRouterOutputsResponse,
   errors: [
@@ -10559,7 +10559,7 @@ export const restartRouterOutput: API.OperationMethod<
   RestartRouterOutputResponse,
   RestartRouterOutputError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RestartRouterOutputRequest,
   output: RestartRouterOutputResponse,
   errors: [
@@ -10589,7 +10589,7 @@ export const startRouterOutput: API.OperationMethod<
   StartRouterOutputResponse,
   StartRouterOutputError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartRouterOutputRequest,
   output: StartRouterOutputResponse,
   errors: [
@@ -10619,7 +10619,7 @@ export const stopRouterOutput: API.OperationMethod<
   StopRouterOutputResponse,
   StopRouterOutputError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopRouterOutputRequest,
   output: StopRouterOutputResponse,
   errors: [
@@ -10649,7 +10649,7 @@ export const takeRouterInput: API.OperationMethod<
   TakeRouterInputResponse,
   TakeRouterInputError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TakeRouterInputRequest,
   output: TakeRouterInputResponse,
   errors: [
@@ -10677,7 +10677,7 @@ export const batchGetRouterOutput: API.OperationMethod<
   BatchGetRouterOutputResponse,
   BatchGetRouterOutputError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetRouterOutputRequest,
   output: BatchGetRouterOutputResponse,
   errors: [

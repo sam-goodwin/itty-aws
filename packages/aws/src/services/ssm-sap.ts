@@ -1648,7 +1648,7 @@ export const deleteResourcePermission: API.OperationMethod<
   DeleteResourcePermissionOutput,
   DeleteResourcePermissionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourcePermissionInput,
   output: DeleteResourcePermissionOutput,
   errors: [
@@ -1670,7 +1670,7 @@ export const deregisterApplication: API.OperationMethod<
   DeregisterApplicationOutput,
   DeregisterApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeregisterApplicationInput,
   output: DeregisterApplicationOutput,
   errors: [InternalServerException, UnauthorizedException, ValidationException],
@@ -1687,7 +1687,7 @@ export const getApplication: API.OperationMethod<
   GetApplicationOutput,
   GetApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetApplicationInput,
   output: GetApplicationOutput,
   errors: [InternalServerException, ValidationException],
@@ -1705,7 +1705,7 @@ export const getComponent: API.OperationMethod<
   GetComponentOutput,
   GetComponentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetComponentInput,
   output: GetComponentOutput,
   errors: [InternalServerException, UnauthorizedException, ValidationException],
@@ -1722,7 +1722,7 @@ export const getConfigurationCheckOperation: API.OperationMethod<
   GetConfigurationCheckOperationOutput,
   GetConfigurationCheckOperationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConfigurationCheckOperationInput,
   output: GetConfigurationCheckOperationOutput,
   errors: [InternalServerException, ValidationException],
@@ -1739,7 +1739,7 @@ export const getDatabase: API.OperationMethod<
   GetDatabaseOutput,
   GetDatabaseError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDatabaseInput,
   output: GetDatabaseOutput,
   errors: [InternalServerException, ValidationException],
@@ -1756,7 +1756,7 @@ export const getOperation: API.OperationMethod<
   GetOperationOutput,
   GetOperationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOperationInput,
   output: GetOperationOutput,
   errors: [InternalServerException, ValidationException],
@@ -1774,7 +1774,7 @@ export const getResourcePermission: API.OperationMethod<
   GetResourcePermissionOutput,
   GetResourcePermissionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResourcePermissionInput,
   output: GetResourcePermissionOutput,
   errors: [
@@ -1811,7 +1811,7 @@ export const listApplications: API.OperationMethod<
     ListApplicationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationsInput,
   output: ListApplicationsOutput,
   errors: [
@@ -1855,7 +1855,7 @@ export const listComponents: API.OperationMethod<
     ListComponentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListComponentsInput,
   output: ListComponentsOutput,
   errors: [
@@ -1898,7 +1898,7 @@ export const listConfigurationCheckDefinitions: API.OperationMethod<
     ListConfigurationCheckDefinitionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfigurationCheckDefinitionsInput,
   output: ListConfigurationCheckDefinitionsOutput,
   errors: [InternalServerException, ValidationException],
@@ -1937,7 +1937,7 @@ export const listConfigurationCheckOperations: API.OperationMethod<
     ListConfigurationCheckOperationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfigurationCheckOperationsInput,
   output: ListConfigurationCheckOperationsOutput,
   errors: [
@@ -1980,7 +1980,7 @@ export const listDatabases: API.OperationMethod<
     ListDatabasesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatabasesInput,
   output: ListDatabasesOutput,
   errors: [
@@ -2024,7 +2024,7 @@ export const listOperationEvents: API.OperationMethod<
     ListOperationEventsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOperationEventsInput,
   output: ListOperationEventsOutput,
   errors: [InternalServerException, ValidationException],
@@ -2062,7 +2062,7 @@ export const listOperations: API.OperationMethod<
     ListOperationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsInput,
   output: ListOperationsOutput,
   errors: [InternalServerException, ValidationException],
@@ -2100,7 +2100,7 @@ export const listSubCheckResults: API.OperationMethod<
     ListSubCheckResultsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSubCheckResultsInput,
   output: ListSubCheckResultsOutput,
   errors: [InternalServerException, ValidationException],
@@ -2138,7 +2138,7 @@ export const listSubCheckRuleResults: API.OperationMethod<
     ListSubCheckRuleResultsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSubCheckRuleResultsInput,
   output: ListSubCheckRuleResultsOutput,
   errors: [InternalServerException, ValidationException],
@@ -2162,7 +2162,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
@@ -2180,7 +2180,7 @@ export const putResourcePermission: API.OperationMethod<
   PutResourcePermissionOutput,
   PutResourcePermissionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutResourcePermissionInput,
   output: PutResourcePermissionOutput,
   errors: [
@@ -2209,7 +2209,7 @@ export const registerApplication: API.OperationMethod<
   RegisterApplicationOutput,
   RegisterApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterApplicationInput,
   output: RegisterApplicationOutput,
   errors: [
@@ -2235,7 +2235,7 @@ export const startApplication: API.OperationMethod<
   StartApplicationOutput,
   StartApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartApplicationInput,
   output: StartApplicationOutput,
   errors: [
@@ -2260,7 +2260,7 @@ export const startApplicationRefresh: API.OperationMethod<
   StartApplicationRefreshOutput,
   StartApplicationRefreshError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartApplicationRefreshInput,
   output: StartApplicationRefreshOutput,
   errors: [
@@ -2285,7 +2285,7 @@ export const startConfigurationChecks: API.OperationMethod<
   StartConfigurationChecksOutput,
   StartConfigurationChecksError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartConfigurationChecksInput,
   output: StartConfigurationChecksOutput,
   errors: [
@@ -2311,7 +2311,7 @@ export const stopApplication: API.OperationMethod<
   StopApplicationOutput,
   StopApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopApplicationInput,
   output: StopApplicationOutput,
   errors: [
@@ -2334,7 +2334,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
@@ -2352,7 +2352,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
@@ -2372,7 +2372,7 @@ export const updateApplicationSettings: API.OperationMethod<
   UpdateApplicationSettingsOutput,
   UpdateApplicationSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateApplicationSettingsInput,
   output: UpdateApplicationSettingsOutput,
   errors: [

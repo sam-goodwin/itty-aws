@@ -766,7 +766,7 @@ export const createContainer: API.OperationMethod<
   CreateContainerOutput,
   CreateContainerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateContainerInput,
   output: CreateContainerOutput,
   errors: [
@@ -790,7 +790,7 @@ export const deleteContainer: API.OperationMethod<
   DeleteContainerOutput,
   DeleteContainerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteContainerInput,
   output: DeleteContainerOutput,
   errors: [
@@ -813,7 +813,7 @@ export const deleteContainerPolicy: API.OperationMethod<
   DeleteContainerPolicyOutput,
   DeleteContainerPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteContainerPolicyInput,
   output: DeleteContainerPolicyOutput,
   errors: [
@@ -842,7 +842,7 @@ export const deleteCorsPolicy: API.OperationMethod<
   DeleteCorsPolicyOutput,
   DeleteCorsPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCorsPolicyInput,
   output: DeleteCorsPolicyOutput,
   errors: [
@@ -866,7 +866,7 @@ export const deleteLifecyclePolicy: API.OperationMethod<
   DeleteLifecyclePolicyOutput,
   DeleteLifecyclePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLifecyclePolicyInput,
   output: DeleteLifecyclePolicyOutput,
   errors: [
@@ -890,7 +890,7 @@ export const deleteMetricPolicy: API.OperationMethod<
   DeleteMetricPolicyOutput,
   DeleteMetricPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMetricPolicyInput,
   output: DeleteMetricPolicyOutput,
   errors: [
@@ -918,7 +918,7 @@ export const describeContainer: API.OperationMethod<
   DescribeContainerOutput,
   DescribeContainerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeContainerInput,
   output: DescribeContainerOutput,
   errors: [ContainerNotFoundException, InternalServerError],
@@ -939,7 +939,7 @@ export const getContainerPolicy: API.OperationMethod<
   GetContainerPolicyOutput,
   GetContainerPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetContainerPolicyInput,
   output: GetContainerPolicyOutput,
   errors: [
@@ -968,7 +968,7 @@ export const getCorsPolicy: API.OperationMethod<
   GetCorsPolicyOutput,
   GetCorsPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCorsPolicyInput,
   output: GetCorsPolicyOutput,
   errors: [
@@ -992,7 +992,7 @@ export const getLifecyclePolicy: API.OperationMethod<
   GetLifecyclePolicyOutput,
   GetLifecyclePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLifecyclePolicyInput,
   output: GetLifecyclePolicyOutput,
   errors: [
@@ -1016,7 +1016,7 @@ export const getMetricPolicy: API.OperationMethod<
   GetMetricPolicyOutput,
   GetMetricPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMetricPolicyInput,
   output: GetMetricPolicyOutput,
   errors: [
@@ -1060,7 +1060,7 @@ export const listContainers: API.OperationMethod<
     ListContainersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListContainersInput,
   output: ListContainersOutput,
   errors: [InternalServerError],
@@ -1083,7 +1083,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceOutput,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [
@@ -1112,7 +1112,7 @@ export const putContainerPolicy: API.OperationMethod<
   PutContainerPolicyOutput,
   PutContainerPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutContainerPolicyInput,
   output: PutContainerPolicyOutput,
   errors: [
@@ -1146,7 +1146,7 @@ export const putCorsPolicy: API.OperationMethod<
   PutCorsPolicyOutput,
   PutCorsPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutCorsPolicyInput,
   output: PutCorsPolicyOutput,
   errors: [
@@ -1170,7 +1170,7 @@ export const putLifecyclePolicy: API.OperationMethod<
   PutLifecyclePolicyOutput,
   PutLifecyclePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutLifecyclePolicyInput,
   output: PutLifecyclePolicyOutput,
   errors: [
@@ -1192,7 +1192,7 @@ export const putMetricPolicy: API.OperationMethod<
   PutMetricPolicyOutput,
   PutMetricPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutMetricPolicyInput,
   output: PutMetricPolicyOutput,
   errors: [
@@ -1214,7 +1214,7 @@ export const startAccessLogging: API.OperationMethod<
   StartAccessLoggingOutput,
   StartAccessLoggingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartAccessLoggingInput,
   output: StartAccessLoggingOutput,
   errors: [
@@ -1236,7 +1236,7 @@ export const stopAccessLogging: API.OperationMethod<
   StopAccessLoggingOutput,
   StopAccessLoggingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopAccessLoggingInput,
   output: StopAccessLoggingOutput,
   errors: [
@@ -1260,7 +1260,7 @@ export const tagResource: API.OperationMethod<
   TagResourceOutput,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
   errors: [
@@ -1282,7 +1282,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceOutput,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
   errors: [

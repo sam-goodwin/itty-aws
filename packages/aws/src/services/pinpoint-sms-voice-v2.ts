@@ -5239,7 +5239,7 @@ export const associateOriginationIdentity: API.OperationMethod<
   AssociateOriginationIdentityResult,
   AssociateOriginationIdentityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateOriginationIdentityRequest,
   output: AssociateOriginationIdentityResult,
   errors: [
@@ -5268,7 +5268,7 @@ export const associateProtectConfiguration: API.OperationMethod<
   AssociateProtectConfigurationResult,
   AssociateProtectConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateProtectConfigurationRequest,
   output: AssociateProtectConfigurationResult,
   errors: [
@@ -5295,7 +5295,7 @@ export const carrierLookup: API.OperationMethod<
   CarrierLookupResult,
   CarrierLookupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CarrierLookupRequest,
   output: CarrierLookupResult,
   errors: [
@@ -5326,7 +5326,7 @@ export const createConfigurationSet: API.OperationMethod<
   CreateConfigurationSetResult,
   CreateConfigurationSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateConfigurationSetRequest,
   output: CreateConfigurationSetResult,
   errors: [
@@ -5361,7 +5361,7 @@ export const createEventDestination: API.OperationMethod<
   CreateEventDestinationResult,
   CreateEventDestinationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEventDestinationRequest,
   output: CreateEventDestinationResult,
   errors: [
@@ -5391,7 +5391,7 @@ export const createNotifyConfiguration: API.OperationMethod<
   CreateNotifyConfigurationResult,
   CreateNotifyConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateNotifyConfigurationRequest,
   output: CreateNotifyConfigurationResult,
   errors: [
@@ -5424,7 +5424,7 @@ export const createOptOutList: API.OperationMethod<
   CreateOptOutListResult,
   CreateOptOutListError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOptOutListRequest,
   output: CreateOptOutListResult,
   errors: [
@@ -5457,7 +5457,7 @@ export const createPool: API.OperationMethod<
   CreatePoolResult,
   CreatePoolError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePoolRequest,
   output: CreatePoolResult,
   errors: [
@@ -5486,7 +5486,7 @@ export const createProtectConfiguration: API.OperationMethod<
   CreateProtectConfigurationResult,
   CreateProtectConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProtectConfigurationRequest,
   output: CreateProtectConfigurationResult,
   errors: [
@@ -5515,7 +5515,7 @@ export const createRcsAgent: API.OperationMethod<
   CreateRcsAgentResult,
   CreateRcsAgentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRcsAgentRequest,
   output: CreateRcsAgentResult,
   errors: [
@@ -5544,7 +5544,7 @@ export const createRegistration: API.OperationMethod<
   CreateRegistrationResult,
   CreateRegistrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRegistrationRequest,
   output: CreateRegistrationResult,
   errors: [
@@ -5573,7 +5573,7 @@ export const createRegistrationAssociation: API.OperationMethod<
   CreateRegistrationAssociationResult,
   CreateRegistrationAssociationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRegistrationAssociationRequest,
   output: CreateRegistrationAssociationResult,
   errors: [
@@ -5604,7 +5604,7 @@ export const createRegistrationAttachment: API.OperationMethod<
   CreateRegistrationAttachmentResult,
   CreateRegistrationAttachmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRegistrationAttachmentRequest,
   output: CreateRegistrationAttachmentResult,
   errors: [
@@ -5633,7 +5633,7 @@ export const createRegistrationVersion: API.OperationMethod<
   CreateRegistrationVersionResult,
   CreateRegistrationVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRegistrationVersionRequest,
   output: CreateRegistrationVersionResult,
   errors: [
@@ -5663,7 +5663,7 @@ export const createVerifiedDestinationNumber: API.OperationMethod<
   CreateVerifiedDestinationNumberResult,
   CreateVerifiedDestinationNumberError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateVerifiedDestinationNumberRequest,
   output: CreateVerifiedDestinationNumberResult,
   errors: [
@@ -5691,7 +5691,7 @@ export const deleteAccountDefaultProtectConfiguration: API.OperationMethod<
   DeleteAccountDefaultProtectConfigurationResult,
   DeleteAccountDefaultProtectConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccountDefaultProtectConfigurationRequest,
   output: DeleteAccountDefaultProtectConfigurationResult,
   errors: [
@@ -5719,7 +5719,7 @@ export const deleteConfigurationSet: API.OperationMethod<
   DeleteConfigurationSetResult,
   DeleteConfigurationSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConfigurationSetRequest,
   output: DeleteConfigurationSetResult,
   errors: [
@@ -5747,7 +5747,7 @@ export const deleteDefaultMessageType: API.OperationMethod<
   DeleteDefaultMessageTypeResult,
   DeleteDefaultMessageTypeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDefaultMessageTypeRequest,
   output: DeleteDefaultMessageTypeResult,
   errors: [
@@ -5775,7 +5775,7 @@ export const deleteDefaultSenderId: API.OperationMethod<
   DeleteDefaultSenderIdResult,
   DeleteDefaultSenderIdError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDefaultSenderIdRequest,
   output: DeleteDefaultSenderIdResult,
   errors: [
@@ -5803,7 +5803,7 @@ export const deleteEventDestination: API.OperationMethod<
   DeleteEventDestinationResult,
   DeleteEventDestinationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEventDestinationRequest,
   output: DeleteEventDestinationResult,
   errors: [
@@ -5834,7 +5834,7 @@ export const deleteKeyword: API.OperationMethod<
   DeleteKeywordResult,
   DeleteKeywordError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteKeywordRequest,
   output: DeleteKeywordResult,
   errors: [
@@ -5860,7 +5860,7 @@ export const deleteMediaMessageSpendLimitOverride: API.OperationMethod<
   DeleteMediaMessageSpendLimitOverrideResult,
   DeleteMediaMessageSpendLimitOverrideError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMediaMessageSpendLimitOverrideRequest,
   output: DeleteMediaMessageSpendLimitOverrideResult,
   errors: [
@@ -5888,7 +5888,7 @@ export const deleteNotifyConfiguration: API.OperationMethod<
   DeleteNotifyConfigurationResult,
   DeleteNotifyConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteNotifyConfigurationRequest,
   output: DeleteNotifyConfigurationResult,
   errors: [
@@ -5914,7 +5914,7 @@ export const deleteNotifyMessageSpendLimitOverride: API.OperationMethod<
   DeleteNotifyMessageSpendLimitOverrideResult,
   DeleteNotifyMessageSpendLimitOverrideError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteNotifyMessageSpendLimitOverrideRequest,
   output: DeleteNotifyMessageSpendLimitOverrideResult,
   errors: [
@@ -5944,7 +5944,7 @@ export const deleteOptedOutNumber: API.OperationMethod<
   DeleteOptedOutNumberResult,
   DeleteOptedOutNumberError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOptedOutNumberRequest,
   output: DeleteOptedOutNumberResult,
   errors: [
@@ -5974,7 +5974,7 @@ export const deleteOptOutList: API.OperationMethod<
   DeleteOptOutListResult,
   DeleteOptOutListError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOptOutListRequest,
   output: DeleteOptOutListResult,
   errors: [
@@ -6006,7 +6006,7 @@ export const deletePool: API.OperationMethod<
   DeletePoolResult,
   DeletePoolError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePoolRequest,
   output: DeletePoolResult,
   errors: [
@@ -6034,7 +6034,7 @@ export const deleteProtectConfiguration: API.OperationMethod<
   DeleteProtectConfigurationResult,
   DeleteProtectConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProtectConfigurationRequest,
   output: DeleteProtectConfigurationResult,
   errors: [
@@ -6061,7 +6061,7 @@ export const deleteProtectConfigurationRuleSetNumberOverride: API.OperationMetho
   DeleteProtectConfigurationRuleSetNumberOverrideResult,
   DeleteProtectConfigurationRuleSetNumberOverrideError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProtectConfigurationRuleSetNumberOverrideRequest,
   output: DeleteProtectConfigurationRuleSetNumberOverrideResult,
   errors: [
@@ -6088,7 +6088,7 @@ export const deleteRcsAgent: API.OperationMethod<
   DeleteRcsAgentResult,
   DeleteRcsAgentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRcsAgentRequest,
   output: DeleteRcsAgentResult,
   errors: [
@@ -6116,7 +6116,7 @@ export const deleteRegistration: API.OperationMethod<
   DeleteRegistrationResult,
   DeleteRegistrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRegistrationRequest,
   output: DeleteRegistrationResult,
   errors: [
@@ -6144,7 +6144,7 @@ export const deleteRegistrationAttachment: API.OperationMethod<
   DeleteRegistrationAttachmentResult,
   DeleteRegistrationAttachmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRegistrationAttachmentRequest,
   output: DeleteRegistrationAttachmentResult,
   errors: [
@@ -6172,7 +6172,7 @@ export const deleteRegistrationFieldValue: API.OperationMethod<
   DeleteRegistrationFieldValueResult,
   DeleteRegistrationFieldValueError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRegistrationFieldValueRequest,
   output: DeleteRegistrationFieldValueResult,
   errors: [
@@ -6199,7 +6199,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyResult,
   DeleteResourcePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourcePolicyRequest,
   output: DeleteResourcePolicyResult,
   errors: [
@@ -6224,7 +6224,7 @@ export const deleteTextMessageSpendLimitOverride: API.OperationMethod<
   DeleteTextMessageSpendLimitOverrideResult,
   DeleteTextMessageSpendLimitOverrideError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTextMessageSpendLimitOverrideRequest,
   output: DeleteTextMessageSpendLimitOverrideResult,
   errors: [
@@ -6250,7 +6250,7 @@ export const deleteVerifiedDestinationNumber: API.OperationMethod<
   DeleteVerifiedDestinationNumberResult,
   DeleteVerifiedDestinationNumberError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteVerifiedDestinationNumberRequest,
   output: DeleteVerifiedDestinationNumberResult,
   errors: [
@@ -6276,7 +6276,7 @@ export const deleteVoiceMessageSpendLimitOverride: API.OperationMethod<
   DeleteVoiceMessageSpendLimitOverrideResult,
   DeleteVoiceMessageSpendLimitOverrideError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteVoiceMessageSpendLimitOverrideRequest,
   output: DeleteVoiceMessageSpendLimitOverrideResult,
   errors: [
@@ -6317,7 +6317,7 @@ export const describeAccountAttributes: API.OperationMethod<
     DescribeAccountAttributesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAccountAttributesRequest,
   output: DescribeAccountAttributesResult,
   errors: [
@@ -6364,7 +6364,7 @@ export const describeAccountLimits: API.OperationMethod<
     DescribeAccountLimitsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAccountLimitsRequest,
   output: DescribeAccountLimitsResult,
   errors: [
@@ -6414,7 +6414,7 @@ export const describeConfigurationSets: API.OperationMethod<
     DescribeConfigurationSetsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeConfigurationSetsRequest,
   output: DescribeConfigurationSetsResult,
   errors: [
@@ -6465,7 +6465,7 @@ export const describeKeywords: API.OperationMethod<
     DescribeKeywordsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeKeywordsRequest,
   output: DescribeKeywordsResult,
   errors: [
@@ -6516,7 +6516,7 @@ export const describeNotifyConfigurations: API.OperationMethod<
     DescribeNotifyConfigurationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeNotifyConfigurationsRequest,
   output: DescribeNotifyConfigurationsResult,
   errors: [
@@ -6567,7 +6567,7 @@ export const describeNotifyTemplates: API.OperationMethod<
     DescribeNotifyTemplatesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeNotifyTemplatesRequest,
   output: DescribeNotifyTemplatesResult,
   errors: [
@@ -6618,7 +6618,7 @@ export const describeOptedOutNumbers: API.OperationMethod<
     DescribeOptedOutNumbersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeOptedOutNumbersRequest,
   output: DescribeOptedOutNumbersResult,
   errors: [
@@ -6669,7 +6669,7 @@ export const describeOptOutLists: API.OperationMethod<
     DescribeOptOutListsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeOptOutListsRequest,
   output: DescribeOptOutListsResult,
   errors: [
@@ -6720,7 +6720,7 @@ export const describePhoneNumbers: API.OperationMethod<
     DescribePhoneNumbersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribePhoneNumbersRequest,
   output: DescribePhoneNumbersResult,
   errors: [
@@ -6773,7 +6773,7 @@ export const describePools: API.OperationMethod<
     DescribePoolsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribePoolsRequest,
   output: DescribePoolsResult,
   errors: [
@@ -6820,7 +6820,7 @@ export const describeProtectConfigurations: API.OperationMethod<
     DescribeProtectConfigurationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeProtectConfigurationsRequest,
   output: DescribeProtectConfigurationsResult,
   errors: [
@@ -6867,7 +6867,7 @@ export const describeRcsAgentCountryLaunchStatus: API.OperationMethod<
     DescribeRcsAgentCountryLaunchStatusError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRcsAgentCountryLaunchStatusRequest,
   output: DescribeRcsAgentCountryLaunchStatusResult,
   errors: [
@@ -6916,7 +6916,7 @@ export const describeRcsAgents: API.OperationMethod<
     DescribeRcsAgentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRcsAgentsRequest,
   output: DescribeRcsAgentsResult,
   errors: [
@@ -6963,7 +6963,7 @@ export const describeRegistrationAttachments: API.OperationMethod<
     DescribeRegistrationAttachmentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRegistrationAttachmentsRequest,
   output: DescribeRegistrationAttachmentsResult,
   errors: [
@@ -7009,7 +7009,7 @@ export const describeRegistrationFieldDefinitions: API.OperationMethod<
     DescribeRegistrationFieldDefinitionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRegistrationFieldDefinitionsRequest,
   output: DescribeRegistrationFieldDefinitionsResult,
   errors: [
@@ -7055,7 +7055,7 @@ export const describeRegistrationFieldValues: API.OperationMethod<
     DescribeRegistrationFieldValuesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRegistrationFieldValuesRequest,
   output: DescribeRegistrationFieldValuesResult,
   errors: [
@@ -7102,7 +7102,7 @@ export const describeRegistrations: API.OperationMethod<
     DescribeRegistrationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRegistrationsRequest,
   output: DescribeRegistrationsResult,
   errors: [
@@ -7148,7 +7148,7 @@ export const describeRegistrationSectionDefinitions: API.OperationMethod<
     DescribeRegistrationSectionDefinitionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRegistrationSectionDefinitionsRequest,
   output: DescribeRegistrationSectionDefinitionsResult,
   errors: [
@@ -7193,7 +7193,7 @@ export const describeRegistrationTypeDefinitions: API.OperationMethod<
     DescribeRegistrationTypeDefinitionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRegistrationTypeDefinitionsRequest,
   output: DescribeRegistrationTypeDefinitionsResult,
   errors: [
@@ -7239,7 +7239,7 @@ export const describeRegistrationVersions: API.OperationMethod<
     DescribeRegistrationVersionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRegistrationVersionsRequest,
   output: DescribeRegistrationVersionsResult,
   errors: [
@@ -7290,7 +7290,7 @@ export const describeSenderIds: API.OperationMethod<
     DescribeSenderIdsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSenderIdsRequest,
   output: DescribeSenderIdsResult,
   errors: [
@@ -7338,7 +7338,7 @@ export const describeSpendLimits: API.OperationMethod<
     DescribeSpendLimitsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSpendLimitsRequest,
   output: DescribeSpendLimitsResult,
   errors: [
@@ -7384,7 +7384,7 @@ export const describeVerifiedDestinationNumbers: API.OperationMethod<
     DescribeVerifiedDestinationNumbersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVerifiedDestinationNumbersRequest,
   output: DescribeVerifiedDestinationNumbersResult,
   errors: [
@@ -7419,7 +7419,7 @@ export const disassociateOriginationIdentity: API.OperationMethod<
   DisassociateOriginationIdentityResult,
   DisassociateOriginationIdentityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateOriginationIdentityRequest,
   output: DisassociateOriginationIdentityResult,
   errors: [
@@ -7447,7 +7447,7 @@ export const disassociateProtectConfiguration: API.OperationMethod<
   DisassociateProtectConfigurationResult,
   DisassociateProtectConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateProtectConfigurationRequest,
   output: DisassociateProtectConfigurationResult,
   errors: [
@@ -7475,7 +7475,7 @@ export const discardRegistrationVersion: API.OperationMethod<
   DiscardRegistrationVersionResult,
   DiscardRegistrationVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DiscardRegistrationVersionRequest,
   output: DiscardRegistrationVersionResult,
   errors: [
@@ -7502,7 +7502,7 @@ export const getProtectConfigurationCountryRuleSet: API.OperationMethod<
   GetProtectConfigurationCountryRuleSetResult,
   GetProtectConfigurationCountryRuleSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProtectConfigurationCountryRuleSetRequest,
   output: GetProtectConfigurationCountryRuleSetResult,
   errors: [
@@ -7528,7 +7528,7 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyResult,
   GetResourcePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResourcePolicyRequest,
   output: GetResourcePolicyResult,
   errors: [
@@ -7568,7 +7568,7 @@ export const listNotifyCountries: API.OperationMethod<
     ListNotifyCountriesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNotifyCountriesRequest,
   output: ListNotifyCountriesResult,
   errors: [
@@ -7616,7 +7616,7 @@ export const listPoolOriginationIdentities: API.OperationMethod<
     ListPoolOriginationIdentitiesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPoolOriginationIdentitiesRequest,
   output: ListPoolOriginationIdentitiesResult,
   errors: [
@@ -7663,7 +7663,7 @@ export const listProtectConfigurationRuleSetNumberOverrides: API.OperationMethod
     ListProtectConfigurationRuleSetNumberOverridesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProtectConfigurationRuleSetNumberOverridesRequest,
   output: ListProtectConfigurationRuleSetNumberOverridesResult,
   errors: [
@@ -7710,7 +7710,7 @@ export const listRegistrationAssociations: API.OperationMethod<
     ListRegistrationAssociationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegistrationAssociationsRequest,
   output: ListRegistrationAssociationsResult,
   errors: [
@@ -7742,7 +7742,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResult,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResult,
   errors: [
@@ -7774,7 +7774,7 @@ export const putKeyword: API.OperationMethod<
   PutKeywordResult,
   PutKeywordError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutKeywordRequest,
   output: PutKeywordResult,
   errors: [
@@ -7804,7 +7804,7 @@ export const putMessageFeedback: API.OperationMethod<
   PutMessageFeedbackResult,
   PutMessageFeedbackError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutMessageFeedbackRequest,
   output: PutMessageFeedbackResult,
   errors: [
@@ -7832,7 +7832,7 @@ export const putOptedOutNumber: API.OperationMethod<
   PutOptedOutNumberResult,
   PutOptedOutNumberError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutOptedOutNumberRequest,
   output: PutOptedOutNumberResult,
   errors: [
@@ -7860,7 +7860,7 @@ export const putProtectConfigurationRuleSetNumberOverride: API.OperationMethod<
   PutProtectConfigurationRuleSetNumberOverrideResult,
   PutProtectConfigurationRuleSetNumberOverrideError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutProtectConfigurationRuleSetNumberOverrideRequest,
   output: PutProtectConfigurationRuleSetNumberOverrideResult,
   errors: [
@@ -7889,7 +7889,7 @@ export const putRegistrationFieldValue: API.OperationMethod<
   PutRegistrationFieldValueResult,
   PutRegistrationFieldValueError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutRegistrationFieldValueRequest,
   output: PutRegistrationFieldValueResult,
   errors: [
@@ -7916,7 +7916,7 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyResult,
   PutResourcePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutResourcePolicyRequest,
   output: PutResourcePolicyResult,
   errors: [
@@ -7945,7 +7945,7 @@ export const releasePhoneNumber: API.OperationMethod<
   ReleasePhoneNumberResult,
   ReleasePhoneNumberError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReleasePhoneNumberRequest,
   output: ReleasePhoneNumberResult,
   errors: [
@@ -7973,7 +7973,7 @@ export const releaseSenderId: API.OperationMethod<
   ReleaseSenderIdResult,
   ReleaseSenderIdError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReleaseSenderIdRequest,
   output: ReleaseSenderIdResult,
   errors: [
@@ -8002,7 +8002,7 @@ export const requestPhoneNumber: API.OperationMethod<
   RequestPhoneNumberResult,
   RequestPhoneNumberError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RequestPhoneNumberRequest,
   output: RequestPhoneNumberResult,
   errors: [
@@ -8031,7 +8031,7 @@ export const requestSenderId: API.OperationMethod<
   RequestSenderIdResult,
   RequestSenderIdError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RequestSenderIdRequest,
   output: RequestSenderIdResult,
   errors: [
@@ -8060,7 +8060,7 @@ export const sendDestinationNumberVerificationCode: API.OperationMethod<
   SendDestinationNumberVerificationCodeResult,
   SendDestinationNumberVerificationCodeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendDestinationNumberVerificationCodeRequest,
   output: SendDestinationNumberVerificationCodeResult,
   errors: [
@@ -8090,7 +8090,7 @@ export const sendMediaMessage: API.OperationMethod<
   SendMediaMessageResult,
   SendMediaMessageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendMediaMessageRequest,
   output: SendMediaMessageResult,
   errors: [
@@ -8120,7 +8120,7 @@ export const sendNotifyTextMessage: API.OperationMethod<
   SendNotifyTextMessageResult,
   SendNotifyTextMessageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendNotifyTextMessageRequest,
   output: SendNotifyTextMessageResult,
   errors: [
@@ -8150,7 +8150,7 @@ export const sendNotifyVoiceMessage: API.OperationMethod<
   SendNotifyVoiceMessageResult,
   SendNotifyVoiceMessageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendNotifyVoiceMessageRequest,
   output: SendNotifyVoiceMessageResult,
   errors: [
@@ -8182,7 +8182,7 @@ export const sendTextMessage: API.OperationMethod<
   SendTextMessageResult,
   SendTextMessageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendTextMessageRequest,
   output: SendTextMessageResult,
   errors: [
@@ -8212,7 +8212,7 @@ export const sendVoiceMessage: API.OperationMethod<
   SendVoiceMessageResult,
   SendVoiceMessageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendVoiceMessageRequest,
   output: SendVoiceMessageResult,
   errors: [
@@ -8240,7 +8240,7 @@ export const setAccountDefaultProtectConfiguration: API.OperationMethod<
   SetAccountDefaultProtectConfigurationResult,
   SetAccountDefaultProtectConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetAccountDefaultProtectConfigurationRequest,
   output: SetAccountDefaultProtectConfigurationResult,
   errors: [
@@ -8266,7 +8266,7 @@ export const setDefaultMessageFeedbackEnabled: API.OperationMethod<
   SetDefaultMessageFeedbackEnabledResult,
   SetDefaultMessageFeedbackEnabledError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetDefaultMessageFeedbackEnabledRequest,
   output: SetDefaultMessageFeedbackEnabledResult,
   errors: [
@@ -8294,7 +8294,7 @@ export const setDefaultMessageType: API.OperationMethod<
   SetDefaultMessageTypeResult,
   SetDefaultMessageTypeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetDefaultMessageTypeRequest,
   output: SetDefaultMessageTypeResult,
   errors: [
@@ -8322,7 +8322,7 @@ export const setDefaultSenderId: API.OperationMethod<
   SetDefaultSenderIdResult,
   SetDefaultSenderIdError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetDefaultSenderIdRequest,
   output: SetDefaultSenderIdResult,
   errors: [
@@ -8347,7 +8347,7 @@ export const setMediaMessageSpendLimitOverride: API.OperationMethod<
   SetMediaMessageSpendLimitOverrideResult,
   SetMediaMessageSpendLimitOverrideError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetMediaMessageSpendLimitOverrideRequest,
   output: SetMediaMessageSpendLimitOverrideResult,
   errors: [
@@ -8371,7 +8371,7 @@ export const setNotifyMessageSpendLimitOverride: API.OperationMethod<
   SetNotifyMessageSpendLimitOverrideResult,
   SetNotifyMessageSpendLimitOverrideError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetNotifyMessageSpendLimitOverrideRequest,
   output: SetNotifyMessageSpendLimitOverrideResult,
   errors: [
@@ -8395,7 +8395,7 @@ export const setTextMessageSpendLimitOverride: API.OperationMethod<
   SetTextMessageSpendLimitOverrideResult,
   SetTextMessageSpendLimitOverrideError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetTextMessageSpendLimitOverrideRequest,
   output: SetTextMessageSpendLimitOverrideResult,
   errors: [
@@ -8419,7 +8419,7 @@ export const setVoiceMessageSpendLimitOverride: API.OperationMethod<
   SetVoiceMessageSpendLimitOverrideResult,
   SetVoiceMessageSpendLimitOverrideError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetVoiceMessageSpendLimitOverrideRequest,
   output: SetVoiceMessageSpendLimitOverrideResult,
   errors: [
@@ -8445,7 +8445,7 @@ export const submitRegistrationVersion: API.OperationMethod<
   SubmitRegistrationVersionResult,
   SubmitRegistrationVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SubmitRegistrationVersionRequest,
   output: SubmitRegistrationVersionResult,
   errors: [
@@ -8473,7 +8473,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResult,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResult,
   errors: [
@@ -8500,7 +8500,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResult,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResult,
   errors: [
@@ -8529,7 +8529,7 @@ export const updateEventDestination: API.OperationMethod<
   UpdateEventDestinationResult,
   UpdateEventDestinationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEventDestinationRequest,
   output: UpdateEventDestinationResult,
   errors: [
@@ -8557,7 +8557,7 @@ export const updateNotifyConfiguration: API.OperationMethod<
   UpdateNotifyConfigurationResult,
   UpdateNotifyConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateNotifyConfigurationRequest,
   output: UpdateNotifyConfigurationResult,
   errors: [
@@ -8587,7 +8587,7 @@ export const updatePhoneNumber: API.OperationMethod<
   UpdatePhoneNumberResult,
   UpdatePhoneNumberError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePhoneNumberRequest,
   output: UpdatePhoneNumberResult,
   errors: [
@@ -8615,7 +8615,7 @@ export const updatePool: API.OperationMethod<
   UpdatePoolResult,
   UpdatePoolError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePoolRequest,
   output: UpdatePoolResult,
   errors: [
@@ -8642,7 +8642,7 @@ export const updateProtectConfiguration: API.OperationMethod<
   UpdateProtectConfigurationResult,
   UpdateProtectConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateProtectConfigurationRequest,
   output: UpdateProtectConfigurationResult,
   errors: [
@@ -8668,7 +8668,7 @@ export const updateProtectConfigurationCountryRuleSet: API.OperationMethod<
   UpdateProtectConfigurationCountryRuleSetResult,
   UpdateProtectConfigurationCountryRuleSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateProtectConfigurationCountryRuleSetRequest,
   output: UpdateProtectConfigurationCountryRuleSetResult,
   errors: [
@@ -8695,7 +8695,7 @@ export const updateRcsAgent: API.OperationMethod<
   UpdateRcsAgentResult,
   UpdateRcsAgentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRcsAgentRequest,
   output: UpdateRcsAgentResult,
   errors: [
@@ -8722,7 +8722,7 @@ export const updateSenderId: API.OperationMethod<
   UpdateSenderIdResult,
   UpdateSenderIdError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSenderIdRequest,
   output: UpdateSenderIdResult,
   errors: [
@@ -8749,7 +8749,7 @@ export const verifyDestinationNumber: API.OperationMethod<
   VerifyDestinationNumberResult,
   VerifyDestinationNumberError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: VerifyDestinationNumberRequest,
   output: VerifyDestinationNumberResult,
   errors: [

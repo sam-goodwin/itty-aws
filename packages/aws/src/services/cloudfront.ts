@@ -10510,7 +10510,7 @@ export const associateAlias: API.OperationMethod<
   AssociateAliasResponse,
   AssociateAliasError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateAliasRequest,
   output: AssociateAliasResponse,
   errors: [
@@ -10537,7 +10537,7 @@ export const associateDistributionTenantWebACL: API.OperationMethod<
   AssociateDistributionTenantWebACLResult,
   AssociateDistributionTenantWebACLError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateDistributionTenantWebACLRequest,
   output: AssociateDistributionTenantWebACLResult,
   errors: [
@@ -10565,7 +10565,7 @@ export const associateDistributionWebACL: API.OperationMethod<
   AssociateDistributionWebACLResult,
   AssociateDistributionWebACLError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateDistributionWebACLRequest,
   output: AssociateDistributionWebACLResult,
   errors: [
@@ -10593,7 +10593,7 @@ export const createAnycastIpList: API.OperationMethod<
   CreateAnycastIpListResult,
   CreateAnycastIpListError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAnycastIpListRequest,
   output: CreateAnycastIpListResult,
   errors: [
@@ -10635,7 +10635,7 @@ export const createCachePolicy: API.OperationMethod<
   CreateCachePolicyResult,
   CreateCachePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCachePolicyRequest,
   output: CreateCachePolicyResult,
   errors: [
@@ -10664,7 +10664,7 @@ export const createCloudFrontOriginAccessIdentity: API.OperationMethod<
   CreateCloudFrontOriginAccessIdentityResult,
   CreateCloudFrontOriginAccessIdentityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCloudFrontOriginAccessIdentityRequest,
   output: CreateCloudFrontOriginAccessIdentityResult,
   errors: [
@@ -10692,7 +10692,7 @@ export const createConnectionFunction: API.OperationMethod<
   CreateConnectionFunctionResult,
   CreateConnectionFunctionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateConnectionFunctionRequest,
   output: CreateConnectionFunctionResult,
   errors: [
@@ -10721,7 +10721,7 @@ export const createConnectionGroup: API.OperationMethod<
   CreateConnectionGroupResult,
   CreateConnectionGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateConnectionGroupRequest,
   output: CreateConnectionGroupResult,
   errors: [
@@ -10753,7 +10753,7 @@ export const createContinuousDeploymentPolicy: API.OperationMethod<
   CreateContinuousDeploymentPolicyResult,
   CreateContinuousDeploymentPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateContinuousDeploymentPolicyRequest,
   output: CreateContinuousDeploymentPolicyResult,
   errors: [
@@ -10783,7 +10783,7 @@ export const createDistributionTenant: API.OperationMethod<
   CreateDistributionTenantResult,
   CreateDistributionTenantError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDistributionTenantRequest,
   output: CreateDistributionTenantResult,
   errors: [
@@ -10815,7 +10815,7 @@ export const createFieldLevelEncryptionConfig: API.OperationMethod<
   CreateFieldLevelEncryptionConfigResult,
   CreateFieldLevelEncryptionConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFieldLevelEncryptionConfigRequest,
   output: CreateFieldLevelEncryptionConfigResult,
   errors: [
@@ -10847,7 +10847,7 @@ export const createFieldLevelEncryptionProfile: API.OperationMethod<
   CreateFieldLevelEncryptionProfileResult,
   CreateFieldLevelEncryptionProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFieldLevelEncryptionProfileRequest,
   output: CreateFieldLevelEncryptionProfileResult,
   errors: [
@@ -10882,7 +10882,7 @@ export const createFunction: API.OperationMethod<
   CreateFunctionResult,
   CreateFunctionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFunctionRequest,
   output: CreateFunctionResult,
   errors: [
@@ -10910,7 +10910,7 @@ export const createInvalidation: API.OperationMethod<
   CreateInvalidationResult,
   CreateInvalidationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateInvalidationRequest,
   output: CreateInvalidationResult,
   errors: [
@@ -10940,7 +10940,7 @@ export const createInvalidationForDistributionTenant: API.OperationMethod<
   CreateInvalidationForDistributionTenantResult,
   CreateInvalidationForDistributionTenantError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateInvalidationForDistributionTenantRequest,
   output: CreateInvalidationForDistributionTenantResult,
   errors: [
@@ -10969,7 +10969,7 @@ export const createKeyGroup: API.OperationMethod<
   CreateKeyGroupResult,
   CreateKeyGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateKeyGroupRequest,
   output: CreateKeyGroupResult,
   errors: [
@@ -10995,7 +10995,7 @@ export const createKeyValueStore: API.OperationMethod<
   CreateKeyValueStoreResult,
   CreateKeyValueStoreError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateKeyValueStoreRequest,
   output: CreateKeyValueStoreResult,
   errors: [
@@ -11023,7 +11023,7 @@ export const createMonitoringSubscription: API.OperationMethod<
   CreateMonitoringSubscriptionResult,
   CreateMonitoringSubscriptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMonitoringSubscriptionRequest,
   output: CreateMonitoringSubscriptionResult,
   errors: [
@@ -11050,7 +11050,7 @@ export const createOriginAccessControl: API.OperationMethod<
   CreateOriginAccessControlResult,
   CreateOriginAccessControlError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOriginAccessControlRequest,
   output: CreateOriginAccessControlResult,
   errors: [
@@ -11089,7 +11089,7 @@ export const createOriginRequestPolicy: API.OperationMethod<
   CreateOriginRequestPolicyResult,
   CreateOriginRequestPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOriginRequestPolicyRequest,
   output: CreateOriginRequestPolicyResult,
   errors: [
@@ -11116,7 +11116,7 @@ export const createPublicKey: API.OperationMethod<
   CreatePublicKeyResult,
   CreatePublicKeyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePublicKeyRequest,
   output: CreatePublicKeyResult,
   errors: [InvalidArgument, PublicKeyAlreadyExists, TooManyPublicKeys],
@@ -11139,7 +11139,7 @@ export const createRealtimeLogConfig: API.OperationMethod<
   CreateRealtimeLogConfigResult,
   CreateRealtimeLogConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRealtimeLogConfigRequest,
   output: CreateRealtimeLogConfigResult,
   errors: [
@@ -11173,7 +11173,7 @@ export const createResponseHeadersPolicy: API.OperationMethod<
   CreateResponseHeadersPolicyResult,
   CreateResponseHeadersPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateResponseHeadersPolicyRequest,
   output: CreateResponseHeadersPolicyResult,
   errors: [
@@ -11210,7 +11210,7 @@ export const createStreamingDistribution: API.OperationMethod<
   CreateStreamingDistributionResult,
   CreateStreamingDistributionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateStreamingDistributionRequest,
   output: CreateStreamingDistributionResult,
   errors: [
@@ -11253,7 +11253,7 @@ export const createStreamingDistributionWithTags: API.OperationMethod<
   CreateStreamingDistributionWithTagsResult,
   CreateStreamingDistributionWithTagsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateStreamingDistributionWithTagsRequest,
   output: CreateStreamingDistributionWithTagsResult,
   errors: [
@@ -11289,7 +11289,7 @@ export const createTrustStore: API.OperationMethod<
   CreateTrustStoreResult,
   CreateTrustStoreError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTrustStoreRequest,
   output: CreateTrustStoreResult,
   errors: [
@@ -11318,7 +11318,7 @@ export const createVpcOrigin: API.OperationMethod<
   CreateVpcOriginResult,
   CreateVpcOriginError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateVpcOriginRequest,
   output: CreateVpcOriginResult,
   errors: [
@@ -11349,7 +11349,7 @@ export const deleteAnycastIpList: API.OperationMethod<
   DeleteAnycastIpListResponse,
   DeleteAnycastIpListError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAnycastIpListRequest,
   output: DeleteAnycastIpListResponse,
   errors: [
@@ -11383,7 +11383,7 @@ export const deleteCachePolicy: API.OperationMethod<
   DeleteCachePolicyResponse,
   DeleteCachePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCachePolicyRequest,
   output: DeleteCachePolicyResponse,
   errors: [
@@ -11410,7 +11410,7 @@ export const deleteCloudFrontOriginAccessIdentity: API.OperationMethod<
   DeleteCloudFrontOriginAccessIdentityResponse,
   DeleteCloudFrontOriginAccessIdentityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCloudFrontOriginAccessIdentityRequest,
   output: DeleteCloudFrontOriginAccessIdentityResponse,
   errors: [
@@ -11438,7 +11438,7 @@ export const deleteConnectionFunction: API.OperationMethod<
   DeleteConnectionFunctionResponse,
   DeleteConnectionFunctionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConnectionFunctionRequest,
   output: DeleteConnectionFunctionResponse,
   errors: [
@@ -11467,7 +11467,7 @@ export const deleteConnectionGroup: API.OperationMethod<
   DeleteConnectionGroupResponse,
   DeleteConnectionGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConnectionGroupRequest,
   output: DeleteConnectionGroupResponse,
   errors: [
@@ -11497,7 +11497,7 @@ export const deleteContinuousDeploymentPolicy: API.OperationMethod<
   DeleteContinuousDeploymentPolicyResponse,
   DeleteContinuousDeploymentPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteContinuousDeploymentPolicyRequest,
   output: DeleteContinuousDeploymentPolicyResponse,
   errors: [
@@ -11527,7 +11527,7 @@ export const deleteDistribution: API.OperationMethod<
   DeleteDistributionResponse,
   DeleteDistributionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDistributionRequest,
   output: DeleteDistributionResponse,
   errors: [
@@ -11556,7 +11556,7 @@ export const deleteDistributionTenant: API.OperationMethod<
   DeleteDistributionTenantResponse,
   DeleteDistributionTenantError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDistributionTenantRequest,
   output: DeleteDistributionTenantResponse,
   errors: [
@@ -11582,7 +11582,7 @@ export const deleteFieldLevelEncryptionConfig: API.OperationMethod<
   DeleteFieldLevelEncryptionConfigResponse,
   DeleteFieldLevelEncryptionConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFieldLevelEncryptionConfigRequest,
   output: DeleteFieldLevelEncryptionConfigResponse,
   errors: [
@@ -11608,7 +11608,7 @@ export const deleteFieldLevelEncryptionProfile: API.OperationMethod<
   DeleteFieldLevelEncryptionProfileResponse,
   DeleteFieldLevelEncryptionProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFieldLevelEncryptionProfileRequest,
   output: DeleteFieldLevelEncryptionProfileResponse,
   errors: [
@@ -11638,7 +11638,7 @@ export const deleteFunction: API.OperationMethod<
   DeleteFunctionResponse,
   DeleteFunctionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFunctionRequest,
   output: DeleteFunctionResponse,
   errors: [
@@ -11667,7 +11667,7 @@ export const deleteKeyGroup: API.OperationMethod<
   DeleteKeyGroupResponse,
   DeleteKeyGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteKeyGroupRequest,
   output: DeleteKeyGroupResponse,
   errors: [
@@ -11693,7 +11693,7 @@ export const deleteKeyValueStore: API.OperationMethod<
   DeleteKeyValueStoreResponse,
   DeleteKeyValueStoreError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteKeyValueStoreRequest,
   output: DeleteKeyValueStoreResponse,
   errors: [
@@ -11719,7 +11719,7 @@ export const deleteMonitoringSubscription: API.OperationMethod<
   DeleteMonitoringSubscriptionResult,
   DeleteMonitoringSubscriptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMonitoringSubscriptionRequest,
   output: DeleteMonitoringSubscriptionResult,
   errors: [
@@ -11746,7 +11746,7 @@ export const deleteOriginAccessControl: API.OperationMethod<
   DeleteOriginAccessControlResponse,
   DeleteOriginAccessControlError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOriginAccessControlRequest,
   output: DeleteOriginAccessControlResponse,
   errors: [
@@ -11777,7 +11777,7 @@ export const deleteOriginRequestPolicy: API.OperationMethod<
   DeleteOriginRequestPolicyResponse,
   DeleteOriginRequestPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOriginRequestPolicyRequest,
   output: DeleteOriginRequestPolicyResponse,
   errors: [
@@ -11804,7 +11804,7 @@ export const deletePublicKey: API.OperationMethod<
   DeletePublicKeyResponse,
   DeletePublicKeyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePublicKeyRequest,
   output: DeletePublicKeyResponse,
   errors: [
@@ -11833,7 +11833,7 @@ export const deleteRealtimeLogConfig: API.OperationMethod<
   DeleteRealtimeLogConfigResponse,
   DeleteRealtimeLogConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRealtimeLogConfigRequest,
   output: DeleteRealtimeLogConfigResponse,
   errors: [
@@ -11859,7 +11859,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyResponse,
   DeleteResourcePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourcePolicyRequest,
   output: DeleteResourcePolicyResponse,
   errors: [
@@ -11891,7 +11891,7 @@ export const deleteResponseHeadersPolicy: API.OperationMethod<
   DeleteResponseHeadersPolicyResponse,
   DeleteResponseHeadersPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteResponseHeadersPolicyRequest,
   output: DeleteResponseHeadersPolicyResponse,
   errors: [
@@ -11938,7 +11938,7 @@ export const deleteStreamingDistribution: API.OperationMethod<
   DeleteStreamingDistributionResponse,
   DeleteStreamingDistributionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteStreamingDistributionRequest,
   output: DeleteStreamingDistributionResponse,
   errors: [
@@ -11965,7 +11965,7 @@ export const deleteTrustStore: API.OperationMethod<
   DeleteTrustStoreResponse,
   DeleteTrustStoreError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTrustStoreRequest,
   output: DeleteTrustStoreResponse,
   errors: [
@@ -11995,7 +11995,7 @@ export const deleteVpcOrigin: API.OperationMethod<
   DeleteVpcOriginResult,
   DeleteVpcOriginError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteVpcOriginRequest,
   output: DeleteVpcOriginResult,
   errors: [
@@ -12023,7 +12023,7 @@ export const describeConnectionFunction: API.OperationMethod<
   DescribeConnectionFunctionResult,
   DescribeConnectionFunctionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeConnectionFunctionRequest,
   output: DescribeConnectionFunctionResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument, UnsupportedOperation],
@@ -12042,7 +12042,7 @@ export const describeFunction: API.OperationMethod<
   DescribeFunctionResult,
   DescribeFunctionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeFunctionRequest,
   output: DescribeFunctionResult,
   errors: [NoSuchFunctionExists, UnsupportedOperation],
@@ -12061,7 +12061,7 @@ export const describeKeyValueStore: API.OperationMethod<
   DescribeKeyValueStoreResult,
   DescribeKeyValueStoreError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeKeyValueStoreRequest,
   output: DescribeKeyValueStoreResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument, UnsupportedOperation],
@@ -12081,7 +12081,7 @@ export const disassociateDistributionTenantWebACL: API.OperationMethod<
   DisassociateDistributionTenantWebACLResult,
   DisassociateDistributionTenantWebACLError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateDistributionTenantWebACLRequest,
   output: DisassociateDistributionTenantWebACLResult,
   errors: [
@@ -12107,7 +12107,7 @@ export const disassociateDistributionWebACL: API.OperationMethod<
   DisassociateDistributionWebACLResult,
   DisassociateDistributionWebACLError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateDistributionWebACLRequest,
   output: DisassociateDistributionWebACLResult,
   errors: [
@@ -12132,7 +12132,7 @@ export const getAnycastIpList: API.OperationMethod<
   GetAnycastIpListResult,
   GetAnycastIpListError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAnycastIpListRequest,
   output: GetAnycastIpListResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument, UnsupportedOperation],
@@ -12155,7 +12155,7 @@ export const getCachePolicy: API.OperationMethod<
   GetCachePolicyResult,
   GetCachePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCachePolicyRequest,
   output: GetCachePolicyResult,
   errors: [AccessDenied, NoSuchCachePolicy],
@@ -12174,7 +12174,7 @@ export const getCachePolicyConfig: API.OperationMethod<
   GetCachePolicyConfigResult,
   GetCachePolicyConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCachePolicyConfigRequest,
   output: GetCachePolicyConfigResult,
   errors: [AccessDenied, NoSuchCachePolicy],
@@ -12191,7 +12191,7 @@ export const getCloudFrontOriginAccessIdentity: API.OperationMethod<
   GetCloudFrontOriginAccessIdentityResult,
   GetCloudFrontOriginAccessIdentityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCloudFrontOriginAccessIdentityRequest,
   output: GetCloudFrontOriginAccessIdentityResult,
   errors: [AccessDenied, NoSuchCloudFrontOriginAccessIdentity],
@@ -12208,7 +12208,7 @@ export const getCloudFrontOriginAccessIdentityConfig: API.OperationMethod<
   GetCloudFrontOriginAccessIdentityConfigResult,
   GetCloudFrontOriginAccessIdentityConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCloudFrontOriginAccessIdentityConfigRequest,
   output: GetCloudFrontOriginAccessIdentityConfigResult,
   errors: [AccessDenied, NoSuchCloudFrontOriginAccessIdentity],
@@ -12226,7 +12226,7 @@ export const getConnectionFunction: API.OperationMethod<
   GetConnectionFunctionResult,
   GetConnectionFunctionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConnectionFunctionRequest,
   output: GetConnectionFunctionResult,
   errors: [AccessDenied, EntityNotFound, UnsupportedOperation],
@@ -12243,7 +12243,7 @@ export const getConnectionGroup: API.OperationMethod<
   GetConnectionGroupResult,
   GetConnectionGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConnectionGroupRequest,
   output: GetConnectionGroupResult,
   errors: [AccessDenied, EntityNotFound],
@@ -12260,7 +12260,7 @@ export const getConnectionGroupByRoutingEndpoint: API.OperationMethod<
   GetConnectionGroupByRoutingEndpointResult,
   GetConnectionGroupByRoutingEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConnectionGroupByRoutingEndpointRequest,
   output: GetConnectionGroupByRoutingEndpointResult,
   errors: [AccessDenied, EntityNotFound],
@@ -12277,7 +12277,7 @@ export const getContinuousDeploymentPolicy: API.OperationMethod<
   GetContinuousDeploymentPolicyResult,
   GetContinuousDeploymentPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetContinuousDeploymentPolicyRequest,
   output: GetContinuousDeploymentPolicyResult,
   errors: [AccessDenied, NoSuchContinuousDeploymentPolicy],
@@ -12294,7 +12294,7 @@ export const getContinuousDeploymentPolicyConfig: API.OperationMethod<
   GetContinuousDeploymentPolicyConfigResult,
   GetContinuousDeploymentPolicyConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetContinuousDeploymentPolicyConfigRequest,
   output: GetContinuousDeploymentPolicyConfigResult,
   errors: [AccessDenied, NoSuchContinuousDeploymentPolicy],
@@ -12311,7 +12311,7 @@ export const getDistribution: API.OperationMethod<
   GetDistributionResult,
   GetDistributionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDistributionRequest,
   output: GetDistributionResult,
   errors: [AccessDenied, NoSuchDistribution],
@@ -12328,7 +12328,7 @@ export const getDistributionConfig: API.OperationMethod<
   GetDistributionConfigResult,
   GetDistributionConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDistributionConfigRequest,
   output: GetDistributionConfigResult,
   errors: [AccessDenied, NoSuchDistribution],
@@ -12345,7 +12345,7 @@ export const getDistributionTenant: API.OperationMethod<
   GetDistributionTenantResult,
   GetDistributionTenantError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDistributionTenantRequest,
   output: GetDistributionTenantResult,
   errors: [AccessDenied, EntityNotFound],
@@ -12362,7 +12362,7 @@ export const getDistributionTenantByDomain: API.OperationMethod<
   GetDistributionTenantByDomainResult,
   GetDistributionTenantByDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDistributionTenantByDomainRequest,
   output: GetDistributionTenantByDomainResult,
   errors: [AccessDenied, EntityNotFound],
@@ -12379,7 +12379,7 @@ export const getFieldLevelEncryption: API.OperationMethod<
   GetFieldLevelEncryptionResult,
   GetFieldLevelEncryptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFieldLevelEncryptionRequest,
   output: GetFieldLevelEncryptionResult,
   errors: [AccessDenied, NoSuchFieldLevelEncryptionConfig],
@@ -12396,7 +12396,7 @@ export const getFieldLevelEncryptionConfig: API.OperationMethod<
   GetFieldLevelEncryptionConfigResult,
   GetFieldLevelEncryptionConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFieldLevelEncryptionConfigRequest,
   output: GetFieldLevelEncryptionConfigResult,
   errors: [AccessDenied, NoSuchFieldLevelEncryptionConfig],
@@ -12413,7 +12413,7 @@ export const getFieldLevelEncryptionProfile: API.OperationMethod<
   GetFieldLevelEncryptionProfileResult,
   GetFieldLevelEncryptionProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFieldLevelEncryptionProfileRequest,
   output: GetFieldLevelEncryptionProfileResult,
   errors: [AccessDenied, NoSuchFieldLevelEncryptionProfile],
@@ -12430,7 +12430,7 @@ export const getFieldLevelEncryptionProfileConfig: API.OperationMethod<
   GetFieldLevelEncryptionProfileConfigResult,
   GetFieldLevelEncryptionProfileConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFieldLevelEncryptionProfileConfigRequest,
   output: GetFieldLevelEncryptionProfileConfigResult,
   errors: [AccessDenied, NoSuchFieldLevelEncryptionProfile],
@@ -12449,7 +12449,7 @@ export const getFunction: API.OperationMethod<
   GetFunctionResult,
   GetFunctionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFunctionRequest,
   output: GetFunctionResult,
   errors: [NoSuchFunctionExists, UnsupportedOperation],
@@ -12467,7 +12467,7 @@ export const getInvalidation: API.OperationMethod<
   GetInvalidationResult,
   GetInvalidationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInvalidationRequest,
   output: GetInvalidationResult,
   errors: [AccessDenied, NoSuchDistribution, NoSuchInvalidation],
@@ -12485,7 +12485,7 @@ export const getInvalidationForDistributionTenant: API.OperationMethod<
   GetInvalidationForDistributionTenantResult,
   GetInvalidationForDistributionTenantError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInvalidationForDistributionTenantRequest,
   output: GetInvalidationForDistributionTenantResult,
   errors: [AccessDenied, EntityNotFound, NoSuchInvalidation],
@@ -12501,7 +12501,7 @@ export const getKeyGroup: API.OperationMethod<
   GetKeyGroupResult,
   GetKeyGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetKeyGroupRequest,
   output: GetKeyGroupResult,
   errors: [NoSuchResource],
@@ -12517,7 +12517,7 @@ export const getKeyGroupConfig: API.OperationMethod<
   GetKeyGroupConfigResult,
   GetKeyGroupConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetKeyGroupConfigRequest,
   output: GetKeyGroupConfigResult,
   errors: [NoSuchResource],
@@ -12534,7 +12534,7 @@ export const getManagedCertificateDetails: API.OperationMethod<
   GetManagedCertificateDetailsResult,
   GetManagedCertificateDetailsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetManagedCertificateDetailsRequest,
   output: GetManagedCertificateDetailsResult,
   errors: [AccessDenied, EntityNotFound],
@@ -12553,7 +12553,7 @@ export const getMonitoringSubscription: API.OperationMethod<
   GetMonitoringSubscriptionResult,
   GetMonitoringSubscriptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMonitoringSubscriptionRequest,
   output: GetMonitoringSubscriptionResult,
   errors: [
@@ -12575,7 +12575,7 @@ export const getOriginAccessControl: API.OperationMethod<
   GetOriginAccessControlResult,
   GetOriginAccessControlError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOriginAccessControlRequest,
   output: GetOriginAccessControlResult,
   errors: [AccessDenied, NoSuchOriginAccessControl],
@@ -12592,7 +12592,7 @@ export const getOriginAccessControlConfig: API.OperationMethod<
   GetOriginAccessControlConfigResult,
   GetOriginAccessControlConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOriginAccessControlConfigRequest,
   output: GetOriginAccessControlConfigResult,
   errors: [AccessDenied, NoSuchOriginAccessControl],
@@ -12615,7 +12615,7 @@ export const getOriginRequestPolicy: API.OperationMethod<
   GetOriginRequestPolicyResult,
   GetOriginRequestPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOriginRequestPolicyRequest,
   output: GetOriginRequestPolicyResult,
   errors: [AccessDenied, NoSuchOriginRequestPolicy],
@@ -12634,7 +12634,7 @@ export const getOriginRequestPolicyConfig: API.OperationMethod<
   GetOriginRequestPolicyConfigResult,
   GetOriginRequestPolicyConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOriginRequestPolicyConfigRequest,
   output: GetOriginRequestPolicyConfigResult,
   errors: [AccessDenied, NoSuchOriginRequestPolicy],
@@ -12648,7 +12648,7 @@ export const getPublicKey: API.OperationMethod<
   GetPublicKeyResult,
   GetPublicKeyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPublicKeyRequest,
   output: GetPublicKeyResult,
   errors: [AccessDenied, NoSuchPublicKey],
@@ -12665,7 +12665,7 @@ export const getPublicKeyConfig: API.OperationMethod<
   GetPublicKeyConfigResult,
   GetPublicKeyConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPublicKeyConfigRequest,
   output: GetPublicKeyConfigResult,
   errors: [AccessDenied, NoSuchPublicKey],
@@ -12685,7 +12685,7 @@ export const getRealtimeLogConfig: API.OperationMethod<
   GetRealtimeLogConfigResult,
   GetRealtimeLogConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRealtimeLogConfigRequest,
   output: GetRealtimeLogConfigResult,
   errors: [AccessDenied, InvalidArgument, NoSuchRealtimeLogConfig],
@@ -12704,7 +12704,7 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyResult,
   GetResourcePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResourcePolicyRequest,
   output: GetResourcePolicyResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument, UnsupportedOperation],
@@ -12723,7 +12723,7 @@ export const getResponseHeadersPolicy: API.OperationMethod<
   GetResponseHeadersPolicyResult,
   GetResponseHeadersPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResponseHeadersPolicyRequest,
   output: GetResponseHeadersPolicyResult,
   errors: [AccessDenied, NoSuchResponseHeadersPolicy],
@@ -12742,7 +12742,7 @@ export const getResponseHeadersPolicyConfig: API.OperationMethod<
   GetResponseHeadersPolicyConfigResult,
   GetResponseHeadersPolicyConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResponseHeadersPolicyConfigRequest,
   output: GetResponseHeadersPolicyConfigResult,
   errors: [AccessDenied, NoSuchResponseHeadersPolicy],
@@ -12759,7 +12759,7 @@ export const getStreamingDistribution: API.OperationMethod<
   GetStreamingDistributionResult,
   GetStreamingDistributionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetStreamingDistributionRequest,
   output: GetStreamingDistributionResult,
   errors: [AccessDenied, NoSuchStreamingDistribution],
@@ -12776,7 +12776,7 @@ export const getStreamingDistributionConfig: API.OperationMethod<
   GetStreamingDistributionConfigResult,
   GetStreamingDistributionConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetStreamingDistributionConfigRequest,
   output: GetStreamingDistributionConfigResult,
   errors: [AccessDenied, NoSuchStreamingDistribution],
@@ -12794,7 +12794,7 @@ export const getTrustStore: API.OperationMethod<
   GetTrustStoreResult,
   GetTrustStoreError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTrustStoreRequest,
   output: GetTrustStoreResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument],
@@ -12813,7 +12813,7 @@ export const getVpcOrigin: API.OperationMethod<
   GetVpcOriginResult,
   GetVpcOriginError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetVpcOriginRequest,
   output: GetVpcOriginResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument, UnsupportedOperation],
@@ -12832,7 +12832,7 @@ export const listAnycastIpLists: API.OperationMethod<
   ListAnycastIpListsResult,
   ListAnycastIpListsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListAnycastIpListsRequest,
   output: ListAnycastIpListsResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument, UnsupportedOperation],
@@ -12854,7 +12854,7 @@ export const listCachePolicies: API.OperationMethod<
   ListCachePoliciesResult,
   ListCachePoliciesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListCachePoliciesRequest,
   output: ListCachePoliciesResult,
   errors: [AccessDenied, InvalidArgument, NoSuchCachePolicy],
@@ -12885,7 +12885,7 @@ export const listCloudFrontOriginAccessIdentities: API.OperationMethod<
     ListCloudFrontOriginAccessIdentitiesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCloudFrontOriginAccessIdentitiesRequest,
   output: ListCloudFrontOriginAccessIdentitiesResult,
   errors: [InvalidArgument],
@@ -12918,7 +12918,7 @@ export const listConflictingAliases: API.OperationMethod<
   ListConflictingAliasesResult,
   ListConflictingAliasesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListConflictingAliasesRequest,
   output: ListConflictingAliasesResult,
   errors: [InvalidArgument, NoSuchDistribution],
@@ -12951,7 +12951,7 @@ export const listConnectionFunctions: API.OperationMethod<
     ListConnectionFunctionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConnectionFunctionsRequest,
   output: ListConnectionFunctionsResult,
   errors: [AccessDenied, InvalidArgument, UnsupportedOperation],
@@ -12990,7 +12990,7 @@ export const listConnectionGroups: API.OperationMethod<
     ListConnectionGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConnectionGroupsRequest,
   output: ListConnectionGroupsResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument],
@@ -13016,7 +13016,7 @@ export const listContinuousDeploymentPolicies: API.OperationMethod<
   ListContinuousDeploymentPoliciesResult,
   ListContinuousDeploymentPoliciesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListContinuousDeploymentPoliciesRequest,
   output: ListContinuousDeploymentPoliciesResult,
   errors: [AccessDenied, InvalidArgument, NoSuchContinuousDeploymentPolicy],
@@ -13045,7 +13045,7 @@ export const listDistributions: API.OperationMethod<
     ListDistributionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDistributionsRequest,
   output: ListDistributionsResult,
   errors: [InvalidArgument],
@@ -13070,7 +13070,7 @@ export const listDistributionsByAnycastIpListId: API.OperationMethod<
   ListDistributionsByAnycastIpListIdResult,
   ListDistributionsByAnycastIpListIdError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListDistributionsByAnycastIpListIdRequest,
   output: ListDistributionsByAnycastIpListIdResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument, UnsupportedOperation],
@@ -13090,7 +13090,7 @@ export const listDistributionsByCachePolicyId: API.OperationMethod<
   ListDistributionsByCachePolicyIdResult,
   ListDistributionsByCachePolicyIdError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListDistributionsByCachePolicyIdRequest,
   output: ListDistributionsByCachePolicyIdResult,
   errors: [AccessDenied, InvalidArgument, NoSuchCachePolicy],
@@ -13123,7 +13123,7 @@ export const listDistributionsByConnectionFunction: API.OperationMethod<
     ListDistributionsByConnectionFunctionError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDistributionsByConnectionFunctionRequest,
   output: ListDistributionsByConnectionFunctionResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument],
@@ -13161,7 +13161,7 @@ export const listDistributionsByConnectionMode: API.OperationMethod<
     ListDistributionsByConnectionModeError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDistributionsByConnectionModeRequest,
   output: ListDistributionsByConnectionModeResult,
   errors: [AccessDenied, InvalidArgument],
@@ -13186,7 +13186,7 @@ export const listDistributionsByKeyGroup: API.OperationMethod<
   ListDistributionsByKeyGroupResult,
   ListDistributionsByKeyGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListDistributionsByKeyGroupRequest,
   output: ListDistributionsByKeyGroupResult,
   errors: [InvalidArgument, NoSuchResource],
@@ -13206,7 +13206,7 @@ export const listDistributionsByOriginRequestPolicyId: API.OperationMethod<
   ListDistributionsByOriginRequestPolicyIdResult,
   ListDistributionsByOriginRequestPolicyIdError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListDistributionsByOriginRequestPolicyIdRequest,
   output: ListDistributionsByOriginRequestPolicyIdResult,
   errors: [AccessDenied, InvalidArgument, NoSuchOriginRequestPolicy],
@@ -13225,7 +13225,7 @@ export const listDistributionsByOwnedResource: API.OperationMethod<
   ListDistributionsByOwnedResourceResult,
   ListDistributionsByOwnedResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListDistributionsByOwnedResourceRequest,
   output: ListDistributionsByOwnedResourceResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument, UnsupportedOperation],
@@ -13245,7 +13245,7 @@ export const listDistributionsByRealtimeLogConfig: API.OperationMethod<
   ListDistributionsByRealtimeLogConfigResult,
   ListDistributionsByRealtimeLogConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListDistributionsByRealtimeLogConfigRequest,
   output: ListDistributionsByRealtimeLogConfigResult,
   errors: [InvalidArgument],
@@ -13265,7 +13265,7 @@ export const listDistributionsByResponseHeadersPolicyId: API.OperationMethod<
   ListDistributionsByResponseHeadersPolicyIdResult,
   ListDistributionsByResponseHeadersPolicyIdError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListDistributionsByResponseHeadersPolicyIdRequest,
   output: ListDistributionsByResponseHeadersPolicyIdResult,
   errors: [AccessDenied, InvalidArgument, NoSuchResponseHeadersPolicy],
@@ -13298,7 +13298,7 @@ export const listDistributionsByTrustStore: API.OperationMethod<
     ListDistributionsByTrustStoreError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDistributionsByTrustStoreRequest,
   output: ListDistributionsByTrustStoreResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument],
@@ -13323,7 +13323,7 @@ export const listDistributionsByVpcOriginId: API.OperationMethod<
   ListDistributionsByVpcOriginIdResult,
   ListDistributionsByVpcOriginIdError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListDistributionsByVpcOriginIdRequest,
   output: ListDistributionsByVpcOriginIdResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument, UnsupportedOperation],
@@ -13340,7 +13340,7 @@ export const listDistributionsByWebACLId: API.OperationMethod<
   ListDistributionsByWebACLIdResult,
   ListDistributionsByWebACLIdError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListDistributionsByWebACLIdRequest,
   output: ListDistributionsByWebACLIdResult,
   errors: [InvalidArgument, InvalidWebACLId],
@@ -13373,7 +13373,7 @@ export const listDistributionTenants: API.OperationMethod<
     ListDistributionTenantsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDistributionTenantsRequest,
   output: ListDistributionTenantsResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument],
@@ -13414,7 +13414,7 @@ export const listDistributionTenantsByCustomization: API.OperationMethod<
     ListDistributionTenantsByCustomizationError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDistributionTenantsByCustomizationRequest,
   output: ListDistributionTenantsByCustomizationResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument],
@@ -13469,7 +13469,7 @@ export const listDomainConflicts: API.OperationMethod<
     ListDomainConflictsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDomainConflictsRequest,
   output: ListDomainConflictsResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument],
@@ -13491,7 +13491,7 @@ export const listFieldLevelEncryptionConfigs: API.OperationMethod<
   ListFieldLevelEncryptionConfigsResult,
   ListFieldLevelEncryptionConfigsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListFieldLevelEncryptionConfigsRequest,
   output: ListFieldLevelEncryptionConfigsResult,
   errors: [InvalidArgument],
@@ -13507,7 +13507,7 @@ export const listFieldLevelEncryptionProfiles: API.OperationMethod<
   ListFieldLevelEncryptionProfilesResult,
   ListFieldLevelEncryptionProfilesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListFieldLevelEncryptionProfilesRequest,
   output: ListFieldLevelEncryptionProfilesResult,
   errors: [InvalidArgument],
@@ -13528,7 +13528,7 @@ export const listFunctions: API.OperationMethod<
   ListFunctionsResult,
   ListFunctionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListFunctionsRequest,
   output: ListFunctionsResult,
   errors: [InvalidArgument, UnsupportedOperation],
@@ -13561,7 +13561,7 @@ export const listInvalidations: API.OperationMethod<
     ListInvalidationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInvalidationsRequest,
   output: ListInvalidationsResult,
   errors: [AccessDenied, InvalidArgument, NoSuchDistribution],
@@ -13600,7 +13600,7 @@ export const listInvalidationsForDistributionTenant: API.OperationMethod<
     ListInvalidationsForDistributionTenantError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInvalidationsForDistributionTenantRequest,
   output: ListInvalidationsForDistributionTenantResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument],
@@ -13622,7 +13622,7 @@ export const listKeyGroups: API.OperationMethod<
   ListKeyGroupsResult,
   ListKeyGroupsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListKeyGroupsRequest,
   output: ListKeyGroupsResult,
   errors: [InvalidArgument],
@@ -13655,7 +13655,7 @@ export const listKeyValueStores: API.OperationMethod<
     ListKeyValueStoresError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListKeyValueStoresRequest,
   output: ListKeyValueStoresResult,
   errors: [AccessDenied, InvalidArgument, UnsupportedOperation],
@@ -13694,7 +13694,7 @@ export const listOriginAccessControls: API.OperationMethod<
     ListOriginAccessControlsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOriginAccessControlsRequest,
   output: ListOriginAccessControlsResult,
   errors: [InvalidArgument],
@@ -13722,7 +13722,7 @@ export const listOriginRequestPolicies: API.OperationMethod<
   ListOriginRequestPoliciesResult,
   ListOriginRequestPoliciesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListOriginRequestPoliciesRequest,
   output: ListOriginRequestPoliciesResult,
   errors: [AccessDenied, InvalidArgument, NoSuchOriginRequestPolicy],
@@ -13751,7 +13751,7 @@ export const listPublicKeys: API.OperationMethod<
     ListPublicKeysError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPublicKeysRequest,
   output: ListPublicKeysResult,
   errors: [InvalidArgument],
@@ -13777,7 +13777,7 @@ export const listRealtimeLogConfigs: API.OperationMethod<
   ListRealtimeLogConfigsResult,
   ListRealtimeLogConfigsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListRealtimeLogConfigsRequest,
   output: ListRealtimeLogConfigsResult,
   errors: [AccessDenied, InvalidArgument, NoSuchRealtimeLogConfig],
@@ -13799,7 +13799,7 @@ export const listResponseHeadersPolicies: API.OperationMethod<
   ListResponseHeadersPoliciesResult,
   ListResponseHeadersPoliciesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListResponseHeadersPoliciesRequest,
   output: ListResponseHeadersPoliciesResult,
   errors: [AccessDenied, InvalidArgument, NoSuchResponseHeadersPolicy],
@@ -13828,7 +13828,7 @@ export const listStreamingDistributions: API.OperationMethod<
     ListStreamingDistributionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStreamingDistributionsRequest,
   output: ListStreamingDistributionsResult,
   errors: [InvalidArgument],
@@ -13853,7 +13853,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResult,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResult,
   errors: [AccessDenied, InvalidArgument, InvalidTagging, NoSuchResource],
@@ -13886,7 +13886,7 @@ export const listTrustStores: API.OperationMethod<
     ListTrustStoresError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTrustStoresRequest,
   output: ListTrustStoresResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument],
@@ -13911,7 +13911,7 @@ export const listVpcOrigins: API.OperationMethod<
   ListVpcOriginsResult,
   ListVpcOriginsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListVpcOriginsRequest,
   output: ListVpcOriginsResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument, UnsupportedOperation],
@@ -13932,7 +13932,7 @@ export const publishConnectionFunction: API.OperationMethod<
   PublishConnectionFunctionResult,
   PublishConnectionFunctionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PublishConnectionFunctionRequest,
   output: PublishConnectionFunctionResult,
   errors: [
@@ -13963,7 +13963,7 @@ export const publishFunction: API.OperationMethod<
   PublishFunctionResult,
   PublishFunctionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PublishFunctionRequest,
   output: PublishFunctionResult,
   errors: [
@@ -13990,7 +13990,7 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyResult,
   PutResourcePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutResourcePolicyRequest,
   output: PutResourcePolicyResult,
   errors: [
@@ -14016,7 +14016,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [AccessDenied, InvalidArgument, InvalidTagging, NoSuchResource],
@@ -14037,7 +14037,7 @@ export const testConnectionFunction: API.OperationMethod<
   TestConnectionFunctionResult,
   TestConnectionFunctionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestConnectionFunctionRequest,
   output: TestConnectionFunctionResult,
   errors: [
@@ -14068,7 +14068,7 @@ export const testFunction: API.OperationMethod<
   TestFunctionResult,
   TestFunctionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestFunctionRequest,
   output: TestFunctionResult,
   errors: [
@@ -14093,7 +14093,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [AccessDenied, InvalidArgument, InvalidTagging, NoSuchResource],
@@ -14114,7 +14114,7 @@ export const updateAnycastIpList: API.OperationMethod<
   UpdateAnycastIpListResult,
   UpdateAnycastIpListError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAnycastIpListRequest,
   output: UpdateAnycastIpListResult,
   errors: [
@@ -14157,7 +14157,7 @@ export const updateCachePolicy: API.OperationMethod<
   UpdateCachePolicyResult,
   UpdateCachePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCachePolicyRequest,
   output: UpdateCachePolicyResult,
   errors: [
@@ -14192,7 +14192,7 @@ export const updateCloudFrontOriginAccessIdentity: API.OperationMethod<
   UpdateCloudFrontOriginAccessIdentityResult,
   UpdateCloudFrontOriginAccessIdentityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCloudFrontOriginAccessIdentityRequest,
   output: UpdateCloudFrontOriginAccessIdentityResult,
   errors: [
@@ -14223,7 +14223,7 @@ export const updateConnectionFunction: API.OperationMethod<
   UpdateConnectionFunctionResult,
   UpdateConnectionFunctionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateConnectionFunctionRequest,
   output: UpdateConnectionFunctionResult,
   errors: [
@@ -14254,7 +14254,7 @@ export const updateConnectionGroup: API.OperationMethod<
   UpdateConnectionGroupResult,
   UpdateConnectionGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateConnectionGroupRequest,
   output: UpdateConnectionGroupResult,
   errors: [
@@ -14293,7 +14293,7 @@ export const updateContinuousDeploymentPolicy: API.OperationMethod<
   UpdateContinuousDeploymentPolicyResult,
   UpdateContinuousDeploymentPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateContinuousDeploymentPolicyRequest,
   output: UpdateContinuousDeploymentPolicyResult,
   errors: [
@@ -14325,7 +14325,7 @@ export const updateDistributionTenant: API.OperationMethod<
   UpdateDistributionTenantResult,
   UpdateDistributionTenantError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDistributionTenantRequest,
   output: UpdateDistributionTenantResult,
   errors: [
@@ -14362,7 +14362,7 @@ export const updateDomainAssociation: API.OperationMethod<
   UpdateDomainAssociationResult,
   UpdateDomainAssociationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDomainAssociationRequest,
   output: UpdateDomainAssociationResult,
   errors: [
@@ -14395,7 +14395,7 @@ export const updateFieldLevelEncryptionConfig: API.OperationMethod<
   UpdateFieldLevelEncryptionConfigResult,
   UpdateFieldLevelEncryptionConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateFieldLevelEncryptionConfigRequest,
   output: UpdateFieldLevelEncryptionConfigResult,
   errors: [
@@ -14434,7 +14434,7 @@ export const updateFieldLevelEncryptionProfile: API.OperationMethod<
   UpdateFieldLevelEncryptionProfileResult,
   UpdateFieldLevelEncryptionProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateFieldLevelEncryptionProfileRequest,
   output: UpdateFieldLevelEncryptionProfileResult,
   errors: [
@@ -14472,7 +14472,7 @@ export const updateFunction: API.OperationMethod<
   UpdateFunctionResult,
   UpdateFunctionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateFunctionRequest,
   output: UpdateFunctionResult,
   errors: [
@@ -14508,7 +14508,7 @@ export const updateKeyGroup: API.OperationMethod<
   UpdateKeyGroupResult,
   UpdateKeyGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateKeyGroupRequest,
   output: UpdateKeyGroupResult,
   errors: [
@@ -14536,7 +14536,7 @@ export const updateKeyValueStore: API.OperationMethod<
   UpdateKeyValueStoreResult,
   UpdateKeyValueStoreError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateKeyValueStoreRequest,
   output: UpdateKeyValueStoreResult,
   errors: [
@@ -14565,7 +14565,7 @@ export const updateOriginAccessControl: API.OperationMethod<
   UpdateOriginAccessControlResult,
   UpdateOriginAccessControlError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateOriginAccessControlRequest,
   output: UpdateOriginAccessControlResult,
   errors: [
@@ -14607,7 +14607,7 @@ export const updateOriginRequestPolicy: API.OperationMethod<
   UpdateOriginRequestPolicyResult,
   UpdateOriginRequestPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateOriginRequestPolicyRequest,
   output: UpdateOriginRequestPolicyResult,
   errors: [
@@ -14641,7 +14641,7 @@ export const updatePublicKey: API.OperationMethod<
   UpdatePublicKeyResult,
   UpdatePublicKeyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePublicKeyRequest,
   output: UpdatePublicKeyResult,
   errors: [
@@ -14677,7 +14677,7 @@ export const updateRealtimeLogConfig: API.OperationMethod<
   UpdateRealtimeLogConfigResult,
   UpdateRealtimeLogConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRealtimeLogConfigRequest,
   output: UpdateRealtimeLogConfigResult,
   errors: [AccessDenied, InvalidArgument, NoSuchRealtimeLogConfig],
@@ -14711,7 +14711,7 @@ export const updateResponseHeadersPolicy: API.OperationMethod<
   UpdateResponseHeadersPolicyResult,
   UpdateResponseHeadersPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateResponseHeadersPolicyRequest,
   output: UpdateResponseHeadersPolicyResult,
   errors: [
@@ -14752,7 +14752,7 @@ export const updateStreamingDistribution: API.OperationMethod<
   UpdateStreamingDistributionResult,
   UpdateStreamingDistributionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateStreamingDistributionRequest,
   output: UpdateStreamingDistributionResult,
   errors: [
@@ -14787,7 +14787,7 @@ export const updateTrustStore: API.OperationMethod<
   UpdateTrustStoreResult,
   UpdateTrustStoreError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTrustStoreRequest,
   output: UpdateTrustStoreResult,
   errors: [
@@ -14819,7 +14819,7 @@ export const updateVpcOrigin: API.OperationMethod<
   UpdateVpcOriginResult,
   UpdateVpcOriginError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateVpcOriginRequest,
   output: UpdateVpcOriginResult,
   errors: [
@@ -14849,7 +14849,7 @@ export const verifyDnsConfiguration: API.OperationMethod<
   VerifyDnsConfigurationResult,
   VerifyDnsConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: VerifyDnsConfigurationRequest,
   output: VerifyDnsConfigurationResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument],
@@ -14931,7 +14931,7 @@ export const createDistribution: API.OperationMethod<
   CreateDistributionResult,
   CreateDistributionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDistributionRequest,
   output: CreateDistributionResult,
   errors: [
@@ -15085,7 +15085,7 @@ export const createDistributionWithTags: API.OperationMethod<
   CreateDistributionWithTagsResult,
   CreateDistributionWithTagsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDistributionWithTagsRequest,
   output: CreateDistributionWithTagsResult,
   errors: [
@@ -15249,7 +15249,7 @@ export const updateDistribution: API.OperationMethod<
   UpdateDistributionResult,
   UpdateDistributionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDistributionRequest,
   output: UpdateDistributionResult,
   errors: [
@@ -15403,7 +15403,7 @@ export const updateDistributionWithStagingConfig: API.OperationMethod<
   UpdateDistributionWithStagingConfigResult,
   UpdateDistributionWithStagingConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDistributionWithStagingConfigRequest,
   output: UpdateDistributionWithStagingConfigResult,
   errors: [
@@ -15556,7 +15556,7 @@ export const copyDistribution: API.OperationMethod<
   CopyDistributionResult,
   CopyDistributionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CopyDistributionRequest,
   output: CopyDistributionResult,
   errors: [

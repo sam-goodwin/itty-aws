@@ -1972,7 +1972,7 @@ export const getMedicalScribeStream: API.OperationMethod<
   GetMedicalScribeStreamResponse,
   GetMedicalScribeStreamError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMedicalScribeStreamRequest,
   output: GetMedicalScribeStreamResponse,
   errors: [
@@ -2009,7 +2009,7 @@ export const startCallAnalyticsStreamTranscription: API.OperationMethod<
   StartCallAnalyticsStreamTranscriptionResponse,
   StartCallAnalyticsStreamTranscriptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartCallAnalyticsStreamTranscriptionRequest,
   output: StartCallAnalyticsStreamTranscriptionResponse,
   errors: [
@@ -2063,7 +2063,7 @@ export const startMedicalScribeStream: API.OperationMethod<
   StartMedicalScribeStreamResponse,
   StartMedicalScribeStreamError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartMedicalScribeStreamRequest,
   output: StartMedicalScribeStreamResponse,
   errors: [
@@ -2103,7 +2103,7 @@ export const startMedicalStreamTranscription: API.OperationMethod<
   StartMedicalStreamTranscriptionResponse,
   StartMedicalStreamTranscriptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartMedicalStreamTranscriptionRequest,
   output: StartMedicalStreamTranscriptionResponse,
   errors: [
@@ -2140,7 +2140,7 @@ export const startStreamTranscription: API.OperationMethod<
   StartStreamTranscriptionResponse,
   StartStreamTranscriptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartStreamTranscriptionRequest,
   output: StartStreamTranscriptionResponse,
   errors: [

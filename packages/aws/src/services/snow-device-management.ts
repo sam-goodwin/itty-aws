@@ -860,7 +860,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceOutput,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [
@@ -882,7 +882,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceResponse,
   errors: [
@@ -904,7 +904,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceResponse,
   errors: [
@@ -929,7 +929,7 @@ export const describeDevice: API.OperationMethod<
   DescribeDeviceOutput,
   DescribeDeviceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDeviceInput,
   output: DescribeDeviceOutput,
   errors: [
@@ -970,7 +970,7 @@ export const listDevices: API.OperationMethod<
     ListDevicesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDevicesInput,
   output: ListDevicesOutput,
   errors: [
@@ -1003,7 +1003,7 @@ export const describeDeviceEc2Instances: API.OperationMethod<
   DescribeDeviceEc2Output,
   DescribeDeviceEc2InstancesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDeviceEc2Input,
   output: DescribeDeviceEc2Output,
   errors: [
@@ -1044,7 +1044,7 @@ export const listDeviceResources: API.OperationMethod<
     ListDeviceResourcesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDeviceResourcesInput,
   output: ListDeviceResourcesOutput,
   errors: [
@@ -1077,7 +1077,7 @@ export const createTask: API.OperationMethod<
   CreateTaskOutput,
   CreateTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTaskInput,
   output: CreateTaskOutput,
   errors: [
@@ -1104,7 +1104,7 @@ export const describeTask: API.OperationMethod<
   DescribeTaskOutput,
   DescribeTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeTaskInput,
   output: DescribeTaskOutput,
   errors: [
@@ -1144,7 +1144,7 @@ export const listTasks: API.OperationMethod<
     ListTasksError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTasksInput,
   output: ListTasksOutput,
   errors: [
@@ -1179,7 +1179,7 @@ export const cancelTask: API.OperationMethod<
   CancelTaskOutput,
   CancelTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelTaskInput,
   output: CancelTaskOutput,
   errors: [
@@ -1205,7 +1205,7 @@ export const describeExecution: API.OperationMethod<
   DescribeExecutionOutput,
   DescribeExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeExecutionInput,
   output: DescribeExecutionOutput,
   errors: [
@@ -1246,7 +1246,7 @@ export const listExecutions: API.OperationMethod<
     ListExecutionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExecutionsInput,
   output: ListExecutionsOutput,
   errors: [

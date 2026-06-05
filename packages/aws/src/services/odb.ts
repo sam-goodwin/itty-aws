@@ -3030,7 +3030,7 @@ export const acceptMarketplaceRegistration: API.OperationMethod<
   AcceptMarketplaceRegistrationOutput,
   AcceptMarketplaceRegistrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AcceptMarketplaceRegistrationInput,
   output: AcceptMarketplaceRegistrationOutput,
   errors: [
@@ -3057,7 +3057,7 @@ export const associateIamRoleToResource: API.OperationMethod<
   AssociateIamRoleToResourceOutput,
   AssociateIamRoleToResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateIamRoleToResourceInput,
   output: AssociateIamRoleToResourceOutput,
   errors: [
@@ -3085,7 +3085,7 @@ export const disassociateIamRoleFromResource: API.OperationMethod<
   DisassociateIamRoleFromResourceOutput,
   DisassociateIamRoleFromResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateIamRoleFromResourceInput,
   output: DisassociateIamRoleFromResourceOutput,
   errors: [
@@ -3111,7 +3111,7 @@ export const getOciOnboardingStatus: API.OperationMethod<
   GetOciOnboardingStatusOutput,
   GetOciOnboardingStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOciOnboardingStatusInput,
   output: GetOciOnboardingStatusOutput,
   errors: [
@@ -3135,7 +3135,7 @@ export const initializeService: API.OperationMethod<
   InitializeServiceOutput,
   InitializeServiceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InitializeServiceInput,
   output: InitializeServiceOutput,
   errors: [
@@ -3174,7 +3174,7 @@ export const listDbSystemShapes: API.OperationMethod<
     ListDbSystemShapesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDbSystemShapesInput,
   output: ListDbSystemShapesOutput,
   errors: [
@@ -3219,7 +3219,7 @@ export const listGiVersions: API.OperationMethod<
     ListGiVersionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGiVersionsInput,
   output: ListGiVersionsOutput,
   errors: [
@@ -3265,7 +3265,7 @@ export const listSystemVersions: API.OperationMethod<
     ListSystemVersionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSystemVersionsInput,
   output: ListSystemVersionsOutput,
   errors: [
@@ -3291,7 +3291,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException],
@@ -3308,7 +3308,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [ResourceNotFoundException, ServiceQuotaExceededException],
@@ -3322,7 +3322,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException],
@@ -3344,7 +3344,7 @@ export const createCloudAutonomousVmCluster: API.OperationMethod<
   CreateCloudAutonomousVmClusterOutput,
   CreateCloudAutonomousVmClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCloudAutonomousVmClusterInput,
   output: CreateCloudAutonomousVmClusterOutput,
   errors: [
@@ -3372,7 +3372,7 @@ export const getCloudAutonomousVmCluster: API.OperationMethod<
   GetCloudAutonomousVmClusterOutput,
   GetCloudAutonomousVmClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCloudAutonomousVmClusterInput,
   output: GetCloudAutonomousVmClusterOutput,
   errors: [
@@ -3398,7 +3398,7 @@ export const deleteCloudAutonomousVmCluster: API.OperationMethod<
   DeleteCloudAutonomousVmClusterOutput,
   DeleteCloudAutonomousVmClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCloudAutonomousVmClusterInput,
   output: DeleteCloudAutonomousVmClusterOutput,
   errors: [
@@ -3439,7 +3439,7 @@ export const listCloudAutonomousVmClusters: API.OperationMethod<
     ListCloudAutonomousVmClustersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCloudAutonomousVmClustersInput,
   output: ListCloudAutonomousVmClustersOutput,
   errors: [
@@ -3486,7 +3486,7 @@ export const listAutonomousVirtualMachines: API.OperationMethod<
     ListAutonomousVirtualMachinesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAutonomousVirtualMachinesInput,
   output: ListAutonomousVirtualMachinesOutput,
   errors: [
@@ -3519,7 +3519,7 @@ export const createCloudExadataInfrastructure: API.OperationMethod<
   CreateCloudExadataInfrastructureOutput,
   CreateCloudExadataInfrastructureError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCloudExadataInfrastructureInput,
   output: CreateCloudExadataInfrastructureOutput,
   errors: [
@@ -3546,7 +3546,7 @@ export const getCloudExadataInfrastructure: API.OperationMethod<
   GetCloudExadataInfrastructureOutput,
   GetCloudExadataInfrastructureError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCloudExadataInfrastructureInput,
   output: GetCloudExadataInfrastructureOutput,
   errors: [
@@ -3573,7 +3573,7 @@ export const updateCloudExadataInfrastructure: API.OperationMethod<
   UpdateCloudExadataInfrastructureOutput,
   UpdateCloudExadataInfrastructureError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCloudExadataInfrastructureInput,
   output: UpdateCloudExadataInfrastructureOutput,
   errors: [
@@ -3601,7 +3601,7 @@ export const deleteCloudExadataInfrastructure: API.OperationMethod<
   DeleteCloudExadataInfrastructureOutput,
   DeleteCloudExadataInfrastructureError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCloudExadataInfrastructureInput,
   output: DeleteCloudExadataInfrastructureOutput,
   errors: [
@@ -3642,7 +3642,7 @@ export const listCloudExadataInfrastructures: API.OperationMethod<
     ListCloudExadataInfrastructuresError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCloudExadataInfrastructuresInput,
   output: ListCloudExadataInfrastructuresOutput,
   errors: [
@@ -3673,7 +3673,7 @@ export const getCloudExadataInfrastructureUnallocatedResources: API.OperationMet
   GetCloudExadataInfrastructureUnallocatedResourcesOutput,
   GetCloudExadataInfrastructureUnallocatedResourcesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCloudExadataInfrastructureUnallocatedResourcesInput,
   output: GetCloudExadataInfrastructureUnallocatedResourcesOutput,
   errors: [
@@ -3699,7 +3699,7 @@ export const getDbServer: API.OperationMethod<
   GetDbServerOutput,
   GetDbServerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDbServerInput,
   output: GetDbServerOutput,
   errors: [
@@ -3740,7 +3740,7 @@ export const listDbServers: API.OperationMethod<
     ListDbServersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDbServersInput,
   output: ListDbServersOutput,
   errors: [
@@ -3774,7 +3774,7 @@ export const createCloudVmCluster: API.OperationMethod<
   CreateCloudVmClusterOutput,
   CreateCloudVmClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCloudVmClusterInput,
   output: CreateCloudVmClusterOutput,
   errors: [
@@ -3802,7 +3802,7 @@ export const getCloudVmCluster: API.OperationMethod<
   GetCloudVmClusterOutput,
   GetCloudVmClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCloudVmClusterInput,
   output: GetCloudVmClusterOutput,
   errors: [
@@ -3828,7 +3828,7 @@ export const deleteCloudVmCluster: API.OperationMethod<
   DeleteCloudVmClusterOutput,
   DeleteCloudVmClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCloudVmClusterInput,
   output: DeleteCloudVmClusterOutput,
   errors: [
@@ -3869,7 +3869,7 @@ export const listCloudVmClusters: API.OperationMethod<
     ListCloudVmClustersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCloudVmClustersInput,
   output: ListCloudVmClustersOutput,
   errors: [
@@ -3901,7 +3901,7 @@ export const getDbNode: API.OperationMethod<
   GetDbNodeOutput,
   GetDbNodeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDbNodeInput,
   output: GetDbNodeOutput,
   errors: [
@@ -3942,7 +3942,7 @@ export const listDbNodes: API.OperationMethod<
     ListDbNodesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDbNodesInput,
   output: ListDbNodesOutput,
   errors: [
@@ -3974,7 +3974,7 @@ export const rebootDbNode: API.OperationMethod<
   RebootDbNodeOutput,
   RebootDbNodeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RebootDbNodeInput,
   output: RebootDbNodeOutput,
   errors: [
@@ -4000,7 +4000,7 @@ export const startDbNode: API.OperationMethod<
   StartDbNodeOutput,
   StartDbNodeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartDbNodeInput,
   output: StartDbNodeOutput,
   errors: [
@@ -4026,7 +4026,7 @@ export const stopDbNode: API.OperationMethod<
   StopDbNodeOutput,
   StopDbNodeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopDbNodeInput,
   output: StopDbNodeOutput,
   errors: [
@@ -4053,7 +4053,7 @@ export const createOdbNetwork: API.OperationMethod<
   CreateOdbNetworkOutput,
   CreateOdbNetworkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOdbNetworkInput,
   output: CreateOdbNetworkOutput,
   errors: [
@@ -4080,7 +4080,7 @@ export const getOdbNetwork: API.OperationMethod<
   GetOdbNetworkOutput,
   GetOdbNetworkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOdbNetworkInput,
   output: GetOdbNetworkOutput,
   errors: [
@@ -4107,7 +4107,7 @@ export const updateOdbNetwork: API.OperationMethod<
   UpdateOdbNetworkOutput,
   UpdateOdbNetworkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateOdbNetworkInput,
   output: UpdateOdbNetworkOutput,
   errors: [
@@ -4134,7 +4134,7 @@ export const deleteOdbNetwork: API.OperationMethod<
   DeleteOdbNetworkOutput,
   DeleteOdbNetworkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOdbNetworkInput,
   output: DeleteOdbNetworkOutput,
   errors: [
@@ -4174,7 +4174,7 @@ export const listOdbNetworks: API.OperationMethod<
     ListOdbNetworksError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOdbNetworksInput,
   output: ListOdbNetworksOutput,
   errors: [
@@ -4208,7 +4208,7 @@ export const createOdbPeeringConnection: API.OperationMethod<
   CreateOdbPeeringConnectionOutput,
   CreateOdbPeeringConnectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOdbPeeringConnectionInput,
   output: CreateOdbPeeringConnectionOutput,
   errors: [
@@ -4235,7 +4235,7 @@ export const getOdbPeeringConnection: API.OperationMethod<
   GetOdbPeeringConnectionOutput,
   GetOdbPeeringConnectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOdbPeeringConnectionInput,
   output: GetOdbPeeringConnectionOutput,
   errors: [
@@ -4262,7 +4262,7 @@ export const updateOdbPeeringConnection: API.OperationMethod<
   UpdateOdbPeeringConnectionOutput,
   UpdateOdbPeeringConnectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateOdbPeeringConnectionInput,
   output: UpdateOdbPeeringConnectionOutput,
   errors: [
@@ -4291,7 +4291,7 @@ export const deleteOdbPeeringConnection: API.OperationMethod<
   DeleteOdbPeeringConnectionOutput,
   DeleteOdbPeeringConnectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOdbPeeringConnectionInput,
   output: DeleteOdbPeeringConnectionOutput,
   errors: [
@@ -4332,7 +4332,7 @@ export const listOdbPeeringConnections: API.OperationMethod<
     ListOdbPeeringConnectionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOdbPeeringConnectionsInput,
   output: ListOdbPeeringConnectionsOutput,
   errors: [

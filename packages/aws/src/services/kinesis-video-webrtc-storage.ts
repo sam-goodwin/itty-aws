@@ -210,7 +210,7 @@ export const joinStorageSession: API.OperationMethod<
   JoinStorageSessionResponse,
   JoinStorageSessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: JoinStorageSessionInput,
   output: JoinStorageSessionResponse,
   errors: [
@@ -250,7 +250,7 @@ export const joinStorageSessionAsViewer: API.OperationMethod<
   JoinStorageSessionAsViewerResponse,
   JoinStorageSessionAsViewerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: JoinStorageSessionAsViewerInput,
   output: JoinStorageSessionAsViewerResponse,
   errors: [

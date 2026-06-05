@@ -1333,7 +1333,7 @@ export const amendBenefitApplication: API.OperationMethod<
   AmendBenefitApplicationOutput,
   AmendBenefitApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AmendBenefitApplicationInput,
   output: AmendBenefitApplicationOutput,
   errors: [
@@ -1361,7 +1361,7 @@ export const associateBenefitApplicationResource: API.OperationMethod<
   AssociateBenefitApplicationResourceOutput,
   AssociateBenefitApplicationResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateBenefitApplicationResourceInput,
   output: AssociateBenefitApplicationResourceOutput,
   errors: [
@@ -1389,7 +1389,7 @@ export const cancelBenefitApplication: API.OperationMethod<
   CancelBenefitApplicationOutput,
   CancelBenefitApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelBenefitApplicationInput,
   output: CancelBenefitApplicationOutput,
   errors: [
@@ -1417,7 +1417,7 @@ export const createBenefitApplication: API.OperationMethod<
   CreateBenefitApplicationOutput,
   CreateBenefitApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateBenefitApplicationInput,
   output: CreateBenefitApplicationOutput,
   errors: [
@@ -1445,7 +1445,7 @@ export const disassociateBenefitApplicationResource: API.OperationMethod<
   DisassociateBenefitApplicationResourceOutput,
   DisassociateBenefitApplicationResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateBenefitApplicationResourceInput,
   output: DisassociateBenefitApplicationResourceOutput,
   errors: [
@@ -1472,7 +1472,7 @@ export const getBenefit: API.OperationMethod<
   GetBenefitOutput,
   GetBenefitError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetBenefitInput,
   output: GetBenefitOutput,
   errors: [
@@ -1498,7 +1498,7 @@ export const getBenefitAllocation: API.OperationMethod<
   GetBenefitAllocationOutput,
   GetBenefitAllocationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetBenefitAllocationInput,
   output: GetBenefitAllocationOutput,
   errors: [
@@ -1525,7 +1525,7 @@ export const getBenefitApplication: API.OperationMethod<
   GetBenefitApplicationOutput,
   GetBenefitApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetBenefitApplicationInput,
   output: GetBenefitApplicationOutput,
   errors: [
@@ -1567,7 +1567,7 @@ export const listBenefitAllocations: API.OperationMethod<
     ListBenefitAllocationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBenefitAllocationsInput,
   output: ListBenefitAllocationsOutput,
   errors: [
@@ -1614,7 +1614,7 @@ export const listBenefitApplications: API.OperationMethod<
     ListBenefitApplicationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBenefitApplicationsInput,
   output: ListBenefitApplicationsOutput,
   errors: [
@@ -1661,7 +1661,7 @@ export const listBenefits: API.OperationMethod<
     ListBenefitsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBenefitsInput,
   output: ListBenefitsOutput,
   errors: [
@@ -1693,7 +1693,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -1720,7 +1720,7 @@ export const recallBenefitApplication: API.OperationMethod<
   RecallBenefitApplicationOutput,
   RecallBenefitApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RecallBenefitApplicationInput,
   output: RecallBenefitApplicationOutput,
   errors: [
@@ -1748,7 +1748,7 @@ export const submitBenefitApplication: API.OperationMethod<
   SubmitBenefitApplicationOutput,
   SubmitBenefitApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SubmitBenefitApplicationInput,
   output: SubmitBenefitApplicationOutput,
   errors: [
@@ -1777,7 +1777,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -1807,7 +1807,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -1836,7 +1836,7 @@ export const updateBenefitApplication: API.OperationMethod<
   UpdateBenefitApplicationOutput,
   UpdateBenefitApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateBenefitApplicationInput,
   output: UpdateBenefitApplicationOutput,
   errors: [

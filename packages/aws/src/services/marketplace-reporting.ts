@@ -168,7 +168,7 @@ export const getBuyerDashboard: API.OperationMethod<
   GetBuyerDashboardOutput,
   GetBuyerDashboardError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetBuyerDashboardInput,
   output: GetBuyerDashboardOutput,
   errors: [

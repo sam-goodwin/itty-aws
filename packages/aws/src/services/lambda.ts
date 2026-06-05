@@ -5670,7 +5670,7 @@ export const checkpointDurableExecution: API.OperationMethod<
   CheckpointDurableExecutionResponse,
   CheckpointDurableExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CheckpointDurableExecutionRequest,
   output: CheckpointDurableExecutionResponse,
   errors: [
@@ -5698,7 +5698,7 @@ export const deleteFunction: API.OperationMethod<
   DeleteFunctionResponse,
   DeleteFunctionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFunctionRequest,
   output: DeleteFunctionResponse,
   errors: [
@@ -5728,7 +5728,7 @@ export const deleteFunctionEventInvokeConfig: API.OperationMethod<
   DeleteFunctionEventInvokeConfigResponse,
   DeleteFunctionEventInvokeConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFunctionEventInvokeConfigRequest,
   output: DeleteFunctionEventInvokeConfigResponse,
   errors: [
@@ -5753,7 +5753,7 @@ export const getAccountSettings: API.OperationMethod<
   GetAccountSettingsResponse,
   GetAccountSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountSettingsRequest,
   output: GetAccountSettingsResponse,
   errors: [ServiceException, TooManyRequestsException],
@@ -5772,7 +5772,7 @@ export const getDurableExecution: API.OperationMethod<
   GetDurableExecutionResponse,
   GetDurableExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDurableExecutionRequest,
   output: GetDurableExecutionResponse,
   errors: [
@@ -5813,7 +5813,7 @@ export const getDurableExecutionHistory: API.OperationMethod<
     GetDurableExecutionHistoryError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetDurableExecutionHistoryRequest,
   output: GetDurableExecutionHistoryResponse,
   errors: [
@@ -5859,7 +5859,7 @@ export const getDurableExecutionState: API.OperationMethod<
     GetDurableExecutionStateError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetDurableExecutionStateRequest,
   output: GetDurableExecutionStateResponse,
   errors: [
@@ -5892,7 +5892,7 @@ export const getFunctionEventInvokeConfig: API.OperationMethod<
   FunctionEventInvokeConfig,
   GetFunctionEventInvokeConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFunctionEventInvokeConfigRequest,
   output: FunctionEventInvokeConfig,
   errors: [
@@ -5933,7 +5933,7 @@ export const listDurableExecutionsByFunction: API.OperationMethod<
     ListDurableExecutionsByFunctionError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDurableExecutionsByFunctionRequest,
   output: ListDurableExecutionsByFunctionResponse,
   errors: [
@@ -5982,7 +5982,7 @@ export const listFunctionEventInvokeConfigs: API.OperationMethod<
     ListFunctionEventInvokeConfigsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFunctionEventInvokeConfigsRequest,
   output: ListFunctionEventInvokeConfigsResponse,
   errors: [
@@ -6016,7 +6016,7 @@ export const listTags: API.OperationMethod<
   ListTagsResponse,
   ListTagsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsRequest,
   output: ListTagsResponse,
   errors: [
@@ -6051,7 +6051,7 @@ export const putFunctionEventInvokeConfig: API.OperationMethod<
   FunctionEventInvokeConfig,
   PutFunctionEventInvokeConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutFunctionEventInvokeConfigRequest,
   output: FunctionEventInvokeConfig,
   errors: [
@@ -6078,7 +6078,7 @@ export const sendDurableExecutionCallbackFailure: API.OperationMethod<
   SendDurableExecutionCallbackFailureResponse,
   SendDurableExecutionCallbackFailureError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendDurableExecutionCallbackFailureRequest,
   output: SendDurableExecutionCallbackFailureResponse,
   errors: [
@@ -6102,7 +6102,7 @@ export const sendDurableExecutionCallbackHeartbeat: API.OperationMethod<
   SendDurableExecutionCallbackHeartbeatResponse,
   SendDurableExecutionCallbackHeartbeatError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendDurableExecutionCallbackHeartbeatRequest,
   output: SendDurableExecutionCallbackHeartbeatResponse,
   errors: [
@@ -6126,7 +6126,7 @@ export const sendDurableExecutionCallbackSuccess: API.OperationMethod<
   SendDurableExecutionCallbackSuccessResponse,
   SendDurableExecutionCallbackSuccessError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendDurableExecutionCallbackSuccessRequest,
   output: SendDurableExecutionCallbackSuccessResponse,
   errors: [
@@ -6150,7 +6150,7 @@ export const stopDurableExecution: API.OperationMethod<
   StopDurableExecutionResponse,
   StopDurableExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopDurableExecutionRequest,
   output: StopDurableExecutionResponse,
   errors: [
@@ -6177,7 +6177,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -6207,7 +6207,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -6237,7 +6237,7 @@ export const updateFunctionEventInvokeConfig: API.OperationMethod<
   FunctionEventInvokeConfig,
   UpdateFunctionEventInvokeConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateFunctionEventInvokeConfigRequest,
   output: FunctionEventInvokeConfig,
   errors: [
@@ -6263,7 +6263,7 @@ export const createCapacityProvider: API.OperationMethod<
   CreateCapacityProviderResponse,
   CreateCapacityProviderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCapacityProviderRequest,
   output: CreateCapacityProviderResponse,
   errors: [
@@ -6288,7 +6288,7 @@ export const getCapacityProvider: API.OperationMethod<
   GetCapacityProviderResponse,
   GetCapacityProviderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCapacityProviderRequest,
   output: GetCapacityProviderResponse,
   errors: [
@@ -6313,7 +6313,7 @@ export const updateCapacityProvider: API.OperationMethod<
   UpdateCapacityProviderResponse,
   UpdateCapacityProviderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCapacityProviderRequest,
   output: UpdateCapacityProviderResponse,
   errors: [
@@ -6339,7 +6339,7 @@ export const deleteCapacityProvider: API.OperationMethod<
   DeleteCapacityProviderResponse,
   DeleteCapacityProviderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCapacityProviderRequest,
   output: DeleteCapacityProviderResponse,
   errors: [
@@ -6378,7 +6378,7 @@ export const listCapacityProviders: API.OperationMethod<
     ListCapacityProvidersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCapacityProvidersRequest,
   output: ListCapacityProvidersResponse,
   errors: [
@@ -6422,7 +6422,7 @@ export const listFunctionVersionsByCapacityProvider: API.OperationMethod<
     ListFunctionVersionsByCapacityProviderError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFunctionVersionsByCapacityProviderRequest,
   output: ListFunctionVersionsByCapacityProviderResponse,
   errors: [
@@ -6450,7 +6450,7 @@ export const createCodeSigningConfig: API.OperationMethod<
   CreateCodeSigningConfigResponse,
   CreateCodeSigningConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCodeSigningConfigRequest,
   output: CreateCodeSigningConfigResponse,
   errors: [InvalidParameterValueException, ServiceException],
@@ -6482,7 +6482,7 @@ export const listCodeSigningConfigs: API.OperationMethod<
     ListCodeSigningConfigsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCodeSigningConfigsRequest,
   output: ListCodeSigningConfigsResponse,
   errors: [InvalidParameterValueException, ServiceException],
@@ -6509,7 +6509,7 @@ export const deleteCodeSigningConfig: API.OperationMethod<
   DeleteCodeSigningConfigResponse,
   DeleteCodeSigningConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCodeSigningConfigRequest,
   output: DeleteCodeSigningConfigResponse,
   errors: [
@@ -6536,7 +6536,7 @@ export const getCodeSigningConfig: API.OperationMethod<
   GetCodeSigningConfigResponse,
   GetCodeSigningConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCodeSigningConfigRequest,
   output: GetCodeSigningConfigResponse,
   errors: [
@@ -6575,7 +6575,7 @@ export const listFunctionsByCodeSigningConfig: API.OperationMethod<
     ListFunctionsByCodeSigningConfigError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFunctionsByCodeSigningConfigRequest,
   output: ListFunctionsByCodeSigningConfigResponse,
   errors: [
@@ -6603,7 +6603,7 @@ export const updateCodeSigningConfig: API.OperationMethod<
   UpdateCodeSigningConfigResponse,
   UpdateCodeSigningConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCodeSigningConfigRequest,
   output: UpdateCodeSigningConfigResponse,
   errors: [
@@ -6675,7 +6675,7 @@ export const createEventSourceMapping: API.OperationMethod<
   EventSourceMappingConfiguration,
   CreateEventSourceMappingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEventSourceMappingRequest,
   output: EventSourceMappingConfiguration,
   errors: [
@@ -6702,7 +6702,7 @@ export const getEventSourceMapping: API.OperationMethod<
   EventSourceMappingConfiguration,
   GetEventSourceMappingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEventSourceMappingRequest,
   output: EventSourceMappingConfiguration,
   errors: [
@@ -6776,7 +6776,7 @@ export const updateEventSourceMapping: API.OperationMethod<
   EventSourceMappingConfiguration,
   UpdateEventSourceMappingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEventSourceMappingRequest,
   output: EventSourceMappingConfiguration,
   errors: [
@@ -6808,7 +6808,7 @@ export const deleteEventSourceMapping: API.OperationMethod<
   EventSourceMappingConfiguration,
   DeleteEventSourceMappingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEventSourceMappingRequest,
   output: EventSourceMappingConfiguration,
   errors: [
@@ -6849,7 +6849,7 @@ export const listEventSourceMappings: API.OperationMethod<
     ListEventSourceMappingsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEventSourceMappingsRequest,
   output: ListEventSourceMappingsResponse,
   errors: [
@@ -6901,7 +6901,7 @@ export const createFunction: API.OperationMethod<
   FunctionConfiguration,
   CreateFunctionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFunctionRequest,
   output: FunctionConfiguration,
   errors: [
@@ -6949,7 +6949,7 @@ export const listFunctions: API.OperationMethod<
     ListFunctionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFunctionsRequest,
   output: ListFunctionsResponse,
   errors: [
@@ -6981,7 +6981,7 @@ export const createFunctionUrlConfig: API.OperationMethod<
   CreateFunctionUrlConfigResponse,
   CreateFunctionUrlConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFunctionUrlConfigRequest,
   output: CreateFunctionUrlConfigResponse,
   errors: [
@@ -7011,7 +7011,7 @@ export const deleteFunctionConcurrency: API.OperationMethod<
   DeleteFunctionConcurrencyResponse,
   DeleteFunctionConcurrencyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFunctionConcurrencyRequest,
   output: DeleteFunctionConcurrencyResponse,
   errors: [
@@ -7040,7 +7040,7 @@ export const deleteFunctionUrlConfig: API.OperationMethod<
   DeleteFunctionUrlConfigResponse,
   DeleteFunctionUrlConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFunctionUrlConfigRequest,
   output: DeleteFunctionUrlConfigResponse,
   errors: [
@@ -7068,7 +7068,7 @@ export const getFunctionConcurrency: API.OperationMethod<
   GetFunctionConcurrencyResponse,
   GetFunctionConcurrencyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFunctionConcurrencyRequest,
   output: GetFunctionConcurrencyResponse,
   errors: [
@@ -7094,7 +7094,7 @@ export const getFunctionUrlConfig: API.OperationMethod<
   GetFunctionUrlConfigResponse,
   GetFunctionUrlConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFunctionUrlConfigRequest,
   output: GetFunctionUrlConfigResponse,
   errors: [
@@ -7133,7 +7133,7 @@ export const listFunctionUrlConfigs: API.OperationMethod<
     ListFunctionUrlConfigsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFunctionUrlConfigsRequest,
   output: ListFunctionUrlConfigsResponse,
   errors: [
@@ -7180,7 +7180,7 @@ export const listProvisionedConcurrencyConfigs: API.OperationMethod<
     ListProvisionedConcurrencyConfigsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProvisionedConcurrencyConfigsRequest,
   output: ListProvisionedConcurrencyConfigsResponse,
   errors: [
@@ -7219,7 +7219,7 @@ export const putFunctionConcurrency: API.OperationMethod<
   Concurrency,
   PutFunctionConcurrencyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutFunctionConcurrencyRequest,
   output: Concurrency,
   errors: [
@@ -7264,7 +7264,7 @@ export const updateFunctionCode: API.OperationMethod<
   FunctionConfiguration,
   UpdateFunctionCodeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateFunctionCodeRequest,
   output: FunctionConfiguration,
   errors: [
@@ -7309,7 +7309,7 @@ export const updateFunctionConfiguration: API.OperationMethod<
   FunctionConfiguration,
   UpdateFunctionConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateFunctionConfigurationRequest,
   output: FunctionConfiguration,
   errors: [
@@ -7343,7 +7343,7 @@ export const updateFunctionUrlConfig: API.OperationMethod<
   UpdateFunctionUrlConfigResponse,
   UpdateFunctionUrlConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateFunctionUrlConfigRequest,
   output: UpdateFunctionUrlConfigResponse,
   errors: [
@@ -7372,7 +7372,7 @@ export const deleteFunctionCodeSigningConfig: API.OperationMethod<
   DeleteFunctionCodeSigningConfigResponse,
   DeleteFunctionCodeSigningConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFunctionCodeSigningConfigRequest,
   output: DeleteFunctionCodeSigningConfigResponse,
   errors: [
@@ -7398,7 +7398,7 @@ export const getFunction: API.OperationMethod<
   GetFunctionResponse,
   GetFunctionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFunctionRequest,
   output: GetFunctionResponse,
   errors: [
@@ -7422,7 +7422,7 @@ export const getFunctionCodeSigningConfig: API.OperationMethod<
   GetFunctionCodeSigningConfigResponse,
   GetFunctionCodeSigningConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFunctionCodeSigningConfigRequest,
   output: GetFunctionCodeSigningConfigResponse,
   errors: [
@@ -7448,7 +7448,7 @@ export const getFunctionConfiguration: API.OperationMethod<
   FunctionConfiguration,
   GetFunctionConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFunctionConfigurationRequest,
   output: FunctionConfiguration,
   errors: [
@@ -7474,7 +7474,7 @@ export const getFunctionRecursionConfig: API.OperationMethod<
   GetFunctionRecursionConfigResponse,
   GetFunctionRecursionConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFunctionRecursionConfigRequest,
   output: GetFunctionRecursionConfigResponse,
   errors: [
@@ -7500,7 +7500,7 @@ export const getFunctionScalingConfig: API.OperationMethod<
   GetFunctionScalingConfigResponse,
   GetFunctionScalingConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFunctionScalingConfigRequest,
   output: GetFunctionScalingConfigResponse,
   errors: [
@@ -7524,7 +7524,7 @@ export const getPolicy: API.OperationMethod<
   GetPolicyResponse,
   GetPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPolicyRequest,
   output: GetPolicyResponse,
   errors: [
@@ -7548,7 +7548,7 @@ export const getRuntimeManagementConfig: API.OperationMethod<
   GetRuntimeManagementConfigResponse,
   GetRuntimeManagementConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRuntimeManagementConfigRequest,
   output: GetRuntimeManagementConfigResponse,
   errors: [
@@ -7620,7 +7620,7 @@ export const invoke: API.OperationMethod<
   InvocationResponse,
   InvokeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InvocationRequest,
   output: InvocationResponse,
   errors: [
@@ -7685,7 +7685,7 @@ export const invokeAsync: API.OperationMethod<
   InvokeAsyncResponse,
   InvokeAsyncError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InvokeAsyncRequest,
   output: InvokeAsyncResponse,
   errors: [
@@ -7743,7 +7743,7 @@ export const invokeWithResponseStream: API.OperationMethod<
   InvokeWithResponseStreamResponse,
   InvokeWithResponseStreamError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InvokeWithResponseStreamRequest,
   output: InvokeWithResponseStreamResponse,
   errors: [
@@ -7802,7 +7802,7 @@ export const putFunctionCodeSigningConfig: API.OperationMethod<
   PutFunctionCodeSigningConfigResponse,
   PutFunctionCodeSigningConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutFunctionCodeSigningConfigRequest,
   output: PutFunctionCodeSigningConfigResponse,
   errors: [
@@ -7837,7 +7837,7 @@ export const putFunctionRecursionConfig: API.OperationMethod<
   PutFunctionRecursionConfigResponse,
   PutFunctionRecursionConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutFunctionRecursionConfigRequest,
   output: PutFunctionRecursionConfigResponse,
   errors: [
@@ -7865,7 +7865,7 @@ export const putFunctionScalingConfig: API.OperationMethod<
   PutFunctionScalingConfigResponse,
   PutFunctionScalingConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutFunctionScalingConfigRequest,
   output: PutFunctionScalingConfigResponse,
   errors: [
@@ -7891,7 +7891,7 @@ export const putRuntimeManagementConfig: API.OperationMethod<
   PutRuntimeManagementConfigResponse,
   PutRuntimeManagementConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutRuntimeManagementConfigRequest,
   output: PutRuntimeManagementConfigResponse,
   errors: [
@@ -7921,7 +7921,7 @@ export const createAlias: API.OperationMethod<
   AliasConfiguration,
   CreateAliasError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAliasRequest,
   output: AliasConfiguration,
   errors: [
@@ -7948,7 +7948,7 @@ export const getAlias: API.OperationMethod<
   AliasConfiguration,
   GetAliasError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAliasRequest,
   output: AliasConfiguration,
   errors: [
@@ -7976,7 +7976,7 @@ export const updateAlias: API.OperationMethod<
   AliasConfiguration,
   UpdateAliasError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAliasRequest,
   output: AliasConfiguration,
   errors: [
@@ -8006,7 +8006,7 @@ export const deleteAlias: API.OperationMethod<
   DeleteAliasResponse,
   DeleteAliasError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAliasRequest,
   output: DeleteAliasResponse,
   errors: [
@@ -8047,7 +8047,7 @@ export const listAliases: API.OperationMethod<
     ListAliasesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAliasesRequest,
   output: ListAliasesResponse,
   errors: [
@@ -8087,7 +8087,7 @@ export const publishVersion: API.OperationMethod<
   FunctionConfiguration,
   PublishVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PublishVersionRequest,
   output: FunctionConfiguration,
   errors: [
@@ -8132,7 +8132,7 @@ export const listVersionsByFunction: API.OperationMethod<
     ListVersionsByFunctionError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVersionsByFunctionRequest,
   output: ListVersionsByFunctionResponse,
   errors: [
@@ -8176,7 +8176,7 @@ export const listLayers: API.OperationMethod<
     ListLayersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLayersRequest,
   output: ListLayersResponse,
   errors: [
@@ -8222,7 +8222,7 @@ export const listLayerVersions: API.OperationMethod<
     ListLayerVersionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLayerVersionsRequest,
   output: ListLayerVersionsResponse,
   errors: [
@@ -8261,7 +8261,7 @@ export const addLayerVersionPermission: API.OperationMethod<
   AddLayerVersionPermissionResponse,
   AddLayerVersionPermissionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddLayerVersionPermissionRequest,
   output: AddLayerVersionPermissionResponse,
   errors: [
@@ -8290,7 +8290,7 @@ export const deleteLayerVersion: API.OperationMethod<
   DeleteLayerVersionResponse,
   DeleteLayerVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLayerVersionRequest,
   output: DeleteLayerVersionResponse,
   errors: [
@@ -8316,7 +8316,7 @@ export const getLayerVersion: API.OperationMethod<
   GetLayerVersionResponse,
   GetLayerVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLayerVersionRequest,
   output: GetLayerVersionResponse,
   errors: [
@@ -8342,7 +8342,7 @@ export const getLayerVersionByArn: API.OperationMethod<
   GetLayerVersionResponse,
   GetLayerVersionByArnError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLayerVersionByArnRequest,
   output: GetLayerVersionResponse,
   errors: [
@@ -8368,7 +8368,7 @@ export const getLayerVersionPolicy: API.OperationMethod<
   GetLayerVersionPolicyResponse,
   GetLayerVersionPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLayerVersionPolicyRequest,
   output: GetLayerVersionPolicyResponse,
   errors: [
@@ -8399,7 +8399,7 @@ export const publishLayerVersion: API.OperationMethod<
   PublishLayerVersionResponse,
   PublishLayerVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PublishLayerVersionRequest,
   output: PublishLayerVersionResponse,
   errors: [
@@ -8429,7 +8429,7 @@ export const removeLayerVersionPermission: API.OperationMethod<
   RemoveLayerVersionPermissionResponse,
   RemoveLayerVersionPermissionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveLayerVersionPermissionRequest,
   output: RemoveLayerVersionPermissionResponse,
   errors: [
@@ -8465,7 +8465,7 @@ export const addPermission: API.OperationMethod<
   AddPermissionResponse,
   AddPermissionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddPermissionRequest,
   output: AddPermissionResponse,
   errors: [
@@ -8495,7 +8495,7 @@ export const removePermission: API.OperationMethod<
   RemovePermissionResponse,
   RemovePermissionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemovePermissionRequest,
   output: RemovePermissionResponse,
   errors: [
@@ -8523,7 +8523,7 @@ export const putProvisionedConcurrencyConfig: API.OperationMethod<
   PutProvisionedConcurrencyConfigResponse,
   PutProvisionedConcurrencyConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutProvisionedConcurrencyConfigRequest,
   output: PutProvisionedConcurrencyConfigResponse,
   errors: [
@@ -8553,7 +8553,7 @@ export const getProvisionedConcurrencyConfig: API.OperationMethod<
   GetProvisionedConcurrencyConfigResponse,
   GetProvisionedConcurrencyConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProvisionedConcurrencyConfigRequest,
   output: GetProvisionedConcurrencyConfigResponse,
   errors: [
@@ -8583,7 +8583,7 @@ export const deleteProvisionedConcurrencyConfig: API.OperationMethod<
   DeleteProvisionedConcurrencyConfigResponse,
   DeleteProvisionedConcurrencyConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProvisionedConcurrencyConfigRequest,
   output: DeleteProvisionedConcurrencyConfigResponse,
   errors: [

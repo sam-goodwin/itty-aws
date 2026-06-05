@@ -1283,7 +1283,7 @@ export const cancelTagSyncTask: API.OperationMethod<
   CancelTagSyncTaskResponse,
   CancelTagSyncTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelTagSyncTaskInput,
   output: CancelTagSyncTaskResponse,
   errors: [
@@ -1320,7 +1320,7 @@ export const createGroup: API.OperationMethod<
   CreateGroupOutput,
   CreateGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateGroupInput,
   output: CreateGroupOutput,
   errors: [
@@ -1354,7 +1354,7 @@ export const deleteGroup: API.OperationMethod<
   DeleteGroupOutput,
   DeleteGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteGroupInput,
   output: DeleteGroupOutput,
   errors: [
@@ -1381,7 +1381,7 @@ export const getAccountSettings: API.OperationMethod<
   GetAccountSettingsOutput,
   GetAccountSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountSettingsRequest,
   output: GetAccountSettingsOutput,
   errors: [
@@ -1414,7 +1414,7 @@ export const getGroup: API.OperationMethod<
   GetGroupOutput,
   GetGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetGroupInput,
   output: GetGroupOutput,
   errors: [
@@ -1449,7 +1449,7 @@ export const getGroupConfiguration: API.OperationMethod<
   GetGroupConfigurationOutput,
   GetGroupConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetGroupConfigurationInput,
   output: GetGroupConfigurationOutput,
   errors: [
@@ -1485,7 +1485,7 @@ export const getGroupQuery: API.OperationMethod<
   GetGroupQueryOutput,
   GetGroupQueryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetGroupQueryInput,
   output: GetGroupQueryOutput,
   errors: [
@@ -1520,7 +1520,7 @@ export const getTags: API.OperationMethod<
   GetTagsOutput,
   GetTagsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTagsInput,
   output: GetTagsOutput,
   errors: [
@@ -1555,7 +1555,7 @@ export const getTagSyncTask: API.OperationMethod<
   GetTagSyncTaskOutput,
   GetTagSyncTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTagSyncTaskInput,
   output: GetTagSyncTaskOutput,
   errors: [
@@ -1601,7 +1601,7 @@ export const groupResources: API.OperationMethod<
   GroupResourcesOutput,
   GroupResourcesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GroupResourcesInput,
   output: GroupResourcesOutput,
   errors: [
@@ -1644,7 +1644,7 @@ export const listGroupingStatuses: API.OperationMethod<
     ListGroupingStatusesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGroupingStatusesInput,
   output: ListGroupingStatusesOutput,
   errors: [
@@ -1706,7 +1706,7 @@ export const listGroupResources: API.OperationMethod<
     ListGroupResourcesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGroupResourcesInput,
   output: ListGroupResourcesOutput,
   errors: [
@@ -1761,7 +1761,7 @@ export const listGroups: API.OperationMethod<
     ListGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGroupsInput,
   output: ListGroupsOutput,
   errors: [
@@ -1816,7 +1816,7 @@ export const listTagSyncTasks: API.OperationMethod<
     ListTagSyncTasksError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagSyncTasksInput,
   output: ListTagSyncTasksOutput,
   errors: [
@@ -1858,7 +1858,7 @@ export const putGroupConfiguration: API.OperationMethod<
   PutGroupConfigurationOutput,
   PutGroupConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutGroupConfigurationInput,
   output: PutGroupConfigurationOutput,
   errors: [
@@ -1915,7 +1915,7 @@ export const searchResources: API.OperationMethod<
     SearchResourcesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchResourcesInput,
   output: SearchResourcesOutput,
   errors: [
@@ -1966,7 +1966,7 @@ export const startTagSyncTask: API.OperationMethod<
   StartTagSyncTaskOutput,
   StartTagSyncTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartTagSyncTaskInput,
   output: StartTagSyncTaskOutput,
   errors: [
@@ -2007,7 +2007,7 @@ export const tag: API.OperationMethod<
   TagOutput,
   TagError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagInput,
   output: TagOutput,
   errors: [
@@ -2044,7 +2044,7 @@ export const ungroupResources: API.OperationMethod<
   UngroupResourcesOutput,
   UngroupResourcesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UngroupResourcesInput,
   output: UngroupResourcesOutput,
   errors: [
@@ -2078,7 +2078,7 @@ export const untag: API.OperationMethod<
   UntagOutput,
   UntagError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagInput,
   output: UntagOutput,
   errors: [
@@ -2110,7 +2110,7 @@ export const updateAccountSettings: API.OperationMethod<
   UpdateAccountSettingsOutput,
   UpdateAccountSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccountSettingsInput,
   output: UpdateAccountSettingsOutput,
   errors: [
@@ -2144,7 +2144,7 @@ export const updateGroup: API.OperationMethod<
   UpdateGroupOutput,
   UpdateGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateGroupInput,
   output: UpdateGroupOutput,
   errors: [
@@ -2179,7 +2179,7 @@ export const updateGroupQuery: API.OperationMethod<
   UpdateGroupQueryOutput,
   UpdateGroupQueryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateGroupQueryInput,
   output: UpdateGroupQueryOutput,
   errors: [

@@ -134,7 +134,7 @@ export const getRevocationStatus: API.OperationMethod<
   GetRevocationStatusResponse,
   GetRevocationStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRevocationStatusRequest,
   output: GetRevocationStatusResponse,
   errors: [

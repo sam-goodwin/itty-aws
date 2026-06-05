@@ -1100,7 +1100,7 @@ export const batchCreateAttendee: API.OperationMethod<
   BatchCreateAttendeeResponse,
   BatchCreateAttendeeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchCreateAttendeeRequest,
   output: BatchCreateAttendeeResponse,
   errors: [
@@ -1162,7 +1162,7 @@ export const batchUpdateAttendeeCapabilitiesExcept: API.OperationMethod<
   BatchUpdateAttendeeCapabilitiesExceptResponse,
   BatchUpdateAttendeeCapabilitiesExceptError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchUpdateAttendeeCapabilitiesExceptRequest,
   output: BatchUpdateAttendeeCapabilitiesExceptResponse,
   errors: [
@@ -1198,7 +1198,7 @@ export const createAttendee: API.OperationMethod<
   CreateAttendeeResponse,
   CreateAttendeeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAttendeeRequest,
   output: CreateAttendeeResponse,
   errors: [
@@ -1244,7 +1244,7 @@ export const createMeeting: API.OperationMethod<
   CreateMeetingResponse,
   CreateMeetingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMeetingRequest,
   output: CreateMeetingResponse,
   errors: [
@@ -1289,7 +1289,7 @@ export const createMeetingWithAttendees: API.OperationMethod<
   CreateMeetingWithAttendeesResponse,
   CreateMeetingWithAttendeesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMeetingWithAttendeesRequest,
   output: CreateMeetingWithAttendeesResponse,
   errors: [
@@ -1323,7 +1323,7 @@ export const deleteAttendee: API.OperationMethod<
   DeleteAttendeeResponse,
   DeleteAttendeeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAttendeeRequest,
   output: DeleteAttendeeResponse,
   errors: [
@@ -1356,7 +1356,7 @@ export const deleteMeeting: API.OperationMethod<
   DeleteMeetingResponse,
   DeleteMeetingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMeetingRequest,
   output: DeleteMeetingResponse,
   errors: [
@@ -1388,7 +1388,7 @@ export const getAttendee: API.OperationMethod<
   GetAttendeeResponse,
   GetAttendeeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAttendeeRequest,
   output: GetAttendeeResponse,
   errors: [
@@ -1420,7 +1420,7 @@ export const getMeeting: API.OperationMethod<
   GetMeetingResponse,
   GetMeetingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMeetingRequest,
   output: GetMeetingResponse,
   errors: [
@@ -1467,7 +1467,7 @@ export const listAttendees: API.OperationMethod<
     ListAttendeesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAttendeesRequest,
   output: ListAttendeesResponse,
   errors: [
@@ -1503,7 +1503,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -1550,7 +1550,7 @@ export const startMeetingTranscription: API.OperationMethod<
   StartMeetingTranscriptionResponse,
   StartMeetingTranscriptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartMeetingTranscriptionRequest,
   output: StartMeetingTranscriptionResponse,
   errors: [
@@ -1592,7 +1592,7 @@ export const stopMeetingTranscription: API.OperationMethod<
   StopMeetingTranscriptionResponse,
   StopMeetingTranscriptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopMeetingTranscriptionRequest,
   output: StopMeetingTranscriptionResponse,
   errors: [
@@ -1625,7 +1625,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -1673,7 +1673,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -1734,7 +1734,7 @@ export const updateAttendeeCapabilities: API.OperationMethod<
   UpdateAttendeeCapabilitiesResponse,
   UpdateAttendeeCapabilitiesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAttendeeCapabilitiesRequest,
   output: UpdateAttendeeCapabilitiesResponse,
   errors: [

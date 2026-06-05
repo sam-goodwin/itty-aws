@@ -2921,7 +2921,7 @@ export const createDeliveryStream: API.OperationMethod<
   CreateDeliveryStreamOutput,
   CreateDeliveryStreamError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDeliveryStreamInput,
   output: CreateDeliveryStreamOutput,
   errors: [
@@ -2958,7 +2958,7 @@ export const deleteDeliveryStream: API.OperationMethod<
   DeleteDeliveryStreamOutput,
   DeleteDeliveryStreamError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDeliveryStreamInput,
   output: DeleteDeliveryStreamOutput,
   errors: [ResourceInUseException, ResourceNotFoundException],
@@ -2981,7 +2981,7 @@ export const describeDeliveryStream: API.OperationMethod<
   DescribeDeliveryStreamOutput,
   DescribeDeliveryStreamError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDeliveryStreamInput,
   output: DescribeDeliveryStreamOutput,
   errors: [ResourceNotFoundException],
@@ -3003,7 +3003,7 @@ export const listDeliveryStreams: API.OperationMethod<
   ListDeliveryStreamsOutput,
   ListDeliveryStreamsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListDeliveryStreamsInput,
   output: ListDeliveryStreamsOutput,
   errors: [],
@@ -3022,7 +3022,7 @@ export const listTagsForDeliveryStream: API.OperationMethod<
   ListTagsForDeliveryStreamOutput,
   ListTagsForDeliveryStreamError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForDeliveryStreamInput,
   output: ListTagsForDeliveryStreamOutput,
   errors: [
@@ -3094,7 +3094,7 @@ export const putRecord: API.OperationMethod<
   PutRecordOutput,
   PutRecordError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutRecordInput,
   output: PutRecordOutput,
   errors: [
@@ -3189,7 +3189,7 @@ export const putRecordBatch: API.OperationMethod<
   PutRecordBatchOutput,
   PutRecordBatchError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutRecordBatchInput,
   output: PutRecordBatchOutput,
   errors: [
@@ -3260,7 +3260,7 @@ export const startDeliveryStreamEncryption: API.OperationMethod<
   StartDeliveryStreamEncryptionOutput,
   StartDeliveryStreamEncryptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartDeliveryStreamEncryptionInput,
   output: StartDeliveryStreamEncryptionOutput,
   errors: [
@@ -3307,7 +3307,7 @@ export const stopDeliveryStreamEncryption: API.OperationMethod<
   StopDeliveryStreamEncryptionOutput,
   StopDeliveryStreamEncryptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopDeliveryStreamEncryptionInput,
   output: StopDeliveryStreamEncryptionOutput,
   errors: [
@@ -3342,7 +3342,7 @@ export const tagDeliveryStream: API.OperationMethod<
   TagDeliveryStreamOutput,
   TagDeliveryStreamError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagDeliveryStreamInput,
   output: TagDeliveryStreamOutput,
   errors: [
@@ -3371,7 +3371,7 @@ export const untagDeliveryStream: API.OperationMethod<
   UntagDeliveryStreamOutput,
   UntagDeliveryStreamError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagDeliveryStreamInput,
   output: UntagDeliveryStreamOutput,
   errors: [
@@ -3422,7 +3422,7 @@ export const updateDestination: API.OperationMethod<
   UpdateDestinationOutput,
   UpdateDestinationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDestinationInput,
   output: UpdateDestinationOutput,
   errors: [

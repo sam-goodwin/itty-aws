@@ -4027,7 +4027,7 @@ export const addFacetToObject: API.OperationMethod<
   AddFacetToObjectResponse,
   AddFacetToObjectError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddFacetToObjectRequest,
   output: AddFacetToObjectResponse,
   errors: [
@@ -4062,7 +4062,7 @@ export const applySchema: API.OperationMethod<
   ApplySchemaResponse,
   ApplySchemaError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ApplySchemaRequest,
   output: ApplySchemaResponse,
   errors: [
@@ -4103,7 +4103,7 @@ export const attachObject: API.OperationMethod<
   AttachObjectResponse,
   AttachObjectError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AttachObjectRequest,
   output: AttachObjectResponse,
   errors: [
@@ -4140,7 +4140,7 @@ export const attachPolicy: API.OperationMethod<
   AttachPolicyResponse,
   AttachPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AttachPolicyRequest,
   output: AttachPolicyResponse,
   errors: [
@@ -4177,7 +4177,7 @@ export const attachToIndex: API.OperationMethod<
   AttachToIndexResponse,
   AttachToIndexError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AttachToIndexRequest,
   output: AttachToIndexResponse,
   errors: [
@@ -4215,7 +4215,7 @@ export const attachTypedLink: API.OperationMethod<
   AttachTypedLinkResponse,
   AttachTypedLinkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AttachTypedLinkRequest,
   output: AttachTypedLinkResponse,
   errors: [
@@ -4248,7 +4248,7 @@ export const batchRead: API.OperationMethod<
   BatchReadResponse,
   BatchReadError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchReadRequest,
   output: BatchReadResponse,
   errors: [
@@ -4280,7 +4280,7 @@ export const batchWrite: API.OperationMethod<
   BatchWriteResponse,
   BatchWriteError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchWriteRequest,
   output: BatchWriteResponse,
   errors: [
@@ -4316,7 +4316,7 @@ export const createDirectory: API.OperationMethod<
   CreateDirectoryResponse,
   CreateDirectoryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDirectoryRequest,
   output: CreateDirectoryResponse,
   errors: [
@@ -4351,7 +4351,7 @@ export const createFacet: API.OperationMethod<
   CreateFacetResponse,
   CreateFacetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFacetRequest,
   output: CreateFacetResponse,
   errors: [
@@ -4388,7 +4388,7 @@ export const createIndex: API.OperationMethod<
   CreateIndexResponse,
   CreateIndexError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateIndexRequest,
   output: CreateIndexResponse,
   errors: [
@@ -4429,7 +4429,7 @@ export const createObject: API.OperationMethod<
   CreateObjectResponse,
   CreateObjectError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateObjectRequest,
   output: CreateObjectResponse,
   errors: [
@@ -4475,7 +4475,7 @@ export const createSchema: API.OperationMethod<
   CreateSchemaResponse,
   CreateSchemaError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSchemaRequest,
   output: CreateSchemaResponse,
   errors: [
@@ -4508,7 +4508,7 @@ export const createTypedLinkFacet: API.OperationMethod<
   CreateTypedLinkFacetResponse,
   CreateTypedLinkFacetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTypedLinkFacetRequest,
   output: CreateTypedLinkFacetResponse,
   errors: [
@@ -4545,7 +4545,7 @@ export const deleteDirectory: API.OperationMethod<
   DeleteDirectoryResponse,
   DeleteDirectoryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDirectoryRequest,
   output: DeleteDirectoryResponse,
   errors: [
@@ -4581,7 +4581,7 @@ export const deleteFacet: API.OperationMethod<
   DeleteFacetResponse,
   DeleteFacetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFacetRequest,
   output: DeleteFacetResponse,
   errors: [
@@ -4616,7 +4616,7 @@ export const deleteObject: API.OperationMethod<
   DeleteObjectResponse,
   DeleteObjectError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteObjectRequest,
   output: DeleteObjectResponse,
   errors: [
@@ -4649,7 +4649,7 @@ export const deleteSchema: API.OperationMethod<
   DeleteSchemaResponse,
   DeleteSchemaError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSchemaRequest,
   output: DeleteSchemaResponse,
   errors: [
@@ -4681,7 +4681,7 @@ export const deleteTypedLinkFacet: API.OperationMethod<
   DeleteTypedLinkFacetResponse,
   DeleteTypedLinkFacetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTypedLinkFacetRequest,
   output: DeleteTypedLinkFacetResponse,
   errors: [
@@ -4715,7 +4715,7 @@ export const detachFromIndex: API.OperationMethod<
   DetachFromIndexResponse,
   DetachFromIndexError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetachFromIndexRequest,
   output: DetachFromIndexResponse,
   errors: [
@@ -4751,7 +4751,7 @@ export const detachObject: API.OperationMethod<
   DetachObjectResponse,
   DetachObjectError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetachObjectRequest,
   output: DetachObjectResponse,
   errors: [
@@ -4785,7 +4785,7 @@ export const detachPolicy: API.OperationMethod<
   DetachPolicyResponse,
   DetachPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetachPolicyRequest,
   output: DetachPolicyResponse,
   errors: [
@@ -4819,7 +4819,7 @@ export const detachTypedLink: API.OperationMethod<
   DetachTypedLinkResponse,
   DetachTypedLinkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetachTypedLinkRequest,
   output: DetachTypedLinkResponse,
   errors: [
@@ -4853,7 +4853,7 @@ export const disableDirectory: API.OperationMethod<
   DisableDirectoryResponse,
   DisableDirectoryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableDirectoryRequest,
   output: DisableDirectoryResponse,
   errors: [
@@ -4886,7 +4886,7 @@ export const enableDirectory: API.OperationMethod<
   EnableDirectoryResponse,
   EnableDirectoryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableDirectoryRequest,
   output: EnableDirectoryResponse,
   errors: [
@@ -4917,7 +4917,7 @@ export const getAppliedSchemaVersion: API.OperationMethod<
   GetAppliedSchemaVersionResponse,
   GetAppliedSchemaVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAppliedSchemaVersionRequest,
   output: GetAppliedSchemaVersionResponse,
   errors: [
@@ -4946,7 +4946,7 @@ export const getDirectory: API.OperationMethod<
   GetDirectoryResponse,
   GetDirectoryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDirectoryRequest,
   output: GetDirectoryResponse,
   errors: [
@@ -4977,7 +4977,7 @@ export const getFacet: API.OperationMethod<
   GetFacetResponse,
   GetFacetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFacetRequest,
   output: GetFacetResponse,
   errors: [
@@ -5010,7 +5010,7 @@ export const getLinkAttributes: API.OperationMethod<
   GetLinkAttributesResponse,
   GetLinkAttributesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLinkAttributesRequest,
   output: GetLinkAttributesResponse,
   errors: [
@@ -5044,7 +5044,7 @@ export const getObjectAttributes: API.OperationMethod<
   GetObjectAttributesResponse,
   GetObjectAttributesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetObjectAttributesRequest,
   output: GetObjectAttributesResponse,
   errors: [
@@ -5077,7 +5077,7 @@ export const getObjectInformation: API.OperationMethod<
   GetObjectInformationResponse,
   GetObjectInformationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetObjectInformationRequest,
   output: GetObjectInformationResponse,
   errors: [
@@ -5108,7 +5108,7 @@ export const getSchemaAsJson: API.OperationMethod<
   GetSchemaAsJsonResponse,
   GetSchemaAsJsonError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSchemaAsJsonRequest,
   output: GetSchemaAsJsonResponse,
   errors: [
@@ -5140,7 +5140,7 @@ export const getTypedLinkFacetInformation: API.OperationMethod<
   GetTypedLinkFacetInformationResponse,
   GetTypedLinkFacetInformationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTypedLinkFacetInformationRequest,
   output: GetTypedLinkFacetInformationResponse,
   errors: [
@@ -5188,7 +5188,7 @@ export const listAppliedSchemaArns: API.OperationMethod<
     ListAppliedSchemaArnsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppliedSchemaArnsRequest,
   output: ListAppliedSchemaArnsResponse,
   errors: [
@@ -5240,7 +5240,7 @@ export const listAttachedIndices: API.OperationMethod<
     ListAttachedIndicesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAttachedIndicesRequest,
   output: ListAttachedIndicesResponse,
   errors: [
@@ -5293,7 +5293,7 @@ export const listDevelopmentSchemaArns: API.OperationMethod<
     ListDevelopmentSchemaArnsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDevelopmentSchemaArnsRequest,
   output: ListDevelopmentSchemaArnsResponse,
   errors: [
@@ -5344,7 +5344,7 @@ export const listDirectories: API.OperationMethod<
     ListDirectoriesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDirectoriesRequest,
   output: ListDirectoriesResponse,
   errors: [
@@ -5396,7 +5396,7 @@ export const listFacetAttributes: API.OperationMethod<
     ListFacetAttributesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFacetAttributesRequest,
   output: ListFacetAttributesResponse,
   errors: [
@@ -5449,7 +5449,7 @@ export const listFacetNames: API.OperationMethod<
     ListFacetNamesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFacetNamesRequest,
   output: ListFacetNamesResponse,
   errors: [
@@ -5490,7 +5490,7 @@ export const listIncomingTypedLinks: API.OperationMethod<
   ListIncomingTypedLinksResponse,
   ListIncomingTypedLinksError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListIncomingTypedLinksRequest,
   output: ListIncomingTypedLinksResponse,
   errors: [
@@ -5542,7 +5542,7 @@ export const listIndex: API.OperationMethod<
     ListIndexError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIndexRequest,
   output: ListIndexResponse,
   errors: [
@@ -5595,7 +5595,7 @@ export const listManagedSchemaArns: API.OperationMethod<
     ListManagedSchemaArnsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedSchemaArnsRequest,
   output: ListManagedSchemaArnsResponse,
   errors: [
@@ -5647,7 +5647,7 @@ export const listObjectAttributes: API.OperationMethod<
     ListObjectAttributesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListObjectAttributesRequest,
   output: ListObjectAttributesResponse,
   errors: [
@@ -5704,7 +5704,7 @@ export const listObjectChildren: API.OperationMethod<
     ListObjectChildrenError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListObjectChildrenRequest,
   output: ListObjectChildrenResponse,
   errors: [
@@ -5767,7 +5767,7 @@ export const listObjectParentPaths: API.OperationMethod<
     ListObjectParentPathsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListObjectParentPathsRequest,
   output: ListObjectParentPathsResponse,
   errors: [
@@ -5823,7 +5823,7 @@ export const listObjectParents: API.OperationMethod<
     ListObjectParentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListObjectParentsRequest,
   output: ListObjectParentsResponse,
   errors: [
@@ -5878,7 +5878,7 @@ export const listObjectPolicies: API.OperationMethod<
     ListObjectPoliciesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListObjectPoliciesRequest,
   output: ListObjectPoliciesResponse,
   errors: [
@@ -5920,7 +5920,7 @@ export const listOutgoingTypedLinks: API.OperationMethod<
   ListOutgoingTypedLinksResponse,
   ListOutgoingTypedLinksError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListOutgoingTypedLinksRequest,
   output: ListOutgoingTypedLinksResponse,
   errors: [
@@ -5971,7 +5971,7 @@ export const listPolicyAttachments: API.OperationMethod<
     ListPolicyAttachmentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPolicyAttachmentsRequest,
   output: ListPolicyAttachmentsResponse,
   errors: [
@@ -6025,7 +6025,7 @@ export const listPublishedSchemaArns: API.OperationMethod<
     ListPublishedSchemaArnsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPublishedSchemaArnsRequest,
   output: ListPublishedSchemaArnsResponse,
   errors: [
@@ -6079,7 +6079,7 @@ export const listTagsForResource: API.OperationMethod<
     ListTagsForResourceError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -6132,7 +6132,7 @@ export const listTypedLinkFacetAttributes: API.OperationMethod<
     ListTypedLinkFacetAttributesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTypedLinkFacetAttributesRequest,
   output: ListTypedLinkFacetAttributesResponse,
   errors: [
@@ -6186,7 +6186,7 @@ export const listTypedLinkFacetNames: API.OperationMethod<
     ListTypedLinkFacetNamesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTypedLinkFacetNamesRequest,
   output: ListTypedLinkFacetNamesResponse,
   errors: [
@@ -6244,7 +6244,7 @@ export const lookupPolicy: API.OperationMethod<
     LookupPolicyError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: LookupPolicyRequest,
   output: LookupPolicyResponse,
   errors: [
@@ -6282,7 +6282,7 @@ export const publishSchema: API.OperationMethod<
   PublishSchemaResponse,
   PublishSchemaError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PublishSchemaRequest,
   output: PublishSchemaResponse,
   errors: [
@@ -6314,7 +6314,7 @@ export const putSchemaFromJson: API.OperationMethod<
   PutSchemaFromJsonResponse,
   PutSchemaFromJsonError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutSchemaFromJsonRequest,
   output: PutSchemaFromJsonResponse,
   errors: [
@@ -6347,7 +6347,7 @@ export const removeFacetFromObject: API.OperationMethod<
   RemoveFacetFromObjectResponse,
   RemoveFacetFromObjectError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveFacetFromObjectRequest,
   output: RemoveFacetFromObjectResponse,
   errors: [
@@ -6380,7 +6380,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -6412,7 +6412,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -6453,7 +6453,7 @@ export const updateFacet: API.OperationMethod<
   UpdateFacetResponse,
   UpdateFacetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateFacetRequest,
   output: UpdateFacetResponse,
   errors: [
@@ -6489,7 +6489,7 @@ export const updateLinkAttributes: API.OperationMethod<
   UpdateLinkAttributesResponse,
   UpdateLinkAttributesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateLinkAttributesRequest,
   output: UpdateLinkAttributesResponse,
   errors: [
@@ -6524,7 +6524,7 @@ export const updateObjectAttributes: API.OperationMethod<
   UpdateObjectAttributesResponse,
   UpdateObjectAttributesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateObjectAttributesRequest,
   output: UpdateObjectAttributesResponse,
   errors: [
@@ -6558,7 +6558,7 @@ export const updateSchema: API.OperationMethod<
   UpdateSchemaResponse,
   UpdateSchemaError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSchemaRequest,
   output: UpdateSchemaResponse,
   errors: [
@@ -6592,7 +6592,7 @@ export const updateTypedLinkFacet: API.OperationMethod<
   UpdateTypedLinkFacetResponse,
   UpdateTypedLinkFacetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTypedLinkFacetRequest,
   output: UpdateTypedLinkFacetResponse,
   errors: [
@@ -6628,7 +6628,7 @@ export const upgradeAppliedSchema: API.OperationMethod<
   UpgradeAppliedSchemaResponse,
   UpgradeAppliedSchemaError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpgradeAppliedSchemaRequest,
   output: UpgradeAppliedSchemaResponse,
   errors: [
@@ -6662,7 +6662,7 @@ export const upgradePublishedSchema: API.OperationMethod<
   UpgradePublishedSchemaResponse,
   UpgradePublishedSchemaError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpgradePublishedSchemaRequest,
   output: UpgradePublishedSchemaResponse,
   errors: [

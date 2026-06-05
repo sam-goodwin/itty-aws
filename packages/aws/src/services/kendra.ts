@@ -5375,7 +5375,7 @@ export const associateEntitiesToExperience: API.OperationMethod<
   AssociateEntitiesToExperienceResponse,
   AssociateEntitiesToExperienceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateEntitiesToExperienceRequest,
   output: AssociateEntitiesToExperienceResponse,
   errors: [
@@ -5407,7 +5407,7 @@ export const associatePersonasToEntities: API.OperationMethod<
   AssociatePersonasToEntitiesResponse,
   AssociatePersonasToEntitiesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociatePersonasToEntitiesRequest,
   output: AssociatePersonasToEntitiesResponse,
   errors: [
@@ -5446,7 +5446,7 @@ export const batchDeleteDocument: API.OperationMethod<
   BatchDeleteDocumentResponse,
   BatchDeleteDocumentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchDeleteDocumentRequest,
   output: BatchDeleteDocumentResponse,
   errors: [
@@ -5475,7 +5475,7 @@ export const batchDeleteFeaturedResultsSet: API.OperationMethod<
   BatchDeleteFeaturedResultsSetResponse,
   BatchDeleteFeaturedResultsSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchDeleteFeaturedResultsSetRequest,
   output: BatchDeleteFeaturedResultsSetResponse,
   errors: [
@@ -5512,7 +5512,7 @@ export const batchGetDocumentStatus: API.OperationMethod<
   BatchGetDocumentStatusResponse,
   BatchGetDocumentStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetDocumentStatusRequest,
   output: BatchGetDocumentStatusResponse,
   errors: [
@@ -5556,7 +5556,7 @@ export const batchPutDocument: API.OperationMethod<
   BatchPutDocumentResponse,
   BatchPutDocumentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchPutDocumentRequest,
   output: BatchPutDocumentResponse,
   errors: [
@@ -5595,7 +5595,7 @@ export const clearQuerySuggestions: API.OperationMethod<
   ClearQuerySuggestionsResponse,
   ClearQuerySuggestionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ClearQuerySuggestionsRequest,
   output: ClearQuerySuggestionsResponse,
   errors: [
@@ -5649,7 +5649,7 @@ export const createAccessControlConfiguration: API.OperationMethod<
   CreateAccessControlConfigurationResponse,
   CreateAccessControlConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessControlConfigurationRequest,
   output: CreateAccessControlConfigurationResponse,
   errors: [
@@ -5692,7 +5692,7 @@ export const createDataSource: API.OperationMethod<
   CreateDataSourceResponse,
   CreateDataSourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDataSourceRequest,
   output: CreateDataSourceResponse,
   errors: [
@@ -5726,7 +5726,7 @@ export const createExperience: API.OperationMethod<
   CreateExperienceResponse,
   CreateExperienceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateExperienceRequest,
   output: CreateExperienceResponse,
   errors: [
@@ -5761,7 +5761,7 @@ export const createFaq: API.OperationMethod<
   CreateFaqResponse,
   CreateFaqError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFaqRequest,
   output: CreateFaqResponse,
   errors: [
@@ -5798,7 +5798,7 @@ export const createFeaturedResultsSet: API.OperationMethod<
   CreateFeaturedResultsSetResponse,
   CreateFeaturedResultsSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFeaturedResultsSetRequest,
   output: CreateFeaturedResultsSetResponse,
   errors: [
@@ -5839,7 +5839,7 @@ export const createIndex: API.OperationMethod<
   CreateIndexResponse,
   CreateIndexError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateIndexRequest,
   output: CreateIndexResponse,
   errors: [
@@ -5887,7 +5887,7 @@ export const createQuerySuggestionsBlockList: API.OperationMethod<
   CreateQuerySuggestionsBlockListResponse,
   CreateQuerySuggestionsBlockListError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateQuerySuggestionsBlockListRequest,
   output: CreateQuerySuggestionsBlockListResponse,
   errors: [
@@ -5922,7 +5922,7 @@ export const createThesaurus: API.OperationMethod<
   CreateThesaurusResponse,
   CreateThesaurusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateThesaurusRequest,
   output: CreateThesaurusResponse,
   errors: [
@@ -5954,7 +5954,7 @@ export const deleteAccessControlConfiguration: API.OperationMethod<
   DeleteAccessControlConfigurationResponse,
   DeleteAccessControlConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessControlConfigurationRequest,
   output: DeleteAccessControlConfigurationResponse,
   errors: [
@@ -5989,7 +5989,7 @@ export const deleteDataSource: API.OperationMethod<
   DeleteDataSourceResponse,
   DeleteDataSourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDataSourceRequest,
   output: DeleteDataSourceResponse,
   errors: [
@@ -6019,7 +6019,7 @@ export const deleteExperience: API.OperationMethod<
   DeleteExperienceResponse,
   DeleteExperienceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteExperienceRequest,
   output: DeleteExperienceResponse,
   errors: [
@@ -6047,7 +6047,7 @@ export const deleteFaq: API.OperationMethod<
   DeleteFaqResponse,
   DeleteFaqError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFaqRequest,
   output: DeleteFaqResponse,
   errors: [
@@ -6077,7 +6077,7 @@ export const deleteIndex: API.OperationMethod<
   DeleteIndexResponse,
   DeleteIndexError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteIndexRequest,
   output: DeleteIndexResponse,
   errors: [
@@ -6119,7 +6119,7 @@ export const deletePrincipalMapping: API.OperationMethod<
   DeletePrincipalMappingResponse,
   DeletePrincipalMappingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePrincipalMappingRequest,
   output: DeletePrincipalMappingResponse,
   errors: [
@@ -6154,7 +6154,7 @@ export const deleteQuerySuggestionsBlockList: API.OperationMethod<
   DeleteQuerySuggestionsBlockListResponse,
   DeleteQuerySuggestionsBlockListError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteQuerySuggestionsBlockListRequest,
   output: DeleteQuerySuggestionsBlockListResponse,
   errors: [
@@ -6182,7 +6182,7 @@ export const deleteThesaurus: API.OperationMethod<
   DeleteThesaurusResponse,
   DeleteThesaurusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteThesaurusRequest,
   output: DeleteThesaurusResponse,
   errors: [
@@ -6212,7 +6212,7 @@ export const describeAccessControlConfiguration: API.OperationMethod<
   DescribeAccessControlConfigurationResponse,
   DescribeAccessControlConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAccessControlConfigurationRequest,
   output: DescribeAccessControlConfigurationResponse,
   errors: [
@@ -6238,7 +6238,7 @@ export const describeDataSource: API.OperationMethod<
   DescribeDataSourceResponse,
   DescribeDataSourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDataSourceRequest,
   output: DescribeDataSourceResponse,
   errors: [
@@ -6267,7 +6267,7 @@ export const describeExperience: API.OperationMethod<
   DescribeExperienceResponse,
   DescribeExperienceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeExperienceRequest,
   output: DescribeExperienceResponse,
   errors: [
@@ -6293,7 +6293,7 @@ export const describeFaq: API.OperationMethod<
   DescribeFaqResponse,
   DescribeFaqError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeFaqRequest,
   output: DescribeFaqResponse,
   errors: [
@@ -6321,7 +6321,7 @@ export const describeFeaturedResultsSet: API.OperationMethod<
   DescribeFeaturedResultsSetResponse,
   DescribeFeaturedResultsSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeFeaturedResultsSetRequest,
   output: DescribeFeaturedResultsSetResponse,
   errors: [
@@ -6347,7 +6347,7 @@ export const describeIndex: API.OperationMethod<
   DescribeIndexResponse,
   DescribeIndexError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeIndexRequest,
   output: DescribeIndexResponse,
   errors: [
@@ -6380,7 +6380,7 @@ export const describePrincipalMapping: API.OperationMethod<
   DescribePrincipalMappingResponse,
   DescribePrincipalMappingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribePrincipalMappingRequest,
   output: DescribePrincipalMappingResponse,
   errors: [
@@ -6413,7 +6413,7 @@ export const describeQuerySuggestionsBlockList: API.OperationMethod<
   DescribeQuerySuggestionsBlockListResponse,
   DescribeQuerySuggestionsBlockListError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeQuerySuggestionsBlockListRequest,
   output: DescribeQuerySuggestionsBlockListResponse,
   errors: [
@@ -6445,7 +6445,7 @@ export const describeQuerySuggestionsConfig: API.OperationMethod<
   DescribeQuerySuggestionsConfigResponse,
   DescribeQuerySuggestionsConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeQuerySuggestionsConfigRequest,
   output: DescribeQuerySuggestionsConfigResponse,
   errors: [
@@ -6471,7 +6471,7 @@ export const describeThesaurus: API.OperationMethod<
   DescribeThesaurusResponse,
   DescribeThesaurusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeThesaurusRequest,
   output: DescribeThesaurusResponse,
   errors: [
@@ -6501,7 +6501,7 @@ export const disassociateEntitiesFromExperience: API.OperationMethod<
   DisassociateEntitiesFromExperienceResponse,
   DisassociateEntitiesFromExperienceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateEntitiesFromExperienceRequest,
   output: DisassociateEntitiesFromExperienceResponse,
   errors: [
@@ -6531,7 +6531,7 @@ export const disassociatePersonasFromEntities: API.OperationMethod<
   DisassociatePersonasFromEntitiesResponse,
   DisassociatePersonasFromEntitiesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociatePersonasFromEntitiesRequest,
   output: DisassociatePersonasFromEntitiesResponse,
   errors: [
@@ -6562,7 +6562,7 @@ export const getQuerySuggestions: API.OperationMethod<
   GetQuerySuggestionsResponse,
   GetQuerySuggestionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetQuerySuggestionsRequest,
   output: GetQuerySuggestionsResponse,
   errors: [
@@ -6605,7 +6605,7 @@ export const getSnapshots: API.OperationMethod<
     GetSnapshotsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetSnapshotsRequest,
   output: GetSnapshotsResponse,
   errors: [
@@ -6653,7 +6653,7 @@ export const listAccessControlConfigurations: API.OperationMethod<
     ListAccessControlConfigurationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessControlConfigurationsRequest,
   output: ListAccessControlConfigurationsResponse,
   errors: [
@@ -6699,7 +6699,7 @@ export const listDataSources: API.OperationMethod<
     ListDataSourcesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataSourcesRequest,
   output: ListDataSourcesResponse,
   errors: [
@@ -6746,7 +6746,7 @@ export const listDataSourceSyncJobs: API.OperationMethod<
     ListDataSourceSyncJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataSourceSyncJobsRequest,
   output: ListDataSourceSyncJobsResponse,
   errors: [
@@ -6794,7 +6794,7 @@ export const listEntityPersonas: API.OperationMethod<
     ListEntityPersonasError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEntityPersonasRequest,
   output: ListEntityPersonasResponse,
   errors: [
@@ -6844,7 +6844,7 @@ export const listExperienceEntities: API.OperationMethod<
     ListExperienceEntitiesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExperienceEntitiesRequest,
   output: ListExperienceEntitiesResponse,
   errors: [
@@ -6889,7 +6889,7 @@ export const listExperiences: API.OperationMethod<
     ListExperiencesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExperiencesRequest,
   output: ListExperiencesResponse,
   errors: [
@@ -6935,7 +6935,7 @@ export const listFaqs: API.OperationMethod<
     ListFaqsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFaqsRequest,
   output: ListFaqsResponse,
   errors: [
@@ -6968,7 +6968,7 @@ export const listFeaturedResultsSets: API.OperationMethod<
   ListFeaturedResultsSetsResponse,
   ListFeaturedResultsSetsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListFeaturedResultsSetsRequest,
   output: ListFeaturedResultsSetsResponse,
   errors: [
@@ -7013,7 +7013,7 @@ export const listGroupsOlderThanOrderingId: API.OperationMethod<
     ListGroupsOlderThanOrderingIdError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGroupsOlderThanOrderingIdRequest,
   output: ListGroupsOlderThanOrderingIdResponse,
   errors: [
@@ -7059,7 +7059,7 @@ export const listIndices: API.OperationMethod<
     ListIndicesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIndicesRequest,
   output: ListIndicesResponse,
   errors: [
@@ -7111,7 +7111,7 @@ export const listQuerySuggestionsBlockLists: API.OperationMethod<
     ListQuerySuggestionsBlockListsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListQuerySuggestionsBlockListsRequest,
   output: ListQuerySuggestionsBlockListsResponse,
   errors: [
@@ -7143,7 +7143,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -7184,7 +7184,7 @@ export const listThesauri: API.OperationMethod<
     ListThesauriError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListThesauriRequest,
   output: ListThesauriResponse,
   errors: [
@@ -7231,7 +7231,7 @@ export const putPrincipalMapping: API.OperationMethod<
   PutPrincipalMappingResponse,
   PutPrincipalMappingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutPrincipalMappingRequest,
   output: PutPrincipalMappingResponse,
   errors: [
@@ -7293,7 +7293,7 @@ export const query: API.OperationMethod<
   QueryResult,
   QueryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: QueryRequest,
   output: QueryResult,
   errors: [
@@ -7361,7 +7361,7 @@ export const retrieve: API.OperationMethod<
   RetrieveResult,
   RetrieveError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RetrieveRequest,
   output: RetrieveResult,
   errors: [
@@ -7397,7 +7397,7 @@ export const startDataSourceSyncJob: API.OperationMethod<
   StartDataSourceSyncJobResponse,
   StartDataSourceSyncJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartDataSourceSyncJobRequest,
   output: StartDataSourceSyncJobResponse,
   errors: [
@@ -7426,7 +7426,7 @@ export const stopDataSourceSyncJob: API.OperationMethod<
   StopDataSourceSyncJobResponse,
   StopDataSourceSyncJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopDataSourceSyncJobRequest,
   output: StopDataSourceSyncJobResponse,
   errors: [
@@ -7457,7 +7457,7 @@ export const submitFeedback: API.OperationMethod<
   SubmitFeedbackResponse,
   SubmitFeedbackError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SubmitFeedbackRequest,
   output: SubmitFeedbackResponse,
   errors: [
@@ -7485,7 +7485,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -7511,7 +7511,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -7564,7 +7564,7 @@ export const updateAccessControlConfiguration: API.OperationMethod<
   UpdateAccessControlConfigurationResponse,
   UpdateAccessControlConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccessControlConfigurationRequest,
   output: UpdateAccessControlConfigurationResponse,
   errors: [
@@ -7593,7 +7593,7 @@ export const updateDataSource: API.OperationMethod<
   UpdateDataSourceResponse,
   UpdateDataSourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDataSourceRequest,
   output: UpdateDataSourceResponse,
   errors: [
@@ -7623,7 +7623,7 @@ export const updateExperience: API.OperationMethod<
   UpdateExperienceResponse,
   UpdateExperienceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateExperienceRequest,
   output: UpdateExperienceResponse,
   errors: [
@@ -7655,7 +7655,7 @@ export const updateFeaturedResultsSet: API.OperationMethod<
   UpdateFeaturedResultsSetResponse,
   UpdateFeaturedResultsSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateFeaturedResultsSetRequest,
   output: UpdateFeaturedResultsSetResponse,
   errors: [
@@ -7684,7 +7684,7 @@ export const updateIndex: API.OperationMethod<
   UpdateIndexResponse,
   UpdateIndexError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateIndexRequest,
   output: UpdateIndexResponse,
   errors: [
@@ -7726,7 +7726,7 @@ export const updateQuerySuggestionsBlockList: API.OperationMethod<
   UpdateQuerySuggestionsBlockListResponse,
   UpdateQuerySuggestionsBlockListError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateQuerySuggestionsBlockListRequest,
   output: UpdateQuerySuggestionsBlockListResponse,
   errors: [
@@ -7769,7 +7769,7 @@ export const updateQuerySuggestionsConfig: API.OperationMethod<
   UpdateQuerySuggestionsConfigResponse,
   UpdateQuerySuggestionsConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateQuerySuggestionsConfigRequest,
   output: UpdateQuerySuggestionsConfigResponse,
   errors: [
@@ -7797,7 +7797,7 @@ export const updateThesaurus: API.OperationMethod<
   UpdateThesaurusResponse,
   UpdateThesaurusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateThesaurusRequest,
   output: UpdateThesaurusResponse,
   errors: [

@@ -21,12 +21,10 @@ export interface GetLoadBalancerRequest {
   zoneId: string;
 }
 
-export const GetLoadBalancerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    loadBalancerId: Schema.String.pipe(T.HttpPath("loadBalancerId")),
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  },
-).pipe(
+export const GetLoadBalancerRequest = /*@__PURE__*/ Schema.Struct({
+  loadBalancerId: Schema.String.pipe(T.HttpPath("loadBalancerId")),
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/zones/{zone_id}/load_balancers/{loadBalancerId}",
@@ -187,477 +185,469 @@ export interface GetLoadBalancerResponse {
   zoneName?: string | null;
 }
 
-export const GetLoadBalancerResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    adaptiveRouting: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          failoverAcrossPools: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({ failoverAcrossPools: "failover_across_pools" }),
+export const GetLoadBalancerResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  adaptiveRouting: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        failoverAcrossPools: Schema.optional(
+          Schema.Union([Schema.Boolean, Schema.Null]),
         ),
-        Schema.Null,
-      ]),
-    ),
-    countryPools: Schema.optional(
-      Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
-    ),
-    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    defaultPools: Schema.optional(
-      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-    ),
-    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    fallbackPool: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    locationStrategy: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          mode: Schema.optional(
+      }).pipe(
+        Schema.encodeKeys({ failoverAcrossPools: "failover_across_pools" }),
+      ),
+      Schema.Null,
+    ]),
+  ),
+  countryPools: Schema.optional(
+    Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
+  ),
+  createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  defaultPools: Schema.optional(
+    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+  ),
+  description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  fallbackPool: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  locationStrategy: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        mode: Schema.optional(
+          Schema.Union([
             Schema.Union([
-              Schema.Union([
-                Schema.Literals(["pop", "resolver_ip"]),
-                Schema.String,
-              ]),
-              Schema.Null,
+              Schema.Literals(["pop", "resolver_ip"]),
+              Schema.String,
             ]),
-          ),
-          preferEcs: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals(["always", "never", "proximity", "geo"]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(Schema.encodeKeys({ mode: "mode", preferEcs: "prefer_ecs" })),
-        Schema.Null,
-      ]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    networks: Schema.optional(
-      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-    ),
-    popPools: Schema.optional(
-      Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
-    ),
-    proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    randomSteering: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          defaultWeight: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
-          poolWeights: Schema.optional(
-            Schema.Union([
-              Schema.Record(Schema.String, Schema.Unknown),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            defaultWeight: "default_weight",
-            poolWeights: "pool_weights",
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
-    regionPools: Schema.optional(
-      Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
-    ),
-    rules: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            condition: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            disabled: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            fixedResponse: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  contentType: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  location: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  messageBody: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  statusCode: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    contentType: "content_type",
-                    location: "location",
-                    messageBody: "message_body",
-                    statusCode: "status_code",
-                  }),
-                ),
-                Schema.Null,
-              ]),
-            ),
-            name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            overrides: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  adaptiveRouting: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        failoverAcrossPools: Schema.optional(
-                          Schema.Union([Schema.Boolean, Schema.Null]),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          failoverAcrossPools: "failover_across_pools",
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                  countryPools: Schema.optional(
-                    Schema.Union([
-                      Schema.Record(Schema.String, Schema.Unknown),
-                      Schema.Null,
-                    ]),
-                  ),
-                  defaultPools: Schema.optional(
-                    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                  ),
-                  fallbackPool: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  locationStrategy: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        mode: Schema.optional(
-                          Schema.Union([
-                            Schema.Union([
-                              Schema.Literals(["pop", "resolver_ip"]),
-                              Schema.String,
-                            ]),
-                            Schema.Null,
-                          ]),
-                        ),
-                        preferEcs: Schema.optional(
-                          Schema.Union([
-                            Schema.Union([
-                              Schema.Literals([
-                                "always",
-                                "never",
-                                "proximity",
-                                "geo",
-                              ]),
-                              Schema.String,
-                            ]),
-                            Schema.Null,
-                          ]),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          mode: "mode",
-                          preferEcs: "prefer_ecs",
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                  popPools: Schema.optional(
-                    Schema.Union([
-                      Schema.Record(Schema.String, Schema.Unknown),
-                      Schema.Null,
-                    ]),
-                  ),
-                  randomSteering: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        defaultWeight: Schema.optional(
-                          Schema.Union([Schema.Number, Schema.Null]),
-                        ),
-                        poolWeights: Schema.optional(
-                          Schema.Union([
-                            Schema.Record(Schema.String, Schema.Unknown),
-                            Schema.Null,
-                          ]),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          defaultWeight: "default_weight",
-                          poolWeights: "pool_weights",
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                  regionPools: Schema.optional(
-                    Schema.Union([
-                      Schema.Record(Schema.String, Schema.Unknown),
-                      Schema.Null,
-                    ]),
-                  ),
-                  sessionAffinity: Schema.optional(
-                    Schema.Union([
-                      Schema.Union([
-                        Schema.Literals([
-                          "none",
-                          "cookie",
-                          "ip_cookie",
-                          "header",
-                        ]),
-                        Schema.String,
-                      ]),
-                      Schema.Null,
-                    ]),
-                  ),
-                  sessionAffinityAttributes: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        drainDuration: Schema.optional(
-                          Schema.Union([Schema.Number, Schema.Null]),
-                        ),
-                        headers: Schema.optional(
-                          Schema.Union([
-                            Schema.Array(Schema.String),
-                            Schema.Null,
-                          ]),
-                        ),
-                        requireAllHeaders: Schema.optional(
-                          Schema.Union([Schema.Boolean, Schema.Null]),
-                        ),
-                        samesite: Schema.optional(
-                          Schema.Union([
-                            Schema.Union([
-                              Schema.Literals([
-                                "Auto",
-                                "Lax",
-                                "None",
-                                "Strict",
-                              ]),
-                              Schema.String,
-                            ]),
-                            Schema.Null,
-                          ]),
-                        ),
-                        secure: Schema.optional(
-                          Schema.Union([
-                            Schema.Union([
-                              Schema.Literals(["Auto", "Always", "Never"]),
-                              Schema.String,
-                            ]),
-                            Schema.Null,
-                          ]),
-                        ),
-                        zeroDowntimeFailover: Schema.optional(
-                          Schema.Union([
-                            Schema.Union([
-                              Schema.Literals(["none", "temporary", "sticky"]),
-                              Schema.String,
-                            ]),
-                            Schema.Null,
-                          ]),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          drainDuration: "drain_duration",
-                          headers: "headers",
-                          requireAllHeaders: "require_all_headers",
-                          samesite: "samesite",
-                          secure: "secure",
-                          zeroDowntimeFailover: "zero_downtime_failover",
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                  sessionAffinityTtl: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                  steeringPolicy: Schema.optional(
-                    Schema.Union([
-                      Schema.Union([
-                        Schema.Literals([
-                          "off",
-                          "geo",
-                          "random",
-                          "dynamic_latency",
-                          "proximity",
-                          "least_outstanding_requests",
-                          "least_connections",
-                          "",
-                        ]),
-                        Schema.String,
-                      ]),
-                      Schema.Null,
-                    ]),
-                  ),
-                  ttl: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    adaptiveRouting: "adaptive_routing",
-                    countryPools: "country_pools",
-                    defaultPools: "default_pools",
-                    fallbackPool: "fallback_pool",
-                    locationStrategy: "location_strategy",
-                    popPools: "pop_pools",
-                    randomSteering: "random_steering",
-                    regionPools: "region_pools",
-                    sessionAffinity: "session_affinity",
-                    sessionAffinityAttributes: "session_affinity_attributes",
-                    sessionAffinityTtl: "session_affinity_ttl",
-                    steeringPolicy: "steering_policy",
-                    ttl: "ttl",
-                  }),
-                ),
-                Schema.Null,
-              ]),
-            ),
-            priority: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            terminates: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              condition: "condition",
-              disabled: "disabled",
-              fixedResponse: "fixed_response",
-              name: "name",
-              overrides: "overrides",
-              priority: "priority",
-              terminates: "terminates",
-            }),
-          ),
-        ),
-        Schema.Null,
-      ]),
-    ),
-    sessionAffinity: Schema.optional(
-      Schema.Union([
-        Schema.Union([
-          Schema.Literals(["none", "cookie", "ip_cookie", "header"]),
-          Schema.String,
-        ]),
-        Schema.Null,
-      ]),
-    ),
-    sessionAffinityAttributes: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          drainDuration: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
-          headers: Schema.optional(
-            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-          ),
-          requireAllHeaders: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          samesite: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals(["Auto", "Lax", "None", "Strict"]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
-          secure: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals(["Auto", "Always", "Never"]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
-          zeroDowntimeFailover: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals(["none", "temporary", "sticky"]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            drainDuration: "drain_duration",
-            headers: "headers",
-            requireAllHeaders: "require_all_headers",
-            samesite: "samesite",
-            secure: "secure",
-            zeroDowntimeFailover: "zero_downtime_failover",
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
-    sessionAffinityTtl: Schema.optional(
-      Schema.Union([Schema.Number, Schema.Null]),
-    ),
-    steeringPolicy: Schema.optional(
-      Schema.Union([
-        Schema.Union([
-          Schema.Literals([
-            "off",
-            "geo",
-            "random",
-            "dynamic_latency",
-            "proximity",
-            "least_outstanding_requests",
-            "least_connections",
-            "",
+            Schema.Null,
           ]),
-          Schema.String,
-        ]),
-        Schema.Null,
+        ),
+        preferEcs: Schema.optional(
+          Schema.Union([
+            Schema.Union([
+              Schema.Literals(["always", "never", "proximity", "geo"]),
+              Schema.String,
+            ]),
+            Schema.Null,
+          ]),
+        ),
+      }).pipe(Schema.encodeKeys({ mode: "mode", preferEcs: "prefer_ecs" })),
+      Schema.Null,
+    ]),
+  ),
+  modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  networks: Schema.optional(
+    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+  ),
+  popPools: Schema.optional(
+    Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
+  ),
+  proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  randomSteering: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        defaultWeight: Schema.optional(
+          Schema.Union([Schema.Number, Schema.Null]),
+        ),
+        poolWeights: Schema.optional(
+          Schema.Union([
+            Schema.Record(Schema.String, Schema.Unknown),
+            Schema.Null,
+          ]),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          defaultWeight: "default_weight",
+          poolWeights: "pool_weights",
+        }),
+      ),
+      Schema.Null,
+    ]),
+  ),
+  regionPools: Schema.optional(
+    Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
+  ),
+  rules: Schema.optional(
+    Schema.Union([
+      Schema.Array(
+        Schema.Struct({
+          condition: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          disabled: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+          fixedResponse: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                contentType: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                location: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                messageBody: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                statusCode: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  contentType: "content_type",
+                  location: "location",
+                  messageBody: "message_body",
+                  statusCode: "status_code",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          overrides: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                adaptiveRouting: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      failoverAcrossPools: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        failoverAcrossPools: "failover_across_pools",
+                      }),
+                    ),
+                    Schema.Null,
+                  ]),
+                ),
+                countryPools: Schema.optional(
+                  Schema.Union([
+                    Schema.Record(Schema.String, Schema.Unknown),
+                    Schema.Null,
+                  ]),
+                ),
+                defaultPools: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
+                fallbackPool: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                locationStrategy: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      mode: Schema.optional(
+                        Schema.Union([
+                          Schema.Union([
+                            Schema.Literals(["pop", "resolver_ip"]),
+                            Schema.String,
+                          ]),
+                          Schema.Null,
+                        ]),
+                      ),
+                      preferEcs: Schema.optional(
+                        Schema.Union([
+                          Schema.Union([
+                            Schema.Literals([
+                              "always",
+                              "never",
+                              "proximity",
+                              "geo",
+                            ]),
+                            Schema.String,
+                          ]),
+                          Schema.Null,
+                        ]),
+                      ),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        mode: "mode",
+                        preferEcs: "prefer_ecs",
+                      }),
+                    ),
+                    Schema.Null,
+                  ]),
+                ),
+                popPools: Schema.optional(
+                  Schema.Union([
+                    Schema.Record(Schema.String, Schema.Unknown),
+                    Schema.Null,
+                  ]),
+                ),
+                randomSteering: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      defaultWeight: Schema.optional(
+                        Schema.Union([Schema.Number, Schema.Null]),
+                      ),
+                      poolWeights: Schema.optional(
+                        Schema.Union([
+                          Schema.Record(Schema.String, Schema.Unknown),
+                          Schema.Null,
+                        ]),
+                      ),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        defaultWeight: "default_weight",
+                        poolWeights: "pool_weights",
+                      }),
+                    ),
+                    Schema.Null,
+                  ]),
+                ),
+                regionPools: Schema.optional(
+                  Schema.Union([
+                    Schema.Record(Schema.String, Schema.Unknown),
+                    Schema.Null,
+                  ]),
+                ),
+                sessionAffinity: Schema.optional(
+                  Schema.Union([
+                    Schema.Union([
+                      Schema.Literals([
+                        "none",
+                        "cookie",
+                        "ip_cookie",
+                        "header",
+                      ]),
+                      Schema.String,
+                    ]),
+                    Schema.Null,
+                  ]),
+                ),
+                sessionAffinityAttributes: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      drainDuration: Schema.optional(
+                        Schema.Union([Schema.Number, Schema.Null]),
+                      ),
+                      headers: Schema.optional(
+                        Schema.Union([
+                          Schema.Array(Schema.String),
+                          Schema.Null,
+                        ]),
+                      ),
+                      requireAllHeaders: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                      samesite: Schema.optional(
+                        Schema.Union([
+                          Schema.Union([
+                            Schema.Literals(["Auto", "Lax", "None", "Strict"]),
+                            Schema.String,
+                          ]),
+                          Schema.Null,
+                        ]),
+                      ),
+                      secure: Schema.optional(
+                        Schema.Union([
+                          Schema.Union([
+                            Schema.Literals(["Auto", "Always", "Never"]),
+                            Schema.String,
+                          ]),
+                          Schema.Null,
+                        ]),
+                      ),
+                      zeroDowntimeFailover: Schema.optional(
+                        Schema.Union([
+                          Schema.Union([
+                            Schema.Literals(["none", "temporary", "sticky"]),
+                            Schema.String,
+                          ]),
+                          Schema.Null,
+                        ]),
+                      ),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        drainDuration: "drain_duration",
+                        headers: "headers",
+                        requireAllHeaders: "require_all_headers",
+                        samesite: "samesite",
+                        secure: "secure",
+                        zeroDowntimeFailover: "zero_downtime_failover",
+                      }),
+                    ),
+                    Schema.Null,
+                  ]),
+                ),
+                sessionAffinityTtl: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                steeringPolicy: Schema.optional(
+                  Schema.Union([
+                    Schema.Union([
+                      Schema.Literals([
+                        "off",
+                        "geo",
+                        "random",
+                        "dynamic_latency",
+                        "proximity",
+                        "least_outstanding_requests",
+                        "least_connections",
+                        "",
+                      ]),
+                      Schema.String,
+                    ]),
+                    Schema.Null,
+                  ]),
+                ),
+                ttl: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  adaptiveRouting: "adaptive_routing",
+                  countryPools: "country_pools",
+                  defaultPools: "default_pools",
+                  fallbackPool: "fallback_pool",
+                  locationStrategy: "location_strategy",
+                  popPools: "pop_pools",
+                  randomSteering: "random_steering",
+                  regionPools: "region_pools",
+                  sessionAffinity: "session_affinity",
+                  sessionAffinityAttributes: "session_affinity_attributes",
+                  sessionAffinityTtl: "session_affinity_ttl",
+                  steeringPolicy: "steering_policy",
+                  ttl: "ttl",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+          priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          terminates: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            condition: "condition",
+            disabled: "disabled",
+            fixedResponse: "fixed_response",
+            name: "name",
+            overrides: "overrides",
+            priority: "priority",
+            terminates: "terminates",
+          }),
+        ),
+      ),
+      Schema.Null,
+    ]),
+  ),
+  sessionAffinity: Schema.optional(
+    Schema.Union([
+      Schema.Union([
+        Schema.Literals(["none", "cookie", "ip_cookie", "header"]),
+        Schema.String,
       ]),
-    ),
-    ttl: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    zoneName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        adaptiveRouting: "adaptive_routing",
-        countryPools: "country_pools",
-        createdOn: "created_on",
-        defaultPools: "default_pools",
-        description: "description",
-        enabled: "enabled",
-        fallbackPool: "fallback_pool",
-        locationStrategy: "location_strategy",
-        modifiedOn: "modified_on",
-        name: "name",
-        networks: "networks",
-        popPools: "pop_pools",
-        proxied: "proxied",
-        randomSteering: "random_steering",
-        regionPools: "region_pools",
-        rules: "rules",
-        sessionAffinity: "session_affinity",
-        sessionAffinityAttributes: "session_affinity_attributes",
-        sessionAffinityTtl: "session_affinity_ttl",
-        steeringPolicy: "steering_policy",
-        ttl: "ttl",
-        zoneName: "zone_name",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<GetLoadBalancerResponse>;
+      Schema.Null,
+    ]),
+  ),
+  sessionAffinityAttributes: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        drainDuration: Schema.optional(
+          Schema.Union([Schema.Number, Schema.Null]),
+        ),
+        headers: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        requireAllHeaders: Schema.optional(
+          Schema.Union([Schema.Boolean, Schema.Null]),
+        ),
+        samesite: Schema.optional(
+          Schema.Union([
+            Schema.Union([
+              Schema.Literals(["Auto", "Lax", "None", "Strict"]),
+              Schema.String,
+            ]),
+            Schema.Null,
+          ]),
+        ),
+        secure: Schema.optional(
+          Schema.Union([
+            Schema.Union([
+              Schema.Literals(["Auto", "Always", "Never"]),
+              Schema.String,
+            ]),
+            Schema.Null,
+          ]),
+        ),
+        zeroDowntimeFailover: Schema.optional(
+          Schema.Union([
+            Schema.Union([
+              Schema.Literals(["none", "temporary", "sticky"]),
+              Schema.String,
+            ]),
+            Schema.Null,
+          ]),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          drainDuration: "drain_duration",
+          headers: "headers",
+          requireAllHeaders: "require_all_headers",
+          samesite: "samesite",
+          secure: "secure",
+          zeroDowntimeFailover: "zero_downtime_failover",
+        }),
+      ),
+      Schema.Null,
+    ]),
+  ),
+  sessionAffinityTtl: Schema.optional(
+    Schema.Union([Schema.Number, Schema.Null]),
+  ),
+  steeringPolicy: Schema.optional(
+    Schema.Union([
+      Schema.Union([
+        Schema.Literals([
+          "off",
+          "geo",
+          "random",
+          "dynamic_latency",
+          "proximity",
+          "least_outstanding_requests",
+          "least_connections",
+          "",
+        ]),
+        Schema.String,
+      ]),
+      Schema.Null,
+    ]),
+  ),
+  ttl: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  zoneName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      adaptiveRouting: "adaptive_routing",
+      countryPools: "country_pools",
+      createdOn: "created_on",
+      defaultPools: "default_pools",
+      description: "description",
+      enabled: "enabled",
+      fallbackPool: "fallback_pool",
+      locationStrategy: "location_strategy",
+      modifiedOn: "modified_on",
+      name: "name",
+      networks: "networks",
+      popPools: "pop_pools",
+      proxied: "proxied",
+      randomSteering: "random_steering",
+      regionPools: "region_pools",
+      rules: "rules",
+      sessionAffinity: "session_affinity",
+      sessionAffinityAttributes: "session_affinity_attributes",
+      sessionAffinityTtl: "session_affinity_ttl",
+      steeringPolicy: "steering_policy",
+      ttl: "ttl",
+      zoneName: "zone_name",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<GetLoadBalancerResponse>;
 
 export type GetLoadBalancerError = DefaultErrors;
 
@@ -666,7 +656,7 @@ export const getLoadBalancer: API.OperationMethod<
   GetLoadBalancerResponse,
   GetLoadBalancerError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLoadBalancerRequest,
   output: GetLoadBalancerResponse,
   errors: [],
@@ -676,12 +666,11 @@ export interface ListLoadBalancersRequest {
   zoneId: string;
 }
 
-export const ListLoadBalancersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  }).pipe(
-    T.Http({ method: "GET", path: "/zones/{zone_id}/load_balancers" }),
-  ) as unknown as Schema.Schema<ListLoadBalancersRequest>;
+export const ListLoadBalancersRequest = /*@__PURE__*/ Schema.Struct({
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+}).pipe(
+  T.Http({ method: "GET", path: "/zones/{zone_id}/load_balancers" }),
+) as unknown as Schema.Schema<ListLoadBalancersRequest>;
 
 export interface ListLoadBalancersResponse {
   result: {
@@ -826,504 +815,489 @@ export interface ListLoadBalancersResponse {
   }[];
 }
 
-export const ListLoadBalancersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        adaptiveRouting: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              failoverAcrossPools: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                failoverAcrossPools: "failover_across_pools",
-              }),
+export const ListLoadBalancersResponse = /*@__PURE__*/ Schema.Struct({
+  result: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      adaptiveRouting: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            failoverAcrossPools: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
             ),
-            Schema.Null,
-          ]),
-        ),
-        countryPools: Schema.optional(
-          Schema.Union([
-            Schema.Record(Schema.String, Schema.Unknown),
-            Schema.Null,
-          ]),
-        ),
-        createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        defaultPools: Schema.optional(
-          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-        ),
-        description: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-        fallbackPool: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        locationStrategy: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              mode: Schema.optional(
-                Schema.Union([
-                  Schema.Union([
-                    Schema.Literals(["pop", "resolver_ip"]),
-                    Schema.String,
-                  ]),
-                  Schema.Null,
-                ]),
-              ),
-              preferEcs: Schema.optional(
-                Schema.Union([
-                  Schema.Union([
-                    Schema.Literals(["always", "never", "proximity", "geo"]),
-                    Schema.String,
-                  ]),
-                  Schema.Null,
-                ]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({ mode: "mode", preferEcs: "prefer_ecs" }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-        modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        networks: Schema.optional(
-          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-        ),
-        popPools: Schema.optional(
-          Schema.Union([
-            Schema.Record(Schema.String, Schema.Unknown),
-            Schema.Null,
-          ]),
-        ),
-        proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-        randomSteering: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              defaultWeight: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-              poolWeights: Schema.optional(
-                Schema.Union([
-                  Schema.Record(Schema.String, Schema.Unknown),
-                  Schema.Null,
-                ]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                defaultWeight: "default_weight",
-                poolWeights: "pool_weights",
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-        regionPools: Schema.optional(
-          Schema.Union([
-            Schema.Record(Schema.String, Schema.Unknown),
-            Schema.Null,
-          ]),
-        ),
-        rules: Schema.optional(
-          Schema.Union([
-            Schema.Array(
-              Schema.Struct({
-                condition: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                disabled: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-                fixedResponse: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      contentType: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      location: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      messageBody: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      statusCode: Schema.optional(
-                        Schema.Union([Schema.Number, Schema.Null]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        contentType: "content_type",
-                        location: "location",
-                        messageBody: "message_body",
-                        statusCode: "status_code",
-                      }),
-                    ),
-                    Schema.Null,
-                  ]),
-                ),
-                name: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                overrides: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      adaptiveRouting: Schema.optional(
-                        Schema.Union([
-                          Schema.Struct({
-                            failoverAcrossPools: Schema.optional(
-                              Schema.Union([Schema.Boolean, Schema.Null]),
-                            ),
-                          }).pipe(
-                            Schema.encodeKeys({
-                              failoverAcrossPools: "failover_across_pools",
-                            }),
-                          ),
-                          Schema.Null,
-                        ]),
-                      ),
-                      countryPools: Schema.optional(
-                        Schema.Union([
-                          Schema.Record(Schema.String, Schema.Unknown),
-                          Schema.Null,
-                        ]),
-                      ),
-                      defaultPools: Schema.optional(
-                        Schema.Union([
-                          Schema.Array(Schema.String),
-                          Schema.Null,
-                        ]),
-                      ),
-                      fallbackPool: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      locationStrategy: Schema.optional(
-                        Schema.Union([
-                          Schema.Struct({
-                            mode: Schema.optional(
-                              Schema.Union([
-                                Schema.Union([
-                                  Schema.Literals(["pop", "resolver_ip"]),
-                                  Schema.String,
-                                ]),
-                                Schema.Null,
-                              ]),
-                            ),
-                            preferEcs: Schema.optional(
-                              Schema.Union([
-                                Schema.Union([
-                                  Schema.Literals([
-                                    "always",
-                                    "never",
-                                    "proximity",
-                                    "geo",
-                                  ]),
-                                  Schema.String,
-                                ]),
-                                Schema.Null,
-                              ]),
-                            ),
-                          }).pipe(
-                            Schema.encodeKeys({
-                              mode: "mode",
-                              preferEcs: "prefer_ecs",
-                            }),
-                          ),
-                          Schema.Null,
-                        ]),
-                      ),
-                      popPools: Schema.optional(
-                        Schema.Union([
-                          Schema.Record(Schema.String, Schema.Unknown),
-                          Schema.Null,
-                        ]),
-                      ),
-                      randomSteering: Schema.optional(
-                        Schema.Union([
-                          Schema.Struct({
-                            defaultWeight: Schema.optional(
-                              Schema.Union([Schema.Number, Schema.Null]),
-                            ),
-                            poolWeights: Schema.optional(
-                              Schema.Union([
-                                Schema.Record(Schema.String, Schema.Unknown),
-                                Schema.Null,
-                              ]),
-                            ),
-                          }).pipe(
-                            Schema.encodeKeys({
-                              defaultWeight: "default_weight",
-                              poolWeights: "pool_weights",
-                            }),
-                          ),
-                          Schema.Null,
-                        ]),
-                      ),
-                      regionPools: Schema.optional(
-                        Schema.Union([
-                          Schema.Record(Schema.String, Schema.Unknown),
-                          Schema.Null,
-                        ]),
-                      ),
-                      sessionAffinity: Schema.optional(
-                        Schema.Union([
-                          Schema.Union([
-                            Schema.Literals([
-                              "none",
-                              "cookie",
-                              "ip_cookie",
-                              "header",
-                            ]),
-                            Schema.String,
-                          ]),
-                          Schema.Null,
-                        ]),
-                      ),
-                      sessionAffinityAttributes: Schema.optional(
-                        Schema.Union([
-                          Schema.Struct({
-                            drainDuration: Schema.optional(
-                              Schema.Union([Schema.Number, Schema.Null]),
-                            ),
-                            headers: Schema.optional(
-                              Schema.Union([
-                                Schema.Array(Schema.String),
-                                Schema.Null,
-                              ]),
-                            ),
-                            requireAllHeaders: Schema.optional(
-                              Schema.Union([Schema.Boolean, Schema.Null]),
-                            ),
-                            samesite: Schema.optional(
-                              Schema.Union([
-                                Schema.Union([
-                                  Schema.Literals([
-                                    "Auto",
-                                    "Lax",
-                                    "None",
-                                    "Strict",
-                                  ]),
-                                  Schema.String,
-                                ]),
-                                Schema.Null,
-                              ]),
-                            ),
-                            secure: Schema.optional(
-                              Schema.Union([
-                                Schema.Union([
-                                  Schema.Literals(["Auto", "Always", "Never"]),
-                                  Schema.String,
-                                ]),
-                                Schema.Null,
-                              ]),
-                            ),
-                            zeroDowntimeFailover: Schema.optional(
-                              Schema.Union([
-                                Schema.Union([
-                                  Schema.Literals([
-                                    "none",
-                                    "temporary",
-                                    "sticky",
-                                  ]),
-                                  Schema.String,
-                                ]),
-                                Schema.Null,
-                              ]),
-                            ),
-                          }).pipe(
-                            Schema.encodeKeys({
-                              drainDuration: "drain_duration",
-                              headers: "headers",
-                              requireAllHeaders: "require_all_headers",
-                              samesite: "samesite",
-                              secure: "secure",
-                              zeroDowntimeFailover: "zero_downtime_failover",
-                            }),
-                          ),
-                          Schema.Null,
-                        ]),
-                      ),
-                      sessionAffinityTtl: Schema.optional(
-                        Schema.Union([Schema.Number, Schema.Null]),
-                      ),
-                      steeringPolicy: Schema.optional(
-                        Schema.Union([
-                          Schema.Union([
-                            Schema.Literals([
-                              "off",
-                              "geo",
-                              "random",
-                              "dynamic_latency",
-                              "proximity",
-                              "least_outstanding_requests",
-                              "least_connections",
-                              "",
-                            ]),
-                            Schema.String,
-                          ]),
-                          Schema.Null,
-                        ]),
-                      ),
-                      ttl: Schema.optional(
-                        Schema.Union([Schema.Number, Schema.Null]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        adaptiveRouting: "adaptive_routing",
-                        countryPools: "country_pools",
-                        defaultPools: "default_pools",
-                        fallbackPool: "fallback_pool",
-                        locationStrategy: "location_strategy",
-                        popPools: "pop_pools",
-                        randomSteering: "random_steering",
-                        regionPools: "region_pools",
-                        sessionAffinity: "session_affinity",
-                        sessionAffinityAttributes:
-                          "session_affinity_attributes",
-                        sessionAffinityTtl: "session_affinity_ttl",
-                        steeringPolicy: "steering_policy",
-                        ttl: "ttl",
-                      }),
-                    ),
-                    Schema.Null,
-                  ]),
-                ),
-                priority: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                terminates: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  condition: "condition",
-                  disabled: "disabled",
-                  fixedResponse: "fixed_response",
-                  name: "name",
-                  overrides: "overrides",
-                  priority: "priority",
-                  terminates: "terminates",
-                }),
-              ),
-            ),
-            Schema.Null,
-          ]),
-        ),
-        sessionAffinity: Schema.optional(
-          Schema.Union([
-            Schema.Union([
-              Schema.Literals(["none", "cookie", "ip_cookie", "header"]),
-              Schema.String,
-            ]),
-            Schema.Null,
-          ]),
-        ),
-        sessionAffinityAttributes: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              drainDuration: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-              headers: Schema.optional(
-                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-              ),
-              requireAllHeaders: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              samesite: Schema.optional(
-                Schema.Union([
-                  Schema.Union([
-                    Schema.Literals(["Auto", "Lax", "None", "Strict"]),
-                    Schema.String,
-                  ]),
-                  Schema.Null,
-                ]),
-              ),
-              secure: Schema.optional(
-                Schema.Union([
-                  Schema.Union([
-                    Schema.Literals(["Auto", "Always", "Never"]),
-                    Schema.String,
-                  ]),
-                  Schema.Null,
-                ]),
-              ),
-              zeroDowntimeFailover: Schema.optional(
-                Schema.Union([
-                  Schema.Union([
-                    Schema.Literals(["none", "temporary", "sticky"]),
-                    Schema.String,
-                  ]),
-                  Schema.Null,
-                ]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                drainDuration: "drain_duration",
-                headers: "headers",
-                requireAllHeaders: "require_all_headers",
-                samesite: "samesite",
-                secure: "secure",
-                zeroDowntimeFailover: "zero_downtime_failover",
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-        sessionAffinityTtl: Schema.optional(
-          Schema.Union([Schema.Number, Schema.Null]),
-        ),
-        steeringPolicy: Schema.optional(
-          Schema.Union([
-            Schema.Union([
-              Schema.Literals([
-                "off",
-                "geo",
-                "random",
-                "dynamic_latency",
-                "proximity",
-                "least_outstanding_requests",
-                "least_connections",
-                "",
-              ]),
-              Schema.String,
-            ]),
-            Schema.Null,
-          ]),
-        ),
-        ttl: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        zoneName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          adaptiveRouting: "adaptive_routing",
-          countryPools: "country_pools",
-          createdOn: "created_on",
-          defaultPools: "default_pools",
-          description: "description",
-          enabled: "enabled",
-          fallbackPool: "fallback_pool",
-          locationStrategy: "location_strategy",
-          modifiedOn: "modified_on",
-          name: "name",
-          networks: "networks",
-          popPools: "pop_pools",
-          proxied: "proxied",
-          randomSteering: "random_steering",
-          regionPools: "region_pools",
-          rules: "rules",
-          sessionAffinity: "session_affinity",
-          sessionAffinityAttributes: "session_affinity_attributes",
-          sessionAffinityTtl: "session_affinity_ttl",
-          steeringPolicy: "steering_policy",
-          ttl: "ttl",
-          zoneName: "zone_name",
-        }),
+          }).pipe(
+            Schema.encodeKeys({ failoverAcrossPools: "failover_across_pools" }),
+          ),
+          Schema.Null,
+        ]),
       ),
+      countryPools: Schema.optional(
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
+      ),
+      createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      defaultPools: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      fallbackPool: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      locationStrategy: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            mode: Schema.optional(
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["pop", "resolver_ip"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
+            ),
+            preferEcs: Schema.optional(
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["always", "never", "proximity", "geo"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
+            ),
+          }).pipe(Schema.encodeKeys({ mode: "mode", preferEcs: "prefer_ecs" })),
+          Schema.Null,
+        ]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      networks: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+      popPools: Schema.optional(
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
+      ),
+      proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      randomSteering: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            defaultWeight: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+            poolWeights: Schema.optional(
+              Schema.Union([
+                Schema.Record(Schema.String, Schema.Unknown),
+                Schema.Null,
+              ]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              defaultWeight: "default_weight",
+              poolWeights: "pool_weights",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      regionPools: Schema.optional(
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
+      ),
+      rules: Schema.optional(
+        Schema.Union([
+          Schema.Array(
+            Schema.Struct({
+              condition: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              disabled: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              fixedResponse: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    contentType: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
+                    location: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
+                    messageBody: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
+                    statusCode: Schema.optional(
+                      Schema.Union([Schema.Number, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      contentType: "content_type",
+                      location: "location",
+                      messageBody: "message_body",
+                      statusCode: "status_code",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+              overrides: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    adaptiveRouting: Schema.optional(
+                      Schema.Union([
+                        Schema.Struct({
+                          failoverAcrossPools: Schema.optional(
+                            Schema.Union([Schema.Boolean, Schema.Null]),
+                          ),
+                        }).pipe(
+                          Schema.encodeKeys({
+                            failoverAcrossPools: "failover_across_pools",
+                          }),
+                        ),
+                        Schema.Null,
+                      ]),
+                    ),
+                    countryPools: Schema.optional(
+                      Schema.Union([
+                        Schema.Record(Schema.String, Schema.Unknown),
+                        Schema.Null,
+                      ]),
+                    ),
+                    defaultPools: Schema.optional(
+                      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                    ),
+                    fallbackPool: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
+                    locationStrategy: Schema.optional(
+                      Schema.Union([
+                        Schema.Struct({
+                          mode: Schema.optional(
+                            Schema.Union([
+                              Schema.Union([
+                                Schema.Literals(["pop", "resolver_ip"]),
+                                Schema.String,
+                              ]),
+                              Schema.Null,
+                            ]),
+                          ),
+                          preferEcs: Schema.optional(
+                            Schema.Union([
+                              Schema.Union([
+                                Schema.Literals([
+                                  "always",
+                                  "never",
+                                  "proximity",
+                                  "geo",
+                                ]),
+                                Schema.String,
+                              ]),
+                              Schema.Null,
+                            ]),
+                          ),
+                        }).pipe(
+                          Schema.encodeKeys({
+                            mode: "mode",
+                            preferEcs: "prefer_ecs",
+                          }),
+                        ),
+                        Schema.Null,
+                      ]),
+                    ),
+                    popPools: Schema.optional(
+                      Schema.Union([
+                        Schema.Record(Schema.String, Schema.Unknown),
+                        Schema.Null,
+                      ]),
+                    ),
+                    randomSteering: Schema.optional(
+                      Schema.Union([
+                        Schema.Struct({
+                          defaultWeight: Schema.optional(
+                            Schema.Union([Schema.Number, Schema.Null]),
+                          ),
+                          poolWeights: Schema.optional(
+                            Schema.Union([
+                              Schema.Record(Schema.String, Schema.Unknown),
+                              Schema.Null,
+                            ]),
+                          ),
+                        }).pipe(
+                          Schema.encodeKeys({
+                            defaultWeight: "default_weight",
+                            poolWeights: "pool_weights",
+                          }),
+                        ),
+                        Schema.Null,
+                      ]),
+                    ),
+                    regionPools: Schema.optional(
+                      Schema.Union([
+                        Schema.Record(Schema.String, Schema.Unknown),
+                        Schema.Null,
+                      ]),
+                    ),
+                    sessionAffinity: Schema.optional(
+                      Schema.Union([
+                        Schema.Union([
+                          Schema.Literals([
+                            "none",
+                            "cookie",
+                            "ip_cookie",
+                            "header",
+                          ]),
+                          Schema.String,
+                        ]),
+                        Schema.Null,
+                      ]),
+                    ),
+                    sessionAffinityAttributes: Schema.optional(
+                      Schema.Union([
+                        Schema.Struct({
+                          drainDuration: Schema.optional(
+                            Schema.Union([Schema.Number, Schema.Null]),
+                          ),
+                          headers: Schema.optional(
+                            Schema.Union([
+                              Schema.Array(Schema.String),
+                              Schema.Null,
+                            ]),
+                          ),
+                          requireAllHeaders: Schema.optional(
+                            Schema.Union([Schema.Boolean, Schema.Null]),
+                          ),
+                          samesite: Schema.optional(
+                            Schema.Union([
+                              Schema.Union([
+                                Schema.Literals([
+                                  "Auto",
+                                  "Lax",
+                                  "None",
+                                  "Strict",
+                                ]),
+                                Schema.String,
+                              ]),
+                              Schema.Null,
+                            ]),
+                          ),
+                          secure: Schema.optional(
+                            Schema.Union([
+                              Schema.Union([
+                                Schema.Literals(["Auto", "Always", "Never"]),
+                                Schema.String,
+                              ]),
+                              Schema.Null,
+                            ]),
+                          ),
+                          zeroDowntimeFailover: Schema.optional(
+                            Schema.Union([
+                              Schema.Union([
+                                Schema.Literals([
+                                  "none",
+                                  "temporary",
+                                  "sticky",
+                                ]),
+                                Schema.String,
+                              ]),
+                              Schema.Null,
+                            ]),
+                          ),
+                        }).pipe(
+                          Schema.encodeKeys({
+                            drainDuration: "drain_duration",
+                            headers: "headers",
+                            requireAllHeaders: "require_all_headers",
+                            samesite: "samesite",
+                            secure: "secure",
+                            zeroDowntimeFailover: "zero_downtime_failover",
+                          }),
+                        ),
+                        Schema.Null,
+                      ]),
+                    ),
+                    sessionAffinityTtl: Schema.optional(
+                      Schema.Union([Schema.Number, Schema.Null]),
+                    ),
+                    steeringPolicy: Schema.optional(
+                      Schema.Union([
+                        Schema.Union([
+                          Schema.Literals([
+                            "off",
+                            "geo",
+                            "random",
+                            "dynamic_latency",
+                            "proximity",
+                            "least_outstanding_requests",
+                            "least_connections",
+                            "",
+                          ]),
+                          Schema.String,
+                        ]),
+                        Schema.Null,
+                      ]),
+                    ),
+                    ttl: Schema.optional(
+                      Schema.Union([Schema.Number, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      adaptiveRouting: "adaptive_routing",
+                      countryPools: "country_pools",
+                      defaultPools: "default_pools",
+                      fallbackPool: "fallback_pool",
+                      locationStrategy: "location_strategy",
+                      popPools: "pop_pools",
+                      randomSteering: "random_steering",
+                      regionPools: "region_pools",
+                      sessionAffinity: "session_affinity",
+                      sessionAffinityAttributes: "session_affinity_attributes",
+                      sessionAffinityTtl: "session_affinity_ttl",
+                      steeringPolicy: "steering_policy",
+                      ttl: "ttl",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              priority: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              terminates: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                condition: "condition",
+                disabled: "disabled",
+                fixedResponse: "fixed_response",
+                name: "name",
+                overrides: "overrides",
+                priority: "priority",
+                terminates: "terminates",
+              }),
+            ),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      sessionAffinity: Schema.optional(
+        Schema.Union([
+          Schema.Union([
+            Schema.Literals(["none", "cookie", "ip_cookie", "header"]),
+            Schema.String,
+          ]),
+          Schema.Null,
+        ]),
+      ),
+      sessionAffinityAttributes: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            drainDuration: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+            headers: Schema.optional(
+              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+            ),
+            requireAllHeaders: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            samesite: Schema.optional(
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["Auto", "Lax", "None", "Strict"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
+            ),
+            secure: Schema.optional(
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["Auto", "Always", "Never"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
+            ),
+            zeroDowntimeFailover: Schema.optional(
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["none", "temporary", "sticky"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              drainDuration: "drain_duration",
+              headers: "headers",
+              requireAllHeaders: "require_all_headers",
+              samesite: "samesite",
+              secure: "secure",
+              zeroDowntimeFailover: "zero_downtime_failover",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      sessionAffinityTtl: Schema.optional(
+        Schema.Union([Schema.Number, Schema.Null]),
+      ),
+      steeringPolicy: Schema.optional(
+        Schema.Union([
+          Schema.Union([
+            Schema.Literals([
+              "off",
+              "geo",
+              "random",
+              "dynamic_latency",
+              "proximity",
+              "least_outstanding_requests",
+              "least_connections",
+              "",
+            ]),
+            Schema.String,
+          ]),
+          Schema.Null,
+        ]),
+      ),
+      ttl: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      zoneName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        adaptiveRouting: "adaptive_routing",
+        countryPools: "country_pools",
+        createdOn: "created_on",
+        defaultPools: "default_pools",
+        description: "description",
+        enabled: "enabled",
+        fallbackPool: "fallback_pool",
+        locationStrategy: "location_strategy",
+        modifiedOn: "modified_on",
+        name: "name",
+        networks: "networks",
+        popPools: "pop_pools",
+        proxied: "proxied",
+        randomSteering: "random_steering",
+        regionPools: "region_pools",
+        rules: "rules",
+        sessionAffinity: "session_affinity",
+        sessionAffinityAttributes: "session_affinity_attributes",
+        sessionAffinityTtl: "session_affinity_ttl",
+        steeringPolicy: "steering_policy",
+        ttl: "ttl",
+        zoneName: "zone_name",
+      }),
     ),
-  }) as unknown as Schema.Schema<ListLoadBalancersResponse>;
+  ),
+}) as unknown as Schema.Schema<ListLoadBalancersResponse>;
 
 export type ListLoadBalancersError = DefaultErrors;
 
@@ -1332,7 +1306,7 @@ export const listLoadBalancers: API.PaginatedOperationMethod<
   ListLoadBalancersResponse,
   ListLoadBalancersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLoadBalancersRequest,
   output: ListLoadBalancersResponse,
   errors: [],
@@ -1459,298 +1433,294 @@ export interface CreateLoadBalancerRequest {
   ttl?: number;
 }
 
-export const CreateLoadBalancerRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    defaultPools: Schema.Array(Schema.String),
-    fallbackPool: Schema.String,
-    name: Schema.String,
-    adaptiveRouting: Schema.optional(
-      Schema.Struct({
-        failoverAcrossPools: Schema.optional(Schema.Boolean),
-      }).pipe(
-        Schema.encodeKeys({ failoverAcrossPools: "failover_across_pools" }),
+export const CreateLoadBalancerRequest = /*@__PURE__*/ Schema.Struct({
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  defaultPools: Schema.Array(Schema.String),
+  fallbackPool: Schema.String,
+  name: Schema.String,
+  adaptiveRouting: Schema.optional(
+    Schema.Struct({
+      failoverAcrossPools: Schema.optional(Schema.Boolean),
+    }).pipe(
+      Schema.encodeKeys({ failoverAcrossPools: "failover_across_pools" }),
+    ),
+  ),
+  countryPools: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  description: Schema.optional(Schema.String),
+  locationStrategy: Schema.optional(
+    Schema.Struct({
+      mode: Schema.optional(
+        Schema.Union([Schema.Literals(["pop", "resolver_ip"]), Schema.String]),
       ),
-    ),
-    countryPools: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    description: Schema.optional(Schema.String),
-    locationStrategy: Schema.optional(
-      Schema.Struct({
-        mode: Schema.optional(
-          Schema.Union([
-            Schema.Literals(["pop", "resolver_ip"]),
-            Schema.String,
-          ]),
-        ),
-        preferEcs: Schema.optional(
-          Schema.Union([
-            Schema.Literals(["always", "never", "proximity", "geo"]),
-            Schema.String,
-          ]),
-        ),
-      }).pipe(Schema.encodeKeys({ mode: "mode", preferEcs: "prefer_ecs" })),
-    ),
-    networks: Schema.optional(Schema.Array(Schema.String)),
-    popPools: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    proxied: Schema.optional(Schema.Boolean),
-    randomSteering: Schema.optional(
-      Schema.Struct({
-        defaultWeight: Schema.optional(Schema.Number),
-        poolWeights: Schema.optional(
-          Schema.Record(Schema.String, Schema.Unknown),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          defaultWeight: "default_weight",
-          poolWeights: "pool_weights",
-        }),
-      ),
-    ),
-    regionPools: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    rules: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          condition: Schema.optional(Schema.String),
-          disabled: Schema.optional(Schema.Boolean),
-          fixedResponse: Schema.optional(
-            Schema.Struct({
-              contentType: Schema.optional(Schema.String),
-              location: Schema.optional(Schema.String),
-              messageBody: Schema.optional(Schema.String),
-              statusCode: Schema.optional(Schema.Number),
-            }).pipe(
-              Schema.encodeKeys({
-                contentType: "content_type",
-                location: "location",
-                messageBody: "message_body",
-                statusCode: "status_code",
-              }),
-            ),
-          ),
-          name: Schema.optional(Schema.String),
-          overrides: Schema.optional(
-            Schema.Struct({
-              adaptiveRouting: Schema.optional(
-                Schema.Struct({
-                  failoverAcrossPools: Schema.optional(Schema.Boolean),
-                }).pipe(
-                  Schema.encodeKeys({
-                    failoverAcrossPools: "failover_across_pools",
-                  }),
-                ),
-              ),
-              countryPools: Schema.optional(
-                Schema.Record(Schema.String, Schema.Unknown),
-              ),
-              defaultPools: Schema.optional(Schema.Array(Schema.String)),
-              fallbackPool: Schema.optional(Schema.String),
-              locationStrategy: Schema.optional(
-                Schema.Struct({
-                  mode: Schema.optional(
-                    Schema.Union([
-                      Schema.Literals(["pop", "resolver_ip"]),
-                      Schema.String,
-                    ]),
-                  ),
-                  preferEcs: Schema.optional(
-                    Schema.Union([
-                      Schema.Literals(["always", "never", "proximity", "geo"]),
-                      Schema.String,
-                    ]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({ mode: "mode", preferEcs: "prefer_ecs" }),
-                ),
-              ),
-              popPools: Schema.optional(
-                Schema.Record(Schema.String, Schema.Unknown),
-              ),
-              randomSteering: Schema.optional(
-                Schema.Struct({
-                  defaultWeight: Schema.optional(Schema.Number),
-                  poolWeights: Schema.optional(
-                    Schema.Record(Schema.String, Schema.Unknown),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    defaultWeight: "default_weight",
-                    poolWeights: "pool_weights",
-                  }),
-                ),
-              ),
-              regionPools: Schema.optional(
-                Schema.Record(Schema.String, Schema.Unknown),
-              ),
-              sessionAffinity: Schema.optional(
-                Schema.Union([
-                  Schema.Literals(["none", "cookie", "ip_cookie", "header"]),
-                  Schema.String,
-                ]),
-              ),
-              sessionAffinityAttributes: Schema.optional(
-                Schema.Struct({
-                  drainDuration: Schema.optional(Schema.Number),
-                  headers: Schema.optional(Schema.Array(Schema.String)),
-                  requireAllHeaders: Schema.optional(Schema.Boolean),
-                  samesite: Schema.optional(
-                    Schema.Union([
-                      Schema.Literals(["Auto", "Lax", "None", "Strict"]),
-                      Schema.String,
-                    ]),
-                  ),
-                  secure: Schema.optional(
-                    Schema.Union([
-                      Schema.Literals(["Auto", "Always", "Never"]),
-                      Schema.String,
-                    ]),
-                  ),
-                  zeroDowntimeFailover: Schema.optional(
-                    Schema.Union([
-                      Schema.Literals(["none", "temporary", "sticky"]),
-                      Schema.String,
-                    ]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    drainDuration: "drain_duration",
-                    headers: "headers",
-                    requireAllHeaders: "require_all_headers",
-                    samesite: "samesite",
-                    secure: "secure",
-                    zeroDowntimeFailover: "zero_downtime_failover",
-                  }),
-                ),
-              ),
-              sessionAffinityTtl: Schema.optional(Schema.Number),
-              steeringPolicy: Schema.optional(
-                Schema.Union([
-                  Schema.Literals([
-                    "off",
-                    "geo",
-                    "random",
-                    "dynamic_latency",
-                    "proximity",
-                    "least_outstanding_requests",
-                    "least_connections",
-                    "",
-                  ]),
-                  Schema.String,
-                ]),
-              ),
-              ttl: Schema.optional(Schema.Number),
-            }).pipe(
-              Schema.encodeKeys({
-                adaptiveRouting: "adaptive_routing",
-                countryPools: "country_pools",
-                defaultPools: "default_pools",
-                fallbackPool: "fallback_pool",
-                locationStrategy: "location_strategy",
-                popPools: "pop_pools",
-                randomSteering: "random_steering",
-                regionPools: "region_pools",
-                sessionAffinity: "session_affinity",
-                sessionAffinityAttributes: "session_affinity_attributes",
-                sessionAffinityTtl: "session_affinity_ttl",
-                steeringPolicy: "steering_policy",
-                ttl: "ttl",
-              }),
-            ),
-          ),
-          priority: Schema.optional(Schema.Number),
-          terminates: Schema.optional(Schema.Boolean),
-        }).pipe(
-          Schema.encodeKeys({
-            condition: "condition",
-            disabled: "disabled",
-            fixedResponse: "fixed_response",
-            name: "name",
-            overrides: "overrides",
-            priority: "priority",
-            terminates: "terminates",
-          }),
-        ),
-      ),
-    ),
-    sessionAffinity: Schema.optional(
-      Schema.Union([
-        Schema.Literals(["none", "cookie", "ip_cookie", "header"]),
-        Schema.String,
-      ]),
-    ),
-    sessionAffinityAttributes: Schema.optional(
-      Schema.Struct({
-        drainDuration: Schema.optional(Schema.Number),
-        headers: Schema.optional(Schema.Array(Schema.String)),
-        requireAllHeaders: Schema.optional(Schema.Boolean),
-        samesite: Schema.optional(
-          Schema.Union([
-            Schema.Literals(["Auto", "Lax", "None", "Strict"]),
-            Schema.String,
-          ]),
-        ),
-        secure: Schema.optional(
-          Schema.Union([
-            Schema.Literals(["Auto", "Always", "Never"]),
-            Schema.String,
-          ]),
-        ),
-        zeroDowntimeFailover: Schema.optional(
-          Schema.Union([
-            Schema.Literals(["none", "temporary", "sticky"]),
-            Schema.String,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          drainDuration: "drain_duration",
-          headers: "headers",
-          requireAllHeaders: "require_all_headers",
-          samesite: "samesite",
-          secure: "secure",
-          zeroDowntimeFailover: "zero_downtime_failover",
-        }),
-      ),
-    ),
-    sessionAffinityTtl: Schema.optional(Schema.Number),
-    steeringPolicy: Schema.optional(
-      Schema.Union([
-        Schema.Literals([
-          "off",
-          "geo",
-          "random",
-          "dynamic_latency",
-          "proximity",
-          "least_outstanding_requests",
-          "least_connections",
-          "",
+      preferEcs: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["always", "never", "proximity", "geo"]),
+          Schema.String,
         ]),
-        Schema.String,
-      ]),
+      ),
+    }).pipe(Schema.encodeKeys({ mode: "mode", preferEcs: "prefer_ecs" })),
+  ),
+  networks: Schema.optional(Schema.Array(Schema.String)),
+  popPools: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  proxied: Schema.optional(Schema.Boolean),
+  randomSteering: Schema.optional(
+    Schema.Struct({
+      defaultWeight: Schema.optional(Schema.Number),
+      poolWeights: Schema.optional(
+        Schema.Record(Schema.String, Schema.Unknown),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        defaultWeight: "default_weight",
+        poolWeights: "pool_weights",
+      }),
     ),
-    ttl: Schema.optional(Schema.Number),
-  }).pipe(
-    Schema.encodeKeys({
-      defaultPools: "default_pools",
-      fallbackPool: "fallback_pool",
-      name: "name",
-      adaptiveRouting: "adaptive_routing",
-      countryPools: "country_pools",
-      description: "description",
-      locationStrategy: "location_strategy",
-      networks: "networks",
-      popPools: "pop_pools",
-      proxied: "proxied",
-      randomSteering: "random_steering",
-      regionPools: "region_pools",
-      rules: "rules",
-      sessionAffinity: "session_affinity",
-      sessionAffinityAttributes: "session_affinity_attributes",
-      sessionAffinityTtl: "session_affinity_ttl",
-      steeringPolicy: "steering_policy",
-      ttl: "ttl",
-    }),
-    T.Http({ method: "POST", path: "/zones/{zone_id}/load_balancers" }),
-  ) as unknown as Schema.Schema<CreateLoadBalancerRequest>;
+  ),
+  regionPools: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  rules: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        condition: Schema.optional(Schema.String),
+        disabled: Schema.optional(Schema.Boolean),
+        fixedResponse: Schema.optional(
+          Schema.Struct({
+            contentType: Schema.optional(Schema.String),
+            location: Schema.optional(Schema.String),
+            messageBody: Schema.optional(Schema.String),
+            statusCode: Schema.optional(Schema.Number),
+          }).pipe(
+            Schema.encodeKeys({
+              contentType: "content_type",
+              location: "location",
+              messageBody: "message_body",
+              statusCode: "status_code",
+            }),
+          ),
+        ),
+        name: Schema.optional(Schema.String),
+        overrides: Schema.optional(
+          Schema.Struct({
+            adaptiveRouting: Schema.optional(
+              Schema.Struct({
+                failoverAcrossPools: Schema.optional(Schema.Boolean),
+              }).pipe(
+                Schema.encodeKeys({
+                  failoverAcrossPools: "failover_across_pools",
+                }),
+              ),
+            ),
+            countryPools: Schema.optional(
+              Schema.Record(Schema.String, Schema.Unknown),
+            ),
+            defaultPools: Schema.optional(Schema.Array(Schema.String)),
+            fallbackPool: Schema.optional(Schema.String),
+            locationStrategy: Schema.optional(
+              Schema.Struct({
+                mode: Schema.optional(
+                  Schema.Union([
+                    Schema.Literals(["pop", "resolver_ip"]),
+                    Schema.String,
+                  ]),
+                ),
+                preferEcs: Schema.optional(
+                  Schema.Union([
+                    Schema.Literals(["always", "never", "proximity", "geo"]),
+                    Schema.String,
+                  ]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({ mode: "mode", preferEcs: "prefer_ecs" }),
+              ),
+            ),
+            popPools: Schema.optional(
+              Schema.Record(Schema.String, Schema.Unknown),
+            ),
+            randomSteering: Schema.optional(
+              Schema.Struct({
+                defaultWeight: Schema.optional(Schema.Number),
+                poolWeights: Schema.optional(
+                  Schema.Record(Schema.String, Schema.Unknown),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  defaultWeight: "default_weight",
+                  poolWeights: "pool_weights",
+                }),
+              ),
+            ),
+            regionPools: Schema.optional(
+              Schema.Record(Schema.String, Schema.Unknown),
+            ),
+            sessionAffinity: Schema.optional(
+              Schema.Union([
+                Schema.Literals(["none", "cookie", "ip_cookie", "header"]),
+                Schema.String,
+              ]),
+            ),
+            sessionAffinityAttributes: Schema.optional(
+              Schema.Struct({
+                drainDuration: Schema.optional(Schema.Number),
+                headers: Schema.optional(Schema.Array(Schema.String)),
+                requireAllHeaders: Schema.optional(Schema.Boolean),
+                samesite: Schema.optional(
+                  Schema.Union([
+                    Schema.Literals(["Auto", "Lax", "None", "Strict"]),
+                    Schema.String,
+                  ]),
+                ),
+                secure: Schema.optional(
+                  Schema.Union([
+                    Schema.Literals(["Auto", "Always", "Never"]),
+                    Schema.String,
+                  ]),
+                ),
+                zeroDowntimeFailover: Schema.optional(
+                  Schema.Union([
+                    Schema.Literals(["none", "temporary", "sticky"]),
+                    Schema.String,
+                  ]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  drainDuration: "drain_duration",
+                  headers: "headers",
+                  requireAllHeaders: "require_all_headers",
+                  samesite: "samesite",
+                  secure: "secure",
+                  zeroDowntimeFailover: "zero_downtime_failover",
+                }),
+              ),
+            ),
+            sessionAffinityTtl: Schema.optional(Schema.Number),
+            steeringPolicy: Schema.optional(
+              Schema.Union([
+                Schema.Literals([
+                  "off",
+                  "geo",
+                  "random",
+                  "dynamic_latency",
+                  "proximity",
+                  "least_outstanding_requests",
+                  "least_connections",
+                  "",
+                ]),
+                Schema.String,
+              ]),
+            ),
+            ttl: Schema.optional(Schema.Number),
+          }).pipe(
+            Schema.encodeKeys({
+              adaptiveRouting: "adaptive_routing",
+              countryPools: "country_pools",
+              defaultPools: "default_pools",
+              fallbackPool: "fallback_pool",
+              locationStrategy: "location_strategy",
+              popPools: "pop_pools",
+              randomSteering: "random_steering",
+              regionPools: "region_pools",
+              sessionAffinity: "session_affinity",
+              sessionAffinityAttributes: "session_affinity_attributes",
+              sessionAffinityTtl: "session_affinity_ttl",
+              steeringPolicy: "steering_policy",
+              ttl: "ttl",
+            }),
+          ),
+        ),
+        priority: Schema.optional(Schema.Number),
+        terminates: Schema.optional(Schema.Boolean),
+      }).pipe(
+        Schema.encodeKeys({
+          condition: "condition",
+          disabled: "disabled",
+          fixedResponse: "fixed_response",
+          name: "name",
+          overrides: "overrides",
+          priority: "priority",
+          terminates: "terminates",
+        }),
+      ),
+    ),
+  ),
+  sessionAffinity: Schema.optional(
+    Schema.Union([
+      Schema.Literals(["none", "cookie", "ip_cookie", "header"]),
+      Schema.String,
+    ]),
+  ),
+  sessionAffinityAttributes: Schema.optional(
+    Schema.Struct({
+      drainDuration: Schema.optional(Schema.Number),
+      headers: Schema.optional(Schema.Array(Schema.String)),
+      requireAllHeaders: Schema.optional(Schema.Boolean),
+      samesite: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["Auto", "Lax", "None", "Strict"]),
+          Schema.String,
+        ]),
+      ),
+      secure: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["Auto", "Always", "Never"]),
+          Schema.String,
+        ]),
+      ),
+      zeroDowntimeFailover: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["none", "temporary", "sticky"]),
+          Schema.String,
+        ]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        drainDuration: "drain_duration",
+        headers: "headers",
+        requireAllHeaders: "require_all_headers",
+        samesite: "samesite",
+        secure: "secure",
+        zeroDowntimeFailover: "zero_downtime_failover",
+      }),
+    ),
+  ),
+  sessionAffinityTtl: Schema.optional(Schema.Number),
+  steeringPolicy: Schema.optional(
+    Schema.Union([
+      Schema.Literals([
+        "off",
+        "geo",
+        "random",
+        "dynamic_latency",
+        "proximity",
+        "least_outstanding_requests",
+        "least_connections",
+        "",
+      ]),
+      Schema.String,
+    ]),
+  ),
+  ttl: Schema.optional(Schema.Number),
+}).pipe(
+  Schema.encodeKeys({
+    defaultPools: "default_pools",
+    fallbackPool: "fallback_pool",
+    name: "name",
+    adaptiveRouting: "adaptive_routing",
+    countryPools: "country_pools",
+    description: "description",
+    locationStrategy: "location_strategy",
+    networks: "networks",
+    popPools: "pop_pools",
+    proxied: "proxied",
+    randomSteering: "random_steering",
+    regionPools: "region_pools",
+    rules: "rules",
+    sessionAffinity: "session_affinity",
+    sessionAffinityAttributes: "session_affinity_attributes",
+    sessionAffinityTtl: "session_affinity_ttl",
+    steeringPolicy: "steering_policy",
+    ttl: "ttl",
+  }),
+  T.Http({ method: "POST", path: "/zones/{zone_id}/load_balancers" }),
+) as unknown as Schema.Schema<CreateLoadBalancerRequest>;
 
 export interface CreateLoadBalancerResponse {
   id?: string | null;
@@ -1906,477 +1876,469 @@ export interface CreateLoadBalancerResponse {
   zoneName?: string | null;
 }
 
-export const CreateLoadBalancerResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    adaptiveRouting: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          failoverAcrossPools: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({ failoverAcrossPools: "failover_across_pools" }),
+export const CreateLoadBalancerResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  adaptiveRouting: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        failoverAcrossPools: Schema.optional(
+          Schema.Union([Schema.Boolean, Schema.Null]),
         ),
-        Schema.Null,
-      ]),
-    ),
-    countryPools: Schema.optional(
-      Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
-    ),
-    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    defaultPools: Schema.optional(
-      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-    ),
-    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    fallbackPool: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    locationStrategy: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          mode: Schema.optional(
+      }).pipe(
+        Schema.encodeKeys({ failoverAcrossPools: "failover_across_pools" }),
+      ),
+      Schema.Null,
+    ]),
+  ),
+  countryPools: Schema.optional(
+    Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
+  ),
+  createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  defaultPools: Schema.optional(
+    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+  ),
+  description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  fallbackPool: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  locationStrategy: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        mode: Schema.optional(
+          Schema.Union([
             Schema.Union([
-              Schema.Union([
-                Schema.Literals(["pop", "resolver_ip"]),
-                Schema.String,
-              ]),
-              Schema.Null,
+              Schema.Literals(["pop", "resolver_ip"]),
+              Schema.String,
             ]),
-          ),
-          preferEcs: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals(["always", "never", "proximity", "geo"]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(Schema.encodeKeys({ mode: "mode", preferEcs: "prefer_ecs" })),
-        Schema.Null,
-      ]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    networks: Schema.optional(
-      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-    ),
-    popPools: Schema.optional(
-      Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
-    ),
-    proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    randomSteering: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          defaultWeight: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
-          poolWeights: Schema.optional(
-            Schema.Union([
-              Schema.Record(Schema.String, Schema.Unknown),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            defaultWeight: "default_weight",
-            poolWeights: "pool_weights",
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
-    regionPools: Schema.optional(
-      Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
-    ),
-    rules: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            condition: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            disabled: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            fixedResponse: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  contentType: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  location: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  messageBody: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  statusCode: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    contentType: "content_type",
-                    location: "location",
-                    messageBody: "message_body",
-                    statusCode: "status_code",
-                  }),
-                ),
-                Schema.Null,
-              ]),
-            ),
-            name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            overrides: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  adaptiveRouting: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        failoverAcrossPools: Schema.optional(
-                          Schema.Union([Schema.Boolean, Schema.Null]),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          failoverAcrossPools: "failover_across_pools",
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                  countryPools: Schema.optional(
-                    Schema.Union([
-                      Schema.Record(Schema.String, Schema.Unknown),
-                      Schema.Null,
-                    ]),
-                  ),
-                  defaultPools: Schema.optional(
-                    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                  ),
-                  fallbackPool: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  locationStrategy: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        mode: Schema.optional(
-                          Schema.Union([
-                            Schema.Union([
-                              Schema.Literals(["pop", "resolver_ip"]),
-                              Schema.String,
-                            ]),
-                            Schema.Null,
-                          ]),
-                        ),
-                        preferEcs: Schema.optional(
-                          Schema.Union([
-                            Schema.Union([
-                              Schema.Literals([
-                                "always",
-                                "never",
-                                "proximity",
-                                "geo",
-                              ]),
-                              Schema.String,
-                            ]),
-                            Schema.Null,
-                          ]),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          mode: "mode",
-                          preferEcs: "prefer_ecs",
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                  popPools: Schema.optional(
-                    Schema.Union([
-                      Schema.Record(Schema.String, Schema.Unknown),
-                      Schema.Null,
-                    ]),
-                  ),
-                  randomSteering: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        defaultWeight: Schema.optional(
-                          Schema.Union([Schema.Number, Schema.Null]),
-                        ),
-                        poolWeights: Schema.optional(
-                          Schema.Union([
-                            Schema.Record(Schema.String, Schema.Unknown),
-                            Schema.Null,
-                          ]),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          defaultWeight: "default_weight",
-                          poolWeights: "pool_weights",
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                  regionPools: Schema.optional(
-                    Schema.Union([
-                      Schema.Record(Schema.String, Schema.Unknown),
-                      Schema.Null,
-                    ]),
-                  ),
-                  sessionAffinity: Schema.optional(
-                    Schema.Union([
-                      Schema.Union([
-                        Schema.Literals([
-                          "none",
-                          "cookie",
-                          "ip_cookie",
-                          "header",
-                        ]),
-                        Schema.String,
-                      ]),
-                      Schema.Null,
-                    ]),
-                  ),
-                  sessionAffinityAttributes: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        drainDuration: Schema.optional(
-                          Schema.Union([Schema.Number, Schema.Null]),
-                        ),
-                        headers: Schema.optional(
-                          Schema.Union([
-                            Schema.Array(Schema.String),
-                            Schema.Null,
-                          ]),
-                        ),
-                        requireAllHeaders: Schema.optional(
-                          Schema.Union([Schema.Boolean, Schema.Null]),
-                        ),
-                        samesite: Schema.optional(
-                          Schema.Union([
-                            Schema.Union([
-                              Schema.Literals([
-                                "Auto",
-                                "Lax",
-                                "None",
-                                "Strict",
-                              ]),
-                              Schema.String,
-                            ]),
-                            Schema.Null,
-                          ]),
-                        ),
-                        secure: Schema.optional(
-                          Schema.Union([
-                            Schema.Union([
-                              Schema.Literals(["Auto", "Always", "Never"]),
-                              Schema.String,
-                            ]),
-                            Schema.Null,
-                          ]),
-                        ),
-                        zeroDowntimeFailover: Schema.optional(
-                          Schema.Union([
-                            Schema.Union([
-                              Schema.Literals(["none", "temporary", "sticky"]),
-                              Schema.String,
-                            ]),
-                            Schema.Null,
-                          ]),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          drainDuration: "drain_duration",
-                          headers: "headers",
-                          requireAllHeaders: "require_all_headers",
-                          samesite: "samesite",
-                          secure: "secure",
-                          zeroDowntimeFailover: "zero_downtime_failover",
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                  sessionAffinityTtl: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                  steeringPolicy: Schema.optional(
-                    Schema.Union([
-                      Schema.Union([
-                        Schema.Literals([
-                          "off",
-                          "geo",
-                          "random",
-                          "dynamic_latency",
-                          "proximity",
-                          "least_outstanding_requests",
-                          "least_connections",
-                          "",
-                        ]),
-                        Schema.String,
-                      ]),
-                      Schema.Null,
-                    ]),
-                  ),
-                  ttl: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    adaptiveRouting: "adaptive_routing",
-                    countryPools: "country_pools",
-                    defaultPools: "default_pools",
-                    fallbackPool: "fallback_pool",
-                    locationStrategy: "location_strategy",
-                    popPools: "pop_pools",
-                    randomSteering: "random_steering",
-                    regionPools: "region_pools",
-                    sessionAffinity: "session_affinity",
-                    sessionAffinityAttributes: "session_affinity_attributes",
-                    sessionAffinityTtl: "session_affinity_ttl",
-                    steeringPolicy: "steering_policy",
-                    ttl: "ttl",
-                  }),
-                ),
-                Schema.Null,
-              ]),
-            ),
-            priority: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            terminates: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              condition: "condition",
-              disabled: "disabled",
-              fixedResponse: "fixed_response",
-              name: "name",
-              overrides: "overrides",
-              priority: "priority",
-              terminates: "terminates",
-            }),
-          ),
-        ),
-        Schema.Null,
-      ]),
-    ),
-    sessionAffinity: Schema.optional(
-      Schema.Union([
-        Schema.Union([
-          Schema.Literals(["none", "cookie", "ip_cookie", "header"]),
-          Schema.String,
-        ]),
-        Schema.Null,
-      ]),
-    ),
-    sessionAffinityAttributes: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          drainDuration: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
-          headers: Schema.optional(
-            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-          ),
-          requireAllHeaders: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          samesite: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals(["Auto", "Lax", "None", "Strict"]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
-          secure: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals(["Auto", "Always", "Never"]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
-          zeroDowntimeFailover: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals(["none", "temporary", "sticky"]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            drainDuration: "drain_duration",
-            headers: "headers",
-            requireAllHeaders: "require_all_headers",
-            samesite: "samesite",
-            secure: "secure",
-            zeroDowntimeFailover: "zero_downtime_failover",
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
-    sessionAffinityTtl: Schema.optional(
-      Schema.Union([Schema.Number, Schema.Null]),
-    ),
-    steeringPolicy: Schema.optional(
-      Schema.Union([
-        Schema.Union([
-          Schema.Literals([
-            "off",
-            "geo",
-            "random",
-            "dynamic_latency",
-            "proximity",
-            "least_outstanding_requests",
-            "least_connections",
-            "",
+            Schema.Null,
           ]),
-          Schema.String,
-        ]),
-        Schema.Null,
+        ),
+        preferEcs: Schema.optional(
+          Schema.Union([
+            Schema.Union([
+              Schema.Literals(["always", "never", "proximity", "geo"]),
+              Schema.String,
+            ]),
+            Schema.Null,
+          ]),
+        ),
+      }).pipe(Schema.encodeKeys({ mode: "mode", preferEcs: "prefer_ecs" })),
+      Schema.Null,
+    ]),
+  ),
+  modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  networks: Schema.optional(
+    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+  ),
+  popPools: Schema.optional(
+    Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
+  ),
+  proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  randomSteering: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        defaultWeight: Schema.optional(
+          Schema.Union([Schema.Number, Schema.Null]),
+        ),
+        poolWeights: Schema.optional(
+          Schema.Union([
+            Schema.Record(Schema.String, Schema.Unknown),
+            Schema.Null,
+          ]),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          defaultWeight: "default_weight",
+          poolWeights: "pool_weights",
+        }),
+      ),
+      Schema.Null,
+    ]),
+  ),
+  regionPools: Schema.optional(
+    Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
+  ),
+  rules: Schema.optional(
+    Schema.Union([
+      Schema.Array(
+        Schema.Struct({
+          condition: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          disabled: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+          fixedResponse: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                contentType: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                location: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                messageBody: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                statusCode: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  contentType: "content_type",
+                  location: "location",
+                  messageBody: "message_body",
+                  statusCode: "status_code",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          overrides: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                adaptiveRouting: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      failoverAcrossPools: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        failoverAcrossPools: "failover_across_pools",
+                      }),
+                    ),
+                    Schema.Null,
+                  ]),
+                ),
+                countryPools: Schema.optional(
+                  Schema.Union([
+                    Schema.Record(Schema.String, Schema.Unknown),
+                    Schema.Null,
+                  ]),
+                ),
+                defaultPools: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
+                fallbackPool: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                locationStrategy: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      mode: Schema.optional(
+                        Schema.Union([
+                          Schema.Union([
+                            Schema.Literals(["pop", "resolver_ip"]),
+                            Schema.String,
+                          ]),
+                          Schema.Null,
+                        ]),
+                      ),
+                      preferEcs: Schema.optional(
+                        Schema.Union([
+                          Schema.Union([
+                            Schema.Literals([
+                              "always",
+                              "never",
+                              "proximity",
+                              "geo",
+                            ]),
+                            Schema.String,
+                          ]),
+                          Schema.Null,
+                        ]),
+                      ),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        mode: "mode",
+                        preferEcs: "prefer_ecs",
+                      }),
+                    ),
+                    Schema.Null,
+                  ]),
+                ),
+                popPools: Schema.optional(
+                  Schema.Union([
+                    Schema.Record(Schema.String, Schema.Unknown),
+                    Schema.Null,
+                  ]),
+                ),
+                randomSteering: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      defaultWeight: Schema.optional(
+                        Schema.Union([Schema.Number, Schema.Null]),
+                      ),
+                      poolWeights: Schema.optional(
+                        Schema.Union([
+                          Schema.Record(Schema.String, Schema.Unknown),
+                          Schema.Null,
+                        ]),
+                      ),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        defaultWeight: "default_weight",
+                        poolWeights: "pool_weights",
+                      }),
+                    ),
+                    Schema.Null,
+                  ]),
+                ),
+                regionPools: Schema.optional(
+                  Schema.Union([
+                    Schema.Record(Schema.String, Schema.Unknown),
+                    Schema.Null,
+                  ]),
+                ),
+                sessionAffinity: Schema.optional(
+                  Schema.Union([
+                    Schema.Union([
+                      Schema.Literals([
+                        "none",
+                        "cookie",
+                        "ip_cookie",
+                        "header",
+                      ]),
+                      Schema.String,
+                    ]),
+                    Schema.Null,
+                  ]),
+                ),
+                sessionAffinityAttributes: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      drainDuration: Schema.optional(
+                        Schema.Union([Schema.Number, Schema.Null]),
+                      ),
+                      headers: Schema.optional(
+                        Schema.Union([
+                          Schema.Array(Schema.String),
+                          Schema.Null,
+                        ]),
+                      ),
+                      requireAllHeaders: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                      samesite: Schema.optional(
+                        Schema.Union([
+                          Schema.Union([
+                            Schema.Literals(["Auto", "Lax", "None", "Strict"]),
+                            Schema.String,
+                          ]),
+                          Schema.Null,
+                        ]),
+                      ),
+                      secure: Schema.optional(
+                        Schema.Union([
+                          Schema.Union([
+                            Schema.Literals(["Auto", "Always", "Never"]),
+                            Schema.String,
+                          ]),
+                          Schema.Null,
+                        ]),
+                      ),
+                      zeroDowntimeFailover: Schema.optional(
+                        Schema.Union([
+                          Schema.Union([
+                            Schema.Literals(["none", "temporary", "sticky"]),
+                            Schema.String,
+                          ]),
+                          Schema.Null,
+                        ]),
+                      ),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        drainDuration: "drain_duration",
+                        headers: "headers",
+                        requireAllHeaders: "require_all_headers",
+                        samesite: "samesite",
+                        secure: "secure",
+                        zeroDowntimeFailover: "zero_downtime_failover",
+                      }),
+                    ),
+                    Schema.Null,
+                  ]),
+                ),
+                sessionAffinityTtl: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                steeringPolicy: Schema.optional(
+                  Schema.Union([
+                    Schema.Union([
+                      Schema.Literals([
+                        "off",
+                        "geo",
+                        "random",
+                        "dynamic_latency",
+                        "proximity",
+                        "least_outstanding_requests",
+                        "least_connections",
+                        "",
+                      ]),
+                      Schema.String,
+                    ]),
+                    Schema.Null,
+                  ]),
+                ),
+                ttl: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  adaptiveRouting: "adaptive_routing",
+                  countryPools: "country_pools",
+                  defaultPools: "default_pools",
+                  fallbackPool: "fallback_pool",
+                  locationStrategy: "location_strategy",
+                  popPools: "pop_pools",
+                  randomSteering: "random_steering",
+                  regionPools: "region_pools",
+                  sessionAffinity: "session_affinity",
+                  sessionAffinityAttributes: "session_affinity_attributes",
+                  sessionAffinityTtl: "session_affinity_ttl",
+                  steeringPolicy: "steering_policy",
+                  ttl: "ttl",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+          priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          terminates: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            condition: "condition",
+            disabled: "disabled",
+            fixedResponse: "fixed_response",
+            name: "name",
+            overrides: "overrides",
+            priority: "priority",
+            terminates: "terminates",
+          }),
+        ),
+      ),
+      Schema.Null,
+    ]),
+  ),
+  sessionAffinity: Schema.optional(
+    Schema.Union([
+      Schema.Union([
+        Schema.Literals(["none", "cookie", "ip_cookie", "header"]),
+        Schema.String,
       ]),
-    ),
-    ttl: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    zoneName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        adaptiveRouting: "adaptive_routing",
-        countryPools: "country_pools",
-        createdOn: "created_on",
-        defaultPools: "default_pools",
-        description: "description",
-        enabled: "enabled",
-        fallbackPool: "fallback_pool",
-        locationStrategy: "location_strategy",
-        modifiedOn: "modified_on",
-        name: "name",
-        networks: "networks",
-        popPools: "pop_pools",
-        proxied: "proxied",
-        randomSteering: "random_steering",
-        regionPools: "region_pools",
-        rules: "rules",
-        sessionAffinity: "session_affinity",
-        sessionAffinityAttributes: "session_affinity_attributes",
-        sessionAffinityTtl: "session_affinity_ttl",
-        steeringPolicy: "steering_policy",
-        ttl: "ttl",
-        zoneName: "zone_name",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<CreateLoadBalancerResponse>;
+      Schema.Null,
+    ]),
+  ),
+  sessionAffinityAttributes: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        drainDuration: Schema.optional(
+          Schema.Union([Schema.Number, Schema.Null]),
+        ),
+        headers: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        requireAllHeaders: Schema.optional(
+          Schema.Union([Schema.Boolean, Schema.Null]),
+        ),
+        samesite: Schema.optional(
+          Schema.Union([
+            Schema.Union([
+              Schema.Literals(["Auto", "Lax", "None", "Strict"]),
+              Schema.String,
+            ]),
+            Schema.Null,
+          ]),
+        ),
+        secure: Schema.optional(
+          Schema.Union([
+            Schema.Union([
+              Schema.Literals(["Auto", "Always", "Never"]),
+              Schema.String,
+            ]),
+            Schema.Null,
+          ]),
+        ),
+        zeroDowntimeFailover: Schema.optional(
+          Schema.Union([
+            Schema.Union([
+              Schema.Literals(["none", "temporary", "sticky"]),
+              Schema.String,
+            ]),
+            Schema.Null,
+          ]),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          drainDuration: "drain_duration",
+          headers: "headers",
+          requireAllHeaders: "require_all_headers",
+          samesite: "samesite",
+          secure: "secure",
+          zeroDowntimeFailover: "zero_downtime_failover",
+        }),
+      ),
+      Schema.Null,
+    ]),
+  ),
+  sessionAffinityTtl: Schema.optional(
+    Schema.Union([Schema.Number, Schema.Null]),
+  ),
+  steeringPolicy: Schema.optional(
+    Schema.Union([
+      Schema.Union([
+        Schema.Literals([
+          "off",
+          "geo",
+          "random",
+          "dynamic_latency",
+          "proximity",
+          "least_outstanding_requests",
+          "least_connections",
+          "",
+        ]),
+        Schema.String,
+      ]),
+      Schema.Null,
+    ]),
+  ),
+  ttl: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  zoneName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      adaptiveRouting: "adaptive_routing",
+      countryPools: "country_pools",
+      createdOn: "created_on",
+      defaultPools: "default_pools",
+      description: "description",
+      enabled: "enabled",
+      fallbackPool: "fallback_pool",
+      locationStrategy: "location_strategy",
+      modifiedOn: "modified_on",
+      name: "name",
+      networks: "networks",
+      popPools: "pop_pools",
+      proxied: "proxied",
+      randomSteering: "random_steering",
+      regionPools: "region_pools",
+      rules: "rules",
+      sessionAffinity: "session_affinity",
+      sessionAffinityAttributes: "session_affinity_attributes",
+      sessionAffinityTtl: "session_affinity_ttl",
+      steeringPolicy: "steering_policy",
+      ttl: "ttl",
+      zoneName: "zone_name",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<CreateLoadBalancerResponse>;
 
 export type CreateLoadBalancerError = DefaultErrors;
 
@@ -2385,7 +2347,7 @@ export const createLoadBalancer: API.OperationMethod<
   CreateLoadBalancerResponse,
   CreateLoadBalancerError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLoadBalancerRequest,
   output: CreateLoadBalancerResponse,
   errors: [],
@@ -2511,304 +2473,300 @@ export interface UpdateLoadBalancerRequest {
   ttl?: number;
 }
 
-export const UpdateLoadBalancerRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    loadBalancerId: Schema.String.pipe(T.HttpPath("loadBalancerId")),
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    defaultPools: Schema.Array(Schema.String),
-    fallbackPool: Schema.String,
-    name: Schema.String,
-    adaptiveRouting: Schema.optional(
-      Schema.Struct({
-        failoverAcrossPools: Schema.optional(Schema.Boolean),
-      }).pipe(
-        Schema.encodeKeys({ failoverAcrossPools: "failover_across_pools" }),
+export const UpdateLoadBalancerRequest = /*@__PURE__*/ Schema.Struct({
+  loadBalancerId: Schema.String.pipe(T.HttpPath("loadBalancerId")),
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  defaultPools: Schema.Array(Schema.String),
+  fallbackPool: Schema.String,
+  name: Schema.String,
+  adaptiveRouting: Schema.optional(
+    Schema.Struct({
+      failoverAcrossPools: Schema.optional(Schema.Boolean),
+    }).pipe(
+      Schema.encodeKeys({ failoverAcrossPools: "failover_across_pools" }),
+    ),
+  ),
+  countryPools: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  description: Schema.optional(Schema.String),
+  enabled: Schema.optional(Schema.Boolean),
+  locationStrategy: Schema.optional(
+    Schema.Struct({
+      mode: Schema.optional(
+        Schema.Union([Schema.Literals(["pop", "resolver_ip"]), Schema.String]),
       ),
-    ),
-    countryPools: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    description: Schema.optional(Schema.String),
-    enabled: Schema.optional(Schema.Boolean),
-    locationStrategy: Schema.optional(
-      Schema.Struct({
-        mode: Schema.optional(
-          Schema.Union([
-            Schema.Literals(["pop", "resolver_ip"]),
-            Schema.String,
-          ]),
-        ),
-        preferEcs: Schema.optional(
-          Schema.Union([
-            Schema.Literals(["always", "never", "proximity", "geo"]),
-            Schema.String,
-          ]),
-        ),
-      }).pipe(Schema.encodeKeys({ mode: "mode", preferEcs: "prefer_ecs" })),
-    ),
-    networks: Schema.optional(Schema.Array(Schema.String)),
-    popPools: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    proxied: Schema.optional(Schema.Boolean),
-    randomSteering: Schema.optional(
-      Schema.Struct({
-        defaultWeight: Schema.optional(Schema.Number),
-        poolWeights: Schema.optional(
-          Schema.Record(Schema.String, Schema.Unknown),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          defaultWeight: "default_weight",
-          poolWeights: "pool_weights",
-        }),
-      ),
-    ),
-    regionPools: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    rules: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          condition: Schema.optional(Schema.String),
-          disabled: Schema.optional(Schema.Boolean),
-          fixedResponse: Schema.optional(
-            Schema.Struct({
-              contentType: Schema.optional(Schema.String),
-              location: Schema.optional(Schema.String),
-              messageBody: Schema.optional(Schema.String),
-              statusCode: Schema.optional(Schema.Number),
-            }).pipe(
-              Schema.encodeKeys({
-                contentType: "content_type",
-                location: "location",
-                messageBody: "message_body",
-                statusCode: "status_code",
-              }),
-            ),
-          ),
-          name: Schema.optional(Schema.String),
-          overrides: Schema.optional(
-            Schema.Struct({
-              adaptiveRouting: Schema.optional(
-                Schema.Struct({
-                  failoverAcrossPools: Schema.optional(Schema.Boolean),
-                }).pipe(
-                  Schema.encodeKeys({
-                    failoverAcrossPools: "failover_across_pools",
-                  }),
-                ),
-              ),
-              countryPools: Schema.optional(
-                Schema.Record(Schema.String, Schema.Unknown),
-              ),
-              defaultPools: Schema.optional(Schema.Array(Schema.String)),
-              fallbackPool: Schema.optional(Schema.String),
-              locationStrategy: Schema.optional(
-                Schema.Struct({
-                  mode: Schema.optional(
-                    Schema.Union([
-                      Schema.Literals(["pop", "resolver_ip"]),
-                      Schema.String,
-                    ]),
-                  ),
-                  preferEcs: Schema.optional(
-                    Schema.Union([
-                      Schema.Literals(["always", "never", "proximity", "geo"]),
-                      Schema.String,
-                    ]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({ mode: "mode", preferEcs: "prefer_ecs" }),
-                ),
-              ),
-              popPools: Schema.optional(
-                Schema.Record(Schema.String, Schema.Unknown),
-              ),
-              randomSteering: Schema.optional(
-                Schema.Struct({
-                  defaultWeight: Schema.optional(Schema.Number),
-                  poolWeights: Schema.optional(
-                    Schema.Record(Schema.String, Schema.Unknown),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    defaultWeight: "default_weight",
-                    poolWeights: "pool_weights",
-                  }),
-                ),
-              ),
-              regionPools: Schema.optional(
-                Schema.Record(Schema.String, Schema.Unknown),
-              ),
-              sessionAffinity: Schema.optional(
-                Schema.Union([
-                  Schema.Literals(["none", "cookie", "ip_cookie", "header"]),
-                  Schema.String,
-                ]),
-              ),
-              sessionAffinityAttributes: Schema.optional(
-                Schema.Struct({
-                  drainDuration: Schema.optional(Schema.Number),
-                  headers: Schema.optional(Schema.Array(Schema.String)),
-                  requireAllHeaders: Schema.optional(Schema.Boolean),
-                  samesite: Schema.optional(
-                    Schema.Union([
-                      Schema.Literals(["Auto", "Lax", "None", "Strict"]),
-                      Schema.String,
-                    ]),
-                  ),
-                  secure: Schema.optional(
-                    Schema.Union([
-                      Schema.Literals(["Auto", "Always", "Never"]),
-                      Schema.String,
-                    ]),
-                  ),
-                  zeroDowntimeFailover: Schema.optional(
-                    Schema.Union([
-                      Schema.Literals(["none", "temporary", "sticky"]),
-                      Schema.String,
-                    ]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    drainDuration: "drain_duration",
-                    headers: "headers",
-                    requireAllHeaders: "require_all_headers",
-                    samesite: "samesite",
-                    secure: "secure",
-                    zeroDowntimeFailover: "zero_downtime_failover",
-                  }),
-                ),
-              ),
-              sessionAffinityTtl: Schema.optional(Schema.Number),
-              steeringPolicy: Schema.optional(
-                Schema.Union([
-                  Schema.Literals([
-                    "off",
-                    "geo",
-                    "random",
-                    "dynamic_latency",
-                    "proximity",
-                    "least_outstanding_requests",
-                    "least_connections",
-                    "",
-                  ]),
-                  Schema.String,
-                ]),
-              ),
-              ttl: Schema.optional(Schema.Number),
-            }).pipe(
-              Schema.encodeKeys({
-                adaptiveRouting: "adaptive_routing",
-                countryPools: "country_pools",
-                defaultPools: "default_pools",
-                fallbackPool: "fallback_pool",
-                locationStrategy: "location_strategy",
-                popPools: "pop_pools",
-                randomSteering: "random_steering",
-                regionPools: "region_pools",
-                sessionAffinity: "session_affinity",
-                sessionAffinityAttributes: "session_affinity_attributes",
-                sessionAffinityTtl: "session_affinity_ttl",
-                steeringPolicy: "steering_policy",
-                ttl: "ttl",
-              }),
-            ),
-          ),
-          priority: Schema.optional(Schema.Number),
-          terminates: Schema.optional(Schema.Boolean),
-        }).pipe(
-          Schema.encodeKeys({
-            condition: "condition",
-            disabled: "disabled",
-            fixedResponse: "fixed_response",
-            name: "name",
-            overrides: "overrides",
-            priority: "priority",
-            terminates: "terminates",
-          }),
-        ),
-      ),
-    ),
-    sessionAffinity: Schema.optional(
-      Schema.Union([
-        Schema.Literals(["none", "cookie", "ip_cookie", "header"]),
-        Schema.String,
-      ]),
-    ),
-    sessionAffinityAttributes: Schema.optional(
-      Schema.Struct({
-        drainDuration: Schema.optional(Schema.Number),
-        headers: Schema.optional(Schema.Array(Schema.String)),
-        requireAllHeaders: Schema.optional(Schema.Boolean),
-        samesite: Schema.optional(
-          Schema.Union([
-            Schema.Literals(["Auto", "Lax", "None", "Strict"]),
-            Schema.String,
-          ]),
-        ),
-        secure: Schema.optional(
-          Schema.Union([
-            Schema.Literals(["Auto", "Always", "Never"]),
-            Schema.String,
-          ]),
-        ),
-        zeroDowntimeFailover: Schema.optional(
-          Schema.Union([
-            Schema.Literals(["none", "temporary", "sticky"]),
-            Schema.String,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          drainDuration: "drain_duration",
-          headers: "headers",
-          requireAllHeaders: "require_all_headers",
-          samesite: "samesite",
-          secure: "secure",
-          zeroDowntimeFailover: "zero_downtime_failover",
-        }),
-      ),
-    ),
-    sessionAffinityTtl: Schema.optional(Schema.Number),
-    steeringPolicy: Schema.optional(
-      Schema.Union([
-        Schema.Literals([
-          "off",
-          "geo",
-          "random",
-          "dynamic_latency",
-          "proximity",
-          "least_outstanding_requests",
-          "least_connections",
-          "",
+      preferEcs: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["always", "never", "proximity", "geo"]),
+          Schema.String,
         ]),
-        Schema.String,
-      ]),
+      ),
+    }).pipe(Schema.encodeKeys({ mode: "mode", preferEcs: "prefer_ecs" })),
+  ),
+  networks: Schema.optional(Schema.Array(Schema.String)),
+  popPools: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  proxied: Schema.optional(Schema.Boolean),
+  randomSteering: Schema.optional(
+    Schema.Struct({
+      defaultWeight: Schema.optional(Schema.Number),
+      poolWeights: Schema.optional(
+        Schema.Record(Schema.String, Schema.Unknown),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        defaultWeight: "default_weight",
+        poolWeights: "pool_weights",
+      }),
     ),
-    ttl: Schema.optional(Schema.Number),
-  }).pipe(
-    Schema.encodeKeys({
-      defaultPools: "default_pools",
-      fallbackPool: "fallback_pool",
-      name: "name",
-      adaptiveRouting: "adaptive_routing",
-      countryPools: "country_pools",
-      description: "description",
-      enabled: "enabled",
-      locationStrategy: "location_strategy",
-      networks: "networks",
-      popPools: "pop_pools",
-      proxied: "proxied",
-      randomSteering: "random_steering",
-      regionPools: "region_pools",
-      rules: "rules",
-      sessionAffinity: "session_affinity",
-      sessionAffinityAttributes: "session_affinity_attributes",
-      sessionAffinityTtl: "session_affinity_ttl",
-      steeringPolicy: "steering_policy",
-      ttl: "ttl",
-    }),
-    T.Http({
-      method: "PUT",
-      path: "/zones/{zone_id}/load_balancers/{loadBalancerId}",
-    }),
-  ) as unknown as Schema.Schema<UpdateLoadBalancerRequest>;
+  ),
+  regionPools: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  rules: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        condition: Schema.optional(Schema.String),
+        disabled: Schema.optional(Schema.Boolean),
+        fixedResponse: Schema.optional(
+          Schema.Struct({
+            contentType: Schema.optional(Schema.String),
+            location: Schema.optional(Schema.String),
+            messageBody: Schema.optional(Schema.String),
+            statusCode: Schema.optional(Schema.Number),
+          }).pipe(
+            Schema.encodeKeys({
+              contentType: "content_type",
+              location: "location",
+              messageBody: "message_body",
+              statusCode: "status_code",
+            }),
+          ),
+        ),
+        name: Schema.optional(Schema.String),
+        overrides: Schema.optional(
+          Schema.Struct({
+            adaptiveRouting: Schema.optional(
+              Schema.Struct({
+                failoverAcrossPools: Schema.optional(Schema.Boolean),
+              }).pipe(
+                Schema.encodeKeys({
+                  failoverAcrossPools: "failover_across_pools",
+                }),
+              ),
+            ),
+            countryPools: Schema.optional(
+              Schema.Record(Schema.String, Schema.Unknown),
+            ),
+            defaultPools: Schema.optional(Schema.Array(Schema.String)),
+            fallbackPool: Schema.optional(Schema.String),
+            locationStrategy: Schema.optional(
+              Schema.Struct({
+                mode: Schema.optional(
+                  Schema.Union([
+                    Schema.Literals(["pop", "resolver_ip"]),
+                    Schema.String,
+                  ]),
+                ),
+                preferEcs: Schema.optional(
+                  Schema.Union([
+                    Schema.Literals(["always", "never", "proximity", "geo"]),
+                    Schema.String,
+                  ]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({ mode: "mode", preferEcs: "prefer_ecs" }),
+              ),
+            ),
+            popPools: Schema.optional(
+              Schema.Record(Schema.String, Schema.Unknown),
+            ),
+            randomSteering: Schema.optional(
+              Schema.Struct({
+                defaultWeight: Schema.optional(Schema.Number),
+                poolWeights: Schema.optional(
+                  Schema.Record(Schema.String, Schema.Unknown),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  defaultWeight: "default_weight",
+                  poolWeights: "pool_weights",
+                }),
+              ),
+            ),
+            regionPools: Schema.optional(
+              Schema.Record(Schema.String, Schema.Unknown),
+            ),
+            sessionAffinity: Schema.optional(
+              Schema.Union([
+                Schema.Literals(["none", "cookie", "ip_cookie", "header"]),
+                Schema.String,
+              ]),
+            ),
+            sessionAffinityAttributes: Schema.optional(
+              Schema.Struct({
+                drainDuration: Schema.optional(Schema.Number),
+                headers: Schema.optional(Schema.Array(Schema.String)),
+                requireAllHeaders: Schema.optional(Schema.Boolean),
+                samesite: Schema.optional(
+                  Schema.Union([
+                    Schema.Literals(["Auto", "Lax", "None", "Strict"]),
+                    Schema.String,
+                  ]),
+                ),
+                secure: Schema.optional(
+                  Schema.Union([
+                    Schema.Literals(["Auto", "Always", "Never"]),
+                    Schema.String,
+                  ]),
+                ),
+                zeroDowntimeFailover: Schema.optional(
+                  Schema.Union([
+                    Schema.Literals(["none", "temporary", "sticky"]),
+                    Schema.String,
+                  ]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  drainDuration: "drain_duration",
+                  headers: "headers",
+                  requireAllHeaders: "require_all_headers",
+                  samesite: "samesite",
+                  secure: "secure",
+                  zeroDowntimeFailover: "zero_downtime_failover",
+                }),
+              ),
+            ),
+            sessionAffinityTtl: Schema.optional(Schema.Number),
+            steeringPolicy: Schema.optional(
+              Schema.Union([
+                Schema.Literals([
+                  "off",
+                  "geo",
+                  "random",
+                  "dynamic_latency",
+                  "proximity",
+                  "least_outstanding_requests",
+                  "least_connections",
+                  "",
+                ]),
+                Schema.String,
+              ]),
+            ),
+            ttl: Schema.optional(Schema.Number),
+          }).pipe(
+            Schema.encodeKeys({
+              adaptiveRouting: "adaptive_routing",
+              countryPools: "country_pools",
+              defaultPools: "default_pools",
+              fallbackPool: "fallback_pool",
+              locationStrategy: "location_strategy",
+              popPools: "pop_pools",
+              randomSteering: "random_steering",
+              regionPools: "region_pools",
+              sessionAffinity: "session_affinity",
+              sessionAffinityAttributes: "session_affinity_attributes",
+              sessionAffinityTtl: "session_affinity_ttl",
+              steeringPolicy: "steering_policy",
+              ttl: "ttl",
+            }),
+          ),
+        ),
+        priority: Schema.optional(Schema.Number),
+        terminates: Schema.optional(Schema.Boolean),
+      }).pipe(
+        Schema.encodeKeys({
+          condition: "condition",
+          disabled: "disabled",
+          fixedResponse: "fixed_response",
+          name: "name",
+          overrides: "overrides",
+          priority: "priority",
+          terminates: "terminates",
+        }),
+      ),
+    ),
+  ),
+  sessionAffinity: Schema.optional(
+    Schema.Union([
+      Schema.Literals(["none", "cookie", "ip_cookie", "header"]),
+      Schema.String,
+    ]),
+  ),
+  sessionAffinityAttributes: Schema.optional(
+    Schema.Struct({
+      drainDuration: Schema.optional(Schema.Number),
+      headers: Schema.optional(Schema.Array(Schema.String)),
+      requireAllHeaders: Schema.optional(Schema.Boolean),
+      samesite: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["Auto", "Lax", "None", "Strict"]),
+          Schema.String,
+        ]),
+      ),
+      secure: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["Auto", "Always", "Never"]),
+          Schema.String,
+        ]),
+      ),
+      zeroDowntimeFailover: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["none", "temporary", "sticky"]),
+          Schema.String,
+        ]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        drainDuration: "drain_duration",
+        headers: "headers",
+        requireAllHeaders: "require_all_headers",
+        samesite: "samesite",
+        secure: "secure",
+        zeroDowntimeFailover: "zero_downtime_failover",
+      }),
+    ),
+  ),
+  sessionAffinityTtl: Schema.optional(Schema.Number),
+  steeringPolicy: Schema.optional(
+    Schema.Union([
+      Schema.Literals([
+        "off",
+        "geo",
+        "random",
+        "dynamic_latency",
+        "proximity",
+        "least_outstanding_requests",
+        "least_connections",
+        "",
+      ]),
+      Schema.String,
+    ]),
+  ),
+  ttl: Schema.optional(Schema.Number),
+}).pipe(
+  Schema.encodeKeys({
+    defaultPools: "default_pools",
+    fallbackPool: "fallback_pool",
+    name: "name",
+    adaptiveRouting: "adaptive_routing",
+    countryPools: "country_pools",
+    description: "description",
+    enabled: "enabled",
+    locationStrategy: "location_strategy",
+    networks: "networks",
+    popPools: "pop_pools",
+    proxied: "proxied",
+    randomSteering: "random_steering",
+    regionPools: "region_pools",
+    rules: "rules",
+    sessionAffinity: "session_affinity",
+    sessionAffinityAttributes: "session_affinity_attributes",
+    sessionAffinityTtl: "session_affinity_ttl",
+    steeringPolicy: "steering_policy",
+    ttl: "ttl",
+  }),
+  T.Http({
+    method: "PUT",
+    path: "/zones/{zone_id}/load_balancers/{loadBalancerId}",
+  }),
+) as unknown as Schema.Schema<UpdateLoadBalancerRequest>;
 
 export interface UpdateLoadBalancerResponse {
   id?: string | null;
@@ -2964,477 +2922,469 @@ export interface UpdateLoadBalancerResponse {
   zoneName?: string | null;
 }
 
-export const UpdateLoadBalancerResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    adaptiveRouting: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          failoverAcrossPools: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({ failoverAcrossPools: "failover_across_pools" }),
+export const UpdateLoadBalancerResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  adaptiveRouting: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        failoverAcrossPools: Schema.optional(
+          Schema.Union([Schema.Boolean, Schema.Null]),
         ),
-        Schema.Null,
-      ]),
-    ),
-    countryPools: Schema.optional(
-      Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
-    ),
-    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    defaultPools: Schema.optional(
-      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-    ),
-    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    fallbackPool: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    locationStrategy: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          mode: Schema.optional(
+      }).pipe(
+        Schema.encodeKeys({ failoverAcrossPools: "failover_across_pools" }),
+      ),
+      Schema.Null,
+    ]),
+  ),
+  countryPools: Schema.optional(
+    Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
+  ),
+  createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  defaultPools: Schema.optional(
+    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+  ),
+  description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  fallbackPool: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  locationStrategy: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        mode: Schema.optional(
+          Schema.Union([
             Schema.Union([
-              Schema.Union([
-                Schema.Literals(["pop", "resolver_ip"]),
-                Schema.String,
-              ]),
-              Schema.Null,
+              Schema.Literals(["pop", "resolver_ip"]),
+              Schema.String,
             ]),
-          ),
-          preferEcs: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals(["always", "never", "proximity", "geo"]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(Schema.encodeKeys({ mode: "mode", preferEcs: "prefer_ecs" })),
-        Schema.Null,
-      ]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    networks: Schema.optional(
-      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-    ),
-    popPools: Schema.optional(
-      Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
-    ),
-    proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    randomSteering: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          defaultWeight: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
-          poolWeights: Schema.optional(
-            Schema.Union([
-              Schema.Record(Schema.String, Schema.Unknown),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            defaultWeight: "default_weight",
-            poolWeights: "pool_weights",
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
-    regionPools: Schema.optional(
-      Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
-    ),
-    rules: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            condition: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            disabled: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            fixedResponse: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  contentType: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  location: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  messageBody: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  statusCode: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    contentType: "content_type",
-                    location: "location",
-                    messageBody: "message_body",
-                    statusCode: "status_code",
-                  }),
-                ),
-                Schema.Null,
-              ]),
-            ),
-            name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            overrides: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  adaptiveRouting: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        failoverAcrossPools: Schema.optional(
-                          Schema.Union([Schema.Boolean, Schema.Null]),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          failoverAcrossPools: "failover_across_pools",
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                  countryPools: Schema.optional(
-                    Schema.Union([
-                      Schema.Record(Schema.String, Schema.Unknown),
-                      Schema.Null,
-                    ]),
-                  ),
-                  defaultPools: Schema.optional(
-                    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                  ),
-                  fallbackPool: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  locationStrategy: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        mode: Schema.optional(
-                          Schema.Union([
-                            Schema.Union([
-                              Schema.Literals(["pop", "resolver_ip"]),
-                              Schema.String,
-                            ]),
-                            Schema.Null,
-                          ]),
-                        ),
-                        preferEcs: Schema.optional(
-                          Schema.Union([
-                            Schema.Union([
-                              Schema.Literals([
-                                "always",
-                                "never",
-                                "proximity",
-                                "geo",
-                              ]),
-                              Schema.String,
-                            ]),
-                            Schema.Null,
-                          ]),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          mode: "mode",
-                          preferEcs: "prefer_ecs",
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                  popPools: Schema.optional(
-                    Schema.Union([
-                      Schema.Record(Schema.String, Schema.Unknown),
-                      Schema.Null,
-                    ]),
-                  ),
-                  randomSteering: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        defaultWeight: Schema.optional(
-                          Schema.Union([Schema.Number, Schema.Null]),
-                        ),
-                        poolWeights: Schema.optional(
-                          Schema.Union([
-                            Schema.Record(Schema.String, Schema.Unknown),
-                            Schema.Null,
-                          ]),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          defaultWeight: "default_weight",
-                          poolWeights: "pool_weights",
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                  regionPools: Schema.optional(
-                    Schema.Union([
-                      Schema.Record(Schema.String, Schema.Unknown),
-                      Schema.Null,
-                    ]),
-                  ),
-                  sessionAffinity: Schema.optional(
-                    Schema.Union([
-                      Schema.Union([
-                        Schema.Literals([
-                          "none",
-                          "cookie",
-                          "ip_cookie",
-                          "header",
-                        ]),
-                        Schema.String,
-                      ]),
-                      Schema.Null,
-                    ]),
-                  ),
-                  sessionAffinityAttributes: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        drainDuration: Schema.optional(
-                          Schema.Union([Schema.Number, Schema.Null]),
-                        ),
-                        headers: Schema.optional(
-                          Schema.Union([
-                            Schema.Array(Schema.String),
-                            Schema.Null,
-                          ]),
-                        ),
-                        requireAllHeaders: Schema.optional(
-                          Schema.Union([Schema.Boolean, Schema.Null]),
-                        ),
-                        samesite: Schema.optional(
-                          Schema.Union([
-                            Schema.Union([
-                              Schema.Literals([
-                                "Auto",
-                                "Lax",
-                                "None",
-                                "Strict",
-                              ]),
-                              Schema.String,
-                            ]),
-                            Schema.Null,
-                          ]),
-                        ),
-                        secure: Schema.optional(
-                          Schema.Union([
-                            Schema.Union([
-                              Schema.Literals(["Auto", "Always", "Never"]),
-                              Schema.String,
-                            ]),
-                            Schema.Null,
-                          ]),
-                        ),
-                        zeroDowntimeFailover: Schema.optional(
-                          Schema.Union([
-                            Schema.Union([
-                              Schema.Literals(["none", "temporary", "sticky"]),
-                              Schema.String,
-                            ]),
-                            Schema.Null,
-                          ]),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          drainDuration: "drain_duration",
-                          headers: "headers",
-                          requireAllHeaders: "require_all_headers",
-                          samesite: "samesite",
-                          secure: "secure",
-                          zeroDowntimeFailover: "zero_downtime_failover",
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                  sessionAffinityTtl: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                  steeringPolicy: Schema.optional(
-                    Schema.Union([
-                      Schema.Union([
-                        Schema.Literals([
-                          "off",
-                          "geo",
-                          "random",
-                          "dynamic_latency",
-                          "proximity",
-                          "least_outstanding_requests",
-                          "least_connections",
-                          "",
-                        ]),
-                        Schema.String,
-                      ]),
-                      Schema.Null,
-                    ]),
-                  ),
-                  ttl: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    adaptiveRouting: "adaptive_routing",
-                    countryPools: "country_pools",
-                    defaultPools: "default_pools",
-                    fallbackPool: "fallback_pool",
-                    locationStrategy: "location_strategy",
-                    popPools: "pop_pools",
-                    randomSteering: "random_steering",
-                    regionPools: "region_pools",
-                    sessionAffinity: "session_affinity",
-                    sessionAffinityAttributes: "session_affinity_attributes",
-                    sessionAffinityTtl: "session_affinity_ttl",
-                    steeringPolicy: "steering_policy",
-                    ttl: "ttl",
-                  }),
-                ),
-                Schema.Null,
-              ]),
-            ),
-            priority: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            terminates: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              condition: "condition",
-              disabled: "disabled",
-              fixedResponse: "fixed_response",
-              name: "name",
-              overrides: "overrides",
-              priority: "priority",
-              terminates: "terminates",
-            }),
-          ),
-        ),
-        Schema.Null,
-      ]),
-    ),
-    sessionAffinity: Schema.optional(
-      Schema.Union([
-        Schema.Union([
-          Schema.Literals(["none", "cookie", "ip_cookie", "header"]),
-          Schema.String,
-        ]),
-        Schema.Null,
-      ]),
-    ),
-    sessionAffinityAttributes: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          drainDuration: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
-          headers: Schema.optional(
-            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-          ),
-          requireAllHeaders: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          samesite: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals(["Auto", "Lax", "None", "Strict"]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
-          secure: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals(["Auto", "Always", "Never"]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
-          zeroDowntimeFailover: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals(["none", "temporary", "sticky"]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            drainDuration: "drain_duration",
-            headers: "headers",
-            requireAllHeaders: "require_all_headers",
-            samesite: "samesite",
-            secure: "secure",
-            zeroDowntimeFailover: "zero_downtime_failover",
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
-    sessionAffinityTtl: Schema.optional(
-      Schema.Union([Schema.Number, Schema.Null]),
-    ),
-    steeringPolicy: Schema.optional(
-      Schema.Union([
-        Schema.Union([
-          Schema.Literals([
-            "off",
-            "geo",
-            "random",
-            "dynamic_latency",
-            "proximity",
-            "least_outstanding_requests",
-            "least_connections",
-            "",
+            Schema.Null,
           ]),
-          Schema.String,
-        ]),
-        Schema.Null,
+        ),
+        preferEcs: Schema.optional(
+          Schema.Union([
+            Schema.Union([
+              Schema.Literals(["always", "never", "proximity", "geo"]),
+              Schema.String,
+            ]),
+            Schema.Null,
+          ]),
+        ),
+      }).pipe(Schema.encodeKeys({ mode: "mode", preferEcs: "prefer_ecs" })),
+      Schema.Null,
+    ]),
+  ),
+  modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  networks: Schema.optional(
+    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+  ),
+  popPools: Schema.optional(
+    Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
+  ),
+  proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  randomSteering: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        defaultWeight: Schema.optional(
+          Schema.Union([Schema.Number, Schema.Null]),
+        ),
+        poolWeights: Schema.optional(
+          Schema.Union([
+            Schema.Record(Schema.String, Schema.Unknown),
+            Schema.Null,
+          ]),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          defaultWeight: "default_weight",
+          poolWeights: "pool_weights",
+        }),
+      ),
+      Schema.Null,
+    ]),
+  ),
+  regionPools: Schema.optional(
+    Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
+  ),
+  rules: Schema.optional(
+    Schema.Union([
+      Schema.Array(
+        Schema.Struct({
+          condition: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          disabled: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+          fixedResponse: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                contentType: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                location: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                messageBody: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                statusCode: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  contentType: "content_type",
+                  location: "location",
+                  messageBody: "message_body",
+                  statusCode: "status_code",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          overrides: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                adaptiveRouting: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      failoverAcrossPools: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        failoverAcrossPools: "failover_across_pools",
+                      }),
+                    ),
+                    Schema.Null,
+                  ]),
+                ),
+                countryPools: Schema.optional(
+                  Schema.Union([
+                    Schema.Record(Schema.String, Schema.Unknown),
+                    Schema.Null,
+                  ]),
+                ),
+                defaultPools: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
+                fallbackPool: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                locationStrategy: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      mode: Schema.optional(
+                        Schema.Union([
+                          Schema.Union([
+                            Schema.Literals(["pop", "resolver_ip"]),
+                            Schema.String,
+                          ]),
+                          Schema.Null,
+                        ]),
+                      ),
+                      preferEcs: Schema.optional(
+                        Schema.Union([
+                          Schema.Union([
+                            Schema.Literals([
+                              "always",
+                              "never",
+                              "proximity",
+                              "geo",
+                            ]),
+                            Schema.String,
+                          ]),
+                          Schema.Null,
+                        ]),
+                      ),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        mode: "mode",
+                        preferEcs: "prefer_ecs",
+                      }),
+                    ),
+                    Schema.Null,
+                  ]),
+                ),
+                popPools: Schema.optional(
+                  Schema.Union([
+                    Schema.Record(Schema.String, Schema.Unknown),
+                    Schema.Null,
+                  ]),
+                ),
+                randomSteering: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      defaultWeight: Schema.optional(
+                        Schema.Union([Schema.Number, Schema.Null]),
+                      ),
+                      poolWeights: Schema.optional(
+                        Schema.Union([
+                          Schema.Record(Schema.String, Schema.Unknown),
+                          Schema.Null,
+                        ]),
+                      ),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        defaultWeight: "default_weight",
+                        poolWeights: "pool_weights",
+                      }),
+                    ),
+                    Schema.Null,
+                  ]),
+                ),
+                regionPools: Schema.optional(
+                  Schema.Union([
+                    Schema.Record(Schema.String, Schema.Unknown),
+                    Schema.Null,
+                  ]),
+                ),
+                sessionAffinity: Schema.optional(
+                  Schema.Union([
+                    Schema.Union([
+                      Schema.Literals([
+                        "none",
+                        "cookie",
+                        "ip_cookie",
+                        "header",
+                      ]),
+                      Schema.String,
+                    ]),
+                    Schema.Null,
+                  ]),
+                ),
+                sessionAffinityAttributes: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      drainDuration: Schema.optional(
+                        Schema.Union([Schema.Number, Schema.Null]),
+                      ),
+                      headers: Schema.optional(
+                        Schema.Union([
+                          Schema.Array(Schema.String),
+                          Schema.Null,
+                        ]),
+                      ),
+                      requireAllHeaders: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                      samesite: Schema.optional(
+                        Schema.Union([
+                          Schema.Union([
+                            Schema.Literals(["Auto", "Lax", "None", "Strict"]),
+                            Schema.String,
+                          ]),
+                          Schema.Null,
+                        ]),
+                      ),
+                      secure: Schema.optional(
+                        Schema.Union([
+                          Schema.Union([
+                            Schema.Literals(["Auto", "Always", "Never"]),
+                            Schema.String,
+                          ]),
+                          Schema.Null,
+                        ]),
+                      ),
+                      zeroDowntimeFailover: Schema.optional(
+                        Schema.Union([
+                          Schema.Union([
+                            Schema.Literals(["none", "temporary", "sticky"]),
+                            Schema.String,
+                          ]),
+                          Schema.Null,
+                        ]),
+                      ),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        drainDuration: "drain_duration",
+                        headers: "headers",
+                        requireAllHeaders: "require_all_headers",
+                        samesite: "samesite",
+                        secure: "secure",
+                        zeroDowntimeFailover: "zero_downtime_failover",
+                      }),
+                    ),
+                    Schema.Null,
+                  ]),
+                ),
+                sessionAffinityTtl: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                steeringPolicy: Schema.optional(
+                  Schema.Union([
+                    Schema.Union([
+                      Schema.Literals([
+                        "off",
+                        "geo",
+                        "random",
+                        "dynamic_latency",
+                        "proximity",
+                        "least_outstanding_requests",
+                        "least_connections",
+                        "",
+                      ]),
+                      Schema.String,
+                    ]),
+                    Schema.Null,
+                  ]),
+                ),
+                ttl: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  adaptiveRouting: "adaptive_routing",
+                  countryPools: "country_pools",
+                  defaultPools: "default_pools",
+                  fallbackPool: "fallback_pool",
+                  locationStrategy: "location_strategy",
+                  popPools: "pop_pools",
+                  randomSteering: "random_steering",
+                  regionPools: "region_pools",
+                  sessionAffinity: "session_affinity",
+                  sessionAffinityAttributes: "session_affinity_attributes",
+                  sessionAffinityTtl: "session_affinity_ttl",
+                  steeringPolicy: "steering_policy",
+                  ttl: "ttl",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+          priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          terminates: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            condition: "condition",
+            disabled: "disabled",
+            fixedResponse: "fixed_response",
+            name: "name",
+            overrides: "overrides",
+            priority: "priority",
+            terminates: "terminates",
+          }),
+        ),
+      ),
+      Schema.Null,
+    ]),
+  ),
+  sessionAffinity: Schema.optional(
+    Schema.Union([
+      Schema.Union([
+        Schema.Literals(["none", "cookie", "ip_cookie", "header"]),
+        Schema.String,
       ]),
-    ),
-    ttl: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    zoneName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        adaptiveRouting: "adaptive_routing",
-        countryPools: "country_pools",
-        createdOn: "created_on",
-        defaultPools: "default_pools",
-        description: "description",
-        enabled: "enabled",
-        fallbackPool: "fallback_pool",
-        locationStrategy: "location_strategy",
-        modifiedOn: "modified_on",
-        name: "name",
-        networks: "networks",
-        popPools: "pop_pools",
-        proxied: "proxied",
-        randomSteering: "random_steering",
-        regionPools: "region_pools",
-        rules: "rules",
-        sessionAffinity: "session_affinity",
-        sessionAffinityAttributes: "session_affinity_attributes",
-        sessionAffinityTtl: "session_affinity_ttl",
-        steeringPolicy: "steering_policy",
-        ttl: "ttl",
-        zoneName: "zone_name",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<UpdateLoadBalancerResponse>;
+      Schema.Null,
+    ]),
+  ),
+  sessionAffinityAttributes: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        drainDuration: Schema.optional(
+          Schema.Union([Schema.Number, Schema.Null]),
+        ),
+        headers: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        requireAllHeaders: Schema.optional(
+          Schema.Union([Schema.Boolean, Schema.Null]),
+        ),
+        samesite: Schema.optional(
+          Schema.Union([
+            Schema.Union([
+              Schema.Literals(["Auto", "Lax", "None", "Strict"]),
+              Schema.String,
+            ]),
+            Schema.Null,
+          ]),
+        ),
+        secure: Schema.optional(
+          Schema.Union([
+            Schema.Union([
+              Schema.Literals(["Auto", "Always", "Never"]),
+              Schema.String,
+            ]),
+            Schema.Null,
+          ]),
+        ),
+        zeroDowntimeFailover: Schema.optional(
+          Schema.Union([
+            Schema.Union([
+              Schema.Literals(["none", "temporary", "sticky"]),
+              Schema.String,
+            ]),
+            Schema.Null,
+          ]),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          drainDuration: "drain_duration",
+          headers: "headers",
+          requireAllHeaders: "require_all_headers",
+          samesite: "samesite",
+          secure: "secure",
+          zeroDowntimeFailover: "zero_downtime_failover",
+        }),
+      ),
+      Schema.Null,
+    ]),
+  ),
+  sessionAffinityTtl: Schema.optional(
+    Schema.Union([Schema.Number, Schema.Null]),
+  ),
+  steeringPolicy: Schema.optional(
+    Schema.Union([
+      Schema.Union([
+        Schema.Literals([
+          "off",
+          "geo",
+          "random",
+          "dynamic_latency",
+          "proximity",
+          "least_outstanding_requests",
+          "least_connections",
+          "",
+        ]),
+        Schema.String,
+      ]),
+      Schema.Null,
+    ]),
+  ),
+  ttl: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  zoneName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      adaptiveRouting: "adaptive_routing",
+      countryPools: "country_pools",
+      createdOn: "created_on",
+      defaultPools: "default_pools",
+      description: "description",
+      enabled: "enabled",
+      fallbackPool: "fallback_pool",
+      locationStrategy: "location_strategy",
+      modifiedOn: "modified_on",
+      name: "name",
+      networks: "networks",
+      popPools: "pop_pools",
+      proxied: "proxied",
+      randomSteering: "random_steering",
+      regionPools: "region_pools",
+      rules: "rules",
+      sessionAffinity: "session_affinity",
+      sessionAffinityAttributes: "session_affinity_attributes",
+      sessionAffinityTtl: "session_affinity_ttl",
+      steeringPolicy: "steering_policy",
+      ttl: "ttl",
+      zoneName: "zone_name",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<UpdateLoadBalancerResponse>;
 
 export type UpdateLoadBalancerError = DefaultErrors;
 
@@ -3443,7 +3393,7 @@ export const updateLoadBalancer: API.OperationMethod<
   UpdateLoadBalancerResponse,
   UpdateLoadBalancerError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateLoadBalancerRequest,
   output: UpdateLoadBalancerResponse,
   errors: [],
@@ -3567,302 +3517,298 @@ export interface PatchLoadBalancerRequest {
   ttl?: number;
 }
 
-export const PatchLoadBalancerRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    loadBalancerId: Schema.String.pipe(T.HttpPath("loadBalancerId")),
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    adaptiveRouting: Schema.optional(
-      Schema.Struct({
-        failoverAcrossPools: Schema.optional(Schema.Boolean),
-      }).pipe(
-        Schema.encodeKeys({ failoverAcrossPools: "failover_across_pools" }),
+export const PatchLoadBalancerRequest = /*@__PURE__*/ Schema.Struct({
+  loadBalancerId: Schema.String.pipe(T.HttpPath("loadBalancerId")),
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  adaptiveRouting: Schema.optional(
+    Schema.Struct({
+      failoverAcrossPools: Schema.optional(Schema.Boolean),
+    }).pipe(
+      Schema.encodeKeys({ failoverAcrossPools: "failover_across_pools" }),
+    ),
+  ),
+  countryPools: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  defaultPools: Schema.optional(Schema.Array(Schema.String)),
+  description: Schema.optional(Schema.String),
+  enabled: Schema.optional(Schema.Boolean),
+  fallbackPool: Schema.optional(Schema.String),
+  locationStrategy: Schema.optional(
+    Schema.Struct({
+      mode: Schema.optional(
+        Schema.Union([Schema.Literals(["pop", "resolver_ip"]), Schema.String]),
       ),
-    ),
-    countryPools: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    defaultPools: Schema.optional(Schema.Array(Schema.String)),
-    description: Schema.optional(Schema.String),
-    enabled: Schema.optional(Schema.Boolean),
-    fallbackPool: Schema.optional(Schema.String),
-    locationStrategy: Schema.optional(
-      Schema.Struct({
-        mode: Schema.optional(
-          Schema.Union([
-            Schema.Literals(["pop", "resolver_ip"]),
-            Schema.String,
-          ]),
-        ),
-        preferEcs: Schema.optional(
-          Schema.Union([
-            Schema.Literals(["always", "never", "proximity", "geo"]),
-            Schema.String,
-          ]),
-        ),
-      }).pipe(Schema.encodeKeys({ mode: "mode", preferEcs: "prefer_ecs" })),
-    ),
-    name: Schema.optional(Schema.String),
-    popPools: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    proxied: Schema.optional(Schema.Boolean),
-    randomSteering: Schema.optional(
-      Schema.Struct({
-        defaultWeight: Schema.optional(Schema.Number),
-        poolWeights: Schema.optional(
-          Schema.Record(Schema.String, Schema.Unknown),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          defaultWeight: "default_weight",
-          poolWeights: "pool_weights",
-        }),
-      ),
-    ),
-    regionPools: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    rules: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          condition: Schema.optional(Schema.String),
-          disabled: Schema.optional(Schema.Boolean),
-          fixedResponse: Schema.optional(
-            Schema.Struct({
-              contentType: Schema.optional(Schema.String),
-              location: Schema.optional(Schema.String),
-              messageBody: Schema.optional(Schema.String),
-              statusCode: Schema.optional(Schema.Number),
-            }).pipe(
-              Schema.encodeKeys({
-                contentType: "content_type",
-                location: "location",
-                messageBody: "message_body",
-                statusCode: "status_code",
-              }),
-            ),
-          ),
-          name: Schema.optional(Schema.String),
-          overrides: Schema.optional(
-            Schema.Struct({
-              adaptiveRouting: Schema.optional(
-                Schema.Struct({
-                  failoverAcrossPools: Schema.optional(Schema.Boolean),
-                }).pipe(
-                  Schema.encodeKeys({
-                    failoverAcrossPools: "failover_across_pools",
-                  }),
-                ),
-              ),
-              countryPools: Schema.optional(
-                Schema.Record(Schema.String, Schema.Unknown),
-              ),
-              defaultPools: Schema.optional(Schema.Array(Schema.String)),
-              fallbackPool: Schema.optional(Schema.String),
-              locationStrategy: Schema.optional(
-                Schema.Struct({
-                  mode: Schema.optional(
-                    Schema.Union([
-                      Schema.Literals(["pop", "resolver_ip"]),
-                      Schema.String,
-                    ]),
-                  ),
-                  preferEcs: Schema.optional(
-                    Schema.Union([
-                      Schema.Literals(["always", "never", "proximity", "geo"]),
-                      Schema.String,
-                    ]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({ mode: "mode", preferEcs: "prefer_ecs" }),
-                ),
-              ),
-              popPools: Schema.optional(
-                Schema.Record(Schema.String, Schema.Unknown),
-              ),
-              randomSteering: Schema.optional(
-                Schema.Struct({
-                  defaultWeight: Schema.optional(Schema.Number),
-                  poolWeights: Schema.optional(
-                    Schema.Record(Schema.String, Schema.Unknown),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    defaultWeight: "default_weight",
-                    poolWeights: "pool_weights",
-                  }),
-                ),
-              ),
-              regionPools: Schema.optional(
-                Schema.Record(Schema.String, Schema.Unknown),
-              ),
-              sessionAffinity: Schema.optional(
-                Schema.Union([
-                  Schema.Literals(["none", "cookie", "ip_cookie", "header"]),
-                  Schema.String,
-                ]),
-              ),
-              sessionAffinityAttributes: Schema.optional(
-                Schema.Struct({
-                  drainDuration: Schema.optional(Schema.Number),
-                  headers: Schema.optional(Schema.Array(Schema.String)),
-                  requireAllHeaders: Schema.optional(Schema.Boolean),
-                  samesite: Schema.optional(
-                    Schema.Union([
-                      Schema.Literals(["Auto", "Lax", "None", "Strict"]),
-                      Schema.String,
-                    ]),
-                  ),
-                  secure: Schema.optional(
-                    Schema.Union([
-                      Schema.Literals(["Auto", "Always", "Never"]),
-                      Schema.String,
-                    ]),
-                  ),
-                  zeroDowntimeFailover: Schema.optional(
-                    Schema.Union([
-                      Schema.Literals(["none", "temporary", "sticky"]),
-                      Schema.String,
-                    ]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    drainDuration: "drain_duration",
-                    headers: "headers",
-                    requireAllHeaders: "require_all_headers",
-                    samesite: "samesite",
-                    secure: "secure",
-                    zeroDowntimeFailover: "zero_downtime_failover",
-                  }),
-                ),
-              ),
-              sessionAffinityTtl: Schema.optional(Schema.Number),
-              steeringPolicy: Schema.optional(
-                Schema.Union([
-                  Schema.Literals([
-                    "off",
-                    "geo",
-                    "random",
-                    "dynamic_latency",
-                    "proximity",
-                    "least_outstanding_requests",
-                    "least_connections",
-                    "",
-                  ]),
-                  Schema.String,
-                ]),
-              ),
-              ttl: Schema.optional(Schema.Number),
-            }).pipe(
-              Schema.encodeKeys({
-                adaptiveRouting: "adaptive_routing",
-                countryPools: "country_pools",
-                defaultPools: "default_pools",
-                fallbackPool: "fallback_pool",
-                locationStrategy: "location_strategy",
-                popPools: "pop_pools",
-                randomSteering: "random_steering",
-                regionPools: "region_pools",
-                sessionAffinity: "session_affinity",
-                sessionAffinityAttributes: "session_affinity_attributes",
-                sessionAffinityTtl: "session_affinity_ttl",
-                steeringPolicy: "steering_policy",
-                ttl: "ttl",
-              }),
-            ),
-          ),
-          priority: Schema.optional(Schema.Number),
-          terminates: Schema.optional(Schema.Boolean),
-        }).pipe(
-          Schema.encodeKeys({
-            condition: "condition",
-            disabled: "disabled",
-            fixedResponse: "fixed_response",
-            name: "name",
-            overrides: "overrides",
-            priority: "priority",
-            terminates: "terminates",
-          }),
-        ),
-      ),
-    ),
-    sessionAffinity: Schema.optional(
-      Schema.Union([
-        Schema.Literals(["none", "cookie", "ip_cookie", "header"]),
-        Schema.String,
-      ]),
-    ),
-    sessionAffinityAttributes: Schema.optional(
-      Schema.Struct({
-        drainDuration: Schema.optional(Schema.Number),
-        headers: Schema.optional(Schema.Array(Schema.String)),
-        requireAllHeaders: Schema.optional(Schema.Boolean),
-        samesite: Schema.optional(
-          Schema.Union([
-            Schema.Literals(["Auto", "Lax", "None", "Strict"]),
-            Schema.String,
-          ]),
-        ),
-        secure: Schema.optional(
-          Schema.Union([
-            Schema.Literals(["Auto", "Always", "Never"]),
-            Schema.String,
-          ]),
-        ),
-        zeroDowntimeFailover: Schema.optional(
-          Schema.Union([
-            Schema.Literals(["none", "temporary", "sticky"]),
-            Schema.String,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          drainDuration: "drain_duration",
-          headers: "headers",
-          requireAllHeaders: "require_all_headers",
-          samesite: "samesite",
-          secure: "secure",
-          zeroDowntimeFailover: "zero_downtime_failover",
-        }),
-      ),
-    ),
-    sessionAffinityTtl: Schema.optional(Schema.Number),
-    steeringPolicy: Schema.optional(
-      Schema.Union([
-        Schema.Literals([
-          "off",
-          "geo",
-          "random",
-          "dynamic_latency",
-          "proximity",
-          "least_outstanding_requests",
-          "least_connections",
-          "",
+      preferEcs: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["always", "never", "proximity", "geo"]),
+          Schema.String,
         ]),
-        Schema.String,
-      ]),
+      ),
+    }).pipe(Schema.encodeKeys({ mode: "mode", preferEcs: "prefer_ecs" })),
+  ),
+  name: Schema.optional(Schema.String),
+  popPools: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  proxied: Schema.optional(Schema.Boolean),
+  randomSteering: Schema.optional(
+    Schema.Struct({
+      defaultWeight: Schema.optional(Schema.Number),
+      poolWeights: Schema.optional(
+        Schema.Record(Schema.String, Schema.Unknown),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        defaultWeight: "default_weight",
+        poolWeights: "pool_weights",
+      }),
     ),
-    ttl: Schema.optional(Schema.Number),
-  }).pipe(
-    Schema.encodeKeys({
-      adaptiveRouting: "adaptive_routing",
-      countryPools: "country_pools",
-      defaultPools: "default_pools",
-      description: "description",
-      enabled: "enabled",
-      fallbackPool: "fallback_pool",
-      locationStrategy: "location_strategy",
-      name: "name",
-      popPools: "pop_pools",
-      proxied: "proxied",
-      randomSteering: "random_steering",
-      regionPools: "region_pools",
-      rules: "rules",
-      sessionAffinity: "session_affinity",
-      sessionAffinityAttributes: "session_affinity_attributes",
-      sessionAffinityTtl: "session_affinity_ttl",
-      steeringPolicy: "steering_policy",
-      ttl: "ttl",
-    }),
-    T.Http({
-      method: "PATCH",
-      path: "/zones/{zone_id}/load_balancers/{loadBalancerId}",
-    }),
-  ) as unknown as Schema.Schema<PatchLoadBalancerRequest>;
+  ),
+  regionPools: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  rules: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        condition: Schema.optional(Schema.String),
+        disabled: Schema.optional(Schema.Boolean),
+        fixedResponse: Schema.optional(
+          Schema.Struct({
+            contentType: Schema.optional(Schema.String),
+            location: Schema.optional(Schema.String),
+            messageBody: Schema.optional(Schema.String),
+            statusCode: Schema.optional(Schema.Number),
+          }).pipe(
+            Schema.encodeKeys({
+              contentType: "content_type",
+              location: "location",
+              messageBody: "message_body",
+              statusCode: "status_code",
+            }),
+          ),
+        ),
+        name: Schema.optional(Schema.String),
+        overrides: Schema.optional(
+          Schema.Struct({
+            adaptiveRouting: Schema.optional(
+              Schema.Struct({
+                failoverAcrossPools: Schema.optional(Schema.Boolean),
+              }).pipe(
+                Schema.encodeKeys({
+                  failoverAcrossPools: "failover_across_pools",
+                }),
+              ),
+            ),
+            countryPools: Schema.optional(
+              Schema.Record(Schema.String, Schema.Unknown),
+            ),
+            defaultPools: Schema.optional(Schema.Array(Schema.String)),
+            fallbackPool: Schema.optional(Schema.String),
+            locationStrategy: Schema.optional(
+              Schema.Struct({
+                mode: Schema.optional(
+                  Schema.Union([
+                    Schema.Literals(["pop", "resolver_ip"]),
+                    Schema.String,
+                  ]),
+                ),
+                preferEcs: Schema.optional(
+                  Schema.Union([
+                    Schema.Literals(["always", "never", "proximity", "geo"]),
+                    Schema.String,
+                  ]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({ mode: "mode", preferEcs: "prefer_ecs" }),
+              ),
+            ),
+            popPools: Schema.optional(
+              Schema.Record(Schema.String, Schema.Unknown),
+            ),
+            randomSteering: Schema.optional(
+              Schema.Struct({
+                defaultWeight: Schema.optional(Schema.Number),
+                poolWeights: Schema.optional(
+                  Schema.Record(Schema.String, Schema.Unknown),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  defaultWeight: "default_weight",
+                  poolWeights: "pool_weights",
+                }),
+              ),
+            ),
+            regionPools: Schema.optional(
+              Schema.Record(Schema.String, Schema.Unknown),
+            ),
+            sessionAffinity: Schema.optional(
+              Schema.Union([
+                Schema.Literals(["none", "cookie", "ip_cookie", "header"]),
+                Schema.String,
+              ]),
+            ),
+            sessionAffinityAttributes: Schema.optional(
+              Schema.Struct({
+                drainDuration: Schema.optional(Schema.Number),
+                headers: Schema.optional(Schema.Array(Schema.String)),
+                requireAllHeaders: Schema.optional(Schema.Boolean),
+                samesite: Schema.optional(
+                  Schema.Union([
+                    Schema.Literals(["Auto", "Lax", "None", "Strict"]),
+                    Schema.String,
+                  ]),
+                ),
+                secure: Schema.optional(
+                  Schema.Union([
+                    Schema.Literals(["Auto", "Always", "Never"]),
+                    Schema.String,
+                  ]),
+                ),
+                zeroDowntimeFailover: Schema.optional(
+                  Schema.Union([
+                    Schema.Literals(["none", "temporary", "sticky"]),
+                    Schema.String,
+                  ]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  drainDuration: "drain_duration",
+                  headers: "headers",
+                  requireAllHeaders: "require_all_headers",
+                  samesite: "samesite",
+                  secure: "secure",
+                  zeroDowntimeFailover: "zero_downtime_failover",
+                }),
+              ),
+            ),
+            sessionAffinityTtl: Schema.optional(Schema.Number),
+            steeringPolicy: Schema.optional(
+              Schema.Union([
+                Schema.Literals([
+                  "off",
+                  "geo",
+                  "random",
+                  "dynamic_latency",
+                  "proximity",
+                  "least_outstanding_requests",
+                  "least_connections",
+                  "",
+                ]),
+                Schema.String,
+              ]),
+            ),
+            ttl: Schema.optional(Schema.Number),
+          }).pipe(
+            Schema.encodeKeys({
+              adaptiveRouting: "adaptive_routing",
+              countryPools: "country_pools",
+              defaultPools: "default_pools",
+              fallbackPool: "fallback_pool",
+              locationStrategy: "location_strategy",
+              popPools: "pop_pools",
+              randomSteering: "random_steering",
+              regionPools: "region_pools",
+              sessionAffinity: "session_affinity",
+              sessionAffinityAttributes: "session_affinity_attributes",
+              sessionAffinityTtl: "session_affinity_ttl",
+              steeringPolicy: "steering_policy",
+              ttl: "ttl",
+            }),
+          ),
+        ),
+        priority: Schema.optional(Schema.Number),
+        terminates: Schema.optional(Schema.Boolean),
+      }).pipe(
+        Schema.encodeKeys({
+          condition: "condition",
+          disabled: "disabled",
+          fixedResponse: "fixed_response",
+          name: "name",
+          overrides: "overrides",
+          priority: "priority",
+          terminates: "terminates",
+        }),
+      ),
+    ),
+  ),
+  sessionAffinity: Schema.optional(
+    Schema.Union([
+      Schema.Literals(["none", "cookie", "ip_cookie", "header"]),
+      Schema.String,
+    ]),
+  ),
+  sessionAffinityAttributes: Schema.optional(
+    Schema.Struct({
+      drainDuration: Schema.optional(Schema.Number),
+      headers: Schema.optional(Schema.Array(Schema.String)),
+      requireAllHeaders: Schema.optional(Schema.Boolean),
+      samesite: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["Auto", "Lax", "None", "Strict"]),
+          Schema.String,
+        ]),
+      ),
+      secure: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["Auto", "Always", "Never"]),
+          Schema.String,
+        ]),
+      ),
+      zeroDowntimeFailover: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["none", "temporary", "sticky"]),
+          Schema.String,
+        ]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        drainDuration: "drain_duration",
+        headers: "headers",
+        requireAllHeaders: "require_all_headers",
+        samesite: "samesite",
+        secure: "secure",
+        zeroDowntimeFailover: "zero_downtime_failover",
+      }),
+    ),
+  ),
+  sessionAffinityTtl: Schema.optional(Schema.Number),
+  steeringPolicy: Schema.optional(
+    Schema.Union([
+      Schema.Literals([
+        "off",
+        "geo",
+        "random",
+        "dynamic_latency",
+        "proximity",
+        "least_outstanding_requests",
+        "least_connections",
+        "",
+      ]),
+      Schema.String,
+    ]),
+  ),
+  ttl: Schema.optional(Schema.Number),
+}).pipe(
+  Schema.encodeKeys({
+    adaptiveRouting: "adaptive_routing",
+    countryPools: "country_pools",
+    defaultPools: "default_pools",
+    description: "description",
+    enabled: "enabled",
+    fallbackPool: "fallback_pool",
+    locationStrategy: "location_strategy",
+    name: "name",
+    popPools: "pop_pools",
+    proxied: "proxied",
+    randomSteering: "random_steering",
+    regionPools: "region_pools",
+    rules: "rules",
+    sessionAffinity: "session_affinity",
+    sessionAffinityAttributes: "session_affinity_attributes",
+    sessionAffinityTtl: "session_affinity_ttl",
+    steeringPolicy: "steering_policy",
+    ttl: "ttl",
+  }),
+  T.Http({
+    method: "PATCH",
+    path: "/zones/{zone_id}/load_balancers/{loadBalancerId}",
+  }),
+) as unknown as Schema.Schema<PatchLoadBalancerRequest>;
 
 export interface PatchLoadBalancerResponse {
   id?: string | null;
@@ -4018,477 +3964,469 @@ export interface PatchLoadBalancerResponse {
   zoneName?: string | null;
 }
 
-export const PatchLoadBalancerResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    adaptiveRouting: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          failoverAcrossPools: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({ failoverAcrossPools: "failover_across_pools" }),
+export const PatchLoadBalancerResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  adaptiveRouting: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        failoverAcrossPools: Schema.optional(
+          Schema.Union([Schema.Boolean, Schema.Null]),
         ),
-        Schema.Null,
-      ]),
-    ),
-    countryPools: Schema.optional(
-      Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
-    ),
-    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    defaultPools: Schema.optional(
-      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-    ),
-    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    fallbackPool: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    locationStrategy: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          mode: Schema.optional(
+      }).pipe(
+        Schema.encodeKeys({ failoverAcrossPools: "failover_across_pools" }),
+      ),
+      Schema.Null,
+    ]),
+  ),
+  countryPools: Schema.optional(
+    Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
+  ),
+  createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  defaultPools: Schema.optional(
+    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+  ),
+  description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  fallbackPool: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  locationStrategy: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        mode: Schema.optional(
+          Schema.Union([
             Schema.Union([
-              Schema.Union([
-                Schema.Literals(["pop", "resolver_ip"]),
-                Schema.String,
-              ]),
-              Schema.Null,
+              Schema.Literals(["pop", "resolver_ip"]),
+              Schema.String,
             ]),
-          ),
-          preferEcs: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals(["always", "never", "proximity", "geo"]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(Schema.encodeKeys({ mode: "mode", preferEcs: "prefer_ecs" })),
-        Schema.Null,
-      ]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    networks: Schema.optional(
-      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-    ),
-    popPools: Schema.optional(
-      Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
-    ),
-    proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    randomSteering: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          defaultWeight: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
-          poolWeights: Schema.optional(
-            Schema.Union([
-              Schema.Record(Schema.String, Schema.Unknown),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            defaultWeight: "default_weight",
-            poolWeights: "pool_weights",
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
-    regionPools: Schema.optional(
-      Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
-    ),
-    rules: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            condition: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            disabled: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            fixedResponse: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  contentType: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  location: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  messageBody: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  statusCode: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    contentType: "content_type",
-                    location: "location",
-                    messageBody: "message_body",
-                    statusCode: "status_code",
-                  }),
-                ),
-                Schema.Null,
-              ]),
-            ),
-            name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            overrides: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  adaptiveRouting: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        failoverAcrossPools: Schema.optional(
-                          Schema.Union([Schema.Boolean, Schema.Null]),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          failoverAcrossPools: "failover_across_pools",
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                  countryPools: Schema.optional(
-                    Schema.Union([
-                      Schema.Record(Schema.String, Schema.Unknown),
-                      Schema.Null,
-                    ]),
-                  ),
-                  defaultPools: Schema.optional(
-                    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                  ),
-                  fallbackPool: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  locationStrategy: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        mode: Schema.optional(
-                          Schema.Union([
-                            Schema.Union([
-                              Schema.Literals(["pop", "resolver_ip"]),
-                              Schema.String,
-                            ]),
-                            Schema.Null,
-                          ]),
-                        ),
-                        preferEcs: Schema.optional(
-                          Schema.Union([
-                            Schema.Union([
-                              Schema.Literals([
-                                "always",
-                                "never",
-                                "proximity",
-                                "geo",
-                              ]),
-                              Schema.String,
-                            ]),
-                            Schema.Null,
-                          ]),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          mode: "mode",
-                          preferEcs: "prefer_ecs",
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                  popPools: Schema.optional(
-                    Schema.Union([
-                      Schema.Record(Schema.String, Schema.Unknown),
-                      Schema.Null,
-                    ]),
-                  ),
-                  randomSteering: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        defaultWeight: Schema.optional(
-                          Schema.Union([Schema.Number, Schema.Null]),
-                        ),
-                        poolWeights: Schema.optional(
-                          Schema.Union([
-                            Schema.Record(Schema.String, Schema.Unknown),
-                            Schema.Null,
-                          ]),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          defaultWeight: "default_weight",
-                          poolWeights: "pool_weights",
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                  regionPools: Schema.optional(
-                    Schema.Union([
-                      Schema.Record(Schema.String, Schema.Unknown),
-                      Schema.Null,
-                    ]),
-                  ),
-                  sessionAffinity: Schema.optional(
-                    Schema.Union([
-                      Schema.Union([
-                        Schema.Literals([
-                          "none",
-                          "cookie",
-                          "ip_cookie",
-                          "header",
-                        ]),
-                        Schema.String,
-                      ]),
-                      Schema.Null,
-                    ]),
-                  ),
-                  sessionAffinityAttributes: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        drainDuration: Schema.optional(
-                          Schema.Union([Schema.Number, Schema.Null]),
-                        ),
-                        headers: Schema.optional(
-                          Schema.Union([
-                            Schema.Array(Schema.String),
-                            Schema.Null,
-                          ]),
-                        ),
-                        requireAllHeaders: Schema.optional(
-                          Schema.Union([Schema.Boolean, Schema.Null]),
-                        ),
-                        samesite: Schema.optional(
-                          Schema.Union([
-                            Schema.Union([
-                              Schema.Literals([
-                                "Auto",
-                                "Lax",
-                                "None",
-                                "Strict",
-                              ]),
-                              Schema.String,
-                            ]),
-                            Schema.Null,
-                          ]),
-                        ),
-                        secure: Schema.optional(
-                          Schema.Union([
-                            Schema.Union([
-                              Schema.Literals(["Auto", "Always", "Never"]),
-                              Schema.String,
-                            ]),
-                            Schema.Null,
-                          ]),
-                        ),
-                        zeroDowntimeFailover: Schema.optional(
-                          Schema.Union([
-                            Schema.Union([
-                              Schema.Literals(["none", "temporary", "sticky"]),
-                              Schema.String,
-                            ]),
-                            Schema.Null,
-                          ]),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          drainDuration: "drain_duration",
-                          headers: "headers",
-                          requireAllHeaders: "require_all_headers",
-                          samesite: "samesite",
-                          secure: "secure",
-                          zeroDowntimeFailover: "zero_downtime_failover",
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                  sessionAffinityTtl: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                  steeringPolicy: Schema.optional(
-                    Schema.Union([
-                      Schema.Union([
-                        Schema.Literals([
-                          "off",
-                          "geo",
-                          "random",
-                          "dynamic_latency",
-                          "proximity",
-                          "least_outstanding_requests",
-                          "least_connections",
-                          "",
-                        ]),
-                        Schema.String,
-                      ]),
-                      Schema.Null,
-                    ]),
-                  ),
-                  ttl: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    adaptiveRouting: "adaptive_routing",
-                    countryPools: "country_pools",
-                    defaultPools: "default_pools",
-                    fallbackPool: "fallback_pool",
-                    locationStrategy: "location_strategy",
-                    popPools: "pop_pools",
-                    randomSteering: "random_steering",
-                    regionPools: "region_pools",
-                    sessionAffinity: "session_affinity",
-                    sessionAffinityAttributes: "session_affinity_attributes",
-                    sessionAffinityTtl: "session_affinity_ttl",
-                    steeringPolicy: "steering_policy",
-                    ttl: "ttl",
-                  }),
-                ),
-                Schema.Null,
-              ]),
-            ),
-            priority: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            terminates: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              condition: "condition",
-              disabled: "disabled",
-              fixedResponse: "fixed_response",
-              name: "name",
-              overrides: "overrides",
-              priority: "priority",
-              terminates: "terminates",
-            }),
-          ),
-        ),
-        Schema.Null,
-      ]),
-    ),
-    sessionAffinity: Schema.optional(
-      Schema.Union([
-        Schema.Union([
-          Schema.Literals(["none", "cookie", "ip_cookie", "header"]),
-          Schema.String,
-        ]),
-        Schema.Null,
-      ]),
-    ),
-    sessionAffinityAttributes: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          drainDuration: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
-          headers: Schema.optional(
-            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-          ),
-          requireAllHeaders: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          samesite: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals(["Auto", "Lax", "None", "Strict"]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
-          secure: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals(["Auto", "Always", "Never"]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
-          zeroDowntimeFailover: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals(["none", "temporary", "sticky"]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            drainDuration: "drain_duration",
-            headers: "headers",
-            requireAllHeaders: "require_all_headers",
-            samesite: "samesite",
-            secure: "secure",
-            zeroDowntimeFailover: "zero_downtime_failover",
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
-    sessionAffinityTtl: Schema.optional(
-      Schema.Union([Schema.Number, Schema.Null]),
-    ),
-    steeringPolicy: Schema.optional(
-      Schema.Union([
-        Schema.Union([
-          Schema.Literals([
-            "off",
-            "geo",
-            "random",
-            "dynamic_latency",
-            "proximity",
-            "least_outstanding_requests",
-            "least_connections",
-            "",
+            Schema.Null,
           ]),
-          Schema.String,
-        ]),
-        Schema.Null,
+        ),
+        preferEcs: Schema.optional(
+          Schema.Union([
+            Schema.Union([
+              Schema.Literals(["always", "never", "proximity", "geo"]),
+              Schema.String,
+            ]),
+            Schema.Null,
+          ]),
+        ),
+      }).pipe(Schema.encodeKeys({ mode: "mode", preferEcs: "prefer_ecs" })),
+      Schema.Null,
+    ]),
+  ),
+  modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  networks: Schema.optional(
+    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+  ),
+  popPools: Schema.optional(
+    Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
+  ),
+  proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  randomSteering: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        defaultWeight: Schema.optional(
+          Schema.Union([Schema.Number, Schema.Null]),
+        ),
+        poolWeights: Schema.optional(
+          Schema.Union([
+            Schema.Record(Schema.String, Schema.Unknown),
+            Schema.Null,
+          ]),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          defaultWeight: "default_weight",
+          poolWeights: "pool_weights",
+        }),
+      ),
+      Schema.Null,
+    ]),
+  ),
+  regionPools: Schema.optional(
+    Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
+  ),
+  rules: Schema.optional(
+    Schema.Union([
+      Schema.Array(
+        Schema.Struct({
+          condition: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          disabled: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+          fixedResponse: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                contentType: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                location: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                messageBody: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                statusCode: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  contentType: "content_type",
+                  location: "location",
+                  messageBody: "message_body",
+                  statusCode: "status_code",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          overrides: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                adaptiveRouting: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      failoverAcrossPools: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        failoverAcrossPools: "failover_across_pools",
+                      }),
+                    ),
+                    Schema.Null,
+                  ]),
+                ),
+                countryPools: Schema.optional(
+                  Schema.Union([
+                    Schema.Record(Schema.String, Schema.Unknown),
+                    Schema.Null,
+                  ]),
+                ),
+                defaultPools: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
+                fallbackPool: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                locationStrategy: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      mode: Schema.optional(
+                        Schema.Union([
+                          Schema.Union([
+                            Schema.Literals(["pop", "resolver_ip"]),
+                            Schema.String,
+                          ]),
+                          Schema.Null,
+                        ]),
+                      ),
+                      preferEcs: Schema.optional(
+                        Schema.Union([
+                          Schema.Union([
+                            Schema.Literals([
+                              "always",
+                              "never",
+                              "proximity",
+                              "geo",
+                            ]),
+                            Schema.String,
+                          ]),
+                          Schema.Null,
+                        ]),
+                      ),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        mode: "mode",
+                        preferEcs: "prefer_ecs",
+                      }),
+                    ),
+                    Schema.Null,
+                  ]),
+                ),
+                popPools: Schema.optional(
+                  Schema.Union([
+                    Schema.Record(Schema.String, Schema.Unknown),
+                    Schema.Null,
+                  ]),
+                ),
+                randomSteering: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      defaultWeight: Schema.optional(
+                        Schema.Union([Schema.Number, Schema.Null]),
+                      ),
+                      poolWeights: Schema.optional(
+                        Schema.Union([
+                          Schema.Record(Schema.String, Schema.Unknown),
+                          Schema.Null,
+                        ]),
+                      ),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        defaultWeight: "default_weight",
+                        poolWeights: "pool_weights",
+                      }),
+                    ),
+                    Schema.Null,
+                  ]),
+                ),
+                regionPools: Schema.optional(
+                  Schema.Union([
+                    Schema.Record(Schema.String, Schema.Unknown),
+                    Schema.Null,
+                  ]),
+                ),
+                sessionAffinity: Schema.optional(
+                  Schema.Union([
+                    Schema.Union([
+                      Schema.Literals([
+                        "none",
+                        "cookie",
+                        "ip_cookie",
+                        "header",
+                      ]),
+                      Schema.String,
+                    ]),
+                    Schema.Null,
+                  ]),
+                ),
+                sessionAffinityAttributes: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      drainDuration: Schema.optional(
+                        Schema.Union([Schema.Number, Schema.Null]),
+                      ),
+                      headers: Schema.optional(
+                        Schema.Union([
+                          Schema.Array(Schema.String),
+                          Schema.Null,
+                        ]),
+                      ),
+                      requireAllHeaders: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                      samesite: Schema.optional(
+                        Schema.Union([
+                          Schema.Union([
+                            Schema.Literals(["Auto", "Lax", "None", "Strict"]),
+                            Schema.String,
+                          ]),
+                          Schema.Null,
+                        ]),
+                      ),
+                      secure: Schema.optional(
+                        Schema.Union([
+                          Schema.Union([
+                            Schema.Literals(["Auto", "Always", "Never"]),
+                            Schema.String,
+                          ]),
+                          Schema.Null,
+                        ]),
+                      ),
+                      zeroDowntimeFailover: Schema.optional(
+                        Schema.Union([
+                          Schema.Union([
+                            Schema.Literals(["none", "temporary", "sticky"]),
+                            Schema.String,
+                          ]),
+                          Schema.Null,
+                        ]),
+                      ),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        drainDuration: "drain_duration",
+                        headers: "headers",
+                        requireAllHeaders: "require_all_headers",
+                        samesite: "samesite",
+                        secure: "secure",
+                        zeroDowntimeFailover: "zero_downtime_failover",
+                      }),
+                    ),
+                    Schema.Null,
+                  ]),
+                ),
+                sessionAffinityTtl: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                steeringPolicy: Schema.optional(
+                  Schema.Union([
+                    Schema.Union([
+                      Schema.Literals([
+                        "off",
+                        "geo",
+                        "random",
+                        "dynamic_latency",
+                        "proximity",
+                        "least_outstanding_requests",
+                        "least_connections",
+                        "",
+                      ]),
+                      Schema.String,
+                    ]),
+                    Schema.Null,
+                  ]),
+                ),
+                ttl: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  adaptiveRouting: "adaptive_routing",
+                  countryPools: "country_pools",
+                  defaultPools: "default_pools",
+                  fallbackPool: "fallback_pool",
+                  locationStrategy: "location_strategy",
+                  popPools: "pop_pools",
+                  randomSteering: "random_steering",
+                  regionPools: "region_pools",
+                  sessionAffinity: "session_affinity",
+                  sessionAffinityAttributes: "session_affinity_attributes",
+                  sessionAffinityTtl: "session_affinity_ttl",
+                  steeringPolicy: "steering_policy",
+                  ttl: "ttl",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+          priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          terminates: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            condition: "condition",
+            disabled: "disabled",
+            fixedResponse: "fixed_response",
+            name: "name",
+            overrides: "overrides",
+            priority: "priority",
+            terminates: "terminates",
+          }),
+        ),
+      ),
+      Schema.Null,
+    ]),
+  ),
+  sessionAffinity: Schema.optional(
+    Schema.Union([
+      Schema.Union([
+        Schema.Literals(["none", "cookie", "ip_cookie", "header"]),
+        Schema.String,
       ]),
-    ),
-    ttl: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    zoneName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        adaptiveRouting: "adaptive_routing",
-        countryPools: "country_pools",
-        createdOn: "created_on",
-        defaultPools: "default_pools",
-        description: "description",
-        enabled: "enabled",
-        fallbackPool: "fallback_pool",
-        locationStrategy: "location_strategy",
-        modifiedOn: "modified_on",
-        name: "name",
-        networks: "networks",
-        popPools: "pop_pools",
-        proxied: "proxied",
-        randomSteering: "random_steering",
-        regionPools: "region_pools",
-        rules: "rules",
-        sessionAffinity: "session_affinity",
-        sessionAffinityAttributes: "session_affinity_attributes",
-        sessionAffinityTtl: "session_affinity_ttl",
-        steeringPolicy: "steering_policy",
-        ttl: "ttl",
-        zoneName: "zone_name",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<PatchLoadBalancerResponse>;
+      Schema.Null,
+    ]),
+  ),
+  sessionAffinityAttributes: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        drainDuration: Schema.optional(
+          Schema.Union([Schema.Number, Schema.Null]),
+        ),
+        headers: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        requireAllHeaders: Schema.optional(
+          Schema.Union([Schema.Boolean, Schema.Null]),
+        ),
+        samesite: Schema.optional(
+          Schema.Union([
+            Schema.Union([
+              Schema.Literals(["Auto", "Lax", "None", "Strict"]),
+              Schema.String,
+            ]),
+            Schema.Null,
+          ]),
+        ),
+        secure: Schema.optional(
+          Schema.Union([
+            Schema.Union([
+              Schema.Literals(["Auto", "Always", "Never"]),
+              Schema.String,
+            ]),
+            Schema.Null,
+          ]),
+        ),
+        zeroDowntimeFailover: Schema.optional(
+          Schema.Union([
+            Schema.Union([
+              Schema.Literals(["none", "temporary", "sticky"]),
+              Schema.String,
+            ]),
+            Schema.Null,
+          ]),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          drainDuration: "drain_duration",
+          headers: "headers",
+          requireAllHeaders: "require_all_headers",
+          samesite: "samesite",
+          secure: "secure",
+          zeroDowntimeFailover: "zero_downtime_failover",
+        }),
+      ),
+      Schema.Null,
+    ]),
+  ),
+  sessionAffinityTtl: Schema.optional(
+    Schema.Union([Schema.Number, Schema.Null]),
+  ),
+  steeringPolicy: Schema.optional(
+    Schema.Union([
+      Schema.Union([
+        Schema.Literals([
+          "off",
+          "geo",
+          "random",
+          "dynamic_latency",
+          "proximity",
+          "least_outstanding_requests",
+          "least_connections",
+          "",
+        ]),
+        Schema.String,
+      ]),
+      Schema.Null,
+    ]),
+  ),
+  ttl: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  zoneName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      adaptiveRouting: "adaptive_routing",
+      countryPools: "country_pools",
+      createdOn: "created_on",
+      defaultPools: "default_pools",
+      description: "description",
+      enabled: "enabled",
+      fallbackPool: "fallback_pool",
+      locationStrategy: "location_strategy",
+      modifiedOn: "modified_on",
+      name: "name",
+      networks: "networks",
+      popPools: "pop_pools",
+      proxied: "proxied",
+      randomSteering: "random_steering",
+      regionPools: "region_pools",
+      rules: "rules",
+      sessionAffinity: "session_affinity",
+      sessionAffinityAttributes: "session_affinity_attributes",
+      sessionAffinityTtl: "session_affinity_ttl",
+      steeringPolicy: "steering_policy",
+      ttl: "ttl",
+      zoneName: "zone_name",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<PatchLoadBalancerResponse>;
 
 export type PatchLoadBalancerError = DefaultErrors;
 
@@ -4497,7 +4435,7 @@ export const patchLoadBalancer: API.OperationMethod<
   PatchLoadBalancerResponse,
   PatchLoadBalancerError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchLoadBalancerRequest,
   output: PatchLoadBalancerResponse,
   errors: [],
@@ -4508,27 +4446,25 @@ export interface DeleteLoadBalancerRequest {
   zoneId: string;
 }
 
-export const DeleteLoadBalancerRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    loadBalancerId: Schema.String.pipe(T.HttpPath("loadBalancerId")),
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/zones/{zone_id}/load_balancers/{loadBalancerId}",
-    }),
-  ) as unknown as Schema.Schema<DeleteLoadBalancerRequest>;
+export const DeleteLoadBalancerRequest = /*@__PURE__*/ Schema.Struct({
+  loadBalancerId: Schema.String.pipe(T.HttpPath("loadBalancerId")),
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/zones/{zone_id}/load_balancers/{loadBalancerId}",
+  }),
+) as unknown as Schema.Schema<DeleteLoadBalancerRequest>;
 
 export interface DeleteLoadBalancerResponse {
   id?: string | null;
 }
 
-export const DeleteLoadBalancerResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<DeleteLoadBalancerResponse>;
+export const DeleteLoadBalancerResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+}).pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<DeleteLoadBalancerResponse>;
 
 export type DeleteLoadBalancerError = DefaultErrors;
 
@@ -4537,7 +4473,7 @@ export const deleteLoadBalancer: API.OperationMethod<
   DeleteLoadBalancerResponse,
   DeleteLoadBalancerError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLoadBalancerRequest,
   output: DeleteLoadBalancerResponse,
   errors: [],
@@ -4553,7 +4489,7 @@ export interface GetMonitorRequest {
   accountId: string;
 }
 
-export const GetMonitorRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetMonitorRequest = /*@__PURE__*/ Schema.Struct({
   monitorId: Schema.String.pipe(T.HttpPath("monitorId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -4609,7 +4545,7 @@ export interface GetMonitorResponse {
     | null;
 }
 
-export const GetMonitorResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetMonitorResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   allowInsecure: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
   consecutiveDown: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -4681,7 +4617,7 @@ export const getMonitor: API.OperationMethod<
   GetMonitorResponse,
   GetMonitorError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMonitorRequest,
   output: GetMonitorResponse,
   errors: [],
@@ -4692,7 +4628,7 @@ export interface ListMonitorsRequest {
   accountId: string;
 }
 
-export const ListMonitorsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListMonitorsRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
   T.Http({
@@ -4733,7 +4669,7 @@ export interface ListMonitorsResponse {
   }[];
 }
 
-export const ListMonitorsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListMonitorsResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -4818,7 +4754,7 @@ export const listMonitors: API.PaginatedOperationMethod<
   ListMonitorsResponse,
   ListMonitorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMonitorsRequest,
   output: ListMonitorsResponse,
   errors: [],
@@ -4872,7 +4808,7 @@ export interface CreateMonitorRequest {
     | (string & {});
 }
 
-export const CreateMonitorRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateMonitorRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   allowInsecure: Schema.optional(Schema.Boolean),
   consecutiveDown: Schema.optional(Schema.Number),
@@ -4973,7 +4909,7 @@ export interface CreateMonitorResponse {
     | null;
 }
 
-export const CreateMonitorResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateMonitorResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   allowInsecure: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
   consecutiveDown: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -5045,7 +4981,7 @@ export const createMonitor: API.OperationMethod<
   CreateMonitorResponse,
   CreateMonitorError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMonitorRequest,
   output: CreateMonitorResponse,
   errors: [],
@@ -5096,7 +5032,7 @@ export interface UpdateMonitorRequest {
     | (string & {});
 }
 
-export const UpdateMonitorRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateMonitorRequest = /*@__PURE__*/ Schema.Struct({
   monitorId: Schema.String.pipe(T.HttpPath("monitorId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   allowInsecure: Schema.optional(Schema.Boolean),
@@ -5198,7 +5134,7 @@ export interface UpdateMonitorResponse {
     | null;
 }
 
-export const UpdateMonitorResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateMonitorResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   allowInsecure: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
   consecutiveDown: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -5270,7 +5206,7 @@ export const updateMonitor: API.OperationMethod<
   UpdateMonitorResponse,
   UpdateMonitorError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateMonitorRequest,
   output: UpdateMonitorResponse,
   errors: [],
@@ -5321,7 +5257,7 @@ export interface PatchMonitorRequest {
     | (string & {});
 }
 
-export const PatchMonitorRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PatchMonitorRequest = /*@__PURE__*/ Schema.Struct({
   monitorId: Schema.String.pipe(T.HttpPath("monitorId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   allowInsecure: Schema.optional(Schema.Boolean),
@@ -5423,7 +5359,7 @@ export interface PatchMonitorResponse {
     | null;
 }
 
-export const PatchMonitorResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PatchMonitorResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   allowInsecure: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
   consecutiveDown: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -5495,7 +5431,7 @@ export const patchMonitor: API.OperationMethod<
   PatchMonitorResponse,
   PatchMonitorError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchMonitorRequest,
   output: PatchMonitorResponse,
   errors: [],
@@ -5507,7 +5443,7 @@ export interface DeleteMonitorRequest {
   accountId: string;
 }
 
-export const DeleteMonitorRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteMonitorRequest = /*@__PURE__*/ Schema.Struct({
   monitorId: Schema.String.pipe(T.HttpPath("monitorId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -5521,7 +5457,7 @@ export interface DeleteMonitorResponse {
   id?: string | null;
 }
 
-export const DeleteMonitorResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteMonitorResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
 }).pipe(
   T.ResponsePath("result"),
@@ -5534,7 +5470,7 @@ export const deleteMonitor: API.OperationMethod<
   DeleteMonitorResponse,
   DeleteMonitorError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMonitorRequest,
   output: DeleteMonitorResponse,
   errors: [],
@@ -5550,12 +5486,10 @@ export interface GetMonitorGroupRequest {
   accountId: string;
 }
 
-export const GetMonitorGroupRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    monitorGroupId: Schema.String.pipe(T.HttpPath("monitorGroupId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  },
-).pipe(
+export const GetMonitorGroupRequest = /*@__PURE__*/ Schema.Struct({
+  monitorGroupId: Schema.String.pipe(T.HttpPath("monitorGroupId")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/accounts/{account_id}/load_balancers/monitor_groups/{monitorGroupId}",
@@ -5582,44 +5516,43 @@ export interface GetMonitorGroupResponse {
   modifiedOn?: string | null;
 }
 
-export const GetMonitorGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    description: Schema.String,
-    members: Schema.Array(
-      Schema.Struct({
-        enabled: Schema.Boolean,
-        monitorId: Schema.String,
-        monitoringOnly: Schema.Boolean,
-        mustBeHealthy: Schema.Boolean,
-        createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          enabled: "enabled",
-          monitorId: "monitor_id",
-          monitoringOnly: "monitoring_only",
-          mustBeHealthy: "must_be_healthy",
-          createdAt: "created_at",
-          updatedAt: "updated_at",
-        }),
-      ),
-    ),
-    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(
+export const GetMonitorGroupResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  description: Schema.String,
+  members: Schema.Array(
+    Schema.Struct({
+      enabled: Schema.Boolean,
+      monitorId: Schema.String,
+      monitoringOnly: Schema.Boolean,
+      mustBeHealthy: Schema.Boolean,
+      createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
       Schema.encodeKeys({
-        id: "id",
-        description: "description",
-        members: "members",
-        createdOn: "created_on",
-        modifiedOn: "modified_on",
+        enabled: "enabled",
+        monitorId: "monitor_id",
+        monitoringOnly: "monitoring_only",
+        mustBeHealthy: "must_be_healthy",
+        createdAt: "created_at",
+        updatedAt: "updated_at",
       }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<GetMonitorGroupResponse>;
+    ),
+  ),
+  createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      description: "description",
+      members: "members",
+      createdOn: "created_on",
+      modifiedOn: "modified_on",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<GetMonitorGroupResponse>;
 
 export type GetMonitorGroupError = DefaultErrors;
 
@@ -5628,7 +5561,7 @@ export const getMonitorGroup: API.OperationMethod<
   GetMonitorGroupResponse,
   GetMonitorGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMonitorGroupRequest,
   output: GetMonitorGroupResponse,
   errors: [],
@@ -5639,15 +5572,14 @@ export interface ListMonitorGroupsRequest {
   accountId: string;
 }
 
-export const ListMonitorGroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/load_balancers/monitor_groups",
-    }),
-  ) as unknown as Schema.Schema<ListMonitorGroupsRequest>;
+export const ListMonitorGroupsRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/load_balancers/monitor_groups",
+  }),
+) as unknown as Schema.Schema<ListMonitorGroupsRequest>;
 
 export interface ListMonitorGroupsResponse {
   result: {
@@ -5666,48 +5598,47 @@ export interface ListMonitorGroupsResponse {
   }[];
 }
 
-export const ListMonitorGroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        description: Schema.String,
-        members: Schema.Array(
-          Schema.Struct({
-            enabled: Schema.Boolean,
-            monitorId: Schema.String,
-            monitoringOnly: Schema.Boolean,
-            mustBeHealthy: Schema.Boolean,
-            createdAt: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            updatedAt: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              enabled: "enabled",
-              monitorId: "monitor_id",
-              monitoringOnly: "monitoring_only",
-              mustBeHealthy: "must_be_healthy",
-              createdAt: "created_at",
-              updatedAt: "updated_at",
-            }),
+export const ListMonitorGroupsResponse = /*@__PURE__*/ Schema.Struct({
+  result: Schema.Array(
+    Schema.Struct({
+      id: Schema.String,
+      description: Schema.String,
+      members: Schema.Array(
+        Schema.Struct({
+          enabled: Schema.Boolean,
+          monitorId: Schema.String,
+          monitoringOnly: Schema.Boolean,
+          mustBeHealthy: Schema.Boolean,
+          createdAt: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
           ),
+          updatedAt: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            enabled: "enabled",
+            monitorId: "monitor_id",
+            monitoringOnly: "monitoring_only",
+            mustBeHealthy: "must_be_healthy",
+            createdAt: "created_at",
+            updatedAt: "updated_at",
+          }),
         ),
-        createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          description: "description",
-          members: "members",
-          createdOn: "created_on",
-          modifiedOn: "modified_on",
-        }),
       ),
+      createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        description: "description",
+        members: "members",
+        createdOn: "created_on",
+        modifiedOn: "modified_on",
+      }),
     ),
-  }) as unknown as Schema.Schema<ListMonitorGroupsResponse>;
+  ),
+}) as unknown as Schema.Schema<ListMonitorGroupsResponse>;
 
 export type ListMonitorGroupsError = DefaultErrors;
 
@@ -5716,7 +5647,7 @@ export const listMonitorGroups: API.PaginatedOperationMethod<
   ListMonitorGroupsResponse,
   ListMonitorGroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMonitorGroupsRequest,
   output: ListMonitorGroupsResponse,
   errors: [],
@@ -5740,31 +5671,30 @@ export interface CreateMonitorGroupRequest {
   }[];
 }
 
-export const CreateMonitorGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    description: Schema.String,
-    members: Schema.Array(
-      Schema.Struct({
-        enabled: Schema.Boolean,
-        monitorId: Schema.String,
-        monitoringOnly: Schema.Boolean,
-        mustBeHealthy: Schema.Boolean,
-      }).pipe(
-        Schema.encodeKeys({
-          enabled: "enabled",
-          monitorId: "monitor_id",
-          monitoringOnly: "monitoring_only",
-          mustBeHealthy: "must_be_healthy",
-        }),
-      ),
+export const CreateMonitorGroupRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  description: Schema.String,
+  members: Schema.Array(
+    Schema.Struct({
+      enabled: Schema.Boolean,
+      monitorId: Schema.String,
+      monitoringOnly: Schema.Boolean,
+      mustBeHealthy: Schema.Boolean,
+    }).pipe(
+      Schema.encodeKeys({
+        enabled: "enabled",
+        monitorId: "monitor_id",
+        monitoringOnly: "monitoring_only",
+        mustBeHealthy: "must_be_healthy",
+      }),
     ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/load_balancers/monitor_groups",
-    }),
-  ) as unknown as Schema.Schema<CreateMonitorGroupRequest>;
+  ),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/accounts/{account_id}/load_balancers/monitor_groups",
+  }),
+) as unknown as Schema.Schema<CreateMonitorGroupRequest>;
 
 export interface CreateMonitorGroupResponse {
   /** The ID of the Monitor Group to use for checking the health of origins within this pool. */
@@ -5786,44 +5716,43 @@ export interface CreateMonitorGroupResponse {
   modifiedOn?: string | null;
 }
 
-export const CreateMonitorGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    description: Schema.String,
-    members: Schema.Array(
-      Schema.Struct({
-        enabled: Schema.Boolean,
-        monitorId: Schema.String,
-        monitoringOnly: Schema.Boolean,
-        mustBeHealthy: Schema.Boolean,
-        createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          enabled: "enabled",
-          monitorId: "monitor_id",
-          monitoringOnly: "monitoring_only",
-          mustBeHealthy: "must_be_healthy",
-          createdAt: "created_at",
-          updatedAt: "updated_at",
-        }),
-      ),
-    ),
-    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(
+export const CreateMonitorGroupResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  description: Schema.String,
+  members: Schema.Array(
+    Schema.Struct({
+      enabled: Schema.Boolean,
+      monitorId: Schema.String,
+      monitoringOnly: Schema.Boolean,
+      mustBeHealthy: Schema.Boolean,
+      createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
       Schema.encodeKeys({
-        id: "id",
-        description: "description",
-        members: "members",
-        createdOn: "created_on",
-        modifiedOn: "modified_on",
+        enabled: "enabled",
+        monitorId: "monitor_id",
+        monitoringOnly: "monitoring_only",
+        mustBeHealthy: "must_be_healthy",
+        createdAt: "created_at",
+        updatedAt: "updated_at",
       }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<CreateMonitorGroupResponse>;
+    ),
+  ),
+  createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      description: "description",
+      members: "members",
+      createdOn: "created_on",
+      modifiedOn: "modified_on",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<CreateMonitorGroupResponse>;
 
 export type CreateMonitorGroupError = DefaultErrors;
 
@@ -5832,7 +5761,7 @@ export const createMonitorGroup: API.OperationMethod<
   CreateMonitorGroupResponse,
   CreateMonitorGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMonitorGroupRequest,
   output: CreateMonitorGroupResponse,
   errors: [],
@@ -5853,32 +5782,31 @@ export interface UpdateMonitorGroupRequest {
   }[];
 }
 
-export const UpdateMonitorGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    monitorGroupId: Schema.String.pipe(T.HttpPath("monitorGroupId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    description: Schema.String,
-    members: Schema.Array(
-      Schema.Struct({
-        enabled: Schema.Boolean,
-        monitorId: Schema.String,
-        monitoringOnly: Schema.Boolean,
-        mustBeHealthy: Schema.Boolean,
-      }).pipe(
-        Schema.encodeKeys({
-          enabled: "enabled",
-          monitorId: "monitor_id",
-          monitoringOnly: "monitoring_only",
-          mustBeHealthy: "must_be_healthy",
-        }),
-      ),
+export const UpdateMonitorGroupRequest = /*@__PURE__*/ Schema.Struct({
+  monitorGroupId: Schema.String.pipe(T.HttpPath("monitorGroupId")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  description: Schema.String,
+  members: Schema.Array(
+    Schema.Struct({
+      enabled: Schema.Boolean,
+      monitorId: Schema.String,
+      monitoringOnly: Schema.Boolean,
+      mustBeHealthy: Schema.Boolean,
+    }).pipe(
+      Schema.encodeKeys({
+        enabled: "enabled",
+        monitorId: "monitor_id",
+        monitoringOnly: "monitoring_only",
+        mustBeHealthy: "must_be_healthy",
+      }),
     ),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/accounts/{account_id}/load_balancers/monitor_groups/{monitorGroupId}",
-    }),
-  ) as unknown as Schema.Schema<UpdateMonitorGroupRequest>;
+  ),
+}).pipe(
+  T.Http({
+    method: "PUT",
+    path: "/accounts/{account_id}/load_balancers/monitor_groups/{monitorGroupId}",
+  }),
+) as unknown as Schema.Schema<UpdateMonitorGroupRequest>;
 
 export interface UpdateMonitorGroupResponse {
   /** The ID of the Monitor Group to use for checking the health of origins within this pool. */
@@ -5900,44 +5828,43 @@ export interface UpdateMonitorGroupResponse {
   modifiedOn?: string | null;
 }
 
-export const UpdateMonitorGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    description: Schema.String,
-    members: Schema.Array(
-      Schema.Struct({
-        enabled: Schema.Boolean,
-        monitorId: Schema.String,
-        monitoringOnly: Schema.Boolean,
-        mustBeHealthy: Schema.Boolean,
-        createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          enabled: "enabled",
-          monitorId: "monitor_id",
-          monitoringOnly: "monitoring_only",
-          mustBeHealthy: "must_be_healthy",
-          createdAt: "created_at",
-          updatedAt: "updated_at",
-        }),
-      ),
-    ),
-    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(
+export const UpdateMonitorGroupResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  description: Schema.String,
+  members: Schema.Array(
+    Schema.Struct({
+      enabled: Schema.Boolean,
+      monitorId: Schema.String,
+      monitoringOnly: Schema.Boolean,
+      mustBeHealthy: Schema.Boolean,
+      createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
       Schema.encodeKeys({
-        id: "id",
-        description: "description",
-        members: "members",
-        createdOn: "created_on",
-        modifiedOn: "modified_on",
+        enabled: "enabled",
+        monitorId: "monitor_id",
+        monitoringOnly: "monitoring_only",
+        mustBeHealthy: "must_be_healthy",
+        createdAt: "created_at",
+        updatedAt: "updated_at",
       }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<UpdateMonitorGroupResponse>;
+    ),
+  ),
+  createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      description: "description",
+      members: "members",
+      createdOn: "created_on",
+      modifiedOn: "modified_on",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<UpdateMonitorGroupResponse>;
 
 export type UpdateMonitorGroupError = DefaultErrors;
 
@@ -5946,7 +5873,7 @@ export const updateMonitorGroup: API.OperationMethod<
   UpdateMonitorGroupResponse,
   UpdateMonitorGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateMonitorGroupRequest,
   output: UpdateMonitorGroupResponse,
   errors: [],
@@ -5967,32 +5894,31 @@ export interface PatchMonitorGroupRequest {
   }[];
 }
 
-export const PatchMonitorGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    monitorGroupId: Schema.String.pipe(T.HttpPath("monitorGroupId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    description: Schema.String,
-    members: Schema.Array(
-      Schema.Struct({
-        enabled: Schema.Boolean,
-        monitorId: Schema.String,
-        monitoringOnly: Schema.Boolean,
-        mustBeHealthy: Schema.Boolean,
-      }).pipe(
-        Schema.encodeKeys({
-          enabled: "enabled",
-          monitorId: "monitor_id",
-          monitoringOnly: "monitoring_only",
-          mustBeHealthy: "must_be_healthy",
-        }),
-      ),
+export const PatchMonitorGroupRequest = /*@__PURE__*/ Schema.Struct({
+  monitorGroupId: Schema.String.pipe(T.HttpPath("monitorGroupId")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  description: Schema.String,
+  members: Schema.Array(
+    Schema.Struct({
+      enabled: Schema.Boolean,
+      monitorId: Schema.String,
+      monitoringOnly: Schema.Boolean,
+      mustBeHealthy: Schema.Boolean,
+    }).pipe(
+      Schema.encodeKeys({
+        enabled: "enabled",
+        monitorId: "monitor_id",
+        monitoringOnly: "monitoring_only",
+        mustBeHealthy: "must_be_healthy",
+      }),
     ),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/accounts/{account_id}/load_balancers/monitor_groups/{monitorGroupId}",
-    }),
-  ) as unknown as Schema.Schema<PatchMonitorGroupRequest>;
+  ),
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/accounts/{account_id}/load_balancers/monitor_groups/{monitorGroupId}",
+  }),
+) as unknown as Schema.Schema<PatchMonitorGroupRequest>;
 
 export interface PatchMonitorGroupResponse {
   /** The ID of the Monitor Group to use for checking the health of origins within this pool. */
@@ -6014,44 +5940,43 @@ export interface PatchMonitorGroupResponse {
   modifiedOn?: string | null;
 }
 
-export const PatchMonitorGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    description: Schema.String,
-    members: Schema.Array(
-      Schema.Struct({
-        enabled: Schema.Boolean,
-        monitorId: Schema.String,
-        monitoringOnly: Schema.Boolean,
-        mustBeHealthy: Schema.Boolean,
-        createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          enabled: "enabled",
-          monitorId: "monitor_id",
-          monitoringOnly: "monitoring_only",
-          mustBeHealthy: "must_be_healthy",
-          createdAt: "created_at",
-          updatedAt: "updated_at",
-        }),
-      ),
-    ),
-    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(
+export const PatchMonitorGroupResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  description: Schema.String,
+  members: Schema.Array(
+    Schema.Struct({
+      enabled: Schema.Boolean,
+      monitorId: Schema.String,
+      monitoringOnly: Schema.Boolean,
+      mustBeHealthy: Schema.Boolean,
+      createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
       Schema.encodeKeys({
-        id: "id",
-        description: "description",
-        members: "members",
-        createdOn: "created_on",
-        modifiedOn: "modified_on",
+        enabled: "enabled",
+        monitorId: "monitor_id",
+        monitoringOnly: "monitoring_only",
+        mustBeHealthy: "must_be_healthy",
+        createdAt: "created_at",
+        updatedAt: "updated_at",
       }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<PatchMonitorGroupResponse>;
+    ),
+  ),
+  createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      description: "description",
+      members: "members",
+      createdOn: "created_on",
+      modifiedOn: "modified_on",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<PatchMonitorGroupResponse>;
 
 export type PatchMonitorGroupError = DefaultErrors;
 
@@ -6060,7 +5985,7 @@ export const patchMonitorGroup: API.OperationMethod<
   PatchMonitorGroupResponse,
   PatchMonitorGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchMonitorGroupRequest,
   output: PatchMonitorGroupResponse,
   errors: [],
@@ -6072,16 +5997,15 @@ export interface DeleteMonitorGroupRequest {
   accountId: string;
 }
 
-export const DeleteMonitorGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    monitorGroupId: Schema.String.pipe(T.HttpPath("monitorGroupId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/accounts/{account_id}/load_balancers/monitor_groups/{monitorGroupId}",
-    }),
-  ) as unknown as Schema.Schema<DeleteMonitorGroupRequest>;
+export const DeleteMonitorGroupRequest = /*@__PURE__*/ Schema.Struct({
+  monitorGroupId: Schema.String.pipe(T.HttpPath("monitorGroupId")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/accounts/{account_id}/load_balancers/monitor_groups/{monitorGroupId}",
+  }),
+) as unknown as Schema.Schema<DeleteMonitorGroupRequest>;
 
 export interface DeleteMonitorGroupResponse {
   /** The ID of the Monitor Group to use for checking the health of origins within this pool. */
@@ -6103,44 +6027,43 @@ export interface DeleteMonitorGroupResponse {
   modifiedOn?: string | null;
 }
 
-export const DeleteMonitorGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    description: Schema.String,
-    members: Schema.Array(
-      Schema.Struct({
-        enabled: Schema.Boolean,
-        monitorId: Schema.String,
-        monitoringOnly: Schema.Boolean,
-        mustBeHealthy: Schema.Boolean,
-        createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          enabled: "enabled",
-          monitorId: "monitor_id",
-          monitoringOnly: "monitoring_only",
-          mustBeHealthy: "must_be_healthy",
-          createdAt: "created_at",
-          updatedAt: "updated_at",
-        }),
-      ),
-    ),
-    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(
+export const DeleteMonitorGroupResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  description: Schema.String,
+  members: Schema.Array(
+    Schema.Struct({
+      enabled: Schema.Boolean,
+      monitorId: Schema.String,
+      monitoringOnly: Schema.Boolean,
+      mustBeHealthy: Schema.Boolean,
+      createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
       Schema.encodeKeys({
-        id: "id",
-        description: "description",
-        members: "members",
-        createdOn: "created_on",
-        modifiedOn: "modified_on",
+        enabled: "enabled",
+        monitorId: "monitor_id",
+        monitoringOnly: "monitoring_only",
+        mustBeHealthy: "must_be_healthy",
+        createdAt: "created_at",
+        updatedAt: "updated_at",
       }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<DeleteMonitorGroupResponse>;
+    ),
+  ),
+  createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      description: "description",
+      members: "members",
+      createdOn: "created_on",
+      modifiedOn: "modified_on",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<DeleteMonitorGroupResponse>;
 
 export type DeleteMonitorGroupError = DefaultErrors;
 
@@ -6149,7 +6072,7 @@ export const deleteMonitorGroup: API.OperationMethod<
   DeleteMonitorGroupResponse,
   DeleteMonitorGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMonitorGroupRequest,
   output: DeleteMonitorGroupResponse,
   errors: [],
@@ -6165,16 +6088,15 @@ export interface GetMonitorGroupReferenceRequest {
   accountId: string;
 }
 
-export const GetMonitorGroupReferenceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    monitorGroupId: Schema.String.pipe(T.HttpPath("monitorGroupId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/load_balancers/monitor_groups/{monitorGroupId}/references",
-    }),
-  ) as unknown as Schema.Schema<GetMonitorGroupReferenceRequest>;
+export const GetMonitorGroupReferenceRequest = /*@__PURE__*/ Schema.Struct({
+  monitorGroupId: Schema.String.pipe(T.HttpPath("monitorGroupId")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/load_balancers/monitor_groups/{monitorGroupId}/references",
+  }),
+) as unknown as Schema.Schema<GetMonitorGroupReferenceRequest>;
 
 export interface GetMonitorGroupReferenceResponse {
   result: {
@@ -6185,36 +6107,31 @@ export interface GetMonitorGroupReferenceResponse {
   }[];
 }
 
-export const GetMonitorGroupReferenceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
-      Schema.Struct({
-        referenceType: Schema.optional(
+export const GetMonitorGroupReferenceResponse = /*@__PURE__*/ Schema.Struct({
+  result: Schema.Array(
+    Schema.Struct({
+      referenceType: Schema.optional(
+        Schema.Union([
           Schema.Union([
-            Schema.Union([
-              Schema.Literals(["*", "referral", "referrer"]),
-              Schema.String,
-            ]),
-            Schema.Null,
+            Schema.Literals(["*", "referral", "referrer"]),
+            Schema.String,
           ]),
-        ),
-        resourceId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        resourceName: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        resourceType: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          referenceType: "reference_type",
-          resourceId: "resource_id",
-          resourceName: "resource_name",
-          resourceType: "resource_type",
-        }),
+          Schema.Null,
+        ]),
       ),
+      resourceId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      resourceName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      resourceType: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        referenceType: "reference_type",
+        resourceId: "resource_id",
+        resourceName: "resource_name",
+        resourceType: "resource_type",
+      }),
     ),
-  }) as unknown as Schema.Schema<GetMonitorGroupReferenceResponse>;
+  ),
+}) as unknown as Schema.Schema<GetMonitorGroupReferenceResponse>;
 
 export type GetMonitorGroupReferenceError = DefaultErrors;
 
@@ -6223,7 +6140,7 @@ export const getMonitorGroupReference: API.PaginatedOperationMethod<
   GetMonitorGroupReferenceResponse,
   GetMonitorGroupReferenceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetMonitorGroupReferenceRequest,
   output: GetMonitorGroupReferenceResponse,
   errors: [],
@@ -6282,62 +6199,61 @@ export interface CreateMonitorPreviewRequest {
     | (string & {});
 }
 
-export const CreateMonitorPreviewRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    monitorId: Schema.String.pipe(T.HttpPath("monitorId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    allowInsecure: Schema.optional(Schema.Boolean),
-    consecutiveDown: Schema.optional(Schema.Number),
-    consecutiveUp: Schema.optional(Schema.Number),
-    description: Schema.optional(Schema.String),
-    expectedBody: Schema.optional(Schema.String),
-    expectedCodes: Schema.optional(Schema.String),
-    followRedirects: Schema.optional(Schema.Boolean),
-    header: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    interval: Schema.optional(Schema.Number),
-    method: Schema.optional(Schema.String),
-    path: Schema.optional(Schema.String),
-    port: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    probeZone: Schema.optional(Schema.String),
-    retries: Schema.optional(Schema.Number),
-    timeout: Schema.optional(Schema.Number),
-    type: Schema.optional(
-      Schema.Union([
-        Schema.Literals([
-          "http",
-          "https",
-          "tcp",
-          "udp_icmp",
-          "icmp_ping",
-          "smtp",
-        ]),
-        Schema.String,
+export const CreateMonitorPreviewRequest = /*@__PURE__*/ Schema.Struct({
+  monitorId: Schema.String.pipe(T.HttpPath("monitorId")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  allowInsecure: Schema.optional(Schema.Boolean),
+  consecutiveDown: Schema.optional(Schema.Number),
+  consecutiveUp: Schema.optional(Schema.Number),
+  description: Schema.optional(Schema.String),
+  expectedBody: Schema.optional(Schema.String),
+  expectedCodes: Schema.optional(Schema.String),
+  followRedirects: Schema.optional(Schema.Boolean),
+  header: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  interval: Schema.optional(Schema.Number),
+  method: Schema.optional(Schema.String),
+  path: Schema.optional(Schema.String),
+  port: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  probeZone: Schema.optional(Schema.String),
+  retries: Schema.optional(Schema.Number),
+  timeout: Schema.optional(Schema.Number),
+  type: Schema.optional(
+    Schema.Union([
+      Schema.Literals([
+        "http",
+        "https",
+        "tcp",
+        "udp_icmp",
+        "icmp_ping",
+        "smtp",
       ]),
-    ),
-  }).pipe(
-    Schema.encodeKeys({
-      allowInsecure: "allow_insecure",
-      consecutiveDown: "consecutive_down",
-      consecutiveUp: "consecutive_up",
-      description: "description",
-      expectedBody: "expected_body",
-      expectedCodes: "expected_codes",
-      followRedirects: "follow_redirects",
-      header: "header",
-      interval: "interval",
-      method: "method",
-      path: "path",
-      port: "port",
-      probeZone: "probe_zone",
-      retries: "retries",
-      timeout: "timeout",
-      type: "type",
-    }),
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/load_balancers/monitors/{monitorId}/preview",
-    }),
-  ) as unknown as Schema.Schema<CreateMonitorPreviewRequest>;
+      Schema.String,
+    ]),
+  ),
+}).pipe(
+  Schema.encodeKeys({
+    allowInsecure: "allow_insecure",
+    consecutiveDown: "consecutive_down",
+    consecutiveUp: "consecutive_up",
+    description: "description",
+    expectedBody: "expected_body",
+    expectedCodes: "expected_codes",
+    followRedirects: "follow_redirects",
+    header: "header",
+    interval: "interval",
+    method: "method",
+    path: "path",
+    port: "port",
+    probeZone: "probe_zone",
+    retries: "retries",
+    timeout: "timeout",
+    type: "type",
+  }),
+  T.Http({
+    method: "POST",
+    path: "/accounts/{account_id}/load_balancers/monitors/{monitorId}/preview",
+  }),
+) as unknown as Schema.Schema<CreateMonitorPreviewRequest>;
 
 export interface CreateMonitorPreviewResponse {
   /** Monitored pool IDs mapped to their respective names. */
@@ -6345,17 +6261,16 @@ export interface CreateMonitorPreviewResponse {
   previewId?: string | null;
 }
 
-export const CreateMonitorPreviewResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pools: Schema.optional(
-      Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
-    ),
-    previewId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(Schema.encodeKeys({ pools: "pools", previewId: "preview_id" }))
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<CreateMonitorPreviewResponse>;
+export const CreateMonitorPreviewResponse = /*@__PURE__*/ Schema.Struct({
+  pools: Schema.optional(
+    Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
+  ),
+  previewId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+})
+  .pipe(Schema.encodeKeys({ pools: "pools", previewId: "preview_id" }))
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<CreateMonitorPreviewResponse>;
 
 export type CreateMonitorPreviewError = DefaultErrors;
 
@@ -6364,7 +6279,7 @@ export const createMonitorPreview: API.OperationMethod<
   CreateMonitorPreviewResponse,
   CreateMonitorPreviewError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMonitorPreviewRequest,
   output: CreateMonitorPreviewResponse,
   errors: [],
@@ -6380,16 +6295,15 @@ export interface GetMonitorReferenceRequest {
   accountId: string;
 }
 
-export const GetMonitorReferenceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    monitorId: Schema.String.pipe(T.HttpPath("monitorId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/load_balancers/monitors/{monitorId}/references",
-    }),
-  ) as unknown as Schema.Schema<GetMonitorReferenceRequest>;
+export const GetMonitorReferenceRequest = /*@__PURE__*/ Schema.Struct({
+  monitorId: Schema.String.pipe(T.HttpPath("monitorId")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/load_balancers/monitors/{monitorId}/references",
+  }),
+) as unknown as Schema.Schema<GetMonitorReferenceRequest>;
 
 export interface GetMonitorReferenceResponse {
   result: {
@@ -6400,36 +6314,31 @@ export interface GetMonitorReferenceResponse {
   }[];
 }
 
-export const GetMonitorReferenceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
-      Schema.Struct({
-        referenceType: Schema.optional(
+export const GetMonitorReferenceResponse = /*@__PURE__*/ Schema.Struct({
+  result: Schema.Array(
+    Schema.Struct({
+      referenceType: Schema.optional(
+        Schema.Union([
           Schema.Union([
-            Schema.Union([
-              Schema.Literals(["*", "referral", "referrer"]),
-              Schema.String,
-            ]),
-            Schema.Null,
+            Schema.Literals(["*", "referral", "referrer"]),
+            Schema.String,
           ]),
-        ),
-        resourceId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        resourceName: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        resourceType: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          referenceType: "reference_type",
-          resourceId: "resource_id",
-          resourceName: "resource_name",
-          resourceType: "resource_type",
-        }),
+          Schema.Null,
+        ]),
       ),
+      resourceId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      resourceName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      resourceType: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        referenceType: "reference_type",
+        resourceId: "resource_id",
+        resourceName: "resource_name",
+        resourceType: "resource_type",
+      }),
     ),
-  }) as unknown as Schema.Schema<GetMonitorReferenceResponse>;
+  ),
+}) as unknown as Schema.Schema<GetMonitorReferenceResponse>;
 
 export type GetMonitorReferenceError = DefaultErrors;
 
@@ -6438,7 +6347,7 @@ export const getMonitorReference: API.PaginatedOperationMethod<
   GetMonitorReferenceResponse,
   GetMonitorReferenceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetMonitorReferenceRequest,
   output: GetMonitorReferenceResponse,
   errors: [],
@@ -6458,7 +6367,7 @@ export interface GetPoolRequest {
   accountId: string;
 }
 
-export const GetPoolRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetPoolRequest = /*@__PURE__*/ Schema.Struct({
   poolId: Schema.String.pipe(T.HttpPath("poolId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -6552,7 +6461,7 @@ export interface GetPoolResponse {
     | null;
 }
 
-export const GetPoolResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetPoolResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   checkRegions: Schema.optional(
     Schema.Union([
@@ -6758,7 +6667,7 @@ export const getPool: API.OperationMethod<
   GetPoolResponse,
   GetPoolError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPoolRequest,
   output: GetPoolResponse,
   errors: [],
@@ -6771,7 +6680,7 @@ export interface ListPoolsRequest {
   monitor?: string;
 }
 
-export const ListPoolsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListPoolsRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   monitor: Schema.optional(Schema.String).pipe(T.HttpQuery("monitor")),
 }).pipe(
@@ -6851,7 +6760,7 @@ export interface ListPoolsResponse {
   }[];
 }
 
-export const ListPoolsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListPoolsResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -7070,7 +6979,7 @@ export const listPools: API.PaginatedOperationMethod<
   ListPoolsResponse,
   ListPoolsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPoolsRequest,
   output: ListPoolsResponse,
   errors: [],
@@ -7135,7 +7044,7 @@ export interface CreatePoolRequest {
   } | null;
 }
 
-export const CreatePoolRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreatePoolRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   name: Schema.String,
   origins: Schema.Array(
@@ -7350,7 +7259,7 @@ export interface CreatePoolResponse {
     | null;
 }
 
-export const CreatePoolResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreatePoolResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   checkRegions: Schema.optional(
     Schema.Union([
@@ -7558,7 +7467,7 @@ export const createPool: API.OperationMethod<
   CreatePoolResponse,
   CreatePoolError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePoolRequest,
   output: CreatePoolResponse,
   errors: [],
@@ -7640,7 +7549,7 @@ export interface UpdatePoolRequest {
   } | null;
 }
 
-export const UpdatePoolRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdatePoolRequest = /*@__PURE__*/ Schema.Struct({
   poolId: Schema.String.pipe(T.HttpPath("poolId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   name: Schema.String,
@@ -7883,7 +7792,7 @@ export interface UpdatePoolResponse {
     | null;
 }
 
-export const UpdatePoolResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdatePoolResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   checkRegions: Schema.optional(
     Schema.Union([
@@ -8091,7 +8000,7 @@ export const updatePool: API.OperationMethod<
   UpdatePoolResponse,
   UpdatePoolError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePoolRequest,
   output: UpdatePoolResponse,
   errors: [],
@@ -8173,7 +8082,7 @@ export interface PatchPoolRequest {
   }[];
 }
 
-export const PatchPoolRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PatchPoolRequest = /*@__PURE__*/ Schema.Struct({
   poolId: Schema.String.pipe(T.HttpPath("poolId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   checkRegions: Schema.optional(
@@ -8418,7 +8327,7 @@ export interface PatchPoolResponse {
     | null;
 }
 
-export const PatchPoolResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PatchPoolResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   checkRegions: Schema.optional(
     Schema.Union([
@@ -8626,7 +8535,7 @@ export const patchPool: API.OperationMethod<
   PatchPoolResponse,
   PatchPoolError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchPoolRequest,
   output: PatchPoolResponse,
   errors: [],
@@ -8638,7 +8547,7 @@ export interface DeletePoolRequest {
   accountId: string;
 }
 
-export const DeletePoolRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeletePoolRequest = /*@__PURE__*/ Schema.Struct({
   poolId: Schema.String.pipe(T.HttpPath("poolId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -8652,7 +8561,7 @@ export interface DeletePoolResponse {
   id?: string | null;
 }
 
-export const DeletePoolResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeletePoolResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
 }).pipe(
   T.ResponsePath("result"),
@@ -8665,7 +8574,7 @@ export const deletePool: API.OperationMethod<
   DeletePoolResponse,
   DeletePoolError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePoolRequest,
   output: DeletePoolResponse,
   errors: [],
@@ -8678,7 +8587,7 @@ export interface BulkPatchPoolsRequest {
   notificationEmail?: "";
 }
 
-export const BulkPatchPoolsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BulkPatchPoolsRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   notificationEmail: Schema.optional(Schema.Literal("")),
 }).pipe(
@@ -8759,230 +8668,217 @@ export interface BulkPatchPoolsResponse {
   }[];
 }
 
-export const BulkPatchPoolsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    result: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        checkRegions: Schema.optional(
-          Schema.Union([
-            Schema.Array(
+export const BulkPatchPoolsResponse = /*@__PURE__*/ Schema.Struct({
+  result: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      checkRegions: Schema.optional(
+        Schema.Union([
+          Schema.Array(
+            Schema.Union([
+              Schema.Literals([
+                "WNAM",
+                "ENAM",
+                "WEU",
+                "EEU",
+                "NSAM",
+                "SSAM",
+                "OC",
+                "ME",
+                "NAF",
+                "SAF",
+                "SAS",
+                "SEAS",
+                "NEAS",
+                "ALL_REGIONS",
+              ]),
+              Schema.String,
+            ]),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      disabledAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      latitude: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      loadShedding: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            defaultPercent: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+            defaultPolicy: Schema.optional(
               Schema.Union([
-                Schema.Literals([
-                  "WNAM",
-                  "ENAM",
-                  "WEU",
-                  "EEU",
-                  "NSAM",
-                  "SSAM",
-                  "OC",
-                  "ME",
-                  "NAF",
-                  "SAF",
-                  "SAS",
-                  "SEAS",
-                  "NEAS",
-                  "ALL_REGIONS",
+                Schema.Union([
+                  Schema.Literals(["random", "hash"]),
+                  Schema.String,
                 ]),
-                Schema.String,
+                Schema.Null,
               ]),
             ),
-            Schema.Null,
-          ]),
-        ),
-        createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        description: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        disabledAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-        latitude: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        loadShedding: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              defaultPercent: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-              defaultPolicy: Schema.optional(
+            sessionPercent: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+            sessionPolicy: Schema.optional(
+              Schema.Union([Schema.Literal("hash"), Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              defaultPercent: "default_percent",
+              defaultPolicy: "default_policy",
+              sessionPercent: "session_percent",
+              sessionPolicy: "session_policy",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      longitude: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      minimumOrigins: Schema.optional(
+        Schema.Union([Schema.Number, Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      monitor: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      monitorGroup: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      networks: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+      notificationEmail: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      notificationFilter: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            origin: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  disable: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  healthy: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                }),
+                Schema.Null,
+              ]),
+            ),
+            pool: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  disable: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  healthy: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                }),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Null,
+        ]),
+      ),
+      originSteering: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            policy: Schema.optional(
+              Schema.Union([
                 Schema.Union([
-                  Schema.Union([
-                    Schema.Literals(["random", "hash"]),
-                    Schema.String,
+                  Schema.Literals([
+                    "random",
+                    "hash",
+                    "least_outstanding_requests",
+                    "least_connections",
                   ]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Null,
+        ]),
+      ),
+      origins: Schema.optional(
+        Schema.Union([
+          Schema.Array(
+            Schema.Struct({
+              address: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              disabledAt: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              enabled: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              flattenCname: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              header: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    host: Schema.optional(
+                      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                    ),
+                  }).pipe(Schema.encodeKeys({ host: "Host" })),
                   Schema.Null,
                 ]),
               ),
-              sessionPercent: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
+              name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+              port: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+              virtualNetworkId: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
               ),
-              sessionPolicy: Schema.optional(
-                Schema.Union([Schema.Literal("hash"), Schema.Null]),
+              weight: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
               ),
             }).pipe(
               Schema.encodeKeys({
-                defaultPercent: "default_percent",
-                defaultPolicy: "default_policy",
-                sessionPercent: "session_percent",
-                sessionPolicy: "session_policy",
+                address: "address",
+                disabledAt: "disabled_at",
+                enabled: "enabled",
+                flattenCname: "flatten_cname",
+                header: "header",
+                name: "name",
+                port: "port",
+                virtualNetworkId: "virtual_network_id",
+                weight: "weight",
               }),
             ),
-            Schema.Null,
-          ]),
-        ),
-        longitude: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        minimumOrigins: Schema.optional(
-          Schema.Union([Schema.Number, Schema.Null]),
-        ),
-        modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        monitor: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        monitorGroup: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        networks: Schema.optional(
-          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-        ),
-        notificationEmail: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        notificationFilter: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              origin: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    disable: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                    healthy: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                  }),
-                  Schema.Null,
-                ]),
-              ),
-              pool: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    disable: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                    healthy: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                  }),
-                  Schema.Null,
-                ]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-        originSteering: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              policy: Schema.optional(
-                Schema.Union([
-                  Schema.Union([
-                    Schema.Literals([
-                      "random",
-                      "hash",
-                      "least_outstanding_requests",
-                      "least_connections",
-                    ]),
-                    Schema.String,
-                  ]),
-                  Schema.Null,
-                ]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-        origins: Schema.optional(
-          Schema.Union([
-            Schema.Array(
-              Schema.Struct({
-                address: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                disabledAt: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                enabled: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-                flattenCname: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-                header: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      host: Schema.optional(
-                        Schema.Union([
-                          Schema.Array(Schema.String),
-                          Schema.Null,
-                        ]),
-                      ),
-                    }).pipe(Schema.encodeKeys({ host: "Host" })),
-                    Schema.Null,
-                  ]),
-                ),
-                name: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                port: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                virtualNetworkId: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                weight: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  address: "address",
-                  disabledAt: "disabled_at",
-                  enabled: "enabled",
-                  flattenCname: "flatten_cname",
-                  header: "header",
-                  name: "name",
-                  port: "port",
-                  virtualNetworkId: "virtual_network_id",
-                  weight: "weight",
-                }),
-              ),
-            ),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          checkRegions: "check_regions",
-          createdOn: "created_on",
-          description: "description",
-          disabledAt: "disabled_at",
-          enabled: "enabled",
-          latitude: "latitude",
-          loadShedding: "load_shedding",
-          longitude: "longitude",
-          minimumOrigins: "minimum_origins",
-          modifiedOn: "modified_on",
-          monitor: "monitor",
-          monitorGroup: "monitor_group",
-          name: "name",
-          networks: "networks",
-          notificationEmail: "notification_email",
-          notificationFilter: "notification_filter",
-          originSteering: "origin_steering",
-          origins: "origins",
-        }),
+          ),
+          Schema.Null,
+        ]),
       ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        checkRegions: "check_regions",
+        createdOn: "created_on",
+        description: "description",
+        disabledAt: "disabled_at",
+        enabled: "enabled",
+        latitude: "latitude",
+        loadShedding: "load_shedding",
+        longitude: "longitude",
+        minimumOrigins: "minimum_origins",
+        modifiedOn: "modified_on",
+        monitor: "monitor",
+        monitorGroup: "monitor_group",
+        name: "name",
+        networks: "networks",
+        notificationEmail: "notification_email",
+        notificationFilter: "notification_filter",
+        originSteering: "origin_steering",
+        origins: "origins",
+      }),
     ),
-  },
-) as unknown as Schema.Schema<BulkPatchPoolsResponse>;
+  ),
+}) as unknown as Schema.Schema<BulkPatchPoolsResponse>;
 
 export type BulkPatchPoolsError = DefaultErrors;
 
@@ -8991,7 +8887,7 @@ export const bulkPatchPools: API.PaginatedOperationMethod<
   BulkPatchPoolsResponse,
   BulkPatchPoolsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: BulkPatchPoolsRequest,
   output: BulkPatchPoolsResponse,
   errors: [],
@@ -9011,7 +8907,7 @@ export interface GetPoolHealthRequest {
   accountId: string;
 }
 
-export const GetPoolHealthRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetPoolHealthRequest = /*@__PURE__*/ Schema.Struct({
   poolId: Schema.String.pipe(T.HttpPath("poolId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -9040,7 +8936,7 @@ export interface GetPoolHealthResponse {
   } | null;
 }
 
-export const GetPoolHealthResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetPoolHealthResponse = /*@__PURE__*/ Schema.Struct({
   poolId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   popHealth: Schema.optional(
     Schema.Union([
@@ -9098,7 +8994,7 @@ export const getPoolHealth: API.OperationMethod<
   GetPoolHealthResponse,
   GetPoolHealthError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPoolHealthRequest,
   output: GetPoolHealthResponse,
   errors: [],
@@ -9149,62 +9045,61 @@ export interface CreatePoolHealthRequest {
     | (string & {});
 }
 
-export const CreatePoolHealthRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    poolId: Schema.String.pipe(T.HttpPath("poolId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    allowInsecure: Schema.optional(Schema.Boolean),
-    consecutiveDown: Schema.optional(Schema.Number),
-    consecutiveUp: Schema.optional(Schema.Number),
-    description: Schema.optional(Schema.String),
-    expectedBody: Schema.optional(Schema.String),
-    expectedCodes: Schema.optional(Schema.String),
-    followRedirects: Schema.optional(Schema.Boolean),
-    header: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    interval: Schema.optional(Schema.Number),
-    method: Schema.optional(Schema.String),
-    path: Schema.optional(Schema.String),
-    port: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    probeZone: Schema.optional(Schema.String),
-    retries: Schema.optional(Schema.Number),
-    timeout: Schema.optional(Schema.Number),
-    type: Schema.optional(
-      Schema.Union([
-        Schema.Literals([
-          "http",
-          "https",
-          "tcp",
-          "udp_icmp",
-          "icmp_ping",
-          "smtp",
-        ]),
-        Schema.String,
+export const CreatePoolHealthRequest = /*@__PURE__*/ Schema.Struct({
+  poolId: Schema.String.pipe(T.HttpPath("poolId")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  allowInsecure: Schema.optional(Schema.Boolean),
+  consecutiveDown: Schema.optional(Schema.Number),
+  consecutiveUp: Schema.optional(Schema.Number),
+  description: Schema.optional(Schema.String),
+  expectedBody: Schema.optional(Schema.String),
+  expectedCodes: Schema.optional(Schema.String),
+  followRedirects: Schema.optional(Schema.Boolean),
+  header: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  interval: Schema.optional(Schema.Number),
+  method: Schema.optional(Schema.String),
+  path: Schema.optional(Schema.String),
+  port: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  probeZone: Schema.optional(Schema.String),
+  retries: Schema.optional(Schema.Number),
+  timeout: Schema.optional(Schema.Number),
+  type: Schema.optional(
+    Schema.Union([
+      Schema.Literals([
+        "http",
+        "https",
+        "tcp",
+        "udp_icmp",
+        "icmp_ping",
+        "smtp",
       ]),
-    ),
-  }).pipe(
-    Schema.encodeKeys({
-      allowInsecure: "allow_insecure",
-      consecutiveDown: "consecutive_down",
-      consecutiveUp: "consecutive_up",
-      description: "description",
-      expectedBody: "expected_body",
-      expectedCodes: "expected_codes",
-      followRedirects: "follow_redirects",
-      header: "header",
-      interval: "interval",
-      method: "method",
-      path: "path",
-      port: "port",
-      probeZone: "probe_zone",
-      retries: "retries",
-      timeout: "timeout",
-      type: "type",
-    }),
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/load_balancers/pools/{poolId}/preview",
-    }),
-  ) as unknown as Schema.Schema<CreatePoolHealthRequest>;
+      Schema.String,
+    ]),
+  ),
+}).pipe(
+  Schema.encodeKeys({
+    allowInsecure: "allow_insecure",
+    consecutiveDown: "consecutive_down",
+    consecutiveUp: "consecutive_up",
+    description: "description",
+    expectedBody: "expected_body",
+    expectedCodes: "expected_codes",
+    followRedirects: "follow_redirects",
+    header: "header",
+    interval: "interval",
+    method: "method",
+    path: "path",
+    port: "port",
+    probeZone: "probe_zone",
+    retries: "retries",
+    timeout: "timeout",
+    type: "type",
+  }),
+  T.Http({
+    method: "POST",
+    path: "/accounts/{account_id}/load_balancers/pools/{poolId}/preview",
+  }),
+) as unknown as Schema.Schema<CreatePoolHealthRequest>;
 
 export interface CreatePoolHealthResponse {
   /** Monitored pool IDs mapped to their respective names. */
@@ -9212,17 +9107,16 @@ export interface CreatePoolHealthResponse {
   previewId?: string | null;
 }
 
-export const CreatePoolHealthResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pools: Schema.optional(
-      Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
-    ),
-    previewId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(Schema.encodeKeys({ pools: "pools", previewId: "preview_id" }))
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<CreatePoolHealthResponse>;
+export const CreatePoolHealthResponse = /*@__PURE__*/ Schema.Struct({
+  pools: Schema.optional(
+    Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
+  ),
+  previewId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+})
+  .pipe(Schema.encodeKeys({ pools: "pools", previewId: "preview_id" }))
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<CreatePoolHealthResponse>;
 
 export type CreatePoolHealthError = DefaultErrors;
 
@@ -9231,7 +9125,7 @@ export const createPoolHealth: API.OperationMethod<
   CreatePoolHealthResponse,
   CreatePoolHealthError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePoolHealthRequest,
   output: CreatePoolHealthResponse,
   errors: [],
@@ -9247,16 +9141,15 @@ export interface GetPoolReferenceRequest {
   accountId: string;
 }
 
-export const GetPoolReferenceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    poolId: Schema.String.pipe(T.HttpPath("poolId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/load_balancers/pools/{poolId}/references",
-    }),
-  ) as unknown as Schema.Schema<GetPoolReferenceRequest>;
+export const GetPoolReferenceRequest = /*@__PURE__*/ Schema.Struct({
+  poolId: Schema.String.pipe(T.HttpPath("poolId")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/load_balancers/pools/{poolId}/references",
+  }),
+) as unknown as Schema.Schema<GetPoolReferenceRequest>;
 
 export interface GetPoolReferenceResponse {
   result: {
@@ -9267,36 +9160,31 @@ export interface GetPoolReferenceResponse {
   }[];
 }
 
-export const GetPoolReferenceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
-      Schema.Struct({
-        referenceType: Schema.optional(
+export const GetPoolReferenceResponse = /*@__PURE__*/ Schema.Struct({
+  result: Schema.Array(
+    Schema.Struct({
+      referenceType: Schema.optional(
+        Schema.Union([
           Schema.Union([
-            Schema.Union([
-              Schema.Literals(["*", "referral", "referrer"]),
-              Schema.String,
-            ]),
-            Schema.Null,
+            Schema.Literals(["*", "referral", "referrer"]),
+            Schema.String,
           ]),
-        ),
-        resourceId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        resourceName: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        resourceType: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          referenceType: "reference_type",
-          resourceId: "resource_id",
-          resourceName: "resource_name",
-          resourceType: "resource_type",
-        }),
+          Schema.Null,
+        ]),
       ),
+      resourceId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      resourceName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      resourceType: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        referenceType: "reference_type",
+        resourceId: "resource_id",
+        resourceName: "resource_name",
+        resourceType: "resource_type",
+      }),
     ),
-  }) as unknown as Schema.Schema<GetPoolReferenceResponse>;
+  ),
+}) as unknown as Schema.Schema<GetPoolReferenceResponse>;
 
 export type GetPoolReferenceError = DefaultErrors;
 
@@ -9305,7 +9193,7 @@ export const getPoolReference: API.PaginatedOperationMethod<
   GetPoolReferenceResponse,
   GetPoolReferenceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetPoolReferenceRequest,
   output: GetPoolReferenceResponse,
   errors: [],
@@ -9325,7 +9213,7 @@ export interface GetPreviewRequest {
   accountId: string;
 }
 
-export const GetPreviewRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetPreviewRequest = /*@__PURE__*/ Schema.Struct({
   previewId: Schema.String.pipe(T.HttpPath("previewId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -9337,7 +9225,7 @@ export const GetPreviewRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type GetPreviewResponse = Record<string, unknown>;
 
-export const GetPreviewResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Record(
+export const GetPreviewResponse = /*@__PURE__*/ Schema.Record(
   Schema.String,
   Schema.Unknown,
 ).pipe(
@@ -9351,7 +9239,7 @@ export const getPreview: API.OperationMethod<
   GetPreviewResponse,
   GetPreviewError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPreviewRequest,
   output: GetPreviewResponse,
   errors: [],
@@ -9381,7 +9269,7 @@ export interface GetRegionRequest {
   accountId: string;
 }
 
-export const GetRegionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetRegionRequest = /*@__PURE__*/ Schema.Struct({
   regionId: Schema.Union([
     Schema.Literals([
       "WNAM",
@@ -9410,10 +9298,9 @@ export const GetRegionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type GetRegionResponse = unknown;
 
-export const GetRegionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<GetRegionResponse>;
+export const GetRegionResponse = /*@__PURE__*/ Schema.Unknown.pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<GetRegionResponse>;
 
 export type GetRegionError = DefaultErrors;
 
@@ -9422,7 +9309,7 @@ export const getRegion: API.OperationMethod<
   GetRegionResponse,
   GetRegionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRegionRequest,
   output: GetRegionResponse,
   errors: [],
@@ -9439,7 +9326,7 @@ export interface ListRegionsRequest {
   subdivisionCodeA2?: string;
 }
 
-export const ListRegionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListRegionsRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   countryCodeA2: Schema.optional(Schema.String).pipe(
     T.HttpQuery("country_code_a2"),
@@ -9459,10 +9346,9 @@ export const ListRegionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type ListRegionsResponse = unknown;
 
-export const ListRegionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<ListRegionsResponse>;
+export const ListRegionsResponse = /*@__PURE__*/ Schema.Unknown.pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<ListRegionsResponse>;
 
 export type ListRegionsError = DefaultErrors;
 
@@ -9471,7 +9357,7 @@ export const listRegions: API.OperationMethod<
   ListRegionsResponse,
   ListRegionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListRegionsRequest,
   output: ListRegionsResponse,
   errors: [],
@@ -9492,7 +9378,7 @@ export interface ListSearchesRequest {
   references?: "" | "*" | "referral" | "referrer" | (string & {});
 }
 
-export const ListSearchesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListSearchesRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
   perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
@@ -9539,7 +9425,7 @@ export interface ListSearchesResponse {
   } | null;
 }
 
-export const ListSearchesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListSearchesResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Struct({
     items: Schema.optional(
       Schema.Union([
@@ -9624,7 +9510,7 @@ export const listSearches: API.PaginatedOperationMethod<
   ListSearchesResponse,
   ListSearchesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSearchesRequest,
   output: ListSearchesResponse,
   errors: [],

@@ -466,7 +466,7 @@ export const getAccountActivity: API.OperationMethod<
   GetAccountActivityResponse,
   GetAccountActivityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountActivityRequest,
   output: GetAccountActivityResponse,
   errors: [
@@ -491,7 +491,7 @@ export const getAccountPlanState: API.OperationMethod<
   GetAccountPlanStateResponse,
   GetAccountPlanStateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountPlanStateRequest,
   output: GetAccountPlanStateResponse,
   errors: [
@@ -530,7 +530,7 @@ export const getFreeTierUsage: API.OperationMethod<
     GetFreeTierUsageError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetFreeTierUsageRequest,
   output: GetFreeTierUsageResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
@@ -569,7 +569,7 @@ export const listAccountActivities: API.OperationMethod<
     ListAccountActivitiesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountActivitiesRequest,
   output: ListAccountActivitiesResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
@@ -595,7 +595,7 @@ export const upgradeAccountPlan: API.OperationMethod<
   UpgradeAccountPlanResponse,
   UpgradeAccountPlanError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpgradeAccountPlanRequest,
   output: UpgradeAccountPlanResponse,
   errors: [

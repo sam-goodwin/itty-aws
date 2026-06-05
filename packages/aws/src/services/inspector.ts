@@ -1861,7 +1861,7 @@ export const addAttributesToFindings: API.OperationMethod<
   AddAttributesToFindingsResponse,
   AddAttributesToFindingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddAttributesToFindingsRequest,
   output: AddAttributesToFindingsResponse,
   errors: [
@@ -1896,7 +1896,7 @@ export const createAssessmentTarget: API.OperationMethod<
   CreateAssessmentTargetResponse,
   CreateAssessmentTargetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAssessmentTargetRequest,
   output: CreateAssessmentTargetResponse,
   errors: [
@@ -1928,7 +1928,7 @@ export const createAssessmentTemplate: API.OperationMethod<
   CreateAssessmentTemplateResponse,
   CreateAssessmentTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAssessmentTemplateRequest,
   output: CreateAssessmentTemplateResponse,
   errors: [
@@ -1958,7 +1958,7 @@ export const createExclusionsPreview: API.OperationMethod<
   CreateExclusionsPreviewResponse,
   CreateExclusionsPreviewError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateExclusionsPreviewRequest,
   output: CreateExclusionsPreviewResponse,
   errors: [
@@ -1988,7 +1988,7 @@ export const createResourceGroup: API.OperationMethod<
   CreateResourceGroupResponse,
   CreateResourceGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateResourceGroupRequest,
   output: CreateResourceGroupResponse,
   errors: [
@@ -2016,7 +2016,7 @@ export const deleteAssessmentRun: API.OperationMethod<
   DeleteAssessmentRunResponse,
   DeleteAssessmentRunError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAssessmentRunRequest,
   output: DeleteAssessmentRunResponse,
   errors: [
@@ -2045,7 +2045,7 @@ export const deleteAssessmentTarget: API.OperationMethod<
   DeleteAssessmentTargetResponse,
   DeleteAssessmentTargetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAssessmentTargetRequest,
   output: DeleteAssessmentTargetResponse,
   errors: [
@@ -2074,7 +2074,7 @@ export const deleteAssessmentTemplate: API.OperationMethod<
   DeleteAssessmentTemplateResponse,
   DeleteAssessmentTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAssessmentTemplateRequest,
   output: DeleteAssessmentTemplateResponse,
   errors: [
@@ -2099,7 +2099,7 @@ export const describeAssessmentRuns: API.OperationMethod<
   DescribeAssessmentRunsResponse,
   DescribeAssessmentRunsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAssessmentRunsRequest,
   output: DescribeAssessmentRunsResponse,
   errors: [InternalException, InvalidInputException],
@@ -2117,7 +2117,7 @@ export const describeAssessmentTargets: API.OperationMethod<
   DescribeAssessmentTargetsResponse,
   DescribeAssessmentTargetsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAssessmentTargetsRequest,
   output: DescribeAssessmentTargetsResponse,
   errors: [InternalException, InvalidInputException],
@@ -2135,7 +2135,7 @@ export const describeAssessmentTemplates: API.OperationMethod<
   DescribeAssessmentTemplatesResponse,
   DescribeAssessmentTemplatesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAssessmentTemplatesRequest,
   output: DescribeAssessmentTemplatesResponse,
   errors: [InternalException, InvalidInputException],
@@ -2152,7 +2152,7 @@ export const describeCrossAccountAccessRole: API.OperationMethod<
   DescribeCrossAccountAccessRoleResponse,
   DescribeCrossAccountAccessRoleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeCrossAccountAccessRoleRequest,
   output: DescribeCrossAccountAccessRoleResponse,
   errors: [InternalException],
@@ -2169,7 +2169,7 @@ export const describeExclusions: API.OperationMethod<
   DescribeExclusionsResponse,
   DescribeExclusionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeExclusionsRequest,
   output: DescribeExclusionsResponse,
   errors: [InternalException, InvalidInputException],
@@ -2186,7 +2186,7 @@ export const describeFindings: API.OperationMethod<
   DescribeFindingsResponse,
   DescribeFindingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeFindingsRequest,
   output: DescribeFindingsResponse,
   errors: [InternalException, InvalidInputException],
@@ -2204,7 +2204,7 @@ export const describeResourceGroups: API.OperationMethod<
   DescribeResourceGroupsResponse,
   DescribeResourceGroupsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeResourceGroupsRequest,
   output: DescribeResourceGroupsResponse,
   errors: [InternalException, InvalidInputException],
@@ -2222,7 +2222,7 @@ export const describeRulesPackages: API.OperationMethod<
   DescribeRulesPackagesResponse,
   DescribeRulesPackagesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeRulesPackagesRequest,
   output: DescribeRulesPackagesResponse,
   errors: [InternalException, InvalidInputException],
@@ -2245,7 +2245,7 @@ export const getAssessmentReport: API.OperationMethod<
   GetAssessmentReportResponse,
   GetAssessmentReportError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAssessmentReportRequest,
   output: GetAssessmentReportResponse,
   errors: [
@@ -2289,7 +2289,7 @@ export const getExclusionsPreview: API.OperationMethod<
     GetExclusionsPreviewError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetExclusionsPreviewRequest,
   output: GetExclusionsPreviewResponse,
   errors: [
@@ -2319,7 +2319,7 @@ export const getTelemetryMetadata: API.OperationMethod<
   GetTelemetryMetadataResponse,
   GetTelemetryMetadataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTelemetryMetadataRequest,
   output: GetTelemetryMetadataResponse,
   errors: [
@@ -2359,7 +2359,7 @@ export const listAssessmentRunAgents: API.OperationMethod<
     ListAssessmentRunAgentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssessmentRunAgentsRequest,
   output: ListAssessmentRunAgentsResponse,
   errors: [
@@ -2404,7 +2404,7 @@ export const listAssessmentRuns: API.OperationMethod<
     ListAssessmentRunsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssessmentRunsRequest,
   output: ListAssessmentRunsResponse,
   errors: [
@@ -2449,7 +2449,7 @@ export const listAssessmentTargets: API.OperationMethod<
     ListAssessmentTargetsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssessmentTargetsRequest,
   output: ListAssessmentTargetsResponse,
   errors: [AccessDeniedException, InternalException, InvalidInputException],
@@ -2489,7 +2489,7 @@ export const listAssessmentTemplates: API.OperationMethod<
     ListAssessmentTemplatesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssessmentTemplatesRequest,
   output: ListAssessmentTemplatesResponse,
   errors: [
@@ -2534,7 +2534,7 @@ export const listEventSubscriptions: API.OperationMethod<
     ListEventSubscriptionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEventSubscriptionsRequest,
   output: ListEventSubscriptionsResponse,
   errors: [
@@ -2578,7 +2578,7 @@ export const listExclusions: API.OperationMethod<
     ListExclusionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExclusionsRequest,
   output: ListExclusionsResponse,
   errors: [
@@ -2623,7 +2623,7 @@ export const listFindings: API.OperationMethod<
     ListFindingsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFindingsRequest,
   output: ListFindingsResponse,
   errors: [
@@ -2666,7 +2666,7 @@ export const listRulesPackages: API.OperationMethod<
     ListRulesPackagesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRulesPackagesRequest,
   output: ListRulesPackagesResponse,
   errors: [AccessDeniedException, InternalException, InvalidInputException],
@@ -2690,7 +2690,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -2731,7 +2731,7 @@ export const previewAgents: API.OperationMethod<
     PreviewAgentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: PreviewAgentsRequest,
   output: PreviewAgentsResponse,
   errors: [
@@ -2763,7 +2763,7 @@ export const registerCrossAccountAccessRole: API.OperationMethod<
   RegisterCrossAccountAccessRoleResponse,
   RegisterCrossAccountAccessRoleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterCrossAccountAccessRoleRequest,
   output: RegisterCrossAccountAccessRoleResponse,
   errors: [
@@ -2790,7 +2790,7 @@ export const removeAttributesFromFindings: API.OperationMethod<
   RemoveAttributesFromFindingsResponse,
   RemoveAttributesFromFindingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveAttributesFromFindingsRequest,
   output: RemoveAttributesFromFindingsResponse,
   errors: [
@@ -2817,7 +2817,7 @@ export const setTagsForResource: API.OperationMethod<
   SetTagsForResourceResponse,
   SetTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetTagsForResourceRequest,
   output: SetTagsForResourceResponse,
   errors: [
@@ -2848,7 +2848,7 @@ export const startAssessmentRun: API.OperationMethod<
   StartAssessmentRunResponse,
   StartAssessmentRunError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartAssessmentRunRequest,
   output: StartAssessmentRunResponse,
   errors: [
@@ -2878,7 +2878,7 @@ export const stopAssessmentRun: API.OperationMethod<
   StopAssessmentRunResponse,
   StopAssessmentRunError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopAssessmentRunRequest,
   output: StopAssessmentRunResponse,
   errors: [
@@ -2906,7 +2906,7 @@ export const subscribeToEvent: API.OperationMethod<
   SubscribeToEventResponse,
   SubscribeToEventError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SubscribeToEventRequest,
   output: SubscribeToEventResponse,
   errors: [
@@ -2934,7 +2934,7 @@ export const unsubscribeFromEvent: API.OperationMethod<
   UnsubscribeFromEventResponse,
   UnsubscribeFromEventError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UnsubscribeFromEventRequest,
   output: UnsubscribeFromEventResponse,
   errors: [
@@ -2964,7 +2964,7 @@ export const updateAssessmentTarget: API.OperationMethod<
   UpdateAssessmentTargetResponse,
   UpdateAssessmentTargetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAssessmentTargetRequest,
   output: UpdateAssessmentTargetResponse,
   errors: [

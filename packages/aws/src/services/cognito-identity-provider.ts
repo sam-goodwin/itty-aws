@@ -6415,7 +6415,7 @@ export const addCustomAttributes: API.OperationMethod<
   AddCustomAttributesResponse,
   AddCustomAttributesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddCustomAttributesRequest,
   output: AddCustomAttributesResponse,
   errors: [
@@ -6443,7 +6443,7 @@ export const addUserPoolClientSecret: API.OperationMethod<
   AddUserPoolClientSecretResponse,
   AddUserPoolClientSecretError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddUserPoolClientSecretRequest,
   output: AddUserPoolClientSecretResponse,
   errors: [
@@ -6483,7 +6483,7 @@ export const adminAddUserToGroup: API.OperationMethod<
   AdminAddUserToGroupResponse,
   AdminAddUserToGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AdminAddUserToGroupRequest,
   output: AdminAddUserToGroupResponse,
   errors: [
@@ -6534,7 +6534,7 @@ export const adminConfirmSignUp: API.OperationMethod<
   AdminConfirmSignUpResponse,
   AdminConfirmSignUpError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AdminConfirmSignUpRequest,
   output: AdminConfirmSignUpResponse,
   errors: [
@@ -6622,7 +6622,7 @@ export const adminCreateUser: API.OperationMethod<
   AdminCreateUserResponse,
   AdminCreateUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AdminCreateUserRequest,
   output: AdminCreateUserResponse,
   errors: [
@@ -6670,7 +6670,7 @@ export const adminDeleteUser: API.OperationMethod<
   AdminDeleteUserResponse,
   AdminDeleteUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AdminDeleteUserRequest,
   output: AdminDeleteUserResponse,
   errors: [
@@ -6710,7 +6710,7 @@ export const adminDeleteUserAttributes: API.OperationMethod<
   AdminDeleteUserAttributesResponse,
   AdminDeleteUserAttributesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AdminDeleteUserAttributesRequest,
   output: AdminDeleteUserAttributesResponse,
   errors: [
@@ -6775,7 +6775,7 @@ export const adminDisableProviderForUser: API.OperationMethod<
   AdminDisableProviderForUserResponse,
   AdminDisableProviderForUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AdminDisableProviderForUserRequest,
   output: AdminDisableProviderForUserResponse,
   errors: [
@@ -6816,7 +6816,7 @@ export const adminDisableUser: API.OperationMethod<
   AdminDisableUserResponse,
   AdminDisableUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AdminDisableUserRequest,
   output: AdminDisableUserResponse,
   errors: [
@@ -6855,7 +6855,7 @@ export const adminEnableUser: API.OperationMethod<
   AdminEnableUserResponse,
   AdminEnableUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AdminEnableUserRequest,
   output: AdminEnableUserResponse,
   errors: [
@@ -6896,7 +6896,7 @@ export const adminForgetDevice: API.OperationMethod<
   AdminForgetDeviceResponse,
   AdminForgetDeviceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AdminForgetDeviceRequest,
   output: AdminForgetDeviceResponse,
   errors: [
@@ -6936,7 +6936,7 @@ export const adminGetDevice: API.OperationMethod<
   AdminGetDeviceResponse,
   AdminGetDeviceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AdminGetDeviceRequest,
   output: AdminGetDeviceResponse,
   errors: [
@@ -6978,7 +6978,7 @@ export const adminGetUser: API.OperationMethod<
   AdminGetUserResponse,
   AdminGetUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AdminGetUserRequest,
   output: AdminGetUserResponse,
   errors: [
@@ -7048,7 +7048,7 @@ export const adminInitiateAuth: API.OperationMethod<
   AdminInitiateAuthResponse,
   AdminInitiateAuthError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AdminInitiateAuthRequest,
   output: AdminInitiateAuthResponse,
   errors: [
@@ -7113,7 +7113,7 @@ export const adminLinkProviderForUser: API.OperationMethod<
   AdminLinkProviderForUserResponse,
   AdminLinkProviderForUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AdminLinkProviderForUserRequest,
   output: AdminLinkProviderForUserResponse,
   errors: [
@@ -7156,7 +7156,7 @@ export const adminListDevices: API.OperationMethod<
   AdminListDevicesResponse,
   AdminListDevicesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AdminListDevicesRequest,
   output: AdminListDevicesResponse,
   errors: [
@@ -7211,7 +7211,7 @@ export const adminListGroupsForUser: API.OperationMethod<
     AdminListGroupsForUserError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: AdminListGroupsForUserRequest,
   output: AdminListGroupsForUserResponse,
   errors: [
@@ -7272,7 +7272,7 @@ export const adminListUserAuthEvents: API.OperationMethod<
     AdminListUserAuthEventsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: AdminListUserAuthEventsRequest,
   output: AdminListUserAuthEventsResponse,
   errors: [
@@ -7319,7 +7319,7 @@ export const adminRemoveUserFromGroup: API.OperationMethod<
   AdminRemoveUserFromGroupResponse,
   AdminRemoveUserFromGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AdminRemoveUserFromGroupRequest,
   output: AdminRemoveUserFromGroupResponse,
   errors: [
@@ -7389,7 +7389,7 @@ export const adminResetUserPassword: API.OperationMethod<
   AdminResetUserPasswordResponse,
   AdminResetUserPasswordError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AdminResetUserPasswordRequest,
   output: AdminResetUserPasswordResponse,
   errors: [
@@ -7474,7 +7474,7 @@ export const adminRespondToAuthChallenge: API.OperationMethod<
   AdminRespondToAuthChallengeResponse,
   AdminRespondToAuthChallengeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AdminRespondToAuthChallengeRequest,
   output: AdminRespondToAuthChallengeResponse,
   errors: [
@@ -7533,7 +7533,7 @@ export const adminSetUserMFAPreference: API.OperationMethod<
   AdminSetUserMFAPreferenceResponse,
   AdminSetUserMFAPreferenceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AdminSetUserMFAPreferenceRequest,
   output: AdminSetUserMFAPreferenceResponse,
   errors: [
@@ -7602,7 +7602,7 @@ export const adminSetUserPassword: API.OperationMethod<
   AdminSetUserPasswordResponse,
   AdminSetUserPasswordError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AdminSetUserPasswordRequest,
   output: AdminSetUserPasswordResponse,
   errors: [
@@ -7643,7 +7643,7 @@ export const adminSetUserSettings: API.OperationMethod<
   AdminSetUserSettingsResponse,
   AdminSetUserSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AdminSetUserSettingsRequest,
   output: AdminSetUserSettingsResponse,
   errors: [
@@ -7691,7 +7691,7 @@ export const adminUpdateAuthEventFeedback: API.OperationMethod<
   AdminUpdateAuthEventFeedbackResponse,
   AdminUpdateAuthEventFeedbackError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AdminUpdateAuthEventFeedbackRequest,
   output: AdminUpdateAuthEventFeedbackResponse,
   errors: [
@@ -7736,7 +7736,7 @@ export const adminUpdateDeviceStatus: API.OperationMethod<
   AdminUpdateDeviceStatusResponse,
   AdminUpdateDeviceStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AdminUpdateDeviceStatusRequest,
   output: AdminUpdateDeviceStatusResponse,
   errors: [
@@ -7808,7 +7808,7 @@ export const adminUpdateUserAttributes: API.OperationMethod<
   AdminUpdateUserAttributesResponse,
   AdminUpdateUserAttributesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AdminUpdateUserAttributesRequest,
   output: AdminUpdateUserAttributesResponse,
   errors: [
@@ -7876,7 +7876,7 @@ export const adminUserGlobalSignOut: API.OperationMethod<
   AdminUserGlobalSignOutResponse,
   AdminUserGlobalSignOutError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AdminUserGlobalSignOutRequest,
   output: AdminUserGlobalSignOutResponse,
   errors: [
@@ -7916,7 +7916,7 @@ export const associateSoftwareToken: API.OperationMethod<
   AssociateSoftwareTokenResponse,
   AssociateSoftwareTokenError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateSoftwareTokenRequest,
   output: AssociateSoftwareTokenResponse,
   errors: [
@@ -7958,7 +7958,7 @@ export const changePassword: API.OperationMethod<
   ChangePasswordResponse,
   ChangePasswordError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ChangePasswordRequest,
   output: ChangePasswordResponse,
   errors: [
@@ -8002,7 +8002,7 @@ export const completeWebAuthnRegistration: API.OperationMethod<
   CompleteWebAuthnRegistrationResponse,
   CompleteWebAuthnRegistrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CompleteWebAuthnRegistrationRequest,
   output: CompleteWebAuthnRegistrationResponse,
   errors: [
@@ -8055,7 +8055,7 @@ export const confirmDevice: API.OperationMethod<
   ConfirmDeviceResponse,
   ConfirmDeviceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ConfirmDeviceRequest,
   output: ConfirmDeviceResponse,
   errors: [
@@ -8108,7 +8108,7 @@ export const confirmForgotPassword: API.OperationMethod<
   ConfirmForgotPasswordResponse,
   ConfirmForgotPasswordError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ConfirmForgotPasswordRequest,
   output: ConfirmForgotPasswordResponse,
   errors: [
@@ -8170,7 +8170,7 @@ export const confirmSignUp: API.OperationMethod<
   ConfirmSignUpResponse,
   ConfirmSignUpError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ConfirmSignUpRequest,
   output: ConfirmSignUpResponse,
   errors: [
@@ -8219,7 +8219,7 @@ export const createGroup: API.OperationMethod<
   CreateGroupResponse,
   CreateGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateGroupRequest,
   output: CreateGroupResponse,
   errors: [
@@ -8261,7 +8261,7 @@ export const createIdentityProvider: API.OperationMethod<
   CreateIdentityProviderResponse,
   CreateIdentityProviderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateIdentityProviderRequest,
   output: CreateIdentityProviderResponse,
   errors: [
@@ -8317,7 +8317,7 @@ export const createManagedLoginBranding: API.OperationMethod<
   CreateManagedLoginBrandingResponse,
   CreateManagedLoginBrandingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateManagedLoginBrandingRequest,
   output: CreateManagedLoginBrandingResponse,
   errors: [
@@ -8359,7 +8359,7 @@ export const createResourceServer: API.OperationMethod<
   CreateResourceServerResponse,
   CreateResourceServerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateResourceServerRequest,
   output: CreateResourceServerResponse,
   errors: [
@@ -8412,7 +8412,7 @@ export const createTerms: API.OperationMethod<
   CreateTermsResponse,
   CreateTermsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTermsRequest,
   output: CreateTermsResponse,
   errors: [
@@ -8454,7 +8454,7 @@ export const createUserImportJob: API.OperationMethod<
   CreateUserImportJobResponse,
   CreateUserImportJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateUserImportJobRequest,
   output: CreateUserImportJobResponse,
   errors: [
@@ -8518,7 +8518,7 @@ export const createUserPool: API.OperationMethod<
   CreateUserPoolResponse,
   CreateUserPoolError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateUserPoolRequest,
   output: CreateUserPoolResponse,
   errors: [
@@ -8571,7 +8571,7 @@ export const createUserPoolClient: API.OperationMethod<
   CreateUserPoolClientResponse,
   CreateUserPoolClientError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateUserPoolClientRequest,
   output: CreateUserPoolClientResponse,
   errors: [
@@ -8624,7 +8624,7 @@ export const createUserPoolDomain: API.OperationMethod<
   CreateUserPoolDomainResponse,
   CreateUserPoolDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateUserPoolDomainRequest,
   output: CreateUserPoolDomainResponse,
   errors: [
@@ -8666,7 +8666,7 @@ export const deleteGroup: API.OperationMethod<
   DeleteGroupResponse,
   DeleteGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteGroupRequest,
   output: DeleteGroupResponse,
   errors: [
@@ -8706,7 +8706,7 @@ export const deleteIdentityProvider: API.OperationMethod<
   DeleteIdentityProviderResponse,
   DeleteIdentityProviderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteIdentityProviderRequest,
   output: DeleteIdentityProviderResponse,
   errors: [
@@ -8748,7 +8748,7 @@ export const deleteManagedLoginBranding: API.OperationMethod<
   DeleteManagedLoginBrandingResponse,
   DeleteManagedLoginBrandingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteManagedLoginBrandingRequest,
   output: DeleteManagedLoginBrandingResponse,
   errors: [
@@ -8789,7 +8789,7 @@ export const deleteResourceServer: API.OperationMethod<
   DeleteResourceServerResponse,
   DeleteResourceServerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourceServerRequest,
   output: DeleteResourceServerResponse,
   errors: [
@@ -8826,7 +8826,7 @@ export const deleteTerms: API.OperationMethod<
   DeleteTermsResponse,
   DeleteTermsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTermsRequest,
   output: DeleteTermsResponse,
   errors: [
@@ -8865,7 +8865,7 @@ export const deleteUser: API.OperationMethod<
   DeleteUserResponse,
   DeleteUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteUserRequest,
   output: DeleteUserResponse,
   errors: [
@@ -8908,7 +8908,7 @@ export const deleteUserAttributes: API.OperationMethod<
   DeleteUserAttributesResponse,
   DeleteUserAttributesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteUserAttributesRequest,
   output: DeleteUserAttributesResponse,
   errors: [
@@ -8949,7 +8949,7 @@ export const deleteUserPool: API.OperationMethod<
   DeleteUserPoolResponse,
   DeleteUserPoolError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteUserPoolRequest,
   output: DeleteUserPoolResponse,
   errors: [
@@ -8978,7 +8978,7 @@ export const deleteUserPoolClient: API.OperationMethod<
   DeleteUserPoolClientResponse,
   DeleteUserPoolClientError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteUserPoolClientRequest,
   output: DeleteUserPoolClientResponse,
   errors: [
@@ -9005,7 +9005,7 @@ export const deleteUserPoolClientSecret: API.OperationMethod<
   DeleteUserPoolClientSecretResponse,
   DeleteUserPoolClientSecretError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteUserPoolClientSecretRequest,
   output: DeleteUserPoolClientSecretResponse,
   errors: [
@@ -9033,7 +9033,7 @@ export const deleteUserPoolDomain: API.OperationMethod<
   DeleteUserPoolDomainResponse,
   DeleteUserPoolDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteUserPoolDomainRequest,
   output: DeleteUserPoolDomainResponse,
   errors: [
@@ -9070,7 +9070,7 @@ export const deleteWebAuthnCredential: API.OperationMethod<
   DeleteWebAuthnCredentialResponse,
   DeleteWebAuthnCredentialError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteWebAuthnCredentialRequest,
   output: DeleteWebAuthnCredentialResponse,
   errors: [
@@ -9100,7 +9100,7 @@ export const describeIdentityProvider: API.OperationMethod<
   DescribeIdentityProviderResponse,
   DescribeIdentityProviderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeIdentityProviderRequest,
   output: DescribeIdentityProviderResponse,
   errors: [
@@ -9127,7 +9127,7 @@ export const describeManagedLoginBranding: API.OperationMethod<
   DescribeManagedLoginBrandingResponse,
   DescribeManagedLoginBrandingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeManagedLoginBrandingRequest,
   output: DescribeManagedLoginBrandingResponse,
   errors: [
@@ -9154,7 +9154,7 @@ export const describeManagedLoginBrandingByClient: API.OperationMethod<
   DescribeManagedLoginBrandingByClientResponse,
   DescribeManagedLoginBrandingByClientError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeManagedLoginBrandingByClientRequest,
   output: DescribeManagedLoginBrandingByClientResponse,
   errors: [
@@ -9180,7 +9180,7 @@ export const describeResourceServer: API.OperationMethod<
   DescribeResourceServerResponse,
   DescribeResourceServerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeResourceServerRequest,
   output: DescribeResourceServerResponse,
   errors: [
@@ -9210,7 +9210,7 @@ export const describeRiskConfiguration: API.OperationMethod<
   DescribeRiskConfigurationResponse,
   DescribeRiskConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeRiskConfigurationRequest,
   output: DescribeRiskConfigurationResponse,
   errors: [
@@ -9247,7 +9247,7 @@ export const describeTerms: API.OperationMethod<
   DescribeTermsResponse,
   DescribeTermsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeTermsRequest,
   output: DescribeTermsResponse,
   errors: [
@@ -9273,7 +9273,7 @@ export const describeUserImportJob: API.OperationMethod<
   DescribeUserImportJobResponse,
   DescribeUserImportJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeUserImportJobRequest,
   output: DescribeUserImportJobResponse,
   errors: [
@@ -9312,7 +9312,7 @@ export const describeUserPool: API.OperationMethod<
   DescribeUserPoolResponse,
   DescribeUserPoolError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeUserPoolRequest,
   output: DescribeUserPoolResponse,
   errors: [
@@ -9351,7 +9351,7 @@ export const describeUserPoolClient: API.OperationMethod<
   DescribeUserPoolClientResponse,
   DescribeUserPoolClientError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeUserPoolClientRequest,
   output: DescribeUserPoolClientResponse,
   errors: [
@@ -9387,7 +9387,7 @@ export const describeUserPoolDomain: API.OperationMethod<
   DescribeUserPoolDomainResponse,
   DescribeUserPoolDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeUserPoolDomainRequest,
   output: DescribeUserPoolDomainResponse,
   errors: [
@@ -9425,7 +9425,7 @@ export const forgetDevice: API.OperationMethod<
   ForgetDeviceResponse,
   ForgetDeviceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ForgetDeviceRequest,
   output: ForgetDeviceResponse,
   errors: [
@@ -9499,7 +9499,7 @@ export const forgotPassword: API.OperationMethod<
   ForgotPasswordResponse,
   ForgotPasswordError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ForgotPasswordRequest,
   output: ForgotPasswordResponse,
   errors: [
@@ -9550,7 +9550,7 @@ export const getCSVHeader: API.OperationMethod<
   GetCSVHeaderResponse,
   GetCSVHeaderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCSVHeaderRequest,
   output: GetCSVHeaderResponse,
   errors: [
@@ -9589,7 +9589,7 @@ export const getDevice: API.OperationMethod<
   GetDeviceResponse,
   GetDeviceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDeviceRequest,
   output: GetDeviceResponse,
   errors: [
@@ -9633,7 +9633,7 @@ export const getGroup: API.OperationMethod<
   GetGroupResponse,
   GetGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetGroupRequest,
   output: GetGroupResponse,
   errors: [
@@ -9661,7 +9661,7 @@ export const getIdentityProviderByIdentifier: API.OperationMethod<
   GetIdentityProviderByIdentifierResponse,
   GetIdentityProviderByIdentifierError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIdentityProviderByIdentifierRequest,
   output: GetIdentityProviderByIdentifierResponse,
   errors: [
@@ -9698,7 +9698,7 @@ export const getLogDeliveryConfiguration: API.OperationMethod<
   GetLogDeliveryConfigurationResponse,
   GetLogDeliveryConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLogDeliveryConfigurationRequest,
   output: GetLogDeliveryConfigurationResponse,
   errors: [
@@ -9739,7 +9739,7 @@ export const getSigningCertificate: API.OperationMethod<
   GetSigningCertificateResponse,
   GetSigningCertificateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSigningCertificateRequest,
   output: GetSigningCertificateResponse,
   errors: [
@@ -9773,7 +9773,7 @@ export const getTokensFromRefreshToken: API.OperationMethod<
   GetTokensFromRefreshTokenResponse,
   GetTokensFromRefreshTokenError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTokensFromRefreshTokenRequest,
   output: GetTokensFromRefreshTokenResponse,
   errors: [
@@ -9809,7 +9809,7 @@ export const getUICustomization: API.OperationMethod<
   GetUICustomizationResponse,
   GetUICustomizationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUICustomizationRequest,
   output: GetUICustomizationResponse,
   errors: [
@@ -9846,7 +9846,7 @@ export const getUser: API.OperationMethod<
   GetUserResponse,
   GetUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUserRequest,
   output: GetUserResponse,
   errors: [
@@ -9913,7 +9913,7 @@ export const getUserAttributeVerificationCode: API.OperationMethod<
   GetUserAttributeVerificationCodeResponse,
   GetUserAttributeVerificationCodeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUserAttributeVerificationCodeRequest,
   output: GetUserAttributeVerificationCodeResponse,
   errors: [
@@ -9968,7 +9968,7 @@ export const getUserAuthFactors: API.OperationMethod<
   GetUserAuthFactorsResponse,
   GetUserAuthFactorsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUserAuthFactorsRequest,
   output: GetUserAuthFactorsResponse,
   errors: [
@@ -10020,7 +10020,7 @@ export const getUserPoolMfaConfig: API.OperationMethod<
   GetUserPoolMfaConfigResponse,
   GetUserPoolMfaConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUserPoolMfaConfigRequest,
   output: GetUserPoolMfaConfigResponse,
   errors: [
@@ -10079,7 +10079,7 @@ export const globalSignOut: API.OperationMethod<
   GlobalSignOutResponse,
   GlobalSignOutError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GlobalSignOutRequest,
   output: GlobalSignOutResponse,
   errors: [
@@ -10146,7 +10146,7 @@ export const initiateAuth: API.OperationMethod<
   InitiateAuthResponse,
   InitiateAuthError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InitiateAuthRequest,
   output: InitiateAuthResponse,
   errors: [
@@ -10197,7 +10197,7 @@ export const listDevices: API.OperationMethod<
   ListDevicesResponse,
   ListDevicesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListDevicesRequest,
   output: ListDevicesResponse,
   errors: [
@@ -10253,7 +10253,7 @@ export const listGroups: API.OperationMethod<
     ListGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGroupsRequest,
   output: ListGroupsResponse,
   errors: [
@@ -10311,7 +10311,7 @@ export const listIdentityProviders: API.OperationMethod<
     ListIdentityProvidersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIdentityProvidersRequest,
   output: ListIdentityProvidersResponse,
   errors: [
@@ -10369,7 +10369,7 @@ export const listResourceServers: API.OperationMethod<
     ListResourceServersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceServersRequest,
   output: ListResourceServersResponse,
   errors: [
@@ -10403,7 +10403,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -10439,7 +10439,7 @@ export const listTerms: API.OperationMethod<
   ListTermsResponse,
   ListTermsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTermsRequest,
   output: ListTermsResponse,
   errors: [
@@ -10477,7 +10477,7 @@ export const listUserImportJobs: API.OperationMethod<
   ListUserImportJobsResponse,
   ListUserImportJobsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListUserImportJobsRequest,
   output: ListUserImportJobsResponse,
   errors: [
@@ -10529,7 +10529,7 @@ export const listUserPoolClients: API.OperationMethod<
     ListUserPoolClientsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUserPoolClientsRequest,
   output: ListUserPoolClientsResponse,
   errors: [
@@ -10561,7 +10561,7 @@ export const listUserPoolClientSecrets: API.OperationMethod<
   ListUserPoolClientSecretsResponse,
   ListUserPoolClientSecretsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListUserPoolClientSecretsRequest,
   output: ListUserPoolClientSecretsResponse,
   errors: [
@@ -10611,7 +10611,7 @@ export const listUserPools: API.OperationMethod<
     ListUserPoolsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUserPoolsRequest,
   output: ListUserPoolsResponse,
   errors: [
@@ -10672,7 +10672,7 @@ export const listUsers: API.OperationMethod<
     ListUsersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsersRequest,
   output: ListUsersResponse,
   errors: [
@@ -10730,7 +10730,7 @@ export const listUsersInGroup: API.OperationMethod<
     ListUsersInGroupError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsersInGroupRequest,
   output: ListUsersInGroupResponse,
   errors: [
@@ -10772,7 +10772,7 @@ export const listWebAuthnCredentials: API.OperationMethod<
   ListWebAuthnCredentialsResponse,
   ListWebAuthnCredentialsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListWebAuthnCredentialsRequest,
   output: ListWebAuthnCredentialsResponse,
   errors: [
@@ -10836,7 +10836,7 @@ export const resendConfirmationCode: API.OperationMethod<
   ResendConfirmationCodeResponse,
   ResendConfirmationCodeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResendConfirmationCodeRequest,
   output: ResendConfirmationCodeResponse,
   errors: [
@@ -10919,7 +10919,7 @@ export const respondToAuthChallenge: API.OperationMethod<
   RespondToAuthChallengeResponse,
   RespondToAuthChallengeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RespondToAuthChallengeRequest,
   output: RespondToAuthChallengeResponse,
   errors: [
@@ -10972,7 +10972,7 @@ export const revokeToken: API.OperationMethod<
   RevokeTokenResponse,
   RevokeTokenError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RevokeTokenRequest,
   output: RevokeTokenResponse,
   errors: [
@@ -11004,7 +11004,7 @@ export const setLogDeliveryConfiguration: API.OperationMethod<
   SetLogDeliveryConfigurationResponse,
   SetLogDeliveryConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetLogDeliveryConfigurationRequest,
   output: SetLogDeliveryConfigurationResponse,
   errors: [
@@ -11052,7 +11052,7 @@ export const setRiskConfiguration: API.OperationMethod<
   SetRiskConfigurationResponse,
   SetRiskConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetRiskConfigurationRequest,
   output: SetRiskConfigurationResponse,
   errors: [
@@ -11097,7 +11097,7 @@ export const setUICustomization: API.OperationMethod<
   SetUICustomizationResponse,
   SetUICustomizationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetUICustomizationRequest,
   output: SetUICustomizationResponse,
   errors: [
@@ -11141,7 +11141,7 @@ export const setUserMFAPreference: API.OperationMethod<
   SetUserMFAPreferenceResponse,
   SetUserMFAPreferenceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetUserMFAPreferenceRequest,
   output: SetUserMFAPreferenceResponse,
   errors: [
@@ -11192,7 +11192,7 @@ export const setUserPoolMfaConfig: API.OperationMethod<
   SetUserPoolMfaConfigResponse,
   SetUserPoolMfaConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetUserPoolMfaConfigRequest,
   output: SetUserPoolMfaConfigResponse,
   errors: [
@@ -11234,7 +11234,7 @@ export const setUserSettings: API.OperationMethod<
   SetUserSettingsResponse,
   SetUserSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetUserSettingsRequest,
   output: SetUserSettingsResponse,
   errors: [
@@ -11303,7 +11303,7 @@ export const signUp: API.OperationMethod<
   SignUpResponse,
   SignUpError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SignUpRequest,
   output: SignUpResponse,
   errors: [
@@ -11343,7 +11343,7 @@ export const startUserImportJob: API.OperationMethod<
   StartUserImportJobResponse,
   StartUserImportJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartUserImportJobRequest,
   output: StartUserImportJobResponse,
   errors: [
@@ -11379,7 +11379,7 @@ export const startWebAuthnRegistration: API.OperationMethod<
   StartWebAuthnRegistrationResponse,
   StartWebAuthnRegistrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartWebAuthnRegistrationRequest,
   output: StartWebAuthnRegistrationResponse,
   errors: [
@@ -11412,7 +11412,7 @@ export const stopUserImportJob: API.OperationMethod<
   StopUserImportJobResponse,
   StopUserImportJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopUserImportJobRequest,
   output: StopUserImportJobResponse,
   errors: [
@@ -11455,7 +11455,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -11481,7 +11481,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -11527,7 +11527,7 @@ export const updateAuthEventFeedback: API.OperationMethod<
   UpdateAuthEventFeedbackResponse,
   UpdateAuthEventFeedbackError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAuthEventFeedbackRequest,
   output: UpdateAuthEventFeedbackResponse,
   errors: [
@@ -11572,7 +11572,7 @@ export const updateDeviceStatus: API.OperationMethod<
   UpdateDeviceStatusResponse,
   UpdateDeviceStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDeviceStatusRequest,
   output: UpdateDeviceStatusResponse,
   errors: [
@@ -11614,7 +11614,7 @@ export const updateGroup: API.OperationMethod<
   UpdateGroupResponse,
   UpdateGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateGroupRequest,
   output: UpdateGroupResponse,
   errors: [
@@ -11655,7 +11655,7 @@ export const updateIdentityProvider: API.OperationMethod<
   UpdateIdentityProviderResponse,
   UpdateIdentityProviderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateIdentityProviderRequest,
   output: UpdateIdentityProviderResponse,
   errors: [
@@ -11704,7 +11704,7 @@ export const updateManagedLoginBranding: API.OperationMethod<
   UpdateManagedLoginBrandingResponse,
   UpdateManagedLoginBrandingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateManagedLoginBrandingRequest,
   output: UpdateManagedLoginBrandingResponse,
   errors: [
@@ -11745,7 +11745,7 @@ export const updateResourceServer: API.OperationMethod<
   UpdateResourceServerResponse,
   UpdateResourceServerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateResourceServerRequest,
   output: UpdateResourceServerResponse,
   errors: [
@@ -11796,7 +11796,7 @@ export const updateTerms: API.OperationMethod<
   UpdateTermsResponse,
   UpdateTermsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTermsRequest,
   output: UpdateTermsResponse,
   errors: [
@@ -11866,7 +11866,7 @@ export const updateUserAttributes: API.OperationMethod<
   UpdateUserAttributesResponse,
   UpdateUserAttributesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateUserAttributesRequest,
   output: UpdateUserAttributesResponse,
   errors: [
@@ -11945,7 +11945,7 @@ export const updateUserPool: API.OperationMethod<
   UpdateUserPoolResponse,
   UpdateUserPoolError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateUserPoolRequest,
   output: UpdateUserPoolResponse,
   errors: [
@@ -12002,7 +12002,7 @@ export const updateUserPoolClient: API.OperationMethod<
   UpdateUserPoolClientResponse,
   UpdateUserPoolClientError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateUserPoolClientRequest,
   output: UpdateUserPoolClientResponse,
   errors: [
@@ -12065,7 +12065,7 @@ export const updateUserPoolDomain: API.OperationMethod<
   UpdateUserPoolDomainResponse,
   UpdateUserPoolDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateUserPoolDomainRequest,
   output: UpdateUserPoolDomainResponse,
   errors: [
@@ -12109,7 +12109,7 @@ export const verifySoftwareToken: API.OperationMethod<
   VerifySoftwareTokenResponse,
   VerifySoftwareTokenError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: VerifySoftwareTokenRequest,
   output: VerifySoftwareTokenResponse,
   errors: [
@@ -12164,7 +12164,7 @@ export const verifyUserAttribute: API.OperationMethod<
   VerifyUserAttributeResponse,
   VerifyUserAttributeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: VerifyUserAttributeRequest,
   output: VerifyUserAttributeResponse,
   errors: [

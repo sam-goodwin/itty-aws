@@ -3146,7 +3146,7 @@ export const addLFTagsToResource: API.OperationMethod<
   AddLFTagsToResourceResponse,
   AddLFTagsToResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddLFTagsToResourceRequest,
   output: AddLFTagsToResourceResponse,
   errors: [
@@ -3188,7 +3188,7 @@ export const assumeDecoratedRoleWithSAML: API.OperationMethod<
   AssumeDecoratedRoleWithSAMLResponse,
   AssumeDecoratedRoleWithSAMLError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssumeDecoratedRoleWithSAMLRequest,
   output: AssumeDecoratedRoleWithSAMLResponse,
   errors: [
@@ -3211,7 +3211,7 @@ export const batchGrantPermissions: API.OperationMethod<
   BatchGrantPermissionsResponse,
   BatchGrantPermissionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGrantPermissionsRequest,
   output: BatchGrantPermissionsResponse,
   errors: [InvalidInputException, OperationTimeoutException],
@@ -3228,7 +3228,7 @@ export const batchRevokePermissions: API.OperationMethod<
   BatchRevokePermissionsResponse,
   BatchRevokePermissionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchRevokePermissionsRequest,
   output: BatchRevokePermissionsResponse,
   errors: [InvalidInputException, OperationTimeoutException],
@@ -3250,7 +3250,7 @@ export const cancelTransaction: API.OperationMethod<
   CancelTransactionResponse,
   CancelTransactionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelTransactionRequest,
   output: CancelTransactionResponse,
   errors: [
@@ -3279,7 +3279,7 @@ export const commitTransaction: API.OperationMethod<
   CommitTransactionResponse,
   CommitTransactionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CommitTransactionRequest,
   output: CommitTransactionResponse,
   errors: [
@@ -3308,7 +3308,7 @@ export const createDataCellsFilter: API.OperationMethod<
   CreateDataCellsFilterResponse,
   CreateDataCellsFilterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDataCellsFilterRequest,
   output: CreateDataCellsFilterResponse,
   errors: [
@@ -3337,7 +3337,7 @@ export const createLakeFormationIdentityCenterConfiguration: API.OperationMethod
   CreateLakeFormationIdentityCenterConfigurationResponse,
   CreateLakeFormationIdentityCenterConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLakeFormationIdentityCenterConfigurationRequest,
   output: CreateLakeFormationIdentityCenterConfigurationResponse,
   errors: [
@@ -3366,7 +3366,7 @@ export const createLakeFormationOptIn: API.OperationMethod<
   CreateLakeFormationOptInResponse,
   CreateLakeFormationOptInError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLakeFormationOptInRequest,
   output: CreateLakeFormationOptInResponse,
   errors: [
@@ -3395,7 +3395,7 @@ export const createLFTag: API.OperationMethod<
   CreateLFTagResponse,
   CreateLFTagError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLFTagRequest,
   output: CreateLFTagResponse,
   errors: [
@@ -3431,7 +3431,7 @@ export const createLFTagExpression: API.OperationMethod<
   CreateLFTagExpressionResponse,
   CreateLFTagExpressionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLFTagExpressionRequest,
   output: CreateLFTagExpressionResponse,
   errors: [
@@ -3458,7 +3458,7 @@ export const deleteDataCellsFilter: API.OperationMethod<
   DeleteDataCellsFilterResponse,
   DeleteDataCellsFilterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDataCellsFilterRequest,
   output: DeleteDataCellsFilterResponse,
   errors: [
@@ -3485,7 +3485,7 @@ export const deleteLakeFormationIdentityCenterConfiguration: API.OperationMethod
   DeleteLakeFormationIdentityCenterConfigurationResponse,
   DeleteLakeFormationIdentityCenterConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLakeFormationIdentityCenterConfigurationRequest,
   output: DeleteLakeFormationIdentityCenterConfigurationResponse,
   errors: [
@@ -3513,7 +3513,7 @@ export const deleteLakeFormationOptIn: API.OperationMethod<
   DeleteLakeFormationOptInResponse,
   DeleteLakeFormationOptInError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLakeFormationOptInRequest,
   output: DeleteLakeFormationOptInResponse,
   errors: [
@@ -3546,7 +3546,7 @@ export const deleteLFTag: API.OperationMethod<
   DeleteLFTagResponse,
   DeleteLFTagError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLFTagRequest,
   output: DeleteLFTagResponse,
   errors: [
@@ -3573,7 +3573,7 @@ export const deleteLFTagExpression: API.OperationMethod<
   DeleteLFTagExpressionResponse,
   DeleteLFTagExpressionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLFTagExpressionRequest,
   output: DeleteLFTagExpressionResponse,
   errors: [
@@ -3607,7 +3607,7 @@ export const deleteObjectsOnCancel: API.OperationMethod<
   DeleteObjectsOnCancelResponse,
   DeleteObjectsOnCancelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteObjectsOnCancelRequest,
   output: DeleteObjectsOnCancelResponse,
   errors: [
@@ -3637,7 +3637,7 @@ export const deregisterResource: API.OperationMethod<
   DeregisterResourceResponse,
   DeregisterResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeregisterResourceRequest,
   output: DeregisterResourceResponse,
   errors: [
@@ -3662,7 +3662,7 @@ export const describeLakeFormationIdentityCenterConfiguration: API.OperationMeth
   DescribeLakeFormationIdentityCenterConfigurationResponse,
   DescribeLakeFormationIdentityCenterConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeLakeFormationIdentityCenterConfigurationRequest,
   output: DescribeLakeFormationIdentityCenterConfigurationResponse,
   errors: [
@@ -3687,7 +3687,7 @@ export const describeResource: API.OperationMethod<
   DescribeResourceResponse,
   DescribeResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeResourceRequest,
   output: DescribeResourceResponse,
   errors: [
@@ -3711,7 +3711,7 @@ export const describeTransaction: API.OperationMethod<
   DescribeTransactionResponse,
   DescribeTransactionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeTransactionRequest,
   output: DescribeTransactionResponse,
   errors: [
@@ -3740,7 +3740,7 @@ export const extendTransaction: API.OperationMethod<
   ExtendTransactionResponse,
   ExtendTransactionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExtendTransactionRequest,
   output: ExtendTransactionResponse,
   errors: [
@@ -3768,7 +3768,7 @@ export const getDataCellsFilter: API.OperationMethod<
   GetDataCellsFilterResponse,
   GetDataCellsFilterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDataCellsFilterRequest,
   output: GetDataCellsFilterResponse,
   errors: [
@@ -3792,7 +3792,7 @@ export const getDataLakePrincipal: API.OperationMethod<
   GetDataLakePrincipalResponse,
   GetDataLakePrincipalError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDataLakePrincipalRequest,
   output: GetDataLakePrincipalResponse,
   errors: [
@@ -3814,7 +3814,7 @@ export const getDataLakeSettings: API.OperationMethod<
   GetDataLakeSettingsResponse,
   GetDataLakeSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDataLakeSettingsRequest,
   output: GetDataLakeSettingsResponse,
   errors: [
@@ -3853,7 +3853,7 @@ export const getEffectivePermissionsForPath: API.OperationMethod<
     GetEffectivePermissionsForPathError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetEffectivePermissionsForPathRequest,
   output: GetEffectivePermissionsForPathResponse,
   errors: [
@@ -3883,7 +3883,7 @@ export const getLFTag: API.OperationMethod<
   GetLFTagResponse,
   GetLFTagError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLFTagRequest,
   output: GetLFTagResponse,
   errors: [
@@ -3909,7 +3909,7 @@ export const getLFTagExpression: API.OperationMethod<
   GetLFTagExpressionResponse,
   GetLFTagExpressionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLFTagExpressionRequest,
   output: GetLFTagExpressionResponse,
   errors: [
@@ -3933,7 +3933,7 @@ export const getQueryState: API.OperationMethod<
   GetQueryStateResponse,
   GetQueryStateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetQueryStateRequest,
   output: GetQueryStateResponse,
   errors: [
@@ -3958,7 +3958,7 @@ export const getQueryStatistics: API.OperationMethod<
   GetQueryStatisticsResponse,
   GetQueryStatisticsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetQueryStatisticsRequest,
   output: GetQueryStatisticsResponse,
   errors: [
@@ -3986,7 +3986,7 @@ export const getResourceLFTags: API.OperationMethod<
   GetResourceLFTagsResponse,
   GetResourceLFTagsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResourceLFTagsRequest,
   output: GetResourceLFTagsResponse,
   errors: [
@@ -4030,7 +4030,7 @@ export const getTableObjects: API.OperationMethod<
     GetTableObjectsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTableObjectsRequest,
   output: GetTableObjectsResponse,
   errors: [
@@ -4084,7 +4084,7 @@ export const getTemporaryDataLocationCredentials: API.OperationMethod<
   GetTemporaryDataLocationCredentialsResponse,
   GetTemporaryDataLocationCredentialsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTemporaryDataLocationCredentialsRequest,
   output: GetTemporaryDataLocationCredentialsResponse,
   errors: [
@@ -4113,7 +4113,7 @@ export const getTemporaryGluePartitionCredentials: API.OperationMethod<
   GetTemporaryGluePartitionCredentialsResponse,
   GetTemporaryGluePartitionCredentialsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTemporaryGluePartitionCredentialsRequest,
   output: GetTemporaryGluePartitionCredentialsResponse,
   errors: [
@@ -4143,7 +4143,7 @@ export const getTemporaryGlueTableCredentials: API.OperationMethod<
   GetTemporaryGlueTableCredentialsResponse,
   GetTemporaryGlueTableCredentialsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTemporaryGlueTableCredentialsRequest,
   output: GetTemporaryGlueTableCredentialsResponse,
   errors: [
@@ -4170,7 +4170,7 @@ export const getWorkUnitResults: API.OperationMethod<
   GetWorkUnitResultsResponse,
   GetWorkUnitResultsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetWorkUnitResultsRequest,
   output: GetWorkUnitResultsResponse,
   errors: [
@@ -4211,7 +4211,7 @@ export const getWorkUnits: API.OperationMethod<
     GetWorkUnitsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetWorkUnitsRequest,
   output: GetWorkUnitsResponse,
   errors: [
@@ -4243,7 +4243,7 @@ export const grantPermissions: API.OperationMethod<
   GrantPermissionsResponse,
   GrantPermissionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GrantPermissionsRequest,
   output: GrantPermissionsResponse,
   errors: [
@@ -4281,7 +4281,7 @@ export const listDataCellsFilter: API.OperationMethod<
     ListDataCellsFilterError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataCellsFilterRequest,
   output: ListDataCellsFilterResponse,
   errors: [
@@ -4326,7 +4326,7 @@ export const listLakeFormationOptIns: API.OperationMethod<
     ListLakeFormationOptInsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLakeFormationOptInsRequest,
   output: ListLakeFormationOptInsResponse,
   errors: [
@@ -4371,7 +4371,7 @@ export const listLFTagExpressions: API.OperationMethod<
     ListLFTagExpressionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLFTagExpressionsRequest,
   output: ListLFTagExpressionsResponse,
   errors: [
@@ -4418,7 +4418,7 @@ export const listLFTags: API.OperationMethod<
     ListLFTagsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLFTagsRequest,
   output: ListLFTagsResponse,
   errors: [
@@ -4469,7 +4469,7 @@ export const listPermissions: API.OperationMethod<
     ListPermissionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPermissionsRequest,
   output: ListPermissionsResponse,
   errors: [
@@ -4511,7 +4511,7 @@ export const listResources: API.OperationMethod<
     ListResourcesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourcesRequest,
   output: ListResourcesResponse,
   errors: [
@@ -4554,7 +4554,7 @@ export const listTableStorageOptimizers: API.OperationMethod<
     ListTableStorageOptimizersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTableStorageOptimizersRequest,
   output: ListTableStorageOptimizersResponse,
   errors: [
@@ -4599,7 +4599,7 @@ export const listTransactions: API.OperationMethod<
     ListTransactionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTransactionsRequest,
   output: ListTransactionsResponse,
   errors: [
@@ -4627,7 +4627,7 @@ export const putDataLakeSettings: API.OperationMethod<
   PutDataLakeSettingsResponse,
   PutDataLakeSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutDataLakeSettingsRequest,
   output: PutDataLakeSettingsResponse,
   errors: [InternalServiceException, InvalidInputException],
@@ -4660,7 +4660,7 @@ export const registerResource: API.OperationMethod<
   RegisterResourceResponse,
   RegisterResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterResourceRequest,
   output: RegisterResourceResponse,
   errors: [
@@ -4690,7 +4690,7 @@ export const removeLFTagsFromResource: API.OperationMethod<
   RemoveLFTagsFromResourceResponse,
   RemoveLFTagsFromResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveLFTagsFromResourceRequest,
   output: RemoveLFTagsFromResourceResponse,
   errors: [
@@ -4716,7 +4716,7 @@ export const revokePermissions: API.OperationMethod<
   RevokePermissionsResponse,
   RevokePermissionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RevokePermissionsRequest,
   output: RevokePermissionsResponse,
   errors: [
@@ -4756,7 +4756,7 @@ export const searchDatabasesByLFTags: API.OperationMethod<
     SearchDatabasesByLFTagsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchDatabasesByLFTagsRequest,
   output: SearchDatabasesByLFTagsResponse,
   errors: [
@@ -4805,7 +4805,7 @@ export const searchTablesByLFTags: API.OperationMethod<
     SearchTablesByLFTagsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchTablesByLFTagsRequest,
   output: SearchTablesByLFTagsResponse,
   errors: [
@@ -4839,7 +4839,7 @@ export const startQueryPlanning: API.OperationMethod<
   StartQueryPlanningResponse,
   StartQueryPlanningError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartQueryPlanningRequest,
   output: StartQueryPlanningResponse,
   errors: [
@@ -4861,7 +4861,7 @@ export const startTransaction: API.OperationMethod<
   StartTransactionResponse,
   StartTransactionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartTransactionRequest,
   output: StartTransactionResponse,
   errors: [InternalServiceException, OperationTimeoutException],
@@ -4882,7 +4882,7 @@ export const updateDataCellsFilter: API.OperationMethod<
   UpdateDataCellsFilterResponse,
   UpdateDataCellsFilterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDataCellsFilterRequest,
   output: UpdateDataCellsFilterResponse,
   errors: [
@@ -4910,7 +4910,7 @@ export const updateLakeFormationIdentityCenterConfiguration: API.OperationMethod
   UpdateLakeFormationIdentityCenterConfigurationResponse,
   UpdateLakeFormationIdentityCenterConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateLakeFormationIdentityCenterConfigurationRequest,
   output: UpdateLakeFormationIdentityCenterConfigurationResponse,
   errors: [
@@ -4938,7 +4938,7 @@ export const updateLFTag: API.OperationMethod<
   UpdateLFTagResponse,
   UpdateLFTagError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateLFTagRequest,
   output: UpdateLFTagResponse,
   errors: [
@@ -4967,7 +4967,7 @@ export const updateLFTagExpression: API.OperationMethod<
   UpdateLFTagExpressionResponse,
   UpdateLFTagExpressionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateLFTagExpressionRequest,
   output: UpdateLFTagExpressionResponse,
   errors: [
@@ -4993,7 +4993,7 @@ export const updateResource: API.OperationMethod<
   UpdateResourceResponse,
   UpdateResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateResourceRequest,
   output: UpdateResourceResponse,
   errors: [
@@ -5022,7 +5022,7 @@ export const updateTableObjects: API.OperationMethod<
   UpdateTableObjectsResponse,
   UpdateTableObjectsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTableObjectsRequest,
   output: UpdateTableObjectsResponse,
   errors: [
@@ -5051,7 +5051,7 @@ export const updateTableStorageOptimizer: API.OperationMethod<
   UpdateTableStorageOptimizerResponse,
   UpdateTableStorageOptimizerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTableStorageOptimizerRequest,
   output: UpdateTableStorageOptimizerResponse,
   errors: [

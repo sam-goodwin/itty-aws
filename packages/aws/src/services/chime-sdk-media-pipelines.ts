@@ -2694,7 +2694,7 @@ export const createMediaCapturePipeline: API.OperationMethod<
   CreateMediaCapturePipelineResponse,
   CreateMediaCapturePipelineError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMediaCapturePipelineRequest,
   output: CreateMediaCapturePipelineResponse,
   errors: [
@@ -2724,7 +2724,7 @@ export const createMediaConcatenationPipeline: API.OperationMethod<
   CreateMediaConcatenationPipelineResponse,
   CreateMediaConcatenationPipelineError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMediaConcatenationPipelineRequest,
   output: CreateMediaConcatenationPipelineResponse,
   errors: [
@@ -2755,7 +2755,7 @@ export const createMediaInsightsPipeline: API.OperationMethod<
   CreateMediaInsightsPipelineResponse,
   CreateMediaInsightsPipelineError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMediaInsightsPipelineRequest,
   output: CreateMediaInsightsPipelineResponse,
   errors: [
@@ -2788,7 +2788,7 @@ export const createMediaInsightsPipelineConfiguration: API.OperationMethod<
   CreateMediaInsightsPipelineConfigurationResponse,
   CreateMediaInsightsPipelineConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMediaInsightsPipelineConfigurationRequest,
   output: CreateMediaInsightsPipelineConfigurationResponse,
   errors: [
@@ -2819,7 +2819,7 @@ export const createMediaLiveConnectorPipeline: API.OperationMethod<
   CreateMediaLiveConnectorPipelineResponse,
   CreateMediaLiveConnectorPipelineError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMediaLiveConnectorPipelineRequest,
   output: CreateMediaLiveConnectorPipelineResponse,
   errors: [
@@ -2866,7 +2866,7 @@ export const createMediaPipelineKinesisVideoStreamPool: API.OperationMethod<
   CreateMediaPipelineKinesisVideoStreamPoolResponse,
   CreateMediaPipelineKinesisVideoStreamPoolError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMediaPipelineKinesisVideoStreamPoolRequest,
   output: CreateMediaPipelineKinesisVideoStreamPoolResponse,
   errors: [
@@ -2898,7 +2898,7 @@ export const createMediaStreamPipeline: API.OperationMethod<
   CreateMediaStreamPipelineResponse,
   CreateMediaStreamPipelineError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMediaStreamPipelineRequest,
   output: CreateMediaStreamPipelineResponse,
   errors: [
@@ -2929,7 +2929,7 @@ export const deleteMediaCapturePipeline: API.OperationMethod<
   DeleteMediaCapturePipelineResponse,
   DeleteMediaCapturePipelineError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMediaCapturePipelineRequest,
   output: DeleteMediaCapturePipelineResponse,
   errors: [
@@ -2960,7 +2960,7 @@ export const deleteMediaInsightsPipelineConfiguration: API.OperationMethod<
   DeleteMediaInsightsPipelineConfigurationResponse,
   DeleteMediaInsightsPipelineConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMediaInsightsPipelineConfigurationRequest,
   output: DeleteMediaInsightsPipelineConfigurationResponse,
   errors: [
@@ -2992,7 +2992,7 @@ export const deleteMediaPipeline: API.OperationMethod<
   DeleteMediaPipelineResponse,
   DeleteMediaPipelineError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMediaPipelineRequest,
   output: DeleteMediaPipelineResponse,
   errors: [
@@ -3024,7 +3024,7 @@ export const deleteMediaPipelineKinesisVideoStreamPool: API.OperationMethod<
   DeleteMediaPipelineKinesisVideoStreamPoolResponse,
   DeleteMediaPipelineKinesisVideoStreamPoolError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMediaPipelineKinesisVideoStreamPoolRequest,
   output: DeleteMediaPipelineKinesisVideoStreamPoolResponse,
   errors: [
@@ -3055,7 +3055,7 @@ export const getMediaCapturePipeline: API.OperationMethod<
   GetMediaCapturePipelineResponse,
   GetMediaCapturePipelineError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMediaCapturePipelineRequest,
   output: GetMediaCapturePipelineResponse,
   errors: [
@@ -3085,7 +3085,7 @@ export const getMediaInsightsPipelineConfiguration: API.OperationMethod<
   GetMediaInsightsPipelineConfigurationResponse,
   GetMediaInsightsPipelineConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMediaInsightsPipelineConfigurationRequest,
   output: GetMediaInsightsPipelineConfigurationResponse,
   errors: [
@@ -3115,7 +3115,7 @@ export const getMediaPipeline: API.OperationMethod<
   GetMediaPipelineResponse,
   GetMediaPipelineError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMediaPipelineRequest,
   output: GetMediaPipelineResponse,
   errors: [
@@ -3145,7 +3145,7 @@ export const getMediaPipelineKinesisVideoStreamPool: API.OperationMethod<
   GetMediaPipelineKinesisVideoStreamPoolResponse,
   GetMediaPipelineKinesisVideoStreamPoolError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMediaPipelineKinesisVideoStreamPoolRequest,
   output: GetMediaPipelineKinesisVideoStreamPoolResponse,
   errors: [
@@ -3175,7 +3175,7 @@ export const getSpeakerSearchTask: API.OperationMethod<
   GetSpeakerSearchTaskResponse,
   GetSpeakerSearchTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSpeakerSearchTaskRequest,
   output: GetSpeakerSearchTaskResponse,
   errors: [
@@ -3205,7 +3205,7 @@ export const getVoiceToneAnalysisTask: API.OperationMethod<
   GetVoiceToneAnalysisTaskResponse,
   GetVoiceToneAnalysisTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetVoiceToneAnalysisTaskRequest,
   output: GetVoiceToneAnalysisTaskResponse,
   errors: [
@@ -3250,7 +3250,7 @@ export const listMediaCapturePipelines: API.OperationMethod<
     ListMediaCapturePipelinesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMediaCapturePipelinesRequest,
   output: ListMediaCapturePipelinesResponse,
   errors: [
@@ -3300,7 +3300,7 @@ export const listMediaInsightsPipelineConfigurations: API.OperationMethod<
     ListMediaInsightsPipelineConfigurationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMediaInsightsPipelineConfigurationsRequest,
   output: ListMediaInsightsPipelineConfigurationsResponse,
   errors: [
@@ -3350,7 +3350,7 @@ export const listMediaPipelineKinesisVideoStreamPools: API.OperationMethod<
     ListMediaPipelineKinesisVideoStreamPoolsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMediaPipelineKinesisVideoStreamPoolsRequest,
   output: ListMediaPipelineKinesisVideoStreamPoolsResponse,
   errors: [
@@ -3400,7 +3400,7 @@ export const listMediaPipelines: API.OperationMethod<
     ListMediaPipelinesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMediaPipelinesRequest,
   output: ListMediaPipelinesResponse,
   errors: [
@@ -3435,7 +3435,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -3469,7 +3469,7 @@ export const startSpeakerSearchTask: API.OperationMethod<
   StartSpeakerSearchTaskResponse,
   StartSpeakerSearchTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartSpeakerSearchTaskRequest,
   output: StartSpeakerSearchTaskResponse,
   errors: [
@@ -3506,7 +3506,7 @@ export const startVoiceToneAnalysisTask: API.OperationMethod<
   StartVoiceToneAnalysisTaskResponse,
   StartVoiceToneAnalysisTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartVoiceToneAnalysisTaskRequest,
   output: StartVoiceToneAnalysisTaskResponse,
   errors: [
@@ -3538,7 +3538,7 @@ export const stopSpeakerSearchTask: API.OperationMethod<
   StopSpeakerSearchTaskResponse,
   StopSpeakerSearchTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopSpeakerSearchTaskRequest,
   output: StopSpeakerSearchTaskResponse,
   errors: [
@@ -3570,7 +3570,7 @@ export const stopVoiceToneAnalysisTask: API.OperationMethod<
   StopVoiceToneAnalysisTaskResponse,
   StopVoiceToneAnalysisTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopVoiceToneAnalysisTaskRequest,
   output: StopVoiceToneAnalysisTaskResponse,
   errors: [
@@ -3601,7 +3601,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -3631,7 +3631,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -3662,7 +3662,7 @@ export const updateMediaInsightsPipelineConfiguration: API.OperationMethod<
   UpdateMediaInsightsPipelineConfigurationResponse,
   UpdateMediaInsightsPipelineConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateMediaInsightsPipelineConfigurationRequest,
   output: UpdateMediaInsightsPipelineConfigurationResponse,
   errors: [
@@ -3694,7 +3694,7 @@ export const updateMediaInsightsPipelineStatus: API.OperationMethod<
   UpdateMediaInsightsPipelineStatusResponse,
   UpdateMediaInsightsPipelineStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateMediaInsightsPipelineStatusRequest,
   output: UpdateMediaInsightsPipelineStatusResponse,
   errors: [
@@ -3726,7 +3726,7 @@ export const updateMediaPipelineKinesisVideoStreamPool: API.OperationMethod<
   UpdateMediaPipelineKinesisVideoStreamPoolResponse,
   UpdateMediaPipelineKinesisVideoStreamPoolError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateMediaPipelineKinesisVideoStreamPoolRequest,
   output: UpdateMediaPipelineKinesisVideoStreamPoolResponse,
   errors: [

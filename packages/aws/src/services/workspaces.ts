@@ -5206,7 +5206,7 @@ export const acceptAccountLinkInvitation: API.OperationMethod<
   AcceptAccountLinkInvitationResult,
   AcceptAccountLinkInvitationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AcceptAccountLinkInvitationRequest,
   output: AcceptAccountLinkInvitationResult,
   errors: [
@@ -5239,7 +5239,7 @@ export const associateConnectionAlias: API.OperationMethod<
   AssociateConnectionAliasResult,
   AssociateConnectionAliasError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateConnectionAliasRequest,
   output: AssociateConnectionAliasResult,
   errors: [
@@ -5267,7 +5267,7 @@ export const associateIpGroups: API.OperationMethod<
   AssociateIpGroupsResult,
   AssociateIpGroupsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateIpGroupsRequest,
   output: AssociateIpGroupsResult,
   errors: [
@@ -5299,7 +5299,7 @@ export const associateWorkspaceApplication: API.OperationMethod<
   AssociateWorkspaceApplicationResult,
   AssociateWorkspaceApplicationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateWorkspaceApplicationRequest,
   output: AssociateWorkspaceApplicationResult,
   errors: [
@@ -5333,7 +5333,7 @@ export const authorizeIpRules: API.OperationMethod<
   AuthorizeIpRulesResult,
   AuthorizeIpRulesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AuthorizeIpRulesRequest,
   output: AuthorizeIpRulesResult,
   errors: [
@@ -5371,7 +5371,7 @@ export const copyWorkspaceImage: API.OperationMethod<
   CopyWorkspaceImageResult,
   CopyWorkspaceImageError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CopyWorkspaceImageRequest,
   output: CopyWorkspaceImageResult,
   errors: [
@@ -5398,7 +5398,7 @@ export const createAccountLinkInvitation: API.OperationMethod<
   CreateAccountLinkInvitationResult,
   CreateAccountLinkInvitationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccountLinkInvitationRequest,
   output: CreateAccountLinkInvitationResult,
   errors: [
@@ -5426,7 +5426,7 @@ export const createConnectClientAddIn: API.OperationMethod<
   CreateConnectClientAddInResult,
   CreateConnectClientAddInError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateConnectClientAddInRequest,
   output: CreateConnectClientAddInResult,
   errors: [
@@ -5455,7 +5455,7 @@ export const createConnectionAlias: API.OperationMethod<
   CreateConnectionAliasResult,
   CreateConnectionAliasError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateConnectionAliasRequest,
   output: CreateConnectionAliasResult,
   errors: [
@@ -5492,7 +5492,7 @@ export const createIpGroup: API.OperationMethod<
   CreateIpGroupResult,
   CreateIpGroupError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateIpGroupRequest,
   output: CreateIpGroupResult,
   errors: [
@@ -5518,7 +5518,7 @@ export const createStandbyWorkspaces: API.OperationMethod<
   CreateStandbyWorkspacesResult,
   CreateStandbyWorkspacesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateStandbyWorkspacesRequest,
   output: CreateStandbyWorkspacesResult,
   errors: [
@@ -5542,7 +5542,7 @@ export const createTags: API.OperationMethod<
   CreateTagsResult,
   CreateTagsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTagsRequest,
   output: CreateTagsResult,
   errors: [
@@ -5583,7 +5583,7 @@ export const createUpdatedWorkspaceImage: API.OperationMethod<
   CreateUpdatedWorkspaceImageResult,
   CreateUpdatedWorkspaceImageError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateUpdatedWorkspaceImageRequest,
   output: CreateUpdatedWorkspaceImageResult,
   errors: [
@@ -5614,7 +5614,7 @@ export const createWorkspaceBundle: API.OperationMethod<
   CreateWorkspaceBundleResult,
   CreateWorkspaceBundleError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateWorkspaceBundleRequest,
   output: CreateWorkspaceBundleResult,
   errors: [
@@ -5643,7 +5643,7 @@ export const createWorkspaceImage: API.OperationMethod<
   CreateWorkspaceImageResult,
   CreateWorkspaceImageError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateWorkspaceImageRequest,
   output: CreateWorkspaceImageResult,
   errors: [
@@ -5686,7 +5686,7 @@ export const createWorkspaces: API.OperationMethod<
   CreateWorkspacesResult,
   CreateWorkspacesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateWorkspacesRequest,
   output: CreateWorkspacesResult,
   errors: [InvalidParameterValuesException, ResourceLimitExceededException],
@@ -5707,7 +5707,7 @@ export const createWorkspacesPool: API.OperationMethod<
   CreateWorkspacesPoolResult,
   CreateWorkspacesPoolError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateWorkspacesPoolRequest,
   output: CreateWorkspacesPoolResult,
   errors: [
@@ -5734,7 +5734,7 @@ export const deleteAccountLinkInvitation: API.OperationMethod<
   DeleteAccountLinkInvitationResult,
   DeleteAccountLinkInvitationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccountLinkInvitationRequest,
   output: DeleteAccountLinkInvitationResult,
   errors: [
@@ -5764,7 +5764,7 @@ export const deleteClientBranding: API.OperationMethod<
   DeleteClientBrandingResult,
   DeleteClientBrandingError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteClientBrandingRequest,
   output: DeleteClientBrandingResult,
   errors: [
@@ -5787,7 +5787,7 @@ export const deleteConnectClientAddIn: API.OperationMethod<
   DeleteConnectClientAddInResult,
   DeleteConnectClientAddInError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConnectClientAddInRequest,
   output: DeleteConnectClientAddInResult,
   errors: [
@@ -5824,7 +5824,7 @@ export const deleteConnectionAlias: API.OperationMethod<
   DeleteConnectionAliasResult,
   DeleteConnectionAliasError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConnectionAliasRequest,
   output: DeleteConnectionAliasResult,
   errors: [
@@ -5852,7 +5852,7 @@ export const deleteIpGroup: API.OperationMethod<
   DeleteIpGroupResult,
   DeleteIpGroupError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteIpGroupRequest,
   output: DeleteIpGroupResult,
   errors: [
@@ -5874,7 +5874,7 @@ export const deleteTags: API.OperationMethod<
   DeleteTagsResult,
   DeleteTagsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTagsRequest,
   output: DeleteTagsResult,
   errors: [InvalidParameterValuesException, ResourceNotFoundException],
@@ -5895,7 +5895,7 @@ export const deleteWorkspaceBundle: API.OperationMethod<
   DeleteWorkspaceBundleResult,
   DeleteWorkspaceBundleError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteWorkspaceBundleRequest,
   output: DeleteWorkspaceBundleResult,
   errors: [
@@ -5920,7 +5920,7 @@ export const deleteWorkspaceImage: API.OperationMethod<
   DeleteWorkspaceImageResult,
   DeleteWorkspaceImageError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteWorkspaceImageRequest,
   output: DeleteWorkspaceImageResult,
   errors: [
@@ -5945,7 +5945,7 @@ export const deployWorkspaceApplications: API.OperationMethod<
   DeployWorkspaceApplicationsResult,
   DeployWorkspaceApplicationsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeployWorkspaceApplicationsRequest,
   output: DeployWorkspaceApplicationsResult,
   errors: [
@@ -5985,7 +5985,7 @@ export const deregisterWorkspaceDirectory: API.OperationMethod<
   DeregisterWorkspaceDirectoryResult,
   DeregisterWorkspaceDirectoryError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeregisterWorkspaceDirectoryRequest,
   output: DeregisterWorkspaceDirectoryResult,
   errors: [
@@ -6006,7 +6006,7 @@ export const describeAccount: API.OperationMethod<
   DescribeAccountResult,
   DescribeAccountError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAccountRequest,
   output: DescribeAccountResult,
   errors: [AccessDeniedException],
@@ -6023,7 +6023,7 @@ export const describeAccountModifications: API.OperationMethod<
   DescribeAccountModificationsResult,
   DescribeAccountModificationsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAccountModificationsRequest,
   output: DescribeAccountModificationsResult,
   errors: [AccessDeniedException],
@@ -6057,7 +6057,7 @@ export const describeApplicationAssociations: API.OperationMethod<
     DescribeApplicationAssociationsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeApplicationAssociationsRequest,
   output: DescribeApplicationAssociationsResult,
   errors: [
@@ -6101,7 +6101,7 @@ export const describeApplications: API.OperationMethod<
     DescribeApplicationsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeApplicationsRequest,
   output: DescribeApplicationsResult,
   errors: [
@@ -6130,7 +6130,7 @@ export const describeBundleAssociations: API.OperationMethod<
   DescribeBundleAssociationsResult,
   DescribeBundleAssociationsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeBundleAssociationsRequest,
   output: DescribeBundleAssociationsResult,
   errors: [
@@ -6159,7 +6159,7 @@ export const describeClientBranding: API.OperationMethod<
   DescribeClientBrandingResult,
   DescribeClientBrandingError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeClientBrandingRequest,
   output: DescribeClientBrandingResult,
   errors: [
@@ -6181,7 +6181,7 @@ export const describeClientProperties: API.OperationMethod<
   DescribeClientPropertiesResult,
   DescribeClientPropertiesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeClientPropertiesRequest,
   output: DescribeClientPropertiesResult,
   errors: [
@@ -6203,7 +6203,7 @@ export const describeConnectClientAddIns: API.OperationMethod<
   DescribeConnectClientAddInsResult,
   DescribeConnectClientAddInsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeConnectClientAddInsRequest,
   output: DescribeConnectClientAddInsResult,
   errors: [
@@ -6227,7 +6227,7 @@ export const describeConnectionAliases: API.OperationMethod<
   DescribeConnectionAliasesResult,
   DescribeConnectionAliasesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeConnectionAliasesRequest,
   output: DescribeConnectionAliasesResult,
   errors: [
@@ -6253,7 +6253,7 @@ export const describeConnectionAliasPermissions: API.OperationMethod<
   DescribeConnectionAliasPermissionsResult,
   DescribeConnectionAliasPermissionsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeConnectionAliasPermissionsRequest,
   output: DescribeConnectionAliasPermissionsResult,
   errors: [
@@ -6275,7 +6275,7 @@ export const describeCustomWorkspaceImageImport: API.OperationMethod<
   DescribeCustomWorkspaceImageImportResult,
   DescribeCustomWorkspaceImageImportError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeCustomWorkspaceImageImportRequest,
   output: DescribeCustomWorkspaceImageImportResult,
   errors: [AccessDeniedException, ResourceNotFoundException],
@@ -6294,7 +6294,7 @@ export const describeImageAssociations: API.OperationMethod<
   DescribeImageAssociationsResult,
   DescribeImageAssociationsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeImageAssociationsRequest,
   output: DescribeImageAssociationsResult,
   errors: [
@@ -6316,7 +6316,7 @@ export const describeIpGroups: API.OperationMethod<
   DescribeIpGroupsResult,
   DescribeIpGroupsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeIpGroupsRequest,
   output: DescribeIpGroupsResult,
   errors: [AccessDeniedException, InvalidParameterValuesException],
@@ -6330,7 +6330,7 @@ export const describeTags: API.OperationMethod<
   DescribeTagsResult,
   DescribeTagsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeTagsRequest,
   output: DescribeTagsResult,
   errors: [ResourceNotFoundException],
@@ -6349,7 +6349,7 @@ export const describeWorkspaceAssociations: API.OperationMethod<
   DescribeWorkspaceAssociationsResult,
   DescribeWorkspaceAssociationsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeWorkspaceAssociationsRequest,
   output: DescribeWorkspaceAssociationsResult,
   errors: [
@@ -6387,7 +6387,7 @@ export const describeWorkspaceBundles: API.OperationMethod<
     DescribeWorkspaceBundlesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeWorkspaceBundlesRequest,
   output: DescribeWorkspaceBundlesResult,
   errors: [InvalidParameterValuesException],
@@ -6423,7 +6423,7 @@ export const describeWorkspaceDirectories: API.OperationMethod<
     DescribeWorkspaceDirectoriesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeWorkspaceDirectoriesRequest,
   output: DescribeWorkspaceDirectoriesResult,
   errors: [InvalidParameterValuesException],
@@ -6446,7 +6446,7 @@ export const describeWorkspaceImagePermissions: API.OperationMethod<
   DescribeWorkspaceImagePermissionsResult,
   DescribeWorkspaceImagePermissionsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeWorkspaceImagePermissionsRequest,
   output: DescribeWorkspaceImagePermissionsResult,
   errors: [
@@ -6465,7 +6465,7 @@ export const describeWorkspaceImages: API.OperationMethod<
   DescribeWorkspaceImagesResult,
   DescribeWorkspaceImagesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeWorkspaceImagesRequest,
   output: DescribeWorkspaceImagesResult,
   errors: [AccessDeniedException],
@@ -6500,7 +6500,7 @@ export const describeWorkspaces: API.OperationMethod<
     DescribeWorkspacesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeWorkspacesRequest,
   output: DescribeWorkspacesResult,
   errors: [InvalidParameterValuesException, ResourceUnavailableException],
@@ -6522,7 +6522,7 @@ export const describeWorkspacesConnectionStatus: API.OperationMethod<
   DescribeWorkspacesConnectionStatusResult,
   DescribeWorkspacesConnectionStatusError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeWorkspacesConnectionStatusRequest,
   output: DescribeWorkspacesConnectionStatusResult,
   errors: [InvalidParameterValuesException],
@@ -6540,7 +6540,7 @@ export const describeWorkspaceSnapshots: API.OperationMethod<
   DescribeWorkspaceSnapshotsResult,
   DescribeWorkspaceSnapshotsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeWorkspaceSnapshotsRequest,
   output: DescribeWorkspaceSnapshotsResult,
   errors: [
@@ -6562,7 +6562,7 @@ export const describeWorkspacesPools: API.OperationMethod<
   DescribeWorkspacesPoolsResult,
   DescribeWorkspacesPoolsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeWorkspacesPoolsRequest,
   output: DescribeWorkspacesPoolsResult,
   errors: [
@@ -6584,7 +6584,7 @@ export const describeWorkspacesPoolSessions: API.OperationMethod<
   DescribeWorkspacesPoolSessionsResult,
   DescribeWorkspacesPoolSessionsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeWorkspacesPoolSessionsRequest,
   output: DescribeWorkspacesPoolSessionsResult,
   errors: [
@@ -6615,7 +6615,7 @@ export const disassociateConnectionAlias: API.OperationMethod<
   DisassociateConnectionAliasResult,
   DisassociateConnectionAliasError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateConnectionAliasRequest,
   output: DisassociateConnectionAliasResult,
   errors: [
@@ -6641,7 +6641,7 @@ export const disassociateIpGroups: API.OperationMethod<
   DisassociateIpGroupsResult,
   DisassociateIpGroupsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateIpGroupsRequest,
   output: DisassociateIpGroupsResult,
   errors: [
@@ -6667,7 +6667,7 @@ export const disassociateWorkspaceApplication: API.OperationMethod<
   DisassociateWorkspaceApplicationResult,
   DisassociateWorkspaceApplicationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateWorkspaceApplicationRequest,
   output: DisassociateWorkspaceApplicationResult,
   errors: [
@@ -6692,7 +6692,7 @@ export const getAccountLink: API.OperationMethod<
   GetAccountLinkResult,
   GetAccountLinkError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountLinkRequest,
   output: GetAccountLinkResult,
   errors: [
@@ -6736,7 +6736,7 @@ export const importClientBranding: API.OperationMethod<
   ImportClientBrandingResult,
   ImportClientBrandingError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportClientBrandingRequest,
   output: ImportClientBrandingResult,
   errors: [
@@ -6766,7 +6766,7 @@ export const importCustomWorkspaceImage: API.OperationMethod<
   ImportCustomWorkspaceImageResult,
   ImportCustomWorkspaceImageError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportCustomWorkspaceImageRequest,
   output: ImportCustomWorkspaceImageResult,
   errors: [
@@ -6798,7 +6798,7 @@ export const importWorkspaceImage: API.OperationMethod<
   ImportWorkspaceImageResult,
   ImportWorkspaceImageError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportWorkspaceImageRequest,
   output: ImportWorkspaceImageResult,
   errors: [
@@ -6838,7 +6838,7 @@ export const listAccountLinks: API.OperationMethod<
     ListAccountLinksError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountLinksRequest,
   output: ListAccountLinksResult,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
@@ -6870,7 +6870,7 @@ export const listAvailableManagementCidrRanges: API.OperationMethod<
   ListAvailableManagementCidrRangesResult,
   ListAvailableManagementCidrRangesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListAvailableManagementCidrRangesRequest,
   output: ListAvailableManagementCidrRangesResult,
   errors: [AccessDeniedException, InvalidParameterValuesException],
@@ -6903,7 +6903,7 @@ export const migrateWorkspace: API.OperationMethod<
   MigrateWorkspaceResult,
   MigrateWorkspaceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MigrateWorkspaceRequest,
   output: MigrateWorkspaceResult,
   errors: [
@@ -6931,7 +6931,7 @@ export const modifyAccount: API.OperationMethod<
   ModifyAccountResult,
   ModifyAccountError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyAccountRequest,
   output: ModifyAccountResult,
   errors: [
@@ -6957,7 +6957,7 @@ export const modifyCertificateBasedAuthProperties: API.OperationMethod<
   ModifyCertificateBasedAuthPropertiesResult,
   ModifyCertificateBasedAuthPropertiesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyCertificateBasedAuthPropertiesRequest,
   output: ModifyCertificateBasedAuthPropertiesResult,
   errors: [
@@ -6981,7 +6981,7 @@ export const modifyClientProperties: API.OperationMethod<
   ModifyClientPropertiesResult,
   ModifyClientPropertiesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyClientPropertiesRequest,
   output: ModifyClientPropertiesResult,
   errors: [
@@ -7005,7 +7005,7 @@ export const modifyEndpointEncryptionMode: API.OperationMethod<
   ModifyEndpointEncryptionModeResponse,
   ModifyEndpointEncryptionModeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyEndpointEncryptionModeRequest,
   output: ModifyEndpointEncryptionModeResponse,
   errors: [
@@ -7030,7 +7030,7 @@ export const modifySamlProperties: API.OperationMethod<
   ModifySamlPropertiesResult,
   ModifySamlPropertiesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifySamlPropertiesRequest,
   output: ModifySamlPropertiesResult,
   errors: [
@@ -7055,7 +7055,7 @@ export const modifySelfservicePermissions: API.OperationMethod<
   ModifySelfservicePermissionsResult,
   ModifySelfservicePermissionsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifySelfservicePermissionsRequest,
   output: ModifySelfservicePermissionsResult,
   errors: [
@@ -7079,7 +7079,7 @@ export const modifyStreamingProperties: API.OperationMethod<
   ModifyStreamingPropertiesResult,
   ModifyStreamingPropertiesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyStreamingPropertiesRequest,
   output: ModifyStreamingPropertiesResult,
   errors: [
@@ -7106,7 +7106,7 @@ export const modifyWorkspaceAccessProperties: API.OperationMethod<
   ModifyWorkspaceAccessPropertiesResult,
   ModifyWorkspaceAccessPropertiesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyWorkspaceAccessPropertiesRequest,
   output: ModifyWorkspaceAccessPropertiesResult,
   errors: [
@@ -7131,7 +7131,7 @@ export const modifyWorkspaceCreationProperties: API.OperationMethod<
   ModifyWorkspaceCreationPropertiesResult,
   ModifyWorkspaceCreationPropertiesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyWorkspaceCreationPropertiesRequest,
   output: ModifyWorkspaceCreationPropertiesResult,
   errors: [
@@ -7164,7 +7164,7 @@ export const modifyWorkspaceProperties: API.OperationMethod<
   ModifyWorkspacePropertiesResult,
   ModifyWorkspacePropertiesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyWorkspacePropertiesRequest,
   output: ModifyWorkspacePropertiesResult,
   errors: [
@@ -7197,7 +7197,7 @@ export const modifyWorkspaceState: API.OperationMethod<
   ModifyWorkspaceStateResult,
   ModifyWorkspaceStateError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyWorkspaceStateRequest,
   output: ModifyWorkspaceStateResult,
   errors: [
@@ -7224,7 +7224,7 @@ export const rebootWorkspaces: API.OperationMethod<
   RebootWorkspacesResult,
   RebootWorkspacesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RebootWorkspacesRequest,
   output: RebootWorkspacesResult,
   errors: [OperationNotSupportedException],
@@ -7251,7 +7251,7 @@ export const rebuildWorkspaces: API.OperationMethod<
   RebuildWorkspacesResult,
   RebuildWorkspacesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RebuildWorkspacesRequest,
   output: RebuildWorkspacesResult,
   errors: [OperationNotSupportedException],
@@ -7279,7 +7279,7 @@ export const registerWorkspaceDirectory: API.OperationMethod<
   RegisterWorkspaceDirectoryResult,
   RegisterWorkspaceDirectoryError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterWorkspaceDirectoryRequest,
   output: RegisterWorkspaceDirectoryResult,
   errors: [
@@ -7309,7 +7309,7 @@ export const rejectAccountLinkInvitation: API.OperationMethod<
   RejectAccountLinkInvitationResult,
   RejectAccountLinkInvitationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RejectAccountLinkInvitationRequest,
   output: RejectAccountLinkInvitationResult,
   errors: [
@@ -7344,7 +7344,7 @@ export const restoreWorkspace: API.OperationMethod<
   RestoreWorkspaceResult,
   RestoreWorkspaceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RestoreWorkspaceRequest,
   output: RestoreWorkspaceResult,
   errors: [
@@ -7368,7 +7368,7 @@ export const revokeIpRules: API.OperationMethod<
   RevokeIpRulesResult,
   RevokeIpRulesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RevokeIpRulesRequest,
   output: RevokeIpRulesResult,
   errors: [
@@ -7390,7 +7390,7 @@ export const startWorkspaces: API.OperationMethod<
   StartWorkspacesResult,
   StartWorkspacesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartWorkspacesRequest,
   output: StartWorkspacesResult,
   errors: [],
@@ -7415,7 +7415,7 @@ export const startWorkspacesPool: API.OperationMethod<
   StartWorkspacesPoolResult,
   StartWorkspacesPoolError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartWorkspacesPoolRequest,
   output: StartWorkspacesPoolResult,
   errors: [
@@ -7441,7 +7441,7 @@ export const stopWorkspaces: API.OperationMethod<
   StopWorkspacesResult,
   StopWorkspacesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopWorkspacesRequest,
   output: StopWorkspacesResult,
   errors: [],
@@ -7464,7 +7464,7 @@ export const stopWorkspacesPool: API.OperationMethod<
   StopWorkspacesPoolResult,
   StopWorkspacesPoolError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopWorkspacesPoolRequest,
   output: StopWorkspacesPoolResult,
   errors: [
@@ -7509,7 +7509,7 @@ export const terminateWorkspaces: API.OperationMethod<
   TerminateWorkspacesResult,
   TerminateWorkspacesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TerminateWorkspacesRequest,
   output: TerminateWorkspacesResult,
   errors: [],
@@ -7529,7 +7529,7 @@ export const terminateWorkspacesPool: API.OperationMethod<
   TerminateWorkspacesPoolResult,
   TerminateWorkspacesPoolError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TerminateWorkspacesPoolRequest,
   output: TerminateWorkspacesPoolResult,
   errors: [
@@ -7555,7 +7555,7 @@ export const terminateWorkspacesPoolSession: API.OperationMethod<
   TerminateWorkspacesPoolSessionResult,
   TerminateWorkspacesPoolSessionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TerminateWorkspacesPoolSessionRequest,
   output: TerminateWorkspacesPoolSessionResult,
   errors: [
@@ -7580,7 +7580,7 @@ export const updateConnectClientAddIn: API.OperationMethod<
   UpdateConnectClientAddInResult,
   UpdateConnectClientAddInError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateConnectClientAddInRequest,
   output: UpdateConnectClientAddInResult,
   errors: [
@@ -7621,7 +7621,7 @@ export const updateConnectionAliasPermission: API.OperationMethod<
   UpdateConnectionAliasPermissionResult,
   UpdateConnectionAliasPermissionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateConnectionAliasPermissionRequest,
   output: UpdateConnectionAliasPermissionResult,
   errors: [
@@ -7650,7 +7650,7 @@ export const updateRulesOfIpGroup: API.OperationMethod<
   UpdateRulesOfIpGroupResult,
   UpdateRulesOfIpGroupError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRulesOfIpGroupRequest,
   output: UpdateRulesOfIpGroupResult,
   errors: [
@@ -7682,7 +7682,7 @@ export const updateWorkspaceBundle: API.OperationMethod<
   UpdateWorkspaceBundleResult,
   UpdateWorkspaceBundleError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateWorkspaceBundleRequest,
   output: UpdateWorkspaceBundleResult,
   errors: [
@@ -7728,7 +7728,7 @@ export const updateWorkspaceImagePermission: API.OperationMethod<
   UpdateWorkspaceImagePermissionResult,
   UpdateWorkspaceImagePermissionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateWorkspaceImagePermissionRequest,
   output: UpdateWorkspaceImagePermissionResult,
   errors: [
@@ -7756,7 +7756,7 @@ export const updateWorkspacesPool: API.OperationMethod<
   UpdateWorkspacesPoolResult,
   UpdateWorkspacesPoolError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateWorkspacesPoolRequest,
   output: UpdateWorkspacesPoolResult,
   errors: [

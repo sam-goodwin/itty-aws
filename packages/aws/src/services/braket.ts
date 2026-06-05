@@ -1210,7 +1210,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -1232,7 +1232,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -1254,7 +1254,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -1280,7 +1280,7 @@ export const getDevice: API.OperationMethod<
   GetDeviceResponse,
   GetDeviceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDeviceRequest,
   output: GetDeviceResponse,
   errors: [
@@ -1320,7 +1320,7 @@ export const searchDevices: API.OperationMethod<
     SearchDevicesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchDevicesRequest,
   output: SearchDevicesResponse,
   errors: [
@@ -1354,7 +1354,7 @@ export const createJob: API.OperationMethod<
   CreateJobResponse,
   CreateJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateJobRequest,
   output: CreateJobResponse,
   errors: [
@@ -1383,7 +1383,7 @@ export const getJob: API.OperationMethod<
   GetJobResponse,
   GetJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetJobRequest,
   output: GetJobResponse,
   errors: [
@@ -1410,7 +1410,7 @@ export const cancelJob: API.OperationMethod<
   CancelJobResponse,
   CancelJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelJobRequest,
   output: CancelJobResponse,
   errors: [
@@ -1451,7 +1451,7 @@ export const searchJobs: API.OperationMethod<
     SearchJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchJobsRequest,
   output: SearchJobsResponse,
   errors: [
@@ -1484,7 +1484,7 @@ export const createQuantumTask: API.OperationMethod<
   CreateQuantumTaskResponse,
   CreateQuantumTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateQuantumTaskRequest,
   output: CreateQuantumTaskResponse,
   errors: [
@@ -1512,7 +1512,7 @@ export const getQuantumTask: API.OperationMethod<
   GetQuantumTaskResponse,
   GetQuantumTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetQuantumTaskRequest,
   output: GetQuantumTaskResponse,
   errors: [
@@ -1539,7 +1539,7 @@ export const cancelQuantumTask: API.OperationMethod<
   CancelQuantumTaskResponse,
   CancelQuantumTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelQuantumTaskRequest,
   output: CancelQuantumTaskResponse,
   errors: [
@@ -1580,7 +1580,7 @@ export const searchQuantumTasks: API.OperationMethod<
     SearchQuantumTasksError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchQuantumTasksRequest,
   output: SearchQuantumTasksResponse,
   errors: [
@@ -1611,7 +1611,7 @@ export const createSpendingLimit: API.OperationMethod<
   CreateSpendingLimitResponse,
   CreateSpendingLimitError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSpendingLimitRequest,
   output: CreateSpendingLimitResponse,
   errors: [
@@ -1637,7 +1637,7 @@ export const updateSpendingLimit: API.OperationMethod<
   UpdateSpendingLimitResponse,
   UpdateSpendingLimitError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSpendingLimitRequest,
   output: UpdateSpendingLimitResponse,
   errors: [
@@ -1663,7 +1663,7 @@ export const deleteSpendingLimit: API.OperationMethod<
   DeleteSpendingLimitResponse,
   DeleteSpendingLimitError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSpendingLimitRequest,
   output: DeleteSpendingLimitResponse,
   errors: [
@@ -1703,7 +1703,7 @@ export const searchSpendingLimits: API.OperationMethod<
     SearchSpendingLimitsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchSpendingLimitsRequest,
   output: SearchSpendingLimitsResponse,
   errors: [

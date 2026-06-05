@@ -1223,7 +1223,7 @@ export const batchGetSecretValue: API.OperationMethod<
     BatchGetSecretValueError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: BatchGetSecretValueRequest,
   output: BatchGetSecretValueResponse,
   errors: [
@@ -1273,7 +1273,7 @@ export const cancelRotateSecret: API.OperationMethod<
   CancelRotateSecretResponse,
   CancelRotateSecretError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelRotateSecretRequest,
   output: CancelRotateSecretResponse,
   errors: [
@@ -1357,7 +1357,7 @@ export const createSecret: API.OperationMethod<
   CreateSecretResponse,
   CreateSecretError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSecretRequest,
   output: CreateSecretResponse,
   errors: [
@@ -1396,7 +1396,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyResponse,
   DeleteResourcePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourcePolicyRequest,
   output: DeleteResourcePolicyResponse,
   errors: [
@@ -1457,7 +1457,7 @@ export const deleteSecret: API.OperationMethod<
   DeleteSecretResponse,
   DeleteSecretError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSecretRequest,
   output: DeleteSecretResponse,
   errors: [
@@ -1489,7 +1489,7 @@ export const describeSecret: API.OperationMethod<
   DescribeSecretResponse,
   DescribeSecretError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeSecretRequest,
   output: DescribeSecretResponse,
   errors: [
@@ -1524,7 +1524,7 @@ export const getRandomPassword: API.OperationMethod<
   GetRandomPasswordResponse,
   GetRandomPasswordError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRandomPasswordRequest,
   output: GetRandomPasswordResponse,
   errors: [
@@ -1556,7 +1556,7 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyResponse,
   GetResourcePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResourcePolicyRequest,
   output: GetResourcePolicyResponse,
   errors: [
@@ -1602,7 +1602,7 @@ export const getSecretValue: API.OperationMethod<
   GetSecretValueResponse,
   GetSecretValueError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSecretValueRequest,
   output: GetSecretValueResponse,
   errors: [
@@ -1664,7 +1664,7 @@ export const listSecrets: API.OperationMethod<
     ListSecretsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSecretsRequest,
   output: ListSecretsResponse,
   errors: [
@@ -1720,7 +1720,7 @@ export const listSecretVersionIds: API.OperationMethod<
     ListSecretVersionIdsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSecretVersionIdsRequest,
   output: ListSecretVersionIdsResponse,
   errors: [
@@ -1762,7 +1762,7 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyResponse,
   PutResourcePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutResourcePolicyRequest,
   output: PutResourcePolicyResponse,
   errors: [
@@ -1829,7 +1829,7 @@ export const putSecretValue: API.OperationMethod<
   PutSecretValueResponse,
   PutSecretValueError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutSecretValueRequest,
   output: PutSecretValueResponse,
   errors: [
@@ -1867,7 +1867,7 @@ export const removeRegionsFromReplication: API.OperationMethod<
   RemoveRegionsFromReplicationResponse,
   RemoveRegionsFromReplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveRegionsFromReplicationRequest,
   output: RemoveRegionsFromReplicationResponse,
   errors: [
@@ -1904,7 +1904,7 @@ export const replicateSecretToRegions: API.OperationMethod<
   ReplicateSecretToRegionsResponse,
   ReplicateSecretToRegionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReplicateSecretToRegionsRequest,
   output: ReplicateSecretToRegionsResponse,
   errors: [
@@ -1937,7 +1937,7 @@ export const restoreSecret: API.OperationMethod<
   RestoreSecretResponse,
   RestoreSecretError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RestoreSecretRequest,
   output: RestoreSecretResponse,
   errors: [
@@ -1986,7 +1986,7 @@ export const rotateSecret: API.OperationMethod<
   RotateSecretResponse,
   RotateSecretError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RotateSecretRequest,
   output: RotateSecretResponse,
   errors: [
@@ -2022,7 +2022,7 @@ export const stopReplicationToReplica: API.OperationMethod<
   StopReplicationToReplicaResponse,
   StopReplicationToReplicaError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopReplicationToReplicaRequest,
   output: StopReplicationToReplicaResponse,
   errors: [
@@ -2064,7 +2064,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -2104,7 +2104,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -2178,7 +2178,7 @@ export const updateSecret: API.OperationMethod<
   UpdateSecretResponse,
   UpdateSecretError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSecretRequest,
   output: UpdateSecretResponse,
   errors: [
@@ -2236,7 +2236,7 @@ export const updateSecretVersionStage: API.OperationMethod<
   UpdateSecretVersionStageResponse,
   UpdateSecretVersionStageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSecretVersionStageRequest,
   output: UpdateSecretVersionStageResponse,
   errors: [
@@ -2282,7 +2282,7 @@ export const validateResourcePolicy: API.OperationMethod<
   ValidateResourcePolicyResponse,
   ValidateResourcePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ValidateResourcePolicyRequest,
   output: ValidateResourcePolicyResponse,
   errors: [

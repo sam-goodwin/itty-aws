@@ -2946,7 +2946,7 @@ export const deleteAlarmMuteRule: API.OperationMethod<
   DeleteAlarmMuteRuleResponse,
   DeleteAlarmMuteRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAlarmMuteRuleInput,
   output: DeleteAlarmMuteRuleResponse,
   errors: [],
@@ -2981,7 +2981,7 @@ export const deleteAlarms: API.OperationMethod<
   DeleteAlarmsResponse,
   DeleteAlarmsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAlarmsInput,
   output: DeleteAlarmsResponse,
   errors: [ResourceNotFound],
@@ -3003,7 +3003,7 @@ export const deleteAnomalyDetector: API.OperationMethod<
   DeleteAnomalyDetectorOutput,
   DeleteAnomalyDetectorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAnomalyDetectorInput,
   output: DeleteAnomalyDetectorOutput,
   errors: [
@@ -3029,7 +3029,7 @@ export const deleteDashboards: API.OperationMethod<
   DeleteDashboardsOutput,
   DeleteDashboardsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDashboardsInput,
   output: DeleteDashboardsOutput,
   errors: [
@@ -3054,7 +3054,7 @@ export const deleteInsightRules: API.OperationMethod<
   DeleteInsightRulesOutput,
   DeleteInsightRulesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteInsightRulesInput,
   output: DeleteInsightRulesOutput,
   errors: [InvalidParameterValueException, MissingRequiredParameterException],
@@ -3072,7 +3072,7 @@ export const deleteMetricStream: API.OperationMethod<
   DeleteMetricStreamOutput,
   DeleteMetricStreamError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMetricStreamInput,
   output: DeleteMetricStreamOutput,
   errors: [
@@ -3093,7 +3093,7 @@ export const describeAlarmContributors: API.OperationMethod<
   DescribeAlarmContributorsOutput,
   DescribeAlarmContributorsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAlarmContributorsInput,
   output: DescribeAlarmContributorsOutput,
   errors: [InvalidNextToken, ResourceNotFoundException],
@@ -3131,7 +3131,7 @@ export const describeAlarmHistory: API.OperationMethod<
     DescribeAlarmHistoryError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAlarmHistoryInput,
   output: DescribeAlarmHistoryOutput,
   errors: [InvalidNextToken],
@@ -3172,7 +3172,7 @@ export const describeAlarms: API.OperationMethod<
     DescribeAlarmsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAlarmsInput,
   output: DescribeAlarmsOutput,
   errors: [InvalidNextToken],
@@ -3196,7 +3196,7 @@ export const describeAlarmsForMetric: API.OperationMethod<
   DescribeAlarmsForMetricOutput,
   DescribeAlarmsForMetricError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAlarmsForMetricInput,
   output: DescribeAlarmsForMetricOutput,
   errors: [],
@@ -3235,7 +3235,7 @@ export const describeAnomalyDetectors: API.OperationMethod<
     DescribeAnomalyDetectorsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAnomalyDetectorsInput,
   output: DescribeAnomalyDetectorsOutput,
   errors: [
@@ -3278,7 +3278,7 @@ export const describeInsightRules: API.OperationMethod<
     DescribeInsightRulesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInsightRulesInput,
   output: DescribeInsightRulesOutput,
   errors: [InvalidNextToken],
@@ -3298,7 +3298,7 @@ export const disableAlarmActions: API.OperationMethod<
   DisableAlarmActionsResponse,
   DisableAlarmActionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableAlarmActionsInput,
   output: DisableAlarmActionsResponse,
   errors: [],
@@ -3316,7 +3316,7 @@ export const disableInsightRules: API.OperationMethod<
   DisableInsightRulesOutput,
   DisableInsightRulesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableInsightRulesInput,
   output: DisableInsightRulesOutput,
   errors: [InvalidParameterValueException, MissingRequiredParameterException],
@@ -3330,7 +3330,7 @@ export const enableAlarmActions: API.OperationMethod<
   EnableAlarmActionsResponse,
   EnableAlarmActionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableAlarmActionsInput,
   output: EnableAlarmActionsResponse,
   errors: [],
@@ -3349,7 +3349,7 @@ export const enableInsightRules: API.OperationMethod<
   EnableInsightRulesOutput,
   EnableInsightRulesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableInsightRulesInput,
   output: EnableInsightRulesOutput,
   errors: [
@@ -3381,7 +3381,7 @@ export const getAlarmMuteRule: API.OperationMethod<
   GetAlarmMuteRuleOutput,
   GetAlarmMuteRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAlarmMuteRuleInput,
   output: GetAlarmMuteRuleOutput,
   errors: [ResourceNotFoundException],
@@ -3403,7 +3403,7 @@ export const getDashboard: API.OperationMethod<
   GetDashboardOutput,
   GetDashboardError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDashboardInput,
   output: GetDashboardOutput,
   errors: [
@@ -3456,7 +3456,7 @@ export const getInsightRuleReport: API.OperationMethod<
   GetInsightRuleReportOutput,
   GetInsightRuleReportError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInsightRuleReportInput,
   output: GetInsightRuleReportOutput,
   errors: [
@@ -3552,7 +3552,7 @@ export const getMetricData: API.OperationMethod<
     GetMetricDataError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetMetricDataInput,
   output: GetMetricDataOutput,
   errors: [InvalidNextToken],
@@ -3630,7 +3630,7 @@ export const getMetricStatistics: API.OperationMethod<
   GetMetricStatisticsOutput,
   GetMetricStatisticsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMetricStatisticsInput,
   output: GetMetricStatisticsOutput,
   errors: [
@@ -3655,7 +3655,7 @@ export const getMetricStream: API.OperationMethod<
   GetMetricStreamOutput,
   GetMetricStreamError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMetricStreamInput,
   output: GetMetricStreamOutput,
   errors: [
@@ -3689,7 +3689,7 @@ export const getMetricWidgetImage: API.OperationMethod<
   GetMetricWidgetImageOutput,
   GetMetricWidgetImageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMetricWidgetImageInput,
   output: GetMetricWidgetImageOutput,
   errors: [],
@@ -3706,7 +3706,7 @@ export const getOTelEnrichment: API.OperationMethod<
   GetOTelEnrichmentOutput,
   GetOTelEnrichmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOTelEnrichmentInput,
   output: GetOTelEnrichmentOutput,
   errors: [],
@@ -3746,7 +3746,7 @@ export const listAlarmMuteRules: API.OperationMethod<
     ListAlarmMuteRulesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAlarmMuteRulesInput,
   output: ListAlarmMuteRulesOutput,
   errors: [InvalidNextToken, ResourceNotFoundException],
@@ -3791,7 +3791,7 @@ export const listDashboards: API.OperationMethod<
     ListDashboardsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDashboardsInput,
   output: ListDashboardsOutput,
   errors: [InternalServiceFault, InvalidParameterValueException],
@@ -3830,7 +3830,7 @@ export const listManagedInsightRules: API.OperationMethod<
     ListManagedInsightRulesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedInsightRulesInput,
   output: ListManagedInsightRulesOutput,
   errors: [
@@ -3884,7 +3884,7 @@ export const listMetrics: API.OperationMethod<
     ListMetricsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMetricsInput,
   output: ListMetricsOutput,
   errors: [InternalServiceFault, InvalidParameterValueException],
@@ -3919,7 +3919,7 @@ export const listMetricStreams: API.OperationMethod<
     ListMetricStreamsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMetricStreamsInput,
   output: ListMetricStreamsOutput,
   errors: [
@@ -3948,7 +3948,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceOutput,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [
@@ -3980,7 +3980,7 @@ export const putAlarmMuteRule: API.OperationMethod<
   PutAlarmMuteRuleResponse,
   PutAlarmMuteRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutAlarmMuteRuleInput,
   output: PutAlarmMuteRuleResponse,
   errors: [LimitExceededFault],
@@ -4008,7 +4008,7 @@ export const putAnomalyDetector: API.OperationMethod<
   PutAnomalyDetectorOutput,
   PutAnomalyDetectorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutAnomalyDetectorInput,
   output: PutAnomalyDetectorOutput,
   errors: [
@@ -4083,7 +4083,7 @@ export const putCompositeAlarm: API.OperationMethod<
   PutCompositeAlarmResponse,
   PutCompositeAlarmError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutCompositeAlarmInput,
   output: PutCompositeAlarmResponse,
   errors: [LimitExceededFault],
@@ -4119,7 +4119,7 @@ export const putDashboard: API.OperationMethod<
   PutDashboardOutput,
   PutDashboardError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutDashboardInput,
   output: PutDashboardOutput,
   errors: [ConflictException, DashboardInvalidInputError, InternalServiceFault],
@@ -4143,7 +4143,7 @@ export const putInsightRule: API.OperationMethod<
   PutInsightRuleOutput,
   PutInsightRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutInsightRuleInput,
   output: PutInsightRuleOutput,
   errors: [
@@ -4171,7 +4171,7 @@ export const putManagedInsightRules: API.OperationMethod<
   PutManagedInsightRulesOutput,
   PutManagedInsightRulesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutManagedInsightRulesInput,
   output: PutManagedInsightRulesOutput,
   errors: [InvalidParameterValueException, MissingRequiredParameterException],
@@ -4233,7 +4233,7 @@ export const putMetricAlarm: API.OperationMethod<
   PutMetricAlarmResponse,
   PutMetricAlarmError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutMetricAlarmInput,
   output: PutMetricAlarmResponse,
   errors: [LimitExceededFault],
@@ -4304,7 +4304,7 @@ export const putMetricData: API.OperationMethod<
   PutMetricDataResponse,
   PutMetricDataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutMetricDataInput,
   output: PutMetricDataResponse,
   errors: [
@@ -4363,7 +4363,7 @@ export const putMetricStream: API.OperationMethod<
   PutMetricStreamOutput,
   PutMetricStreamError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutMetricStreamInput,
   output: PutMetricStreamOutput,
   errors: [
@@ -4404,7 +4404,7 @@ export const setAlarmState: API.OperationMethod<
   SetAlarmStateResponse,
   SetAlarmStateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetAlarmStateInput,
   output: SetAlarmStateResponse,
   errors: [InvalidFormatFault, ResourceNotFound],
@@ -4422,7 +4422,7 @@ export const startMetricStreams: API.OperationMethod<
   StartMetricStreamsOutput,
   StartMetricStreamsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartMetricStreamsInput,
   output: StartMetricStreamsOutput,
   errors: [
@@ -4448,7 +4448,7 @@ export const startOTelEnrichment: API.OperationMethod<
   StartOTelEnrichmentOutput,
   StartOTelEnrichmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartOTelEnrichmentInput,
   output: StartOTelEnrichmentOutput,
   errors: [],
@@ -4466,7 +4466,7 @@ export const stopMetricStreams: API.OperationMethod<
   StopMetricStreamsOutput,
   StopMetricStreamsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopMetricStreamsInput,
   output: StopMetricStreamsOutput,
   errors: [
@@ -4487,7 +4487,7 @@ export const stopOTelEnrichment: API.OperationMethod<
   StopOTelEnrichmentOutput,
   StopOTelEnrichmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopOTelEnrichmentInput,
   output: StopOTelEnrichmentOutput,
   errors: [],
@@ -4524,7 +4524,7 @@ export const tagResource: API.OperationMethod<
   TagResourceOutput,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
   errors: [
@@ -4550,7 +4550,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceOutput,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
   errors: [

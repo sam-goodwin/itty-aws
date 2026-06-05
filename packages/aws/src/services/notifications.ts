@@ -2216,7 +2216,7 @@ export const listManagedNotificationChannelAssociations: API.OperationMethod<
     ListManagedNotificationChannelAssociationsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedNotificationChannelAssociationsRequest,
   output: ListManagedNotificationChannelAssociationsResponse,
   errors: [
@@ -2263,7 +2263,7 @@ export const listMemberAccounts: API.OperationMethod<
     ListMemberAccountsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMemberAccountsRequest,
   output: ListMemberAccountsResponse,
   errors: [
@@ -2299,7 +2299,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -2329,7 +2329,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -2357,7 +2357,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -2385,7 +2385,7 @@ export const associateChannel: API.OperationMethod<
   AssociateChannelResponse,
   AssociateChannelError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateChannelRequest,
   output: AssociateChannelResponse,
   errors: [
@@ -2413,7 +2413,7 @@ export const disassociateChannel: API.OperationMethod<
   DisassociateChannelResponse,
   DisassociateChannelError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateChannelRequest,
   output: DisassociateChannelResponse,
   errors: [
@@ -2454,7 +2454,7 @@ export const listChannels: API.OperationMethod<
     ListChannelsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChannelsRequest,
   output: ListChannelsResponse,
   errors: [
@@ -2488,7 +2488,7 @@ export const createEventRule: API.OperationMethod<
   CreateEventRuleResponse,
   CreateEventRuleError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEventRuleRequest,
   output: CreateEventRuleResponse,
   errors: [
@@ -2517,7 +2517,7 @@ export const updateEventRule: API.OperationMethod<
   UpdateEventRuleResponse,
   UpdateEventRuleError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEventRuleRequest,
   output: UpdateEventRuleResponse,
   errors: [
@@ -2544,7 +2544,7 @@ export const getEventRule: API.OperationMethod<
   GetEventRuleResponse,
   GetEventRuleError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEventRuleRequest,
   output: GetEventRuleResponse,
   errors: [
@@ -2571,7 +2571,7 @@ export const deleteEventRule: API.OperationMethod<
   DeleteEventRuleResponse,
   DeleteEventRuleError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEventRuleRequest,
   output: DeleteEventRuleResponse,
   errors: [
@@ -2613,7 +2613,7 @@ export const listEventRules: API.OperationMethod<
     ListEventRulesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEventRulesRequest,
   output: ListEventRulesResponse,
   errors: [
@@ -2647,7 +2647,7 @@ export const associateManagedNotificationAccountContact: API.OperationMethod<
   AssociateManagedNotificationAccountContactResponse,
   AssociateManagedNotificationAccountContactError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateManagedNotificationAccountContactRequest,
   output: AssociateManagedNotificationAccountContactResponse,
   errors: [
@@ -2676,7 +2676,7 @@ export const disassociateManagedNotificationAccountContact: API.OperationMethod<
   DisassociateManagedNotificationAccountContactResponse,
   DisassociateManagedNotificationAccountContactError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateManagedNotificationAccountContactRequest,
   output: DisassociateManagedNotificationAccountContactResponse,
   errors: [
@@ -2707,7 +2707,7 @@ export const associateManagedNotificationAdditionalChannel: API.OperationMethod<
   AssociateManagedNotificationAdditionalChannelResponse,
   AssociateManagedNotificationAdditionalChannelError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateManagedNotificationAdditionalChannelRequest,
   output: AssociateManagedNotificationAdditionalChannelResponse,
   errors: [
@@ -2737,7 +2737,7 @@ export const disassociateManagedNotificationAdditionalChannel: API.OperationMeth
   DisassociateManagedNotificationAdditionalChannelResponse,
   DisassociateManagedNotificationAdditionalChannelError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateManagedNotificationAdditionalChannelRequest,
   output: DisassociateManagedNotificationAdditionalChannelResponse,
   errors: [
@@ -2763,7 +2763,7 @@ export const getManagedNotificationChildEvent: API.OperationMethod<
   GetManagedNotificationChildEventResponse,
   GetManagedNotificationChildEventError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetManagedNotificationChildEventRequest,
   output: GetManagedNotificationChildEventResponse,
   errors: [
@@ -2803,7 +2803,7 @@ export const listManagedNotificationChildEvents: API.OperationMethod<
     ListManagedNotificationChildEventsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedNotificationChildEventsRequest,
   output: ListManagedNotificationChildEventsResponse,
   errors: [
@@ -2834,7 +2834,7 @@ export const getManagedNotificationConfiguration: API.OperationMethod<
   GetManagedNotificationConfigurationResponse,
   GetManagedNotificationConfigurationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetManagedNotificationConfigurationRequest,
   output: GetManagedNotificationConfigurationResponse,
   errors: [
@@ -2874,7 +2874,7 @@ export const listManagedNotificationConfigurations: API.OperationMethod<
     ListManagedNotificationConfigurationsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedNotificationConfigurationsRequest,
   output: ListManagedNotificationConfigurationsResponse,
   errors: [
@@ -2905,7 +2905,7 @@ export const getManagedNotificationEvent: API.OperationMethod<
   GetManagedNotificationEventResponse,
   GetManagedNotificationEventError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetManagedNotificationEventRequest,
   output: GetManagedNotificationEventResponse,
   errors: [
@@ -2945,7 +2945,7 @@ export const listManagedNotificationEvents: API.OperationMethod<
     ListManagedNotificationEventsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedNotificationEventsRequest,
   output: ListManagedNotificationEventsResponse,
   errors: [
@@ -2977,7 +2977,7 @@ export const createNotificationConfiguration: API.OperationMethod<
   CreateNotificationConfigurationResponse,
   CreateNotificationConfigurationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateNotificationConfigurationRequest,
   output: CreateNotificationConfigurationResponse,
   errors: [
@@ -3005,7 +3005,7 @@ export const updateNotificationConfiguration: API.OperationMethod<
   UpdateNotificationConfigurationResponse,
   UpdateNotificationConfigurationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateNotificationConfigurationRequest,
   output: UpdateNotificationConfigurationResponse,
   errors: [
@@ -3032,7 +3032,7 @@ export const getNotificationConfiguration: API.OperationMethod<
   GetNotificationConfigurationResponse,
   GetNotificationConfigurationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetNotificationConfigurationRequest,
   output: GetNotificationConfigurationResponse,
   errors: [
@@ -3059,7 +3059,7 @@ export const deleteNotificationConfiguration: API.OperationMethod<
   DeleteNotificationConfigurationResponse,
   DeleteNotificationConfigurationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteNotificationConfigurationRequest,
   output: DeleteNotificationConfigurationResponse,
   errors: [
@@ -3100,7 +3100,7 @@ export const listNotificationConfigurations: API.OperationMethod<
     ListNotificationConfigurationsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNotificationConfigurationsRequest,
   output: ListNotificationConfigurationsResponse,
   errors: [
@@ -3133,7 +3133,7 @@ export const getNotificationEvent: API.OperationMethod<
   GetNotificationEventResponse,
   GetNotificationEventError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetNotificationEventRequest,
   output: GetNotificationEventResponse,
   errors: [
@@ -3175,7 +3175,7 @@ export const listNotificationEvents: API.OperationMethod<
     ListNotificationEventsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNotificationEventsRequest,
   output: ListNotificationEventsResponse,
   errors: [
@@ -3209,7 +3209,7 @@ export const registerNotificationHub: API.OperationMethod<
   RegisterNotificationHubResponse,
   RegisterNotificationHubError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterNotificationHubRequest,
   output: RegisterNotificationHubResponse,
   errors: [
@@ -3239,7 +3239,7 @@ export const deregisterNotificationHub: API.OperationMethod<
   DeregisterNotificationHubResponse,
   DeregisterNotificationHubError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeregisterNotificationHubRequest,
   output: DeregisterNotificationHubResponse,
   errors: [
@@ -3280,7 +3280,7 @@ export const listNotificationHubs: API.OperationMethod<
     ListNotificationHubsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNotificationHubsRequest,
   output: ListNotificationHubsResponse,
   errors: [
@@ -3313,7 +3313,7 @@ export const enableNotificationsAccessForOrganization: API.OperationMethod<
   EnableNotificationsAccessForOrganizationResponse,
   EnableNotificationsAccessForOrganizationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableNotificationsAccessForOrganizationRequest,
   output: EnableNotificationsAccessForOrganizationResponse,
   errors: [
@@ -3340,7 +3340,7 @@ export const getNotificationsAccessForOrganization: API.OperationMethod<
   GetNotificationsAccessForOrganizationResponse,
   GetNotificationsAccessForOrganizationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetNotificationsAccessForOrganizationRequest,
   output: GetNotificationsAccessForOrganizationResponse,
   errors: [
@@ -3367,7 +3367,7 @@ export const disableNotificationsAccessForOrganization: API.OperationMethod<
   DisableNotificationsAccessForOrganizationResponse,
   DisableNotificationsAccessForOrganizationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableNotificationsAccessForOrganizationRequest,
   output: DisableNotificationsAccessForOrganizationResponse,
   errors: [
@@ -3397,7 +3397,7 @@ export const associateOrganizationalUnit: API.OperationMethod<
   AssociateOrganizationalUnitResponse,
   AssociateOrganizationalUnitError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateOrganizationalUnitRequest,
   output: AssociateOrganizationalUnitResponse,
   errors: [
@@ -3425,7 +3425,7 @@ export const disassociateOrganizationalUnit: API.OperationMethod<
   DisassociateOrganizationalUnitResponse,
   DisassociateOrganizationalUnitError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateOrganizationalUnitRequest,
   output: DisassociateOrganizationalUnitResponse,
   errors: [
@@ -3466,7 +3466,7 @@ export const listOrganizationalUnits: API.OperationMethod<
     ListOrganizationalUnitsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationalUnitsRequest,
   output: ListOrganizationalUnitsResponse,
   errors: [

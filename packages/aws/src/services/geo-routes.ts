@@ -3560,7 +3560,7 @@ export const calculateIsolines: API.OperationMethod<
   CalculateIsolinesResponse,
   CalculateIsolinesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CalculateIsolinesRequest,
   output: CalculateIsolinesResponse,
   errors: [
@@ -3586,7 +3586,7 @@ export const calculateRouteMatrix: API.OperationMethod<
   CalculateRouteMatrixResponse,
   CalculateRouteMatrixError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CalculateRouteMatrixRequest,
   output: CalculateRouteMatrixResponse,
   errors: [
@@ -3612,7 +3612,7 @@ export const calculateRoutes: API.OperationMethod<
   CalculateRoutesResponse,
   CalculateRoutesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CalculateRoutesRequest,
   output: CalculateRoutesResponse,
   errors: [
@@ -3638,7 +3638,7 @@ export const optimizeWaypoints: API.OperationMethod<
   OptimizeWaypointsResponse,
   OptimizeWaypointsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: OptimizeWaypointsRequest,
   output: OptimizeWaypointsResponse,
   errors: [
@@ -3664,7 +3664,7 @@ export const snapToRoads: API.OperationMethod<
   SnapToRoadsResponse,
   SnapToRoadsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SnapToRoadsRequest,
   output: SnapToRoadsResponse,
   errors: [

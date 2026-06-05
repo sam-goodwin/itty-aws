@@ -6329,7 +6329,7 @@ export const associateAwsAccountWithPartnerAccount: API.OperationMethod<
   AssociateAwsAccountWithPartnerAccountResponse,
   AssociateAwsAccountWithPartnerAccountError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateAwsAccountWithPartnerAccountRequest,
   output: AssociateAwsAccountWithPartnerAccountResponse,
   errors: [
@@ -6357,7 +6357,7 @@ export const associateMulticastGroupWithFuotaTask: API.OperationMethod<
   AssociateMulticastGroupWithFuotaTaskResponse,
   AssociateMulticastGroupWithFuotaTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateMulticastGroupWithFuotaTaskRequest,
   output: AssociateMulticastGroupWithFuotaTaskResponse,
   errors: [
@@ -6385,7 +6385,7 @@ export const associateWirelessDeviceWithFuotaTask: API.OperationMethod<
   AssociateWirelessDeviceWithFuotaTaskResponse,
   AssociateWirelessDeviceWithFuotaTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateWirelessDeviceWithFuotaTaskRequest,
   output: AssociateWirelessDeviceWithFuotaTaskResponse,
   errors: [
@@ -6413,7 +6413,7 @@ export const associateWirelessDeviceWithMulticastGroup: API.OperationMethod<
   AssociateWirelessDeviceWithMulticastGroupResponse,
   AssociateWirelessDeviceWithMulticastGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateWirelessDeviceWithMulticastGroupRequest,
   output: AssociateWirelessDeviceWithMulticastGroupResponse,
   errors: [
@@ -6441,7 +6441,7 @@ export const associateWirelessDeviceWithThing: API.OperationMethod<
   AssociateWirelessDeviceWithThingResponse,
   AssociateWirelessDeviceWithThingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateWirelessDeviceWithThingRequest,
   output: AssociateWirelessDeviceWithThingResponse,
   errors: [
@@ -6469,7 +6469,7 @@ export const associateWirelessGatewayWithCertificate: API.OperationMethod<
   AssociateWirelessGatewayWithCertificateResponse,
   AssociateWirelessGatewayWithCertificateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateWirelessGatewayWithCertificateRequest,
   output: AssociateWirelessGatewayWithCertificateResponse,
   errors: [
@@ -6497,7 +6497,7 @@ export const associateWirelessGatewayWithThing: API.OperationMethod<
   AssociateWirelessGatewayWithThingResponse,
   AssociateWirelessGatewayWithThingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateWirelessGatewayWithThingRequest,
   output: AssociateWirelessGatewayWithThingResponse,
   errors: [
@@ -6525,7 +6525,7 @@ export const cancelMulticastGroupSession: API.OperationMethod<
   CancelMulticastGroupSessionResponse,
   CancelMulticastGroupSessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelMulticastGroupSessionRequest,
   output: CancelMulticastGroupSessionResponse,
   errors: [
@@ -6553,7 +6553,7 @@ export const createDestination: API.OperationMethod<
   CreateDestinationResponse,
   CreateDestinationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDestinationRequest,
   output: CreateDestinationResponse,
   errors: [
@@ -6580,7 +6580,7 @@ export const createDeviceProfile: API.OperationMethod<
   CreateDeviceProfileResponse,
   CreateDeviceProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDeviceProfileRequest,
   output: CreateDeviceProfileResponse,
   errors: [
@@ -6607,7 +6607,7 @@ export const createFuotaTask: API.OperationMethod<
   CreateFuotaTaskResponse,
   CreateFuotaTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFuotaTaskRequest,
   output: CreateFuotaTaskResponse,
   errors: [
@@ -6635,7 +6635,7 @@ export const createMulticastGroup: API.OperationMethod<
   CreateMulticastGroupResponse,
   CreateMulticastGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMulticastGroupRequest,
   output: CreateMulticastGroupResponse,
   errors: [
@@ -6663,7 +6663,7 @@ export const createNetworkAnalyzerConfiguration: API.OperationMethod<
   CreateNetworkAnalyzerConfigurationResponse,
   CreateNetworkAnalyzerConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateNetworkAnalyzerConfigurationRequest,
   output: CreateNetworkAnalyzerConfigurationResponse,
   errors: [
@@ -6690,7 +6690,7 @@ export const createServiceProfile: API.OperationMethod<
   CreateServiceProfileResponse,
   CreateServiceProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateServiceProfileRequest,
   output: CreateServiceProfileResponse,
   errors: [
@@ -6717,7 +6717,7 @@ export const createWirelessDevice: API.OperationMethod<
   CreateWirelessDeviceResponse,
   CreateWirelessDeviceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateWirelessDeviceRequest,
   output: CreateWirelessDeviceResponse,
   errors: [
@@ -6755,7 +6755,7 @@ export const createWirelessGateway: API.OperationMethod<
   CreateWirelessGatewayResponse,
   CreateWirelessGatewayError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateWirelessGatewayRequest,
   output: CreateWirelessGatewayResponse,
   errors: [
@@ -6782,7 +6782,7 @@ export const createWirelessGatewayTask: API.OperationMethod<
   CreateWirelessGatewayTaskResponse,
   CreateWirelessGatewayTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateWirelessGatewayTaskRequest,
   output: CreateWirelessGatewayTaskResponse,
   errors: [
@@ -6810,7 +6810,7 @@ export const createWirelessGatewayTaskDefinition: API.OperationMethod<
   CreateWirelessGatewayTaskDefinitionResponse,
   CreateWirelessGatewayTaskDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateWirelessGatewayTaskDefinitionRequest,
   output: CreateWirelessGatewayTaskDefinitionResponse,
   errors: [
@@ -6838,7 +6838,7 @@ export const deleteDestination: API.OperationMethod<
   DeleteDestinationResponse,
   DeleteDestinationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDestinationRequest,
   output: DeleteDestinationResponse,
   errors: [
@@ -6866,7 +6866,7 @@ export const deleteDeviceProfile: API.OperationMethod<
   DeleteDeviceProfileResponse,
   DeleteDeviceProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDeviceProfileRequest,
   output: DeleteDeviceProfileResponse,
   errors: [
@@ -6893,7 +6893,7 @@ export const deleteFuotaTask: API.OperationMethod<
   DeleteFuotaTaskResponse,
   DeleteFuotaTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFuotaTaskRequest,
   output: DeleteFuotaTaskResponse,
   errors: [
@@ -6920,7 +6920,7 @@ export const deleteMulticastGroup: API.OperationMethod<
   DeleteMulticastGroupResponse,
   DeleteMulticastGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMulticastGroupRequest,
   output: DeleteMulticastGroupResponse,
   errors: [
@@ -6948,7 +6948,7 @@ export const deleteNetworkAnalyzerConfiguration: API.OperationMethod<
   DeleteNetworkAnalyzerConfigurationResponse,
   DeleteNetworkAnalyzerConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteNetworkAnalyzerConfigurationRequest,
   output: DeleteNetworkAnalyzerConfigurationResponse,
   errors: [
@@ -6975,7 +6975,7 @@ export const deleteQueuedMessages: API.OperationMethod<
   DeleteQueuedMessagesResponse,
   DeleteQueuedMessagesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteQueuedMessagesRequest,
   output: DeleteQueuedMessagesResponse,
   errors: [
@@ -7002,7 +7002,7 @@ export const deleteServiceProfile: API.OperationMethod<
   DeleteServiceProfileResponse,
   DeleteServiceProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteServiceProfileRequest,
   output: DeleteServiceProfileResponse,
   errors: [
@@ -7029,7 +7029,7 @@ export const deleteWirelessDevice: API.OperationMethod<
   DeleteWirelessDeviceResponse,
   DeleteWirelessDeviceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteWirelessDeviceRequest,
   output: DeleteWirelessDeviceResponse,
   errors: [
@@ -7056,7 +7056,7 @@ export const deleteWirelessDeviceImportTask: API.OperationMethod<
   DeleteWirelessDeviceImportTaskResponse,
   DeleteWirelessDeviceImportTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteWirelessDeviceImportTaskRequest,
   output: DeleteWirelessDeviceImportTaskResponse,
   errors: [
@@ -7094,7 +7094,7 @@ export const deleteWirelessGateway: API.OperationMethod<
   DeleteWirelessGatewayResponse,
   DeleteWirelessGatewayError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteWirelessGatewayRequest,
   output: DeleteWirelessGatewayResponse,
   errors: [
@@ -7120,7 +7120,7 @@ export const deleteWirelessGatewayTask: API.OperationMethod<
   DeleteWirelessGatewayTaskResponse,
   DeleteWirelessGatewayTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteWirelessGatewayTaskRequest,
   output: DeleteWirelessGatewayTaskResponse,
   errors: [
@@ -7147,7 +7147,7 @@ export const deleteWirelessGatewayTaskDefinition: API.OperationMethod<
   DeleteWirelessGatewayTaskDefinitionResponse,
   DeleteWirelessGatewayTaskDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteWirelessGatewayTaskDefinitionRequest,
   output: DeleteWirelessGatewayTaskDefinitionResponse,
   errors: [
@@ -7172,7 +7172,7 @@ export const deregisterWirelessDevice: API.OperationMethod<
   DeregisterWirelessDeviceResponse,
   DeregisterWirelessDeviceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeregisterWirelessDeviceRequest,
   output: DeregisterWirelessDeviceResponse,
   errors: [
@@ -7198,7 +7198,7 @@ export const disassociateAwsAccountFromPartnerAccount: API.OperationMethod<
   DisassociateAwsAccountFromPartnerAccountResponse,
   DisassociateAwsAccountFromPartnerAccountError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateAwsAccountFromPartnerAccountRequest,
   output: DisassociateAwsAccountFromPartnerAccountResponse,
   errors: [
@@ -7223,7 +7223,7 @@ export const disassociateMulticastGroupFromFuotaTask: API.OperationMethod<
   DisassociateMulticastGroupFromFuotaTaskResponse,
   DisassociateMulticastGroupFromFuotaTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateMulticastGroupFromFuotaTaskRequest,
   output: DisassociateMulticastGroupFromFuotaTaskResponse,
   errors: [
@@ -7250,7 +7250,7 @@ export const disassociateWirelessDeviceFromFuotaTask: API.OperationMethod<
   DisassociateWirelessDeviceFromFuotaTaskResponse,
   DisassociateWirelessDeviceFromFuotaTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateWirelessDeviceFromFuotaTaskRequest,
   output: DisassociateWirelessDeviceFromFuotaTaskResponse,
   errors: [
@@ -7277,7 +7277,7 @@ export const disassociateWirelessDeviceFromMulticastGroup: API.OperationMethod<
   DisassociateWirelessDeviceFromMulticastGroupResponse,
   DisassociateWirelessDeviceFromMulticastGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateWirelessDeviceFromMulticastGroupRequest,
   output: DisassociateWirelessDeviceFromMulticastGroupResponse,
   errors: [
@@ -7304,7 +7304,7 @@ export const disassociateWirelessDeviceFromThing: API.OperationMethod<
   DisassociateWirelessDeviceFromThingResponse,
   DisassociateWirelessDeviceFromThingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateWirelessDeviceFromThingRequest,
   output: DisassociateWirelessDeviceFromThingResponse,
   errors: [
@@ -7331,7 +7331,7 @@ export const disassociateWirelessGatewayFromCertificate: API.OperationMethod<
   DisassociateWirelessGatewayFromCertificateResponse,
   DisassociateWirelessGatewayFromCertificateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateWirelessGatewayFromCertificateRequest,
   output: DisassociateWirelessGatewayFromCertificateResponse,
   errors: [
@@ -7358,7 +7358,7 @@ export const disassociateWirelessGatewayFromThing: API.OperationMethod<
   DisassociateWirelessGatewayFromThingResponse,
   DisassociateWirelessGatewayFromThingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateWirelessGatewayFromThingRequest,
   output: DisassociateWirelessGatewayFromThingResponse,
   errors: [
@@ -7385,7 +7385,7 @@ export const getDestination: API.OperationMethod<
   GetDestinationResponse,
   GetDestinationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDestinationRequest,
   output: GetDestinationResponse,
   errors: [
@@ -7411,7 +7411,7 @@ export const getDeviceProfile: API.OperationMethod<
   GetDeviceProfileResponse,
   GetDeviceProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDeviceProfileRequest,
   output: GetDeviceProfileResponse,
   errors: [
@@ -7435,7 +7435,7 @@ export const getEventConfigurationByResourceTypes: API.OperationMethod<
   GetEventConfigurationByResourceTypesResponse,
   GetEventConfigurationByResourceTypesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEventConfigurationByResourceTypesRequest,
   output: GetEventConfigurationByResourceTypesResponse,
   errors: [AccessDeniedException, InternalServerException, ThrottlingException],
@@ -7455,7 +7455,7 @@ export const getFuotaTask: API.OperationMethod<
   GetFuotaTaskResponse,
   GetFuotaTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFuotaTaskRequest,
   output: GetFuotaTaskResponse,
   errors: [
@@ -7483,7 +7483,7 @@ export const getLogLevelsByResourceTypes: API.OperationMethod<
   GetLogLevelsByResourceTypesResponse,
   GetLogLevelsByResourceTypesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLogLevelsByResourceTypesRequest,
   output: GetLogLevelsByResourceTypesResponse,
   errors: [
@@ -7510,7 +7510,7 @@ export const getMetricConfiguration: API.OperationMethod<
   GetMetricConfigurationResponse,
   GetMetricConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMetricConfigurationRequest,
   output: GetMetricConfigurationResponse,
   errors: [
@@ -7538,7 +7538,7 @@ export const getMetrics: API.OperationMethod<
   GetMetricsResponse,
   GetMetricsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMetricsRequest,
   output: GetMetricsResponse,
   errors: [
@@ -7565,7 +7565,7 @@ export const getMulticastGroup: API.OperationMethod<
   GetMulticastGroupResponse,
   GetMulticastGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMulticastGroupRequest,
   output: GetMulticastGroupResponse,
   errors: [
@@ -7591,7 +7591,7 @@ export const getMulticastGroupSession: API.OperationMethod<
   GetMulticastGroupSessionResponse,
   GetMulticastGroupSessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMulticastGroupSessionRequest,
   output: GetMulticastGroupSessionResponse,
   errors: [
@@ -7617,7 +7617,7 @@ export const getNetworkAnalyzerConfiguration: API.OperationMethod<
   GetNetworkAnalyzerConfigurationResponse,
   GetNetworkAnalyzerConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetNetworkAnalyzerConfigurationRequest,
   output: GetNetworkAnalyzerConfigurationResponse,
   errors: [
@@ -7643,7 +7643,7 @@ export const getPartnerAccount: API.OperationMethod<
   GetPartnerAccountResponse,
   GetPartnerAccountError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPartnerAccountRequest,
   output: GetPartnerAccountResponse,
   errors: [
@@ -7671,7 +7671,7 @@ export const getPosition: API.OperationMethod<
   GetPositionResponse,
   GetPositionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPositionRequest,
   output: GetPositionResponse,
   errors: [
@@ -7700,7 +7700,7 @@ export const getPositionConfiguration: API.OperationMethod<
   GetPositionConfigurationResponse,
   GetPositionConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPositionConfigurationRequest,
   output: GetPositionConfigurationResponse,
   errors: [
@@ -7728,7 +7728,7 @@ export const getPositionEstimate: API.OperationMethod<
   GetPositionEstimateResponse,
   GetPositionEstimateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPositionEstimateRequest,
   output: GetPositionEstimateResponse,
   errors: [
@@ -7754,7 +7754,7 @@ export const getResourceEventConfiguration: API.OperationMethod<
   GetResourceEventConfigurationResponse,
   GetResourceEventConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResourceEventConfigurationRequest,
   output: GetResourceEventConfigurationResponse,
   errors: [
@@ -7781,7 +7781,7 @@ export const getResourceLogLevel: API.OperationMethod<
   GetResourceLogLevelResponse,
   GetResourceLogLevelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResourceLogLevelRequest,
   output: GetResourceLogLevelResponse,
   errors: [
@@ -7809,7 +7809,7 @@ export const getResourcePosition: API.OperationMethod<
   GetResourcePositionResponse,
   GetResourcePositionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResourcePositionRequest,
   output: GetResourcePositionResponse,
   errors: [
@@ -7835,7 +7835,7 @@ export const getServiceEndpoint: API.OperationMethod<
   GetServiceEndpointResponse,
   GetServiceEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetServiceEndpointRequest,
   output: GetServiceEndpointResponse,
   errors: [
@@ -7860,7 +7860,7 @@ export const getServiceProfile: API.OperationMethod<
   GetServiceProfileResponse,
   GetServiceProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetServiceProfileRequest,
   output: GetServiceProfileResponse,
   errors: [
@@ -7886,7 +7886,7 @@ export const getWirelessDevice: API.OperationMethod<
   GetWirelessDeviceResponse,
   GetWirelessDeviceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetWirelessDeviceRequest,
   output: GetWirelessDeviceResponse,
   errors: [
@@ -7914,7 +7914,7 @@ export const getWirelessDeviceImportTask: API.OperationMethod<
   GetWirelessDeviceImportTaskResponse,
   GetWirelessDeviceImportTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetWirelessDeviceImportTaskRequest,
   output: GetWirelessDeviceImportTaskResponse,
   errors: [
@@ -7941,7 +7941,7 @@ export const getWirelessDeviceStatistics: API.OperationMethod<
   GetWirelessDeviceStatisticsResponse,
   GetWirelessDeviceStatisticsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetWirelessDeviceStatisticsRequest,
   output: GetWirelessDeviceStatisticsResponse,
   errors: [
@@ -7967,7 +7967,7 @@ export const getWirelessGateway: API.OperationMethod<
   GetWirelessGatewayResponse,
   GetWirelessGatewayError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetWirelessGatewayRequest,
   output: GetWirelessGatewayResponse,
   errors: [
@@ -7994,7 +7994,7 @@ export const getWirelessGatewayCertificate: API.OperationMethod<
   GetWirelessGatewayCertificateResponse,
   GetWirelessGatewayCertificateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetWirelessGatewayCertificateRequest,
   output: GetWirelessGatewayCertificateResponse,
   errors: [
@@ -8020,7 +8020,7 @@ export const getWirelessGatewayFirmwareInformation: API.OperationMethod<
   GetWirelessGatewayFirmwareInformationResponse,
   GetWirelessGatewayFirmwareInformationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetWirelessGatewayFirmwareInformationRequest,
   output: GetWirelessGatewayFirmwareInformationResponse,
   errors: [
@@ -8046,7 +8046,7 @@ export const getWirelessGatewayStatistics: API.OperationMethod<
   GetWirelessGatewayStatisticsResponse,
   GetWirelessGatewayStatisticsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetWirelessGatewayStatisticsRequest,
   output: GetWirelessGatewayStatisticsResponse,
   errors: [
@@ -8072,7 +8072,7 @@ export const getWirelessGatewayTask: API.OperationMethod<
   GetWirelessGatewayTaskResponse,
   GetWirelessGatewayTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetWirelessGatewayTaskRequest,
   output: GetWirelessGatewayTaskResponse,
   errors: [
@@ -8098,7 +8098,7 @@ export const getWirelessGatewayTaskDefinition: API.OperationMethod<
   GetWirelessGatewayTaskDefinitionResponse,
   GetWirelessGatewayTaskDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetWirelessGatewayTaskDefinitionRequest,
   output: GetWirelessGatewayTaskDefinitionResponse,
   errors: [
@@ -8138,7 +8138,7 @@ export const listDestinations: API.OperationMethod<
     ListDestinationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDestinationsRequest,
   output: ListDestinationsResponse,
   errors: [
@@ -8182,7 +8182,7 @@ export const listDeviceProfiles: API.OperationMethod<
     ListDeviceProfilesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDeviceProfilesRequest,
   output: ListDeviceProfilesResponse,
   errors: [
@@ -8213,7 +8213,7 @@ export const listDevicesForWirelessDeviceImportTask: API.OperationMethod<
   ListDevicesForWirelessDeviceImportTaskResponse,
   ListDevicesForWirelessDeviceImportTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListDevicesForWirelessDeviceImportTaskRequest,
   output: ListDevicesForWirelessDeviceImportTaskResponse,
   errors: [
@@ -8239,7 +8239,7 @@ export const listEventConfigurations: API.OperationMethod<
   ListEventConfigurationsResponse,
   ListEventConfigurationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListEventConfigurationsRequest,
   output: ListEventConfigurationsResponse,
   errors: [
@@ -8278,7 +8278,7 @@ export const listFuotaTasks: API.OperationMethod<
     ListFuotaTasksError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFuotaTasksRequest,
   output: ListFuotaTasksResponse,
   errors: [
@@ -8322,7 +8322,7 @@ export const listMulticastGroups: API.OperationMethod<
     ListMulticastGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMulticastGroupsRequest,
   output: ListMulticastGroupsResponse,
   errors: [
@@ -8367,7 +8367,7 @@ export const listMulticastGroupsByFuotaTask: API.OperationMethod<
     ListMulticastGroupsByFuotaTaskError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMulticastGroupsByFuotaTaskRequest,
   output: ListMulticastGroupsByFuotaTaskResponse,
   errors: [
@@ -8412,7 +8412,7 @@ export const listNetworkAnalyzerConfigurations: API.OperationMethod<
     ListNetworkAnalyzerConfigurationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNetworkAnalyzerConfigurationsRequest,
   output: ListNetworkAnalyzerConfigurationsResponse,
   errors: [
@@ -8441,7 +8441,7 @@ export const listPartnerAccounts: API.OperationMethod<
   ListPartnerAccountsResponse,
   ListPartnerAccountsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListPartnerAccountsRequest,
   output: ListPartnerAccountsResponse,
   errors: [
@@ -8483,7 +8483,7 @@ export const listPositionConfigurations: API.OperationMethod<
     ListPositionConfigurationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPositionConfigurationsRequest,
   output: ListPositionConfigurationsResponse,
   errors: [
@@ -8528,7 +8528,7 @@ export const listQueuedMessages: API.OperationMethod<
     ListQueuedMessagesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListQueuedMessagesRequest,
   output: ListQueuedMessagesResponse,
   errors: [
@@ -8573,7 +8573,7 @@ export const listServiceProfiles: API.OperationMethod<
     ListServiceProfilesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServiceProfilesRequest,
   output: ListServiceProfilesResponse,
   errors: [
@@ -8603,7 +8603,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -8631,7 +8631,7 @@ export const listWirelessDeviceImportTasks: API.OperationMethod<
   ListWirelessDeviceImportTasksResponse,
   ListWirelessDeviceImportTasksError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListWirelessDeviceImportTasksRequest,
   output: ListWirelessDeviceImportTasksResponse,
   errors: [
@@ -8672,7 +8672,7 @@ export const listWirelessDevices: API.OperationMethod<
     ListWirelessDevicesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWirelessDevicesRequest,
   output: ListWirelessDevicesResponse,
   errors: [
@@ -8716,7 +8716,7 @@ export const listWirelessGateways: API.OperationMethod<
     ListWirelessGatewaysError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWirelessGatewaysRequest,
   output: ListWirelessGatewaysResponse,
   errors: [
@@ -8745,7 +8745,7 @@ export const listWirelessGatewayTaskDefinitions: API.OperationMethod<
   ListWirelessGatewayTaskDefinitionsResponse,
   ListWirelessGatewayTaskDefinitionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListWirelessGatewayTaskDefinitionsRequest,
   output: ListWirelessGatewayTaskDefinitionsResponse,
   errors: [
@@ -8773,7 +8773,7 @@ export const putPositionConfiguration: API.OperationMethod<
   PutPositionConfigurationResponse,
   PutPositionConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutPositionConfigurationRequest,
   output: PutPositionConfigurationResponse,
   errors: [
@@ -8800,7 +8800,7 @@ export const putResourceLogLevel: API.OperationMethod<
   PutResourceLogLevelResponse,
   PutResourceLogLevelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutResourceLogLevelRequest,
   output: PutResourceLogLevelResponse,
   errors: [
@@ -8827,7 +8827,7 @@ export const resetAllResourceLogLevels: API.OperationMethod<
   ResetAllResourceLogLevelsResponse,
   ResetAllResourceLogLevelsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetAllResourceLogLevelsRequest,
   output: ResetAllResourceLogLevelsResponse,
   errors: [
@@ -8854,7 +8854,7 @@ export const resetResourceLogLevel: API.OperationMethod<
   ResetResourceLogLevelResponse,
   ResetResourceLogLevelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetResourceLogLevelRequest,
   output: ResetResourceLogLevelResponse,
   errors: [
@@ -8881,7 +8881,7 @@ export const sendDataToMulticastGroup: API.OperationMethod<
   SendDataToMulticastGroupResponse,
   SendDataToMulticastGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendDataToMulticastGroupRequest,
   output: SendDataToMulticastGroupResponse,
   errors: [
@@ -8907,7 +8907,7 @@ export const sendDataToWirelessDevice: API.OperationMethod<
   SendDataToWirelessDeviceResponse,
   SendDataToWirelessDeviceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendDataToWirelessDeviceRequest,
   output: SendDataToWirelessDeviceResponse,
   errors: [
@@ -8933,7 +8933,7 @@ export const startBulkAssociateWirelessDeviceWithMulticastGroup: API.OperationMe
   StartBulkAssociateWirelessDeviceWithMulticastGroupResponse,
   StartBulkAssociateWirelessDeviceWithMulticastGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartBulkAssociateWirelessDeviceWithMulticastGroupRequest,
   output: StartBulkAssociateWirelessDeviceWithMulticastGroupResponse,
   errors: [
@@ -8960,7 +8960,7 @@ export const startBulkDisassociateWirelessDeviceFromMulticastGroup: API.Operatio
   StartBulkDisassociateWirelessDeviceFromMulticastGroupResponse,
   StartBulkDisassociateWirelessDeviceFromMulticastGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartBulkDisassociateWirelessDeviceFromMulticastGroupRequest,
   output: StartBulkDisassociateWirelessDeviceFromMulticastGroupResponse,
   errors: [
@@ -8987,7 +8987,7 @@ export const startFuotaTask: API.OperationMethod<
   StartFuotaTaskResponse,
   StartFuotaTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartFuotaTaskRequest,
   output: StartFuotaTaskResponse,
   errors: [
@@ -9015,7 +9015,7 @@ export const startMulticastGroupSession: API.OperationMethod<
   StartMulticastGroupSessionResponse,
   StartMulticastGroupSessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartMulticastGroupSessionRequest,
   output: StartMulticastGroupSessionResponse,
   errors: [
@@ -9043,7 +9043,7 @@ export const startSingleWirelessDeviceImportTask: API.OperationMethod<
   StartSingleWirelessDeviceImportTaskResponse,
   StartSingleWirelessDeviceImportTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartSingleWirelessDeviceImportTaskRequest,
   output: StartSingleWirelessDeviceImportTaskResponse,
   errors: [
@@ -9072,7 +9072,7 @@ export const startWirelessDeviceImportTask: API.OperationMethod<
   StartWirelessDeviceImportTaskResponse,
   StartWirelessDeviceImportTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartWirelessDeviceImportTaskRequest,
   output: StartWirelessDeviceImportTaskResponse,
   errors: [
@@ -9100,7 +9100,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -9127,7 +9127,7 @@ export const testWirelessDevice: API.OperationMethod<
   TestWirelessDeviceResponse,
   TestWirelessDeviceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestWirelessDeviceRequest,
   output: TestWirelessDeviceResponse,
   errors: [
@@ -9152,7 +9152,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -9178,7 +9178,7 @@ export const updateDestination: API.OperationMethod<
   UpdateDestinationResponse,
   UpdateDestinationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDestinationRequest,
   output: UpdateDestinationResponse,
   errors: [
@@ -9203,7 +9203,7 @@ export const updateEventConfigurationByResourceTypes: API.OperationMethod<
   UpdateEventConfigurationByResourceTypesResponse,
   UpdateEventConfigurationByResourceTypesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEventConfigurationByResourceTypesRequest,
   output: UpdateEventConfigurationByResourceTypesResponse,
   errors: [
@@ -9229,7 +9229,7 @@ export const updateFuotaTask: API.OperationMethod<
   UpdateFuotaTaskResponse,
   UpdateFuotaTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateFuotaTaskRequest,
   output: UpdateFuotaTaskResponse,
   errors: [
@@ -9259,7 +9259,7 @@ export const updateLogLevelsByResourceTypes: API.OperationMethod<
   UpdateLogLevelsByResourceTypesResponse,
   UpdateLogLevelsByResourceTypesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateLogLevelsByResourceTypesRequest,
   output: UpdateLogLevelsByResourceTypesResponse,
   errors: [
@@ -9287,7 +9287,7 @@ export const updateMetricConfiguration: API.OperationMethod<
   UpdateMetricConfigurationResponse,
   UpdateMetricConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateMetricConfigurationRequest,
   output: UpdateMetricConfigurationResponse,
   errors: [
@@ -9315,7 +9315,7 @@ export const updateMulticastGroup: API.OperationMethod<
   UpdateMulticastGroupResponse,
   UpdateMulticastGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateMulticastGroupRequest,
   output: UpdateMulticastGroupResponse,
   errors: [
@@ -9342,7 +9342,7 @@ export const updateNetworkAnalyzerConfiguration: API.OperationMethod<
   UpdateNetworkAnalyzerConfigurationResponse,
   UpdateNetworkAnalyzerConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateNetworkAnalyzerConfigurationRequest,
   output: UpdateNetworkAnalyzerConfigurationResponse,
   errors: [
@@ -9367,7 +9367,7 @@ export const updatePartnerAccount: API.OperationMethod<
   UpdatePartnerAccountResponse,
   UpdatePartnerAccountError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePartnerAccountRequest,
   output: UpdatePartnerAccountResponse,
   errors: [
@@ -9395,7 +9395,7 @@ export const updatePosition: API.OperationMethod<
   UpdatePositionResponse,
   UpdatePositionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePositionRequest,
   output: UpdatePositionResponse,
   errors: [
@@ -9422,7 +9422,7 @@ export const updateResourceEventConfiguration: API.OperationMethod<
   UpdateResourceEventConfigurationResponse,
   UpdateResourceEventConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateResourceEventConfigurationRequest,
   output: UpdateResourceEventConfigurationResponse,
   errors: [
@@ -9451,7 +9451,7 @@ export const updateResourcePosition: API.OperationMethod<
   UpdateResourcePositionResponse,
   UpdateResourcePositionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateResourcePositionRequest,
   output: UpdateResourcePositionResponse,
   errors: [
@@ -9477,7 +9477,7 @@ export const updateWirelessDevice: API.OperationMethod<
   UpdateWirelessDeviceResponse,
   UpdateWirelessDeviceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateWirelessDeviceRequest,
   output: UpdateWirelessDeviceResponse,
   errors: [
@@ -9504,7 +9504,7 @@ export const updateWirelessDeviceImportTask: API.OperationMethod<
   UpdateWirelessDeviceImportTaskResponse,
   UpdateWirelessDeviceImportTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateWirelessDeviceImportTaskRequest,
   output: UpdateWirelessDeviceImportTaskResponse,
   errors: [
@@ -9531,7 +9531,7 @@ export const updateWirelessGateway: API.OperationMethod<
   UpdateWirelessGatewayResponse,
   UpdateWirelessGatewayError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateWirelessGatewayRequest,
   output: UpdateWirelessGatewayResponse,
   errors: [

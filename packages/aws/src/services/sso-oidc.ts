@@ -447,7 +447,7 @@ export const createToken: API.OperationMethod<
   CreateTokenResponse,
   CreateTokenError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTokenRequest,
   output: CreateTokenResponse,
   errors: [
@@ -492,7 +492,7 @@ export const createTokenWithIAM: API.OperationMethod<
   CreateTokenWithIAMResponse,
   CreateTokenWithIAMError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTokenWithIAMRequest,
   output: CreateTokenWithIAMResponse,
   errors: [
@@ -529,7 +529,7 @@ export const registerClient: API.OperationMethod<
   RegisterClientResponse,
   RegisterClientError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterClientRequest,
   output: RegisterClientResponse,
   errors: [
@@ -558,7 +558,7 @@ export const startDeviceAuthorization: API.OperationMethod<
   StartDeviceAuthorizationResponse,
   StartDeviceAuthorizationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartDeviceAuthorizationRequest,
   output: StartDeviceAuthorizationResponse,
   errors: [

@@ -1947,7 +1947,7 @@ export const cancelSolNetworkOperation: API.OperationMethod<
   CancelSolNetworkOperationResponse,
   CancelSolNetworkOperationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelSolNetworkOperationInput,
   output: CancelSolNetworkOperationResponse,
   errors: [
@@ -1980,7 +1980,7 @@ export const createSolFunctionPackage: API.OperationMethod<
   CreateSolFunctionPackageOutput,
   CreateSolFunctionPackageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSolFunctionPackageInput,
   output: CreateSolFunctionPackageOutput,
   errors: [
@@ -2014,7 +2014,7 @@ export const createSolNetworkInstance: API.OperationMethod<
   CreateSolNetworkInstanceOutput,
   CreateSolNetworkInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSolNetworkInstanceInput,
   output: CreateSolNetworkInstanceOutput,
   errors: [
@@ -2052,7 +2052,7 @@ export const createSolNetworkPackage: API.OperationMethod<
   CreateSolNetworkPackageOutput,
   CreateSolNetworkPackageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSolNetworkPackageInput,
   output: CreateSolNetworkPackageOutput,
   errors: [
@@ -2083,7 +2083,7 @@ export const deleteSolFunctionPackage: API.OperationMethod<
   DeleteSolFunctionPackageResponse,
   DeleteSolFunctionPackageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSolFunctionPackageInput,
   output: DeleteSolFunctionPackageResponse,
   errors: [
@@ -2114,7 +2114,7 @@ export const deleteSolNetworkInstance: API.OperationMethod<
   DeleteSolNetworkInstanceResponse,
   DeleteSolNetworkInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSolNetworkInstanceInput,
   output: DeleteSolNetworkInstanceResponse,
   errors: [
@@ -2145,7 +2145,7 @@ export const deleteSolNetworkPackage: API.OperationMethod<
   DeleteSolNetworkPackageResponse,
   DeleteSolNetworkPackageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSolNetworkPackageInput,
   output: DeleteSolNetworkPackageResponse,
   errors: [
@@ -2174,7 +2174,7 @@ export const getSolFunctionInstance: API.OperationMethod<
   GetSolFunctionInstanceOutput,
   GetSolFunctionInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSolFunctionInstanceInput,
   output: GetSolFunctionInstanceOutput,
   errors: [
@@ -2203,7 +2203,7 @@ export const getSolFunctionPackage: API.OperationMethod<
   GetSolFunctionPackageOutput,
   GetSolFunctionPackageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSolFunctionPackageInput,
   output: GetSolFunctionPackageOutput,
   errors: [
@@ -2231,7 +2231,7 @@ export const getSolFunctionPackageContent: API.OperationMethod<
   GetSolFunctionPackageContentOutput,
   GetSolFunctionPackageContentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSolFunctionPackageContentInput,
   output: GetSolFunctionPackageContentOutput,
   errors: [
@@ -2261,7 +2261,7 @@ export const getSolFunctionPackageDescriptor: API.OperationMethod<
   GetSolFunctionPackageDescriptorOutput,
   GetSolFunctionPackageDescriptorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSolFunctionPackageDescriptorInput,
   output: GetSolFunctionPackageDescriptorOutput,
   errors: [
@@ -2289,7 +2289,7 @@ export const getSolNetworkInstance: API.OperationMethod<
   GetSolNetworkInstanceOutput,
   GetSolNetworkInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSolNetworkInstanceInput,
   output: GetSolNetworkInstanceOutput,
   errors: [
@@ -2318,7 +2318,7 @@ export const getSolNetworkOperation: API.OperationMethod<
   GetSolNetworkOperationOutput,
   GetSolNetworkOperationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSolNetworkOperationInput,
   output: GetSolNetworkOperationOutput,
   errors: [
@@ -2346,7 +2346,7 @@ export const getSolNetworkPackage: API.OperationMethod<
   GetSolNetworkPackageOutput,
   GetSolNetworkPackageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSolNetworkPackageInput,
   output: GetSolNetworkPackageOutput,
   errors: [
@@ -2374,7 +2374,7 @@ export const getSolNetworkPackageContent: API.OperationMethod<
   GetSolNetworkPackageContentOutput,
   GetSolNetworkPackageContentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSolNetworkPackageContentInput,
   output: GetSolNetworkPackageContentOutput,
   errors: [
@@ -2402,7 +2402,7 @@ export const getSolNetworkPackageDescriptor: API.OperationMethod<
   GetSolNetworkPackageDescriptorOutput,
   GetSolNetworkPackageDescriptorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSolNetworkPackageDescriptorInput,
   output: GetSolNetworkPackageDescriptorOutput,
   errors: [
@@ -2434,7 +2434,7 @@ export const instantiateSolNetworkInstance: API.OperationMethod<
   InstantiateSolNetworkInstanceOutput,
   InstantiateSolNetworkInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InstantiateSolNetworkInstanceInput,
   output: InstantiateSolNetworkInstanceOutput,
   errors: [
@@ -2477,7 +2477,7 @@ export const listSolFunctionInstances: API.OperationMethod<
     ListSolFunctionInstancesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSolFunctionInstancesInput,
   output: ListSolFunctionInstancesOutput,
   errors: [
@@ -2524,7 +2524,7 @@ export const listSolFunctionPackages: API.OperationMethod<
     ListSolFunctionPackagesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSolFunctionPackagesInput,
   output: ListSolFunctionPackagesOutput,
   errors: [
@@ -2571,7 +2571,7 @@ export const listSolNetworkInstances: API.OperationMethod<
     ListSolNetworkInstancesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSolNetworkInstancesInput,
   output: ListSolNetworkInstancesOutput,
   errors: [
@@ -2619,7 +2619,7 @@ export const listSolNetworkOperations: API.OperationMethod<
     ListSolNetworkOperationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSolNetworkOperationsInput,
   output: ListSolNetworkOperationsOutput,
   errors: [
@@ -2666,7 +2666,7 @@ export const listSolNetworkPackages: API.OperationMethod<
     ListSolNetworkPackagesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSolNetworkPackagesInput,
   output: ListSolNetworkPackagesOutput,
   errors: [
@@ -2697,7 +2697,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceOutput,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [
@@ -2725,7 +2725,7 @@ export const putSolFunctionPackageContent: API.OperationMethod<
   PutSolFunctionPackageContentOutput,
   PutSolFunctionPackageContentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutSolFunctionPackageContentInput,
   output: PutSolFunctionPackageContentOutput,
   errors: [
@@ -2753,7 +2753,7 @@ export const putSolNetworkPackageContent: API.OperationMethod<
   PutSolNetworkPackageContentOutput,
   PutSolNetworkPackageContentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutSolNetworkPackageContentInput,
   output: PutSolNetworkPackageContentOutput,
   errors: [
@@ -2781,7 +2781,7 @@ export const tagResource: API.OperationMethod<
   TagResourceOutput,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
   errors: [
@@ -2812,7 +2812,7 @@ export const terminateSolNetworkInstance: API.OperationMethod<
   TerminateSolNetworkInstanceOutput,
   TerminateSolNetworkInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TerminateSolNetworkInstanceInput,
   output: TerminateSolNetworkInstanceOutput,
   errors: [
@@ -2841,7 +2841,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceOutput,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
   errors: [
@@ -2869,7 +2869,7 @@ export const updateSolFunctionPackage: API.OperationMethod<
   UpdateSolFunctionPackageOutput,
   UpdateSolFunctionPackageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSolFunctionPackageInput,
   output: UpdateSolFunctionPackageOutput,
   errors: [
@@ -2900,7 +2900,7 @@ export const updateSolNetworkInstance: API.OperationMethod<
   UpdateSolNetworkInstanceOutput,
   UpdateSolNetworkInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSolNetworkInstanceInput,
   output: UpdateSolNetworkInstanceOutput,
   errors: [
@@ -2931,7 +2931,7 @@ export const updateSolNetworkPackage: API.OperationMethod<
   UpdateSolNetworkPackageOutput,
   UpdateSolNetworkPackageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSolNetworkPackageInput,
   output: UpdateSolNetworkPackageOutput,
   errors: [
@@ -2960,7 +2960,7 @@ export const validateSolFunctionPackageContent: API.OperationMethod<
   ValidateSolFunctionPackageContentOutput,
   ValidateSolFunctionPackageContentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ValidateSolFunctionPackageContentInput,
   output: ValidateSolFunctionPackageContentOutput,
   errors: [
@@ -2989,7 +2989,7 @@ export const validateSolNetworkPackageContent: API.OperationMethod<
   ValidateSolNetworkPackageContentOutput,
   ValidateSolNetworkPackageContentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ValidateSolNetworkPackageContentInput,
   output: ValidateSolNetworkPackageContentOutput,
   errors: [

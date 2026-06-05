@@ -2582,7 +2582,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ValidationException],
@@ -2598,7 +2598,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [ValidationException],
@@ -2612,7 +2612,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ValidationException],
@@ -2634,7 +2634,7 @@ export const createChannelGroup: API.OperationMethod<
   CreateChannelGroupResponse,
   CreateChannelGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateChannelGroupRequest,
   output: CreateChannelGroupResponse,
   errors: [
@@ -2662,7 +2662,7 @@ export const getChannelGroup: API.OperationMethod<
   GetChannelGroupResponse,
   GetChannelGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetChannelGroupRequest,
   output: GetChannelGroupResponse,
   errors: [
@@ -2691,7 +2691,7 @@ export const updateChannelGroup: API.OperationMethod<
   UpdateChannelGroupResponse,
   UpdateChannelGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateChannelGroupRequest,
   output: UpdateChannelGroupResponse,
   errors: [
@@ -2718,7 +2718,7 @@ export const deleteChannelGroup: API.OperationMethod<
   DeleteChannelGroupResponse,
   DeleteChannelGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteChannelGroupRequest,
   output: DeleteChannelGroupResponse,
   errors: [
@@ -2758,7 +2758,7 @@ export const listChannelGroups: API.OperationMethod<
     ListChannelGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChannelGroupsRequest,
   output: ListChannelGroupsResponse,
   errors: [
@@ -2791,7 +2791,7 @@ export const createChannel: API.OperationMethod<
   CreateChannelResponse,
   CreateChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateChannelRequest,
   output: CreateChannelResponse,
   errors: [
@@ -2819,7 +2819,7 @@ export const getChannel: API.OperationMethod<
   GetChannelResponse,
   GetChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetChannelRequest,
   output: GetChannelResponse,
   errors: [
@@ -2848,7 +2848,7 @@ export const updateChannel: API.OperationMethod<
   UpdateChannelResponse,
   UpdateChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateChannelRequest,
   output: UpdateChannelResponse,
   errors: [
@@ -2875,7 +2875,7 @@ export const deleteChannel: API.OperationMethod<
   DeleteChannelResponse,
   DeleteChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteChannelRequest,
   output: DeleteChannelResponse,
   errors: [
@@ -2916,7 +2916,7 @@ export const listChannels: API.OperationMethod<
     ListChannelsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChannelsRequest,
   output: ListChannelsResponse,
   errors: [
@@ -2951,7 +2951,7 @@ export const resetChannelState: API.OperationMethod<
   ResetChannelStateResponse,
   ResetChannelStateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetChannelStateRequest,
   output: ResetChannelStateResponse,
   errors: [
@@ -2979,7 +2979,7 @@ export const putChannelPolicy: API.OperationMethod<
   PutChannelPolicyResponse,
   PutChannelPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutChannelPolicyRequest,
   output: PutChannelPolicyResponse,
   errors: [
@@ -3006,7 +3006,7 @@ export const getChannelPolicy: API.OperationMethod<
   GetChannelPolicyResponse,
   GetChannelPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetChannelPolicyRequest,
   output: GetChannelPolicyResponse,
   errors: [
@@ -3032,7 +3032,7 @@ export const deleteChannelPolicy: API.OperationMethod<
   DeleteChannelPolicyResponse,
   DeleteChannelPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteChannelPolicyRequest,
   output: DeleteChannelPolicyResponse,
   errors: [
@@ -3060,7 +3060,7 @@ export const createOriginEndpoint: API.OperationMethod<
   CreateOriginEndpointResponse,
   CreateOriginEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOriginEndpointRequest,
   output: CreateOriginEndpointResponse,
   errors: [
@@ -3088,7 +3088,7 @@ export const getOriginEndpoint: API.OperationMethod<
   GetOriginEndpointResponse,
   GetOriginEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOriginEndpointRequest,
   output: GetOriginEndpointResponse,
   errors: [
@@ -3118,7 +3118,7 @@ export const updateOriginEndpoint: API.OperationMethod<
   UpdateOriginEndpointResponse,
   UpdateOriginEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateOriginEndpointRequest,
   output: UpdateOriginEndpointResponse,
   errors: [
@@ -3145,7 +3145,7 @@ export const deleteOriginEndpoint: API.OperationMethod<
   DeleteOriginEndpointResponse,
   DeleteOriginEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOriginEndpointRequest,
   output: DeleteOriginEndpointResponse,
   errors: [
@@ -3185,7 +3185,7 @@ export const listOriginEndpoints: API.OperationMethod<
     ListOriginEndpointsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOriginEndpointsRequest,
   output: ListOriginEndpointsResponse,
   errors: [
@@ -3220,7 +3220,7 @@ export const resetOriginEndpointState: API.OperationMethod<
   ResetOriginEndpointStateResponse,
   ResetOriginEndpointStateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetOriginEndpointStateRequest,
   output: ResetOriginEndpointStateResponse,
   errors: [
@@ -3248,7 +3248,7 @@ export const putOriginEndpointPolicy: API.OperationMethod<
   PutOriginEndpointPolicyResponse,
   PutOriginEndpointPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutOriginEndpointPolicyRequest,
   output: PutOriginEndpointPolicyResponse,
   errors: [
@@ -3275,7 +3275,7 @@ export const getOriginEndpointPolicy: API.OperationMethod<
   GetOriginEndpointPolicyResponse,
   GetOriginEndpointPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOriginEndpointPolicyRequest,
   output: GetOriginEndpointPolicyResponse,
   errors: [
@@ -3301,7 +3301,7 @@ export const deleteOriginEndpointPolicy: API.OperationMethod<
   DeleteOriginEndpointPolicyResponse,
   DeleteOriginEndpointPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOriginEndpointPolicyRequest,
   output: DeleteOriginEndpointPolicyResponse,
   errors: [
@@ -3329,7 +3329,7 @@ export const createHarvestJob: API.OperationMethod<
   CreateHarvestJobResponse,
   CreateHarvestJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateHarvestJobRequest,
   output: CreateHarvestJobResponse,
   errors: [
@@ -3357,7 +3357,7 @@ export const getHarvestJob: API.OperationMethod<
   GetHarvestJobResponse,
   GetHarvestJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetHarvestJobRequest,
   output: GetHarvestJobResponse,
   errors: [
@@ -3384,7 +3384,7 @@ export const cancelHarvestJob: API.OperationMethod<
   CancelHarvestJobResponse,
   CancelHarvestJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelHarvestJobRequest,
   output: CancelHarvestJobResponse,
   errors: [
@@ -3426,7 +3426,7 @@ export const listHarvestJobs: API.OperationMethod<
     ListHarvestJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListHarvestJobsRequest,
   output: ListHarvestJobsResponse,
   errors: [

@@ -8370,7 +8370,7 @@ export const acceptReservedNodeExchange: API.OperationMethod<
   AcceptReservedNodeExchangeOutputMessage,
   AcceptReservedNodeExchangeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AcceptReservedNodeExchangeInputMessage,
   output: AcceptReservedNodeExchangeOutputMessage,
   errors: [
@@ -8399,7 +8399,7 @@ export const addPartner: API.OperationMethod<
   PartnerIntegrationOutputMessage,
   AddPartnerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PartnerIntegrationInputMessage,
   output: PartnerIntegrationOutputMessage,
   errors: [
@@ -8423,7 +8423,7 @@ export const associateDataShareConsumer: API.OperationMethod<
   DataShare,
   AssociateDataShareConsumerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateDataShareConsumerMessage,
   output: DataShare,
   errors: [InvalidDataShareFault, InvalidNamespaceFault],
@@ -8460,7 +8460,7 @@ export const authorizeClusterSecurityGroupIngress: API.OperationMethod<
   AuthorizeClusterSecurityGroupIngressResult,
   AuthorizeClusterSecurityGroupIngressError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AuthorizeClusterSecurityGroupIngressMessage,
   output: AuthorizeClusterSecurityGroupIngressResult,
   errors: [
@@ -8481,7 +8481,7 @@ export const authorizeDataShare: API.OperationMethod<
   DataShare,
   AuthorizeDataShareError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AuthorizeDataShareMessage,
   output: DataShare,
   errors: [InvalidDataShareFault],
@@ -8502,7 +8502,7 @@ export const authorizeEndpointAccess: API.OperationMethod<
   EndpointAuthorization,
   AuthorizeEndpointAccessError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AuthorizeEndpointAccessMessage,
   output: EndpointAuthorization,
   errors: [
@@ -8536,7 +8536,7 @@ export const authorizeSnapshotAccess: API.OperationMethod<
   AuthorizeSnapshotAccessResult,
   AuthorizeSnapshotAccessError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AuthorizeSnapshotAccessMessage,
   output: AuthorizeSnapshotAccessResult,
   errors: [
@@ -8560,7 +8560,7 @@ export const batchDeleteClusterSnapshots: API.OperationMethod<
   BatchDeleteClusterSnapshotsResult,
   BatchDeleteClusterSnapshotsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchDeleteClusterSnapshotsRequest,
   output: BatchDeleteClusterSnapshotsResult,
   errors: [BatchDeleteRequestSizeExceededFault],
@@ -8577,7 +8577,7 @@ export const batchModifyClusterSnapshots: API.OperationMethod<
   BatchModifyClusterSnapshotsOutputMessage,
   BatchModifyClusterSnapshotsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchModifyClusterSnapshotsMessage,
   output: BatchModifyClusterSnapshotsOutputMessage,
   errors: [
@@ -8599,7 +8599,7 @@ export const cancelResize: API.OperationMethod<
   ResizeProgressMessage,
   CancelResizeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelResizeMessage,
   output: ResizeProgressMessage,
   errors: [
@@ -8637,7 +8637,7 @@ export const copyClusterSnapshot: API.OperationMethod<
   CopyClusterSnapshotResult,
   CopyClusterSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CopyClusterSnapshotMessage,
   output: CopyClusterSnapshotResult,
   errors: [
@@ -8662,7 +8662,7 @@ export const createAuthenticationProfile: API.OperationMethod<
   CreateAuthenticationProfileResult,
   CreateAuthenticationProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAuthenticationProfileMessage,
   output: CreateAuthenticationProfileResult,
   errors: [
@@ -8733,7 +8733,7 @@ export const createCluster: API.OperationMethod<
   CreateClusterResult,
   CreateClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateClusterMessage,
   output: CreateClusterResult,
   errors: [
@@ -8790,7 +8790,7 @@ export const createClusterParameterGroup: API.OperationMethod<
   CreateClusterParameterGroupResult,
   CreateClusterParameterGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateClusterParameterGroupMessage,
   output: CreateClusterParameterGroupResult,
   errors: [
@@ -8819,7 +8819,7 @@ export const createClusterSecurityGroup: API.OperationMethod<
   CreateClusterSecurityGroupResult,
   CreateClusterSecurityGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateClusterSecurityGroupMessage,
   output: CreateClusterSecurityGroupResult,
   errors: [
@@ -8851,7 +8851,7 @@ export const createClusterSnapshot: API.OperationMethod<
   CreateClusterSnapshotResult,
   CreateClusterSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateClusterSnapshotMessage,
   output: CreateClusterSnapshotResult,
   errors: [
@@ -8888,7 +8888,7 @@ export const createClusterSubnetGroup: API.OperationMethod<
   CreateClusterSubnetGroupResult,
   CreateClusterSubnetGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateClusterSubnetGroupMessage,
   output: CreateClusterSubnetGroupResult,
   errors: [
@@ -8916,7 +8916,7 @@ export const createCustomDomainAssociation: API.OperationMethod<
   CreateCustomDomainAssociationResult,
   CreateCustomDomainAssociationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCustomDomainAssociationMessage,
   output: CreateCustomDomainAssociationResult,
   errors: [
@@ -8945,7 +8945,7 @@ export const createEndpointAccess: API.OperationMethod<
   EndpointAccess,
   CreateEndpointAccessError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEndpointAccessMessage,
   output: EndpointAccess,
   errors: [
@@ -9000,7 +9000,7 @@ export const createEventSubscription: API.OperationMethod<
   CreateEventSubscriptionResult,
   CreateEventSubscriptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEventSubscriptionMessage,
   output: CreateEventSubscriptionResult,
   errors: [
@@ -9039,7 +9039,7 @@ export const createHsmClientCertificate: API.OperationMethod<
   CreateHsmClientCertificateResult,
   CreateHsmClientCertificateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateHsmClientCertificateMessage,
   output: CreateHsmClientCertificateResult,
   errors: [
@@ -9070,7 +9070,7 @@ export const createHsmConfiguration: API.OperationMethod<
   CreateHsmConfigurationResult,
   CreateHsmConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateHsmConfigurationMessage,
   output: CreateHsmConfigurationResult,
   errors: [
@@ -9099,7 +9099,7 @@ export const createIntegration: API.OperationMethod<
   Integration,
   CreateIntegrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateIntegrationMessage,
   output: Integration,
   errors: [
@@ -9131,7 +9131,7 @@ export const createRedshiftIdcApplication: API.OperationMethod<
   CreateRedshiftIdcApplicationResult,
   CreateRedshiftIdcApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRedshiftIdcApplicationMessage,
   output: CreateRedshiftIdcApplicationResult,
   errors: [
@@ -9163,7 +9163,7 @@ export const createScheduledAction: API.OperationMethod<
   ScheduledAction,
   CreateScheduledActionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateScheduledActionMessage,
   output: ScheduledAction,
   errors: [
@@ -9199,7 +9199,7 @@ export const createSnapshotCopyGrant: API.OperationMethod<
   CreateSnapshotCopyGrantResult,
   CreateSnapshotCopyGrantError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSnapshotCopyGrantMessage,
   output: CreateSnapshotCopyGrantResult,
   errors: [
@@ -9227,7 +9227,7 @@ export const createSnapshotSchedule: API.OperationMethod<
   SnapshotSchedule,
   CreateSnapshotScheduleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSnapshotScheduleMessage,
   output: SnapshotSchedule,
   errors: [
@@ -9259,7 +9259,7 @@ export const createTags: API.OperationMethod<
   CreateTagsResponse,
   CreateTagsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTagsMessage,
   output: CreateTagsResponse,
   errors: [
@@ -9287,7 +9287,7 @@ export const createUsageLimit: API.OperationMethod<
   UsageLimit,
   CreateUsageLimitError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateUsageLimitMessage,
   output: UsageLimit,
   errors: [
@@ -9309,7 +9309,7 @@ export const deauthorizeDataShare: API.OperationMethod<
   DataShare,
   DeauthorizeDataShareError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeauthorizeDataShareMessage,
   output: DataShare,
   errors: [InvalidDataShareFault],
@@ -9326,7 +9326,7 @@ export const deleteAuthenticationProfile: API.OperationMethod<
   DeleteAuthenticationProfileResult,
   DeleteAuthenticationProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAuthenticationProfileMessage,
   output: DeleteAuthenticationProfileResult,
   errors: [
@@ -9365,7 +9365,7 @@ export const deleteCluster: API.OperationMethod<
   DeleteClusterResult,
   DeleteClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteClusterMessage,
   output: DeleteClusterResult,
   errors: [
@@ -9391,7 +9391,7 @@ export const deleteClusterParameterGroup: API.OperationMethod<
   DeleteClusterParameterGroupResponse,
   DeleteClusterParameterGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteClusterParameterGroupMessage,
   output: DeleteClusterParameterGroupResponse,
   errors: [
@@ -9418,7 +9418,7 @@ export const deleteClusterSecurityGroup: API.OperationMethod<
   DeleteClusterSecurityGroupResponse,
   DeleteClusterSecurityGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteClusterSecurityGroupMessage,
   output: DeleteClusterSecurityGroupResponse,
   errors: [
@@ -9445,7 +9445,7 @@ export const deleteClusterSnapshot: API.OperationMethod<
   DeleteClusterSnapshotResult,
   DeleteClusterSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteClusterSnapshotMessage,
   output: DeleteClusterSnapshotResult,
   errors: [ClusterSnapshotNotFoundFault, InvalidClusterSnapshotStateFault],
@@ -9463,7 +9463,7 @@ export const deleteClusterSubnetGroup: API.OperationMethod<
   DeleteClusterSubnetGroupResponse,
   DeleteClusterSubnetGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteClusterSubnetGroupMessage,
   output: DeleteClusterSubnetGroupResponse,
   errors: [
@@ -9486,7 +9486,7 @@ export const deleteCustomDomainAssociation: API.OperationMethod<
   DeleteCustomDomainAssociationResponse,
   DeleteCustomDomainAssociationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCustomDomainAssociationMessage,
   output: DeleteCustomDomainAssociationResponse,
   errors: [
@@ -9511,7 +9511,7 @@ export const deleteEndpointAccess: API.OperationMethod<
   EndpointAccess,
   DeleteEndpointAccessError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEndpointAccessMessage,
   output: EndpointAccess,
   errors: [
@@ -9534,7 +9534,7 @@ export const deleteEventSubscription: API.OperationMethod<
   DeleteEventSubscriptionResponse,
   DeleteEventSubscriptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEventSubscriptionMessage,
   output: DeleteEventSubscriptionResponse,
   errors: [InvalidSubscriptionStateFault, SubscriptionNotFoundFault],
@@ -9551,7 +9551,7 @@ export const deleteHsmClientCertificate: API.OperationMethod<
   DeleteHsmClientCertificateResponse,
   DeleteHsmClientCertificateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteHsmClientCertificateMessage,
   output: DeleteHsmClientCertificateResponse,
   errors: [
@@ -9571,7 +9571,7 @@ export const deleteHsmConfiguration: API.OperationMethod<
   DeleteHsmConfigurationResponse,
   DeleteHsmConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteHsmConfigurationMessage,
   output: DeleteHsmConfigurationResponse,
   errors: [HsmConfigurationNotFoundFault, InvalidHsmConfigurationStateFault],
@@ -9590,7 +9590,7 @@ export const deleteIntegration: API.OperationMethod<
   Integration,
   DeleteIntegrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteIntegrationMessage,
   output: Integration,
   errors: [
@@ -9614,7 +9614,7 @@ export const deletePartner: API.OperationMethod<
   PartnerIntegrationOutputMessage,
   DeletePartnerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PartnerIntegrationInputMessage,
   output: PartnerIntegrationOutputMessage,
   errors: [
@@ -9638,7 +9638,7 @@ export const deleteRedshiftIdcApplication: API.OperationMethod<
   DeleteRedshiftIdcApplicationResponse,
   DeleteRedshiftIdcApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRedshiftIdcApplicationMessage,
   output: DeleteRedshiftIdcApplicationResponse,
   errors: [
@@ -9660,7 +9660,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyResponse,
   DeleteResourcePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourcePolicyMessage,
   output: DeleteResourcePolicyResponse,
   errors: [ResourceNotFoundFault, UnsupportedOperationFault],
@@ -9677,7 +9677,7 @@ export const deleteScheduledAction: API.OperationMethod<
   DeleteScheduledActionResponse,
   DeleteScheduledActionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteScheduledActionMessage,
   output: DeleteScheduledActionResponse,
   errors: [ScheduledActionNotFoundFault, UnauthorizedOperation],
@@ -9694,7 +9694,7 @@ export const deleteSnapshotCopyGrant: API.OperationMethod<
   DeleteSnapshotCopyGrantResponse,
   DeleteSnapshotCopyGrantError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSnapshotCopyGrantMessage,
   output: DeleteSnapshotCopyGrantResponse,
   errors: [InvalidSnapshotCopyGrantStateFault, SnapshotCopyGrantNotFoundFault],
@@ -9711,7 +9711,7 @@ export const deleteSnapshotSchedule: API.OperationMethod<
   DeleteSnapshotScheduleResponse,
   DeleteSnapshotScheduleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSnapshotScheduleMessage,
   output: DeleteSnapshotScheduleResponse,
   errors: [
@@ -9732,7 +9732,7 @@ export const deleteTags: API.OperationMethod<
   DeleteTagsResponse,
   DeleteTagsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTagsMessage,
   output: DeleteTagsResponse,
   errors: [InvalidTagFault, ResourceNotFoundFault],
@@ -9749,7 +9749,7 @@ export const deleteUsageLimit: API.OperationMethod<
   DeleteUsageLimitResponse,
   DeleteUsageLimitError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteUsageLimitMessage,
   output: DeleteUsageLimitResponse,
   errors: [UnsupportedOperationFault, UsageLimitNotFoundFault],
@@ -9767,7 +9767,7 @@ export const deregisterNamespace: API.OperationMethod<
   DeregisterNamespaceOutputMessage,
   DeregisterNamespaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeregisterNamespaceInputMessage,
   output: DeregisterNamespaceOutputMessage,
   errors: [
@@ -9785,7 +9785,7 @@ export const describeAccountAttributes: API.OperationMethod<
   AccountAttributeList,
   DescribeAccountAttributesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAccountAttributesMessage,
   output: AccountAttributeList,
   errors: [],
@@ -9802,7 +9802,7 @@ export const describeAuthenticationProfiles: API.OperationMethod<
   DescribeAuthenticationProfilesResult,
   DescribeAuthenticationProfilesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAuthenticationProfilesMessage,
   output: DescribeAuthenticationProfilesResult,
   errors: [
@@ -9837,7 +9837,7 @@ export const describeClusterDbRevisions: API.OperationMethod<
     DescribeClusterDbRevisionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeClusterDbRevisionsMessage,
   output: ClusterDbRevisionsMessage,
   errors: [ClusterNotFoundFault, InvalidClusterStateFault],
@@ -9893,7 +9893,7 @@ export const describeClusterParameterGroups: API.OperationMethod<
     DescribeClusterParameterGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeClusterParameterGroupsMessage,
   output: ClusterParameterGroupsMessage,
   errors: [ClusterParameterGroupNotFoundFault, InvalidTagFault],
@@ -9942,7 +9942,7 @@ export const describeClusterParameters: API.OperationMethod<
     DescribeClusterParametersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeClusterParametersMessage,
   output: ClusterParameterGroupDetails,
   errors: [ClusterParameterGroupNotFoundFault],
@@ -9994,7 +9994,7 @@ export const describeClusters: API.OperationMethod<
     DescribeClustersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeClustersMessage,
   output: ClustersMessage,
   errors: [ClusterNotFoundFault, InvalidTagFault],
@@ -10048,7 +10048,7 @@ export const describeClusterSecurityGroups: API.OperationMethod<
     DescribeClusterSecurityGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeClusterSecurityGroupsMessage,
   output: ClusterSecurityGroupMessage,
   errors: [ClusterSecurityGroupNotFoundFault, InvalidTagFault],
@@ -10102,7 +10102,7 @@ export const describeClusterSnapshots: API.OperationMethod<
     DescribeClusterSnapshotsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeClusterSnapshotsMessage,
   output: SnapshotMessage,
   errors: [
@@ -10157,7 +10157,7 @@ export const describeClusterSubnetGroups: API.OperationMethod<
     DescribeClusterSubnetGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeClusterSubnetGroupsMessage,
   output: ClusterSubnetGroupMessage,
   errors: [ClusterSubnetGroupNotFoundFault, InvalidTagFault],
@@ -10195,7 +10195,7 @@ export const describeClusterTracks: API.OperationMethod<
     DescribeClusterTracksError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeClusterTracksMessage,
   output: TrackListMessage,
   errors: [InvalidClusterTrackFault, UnauthorizedOperation],
@@ -10235,7 +10235,7 @@ export const describeClusterVersions: API.OperationMethod<
     DescribeClusterVersionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeClusterVersionsMessage,
   output: ClusterVersionsMessage,
   errors: [],
@@ -10273,7 +10273,7 @@ export const describeCustomDomainAssociations: API.OperationMethod<
     DescribeCustomDomainAssociationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCustomDomainAssociationsMessage,
   output: CustomDomainAssociationsMessage,
   errors: [CustomDomainAssociationNotFoundFault, UnsupportedOperationFault],
@@ -10309,7 +10309,7 @@ export const describeDataShares: API.OperationMethod<
     DescribeDataSharesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDataSharesMessage,
   output: DescribeDataSharesResult,
   errors: [InvalidDataShareFault],
@@ -10346,7 +10346,7 @@ export const describeDataSharesForConsumer: API.OperationMethod<
     DescribeDataSharesForConsumerError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDataSharesForConsumerMessage,
   output: DescribeDataSharesForConsumerResult,
   errors: [InvalidNamespaceFault],
@@ -10383,7 +10383,7 @@ export const describeDataSharesForProducer: API.OperationMethod<
     DescribeDataSharesForProducerError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDataSharesForProducerMessage,
   output: DescribeDataSharesForProducerResult,
   errors: [InvalidNamespaceFault],
@@ -10423,7 +10423,7 @@ export const describeDefaultClusterParameters: API.OperationMethod<
     DescribeDefaultClusterParametersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDefaultClusterParametersMessage,
   output: DescribeDefaultClusterParametersResult,
   errors: [],
@@ -10462,7 +10462,7 @@ export const describeEndpointAccess: API.OperationMethod<
     DescribeEndpointAccessError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEndpointAccessMessage,
   output: EndpointAccessList,
   errors: [
@@ -10504,7 +10504,7 @@ export const describeEndpointAuthorization: API.OperationMethod<
     DescribeEndpointAuthorizationError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEndpointAuthorizationMessage,
   output: EndpointAuthorizationList,
   errors: [ClusterNotFoundFault, UnsupportedOperationFault],
@@ -10526,7 +10526,7 @@ export const describeEventCategories: API.OperationMethod<
   EventCategoriesMessage,
   DescribeEventCategoriesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeEventCategoriesMessage,
   output: EventCategoriesMessage,
   errors: [],
@@ -10558,7 +10558,7 @@ export const describeEvents: API.OperationMethod<
     DescribeEventsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEventsMessage,
   output: EventsMessage,
   errors: [],
@@ -10608,7 +10608,7 @@ export const describeEventSubscriptions: API.OperationMethod<
     DescribeEventSubscriptionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEventSubscriptionsMessage,
   output: EventSubscriptionsMessage,
   errors: [InvalidTagFault, SubscriptionNotFoundFault],
@@ -10657,7 +10657,7 @@ export const describeHsmClientCertificates: API.OperationMethod<
     DescribeHsmClientCertificatesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeHsmClientCertificatesMessage,
   output: HsmClientCertificateMessage,
   errors: [HsmClientCertificateNotFoundFault, InvalidTagFault],
@@ -10707,7 +10707,7 @@ export const describeHsmConfigurations: API.OperationMethod<
     DescribeHsmConfigurationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeHsmConfigurationsMessage,
   output: HsmConfigurationMessage,
   errors: [HsmConfigurationNotFoundFault, InvalidTagFault],
@@ -10746,7 +10746,7 @@ export const describeInboundIntegrations: API.OperationMethod<
     DescribeInboundIntegrationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInboundIntegrationsMessage,
   output: InboundIntegrationsMessage,
   errors: [
@@ -10788,7 +10788,7 @@ export const describeIntegrations: API.OperationMethod<
     DescribeIntegrationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeIntegrationsMessage,
   output: IntegrationsMessage,
   errors: [IntegrationNotFoundFault, UnsupportedOperationFault],
@@ -10812,7 +10812,7 @@ export const describeLoggingStatus: API.OperationMethod<
   LoggingStatus,
   DescribeLoggingStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeLoggingStatusMessage,
   output: LoggingStatus,
   errors: [ClusterNotFoundFault, UnsupportedOperationFault],
@@ -10848,7 +10848,7 @@ export const describeNodeConfigurationOptions: API.OperationMethod<
     DescribeNodeConfigurationOptionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeNodeConfigurationOptionsMessage,
   output: NodeConfigurationOptionsMessage,
   errors: [
@@ -10897,7 +10897,7 @@ export const describeOrderableClusterOptions: API.OperationMethod<
     DescribeOrderableClusterOptionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeOrderableClusterOptionsMessage,
   output: OrderableClusterOptionsMessage,
   errors: [],
@@ -10921,7 +10921,7 @@ export const describePartners: API.OperationMethod<
   DescribePartnersOutputMessage,
   DescribePartnersError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribePartnersInputMessage,
   output: DescribePartnersOutputMessage,
   errors: [
@@ -10959,7 +10959,7 @@ export const describeRedshiftIdcApplications: API.OperationMethod<
     DescribeRedshiftIdcApplicationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRedshiftIdcApplicationsMessage,
   output: DescribeRedshiftIdcApplicationsResult,
   errors: [
@@ -11004,7 +11004,7 @@ export const describeReservedNodeExchangeStatus: API.OperationMethod<
     DescribeReservedNodeExchangeStatusError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReservedNodeExchangeStatusInputMessage,
   output: DescribeReservedNodeExchangeStatusOutputMessage,
   errors: [
@@ -11056,7 +11056,7 @@ export const describeReservedNodeOfferings: API.OperationMethod<
     DescribeReservedNodeOfferingsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReservedNodeOfferingsMessage,
   output: ReservedNodeOfferingsMessage,
   errors: [
@@ -11098,7 +11098,7 @@ export const describeReservedNodes: API.OperationMethod<
     DescribeReservedNodesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReservedNodesMessage,
   output: ReservedNodesMessage,
   errors: [DependentServiceUnavailableFault, ReservedNodeNotFoundFault],
@@ -11128,7 +11128,7 @@ export const describeResize: API.OperationMethod<
   ResizeProgressMessage,
   DescribeResizeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeResizeMessage,
   output: ResizeProgressMessage,
   errors: [
@@ -11164,7 +11164,7 @@ export const describeScheduledActions: API.OperationMethod<
     DescribeScheduledActionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeScheduledActionsMessage,
   output: ScheduledActionsMessage,
   errors: [ScheduledActionNotFoundFault, UnauthorizedOperation],
@@ -11207,7 +11207,7 @@ export const describeSnapshotCopyGrants: API.OperationMethod<
     DescribeSnapshotCopyGrantsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSnapshotCopyGrantsMessage,
   output: SnapshotCopyGrantMessage,
   errors: [InvalidTagFault, SnapshotCopyGrantNotFoundFault],
@@ -11242,7 +11242,7 @@ export const describeSnapshotSchedules: API.OperationMethod<
     DescribeSnapshotSchedulesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSnapshotSchedulesMessage,
   output: DescribeSnapshotSchedulesOutputMessage,
   errors: [],
@@ -11262,7 +11262,7 @@ export const describeStorage: API.OperationMethod<
   CustomerStorageMessage,
   DescribeStorageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeStorageRequest,
   output: CustomerStorageMessage,
   errors: [],
@@ -11299,7 +11299,7 @@ export const describeTableRestoreStatus: API.OperationMethod<
     DescribeTableRestoreStatusError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTableRestoreStatusMessage,
   output: TableRestoreStatusMessage,
   errors: [ClusterNotFoundFault, TableRestoreNotFoundFault],
@@ -11359,7 +11359,7 @@ export const describeTags: API.OperationMethod<
     DescribeTagsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTagsMessage,
   output: TaggedResourceListMessage,
   errors: [InvalidTagFault, ResourceNotFoundFault],
@@ -11410,7 +11410,7 @@ export const describeUsageLimits: API.OperationMethod<
     DescribeUsageLimitsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeUsageLimitsMessage,
   output: UsageLimitList,
   errors: [ClusterNotFoundFault, UnsupportedOperationFault],
@@ -11435,7 +11435,7 @@ export const disableLogging: API.OperationMethod<
   LoggingStatus,
   DisableLoggingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableLoggingMessage,
   output: LoggingStatus,
   errors: [
@@ -11464,7 +11464,7 @@ export const disableSnapshotCopy: API.OperationMethod<
   DisableSnapshotCopyResult,
   DisableSnapshotCopyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableSnapshotCopyMessage,
   output: DisableSnapshotCopyResult,
   errors: [
@@ -11487,7 +11487,7 @@ export const disassociateDataShareConsumer: API.OperationMethod<
   DataShare,
   DisassociateDataShareConsumerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateDataShareConsumerMessage,
   output: DataShare,
   errors: [InvalidDataShareFault, InvalidNamespaceFault],
@@ -11510,7 +11510,7 @@ export const enableLogging: API.OperationMethod<
   LoggingStatus,
   EnableLoggingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableLoggingMessage,
   output: LoggingStatus,
   errors: [
@@ -11545,7 +11545,7 @@ export const enableSnapshotCopy: API.OperationMethod<
   EnableSnapshotCopyResult,
   EnableSnapshotCopyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableSnapshotCopyMessage,
   output: EnableSnapshotCopyResult,
   errors: [
@@ -11576,7 +11576,7 @@ export const failoverPrimaryCompute: API.OperationMethod<
   FailoverPrimaryComputeResult,
   FailoverPrimaryComputeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: FailoverPrimaryComputeInputMessage,
   output: FailoverPrimaryComputeResult,
   errors: [
@@ -11622,7 +11622,7 @@ export const getClusterCredentials: API.OperationMethod<
   ClusterCredentials,
   GetClusterCredentialsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetClusterCredentialsMessage,
   output: ClusterCredentials,
   errors: [ClusterNotFoundFault, UnsupportedOperationFault],
@@ -11649,7 +11649,7 @@ export const getClusterCredentialsWithIAM: API.OperationMethod<
   ClusterExtendedCredentials,
   GetClusterCredentialsWithIAMError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetClusterCredentialsWithIAMMessage,
   output: ClusterExtendedCredentials,
   errors: [ClusterNotFoundFault, UnsupportedOperationFault],
@@ -11679,7 +11679,7 @@ export const getIdentityCenterAuthToken: API.OperationMethod<
   GetIdentityCenterAuthTokenResponse,
   GetIdentityCenterAuthTokenError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIdentityCenterAuthTokenRequest,
   output: GetIdentityCenterAuthTokenResponse,
   errors: [
@@ -11724,7 +11724,7 @@ export const getReservedNodeExchangeConfigurationOptions: API.OperationMethod<
     GetReservedNodeExchangeConfigurationOptionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetReservedNodeExchangeConfigurationOptionsInputMessage,
   output: GetReservedNodeExchangeConfigurationOptionsOutputMessage,
   errors: [
@@ -11776,7 +11776,7 @@ export const getReservedNodeExchangeOfferings: API.OperationMethod<
     GetReservedNodeExchangeOfferingsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetReservedNodeExchangeOfferingsInputMessage,
   output: GetReservedNodeExchangeOfferingsOutputMessage,
   errors: [
@@ -11807,7 +11807,7 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyResult,
   GetResourcePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResourcePolicyMessage,
   output: GetResourcePolicyResult,
   errors: [
@@ -11843,7 +11843,7 @@ export const listRecommendations: API.OperationMethod<
     ListRecommendationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecommendationsMessage,
   output: ListRecommendationsResult,
   errors: [ClusterNotFoundFault, UnsupportedOperationFault],
@@ -11867,7 +11867,7 @@ export const modifyAquaConfiguration: API.OperationMethod<
   ModifyAquaOutputMessage,
   ModifyAquaConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyAquaInputMessage,
   output: ModifyAquaOutputMessage,
   errors: [
@@ -11889,7 +11889,7 @@ export const modifyAuthenticationProfile: API.OperationMethod<
   ModifyAuthenticationProfileResult,
   ModifyAuthenticationProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyAuthenticationProfileMessage,
   output: ModifyAuthenticationProfileResult,
   errors: [
@@ -11958,7 +11958,7 @@ export const modifyCluster: API.OperationMethod<
   ModifyClusterResult,
   ModifyClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyClusterMessage,
   output: ModifyClusterResult,
   errors: [
@@ -12001,7 +12001,7 @@ export const modifyClusterDbRevision: API.OperationMethod<
   ModifyClusterDbRevisionResult,
   ModifyClusterDbRevisionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyClusterDbRevisionMessage,
   output: ModifyClusterDbRevisionResult,
   errors: [
@@ -12028,7 +12028,7 @@ export const modifyClusterIamRoles: API.OperationMethod<
   ModifyClusterIamRolesResult,
   ModifyClusterIamRolesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyClusterIamRolesMessage,
   output: ModifyClusterIamRolesResult,
   errors: [ClusterNotFoundFault, InvalidClusterStateFault],
@@ -12045,7 +12045,7 @@ export const modifyClusterMaintenance: API.OperationMethod<
   ModifyClusterMaintenanceResult,
   ModifyClusterMaintenanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyClusterMaintenanceMessage,
   output: ModifyClusterMaintenanceResult,
   errors: [ClusterNotFoundFault, InvalidClusterStateFault],
@@ -12066,7 +12066,7 @@ export const modifyClusterParameterGroup: API.OperationMethod<
   ClusterParameterGroupNameMessage,
   ModifyClusterParameterGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyClusterParameterGroupMessage,
   output: ClusterParameterGroupNameMessage,
   errors: [
@@ -12089,7 +12089,7 @@ export const modifyClusterSnapshot: API.OperationMethod<
   ModifyClusterSnapshotResult,
   ModifyClusterSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyClusterSnapshotMessage,
   output: ModifyClusterSnapshotResult,
   errors: [
@@ -12111,7 +12111,7 @@ export const modifyClusterSnapshotSchedule: API.OperationMethod<
   ModifyClusterSnapshotScheduleResponse,
   ModifyClusterSnapshotScheduleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyClusterSnapshotScheduleMessage,
   output: ModifyClusterSnapshotScheduleResponse,
   errors: [
@@ -12155,7 +12155,7 @@ export const modifyClusterSubnetGroup: API.OperationMethod<
   ModifyClusterSubnetGroupResult,
   ModifyClusterSubnetGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyClusterSubnetGroupMessage,
   output: ModifyClusterSubnetGroupResult,
   errors: [
@@ -12181,7 +12181,7 @@ export const modifyCustomDomainAssociation: API.OperationMethod<
   ModifyCustomDomainAssociationResult,
   ModifyCustomDomainAssociationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyCustomDomainAssociationMessage,
   output: ModifyCustomDomainAssociationResult,
   errors: [
@@ -12207,7 +12207,7 @@ export const modifyEndpointAccess: API.OperationMethod<
   EndpointAccess,
   ModifyEndpointAccessError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyEndpointAccessMessage,
   output: EndpointAccess,
   errors: [
@@ -12238,7 +12238,7 @@ export const modifyEventSubscription: API.OperationMethod<
   ModifyEventSubscriptionResult,
   ModifyEventSubscriptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyEventSubscriptionMessage,
   output: ModifyEventSubscriptionResult,
   errors: [
@@ -12268,7 +12268,7 @@ export const modifyIntegration: API.OperationMethod<
   Integration,
   ModifyIntegrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyIntegrationMessage,
   output: Integration,
   errors: [
@@ -12296,7 +12296,7 @@ export const modifyLakehouseConfiguration: API.OperationMethod<
   LakehouseConfiguration,
   ModifyLakehouseConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyLakehouseConfigurationMessage,
   output: LakehouseConfiguration,
   errors: [
@@ -12323,7 +12323,7 @@ export const modifyRedshiftIdcApplication: API.OperationMethod<
   ModifyRedshiftIdcApplicationResult,
   ModifyRedshiftIdcApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyRedshiftIdcApplicationMessage,
   output: ModifyRedshiftIdcApplicationResult,
   errors: [
@@ -12350,7 +12350,7 @@ export const modifyScheduledAction: API.OperationMethod<
   ScheduledAction,
   ModifyScheduledActionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyScheduledActionMessage,
   output: ScheduledAction,
   errors: [
@@ -12384,7 +12384,7 @@ export const modifySnapshotCopyRetentionPeriod: API.OperationMethod<
   ModifySnapshotCopyRetentionPeriodResult,
   ModifySnapshotCopyRetentionPeriodError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifySnapshotCopyRetentionPeriodMessage,
   output: ModifySnapshotCopyRetentionPeriodResult,
   errors: [
@@ -12409,7 +12409,7 @@ export const modifySnapshotSchedule: API.OperationMethod<
   SnapshotSchedule,
   ModifySnapshotScheduleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifySnapshotScheduleMessage,
   output: SnapshotSchedule,
   errors: [
@@ -12432,7 +12432,7 @@ export const modifyUsageLimit: API.OperationMethod<
   UsageLimit,
   ModifyUsageLimitError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyUsageLimitMessage,
   output: UsageLimit,
   errors: [
@@ -12454,7 +12454,7 @@ export const pauseCluster: API.OperationMethod<
   PauseClusterResult,
   PauseClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PauseClusterMessage,
   output: PauseClusterResult,
   errors: [
@@ -12485,7 +12485,7 @@ export const purchaseReservedNodeOffering: API.OperationMethod<
   PurchaseReservedNodeOfferingResult,
   PurchaseReservedNodeOfferingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PurchaseReservedNodeOfferingMessage,
   output: PurchaseReservedNodeOfferingResult,
   errors: [
@@ -12509,7 +12509,7 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyResult,
   PutResourcePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutResourcePolicyMessage,
   output: PutResourcePolicyResult,
   errors: [
@@ -12538,7 +12538,7 @@ export const rebootCluster: API.OperationMethod<
   RebootClusterResult,
   RebootClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RebootClusterMessage,
   output: RebootClusterResult,
   errors: [ClusterNotFoundFault, InvalidClusterStateFault],
@@ -12556,7 +12556,7 @@ export const registerNamespace: API.OperationMethod<
   RegisterNamespaceOutputMessage,
   RegisterNamespaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterNamespaceInputMessage,
   output: RegisterNamespaceOutputMessage,
   errors: [
@@ -12574,7 +12574,7 @@ export const rejectDataShare: API.OperationMethod<
   DataShare,
   RejectDataShareError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RejectDataShareMessage,
   output: DataShare,
   errors: [InvalidDataShareFault],
@@ -12594,7 +12594,7 @@ export const resetClusterParameterGroup: API.OperationMethod<
   ClusterParameterGroupNameMessage,
   ResetClusterParameterGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetClusterParameterGroupMessage,
   output: ClusterParameterGroupNameMessage,
   errors: [
@@ -12649,7 +12649,7 @@ export const resizeCluster: API.OperationMethod<
   ResizeClusterResult,
   ResizeClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResizeClusterMessage,
   output: ResizeClusterResult,
   errors: [
@@ -12745,7 +12745,7 @@ export const restoreFromClusterSnapshot: API.OperationMethod<
   RestoreFromClusterSnapshotResult,
   RestoreFromClusterSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RestoreFromClusterSnapshotMessage,
   output: RestoreFromClusterSnapshotResult,
   errors: [
@@ -12818,7 +12818,7 @@ export const restoreTableFromClusterSnapshot: API.OperationMethod<
   RestoreTableFromClusterSnapshotResult,
   RestoreTableFromClusterSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RestoreTableFromClusterSnapshotMessage,
   output: RestoreTableFromClusterSnapshotResult,
   errors: [
@@ -12845,7 +12845,7 @@ export const resumeCluster: API.OperationMethod<
   ResumeClusterResult,
   ResumeClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResumeClusterMessage,
   output: ResumeClusterResult,
   errors: [
@@ -12872,7 +12872,7 @@ export const revokeClusterSecurityGroupIngress: API.OperationMethod<
   RevokeClusterSecurityGroupIngressResult,
   RevokeClusterSecurityGroupIngressError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RevokeClusterSecurityGroupIngressMessage,
   output: RevokeClusterSecurityGroupIngressResult,
   errors: [
@@ -12898,7 +12898,7 @@ export const revokeEndpointAccess: API.OperationMethod<
   EndpointAuthorization,
   RevokeEndpointAccessError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RevokeEndpointAccessMessage,
   output: EndpointAuthorization,
   errors: [
@@ -12931,7 +12931,7 @@ export const revokeSnapshotAccess: API.OperationMethod<
   RevokeSnapshotAccessResult,
   RevokeSnapshotAccessError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RevokeSnapshotAccessMessage,
   output: RevokeSnapshotAccessResult,
   errors: [
@@ -12955,7 +12955,7 @@ export const rotateEncryptionKey: API.OperationMethod<
   RotateEncryptionKeyResult,
   RotateEncryptionKeyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RotateEncryptionKeyMessage,
   output: RotateEncryptionKeyResult,
   errors: [
@@ -12979,7 +12979,7 @@ export const updatePartnerStatus: API.OperationMethod<
   PartnerIntegrationOutputMessage,
   UpdatePartnerStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePartnerStatusInputMessage,
   output: PartnerIntegrationOutputMessage,
   errors: [

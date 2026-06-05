@@ -1377,7 +1377,7 @@ export const associateFraudster: API.OperationMethod<
   AssociateFraudsterResponse,
   AssociateFraudsterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateFraudsterRequest,
   output: AssociateFraudsterResponse,
   errors: [
@@ -1407,7 +1407,7 @@ export const createWatchlist: API.OperationMethod<
   CreateWatchlistResponse,
   CreateWatchlistError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateWatchlistRequest,
   output: CreateWatchlistResponse,
   errors: [
@@ -1436,7 +1436,7 @@ export const deleteFraudster: API.OperationMethod<
   DeleteFraudsterResponse,
   DeleteFraudsterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFraudsterRequest,
   output: DeleteFraudsterResponse,
   errors: [
@@ -1464,7 +1464,7 @@ export const deleteSpeaker: API.OperationMethod<
   DeleteSpeakerResponse,
   DeleteSpeakerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSpeakerRequest,
   output: DeleteSpeakerResponse,
   errors: [
@@ -1494,7 +1494,7 @@ export const deleteWatchlist: API.OperationMethod<
   DeleteWatchlistResponse,
   DeleteWatchlistError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteWatchlistRequest,
   output: DeleteWatchlistResponse,
   errors: [
@@ -1521,7 +1521,7 @@ export const describeFraudster: API.OperationMethod<
   DescribeFraudsterResponse,
   DescribeFraudsterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeFraudsterRequest,
   output: DescribeFraudsterResponse,
   errors: [
@@ -1547,7 +1547,7 @@ export const describeFraudsterRegistrationJob: API.OperationMethod<
   DescribeFraudsterRegistrationJobResponse,
   DescribeFraudsterRegistrationJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeFraudsterRegistrationJobRequest,
   output: DescribeFraudsterRegistrationJobResponse,
   errors: [
@@ -1573,7 +1573,7 @@ export const describeSpeaker: API.OperationMethod<
   DescribeSpeakerResponse,
   DescribeSpeakerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeSpeakerRequest,
   output: DescribeSpeakerResponse,
   errors: [
@@ -1599,7 +1599,7 @@ export const describeSpeakerEnrollmentJob: API.OperationMethod<
   DescribeSpeakerEnrollmentJobResponse,
   DescribeSpeakerEnrollmentJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeSpeakerEnrollmentJobRequest,
   output: DescribeSpeakerEnrollmentJobResponse,
   errors: [
@@ -1625,7 +1625,7 @@ export const describeWatchlist: API.OperationMethod<
   DescribeWatchlistResponse,
   DescribeWatchlistError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeWatchlistRequest,
   output: DescribeWatchlistResponse,
   errors: [
@@ -1654,7 +1654,7 @@ export const disassociateFraudster: API.OperationMethod<
   DisassociateFraudsterResponse,
   DisassociateFraudsterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateFraudsterRequest,
   output: DisassociateFraudsterResponse,
   errors: [
@@ -1683,7 +1683,7 @@ export const evaluateSession: API.OperationMethod<
   EvaluateSessionResponse,
   EvaluateSessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EvaluateSessionRequest,
   output: EvaluateSessionResponse,
   errors: [
@@ -1727,7 +1727,7 @@ export const listFraudsterRegistrationJobs: API.OperationMethod<
     ListFraudsterRegistrationJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFraudsterRegistrationJobsRequest,
   output: ListFraudsterRegistrationJobsResponse,
   errors: [
@@ -1774,7 +1774,7 @@ export const listFraudsters: API.OperationMethod<
     ListFraudstersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFraudstersRequest,
   output: ListFraudstersResponse,
   errors: [
@@ -1823,7 +1823,7 @@ export const listSpeakerEnrollmentJobs: API.OperationMethod<
     ListSpeakerEnrollmentJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSpeakerEnrollmentJobsRequest,
   output: ListSpeakerEnrollmentJobsResponse,
   errors: [
@@ -1870,7 +1870,7 @@ export const listSpeakers: API.OperationMethod<
     ListSpeakersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSpeakersRequest,
   output: ListSpeakersResponse,
   errors: [
@@ -1902,7 +1902,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -1943,7 +1943,7 @@ export const listWatchlists: API.OperationMethod<
     ListWatchlistsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWatchlistsRequest,
   output: ListWatchlistsResponse,
   errors: [
@@ -1982,7 +1982,7 @@ export const optOutSpeaker: API.OperationMethod<
   OptOutSpeakerResponse,
   OptOutSpeakerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: OptOutSpeakerRequest,
   output: OptOutSpeakerResponse,
   errors: [
@@ -2012,7 +2012,7 @@ export const startFraudsterRegistrationJob: API.OperationMethod<
   StartFraudsterRegistrationJobResponse,
   StartFraudsterRegistrationJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartFraudsterRegistrationJobRequest,
   output: StartFraudsterRegistrationJobResponse,
   errors: [
@@ -2042,7 +2042,7 @@ export const startSpeakerEnrollmentJob: API.OperationMethod<
   StartSpeakerEnrollmentJobResponse,
   StartSpeakerEnrollmentJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartSpeakerEnrollmentJobRequest,
   output: StartSpeakerEnrollmentJobResponse,
   errors: [
@@ -2071,7 +2071,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -2099,7 +2099,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -2127,7 +2127,7 @@ export const updateWatchlist: API.OperationMethod<
   UpdateWatchlistResponse,
   UpdateWatchlistError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateWatchlistRequest,
   output: UpdateWatchlistResponse,
   errors: [
@@ -2157,7 +2157,7 @@ export const createDomain: API.OperationMethod<
   CreateDomainResponse,
   CreateDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDomainRequest,
   output: CreateDomainResponse,
   errors: [
@@ -2185,7 +2185,7 @@ export const describeDomain: API.OperationMethod<
   DescribeDomainResponse,
   DescribeDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDomainRequest,
   output: DescribeDomainResponse,
   errors: [
@@ -2214,7 +2214,7 @@ export const updateDomain: API.OperationMethod<
   UpdateDomainResponse,
   UpdateDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDomainRequest,
   output: UpdateDomainResponse,
   errors: [
@@ -2242,7 +2242,7 @@ export const deleteDomain: API.OperationMethod<
   DeleteDomainResponse,
   DeleteDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDomainRequest,
   output: DeleteDomainResponse,
   errors: [
@@ -2283,7 +2283,7 @@ export const listDomains: API.OperationMethod<
     ListDomainsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDomainsRequest,
   output: ListDomainsResponse,
   errors: [

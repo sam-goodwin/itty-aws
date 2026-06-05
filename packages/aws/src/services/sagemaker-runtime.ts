@@ -468,7 +468,7 @@ export const invokeEndpoint: API.OperationMethod<
   InvokeEndpointOutput,
   InvokeEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InvokeEndpointInput,
   output: InvokeEndpointOutput,
   errors: [
@@ -507,7 +507,7 @@ export const invokeEndpointAsync: API.OperationMethod<
   InvokeEndpointAsyncOutput,
   InvokeEndpointAsyncError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InvokeEndpointAsyncInput,
   output: InvokeEndpointAsyncOutput,
   errors: [InternalFailure, ServiceUnavailable, ValidationError],
@@ -551,7 +551,7 @@ export const invokeEndpointWithResponseStream: API.OperationMethod<
   InvokeEndpointWithResponseStreamOutput,
   InvokeEndpointWithResponseStreamError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InvokeEndpointWithResponseStreamInput,
   output: InvokeEndpointWithResponseStreamOutput,
   errors: [

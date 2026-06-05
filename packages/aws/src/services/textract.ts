@@ -1741,7 +1741,7 @@ export const analyzeDocument: API.OperationMethod<
   AnalyzeDocumentResponse,
   AnalyzeDocumentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AnalyzeDocumentRequest,
   output: AnalyzeDocumentResponse,
   errors: [
@@ -1787,7 +1787,7 @@ export const analyzeExpense: API.OperationMethod<
   AnalyzeExpenseResponse,
   AnalyzeExpenseError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AnalyzeExpenseRequest,
   output: AnalyzeExpenseResponse,
   errors: [
@@ -1824,7 +1824,7 @@ export const analyzeID: API.OperationMethod<
   AnalyzeIDResponse,
   AnalyzeIDError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AnalyzeIDRequest,
   output: AnalyzeIDResponse,
   errors: [
@@ -1863,7 +1863,7 @@ export const createAdapter: API.OperationMethod<
   CreateAdapterResponse,
   CreateAdapterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAdapterRequest,
   output: CreateAdapterResponse,
   errors: [
@@ -1905,7 +1905,7 @@ export const createAdapterVersion: API.OperationMethod<
   CreateAdapterVersionResponse,
   CreateAdapterVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAdapterVersionRequest,
   output: CreateAdapterVersionResponse,
   errors: [
@@ -1942,7 +1942,7 @@ export const deleteAdapter: API.OperationMethod<
   DeleteAdapterResponse,
   DeleteAdapterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAdapterRequest,
   output: DeleteAdapterResponse,
   errors: [
@@ -1975,7 +1975,7 @@ export const deleteAdapterVersion: API.OperationMethod<
   DeleteAdapterVersionResponse,
   DeleteAdapterVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAdapterVersionRequest,
   output: DeleteAdapterVersionResponse,
   errors: [
@@ -2020,7 +2020,7 @@ export const detectDocumentText: API.OperationMethod<
   DetectDocumentTextResponse,
   DetectDocumentTextError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetectDocumentTextRequest,
   output: DetectDocumentTextResponse,
   errors: [
@@ -2053,7 +2053,7 @@ export const getAdapter: API.OperationMethod<
   GetAdapterResponse,
   GetAdapterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAdapterRequest,
   output: GetAdapterResponse,
   errors: [
@@ -2085,7 +2085,7 @@ export const getAdapterVersion: API.OperationMethod<
   GetAdapterVersionResponse,
   GetAdapterVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAdapterVersionRequest,
   output: GetAdapterVersionResponse,
   errors: [
@@ -2172,7 +2172,7 @@ export const getDocumentAnalysis: API.OperationMethod<
   GetDocumentAnalysisResponse,
   GetDocumentAnalysisError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDocumentAnalysisRequest,
   output: GetDocumentAnalysisResponse,
   errors: [
@@ -2231,7 +2231,7 @@ export const getDocumentTextDetection: API.OperationMethod<
   GetDocumentTextDetectionResponse,
   GetDocumentTextDetectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDocumentTextDetectionRequest,
   output: GetDocumentTextDetectionResponse,
   errors: [
@@ -2282,7 +2282,7 @@ export const getExpenseAnalysis: API.OperationMethod<
   GetExpenseAnalysisResponse,
   GetExpenseAnalysisError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetExpenseAnalysisRequest,
   output: GetExpenseAnalysisResponse,
   errors: [
@@ -2326,7 +2326,7 @@ export const getLendingAnalysis: API.OperationMethod<
   GetLendingAnalysisResponse,
   GetLendingAnalysisError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLendingAnalysisRequest,
   output: GetLendingAnalysisResponse,
   errors: [
@@ -2371,7 +2371,7 @@ export const getLendingAnalysisSummary: API.OperationMethod<
   GetLendingAnalysisSummaryResponse,
   GetLendingAnalysisSummaryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLendingAnalysisSummaryRequest,
   output: GetLendingAnalysisSummaryResponse,
   errors: [
@@ -2416,7 +2416,7 @@ export const listAdapters: API.OperationMethod<
     ListAdaptersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAdaptersRequest,
   output: ListAdaptersResponse,
   errors: [
@@ -2466,7 +2466,7 @@ export const listAdapterVersions: API.OperationMethod<
     ListAdapterVersionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAdapterVersionsRequest,
   output: ListAdapterVersionsResponse,
   errors: [
@@ -2502,7 +2502,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -2553,7 +2553,7 @@ export const startDocumentAnalysis: API.OperationMethod<
   StartDocumentAnalysisResponse,
   StartDocumentAnalysisError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartDocumentAnalysisRequest,
   output: StartDocumentAnalysisResponse,
   errors: [
@@ -2609,7 +2609,7 @@ export const startDocumentTextDetection: API.OperationMethod<
   StartDocumentTextDetectionResponse,
   StartDocumentTextDetectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartDocumentTextDetectionRequest,
   output: StartDocumentTextDetectionResponse,
   errors: [
@@ -2664,7 +2664,7 @@ export const startExpenseAnalysis: API.OperationMethod<
   StartExpenseAnalysisResponse,
   StartExpenseAnalysisError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartExpenseAnalysisRequest,
   output: StartExpenseAnalysisResponse,
   errors: [
@@ -2730,7 +2730,7 @@ export const startLendingAnalysis: API.OperationMethod<
   StartLendingAnalysisResponse,
   StartLendingAnalysisError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartLendingAnalysisRequest,
   output: StartLendingAnalysisResponse,
   errors: [
@@ -2766,7 +2766,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -2797,7 +2797,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -2829,7 +2829,7 @@ export const updateAdapter: API.OperationMethod<
   UpdateAdapterResponse,
   UpdateAdapterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAdapterRequest,
   output: UpdateAdapterResponse,
   errors: [

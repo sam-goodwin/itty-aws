@@ -4153,7 +4153,7 @@ export const associateAppBlockBuilderAppBlock: API.OperationMethod<
   AssociateAppBlockBuilderAppBlockResult,
   AssociateAppBlockBuilderAppBlockError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateAppBlockBuilderAppBlockRequest,
   output: AssociateAppBlockBuilderAppBlockResult,
   errors: [
@@ -4179,7 +4179,7 @@ export const associateApplicationFleet: API.OperationMethod<
   AssociateApplicationFleetResult,
   AssociateApplicationFleetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateApplicationFleetRequest,
   output: AssociateApplicationFleetResult,
   errors: [
@@ -4204,7 +4204,7 @@ export const associateApplicationToEntitlement: API.OperationMethod<
   AssociateApplicationToEntitlementResult,
   AssociateApplicationToEntitlementError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateApplicationToEntitlementRequest,
   output: AssociateApplicationToEntitlementResult,
   errors: [
@@ -4230,7 +4230,7 @@ export const associateFleet: API.OperationMethod<
   AssociateFleetResult,
   AssociateFleetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateFleetRequest,
   output: AssociateFleetResult,
   errors: [
@@ -4257,7 +4257,7 @@ export const associateSoftwareToImageBuilder: API.OperationMethod<
   AssociateSoftwareToImageBuilderResult,
   AssociateSoftwareToImageBuilderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateSoftwareToImageBuilderRequest,
   output: AssociateSoftwareToImageBuilderResult,
   errors: [
@@ -4280,7 +4280,7 @@ export const batchAssociateUserStack: API.OperationMethod<
   BatchAssociateUserStackResult,
   BatchAssociateUserStackError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchAssociateUserStackRequest,
   output: BatchAssociateUserStackResult,
   errors: [
@@ -4300,7 +4300,7 @@ export const batchDisassociateUserStack: API.OperationMethod<
   BatchDisassociateUserStackResult,
   BatchDisassociateUserStackError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchDisassociateUserStackRequest,
   output: BatchDisassociateUserStackResult,
   errors: [
@@ -4324,7 +4324,7 @@ export const copyImage: API.OperationMethod<
   CopyImageResponse,
   CopyImageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CopyImageRequest,
   output: CopyImageResponse,
   errors: [
@@ -4358,7 +4358,7 @@ export const createAppBlock: API.OperationMethod<
   CreateAppBlockResult,
   CreateAppBlockError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAppBlockRequest,
   output: CreateAppBlockResult,
   errors: [
@@ -4388,7 +4388,7 @@ export const createAppBlockBuilder: API.OperationMethod<
   CreateAppBlockBuilderResult,
   CreateAppBlockBuilderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAppBlockBuilderRequest,
   output: CreateAppBlockBuilderResult,
   errors: [
@@ -4416,7 +4416,7 @@ export const createAppBlockBuilderStreamingURL: API.OperationMethod<
   CreateAppBlockBuilderStreamingURLResult,
   CreateAppBlockBuilderStreamingURLError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAppBlockBuilderStreamingURLRequest,
   output: CreateAppBlockBuilderStreamingURLResult,
   errors: [OperationNotPermittedException, ResourceNotFoundException],
@@ -4444,7 +4444,7 @@ export const createApplication: API.OperationMethod<
   CreateApplicationResult,
   CreateApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateApplicationRequest,
   output: CreateApplicationResult,
   errors: [
@@ -4471,7 +4471,7 @@ export const createDirectoryConfig: API.OperationMethod<
   CreateDirectoryConfigResult,
   CreateDirectoryConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDirectoryConfigRequest,
   output: CreateDirectoryConfigResult,
   errors: [
@@ -4502,7 +4502,7 @@ export const createEntitlement: API.OperationMethod<
   CreateEntitlementResult,
   CreateEntitlementError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEntitlementRequest,
   output: CreateEntitlementResult,
   errors: [
@@ -4529,7 +4529,7 @@ export const createExportImageTask: API.OperationMethod<
   CreateExportImageTaskResult,
   CreateExportImageTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateExportImageTaskRequest,
   output: CreateExportImageTaskResult,
   errors: [
@@ -4563,7 +4563,7 @@ export const createFleet: API.OperationMethod<
   CreateFleetResult,
   CreateFleetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFleetRequest,
   output: CreateFleetResult,
   errors: [
@@ -4603,7 +4603,7 @@ export const createImageBuilder: API.OperationMethod<
   CreateImageBuilderResult,
   CreateImageBuilderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateImageBuilderRequest,
   output: CreateImageBuilderResult,
   errors: [
@@ -4632,7 +4632,7 @@ export const createImageBuilderStreamingURL: API.OperationMethod<
   CreateImageBuilderStreamingURLResult,
   CreateImageBuilderStreamingURLError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateImageBuilderStreamingURLRequest,
   output: CreateImageBuilderStreamingURLResult,
   errors: [OperationNotPermittedException, ResourceNotFoundException],
@@ -4655,7 +4655,7 @@ export const createImportedImage: API.OperationMethod<
   CreateImportedImageResult,
   CreateImportedImageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateImportedImageRequest,
   output: CreateImportedImageResult,
   errors: [
@@ -4687,7 +4687,7 @@ export const createStack: API.OperationMethod<
   CreateStackResult,
   CreateStackError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateStackRequest,
   output: CreateStackResult,
   errors: [
@@ -4715,7 +4715,7 @@ export const createStreamingURL: API.OperationMethod<
   CreateStreamingURLResult,
   CreateStreamingURLError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateStreamingURLRequest,
   output: CreateStreamingURLResult,
   errors: [
@@ -4741,7 +4741,7 @@ export const createThemeForStack: API.OperationMethod<
   CreateThemeForStackResult,
   CreateThemeForStackError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateThemeForStackRequest,
   output: CreateThemeForStackResult,
   errors: [
@@ -4773,7 +4773,7 @@ export const createUpdatedImage: API.OperationMethod<
   CreateUpdatedImageResult,
   CreateUpdatedImageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateUpdatedImageRequest,
   output: CreateUpdatedImageResult,
   errors: [
@@ -4799,7 +4799,7 @@ export const createUsageReportSubscription: API.OperationMethod<
   CreateUsageReportSubscriptionResult,
   CreateUsageReportSubscriptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateUsageReportSubscriptionRequest,
   output: CreateUsageReportSubscriptionResult,
   errors: [
@@ -4823,7 +4823,7 @@ export const createUser: API.OperationMethod<
   CreateUserResult,
   CreateUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateUserRequest,
   output: CreateUserResult,
   errors: [
@@ -4847,7 +4847,7 @@ export const deleteAppBlock: API.OperationMethod<
   DeleteAppBlockResult,
   DeleteAppBlockError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAppBlockRequest,
   output: DeleteAppBlockResult,
   errors: [
@@ -4873,7 +4873,7 @@ export const deleteAppBlockBuilder: API.OperationMethod<
   DeleteAppBlockBuilderResult,
   DeleteAppBlockBuilderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAppBlockBuilderRequest,
   output: DeleteAppBlockBuilderResult,
   errors: [
@@ -4897,7 +4897,7 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationResult,
   DeleteApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteApplicationRequest,
   output: DeleteApplicationResult,
   errors: [
@@ -4919,7 +4919,7 @@ export const deleteDirectoryConfig: API.OperationMethod<
   DeleteDirectoryConfigResult,
   DeleteDirectoryConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDirectoryConfigRequest,
   output: DeleteDirectoryConfigResult,
   errors: [ResourceInUseException, ResourceNotFoundException],
@@ -4938,7 +4938,7 @@ export const deleteEntitlement: API.OperationMethod<
   DeleteEntitlementResult,
   DeleteEntitlementError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEntitlementRequest,
   output: DeleteEntitlementResult,
   errors: [
@@ -4961,7 +4961,7 @@ export const deleteFleet: API.OperationMethod<
   DeleteFleetResult,
   DeleteFleetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFleetRequest,
   output: DeleteFleetResult,
   errors: [
@@ -4985,7 +4985,7 @@ export const deleteImage: API.OperationMethod<
   DeleteImageResult,
   DeleteImageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteImageRequest,
   output: DeleteImageResult,
   errors: [
@@ -5008,7 +5008,7 @@ export const deleteImageBuilder: API.OperationMethod<
   DeleteImageBuilderResult,
   DeleteImageBuilderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteImageBuilderRequest,
   output: DeleteImageBuilderResult,
   errors: [
@@ -5029,7 +5029,7 @@ export const deleteImagePermissions: API.OperationMethod<
   DeleteImagePermissionsResult,
   DeleteImagePermissionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteImagePermissionsRequest,
   output: DeleteImagePermissionsResult,
   errors: [ResourceNotAvailableException, ResourceNotFoundException],
@@ -5048,7 +5048,7 @@ export const deleteStack: API.OperationMethod<
   DeleteStackResult,
   DeleteStackError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteStackRequest,
   output: DeleteStackResult,
   errors: [
@@ -5071,7 +5071,7 @@ export const deleteThemeForStack: API.OperationMethod<
   DeleteThemeForStackResult,
   DeleteThemeForStackError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteThemeForStackRequest,
   output: DeleteThemeForStackResult,
   errors: [
@@ -5092,7 +5092,7 @@ export const deleteUsageReportSubscription: API.OperationMethod<
   DeleteUsageReportSubscriptionResult,
   DeleteUsageReportSubscriptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteUsageReportSubscriptionRequest,
   output: DeleteUsageReportSubscriptionResult,
   errors: [InvalidAccountStatusException, ResourceNotFoundException],
@@ -5106,7 +5106,7 @@ export const deleteUser: API.OperationMethod<
   DeleteUserResult,
   DeleteUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteUserRequest,
   output: DeleteUserResult,
   errors: [ResourceNotFoundException],
@@ -5138,7 +5138,7 @@ export const describeAppBlockBuilderAppBlockAssociations: API.OperationMethod<
     DescribeAppBlockBuilderAppBlockAssociationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAppBlockBuilderAppBlockAssociationsRequest,
   output: DescribeAppBlockBuilderAppBlockAssociationsResult,
   errors: [
@@ -5178,7 +5178,7 @@ export const describeAppBlockBuilders: API.OperationMethod<
     DescribeAppBlockBuildersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAppBlockBuildersRequest,
   output: DescribeAppBlockBuildersResult,
   errors: [OperationNotPermittedException, ResourceNotFoundException],
@@ -5200,7 +5200,7 @@ export const describeAppBlocks: API.OperationMethod<
   DescribeAppBlocksResult,
   DescribeAppBlocksError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAppBlocksRequest,
   output: DescribeAppBlocksResult,
   errors: [OperationNotPermittedException, ResourceNotFoundException],
@@ -5217,7 +5217,7 @@ export const describeApplicationFleetAssociations: API.OperationMethod<
   DescribeApplicationFleetAssociationsResult,
   DescribeApplicationFleetAssociationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeApplicationFleetAssociationsRequest,
   output: DescribeApplicationFleetAssociationsResult,
   errors: [
@@ -5237,7 +5237,7 @@ export const describeApplications: API.OperationMethod<
   DescribeApplicationsResult,
   DescribeApplicationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeApplicationsRequest,
   output: DescribeApplicationsResult,
   errors: [OperationNotPermittedException, ResourceNotFoundException],
@@ -5255,7 +5255,7 @@ export const describeAppLicenseUsage: API.OperationMethod<
   DescribeAppLicenseUsageResult,
   DescribeAppLicenseUsageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAppLicenseUsageRequest,
   output: DescribeAppLicenseUsageResult,
   errors: [
@@ -5277,7 +5277,7 @@ export const describeDirectoryConfigs: API.OperationMethod<
   DescribeDirectoryConfigsResult,
   DescribeDirectoryConfigsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDirectoryConfigsRequest,
   output: DescribeDirectoryConfigsResult,
   errors: [ResourceNotFoundException],
@@ -5295,7 +5295,7 @@ export const describeEntitlements: API.OperationMethod<
   DescribeEntitlementsResult,
   DescribeEntitlementsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeEntitlementsRequest,
   output: DescribeEntitlementsResult,
   errors: [
@@ -5313,7 +5313,7 @@ export const describeFleets: API.OperationMethod<
   DescribeFleetsResult,
   DescribeFleetsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeFleetsRequest,
   output: DescribeFleetsResult,
   errors: [ResourceNotFoundException],
@@ -5329,7 +5329,7 @@ export const describeImageBuilders: API.OperationMethod<
   DescribeImageBuildersResult,
   DescribeImageBuildersError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeImageBuildersRequest,
   output: DescribeImageBuildersResult,
   errors: [ResourceNotFoundException],
@@ -5360,7 +5360,7 @@ export const describeImagePermissions: API.OperationMethod<
     DescribeImagePermissionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeImagePermissionsRequest,
   output: DescribeImagePermissionsResult,
   errors: [ResourceNotFoundException],
@@ -5397,7 +5397,7 @@ export const describeImages: API.OperationMethod<
     DescribeImagesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeImagesRequest,
   output: DescribeImagesResult,
   errors: [InvalidParameterCombinationException, ResourceNotFoundException],
@@ -5420,7 +5420,7 @@ export const describeSessions: API.OperationMethod<
   DescribeSessionsResult,
   DescribeSessionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeSessionsRequest,
   output: DescribeSessionsResult,
   errors: [InvalidParameterCombinationException],
@@ -5437,7 +5437,7 @@ export const describeSoftwareAssociations: API.OperationMethod<
   DescribeSoftwareAssociationsResult,
   DescribeSoftwareAssociationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeSoftwareAssociationsRequest,
   output: DescribeSoftwareAssociationsResult,
   errors: [OperationNotPermittedException, ResourceNotFoundException],
@@ -5451,7 +5451,7 @@ export const describeStacks: API.OperationMethod<
   DescribeStacksResult,
   DescribeStacksError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeStacksRequest,
   output: DescribeStacksResult,
   errors: [ResourceNotFoundException],
@@ -5468,7 +5468,7 @@ export const describeThemeForStack: API.OperationMethod<
   DescribeThemeForStackResult,
   DescribeThemeForStackError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeThemeForStackRequest,
   output: DescribeThemeForStackResult,
   errors: [OperationNotPermittedException, ResourceNotFoundException],
@@ -5485,7 +5485,7 @@ export const describeUsageReportSubscriptions: API.OperationMethod<
   DescribeUsageReportSubscriptionsResult,
   DescribeUsageReportSubscriptionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeUsageReportSubscriptionsRequest,
   output: DescribeUsageReportSubscriptionsResult,
   errors: [InvalidAccountStatusException, ResourceNotFoundException],
@@ -5503,7 +5503,7 @@ export const describeUsers: API.OperationMethod<
   DescribeUsersResult,
   DescribeUsersError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeUsersRequest,
   output: DescribeUsersResult,
   errors: [
@@ -5528,7 +5528,7 @@ export const describeUserStackAssociations: API.OperationMethod<
   DescribeUserStackAssociationsResult,
   DescribeUserStackAssociationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeUserStackAssociationsRequest,
   output: DescribeUserStackAssociationsResult,
   errors: [
@@ -5545,7 +5545,7 @@ export const disableUser: API.OperationMethod<
   DisableUserResult,
   DisableUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableUserRequest,
   output: DisableUserResult,
   errors: [ResourceNotFoundException],
@@ -5564,7 +5564,7 @@ export const disassociateAppBlockBuilderAppBlock: API.OperationMethod<
   DisassociateAppBlockBuilderAppBlockResult,
   DisassociateAppBlockBuilderAppBlockError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateAppBlockBuilderAppBlockRequest,
   output: DisassociateAppBlockBuilderAppBlockResult,
   errors: [
@@ -5587,7 +5587,7 @@ export const disassociateApplicationFleet: API.OperationMethod<
   DisassociateApplicationFleetResult,
   DisassociateApplicationFleetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateApplicationFleetRequest,
   output: DisassociateApplicationFleetResult,
   errors: [
@@ -5609,7 +5609,7 @@ export const disassociateApplicationFromEntitlement: API.OperationMethod<
   DisassociateApplicationFromEntitlementResult,
   DisassociateApplicationFromEntitlementError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateApplicationFromEntitlementRequest,
   output: DisassociateApplicationFromEntitlementResult,
   errors: [
@@ -5632,7 +5632,7 @@ export const disassociateFleet: API.OperationMethod<
   DisassociateFleetResult,
   DisassociateFleetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateFleetRequest,
   output: DisassociateFleetResult,
   errors: [
@@ -5656,7 +5656,7 @@ export const disassociateSoftwareFromImageBuilder: API.OperationMethod<
   DisassociateSoftwareFromImageBuilderResult,
   DisassociateSoftwareFromImageBuilderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateSoftwareFromImageBuilderRequest,
   output: DisassociateSoftwareFromImageBuilderResult,
   errors: [
@@ -5679,7 +5679,7 @@ export const drainSessionInstance: API.OperationMethod<
   DrainSessionInstanceResult,
   DrainSessionInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DrainSessionInstanceRequest,
   output: DrainSessionInstanceResult,
   errors: [
@@ -5700,7 +5700,7 @@ export const enableUser: API.OperationMethod<
   EnableUserResult,
   EnableUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableUserRequest,
   output: EnableUserResult,
   errors: [InvalidAccountStatusException, ResourceNotFoundException],
@@ -5714,7 +5714,7 @@ export const expireSession: API.OperationMethod<
   ExpireSessionResult,
   ExpireSessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExpireSessionRequest,
   output: ExpireSessionResult,
   errors: [],
@@ -5731,7 +5731,7 @@ export const getExportImageTask: API.OperationMethod<
   GetExportImageTaskResult,
   GetExportImageTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetExportImageTaskRequest,
   output: GetExportImageTaskResult,
   errors: [OperationNotPermittedException, ResourceNotFoundException],
@@ -5745,7 +5745,7 @@ export const listAssociatedFleets: API.OperationMethod<
   ListAssociatedFleetsResult,
   ListAssociatedFleetsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListAssociatedFleetsRequest,
   output: ListAssociatedFleetsResult,
   errors: [],
@@ -5759,7 +5759,7 @@ export const listAssociatedStacks: API.OperationMethod<
   ListAssociatedStacksResult,
   ListAssociatedStacksError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListAssociatedStacksRequest,
   output: ListAssociatedStacksResult,
   errors: [],
@@ -5777,7 +5777,7 @@ export const listEntitledApplications: API.OperationMethod<
   ListEntitledApplicationsResult,
   ListEntitledApplicationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListEntitledApplicationsRequest,
   output: ListEntitledApplicationsResult,
   errors: [
@@ -5797,7 +5797,7 @@ export const listExportImageTasks: API.OperationMethod<
   ListExportImageTasksResult,
   ListExportImageTasksError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListExportImageTasksRequest,
   output: ListExportImageTasksResult,
   errors: [OperationNotPermittedException],
@@ -5813,7 +5813,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException],
@@ -5841,7 +5841,7 @@ export const startAppBlockBuilder: API.OperationMethod<
   StartAppBlockBuilderResult,
   StartAppBlockBuilderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartAppBlockBuilderRequest,
   output: StartAppBlockBuilderResult,
   errors: [
@@ -5872,7 +5872,7 @@ export const startFleet: API.OperationMethod<
   StartFleetResult,
   StartFleetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartFleetRequest,
   output: StartFleetResult,
   errors: [
@@ -5901,7 +5901,7 @@ export const startImageBuilder: API.OperationMethod<
   StartImageBuilderResult,
   StartImageBuilderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartImageBuilderRequest,
   output: StartImageBuilderResult,
   errors: [
@@ -5925,7 +5925,7 @@ export const startSoftwareDeploymentToImageBuilder: API.OperationMethod<
   StartSoftwareDeploymentToImageBuilderResult,
   StartSoftwareDeploymentToImageBuilderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartSoftwareDeploymentToImageBuilderRequest,
   output: StartSoftwareDeploymentToImageBuilderResult,
   errors: [
@@ -5950,7 +5950,7 @@ export const stopAppBlockBuilder: API.OperationMethod<
   StopAppBlockBuilderResult,
   StopAppBlockBuilderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopAppBlockBuilderRequest,
   output: StopAppBlockBuilderResult,
   errors: [
@@ -5971,7 +5971,7 @@ export const stopFleet: API.OperationMethod<
   StopFleetResult,
   StopFleetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopFleetRequest,
   output: StopFleetResult,
   errors: [ConcurrentModificationException, ResourceNotFoundException],
@@ -5989,7 +5989,7 @@ export const stopImageBuilder: API.OperationMethod<
   StopImageBuilderResult,
   StopImageBuilderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopImageBuilderRequest,
   output: StopImageBuilderResult,
   errors: [
@@ -6019,7 +6019,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -6041,7 +6041,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException],
@@ -6071,7 +6071,7 @@ export const updateAppBlockBuilder: API.OperationMethod<
   UpdateAppBlockBuilderResult,
   UpdateAppBlockBuilderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAppBlockBuilderRequest,
   output: UpdateAppBlockBuilderResult,
   errors: [
@@ -6100,7 +6100,7 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationResult,
   UpdateApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateApplicationRequest,
   output: UpdateApplicationResult,
   errors: [
@@ -6125,7 +6125,7 @@ export const updateDirectoryConfig: API.OperationMethod<
   UpdateDirectoryConfigResult,
   UpdateDirectoryConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDirectoryConfigRequest,
   output: UpdateDirectoryConfigResult,
   errors: [
@@ -6151,7 +6151,7 @@ export const updateEntitlement: API.OperationMethod<
   UpdateEntitlementResult,
   UpdateEntitlementError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEntitlementRequest,
   output: UpdateEntitlementResult,
   errors: [
@@ -6204,7 +6204,7 @@ export const updateFleet: API.OperationMethod<
   UpdateFleetResult,
   UpdateFleetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateFleetRequest,
   output: UpdateFleetResult,
   errors: [
@@ -6234,7 +6234,7 @@ export const updateImagePermissions: API.OperationMethod<
   UpdateImagePermissionsResult,
   UpdateImagePermissionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateImagePermissionsRequest,
   output: UpdateImagePermissionsResult,
   errors: [
@@ -6262,7 +6262,7 @@ export const updateStack: API.OperationMethod<
   UpdateStackResult,
   UpdateStackError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateStackRequest,
   output: UpdateStackResult,
   errors: [
@@ -6293,7 +6293,7 @@ export const updateThemeForStack: API.OperationMethod<
   UpdateThemeForStackResult,
   UpdateThemeForStackError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateThemeForStackRequest,
   output: UpdateThemeForStackResult,
   errors: [

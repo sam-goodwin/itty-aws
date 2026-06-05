@@ -2329,7 +2329,7 @@ export const createStarterMappingTemplate: API.OperationMethod<
   CreateStarterMappingTemplateResponse,
   CreateStarterMappingTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateStarterMappingTemplateRequest,
   output: CreateStarterMappingTemplateResponse,
   errors: [
@@ -2363,7 +2363,7 @@ export const generateMapping: API.OperationMethod<
   GenerateMappingResponse,
   GenerateMappingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GenerateMappingRequest,
   output: GenerateMappingResponse,
   errors: [
@@ -2390,7 +2390,7 @@ export const getTransformerJob: API.OperationMethod<
   GetTransformerJobResponse,
   GetTransformerJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTransformerJobRequest,
   output: GetTransformerJobResponse,
   errors: [
@@ -2414,7 +2414,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -2443,7 +2443,7 @@ export const startTransformerJob: API.OperationMethod<
   StartTransformerJobResponse,
   StartTransformerJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartTransformerJobRequest,
   output: StartTransformerJobResponse,
   errors: [
@@ -2471,7 +2471,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -2496,7 +2496,7 @@ export const testConversion: API.OperationMethod<
   TestConversionResponse,
   TestConversionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestConversionRequest,
   output: TestConversionResponse,
   errors: [
@@ -2522,7 +2522,7 @@ export const testMapping: API.OperationMethod<
   TestMappingResponse,
   TestMappingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestMappingRequest,
   output: TestMappingResponse,
   errors: [
@@ -2548,7 +2548,7 @@ export const testParsing: API.OperationMethod<
   TestParsingResponse,
   TestParsingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestParsingRequest,
   output: TestParsingResponse,
   errors: [
@@ -2572,7 +2572,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -2598,7 +2598,7 @@ export const createCapability: API.OperationMethod<
   CreateCapabilityResponse,
   CreateCapabilityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCapabilityRequest,
   output: CreateCapabilityResponse,
   errors: [
@@ -2626,7 +2626,7 @@ export const getCapability: API.OperationMethod<
   GetCapabilityResponse,
   GetCapabilityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCapabilityRequest,
   output: GetCapabilityResponse,
   errors: [
@@ -2654,7 +2654,7 @@ export const updateCapability: API.OperationMethod<
   UpdateCapabilityResponse,
   UpdateCapabilityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCapabilityRequest,
   output: UpdateCapabilityResponse,
   errors: [
@@ -2683,7 +2683,7 @@ export const deleteCapability: API.OperationMethod<
   DeleteCapabilityResponse,
   DeleteCapabilityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCapabilityRequest,
   output: DeleteCapabilityResponse,
   errors: [
@@ -2724,7 +2724,7 @@ export const listCapabilities: API.OperationMethod<
     ListCapabilitiesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCapabilitiesRequest,
   output: ListCapabilitiesResponse,
   errors: [
@@ -2757,7 +2757,7 @@ export const createPartnership: API.OperationMethod<
   CreatePartnershipResponse,
   CreatePartnershipError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePartnershipRequest,
   output: CreatePartnershipResponse,
   errors: [
@@ -2785,7 +2785,7 @@ export const getPartnership: API.OperationMethod<
   GetPartnershipResponse,
   GetPartnershipError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPartnershipRequest,
   output: GetPartnershipResponse,
   errors: [
@@ -2813,7 +2813,7 @@ export const updatePartnership: API.OperationMethod<
   UpdatePartnershipResponse,
   UpdatePartnershipError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePartnershipRequest,
   output: UpdatePartnershipResponse,
   errors: [
@@ -2842,7 +2842,7 @@ export const deletePartnership: API.OperationMethod<
   DeletePartnershipResponse,
   DeletePartnershipError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePartnershipRequest,
   output: DeletePartnershipResponse,
   errors: [
@@ -2884,7 +2884,7 @@ export const listPartnerships: API.OperationMethod<
     ListPartnershipsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPartnershipsRequest,
   output: ListPartnershipsResponse,
   errors: [
@@ -2918,7 +2918,7 @@ export const createProfile: API.OperationMethod<
   CreateProfileResponse,
   CreateProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProfileRequest,
   output: CreateProfileResponse,
   errors: [
@@ -2946,7 +2946,7 @@ export const getProfile: API.OperationMethod<
   GetProfileResponse,
   GetProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProfileRequest,
   output: GetProfileResponse,
   errors: [
@@ -2974,7 +2974,7 @@ export const updateProfile: API.OperationMethod<
   UpdateProfileResponse,
   UpdateProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateProfileRequest,
   output: UpdateProfileResponse,
   errors: [
@@ -3003,7 +3003,7 @@ export const deleteProfile: API.OperationMethod<
   DeleteProfileResponse,
   DeleteProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProfileRequest,
   output: DeleteProfileResponse,
   errors: [
@@ -3044,7 +3044,7 @@ export const listProfiles: API.OperationMethod<
     ListProfilesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProfilesRequest,
   output: ListProfilesResponse,
   errors: [
@@ -3089,7 +3089,7 @@ export const createTransformer: API.OperationMethod<
   CreateTransformerResponse,
   CreateTransformerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTransformerRequest,
   output: CreateTransformerResponse,
   errors: [
@@ -3117,7 +3117,7 @@ export const getTransformer: API.OperationMethod<
   GetTransformerResponse,
   GetTransformerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTransformerRequest,
   output: GetTransformerResponse,
   errors: [
@@ -3145,7 +3145,7 @@ export const updateTransformer: API.OperationMethod<
   UpdateTransformerResponse,
   UpdateTransformerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTransformerRequest,
   output: UpdateTransformerResponse,
   errors: [
@@ -3174,7 +3174,7 @@ export const deleteTransformer: API.OperationMethod<
   DeleteTransformerResponse,
   DeleteTransformerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTransformerRequest,
   output: DeleteTransformerResponse,
   errors: [
@@ -3215,7 +3215,7 @@ export const listTransformers: API.OperationMethod<
     ListTransformersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTransformersRequest,
   output: ListTransformersResponse,
   errors: [

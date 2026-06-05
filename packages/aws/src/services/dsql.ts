@@ -636,7 +636,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceOutput,
   ListTagsForResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [ResourceNotFoundException],
@@ -653,7 +653,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceResponse,
   errors: [ResourceNotFoundException, ServiceQuotaExceededException],
@@ -667,7 +667,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException],
@@ -727,7 +727,7 @@ export const createCluster: API.OperationMethod<
   CreateClusterOutput,
   CreateClusterError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateClusterInput,
   output: CreateClusterOutput,
   errors: [
@@ -745,7 +745,7 @@ export const getCluster: API.OperationMethod<
   GetClusterOutput,
   GetClusterError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetClusterInput,
   output: GetClusterOutput,
   errors: [ResourceNotFoundException],
@@ -817,7 +817,7 @@ export const updateCluster: API.OperationMethod<
   UpdateClusterOutput,
   UpdateClusterError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateClusterInput,
   output: UpdateClusterOutput,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
@@ -834,7 +834,7 @@ export const deleteCluster: API.OperationMethod<
   DeleteClusterOutput,
   DeleteClusterError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteClusterInput,
   output: DeleteClusterOutput,
   errors: [ConflictException, ResourceNotFoundException],
@@ -863,7 +863,7 @@ export const listClusters: API.OperationMethod<
     ListClustersError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListClustersInput,
   output: ListClustersOutput,
   errors: [ResourceNotFoundException],
@@ -887,7 +887,7 @@ export const deleteClusterPolicy: API.OperationMethod<
   DeleteClusterPolicyOutput,
   DeleteClusterPolicyError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteClusterPolicyInput,
   output: DeleteClusterPolicyOutput,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
@@ -904,7 +904,7 @@ export const getClusterPolicy: API.OperationMethod<
   GetClusterPolicyOutput,
   GetClusterPolicyError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetClusterPolicyInput,
   output: GetClusterPolicyOutput,
   errors: [ResourceNotFoundException, ValidationException],
@@ -923,7 +923,7 @@ export const getVpcEndpointServiceName: API.OperationMethod<
   GetVpcEndpointServiceNameOutput,
   GetVpcEndpointServiceNameError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetVpcEndpointServiceNameInput,
   output: GetVpcEndpointServiceNameOutput,
   errors: [
@@ -946,7 +946,7 @@ export const putClusterPolicy: API.OperationMethod<
   PutClusterPolicyOutput,
   PutClusterPolicyError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutClusterPolicyInput,
   output: PutClusterPolicyOutput,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],

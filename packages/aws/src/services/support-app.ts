@@ -530,7 +530,7 @@ export const createSlackChannelConfiguration: API.OperationMethod<
   CreateSlackChannelConfigurationResult,
   CreateSlackChannelConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSlackChannelConfigurationRequest,
   output: CreateSlackChannelConfigurationResult,
   errors: [
@@ -555,7 +555,7 @@ export const deleteAccountAlias: API.OperationMethod<
   DeleteAccountAliasResult,
   DeleteAccountAliasError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccountAliasRequest,
   output: DeleteAccountAliasResult,
   errors: [
@@ -580,7 +580,7 @@ export const deleteSlackChannelConfiguration: API.OperationMethod<
   DeleteSlackChannelConfigurationResult,
   DeleteSlackChannelConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSlackChannelConfigurationRequest,
   output: DeleteSlackChannelConfigurationResult,
   errors: [
@@ -607,7 +607,7 @@ export const deleteSlackWorkspaceConfiguration: API.OperationMethod<
   DeleteSlackWorkspaceConfigurationResult,
   DeleteSlackWorkspaceConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSlackWorkspaceConfigurationRequest,
   output: DeleteSlackWorkspaceConfigurationResult,
   errors: [
@@ -628,7 +628,7 @@ export const getAccountAlias: API.OperationMethod<
   GetAccountAliasResult,
   GetAccountAliasError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountAliasRequest,
   output: GetAccountAliasResult,
   errors: [InternalServerException],
@@ -660,7 +660,7 @@ export const listSlackChannelConfigurations: API.OperationMethod<
     ListSlackChannelConfigurationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSlackChannelConfigurationsRequest,
   output: ListSlackChannelConfigurationsResult,
   errors: [AccessDeniedException, InternalServerException],
@@ -693,7 +693,7 @@ export const listSlackWorkspaceConfigurations: API.OperationMethod<
     ListSlackWorkspaceConfigurationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSlackWorkspaceConfigurationsRequest,
   output: ListSlackWorkspaceConfigurationsResult,
   errors: [AccessDeniedException, InternalServerException],
@@ -714,7 +714,7 @@ export const putAccountAlias: API.OperationMethod<
   PutAccountAliasResult,
   PutAccountAliasError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutAccountAliasRequest,
   output: PutAccountAliasResult,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
@@ -758,7 +758,7 @@ export const registerSlackWorkspaceForOrganization: API.OperationMethod<
   RegisterSlackWorkspaceForOrganizationResult,
   RegisterSlackWorkspaceForOrganizationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterSlackWorkspaceForOrganizationRequest,
   output: RegisterSlackWorkspaceForOrganizationResult,
   errors: [
@@ -784,7 +784,7 @@ export const updateSlackChannelConfiguration: API.OperationMethod<
   UpdateSlackChannelConfigurationResult,
   UpdateSlackChannelConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSlackChannelConfigurationRequest,
   output: UpdateSlackChannelConfigurationResult,
   errors: [

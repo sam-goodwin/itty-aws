@@ -941,7 +941,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceOutput,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [
@@ -963,7 +963,7 @@ export const tagResource: API.OperationMethod<
   TagResourceOutput,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
   errors: [
@@ -985,7 +985,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceOutput,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
   errors: [
@@ -1008,7 +1008,7 @@ export const createDeployment: API.OperationMethod<
   CreateDeploymentOutput,
   CreateDeploymentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDeploymentInput,
   output: CreateDeploymentOutput,
   errors: [
@@ -1031,7 +1031,7 @@ export const getDeployment: API.OperationMethod<
   GetDeploymentOutput,
   GetDeploymentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDeploymentInput,
   output: GetDeploymentOutput,
   errors: [
@@ -1054,7 +1054,7 @@ export const updateDeployment: API.OperationMethod<
   UpdateDeploymentOutput,
   UpdateDeploymentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDeploymentInput,
   output: UpdateDeploymentOutput,
   errors: [
@@ -1078,7 +1078,7 @@ export const deleteDeployment: API.OperationMethod<
   DeleteDeploymentOutput,
   DeleteDeploymentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDeploymentInput,
   output: DeleteDeploymentOutput,
   errors: [
@@ -1115,7 +1115,7 @@ export const listDeployments: API.OperationMethod<
     ListDeploymentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDeploymentsInput,
   output: ListDeploymentsOutput,
   errors: [InternalServerException, ValidationException],
@@ -1154,7 +1154,7 @@ export const listDeploymentEvents: API.OperationMethod<
     ListDeploymentEventsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDeploymentEventsInput,
   output: ListDeploymentEventsOutput,
   errors: [
@@ -1182,7 +1182,7 @@ export const getWorkload: API.OperationMethod<
   GetWorkloadOutput,
   GetWorkloadError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetWorkloadInput,
   output: GetWorkloadOutput,
   errors: [
@@ -1218,7 +1218,7 @@ export const listWorkloads: API.OperationMethod<
     ListWorkloadsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkloadsInput,
   output: ListWorkloadsOutput,
   errors: [InternalServerException, ValidationException],
@@ -1242,7 +1242,7 @@ export const getWorkloadDeploymentPattern: API.OperationMethod<
   GetWorkloadDeploymentPatternOutput,
   GetWorkloadDeploymentPatternError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetWorkloadDeploymentPatternInput,
   output: GetWorkloadDeploymentPatternOutput,
   errors: [
@@ -1279,7 +1279,7 @@ export const listWorkloadDeploymentPatterns: API.OperationMethod<
     ListWorkloadDeploymentPatternsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkloadDeploymentPatternsInput,
   output: ListWorkloadDeploymentPatternsOutput,
   errors: [
@@ -1306,7 +1306,7 @@ export const getDeploymentPatternVersion: API.OperationMethod<
   GetDeploymentPatternVersionOutput,
   GetDeploymentPatternVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDeploymentPatternVersionInput,
   output: GetDeploymentPatternVersionOutput,
   errors: [InternalServerException, ResourceNotFoundException],
@@ -1339,7 +1339,7 @@ export const listDeploymentPatternVersions: API.OperationMethod<
     ListDeploymentPatternVersionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDeploymentPatternVersionsInput,
   output: ListDeploymentPatternVersionsOutput,
   errors: [

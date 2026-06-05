@@ -1267,7 +1267,7 @@ export const batchGetInvoiceProfile: API.OperationMethod<
   BatchGetInvoiceProfileResponse,
   BatchGetInvoiceProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetInvoiceProfileRequest,
   output: BatchGetInvoiceProfileResponse,
   errors: [
@@ -1292,7 +1292,7 @@ export const createInvoiceUnit: API.OperationMethod<
   CreateInvoiceUnitResponse,
   CreateInvoiceUnitError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateInvoiceUnitRequest,
   output: CreateInvoiceUnitResponse,
   errors: [
@@ -1318,7 +1318,7 @@ export const createProcurementPortalPreference: API.OperationMethod<
   CreateProcurementPortalPreferenceResponse,
   CreateProcurementPortalPreferenceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProcurementPortalPreferenceRequest,
   output: CreateProcurementPortalPreferenceResponse,
   errors: [
@@ -1345,7 +1345,7 @@ export const deleteInvoiceUnit: API.OperationMethod<
   DeleteInvoiceUnitResponse,
   DeleteInvoiceUnitError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteInvoiceUnitRequest,
   output: DeleteInvoiceUnitResponse,
   errors: [
@@ -1372,7 +1372,7 @@ export const deleteProcurementPortalPreference: API.OperationMethod<
   DeleteProcurementPortalPreferenceResponse,
   DeleteProcurementPortalPreferenceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProcurementPortalPreferenceRequest,
   output: DeleteProcurementPortalPreferenceResponse,
   errors: [
@@ -1399,7 +1399,7 @@ export const getInvoicePDF: API.OperationMethod<
   GetInvoicePDFResponse,
   GetInvoicePDFError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInvoicePDFRequest,
   output: GetInvoicePDFResponse,
   errors: [
@@ -1425,7 +1425,7 @@ export const getInvoiceUnit: API.OperationMethod<
   GetInvoiceUnitResponse,
   GetInvoiceUnitError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInvoiceUnitRequest,
   output: GetInvoiceUnitResponse,
   errors: [
@@ -1453,7 +1453,7 @@ export const getProcurementPortalPreference: API.OperationMethod<
   GetProcurementPortalPreferenceResponse,
   GetProcurementPortalPreferenceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProcurementPortalPreferenceRequest,
   output: GetProcurementPortalPreferenceResponse,
   errors: [
@@ -1496,7 +1496,7 @@ export const listInvoiceSummaries: API.OperationMethod<
     ListInvoiceSummariesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInvoiceSummariesRequest,
   output: ListInvoiceSummariesResponse,
   errors: [
@@ -1542,7 +1542,7 @@ export const listInvoiceUnits: API.OperationMethod<
     ListInvoiceUnitsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInvoiceUnitsRequest,
   output: ListInvoiceUnitsResponse,
   errors: [
@@ -1589,7 +1589,7 @@ export const listProcurementPortalPreferences: API.OperationMethod<
     ListProcurementPortalPreferencesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProcurementPortalPreferencesRequest,
   output: ListProcurementPortalPreferencesResponse,
   errors: [
@@ -1622,7 +1622,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -1650,7 +1650,7 @@ export const putProcurementPortalPreference: API.OperationMethod<
   PutProcurementPortalPreferenceResponse,
   PutProcurementPortalPreferenceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutProcurementPortalPreferenceRequest,
   output: PutProcurementPortalPreferenceResponse,
   errors: [
@@ -1679,7 +1679,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -1706,7 +1706,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -1732,7 +1732,7 @@ export const updateInvoiceUnit: API.OperationMethod<
   UpdateInvoiceUnitResponse,
   UpdateInvoiceUnitError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateInvoiceUnitRequest,
   output: UpdateInvoiceUnitResponse,
   errors: [
@@ -1760,7 +1760,7 @@ export const updateProcurementPortalPreferenceStatus: API.OperationMethod<
   UpdateProcurementPortalPreferenceStatusResponse,
   UpdateProcurementPortalPreferenceStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateProcurementPortalPreferenceStatusRequest,
   output: UpdateProcurementPortalPreferenceStatusResponse,
   errors: [

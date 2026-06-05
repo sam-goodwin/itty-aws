@@ -21,41 +21,39 @@ export interface SubmitBrandProtectionRequest {
   accountId: string;
 }
 
-export const SubmitBrandProtectionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/brand-protection/submit",
-    }),
-  ) as unknown as Schema.Schema<SubmitBrandProtectionRequest>;
+export const SubmitBrandProtectionRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/accounts/{account_id}/brand-protection/submit",
+  }),
+) as unknown as Schema.Schema<SubmitBrandProtectionRequest>;
 
 export interface SubmitBrandProtectionResponse {
   skippedUrls?: Record<string, unknown>[] | null;
   submittedUrls?: Record<string, unknown>[] | null;
 }
 
-export const SubmitBrandProtectionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    skippedUrls: Schema.optional(
-      Schema.Union([
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-        Schema.Null,
-      ]),
-    ),
-    submittedUrls: Schema.optional(
-      Schema.Union([
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-        Schema.Null,
-      ]),
-    ),
-  }).pipe(
-    Schema.encodeKeys({
-      skippedUrls: "skipped_urls",
-      submittedUrls: "submitted_urls",
-    }),
-  ) as unknown as Schema.Schema<SubmitBrandProtectionResponse>;
+export const SubmitBrandProtectionResponse = /*@__PURE__*/ Schema.Struct({
+  skippedUrls: Schema.optional(
+    Schema.Union([
+      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+      Schema.Null,
+    ]),
+  ),
+  submittedUrls: Schema.optional(
+    Schema.Union([
+      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+      Schema.Null,
+    ]),
+  ),
+}).pipe(
+  Schema.encodeKeys({
+    skippedUrls: "skipped_urls",
+    submittedUrls: "submitted_urls",
+  }),
+) as unknown as Schema.Schema<SubmitBrandProtectionResponse>;
 
 export type SubmitBrandProtectionError = DefaultErrors;
 
@@ -64,7 +62,7 @@ export const submitBrandProtection: API.OperationMethod<
   SubmitBrandProtectionResponse,
   SubmitBrandProtectionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SubmitBrandProtectionRequest,
   output: SubmitBrandProtectionResponse,
   errors: [],
@@ -78,24 +76,22 @@ export interface UrlInfoBrandProtectionRequest {
   accountId: string;
 }
 
-export const UrlInfoBrandProtectionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/brand-protection/url-info",
-    }),
-  ) as unknown as Schema.Schema<UrlInfoBrandProtectionRequest>;
+export const UrlInfoBrandProtectionRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/brand-protection/url-info",
+  }),
+) as unknown as Schema.Schema<UrlInfoBrandProtectionRequest>;
 
 export interface UrlInfoBrandProtectionResponse {
   result: Record<string, unknown>[];
 }
 
-export const UrlInfoBrandProtectionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-  }) as unknown as Schema.Schema<UrlInfoBrandProtectionResponse>;
+export const UrlInfoBrandProtectionResponse = /*@__PURE__*/ Schema.Struct({
+  result: Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+}) as unknown as Schema.Schema<UrlInfoBrandProtectionResponse>;
 
 export type UrlInfoBrandProtectionError = DefaultErrors;
 
@@ -104,7 +100,7 @@ export const urlInfoBrandProtection: API.PaginatedOperationMethod<
   UrlInfoBrandProtectionResponse,
   UrlInfoBrandProtectionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: UrlInfoBrandProtectionRequest,
   output: UrlInfoBrandProtectionResponse,
   errors: [],
@@ -131,7 +127,7 @@ export interface CreateLogoRequest {
   image?: File | Blob;
 }
 
-export const CreateLogoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateLogoRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   matchType: Schema.optional(Schema.String).pipe(T.HttpQuery("match_type")),
   tag: Schema.optional(Schema.String).pipe(T.HttpQuery("tag")),
@@ -151,7 +147,7 @@ export interface CreateLogoResponse {
   uploadPath?: string | null;
 }
 
-export const CreateLogoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateLogoResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   tag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   uploadPath: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -166,7 +162,7 @@ export const createLogo: API.OperationMethod<
   CreateLogoResponse,
   CreateLogoError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLogoRequest,
   output: CreateLogoResponse,
   errors: [],
@@ -177,7 +173,7 @@ export interface DeleteLogoRequest {
   accountId: string;
 }
 
-export const DeleteLogoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteLogoRequest = /*@__PURE__*/ Schema.Struct({
   logoId: Schema.String.pipe(T.HttpPath("logoId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -190,7 +186,7 @@ export const DeleteLogoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteLogoResponse = unknown;
 
 export const DeleteLogoResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeleteLogoResponse>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeleteLogoResponse>;
 
 export type DeleteLogoError = DefaultErrors;
 
@@ -199,7 +195,7 @@ export const deleteLogo: API.OperationMethod<
   DeleteLogoResponse,
   DeleteLogoError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLogoRequest,
   output: DeleteLogoResponse,
   errors: [],
@@ -220,7 +216,7 @@ export interface GetLogoMatchRequest {
   offset?: string;
 }
 
-export const GetLogoMatchRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetLogoMatchRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   limit: Schema.optional(Schema.String).pipe(T.HttpQuery("limit")),
   logoId: Schema.optional(Schema.Array(Schema.String)).pipe(
@@ -239,7 +235,7 @@ export interface GetLogoMatchResponse {
   total?: number | null;
 }
 
-export const GetLogoMatchResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetLogoMatchResponse = /*@__PURE__*/ Schema.Struct({
   matches: Schema.optional(
     Schema.Union([
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -256,7 +252,7 @@ export const getLogoMatch: API.OperationMethod<
   GetLogoMatchResponse,
   GetLogoMatchError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLogoMatchRequest,
   output: GetLogoMatchResponse,
   errors: [],
@@ -273,36 +269,34 @@ export interface DownloadLogoMatchRequest {
   offset?: string;
 }
 
-export const DownloadLogoMatchRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    limit: Schema.optional(Schema.String).pipe(T.HttpQuery("limit")),
-    logoId: Schema.optional(Schema.Array(Schema.String)).pipe(
-      T.HttpQuery("logo_id"),
-    ),
-    offset: Schema.optional(Schema.String).pipe(T.HttpQuery("offset")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/brand-protection/logo-matches/download",
-    }),
-  ) as unknown as Schema.Schema<DownloadLogoMatchRequest>;
+export const DownloadLogoMatchRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  limit: Schema.optional(Schema.String).pipe(T.HttpQuery("limit")),
+  logoId: Schema.optional(Schema.Array(Schema.String)).pipe(
+    T.HttpQuery("logo_id"),
+  ),
+  offset: Schema.optional(Schema.String).pipe(T.HttpQuery("offset")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/brand-protection/logo-matches/download",
+  }),
+) as unknown as Schema.Schema<DownloadLogoMatchRequest>;
 
 export interface DownloadLogoMatchResponse {
   matches?: Record<string, unknown>[] | null;
   total?: number | null;
 }
 
-export const DownloadLogoMatchResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    matches: Schema.optional(
-      Schema.Union([
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-        Schema.Null,
-      ]),
-    ),
-    total: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  }) as unknown as Schema.Schema<DownloadLogoMatchResponse>;
+export const DownloadLogoMatchResponse = /*@__PURE__*/ Schema.Struct({
+  matches: Schema.optional(
+    Schema.Union([
+      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+      Schema.Null,
+    ]),
+  ),
+  total: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+}) as unknown as Schema.Schema<DownloadLogoMatchResponse>;
 
 export type DownloadLogoMatchError = DefaultErrors;
 
@@ -311,7 +305,7 @@ export const downloadLogoMatch: API.OperationMethod<
   DownloadLogoMatchResponse,
   DownloadLogoMatchError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DownloadLogoMatchRequest,
   output: DownloadLogoMatchResponse,
   errors: [],
@@ -334,7 +328,7 @@ export interface GetMatchRequest {
   offset?: number;
 }
 
-export const GetMatchRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetMatchRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   id: Schema.optional(Schema.String).pipe(T.HttpQuery("id")),
   includeDomainId: Schema.optional(Schema.Boolean).pipe(
@@ -354,7 +348,7 @@ export interface GetMatchResponse {
   total?: number | null;
 }
 
-export const GetMatchResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetMatchResponse = /*@__PURE__*/ Schema.Struct({
   matches: Schema.optional(
     Schema.Union([
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -371,7 +365,7 @@ export const getMatch: API.OperationMethod<
   GetMatchResponse,
   GetMatchError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMatchRequest,
   output: GetMatchResponse,
   errors: [],
@@ -390,7 +384,7 @@ export interface DownloadMatchRequest {
   offset?: number;
 }
 
-export const DownloadMatchRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DownloadMatchRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   id: Schema.optional(Schema.String).pipe(T.HttpQuery("id")),
   includeDomainId: Schema.optional(Schema.Boolean).pipe(
@@ -410,7 +404,7 @@ export interface DownloadMatchResponse {
   total?: number | null;
 }
 
-export const DownloadMatchResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DownloadMatchResponse = /*@__PURE__*/ Schema.Struct({
   matches: Schema.optional(
     Schema.Union([
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -427,7 +421,7 @@ export const downloadMatch: API.OperationMethod<
   DownloadMatchResponse,
   DownloadMatchError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DownloadMatchRequest,
   output: DownloadMatchResponse,
   errors: [],
@@ -458,7 +452,7 @@ export interface CreateQueryRequest {
   bodyTag?: string;
 }
 
-export const CreateQueryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateQueryRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   id: Schema.optional(Schema.String).pipe(T.HttpQuery("id")),
   queryScan: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("query_scan")),
@@ -485,7 +479,7 @@ export const CreateQueryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateQueryResponse = unknown;
 
 export const CreateQueryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<CreateQueryResponse>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<CreateQueryResponse>;
 
 export type CreateQueryError = DefaultErrors;
 
@@ -494,7 +488,7 @@ export const createQuery: API.OperationMethod<
   CreateQueryResponse,
   CreateQueryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateQueryRequest,
   output: CreateQueryResponse,
   errors: [],
@@ -511,7 +505,7 @@ export interface DeleteQueryRequest {
   tag?: string;
 }
 
-export const DeleteQueryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteQueryRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   id: Schema.optional(Schema.String).pipe(T.HttpQuery("id")),
   scan: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("scan")),
@@ -526,7 +520,7 @@ export const DeleteQueryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteQueryResponse = unknown;
 
 export const DeleteQueryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeleteQueryResponse>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeleteQueryResponse>;
 
 export type DeleteQueryError = DefaultErrors;
 
@@ -535,7 +529,7 @@ export const deleteQuery: API.OperationMethod<
   DeleteQueryResponse,
   DeleteQueryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteQueryRequest,
   output: DeleteQueryResponse,
   errors: [],
@@ -548,7 +542,7 @@ export interface BulkQueryRequest {
   queries?: Record<string, unknown>[];
 }
 
-export const BulkQueryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BulkQueryRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   queries: Schema.optional(
     Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -563,7 +557,7 @@ export const BulkQueryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type BulkQueryResponse = unknown;
 
 export const BulkQueryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<BulkQueryResponse>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<BulkQueryResponse>;
 
 export type BulkQueryError = DefaultErrors;
 
@@ -572,7 +566,7 @@ export const bulkQuery: API.OperationMethod<
   BulkQueryResponse,
   BulkQueryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BulkQueryRequest,
   output: BulkQueryResponse,
   errors: [],
@@ -591,7 +585,7 @@ export interface GetV2LogoRequest {
   download?: string;
 }
 
-export const GetV2LogoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetV2LogoRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   id: Schema.optional(Schema.String).pipe(T.HttpQuery("id")),
   download: Schema.optional(Schema.String).pipe(T.HttpQuery("download")),
@@ -612,7 +606,7 @@ export type GetV2LogoResponse = {
   imageData?: string | null;
 }[];
 
-export const GetV2LogoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const GetV2LogoResponse = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     id: Schema.Number,
     r2Path: Schema.String,
@@ -641,7 +635,7 @@ export const getV2Logo: API.OperationMethod<
   GetV2LogoResponse,
   GetV2LogoError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetV2LogoRequest,
   output: GetV2LogoResponse,
   errors: [],
@@ -660,7 +654,7 @@ export interface CreateV2LogoRequest {
   searchLookback?: boolean;
 }
 
-export const CreateV2LogoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateV2LogoRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   imageData: Schema.String,
   similarityThreshold: Schema.Number,
@@ -685,7 +679,7 @@ export interface CreateV2LogoResponse {
   queryId?: number | null;
 }
 
-export const CreateV2LogoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateV2LogoResponse = /*@__PURE__*/ Schema.Struct({
   message: Schema.String,
   success: Schema.Boolean,
   queryId: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -704,7 +698,7 @@ export const createV2Logo: API.OperationMethod<
   CreateV2LogoResponse,
   CreateV2LogoError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateV2LogoRequest,
   output: CreateV2LogoResponse,
   errors: [],
@@ -715,7 +709,7 @@ export interface DeleteV2LogoRequest {
   accountId: string;
 }
 
-export const DeleteV2LogoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteV2LogoRequest = /*@__PURE__*/ Schema.Struct({
   queryId: Schema.String.pipe(T.HttpPath("queryId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -730,7 +724,7 @@ export interface DeleteV2LogoResponse {
   success: boolean;
 }
 
-export const DeleteV2LogoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteV2LogoResponse = /*@__PURE__*/ Schema.Struct({
   message: Schema.String,
   success: Schema.Boolean,
 }) as unknown as Schema.Schema<DeleteV2LogoResponse>;
@@ -742,7 +736,7 @@ export const deleteV2Logo: API.OperationMethod<
   DeleteV2LogoResponse,
   DeleteV2LogoError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteV2LogoRequest,
   output: DeleteV2LogoResponse,
   errors: [],
@@ -774,7 +768,7 @@ export interface GetV2LogoMatchRequest {
     | (string & {});
 }
 
-export const GetV2LogoMatchRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetV2LogoMatchRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   queryId: Schema.String.pipe(T.HttpQuery("query_id")),
   download: Schema.optional(Schema.String).pipe(T.HttpQuery("download")),
@@ -811,38 +805,34 @@ export interface GetV2LogoMatchResponse {
   total: number;
 }
 
-export const GetV2LogoMatchResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    matches: Schema.Array(
-      Schema.Struct({
-        id: Schema.Number,
-        domain: Schema.Union([Schema.String, Schema.Null]),
-        matchedAt: Schema.Union([Schema.String, Schema.Null]),
-        queryId: Schema.Number,
-        registrar: Schema.Union([Schema.String, Schema.Null]),
-        similarityScore: Schema.Number,
-        urlScanId: Schema.Union([Schema.String, Schema.Null]),
-        contentType: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        imageData: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          domain: "domain",
-          matchedAt: "matched_at",
-          queryId: "query_id",
-          registrar: "registrar",
-          similarityScore: "similarity_score",
-          urlScanId: "url_scan_id",
-          contentType: "content_type",
-          imageData: "image_data",
-        }),
-      ),
+export const GetV2LogoMatchResponse = /*@__PURE__*/ Schema.Struct({
+  matches: Schema.Array(
+    Schema.Struct({
+      id: Schema.Number,
+      domain: Schema.Union([Schema.String, Schema.Null]),
+      matchedAt: Schema.Union([Schema.String, Schema.Null]),
+      queryId: Schema.Number,
+      registrar: Schema.Union([Schema.String, Schema.Null]),
+      similarityScore: Schema.Number,
+      urlScanId: Schema.Union([Schema.String, Schema.Null]),
+      contentType: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      imageData: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        domain: "domain",
+        matchedAt: "matched_at",
+        queryId: "query_id",
+        registrar: "registrar",
+        similarityScore: "similarity_score",
+        urlScanId: "url_scan_id",
+        contentType: "content_type",
+        imageData: "image_data",
+      }),
     ),
-    total: Schema.Number,
-  },
-) as unknown as Schema.Schema<GetV2LogoMatchResponse>;
+  ),
+  total: Schema.Number,
+}) as unknown as Schema.Schema<GetV2LogoMatchResponse>;
 
 export type GetV2LogoMatchError = DefaultErrors;
 
@@ -851,7 +841,7 @@ export const getV2LogoMatch: API.OperationMethod<
   GetV2LogoMatchResponse,
   GetV2LogoMatchError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetV2LogoMatchRequest,
   output: GetV2LogoMatchResponse,
   errors: [],
@@ -882,7 +872,7 @@ export interface GetV2MatchRequest {
   orderBy?: "domain" | "first_seen" | "registrar" | (string & {});
 }
 
-export const GetV2MatchRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetV2MatchRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   queryId: Schema.Array(Schema.String).pipe(T.HttpQuery("query_id")),
   domainSearch: Schema.optional(Schema.String).pipe(
@@ -934,7 +924,7 @@ export interface GetV2MatchResponse {
   total: number;
 }
 
-export const GetV2MatchResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetV2MatchResponse = /*@__PURE__*/ Schema.Struct({
   matches: Schema.Array(
     Schema.Struct({
       domain: Schema.String,
@@ -994,7 +984,7 @@ export const getV2Match: API.OperationMethod<
   GetV2MatchResponse,
   GetV2MatchError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetV2MatchRequest,
   output: GetV2MatchResponse,
   errors: [],
@@ -1011,7 +1001,7 @@ export interface GetV2QueryRequest {
   id?: string;
 }
 
-export const GetV2QueryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetV2QueryRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   id: Schema.optional(Schema.String).pipe(T.HttpQuery("id")),
 }).pipe(
@@ -1034,7 +1024,7 @@ export type GetV2QueryResponse = {
   updated: string;
 }[];
 
-export const GetV2QueryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const GetV2QueryResponse = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     created: Schema.String,
     parameters: Schema.Union([
@@ -1084,7 +1074,7 @@ export const getV2Query: API.OperationMethod<
   GetV2QueryResponse,
   GetV2QueryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetV2QueryRequest,
   output: GetV2QueryResponse,
   errors: [],

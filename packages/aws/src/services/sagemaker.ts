@@ -35707,7 +35707,7 @@ export const addAssociation: API.OperationMethod<
   AddAssociationResponse,
   AddAssociationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddAssociationRequest,
   output: AddAssociationResponse,
   errors: [ResourceLimitExceeded, ResourceNotFound],
@@ -35727,7 +35727,7 @@ export const addTags: API.OperationMethod<
   AddTagsOutput,
   AddTagsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddTagsInput,
   output: AddTagsOutput,
   errors: [],
@@ -35744,7 +35744,7 @@ export const associateTrialComponent: API.OperationMethod<
   AssociateTrialComponentResponse,
   AssociateTrialComponentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateTrialComponentRequest,
   output: AssociateTrialComponentResponse,
   errors: [ResourceLimitExceeded, ResourceNotFound],
@@ -35760,7 +35760,7 @@ export const attachClusterNodeVolume: API.OperationMethod<
   AttachClusterNodeVolumeResponse,
   AttachClusterNodeVolumeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AttachClusterNodeVolumeRequest,
   output: AttachClusterNodeVolumeResponse,
   errors: [ResourceNotFound],
@@ -35779,7 +35779,7 @@ export const batchAddClusterNodes: API.OperationMethod<
   BatchAddClusterNodesResponse,
   BatchAddClusterNodesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchAddClusterNodesRequest,
   output: BatchAddClusterNodesResponse,
   errors: [ResourceLimitExceeded, ResourceNotFound],
@@ -35797,7 +35797,7 @@ export const batchDeleteClusterNodes: API.OperationMethod<
   BatchDeleteClusterNodesResponse,
   BatchDeleteClusterNodesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchDeleteClusterNodesRequest,
   output: BatchDeleteClusterNodesResponse,
   errors: [ResourceNotFound],
@@ -35811,7 +35811,7 @@ export const batchDescribeModelPackage: API.OperationMethod<
   BatchDescribeModelPackageOutput,
   BatchDescribeModelPackageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchDescribeModelPackageInput,
   output: BatchDescribeModelPackageOutput,
   errors: [],
@@ -35833,7 +35833,7 @@ export const batchRebootClusterNodes: API.OperationMethod<
   BatchRebootClusterNodesResponse,
   BatchRebootClusterNodesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchRebootClusterNodesRequest,
   output: BatchRebootClusterNodesResponse,
   errors: [ResourceNotFound],
@@ -35857,7 +35857,7 @@ export const batchReplaceClusterNodes: API.OperationMethod<
   BatchReplaceClusterNodesResponse,
   BatchReplaceClusterNodesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchReplaceClusterNodesRequest,
   output: BatchReplaceClusterNodesResponse,
   errors: [ResourceNotFound],
@@ -35871,7 +35871,7 @@ export const createAction: API.OperationMethod<
   CreateActionResponse,
   CreateActionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateActionRequest,
   output: CreateActionResponse,
   errors: [ResourceLimitExceeded],
@@ -35885,7 +35885,7 @@ export const createAlgorithm: API.OperationMethod<
   CreateAlgorithmOutput,
   CreateAlgorithmError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAlgorithmInput,
   output: CreateAlgorithmOutput,
   errors: [],
@@ -35902,7 +35902,7 @@ export const createApp: API.OperationMethod<
   CreateAppResponse,
   CreateAppError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAppRequest,
   output: CreateAppResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
@@ -35916,7 +35916,7 @@ export const createAppImageConfig: API.OperationMethod<
   CreateAppImageConfigResponse,
   CreateAppImageConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAppImageConfigRequest,
   output: CreateAppImageConfigResponse,
   errors: [ResourceInUse],
@@ -35930,7 +35930,7 @@ export const createArtifact: API.OperationMethod<
   CreateArtifactResponse,
   CreateArtifactError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateArtifactRequest,
   output: CreateArtifactResponse,
   errors: [ResourceLimitExceeded],
@@ -35959,7 +35959,7 @@ export const createAutoMLJob: API.OperationMethod<
   CreateAutoMLJobResponse,
   CreateAutoMLJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAutoMLJobRequest,
   output: CreateAutoMLJobResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
@@ -35992,7 +35992,7 @@ export const createAutoMLJobV2: API.OperationMethod<
   CreateAutoMLJobV2Response,
   CreateAutoMLJobV2Error,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAutoMLJobV2Request,
   output: CreateAutoMLJobV2Response,
   errors: [ResourceInUse, ResourceLimitExceeded],
@@ -36009,7 +36009,7 @@ export const createCluster: API.OperationMethod<
   CreateClusterResponse,
   CreateClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateClusterRequest,
   output: CreateClusterResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
@@ -36026,7 +36026,7 @@ export const createClusterSchedulerConfig: API.OperationMethod<
   CreateClusterSchedulerConfigResponse,
   CreateClusterSchedulerConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateClusterSchedulerConfigRequest,
   output: CreateClusterSchedulerConfigResponse,
   errors: [ConflictException, ResourceLimitExceeded],
@@ -36042,7 +36042,7 @@ export const createCodeRepository: API.OperationMethod<
   CreateCodeRepositoryOutput,
   CreateCodeRepositoryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCodeRepositoryInput,
   output: CreateCodeRepositoryOutput,
   errors: [],
@@ -36075,7 +36075,7 @@ export const createCompilationJob: API.OperationMethod<
   CreateCompilationJobResponse,
   CreateCompilationJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCompilationJobRequest,
   output: CreateCompilationJobResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
@@ -36092,7 +36092,7 @@ export const createComputeQuota: API.OperationMethod<
   CreateComputeQuotaResponse,
   CreateComputeQuotaError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateComputeQuotaRequest,
   output: CreateComputeQuotaResponse,
   errors: [ConflictException, ResourceLimitExceeded],
@@ -36106,7 +36106,7 @@ export const createContext: API.OperationMethod<
   CreateContextResponse,
   CreateContextError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateContextRequest,
   output: CreateContextResponse,
   errors: [ResourceLimitExceeded],
@@ -36123,7 +36123,7 @@ export const createDataQualityJobDefinition: API.OperationMethod<
   CreateDataQualityJobDefinitionResponse,
   CreateDataQualityJobDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDataQualityJobDefinitionRequest,
   output: CreateDataQualityJobDefinitionResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
@@ -36140,7 +36140,7 @@ export const createDeviceFleet: API.OperationMethod<
   CreateDeviceFleetResponse,
   CreateDeviceFleetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDeviceFleetRequest,
   output: CreateDeviceFleetResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
@@ -36177,7 +36177,7 @@ export const createDomain: API.OperationMethod<
   CreateDomainResponse,
   CreateDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDomainRequest,
   output: CreateDomainResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
@@ -36193,7 +36193,7 @@ export const createEdgeDeploymentPlan: API.OperationMethod<
   CreateEdgeDeploymentPlanResponse,
   CreateEdgeDeploymentPlanError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEdgeDeploymentPlanRequest,
   output: CreateEdgeDeploymentPlanResponse,
   errors: [ResourceLimitExceeded],
@@ -36209,7 +36209,7 @@ export const createEdgeDeploymentStage: API.OperationMethod<
   CreateEdgeDeploymentStageResponse,
   CreateEdgeDeploymentStageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEdgeDeploymentStageRequest,
   output: CreateEdgeDeploymentStageResponse,
   errors: [ResourceLimitExceeded],
@@ -36223,7 +36223,7 @@ export const createEdgePackagingJob: API.OperationMethod<
   CreateEdgePackagingJobResponse,
   CreateEdgePackagingJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEdgePackagingJobRequest,
   output: CreateEdgePackagingJobResponse,
   errors: [ResourceLimitExceeded],
@@ -36269,7 +36269,7 @@ export const createEndpoint: API.OperationMethod<
   CreateEndpointOutput,
   CreateEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEndpointInput,
   output: CreateEndpointOutput,
   errors: [ResourceLimitExceeded],
@@ -36291,7 +36291,7 @@ export const createEndpointConfig: API.OperationMethod<
   CreateEndpointConfigOutput,
   CreateEndpointConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEndpointConfigInput,
   output: CreateEndpointConfigOutput,
   errors: [ResourceLimitExceeded],
@@ -36317,7 +36317,7 @@ export const createExperiment: API.OperationMethod<
   CreateExperimentResponse,
   CreateExperimentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateExperimentRequest,
   output: CreateExperimentResponse,
   errors: [ResourceLimitExceeded],
@@ -36340,7 +36340,7 @@ export const createFeatureGroup: API.OperationMethod<
   CreateFeatureGroupResponse,
   CreateFeatureGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFeatureGroupRequest,
   output: CreateFeatureGroupResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
@@ -36357,7 +36357,7 @@ export const createFlowDefinition: API.OperationMethod<
   CreateFlowDefinitionResponse,
   CreateFlowDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFlowDefinitionRequest,
   output: CreateFlowDefinitionResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
@@ -36374,7 +36374,7 @@ export const createHub: API.OperationMethod<
   CreateHubResponse,
   CreateHubError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateHubRequest,
   output: CreateHubResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
@@ -36403,7 +36403,7 @@ export const createHubContentPresignedUrls: API.OperationMethod<
     CreateHubContentPresignedUrlsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: CreateHubContentPresignedUrlsRequest,
   output: CreateHubContentPresignedUrlsResponse,
   errors: [],
@@ -36427,7 +36427,7 @@ export const createHubContentReference: API.OperationMethod<
   CreateHubContentReferenceResponse,
   CreateHubContentReferenceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateHubContentReferenceRequest,
   output: CreateHubContentReferenceResponse,
   errors: [ResourceInUse, ResourceLimitExceeded, ResourceNotFound],
@@ -36444,7 +36444,7 @@ export const createHumanTaskUi: API.OperationMethod<
   CreateHumanTaskUiResponse,
   CreateHumanTaskUiError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateHumanTaskUiRequest,
   output: CreateHumanTaskUiResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
@@ -36465,7 +36465,7 @@ export const createHyperParameterTuningJob: API.OperationMethod<
   CreateHyperParameterTuningJobResponse,
   CreateHyperParameterTuningJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateHyperParameterTuningJobRequest,
   output: CreateHyperParameterTuningJobResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
@@ -36482,7 +36482,7 @@ export const createImage: API.OperationMethod<
   CreateImageResponse,
   CreateImageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateImageRequest,
   output: CreateImageResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
@@ -36500,7 +36500,7 @@ export const createImageVersion: API.OperationMethod<
   CreateImageVersionResponse,
   CreateImageVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateImageVersionRequest,
   output: CreateImageVersionResponse,
   errors: [ResourceInUse, ResourceLimitExceeded, ResourceNotFound],
@@ -36516,7 +36516,7 @@ export const createInferenceComponent: API.OperationMethod<
   CreateInferenceComponentOutput,
   CreateInferenceComponentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateInferenceComponentInput,
   output: CreateInferenceComponentOutput,
   errors: [ResourceLimitExceeded],
@@ -36539,7 +36539,7 @@ export const createInferenceExperiment: API.OperationMethod<
   CreateInferenceExperimentResponse,
   CreateInferenceExperimentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateInferenceExperimentRequest,
   output: CreateInferenceExperimentResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
@@ -36556,7 +36556,7 @@ export const createInferenceRecommendationsJob: API.OperationMethod<
   CreateInferenceRecommendationsJobResponse,
   CreateInferenceRecommendationsJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateInferenceRecommendationsJobRequest,
   output: CreateInferenceRecommendationsJobResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
@@ -36589,7 +36589,7 @@ export const createLabelingJob: API.OperationMethod<
   CreateLabelingJobResponse,
   CreateLabelingJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLabelingJobRequest,
   output: CreateLabelingJobResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
@@ -36603,7 +36603,7 @@ export const createMlflowApp: API.OperationMethod<
   CreateMlflowAppResponse,
   CreateMlflowAppError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMlflowAppRequest,
   output: CreateMlflowAppResponse,
   errors: [ResourceLimitExceeded],
@@ -36619,7 +36619,7 @@ export const createMlflowTrackingServer: API.OperationMethod<
   CreateMlflowTrackingServerResponse,
   CreateMlflowTrackingServerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMlflowTrackingServerRequest,
   output: CreateMlflowTrackingServerResponse,
   errors: [ResourceLimitExceeded],
@@ -36641,7 +36641,7 @@ export const createModel: API.OperationMethod<
   CreateModelOutput,
   CreateModelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateModelInput,
   output: CreateModelOutput,
   errors: [ResourceLimitExceeded],
@@ -36658,7 +36658,7 @@ export const createModelBiasJobDefinition: API.OperationMethod<
   CreateModelBiasJobDefinitionResponse,
   CreateModelBiasJobDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateModelBiasJobDefinitionRequest,
   output: CreateModelBiasJobDefinitionResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
@@ -36677,7 +36677,7 @@ export const createModelCard: API.OperationMethod<
   CreateModelCardResponse,
   CreateModelCardError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateModelCardRequest,
   output: CreateModelCardResponse,
   errors: [ConflictException, ResourceLimitExceeded],
@@ -36695,7 +36695,7 @@ export const createModelCardExportJob: API.OperationMethod<
   CreateModelCardExportJobResponse,
   CreateModelCardExportJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateModelCardExportJobRequest,
   output: CreateModelCardExportJobResponse,
   errors: [ConflictException, ResourceLimitExceeded, ResourceNotFound],
@@ -36712,7 +36712,7 @@ export const createModelExplainabilityJobDefinition: API.OperationMethod<
   CreateModelExplainabilityJobDefinitionResponse,
   CreateModelExplainabilityJobDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateModelExplainabilityJobDefinitionRequest,
   output: CreateModelExplainabilityJobDefinitionResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
@@ -36737,7 +36737,7 @@ export const createModelPackage: API.OperationMethod<
   CreateModelPackageOutput,
   CreateModelPackageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateModelPackageInput,
   output: CreateModelPackageOutput,
   errors: [ConflictException, ResourceLimitExceeded],
@@ -36751,7 +36751,7 @@ export const createModelPackageGroup: API.OperationMethod<
   CreateModelPackageGroupOutput,
   CreateModelPackageGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateModelPackageGroupInput,
   output: CreateModelPackageGroupOutput,
   errors: [ResourceLimitExceeded],
@@ -36768,7 +36768,7 @@ export const createModelQualityJobDefinition: API.OperationMethod<
   CreateModelQualityJobDefinitionResponse,
   CreateModelQualityJobDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateModelQualityJobDefinitionRequest,
   output: CreateModelQualityJobDefinitionResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
@@ -36785,7 +36785,7 @@ export const createMonitoringSchedule: API.OperationMethod<
   CreateMonitoringScheduleResponse,
   CreateMonitoringScheduleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMonitoringScheduleRequest,
   output: CreateMonitoringScheduleResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
@@ -36817,7 +36817,7 @@ export const createNotebookInstance: API.OperationMethod<
   CreateNotebookInstanceOutput,
   CreateNotebookInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateNotebookInstanceInput,
   output: CreateNotebookInstanceOutput,
   errors: [ResourceLimitExceeded],
@@ -36845,7 +36845,7 @@ export const createNotebookInstanceLifecycleConfig: API.OperationMethod<
   CreateNotebookInstanceLifecycleConfigOutput,
   CreateNotebookInstanceLifecycleConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateNotebookInstanceLifecycleConfigInput,
   output: CreateNotebookInstanceLifecycleConfigOutput,
   errors: [ResourceLimitExceeded],
@@ -36864,7 +36864,7 @@ export const createOptimizationJob: API.OperationMethod<
   CreateOptimizationJobResponse,
   CreateOptimizationJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOptimizationJobRequest,
   output: CreateOptimizationJobResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
@@ -36881,7 +36881,7 @@ export const createPartnerApp: API.OperationMethod<
   CreatePartnerAppResponse,
   CreatePartnerAppError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePartnerAppRequest,
   output: CreatePartnerAppResponse,
   errors: [ConflictException, ResourceLimitExceeded],
@@ -36895,7 +36895,7 @@ export const createPartnerAppPresignedUrl: API.OperationMethod<
   CreatePartnerAppPresignedUrlResponse,
   CreatePartnerAppPresignedUrlError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePartnerAppPresignedUrlRequest,
   output: CreatePartnerAppPresignedUrlResponse,
   errors: [ResourceNotFound],
@@ -36913,7 +36913,7 @@ export const createPipeline: API.OperationMethod<
   CreatePipelineResponse,
   CreatePipelineError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePipelineRequest,
   output: CreatePipelineResponse,
   errors: [ConflictException, ResourceLimitExceeded, ResourceNotFound],
@@ -36935,7 +36935,7 @@ export const createPresignedDomainUrl: API.OperationMethod<
   CreatePresignedDomainUrlResponse,
   CreatePresignedDomainUrlError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePresignedDomainUrlRequest,
   output: CreatePresignedDomainUrlResponse,
   errors: [ResourceNotFound],
@@ -36949,7 +36949,7 @@ export const createPresignedMlflowAppUrl: API.OperationMethod<
   CreatePresignedMlflowAppUrlResponse,
   CreatePresignedMlflowAppUrlError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePresignedMlflowAppUrlRequest,
   output: CreatePresignedMlflowAppUrlResponse,
   errors: [ResourceNotFound],
@@ -36965,7 +36965,7 @@ export const createPresignedMlflowTrackingServerUrl: API.OperationMethod<
   CreatePresignedMlflowTrackingServerUrlResponse,
   CreatePresignedMlflowTrackingServerUrlError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePresignedMlflowTrackingServerUrlRequest,
   output: CreatePresignedMlflowTrackingServerUrlResponse,
   errors: [ResourceNotFound],
@@ -36985,7 +36985,7 @@ export const createPresignedNotebookInstanceUrl: API.OperationMethod<
   CreatePresignedNotebookInstanceUrlOutput,
   CreatePresignedNotebookInstanceUrlError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePresignedNotebookInstanceUrlInput,
   output: CreatePresignedNotebookInstanceUrlOutput,
   errors: [],
@@ -37003,7 +37003,7 @@ export const createProcessingJob: API.OperationMethod<
   CreateProcessingJobResponse,
   CreateProcessingJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProcessingJobRequest,
   output: CreateProcessingJobResponse,
   errors: [ResourceInUse, ResourceLimitExceeded, ResourceNotFound],
@@ -37017,7 +37017,7 @@ export const createProject: API.OperationMethod<
   CreateProjectOutput,
   CreateProjectError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectInput,
   output: CreateProjectOutput,
   errors: [ResourceLimitExceeded],
@@ -37034,7 +37034,7 @@ export const createSpace: API.OperationMethod<
   CreateSpaceResponse,
   CreateSpaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSpaceRequest,
   output: CreateSpaceResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
@@ -37048,7 +37048,7 @@ export const createStudioLifecycleConfig: API.OperationMethod<
   CreateStudioLifecycleConfigResponse,
   CreateStudioLifecycleConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateStudioLifecycleConfigRequest,
   output: CreateStudioLifecycleConfigResponse,
   errors: [ResourceInUse],
@@ -37096,7 +37096,7 @@ export const createTrainingJob: API.OperationMethod<
   CreateTrainingJobResponse,
   CreateTrainingJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTrainingJobRequest,
   output: CreateTrainingJobResponse,
   errors: [ResourceInUse, ResourceLimitExceeded, ResourceNotFound],
@@ -37144,7 +37144,7 @@ export const createTrainingPlan: API.OperationMethod<
   CreateTrainingPlanResponse,
   CreateTrainingPlanError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTrainingPlanRequest,
   output: CreateTrainingPlanResponse,
   errors: [ResourceInUse, ResourceLimitExceeded, ResourceNotFound],
@@ -37178,7 +37178,7 @@ export const createTransformJob: API.OperationMethod<
   CreateTransformJobResponse,
   CreateTransformJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTransformJobRequest,
   output: CreateTransformJobResponse,
   errors: [ResourceInUse, ResourceLimitExceeded, ResourceNotFound],
@@ -37201,7 +37201,7 @@ export const createTrial: API.OperationMethod<
   CreateTrialResponse,
   CreateTrialError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTrialRequest,
   output: CreateTrialResponse,
   errors: [ResourceLimitExceeded, ResourceNotFound],
@@ -37221,7 +37221,7 @@ export const createTrialComponent: API.OperationMethod<
   CreateTrialComponentResponse,
   CreateTrialComponentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTrialComponentRequest,
   output: CreateTrialComponentResponse,
   errors: [ResourceLimitExceeded],
@@ -37238,7 +37238,7 @@ export const createUserProfile: API.OperationMethod<
   CreateUserProfileResponse,
   CreateUserProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateUserProfileRequest,
   output: CreateUserProfileResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
@@ -37258,7 +37258,7 @@ export const createWorkforce: API.OperationMethod<
   CreateWorkforceResponse,
   CreateWorkforceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateWorkforceRequest,
   output: CreateWorkforceResponse,
   errors: [],
@@ -37277,7 +37277,7 @@ export const createWorkteam: API.OperationMethod<
   CreateWorkteamResponse,
   CreateWorkteamError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateWorkteamRequest,
   output: CreateWorkteamResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
@@ -37291,7 +37291,7 @@ export const deleteAction: API.OperationMethod<
   DeleteActionResponse,
   DeleteActionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteActionRequest,
   output: DeleteActionResponse,
   errors: [ResourceNotFound],
@@ -37305,7 +37305,7 @@ export const deleteAlgorithm: API.OperationMethod<
   DeleteAlgorithmResponse,
   DeleteAlgorithmError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAlgorithmInput,
   output: DeleteAlgorithmResponse,
   errors: [ConflictException],
@@ -37319,7 +37319,7 @@ export const deleteApp: API.OperationMethod<
   DeleteAppResponse,
   DeleteAppError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAppRequest,
   output: DeleteAppResponse,
   errors: [ResourceInUse, ResourceNotFound],
@@ -37333,7 +37333,7 @@ export const deleteAppImageConfig: API.OperationMethod<
   DeleteAppImageConfigResponse,
   DeleteAppImageConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAppImageConfigRequest,
   output: DeleteAppImageConfigResponse,
   errors: [ResourceNotFound],
@@ -37347,7 +37347,7 @@ export const deleteArtifact: API.OperationMethod<
   DeleteArtifactResponse,
   DeleteArtifactError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteArtifactRequest,
   output: DeleteArtifactResponse,
   errors: [ResourceNotFound],
@@ -37361,7 +37361,7 @@ export const deleteAssociation: API.OperationMethod<
   DeleteAssociationResponse,
   DeleteAssociationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAssociationRequest,
   output: DeleteAssociationResponse,
   errors: [ResourceNotFound],
@@ -37378,7 +37378,7 @@ export const deleteCluster: API.OperationMethod<
   DeleteClusterResponse,
   DeleteClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteClusterRequest,
   output: DeleteClusterResponse,
   errors: [ConflictException, ResourceNotFound],
@@ -37392,7 +37392,7 @@ export const deleteClusterSchedulerConfig: API.OperationMethod<
   DeleteClusterSchedulerConfigResponse,
   DeleteClusterSchedulerConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteClusterSchedulerConfigRequest,
   output: DeleteClusterSchedulerConfigResponse,
   errors: [ResourceNotFound],
@@ -37406,7 +37406,7 @@ export const deleteCodeRepository: API.OperationMethod<
   DeleteCodeRepositoryResponse,
   DeleteCodeRepositoryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCodeRepositoryInput,
   output: DeleteCodeRepositoryResponse,
   errors: [],
@@ -37422,7 +37422,7 @@ export const deleteCompilationJob: API.OperationMethod<
   DeleteCompilationJobResponse,
   DeleteCompilationJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCompilationJobRequest,
   output: DeleteCompilationJobResponse,
   errors: [ResourceNotFound],
@@ -37436,7 +37436,7 @@ export const deleteComputeQuota: API.OperationMethod<
   DeleteComputeQuotaResponse,
   DeleteComputeQuotaError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteComputeQuotaRequest,
   output: DeleteComputeQuotaResponse,
   errors: [ResourceNotFound],
@@ -37450,7 +37450,7 @@ export const deleteContext: API.OperationMethod<
   DeleteContextResponse,
   DeleteContextError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteContextRequest,
   output: DeleteContextResponse,
   errors: [ResourceNotFound],
@@ -37466,7 +37466,7 @@ export const deleteDataQualityJobDefinition: API.OperationMethod<
   DeleteDataQualityJobDefinitionResponse,
   DeleteDataQualityJobDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDataQualityJobDefinitionRequest,
   output: DeleteDataQualityJobDefinitionResponse,
   errors: [ResourceNotFound],
@@ -37480,7 +37480,7 @@ export const deleteDeviceFleet: API.OperationMethod<
   DeleteDeviceFleetResponse,
   DeleteDeviceFleetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDeviceFleetRequest,
   output: DeleteDeviceFleetResponse,
   errors: [ResourceInUse],
@@ -37494,7 +37494,7 @@ export const deleteDomain: API.OperationMethod<
   DeleteDomainResponse,
   DeleteDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDomainRequest,
   output: DeleteDomainResponse,
   errors: [ResourceInUse, ResourceNotFound],
@@ -37508,7 +37508,7 @@ export const deleteEdgeDeploymentPlan: API.OperationMethod<
   DeleteEdgeDeploymentPlanResponse,
   DeleteEdgeDeploymentPlanError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEdgeDeploymentPlanRequest,
   output: DeleteEdgeDeploymentPlanResponse,
   errors: [ResourceInUse],
@@ -37522,7 +37522,7 @@ export const deleteEdgeDeploymentStage: API.OperationMethod<
   DeleteEdgeDeploymentStageResponse,
   DeleteEdgeDeploymentStageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEdgeDeploymentStageRequest,
   output: DeleteEdgeDeploymentStageResponse,
   errors: [ResourceInUse],
@@ -37540,7 +37540,7 @@ export const deleteEndpoint: API.OperationMethod<
   DeleteEndpointResponse,
   DeleteEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEndpointInput,
   output: DeleteEndpointResponse,
   errors: [],
@@ -37556,7 +37556,7 @@ export const deleteEndpointConfig: API.OperationMethod<
   DeleteEndpointConfigResponse,
   DeleteEndpointConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEndpointConfigInput,
   output: DeleteEndpointConfigResponse,
   errors: [],
@@ -37570,7 +37570,7 @@ export const deleteExperiment: API.OperationMethod<
   DeleteExperimentResponse,
   DeleteExperimentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteExperimentRequest,
   output: DeleteExperimentResponse,
   errors: [ResourceNotFound],
@@ -37588,7 +37588,7 @@ export const deleteFeatureGroup: API.OperationMethod<
   DeleteFeatureGroupResponse,
   DeleteFeatureGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFeatureGroupRequest,
   output: DeleteFeatureGroupResponse,
   errors: [ResourceNotFound],
@@ -37605,7 +37605,7 @@ export const deleteFlowDefinition: API.OperationMethod<
   DeleteFlowDefinitionResponse,
   DeleteFlowDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFlowDefinitionRequest,
   output: DeleteFlowDefinitionResponse,
   errors: [ResourceInUse, ResourceNotFound],
@@ -37619,7 +37619,7 @@ export const deleteHub: API.OperationMethod<
   DeleteHubResponse,
   DeleteHubError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteHubRequest,
   output: DeleteHubResponse,
   errors: [ResourceInUse, ResourceNotFound],
@@ -37636,7 +37636,7 @@ export const deleteHubContent: API.OperationMethod<
   DeleteHubContentResponse,
   DeleteHubContentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteHubContentRequest,
   output: DeleteHubContentResponse,
   errors: [ResourceInUse, ResourceNotFound],
@@ -37650,7 +37650,7 @@ export const deleteHubContentReference: API.OperationMethod<
   DeleteHubContentReferenceResponse,
   DeleteHubContentReferenceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteHubContentReferenceRequest,
   output: DeleteHubContentReferenceResponse,
   errors: [ResourceNotFound],
@@ -37666,7 +37666,7 @@ export const deleteHumanTaskUi: API.OperationMethod<
   DeleteHumanTaskUiResponse,
   DeleteHumanTaskUiError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteHumanTaskUiRequest,
   output: DeleteHumanTaskUiResponse,
   errors: [ResourceNotFound],
@@ -37680,7 +37680,7 @@ export const deleteHyperParameterTuningJob: API.OperationMethod<
   DeleteHyperParameterTuningJobResponse,
   DeleteHyperParameterTuningJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteHyperParameterTuningJobRequest,
   output: DeleteHyperParameterTuningJobResponse,
   errors: [],
@@ -37694,7 +37694,7 @@ export const deleteImage: API.OperationMethod<
   DeleteImageResponse,
   DeleteImageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteImageRequest,
   output: DeleteImageResponse,
   errors: [ResourceInUse, ResourceNotFound],
@@ -37711,7 +37711,7 @@ export const deleteImageVersion: API.OperationMethod<
   DeleteImageVersionResponse,
   DeleteImageVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteImageVersionRequest,
   output: DeleteImageVersionResponse,
   errors: [ResourceInUse, ResourceNotFound],
@@ -37725,7 +37725,7 @@ export const deleteInferenceComponent: API.OperationMethod<
   DeleteInferenceComponentResponse,
   DeleteInferenceComponentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteInferenceComponentInput,
   output: DeleteInferenceComponentResponse,
   errors: [],
@@ -37744,7 +37744,7 @@ export const deleteInferenceExperiment: API.OperationMethod<
   DeleteInferenceExperimentResponse,
   DeleteInferenceExperimentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteInferenceExperimentRequest,
   output: DeleteInferenceExperimentResponse,
   errors: [ConflictException, ResourceNotFound],
@@ -37758,7 +37758,7 @@ export const deleteMlflowApp: API.OperationMethod<
   DeleteMlflowAppResponse,
   DeleteMlflowAppError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMlflowAppRequest,
   output: DeleteMlflowAppResponse,
   errors: [ResourceNotFound],
@@ -37772,7 +37772,7 @@ export const deleteMlflowTrackingServer: API.OperationMethod<
   DeleteMlflowTrackingServerResponse,
   DeleteMlflowTrackingServerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMlflowTrackingServerRequest,
   output: DeleteMlflowTrackingServerResponse,
   errors: [ResourceNotFound],
@@ -37786,7 +37786,7 @@ export const deleteModel: API.OperationMethod<
   DeleteModelResponse,
   DeleteModelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteModelInput,
   output: DeleteModelResponse,
   errors: [],
@@ -37800,7 +37800,7 @@ export const deleteModelBiasJobDefinition: API.OperationMethod<
   DeleteModelBiasJobDefinitionResponse,
   DeleteModelBiasJobDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteModelBiasJobDefinitionRequest,
   output: DeleteModelBiasJobDefinitionResponse,
   errors: [ResourceNotFound],
@@ -37817,7 +37817,7 @@ export const deleteModelCard: API.OperationMethod<
   DeleteModelCardResponse,
   DeleteModelCardError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteModelCardRequest,
   output: DeleteModelCardResponse,
   errors: [ConflictException, ResourceNotFound],
@@ -37833,7 +37833,7 @@ export const deleteModelExplainabilityJobDefinition: API.OperationMethod<
   DeleteModelExplainabilityJobDefinitionResponse,
   DeleteModelExplainabilityJobDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteModelExplainabilityJobDefinitionRequest,
   output: DeleteModelExplainabilityJobDefinitionResponse,
   errors: [ResourceNotFound],
@@ -37849,7 +37849,7 @@ export const deleteModelPackage: API.OperationMethod<
   DeleteModelPackageResponse,
   DeleteModelPackageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteModelPackageInput,
   output: DeleteModelPackageResponse,
   errors: [ConflictException],
@@ -37863,7 +37863,7 @@ export const deleteModelPackageGroup: API.OperationMethod<
   DeleteModelPackageGroupResponse,
   DeleteModelPackageGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteModelPackageGroupInput,
   output: DeleteModelPackageGroupResponse,
   errors: [ConflictException],
@@ -37877,7 +37877,7 @@ export const deleteModelPackageGroupPolicy: API.OperationMethod<
   DeleteModelPackageGroupPolicyResponse,
   DeleteModelPackageGroupPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteModelPackageGroupPolicyInput,
   output: DeleteModelPackageGroupPolicyResponse,
   errors: [],
@@ -37893,7 +37893,7 @@ export const deleteModelQualityJobDefinition: API.OperationMethod<
   DeleteModelQualityJobDefinitionResponse,
   DeleteModelQualityJobDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteModelQualityJobDefinitionRequest,
   output: DeleteModelQualityJobDefinitionResponse,
   errors: [ResourceNotFound],
@@ -37907,7 +37907,7 @@ export const deleteMonitoringSchedule: API.OperationMethod<
   DeleteMonitoringScheduleResponse,
   DeleteMonitoringScheduleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMonitoringScheduleRequest,
   output: DeleteMonitoringScheduleResponse,
   errors: [ResourceNotFound],
@@ -37923,7 +37923,7 @@ export const deleteNotebookInstance: API.OperationMethod<
   DeleteNotebookInstanceResponse,
   DeleteNotebookInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteNotebookInstanceInput,
   output: DeleteNotebookInstanceResponse,
   errors: [],
@@ -37937,7 +37937,7 @@ export const deleteNotebookInstanceLifecycleConfig: API.OperationMethod<
   DeleteNotebookInstanceLifecycleConfigResponse,
   DeleteNotebookInstanceLifecycleConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteNotebookInstanceLifecycleConfigInput,
   output: DeleteNotebookInstanceLifecycleConfigResponse,
   errors: [],
@@ -37951,7 +37951,7 @@ export const deleteOptimizationJob: API.OperationMethod<
   DeleteOptimizationJobResponse,
   DeleteOptimizationJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOptimizationJobRequest,
   output: DeleteOptimizationJobResponse,
   errors: [ResourceNotFound],
@@ -37968,7 +37968,7 @@ export const deletePartnerApp: API.OperationMethod<
   DeletePartnerAppResponse,
   DeletePartnerAppError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePartnerAppRequest,
   output: DeletePartnerAppResponse,
   errors: [ConflictException, ResourceNotFound],
@@ -37985,7 +37985,7 @@ export const deletePipeline: API.OperationMethod<
   DeletePipelineResponse,
   DeletePipelineError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePipelineRequest,
   output: DeletePipelineResponse,
   errors: [ConflictException, ResourceNotFound],
@@ -38002,7 +38002,7 @@ export const deleteProcessingJob: API.OperationMethod<
   DeleteProcessingJobResponse,
   DeleteProcessingJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProcessingJobRequest,
   output: DeleteProcessingJobResponse,
   errors: [ResourceInUse, ResourceNotFound],
@@ -38016,7 +38016,7 @@ export const deleteProject: API.OperationMethod<
   DeleteProjectResponse,
   DeleteProjectError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectInput,
   output: DeleteProjectResponse,
   errors: [ConflictException],
@@ -38030,7 +38030,7 @@ export const deleteSpace: API.OperationMethod<
   DeleteSpaceResponse,
   DeleteSpaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSpaceRequest,
   output: DeleteSpaceResponse,
   errors: [ResourceInUse, ResourceNotFound],
@@ -38047,7 +38047,7 @@ export const deleteStudioLifecycleConfig: API.OperationMethod<
   DeleteStudioLifecycleConfigResponse,
   DeleteStudioLifecycleConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteStudioLifecycleConfigRequest,
   output: DeleteStudioLifecycleConfigResponse,
   errors: [ResourceInUse, ResourceNotFound],
@@ -38067,7 +38067,7 @@ export const deleteTags: API.OperationMethod<
   DeleteTagsOutput,
   DeleteTagsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTagsInput,
   output: DeleteTagsOutput,
   errors: [],
@@ -38084,7 +38084,7 @@ export const deleteTrainingJob: API.OperationMethod<
   DeleteTrainingJobResponse,
   DeleteTrainingJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTrainingJobRequest,
   output: DeleteTrainingJobResponse,
   errors: [ResourceInUse, ResourceNotFound],
@@ -38098,7 +38098,7 @@ export const deleteTrial: API.OperationMethod<
   DeleteTrialResponse,
   DeleteTrialError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTrialRequest,
   output: DeleteTrialResponse,
   errors: [ResourceNotFound],
@@ -38112,7 +38112,7 @@ export const deleteTrialComponent: API.OperationMethod<
   DeleteTrialComponentResponse,
   DeleteTrialComponentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTrialComponentRequest,
   output: DeleteTrialComponentResponse,
   errors: [ResourceNotFound],
@@ -38129,7 +38129,7 @@ export const deleteUserProfile: API.OperationMethod<
   DeleteUserProfileResponse,
   DeleteUserProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteUserProfileRequest,
   output: DeleteUserProfileResponse,
   errors: [ResourceInUse, ResourceNotFound],
@@ -38147,7 +38147,7 @@ export const deleteWorkforce: API.OperationMethod<
   DeleteWorkforceResponse,
   DeleteWorkforceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteWorkforceRequest,
   output: DeleteWorkforceResponse,
   errors: [],
@@ -38161,7 +38161,7 @@ export const deleteWorkteam: API.OperationMethod<
   DeleteWorkteamResponse,
   DeleteWorkteamError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteWorkteamRequest,
   output: DeleteWorkteamResponse,
   errors: [ResourceLimitExceeded],
@@ -38175,7 +38175,7 @@ export const deregisterDevices: API.OperationMethod<
   DeregisterDevicesResponse,
   DeregisterDevicesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeregisterDevicesRequest,
   output: DeregisterDevicesResponse,
   errors: [],
@@ -38189,7 +38189,7 @@ export const describeAction: API.OperationMethod<
   DescribeActionResponse,
   DescribeActionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeActionRequest,
   output: DescribeActionResponse,
   errors: [ResourceNotFound],
@@ -38203,7 +38203,7 @@ export const describeAlgorithm: API.OperationMethod<
   DescribeAlgorithmOutput,
   DescribeAlgorithmError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAlgorithmInput,
   output: DescribeAlgorithmOutput,
   errors: [],
@@ -38217,7 +38217,7 @@ export const describeApp: API.OperationMethod<
   DescribeAppResponse,
   DescribeAppError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAppRequest,
   output: DescribeAppResponse,
   errors: [ResourceNotFound],
@@ -38231,7 +38231,7 @@ export const describeAppImageConfig: API.OperationMethod<
   DescribeAppImageConfigResponse,
   DescribeAppImageConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAppImageConfigRequest,
   output: DescribeAppImageConfigResponse,
   errors: [ResourceNotFound],
@@ -38245,7 +38245,7 @@ export const describeArtifact: API.OperationMethod<
   DescribeArtifactResponse,
   DescribeArtifactError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeArtifactRequest,
   output: DescribeArtifactResponse,
   errors: [ResourceNotFound],
@@ -38261,7 +38261,7 @@ export const describeAutoMLJob: API.OperationMethod<
   DescribeAutoMLJobResponse,
   DescribeAutoMLJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAutoMLJobRequest,
   output: DescribeAutoMLJobResponse,
   errors: [ResourceNotFound],
@@ -38275,7 +38275,7 @@ export const describeAutoMLJobV2: API.OperationMethod<
   DescribeAutoMLJobV2Response,
   DescribeAutoMLJobV2Error,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAutoMLJobV2Request,
   output: DescribeAutoMLJobV2Response,
   errors: [ResourceNotFound],
@@ -38289,7 +38289,7 @@ export const describeCluster: API.OperationMethod<
   DescribeClusterResponse,
   DescribeClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeClusterRequest,
   output: DescribeClusterResponse,
   errors: [ResourceNotFound],
@@ -38303,7 +38303,7 @@ export const describeClusterEvent: API.OperationMethod<
   DescribeClusterEventResponse,
   DescribeClusterEventError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeClusterEventRequest,
   output: DescribeClusterEventResponse,
   errors: [ResourceNotFound],
@@ -38317,7 +38317,7 @@ export const describeClusterNode: API.OperationMethod<
   DescribeClusterNodeResponse,
   DescribeClusterNodeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeClusterNodeRequest,
   output: DescribeClusterNodeResponse,
   errors: [ResourceNotFound],
@@ -38333,7 +38333,7 @@ export const describeClusterSchedulerConfig: API.OperationMethod<
   DescribeClusterSchedulerConfigResponse,
   DescribeClusterSchedulerConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeClusterSchedulerConfigRequest,
   output: DescribeClusterSchedulerConfigResponse,
   errors: [ResourceNotFound],
@@ -38347,7 +38347,7 @@ export const describeCodeRepository: API.OperationMethod<
   DescribeCodeRepositoryOutput,
   DescribeCodeRepositoryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeCodeRepositoryInput,
   output: DescribeCodeRepositoryOutput,
   errors: [],
@@ -38363,7 +38363,7 @@ export const describeCompilationJob: API.OperationMethod<
   DescribeCompilationJobResponse,
   DescribeCompilationJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeCompilationJobRequest,
   output: DescribeCompilationJobResponse,
   errors: [ResourceNotFound],
@@ -38377,7 +38377,7 @@ export const describeComputeQuota: API.OperationMethod<
   DescribeComputeQuotaResponse,
   DescribeComputeQuotaError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeComputeQuotaRequest,
   output: DescribeComputeQuotaResponse,
   errors: [ResourceNotFound],
@@ -38391,7 +38391,7 @@ export const describeContext: API.OperationMethod<
   DescribeContextResponse,
   DescribeContextError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeContextRequest,
   output: DescribeContextResponse,
   errors: [ResourceNotFound],
@@ -38407,7 +38407,7 @@ export const describeDataQualityJobDefinition: API.OperationMethod<
   DescribeDataQualityJobDefinitionResponse,
   DescribeDataQualityJobDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDataQualityJobDefinitionRequest,
   output: DescribeDataQualityJobDefinitionResponse,
   errors: [ResourceNotFound],
@@ -38421,7 +38421,7 @@ export const describeDevice: API.OperationMethod<
   DescribeDeviceResponse,
   DescribeDeviceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDeviceRequest,
   output: DescribeDeviceResponse,
   errors: [ResourceNotFound],
@@ -38435,7 +38435,7 @@ export const describeDeviceFleet: API.OperationMethod<
   DescribeDeviceFleetResponse,
   DescribeDeviceFleetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDeviceFleetRequest,
   output: DescribeDeviceFleetResponse,
   errors: [ResourceNotFound],
@@ -38449,7 +38449,7 @@ export const describeDomain: API.OperationMethod<
   DescribeDomainResponse,
   DescribeDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDomainRequest,
   output: DescribeDomainResponse,
   errors: [ResourceNotFound],
@@ -38463,7 +38463,7 @@ export const describeEdgeDeploymentPlan: API.OperationMethod<
   DescribeEdgeDeploymentPlanResponse,
   DescribeEdgeDeploymentPlanError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeEdgeDeploymentPlanRequest,
   output: DescribeEdgeDeploymentPlanResponse,
   errors: [ResourceNotFound],
@@ -38477,7 +38477,7 @@ export const describeEdgePackagingJob: API.OperationMethod<
   DescribeEdgePackagingJobResponse,
   DescribeEdgePackagingJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeEdgePackagingJobRequest,
   output: DescribeEdgePackagingJobResponse,
   errors: [ResourceNotFound],
@@ -38491,7 +38491,7 @@ export const describeEndpoint: API.OperationMethod<
   DescribeEndpointOutput,
   DescribeEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeEndpointInput,
   output: DescribeEndpointOutput,
   errors: [],
@@ -38505,7 +38505,7 @@ export const describeEndpointConfig: API.OperationMethod<
   DescribeEndpointConfigOutput,
   DescribeEndpointConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeEndpointConfigInput,
   output: DescribeEndpointConfigOutput,
   errors: [],
@@ -38519,7 +38519,7 @@ export const describeExperiment: API.OperationMethod<
   DescribeExperimentResponse,
   DescribeExperimentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeExperimentRequest,
   output: DescribeExperimentResponse,
   errors: [ResourceNotFound],
@@ -38533,7 +38533,7 @@ export const describeFeatureGroup: API.OperationMethod<
   DescribeFeatureGroupResponse,
   DescribeFeatureGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeFeatureGroupRequest,
   output: DescribeFeatureGroupResponse,
   errors: [ResourceNotFound],
@@ -38547,7 +38547,7 @@ export const describeFeatureMetadata: API.OperationMethod<
   DescribeFeatureMetadataResponse,
   DescribeFeatureMetadataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeFeatureMetadataRequest,
   output: DescribeFeatureMetadataResponse,
   errors: [ResourceNotFound],
@@ -38561,7 +38561,7 @@ export const describeFlowDefinition: API.OperationMethod<
   DescribeFlowDefinitionResponse,
   DescribeFlowDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeFlowDefinitionRequest,
   output: DescribeFlowDefinitionResponse,
   errors: [ResourceNotFound],
@@ -38575,7 +38575,7 @@ export const describeHub: API.OperationMethod<
   DescribeHubResponse,
   DescribeHubError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeHubRequest,
   output: DescribeHubResponse,
   errors: [ResourceNotFound],
@@ -38589,7 +38589,7 @@ export const describeHubContent: API.OperationMethod<
   DescribeHubContentResponse,
   DescribeHubContentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeHubContentRequest,
   output: DescribeHubContentResponse,
   errors: [ResourceNotFound],
@@ -38603,7 +38603,7 @@ export const describeHumanTaskUi: API.OperationMethod<
   DescribeHumanTaskUiResponse,
   DescribeHumanTaskUiError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeHumanTaskUiRequest,
   output: DescribeHumanTaskUiResponse,
   errors: [ResourceNotFound],
@@ -38619,7 +38619,7 @@ export const describeHyperParameterTuningJob: API.OperationMethod<
   DescribeHyperParameterTuningJobResponse,
   DescribeHyperParameterTuningJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeHyperParameterTuningJobRequest,
   output: DescribeHyperParameterTuningJobResponse,
   errors: [ResourceNotFound],
@@ -38633,7 +38633,7 @@ export const describeImage: API.OperationMethod<
   DescribeImageResponse,
   DescribeImageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeImageRequest,
   output: DescribeImageResponse,
   errors: [ResourceNotFound],
@@ -38647,7 +38647,7 @@ export const describeImageVersion: API.OperationMethod<
   DescribeImageVersionResponse,
   DescribeImageVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeImageVersionRequest,
   output: DescribeImageVersionResponse,
   errors: [ResourceNotFound],
@@ -38661,7 +38661,7 @@ export const describeInferenceComponent: API.OperationMethod<
   DescribeInferenceComponentOutput,
   DescribeInferenceComponentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeInferenceComponentInput,
   output: DescribeInferenceComponentOutput,
   errors: [],
@@ -38675,7 +38675,7 @@ export const describeInferenceExperiment: API.OperationMethod<
   DescribeInferenceExperimentResponse,
   DescribeInferenceExperimentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeInferenceExperimentRequest,
   output: DescribeInferenceExperimentResponse,
   errors: [ResourceNotFound],
@@ -38691,7 +38691,7 @@ export const describeInferenceRecommendationsJob: API.OperationMethod<
   DescribeInferenceRecommendationsJobResponse,
   DescribeInferenceRecommendationsJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeInferenceRecommendationsJobRequest,
   output: DescribeInferenceRecommendationsJobResponse,
   errors: [ResourceNotFound],
@@ -38705,7 +38705,7 @@ export const describeLabelingJob: API.OperationMethod<
   DescribeLabelingJobResponse,
   DescribeLabelingJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeLabelingJobRequest,
   output: DescribeLabelingJobResponse,
   errors: [ResourceNotFound],
@@ -38719,7 +38719,7 @@ export const describeLineageGroup: API.OperationMethod<
   DescribeLineageGroupResponse,
   DescribeLineageGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeLineageGroupRequest,
   output: DescribeLineageGroupResponse,
   errors: [ResourceNotFound],
@@ -38733,7 +38733,7 @@ export const describeMlflowApp: API.OperationMethod<
   DescribeMlflowAppResponse,
   DescribeMlflowAppError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeMlflowAppRequest,
   output: DescribeMlflowAppResponse,
   errors: [ResourceNotFound],
@@ -38747,7 +38747,7 @@ export const describeMlflowTrackingServer: API.OperationMethod<
   DescribeMlflowTrackingServerResponse,
   DescribeMlflowTrackingServerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeMlflowTrackingServerRequest,
   output: DescribeMlflowTrackingServerResponse,
   errors: [ResourceNotFound],
@@ -38761,7 +38761,7 @@ export const describeModel: API.OperationMethod<
   DescribeModelOutput,
   DescribeModelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeModelInput,
   output: DescribeModelOutput,
   errors: [],
@@ -38777,7 +38777,7 @@ export const describeModelBiasJobDefinition: API.OperationMethod<
   DescribeModelBiasJobDefinitionResponse,
   DescribeModelBiasJobDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeModelBiasJobDefinitionRequest,
   output: DescribeModelBiasJobDefinitionResponse,
   errors: [ResourceNotFound],
@@ -38791,7 +38791,7 @@ export const describeModelCard: API.OperationMethod<
   DescribeModelCardResponse,
   DescribeModelCardError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeModelCardRequest,
   output: DescribeModelCardResponse,
   errors: [ResourceNotFound],
@@ -38805,7 +38805,7 @@ export const describeModelCardExportJob: API.OperationMethod<
   DescribeModelCardExportJobResponse,
   DescribeModelCardExportJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeModelCardExportJobRequest,
   output: DescribeModelCardExportJobResponse,
   errors: [ResourceNotFound],
@@ -38821,7 +38821,7 @@ export const describeModelExplainabilityJobDefinition: API.OperationMethod<
   DescribeModelExplainabilityJobDefinitionResponse,
   DescribeModelExplainabilityJobDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeModelExplainabilityJobDefinitionRequest,
   output: DescribeModelExplainabilityJobDefinitionResponse,
   errors: [ResourceNotFound],
@@ -38839,7 +38839,7 @@ export const describeModelPackage: API.OperationMethod<
   DescribeModelPackageOutput,
   DescribeModelPackageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeModelPackageInput,
   output: DescribeModelPackageOutput,
   errors: [],
@@ -38853,7 +38853,7 @@ export const describeModelPackageGroup: API.OperationMethod<
   DescribeModelPackageGroupOutput,
   DescribeModelPackageGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeModelPackageGroupInput,
   output: DescribeModelPackageGroupOutput,
   errors: [],
@@ -38869,7 +38869,7 @@ export const describeModelQualityJobDefinition: API.OperationMethod<
   DescribeModelQualityJobDefinitionResponse,
   DescribeModelQualityJobDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeModelQualityJobDefinitionRequest,
   output: DescribeModelQualityJobDefinitionResponse,
   errors: [ResourceNotFound],
@@ -38883,7 +38883,7 @@ export const describeMonitoringSchedule: API.OperationMethod<
   DescribeMonitoringScheduleResponse,
   DescribeMonitoringScheduleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeMonitoringScheduleRequest,
   output: DescribeMonitoringScheduleResponse,
   errors: [ResourceNotFound],
@@ -38897,7 +38897,7 @@ export const describeNotebookInstance: API.OperationMethod<
   DescribeNotebookInstanceOutput,
   DescribeNotebookInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeNotebookInstanceInput,
   output: DescribeNotebookInstanceOutput,
   errors: [],
@@ -38913,7 +38913,7 @@ export const describeNotebookInstanceLifecycleConfig: API.OperationMethod<
   DescribeNotebookInstanceLifecycleConfigOutput,
   DescribeNotebookInstanceLifecycleConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeNotebookInstanceLifecycleConfigInput,
   output: DescribeNotebookInstanceLifecycleConfigOutput,
   errors: [],
@@ -38927,7 +38927,7 @@ export const describeOptimizationJob: API.OperationMethod<
   DescribeOptimizationJobResponse,
   DescribeOptimizationJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeOptimizationJobRequest,
   output: DescribeOptimizationJobResponse,
   errors: [ResourceNotFound],
@@ -38941,7 +38941,7 @@ export const describePartnerApp: API.OperationMethod<
   DescribePartnerAppResponse,
   DescribePartnerAppError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribePartnerAppRequest,
   output: DescribePartnerAppResponse,
   errors: [ResourceNotFound],
@@ -38955,7 +38955,7 @@ export const describePipeline: API.OperationMethod<
   DescribePipelineResponse,
   DescribePipelineError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribePipelineRequest,
   output: DescribePipelineResponse,
   errors: [ResourceNotFound],
@@ -38971,7 +38971,7 @@ export const describePipelineDefinitionForExecution: API.OperationMethod<
   DescribePipelineDefinitionForExecutionResponse,
   DescribePipelineDefinitionForExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribePipelineDefinitionForExecutionRequest,
   output: DescribePipelineDefinitionForExecutionResponse,
   errors: [ResourceNotFound],
@@ -38985,7 +38985,7 @@ export const describePipelineExecution: API.OperationMethod<
   DescribePipelineExecutionResponse,
   DescribePipelineExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribePipelineExecutionRequest,
   output: DescribePipelineExecutionResponse,
   errors: [ResourceNotFound],
@@ -38999,7 +38999,7 @@ export const describeProcessingJob: API.OperationMethod<
   DescribeProcessingJobResponse,
   DescribeProcessingJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeProcessingJobRequest,
   output: DescribeProcessingJobResponse,
   errors: [ResourceNotFound],
@@ -39013,7 +39013,7 @@ export const describeProject: API.OperationMethod<
   DescribeProjectOutput,
   DescribeProjectError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeProjectInput,
   output: DescribeProjectOutput,
   errors: [],
@@ -39027,7 +39027,7 @@ export const describeReservedCapacity: API.OperationMethod<
   DescribeReservedCapacityResponse,
   DescribeReservedCapacityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeReservedCapacityRequest,
   output: DescribeReservedCapacityResponse,
   errors: [ResourceNotFound],
@@ -39041,7 +39041,7 @@ export const describeSpace: API.OperationMethod<
   DescribeSpaceResponse,
   DescribeSpaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeSpaceRequest,
   output: DescribeSpaceResponse,
   errors: [ResourceNotFound],
@@ -39057,7 +39057,7 @@ export const describeStudioLifecycleConfig: API.OperationMethod<
   DescribeStudioLifecycleConfigResponse,
   DescribeStudioLifecycleConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeStudioLifecycleConfigRequest,
   output: DescribeStudioLifecycleConfigResponse,
   errors: [ResourceNotFound],
@@ -39071,7 +39071,7 @@ export const describeSubscribedWorkteam: API.OperationMethod<
   DescribeSubscribedWorkteamResponse,
   DescribeSubscribedWorkteamError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeSubscribedWorkteamRequest,
   output: DescribeSubscribedWorkteamResponse,
   errors: [],
@@ -39087,7 +39087,7 @@ export const describeTrainingJob: API.OperationMethod<
   DescribeTrainingJobResponse,
   DescribeTrainingJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeTrainingJobRequest,
   output: DescribeTrainingJobResponse,
   errors: [ResourceNotFound],
@@ -39101,7 +39101,7 @@ export const describeTrainingPlan: API.OperationMethod<
   DescribeTrainingPlanResponse,
   DescribeTrainingPlanError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeTrainingPlanRequest,
   output: DescribeTrainingPlanResponse,
   errors: [ResourceNotFound],
@@ -39132,7 +39132,7 @@ export const describeTrainingPlanExtensionHistory: API.OperationMethod<
     DescribeTrainingPlanExtensionHistoryError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTrainingPlanExtensionHistoryRequest,
   output: DescribeTrainingPlanExtensionHistoryResponse,
   errors: [ResourceNotFound],
@@ -39152,7 +39152,7 @@ export const describeTransformJob: API.OperationMethod<
   DescribeTransformJobResponse,
   DescribeTransformJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeTransformJobRequest,
   output: DescribeTransformJobResponse,
   errors: [ResourceNotFound],
@@ -39166,7 +39166,7 @@ export const describeTrial: API.OperationMethod<
   DescribeTrialResponse,
   DescribeTrialError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeTrialRequest,
   output: DescribeTrialResponse,
   errors: [ResourceNotFound],
@@ -39180,7 +39180,7 @@ export const describeTrialComponent: API.OperationMethod<
   DescribeTrialComponentResponse,
   DescribeTrialComponentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeTrialComponentRequest,
   output: DescribeTrialComponentResponse,
   errors: [ResourceNotFound],
@@ -39197,7 +39197,7 @@ export const describeUserProfile: API.OperationMethod<
   DescribeUserProfileResponse,
   DescribeUserProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeUserProfileRequest,
   output: DescribeUserProfileResponse,
   errors: [ResourceLimitExceeded, ResourceNotFound],
@@ -39213,7 +39213,7 @@ export const describeWorkforce: API.OperationMethod<
   DescribeWorkforceResponse,
   DescribeWorkforceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeWorkforceRequest,
   output: DescribeWorkforceResponse,
   errors: [],
@@ -39227,7 +39227,7 @@ export const describeWorkteam: API.OperationMethod<
   DescribeWorkteamResponse,
   DescribeWorkteamError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeWorkteamRequest,
   output: DescribeWorkteamResponse,
   errors: [],
@@ -39243,7 +39243,7 @@ export const detachClusterNodeVolume: API.OperationMethod<
   DetachClusterNodeVolumeResponse,
   DetachClusterNodeVolumeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetachClusterNodeVolumeRequest,
   output: DetachClusterNodeVolumeResponse,
   errors: [ResourceNotFound],
@@ -39257,7 +39257,7 @@ export const disableSagemakerServicecatalogPortfolio: API.OperationMethod<
   DisableSagemakerServicecatalogPortfolioOutput,
   DisableSagemakerServicecatalogPortfolioError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableSagemakerServicecatalogPortfolioInput,
   output: DisableSagemakerServicecatalogPortfolioOutput,
   errors: [],
@@ -39273,7 +39273,7 @@ export const disassociateTrialComponent: API.OperationMethod<
   DisassociateTrialComponentResponse,
   DisassociateTrialComponentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateTrialComponentRequest,
   output: DisassociateTrialComponentResponse,
   errors: [ResourceNotFound],
@@ -39287,7 +39287,7 @@ export const enableSagemakerServicecatalogPortfolio: API.OperationMethod<
   EnableSagemakerServicecatalogPortfolioOutput,
   EnableSagemakerServicecatalogPortfolioError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableSagemakerServicecatalogPortfolioInput,
   output: EnableSagemakerServicecatalogPortfolioOutput,
   errors: [],
@@ -39305,7 +39305,7 @@ export const extendTrainingPlan: API.OperationMethod<
   ExtendTrainingPlanResponse,
   ExtendTrainingPlanError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExtendTrainingPlanRequest,
   output: ExtendTrainingPlanResponse,
   errors: [ResourceNotFound],
@@ -39319,7 +39319,7 @@ export const getDeviceFleetReport: API.OperationMethod<
   GetDeviceFleetReportResponse,
   GetDeviceFleetReportError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDeviceFleetReportRequest,
   output: GetDeviceFleetReportResponse,
   errors: [],
@@ -39333,7 +39333,7 @@ export const getLineageGroupPolicy: API.OperationMethod<
   GetLineageGroupPolicyResponse,
   GetLineageGroupPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLineageGroupPolicyRequest,
   output: GetLineageGroupPolicyResponse,
   errors: [ResourceNotFound],
@@ -39347,7 +39347,7 @@ export const getModelPackageGroupPolicy: API.OperationMethod<
   GetModelPackageGroupPolicyOutput,
   GetModelPackageGroupPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetModelPackageGroupPolicyInput,
   output: GetModelPackageGroupPolicyOutput,
   errors: [],
@@ -39361,7 +39361,7 @@ export const getSagemakerServicecatalogPortfolioStatus: API.OperationMethod<
   GetSagemakerServicecatalogPortfolioStatusOutput,
   GetSagemakerServicecatalogPortfolioStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSagemakerServicecatalogPortfolioStatusInput,
   output: GetSagemakerServicecatalogPortfolioStatusOutput,
   errors: [],
@@ -39377,7 +39377,7 @@ export const getScalingConfigurationRecommendation: API.OperationMethod<
   GetScalingConfigurationRecommendationResponse,
   GetScalingConfigurationRecommendationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetScalingConfigurationRecommendationRequest,
   output: GetScalingConfigurationRecommendationResponse,
   errors: [ResourceNotFound],
@@ -39391,7 +39391,7 @@ export const getSearchSuggestions: API.OperationMethod<
   GetSearchSuggestionsResponse,
   GetSearchSuggestionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSearchSuggestionsRequest,
   output: GetSearchSuggestionsResponse,
   errors: [],
@@ -39409,7 +39409,7 @@ export const importHubContent: API.OperationMethod<
   ImportHubContentResponse,
   ImportHubContentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportHubContentRequest,
   output: ImportHubContentResponse,
   errors: [ResourceInUse, ResourceLimitExceeded, ResourceNotFound],
@@ -39438,7 +39438,7 @@ export const listActions: API.OperationMethod<
     ListActionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListActionsRequest,
   output: ListActionsResponse,
   errors: [ResourceNotFound],
@@ -39473,7 +39473,7 @@ export const listAlgorithms: API.OperationMethod<
     ListAlgorithmsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAlgorithmsInput,
   output: ListAlgorithmsOutput,
   errors: [],
@@ -39508,7 +39508,7 @@ export const listAliases: API.OperationMethod<
     ListAliasesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAliasesRequest,
   output: ListAliasesResponse,
   errors: [ResourceNotFound],
@@ -39543,7 +39543,7 @@ export const listAppImageConfigs: API.OperationMethod<
     ListAppImageConfigsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppImageConfigsRequest,
   output: ListAppImageConfigsResponse,
   errors: [],
@@ -39578,7 +39578,7 @@ export const listApps: API.OperationMethod<
     ListAppsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppsRequest,
   output: ListAppsResponse,
   errors: [],
@@ -39613,7 +39613,7 @@ export const listArtifacts: API.OperationMethod<
     ListArtifactsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListArtifactsRequest,
   output: ListArtifactsResponse,
   errors: [ResourceNotFound],
@@ -39648,7 +39648,7 @@ export const listAssociations: API.OperationMethod<
     ListAssociationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssociationsRequest,
   output: ListAssociationsResponse,
   errors: [ResourceNotFound],
@@ -39683,7 +39683,7 @@ export const listAutoMLJobs: API.OperationMethod<
     ListAutoMLJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAutoMLJobsRequest,
   output: ListAutoMLJobsResponse,
   errors: [],
@@ -39718,7 +39718,7 @@ export const listCandidatesForAutoMLJob: API.OperationMethod<
     ListCandidatesForAutoMLJobError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCandidatesForAutoMLJobRequest,
   output: ListCandidatesForAutoMLJobResponse,
   errors: [ResourceNotFound],
@@ -39753,7 +39753,7 @@ export const listClusterEvents: API.OperationMethod<
     ListClusterEventsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListClusterEventsRequest,
   output: ListClusterEventsResponse,
   errors: [ResourceNotFound],
@@ -39788,7 +39788,7 @@ export const listClusterNodes: API.OperationMethod<
     ListClusterNodesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListClusterNodesRequest,
   output: ListClusterNodesResponse,
   errors: [ResourceNotFound],
@@ -39823,7 +39823,7 @@ export const listClusters: API.OperationMethod<
     ListClustersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListClustersRequest,
   output: ListClustersResponse,
   errors: [],
@@ -39858,7 +39858,7 @@ export const listClusterSchedulerConfigs: API.OperationMethod<
     ListClusterSchedulerConfigsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListClusterSchedulerConfigsRequest,
   output: ListClusterSchedulerConfigsResponse,
   errors: [],
@@ -39893,7 +39893,7 @@ export const listCodeRepositories: API.OperationMethod<
     ListCodeRepositoriesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCodeRepositoriesInput,
   output: ListCodeRepositoriesOutput,
   errors: [],
@@ -39930,7 +39930,7 @@ export const listCompilationJobs: API.OperationMethod<
     ListCompilationJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCompilationJobsRequest,
   output: ListCompilationJobsResponse,
   errors: [],
@@ -39965,7 +39965,7 @@ export const listComputeQuotas: API.OperationMethod<
     ListComputeQuotasError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListComputeQuotasRequest,
   output: ListComputeQuotasResponse,
   errors: [],
@@ -40000,7 +40000,7 @@ export const listContexts: API.OperationMethod<
     ListContextsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListContextsRequest,
   output: ListContextsResponse,
   errors: [ResourceNotFound],
@@ -40035,7 +40035,7 @@ export const listDataQualityJobDefinitions: API.OperationMethod<
     ListDataQualityJobDefinitionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataQualityJobDefinitionsRequest,
   output: ListDataQualityJobDefinitionsResponse,
   errors: [],
@@ -40070,7 +40070,7 @@ export const listDeviceFleets: API.OperationMethod<
     ListDeviceFleetsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDeviceFleetsRequest,
   output: ListDeviceFleetsResponse,
   errors: [],
@@ -40105,7 +40105,7 @@ export const listDevices: API.OperationMethod<
     ListDevicesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDevicesRequest,
   output: ListDevicesResponse,
   errors: [],
@@ -40140,7 +40140,7 @@ export const listDomains: API.OperationMethod<
     ListDomainsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDomainsRequest,
   output: ListDomainsResponse,
   errors: [],
@@ -40175,7 +40175,7 @@ export const listEdgeDeploymentPlans: API.OperationMethod<
     ListEdgeDeploymentPlansError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEdgeDeploymentPlansRequest,
   output: ListEdgeDeploymentPlansResponse,
   errors: [],
@@ -40210,7 +40210,7 @@ export const listEdgePackagingJobs: API.OperationMethod<
     ListEdgePackagingJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEdgePackagingJobsRequest,
   output: ListEdgePackagingJobsResponse,
   errors: [],
@@ -40245,7 +40245,7 @@ export const listEndpointConfigs: API.OperationMethod<
     ListEndpointConfigsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEndpointConfigsInput,
   output: ListEndpointConfigsOutput,
   errors: [],
@@ -40280,7 +40280,7 @@ export const listEndpoints: API.OperationMethod<
     ListEndpointsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEndpointsInput,
   output: ListEndpointsOutput,
   errors: [],
@@ -40315,7 +40315,7 @@ export const listExperiments: API.OperationMethod<
     ListExperimentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExperimentsRequest,
   output: ListExperimentsResponse,
   errors: [],
@@ -40350,7 +40350,7 @@ export const listFeatureGroups: API.OperationMethod<
     ListFeatureGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFeatureGroupsRequest,
   output: ListFeatureGroupsResponse,
   errors: [],
@@ -40385,7 +40385,7 @@ export const listFlowDefinitions: API.OperationMethod<
     ListFlowDefinitionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFlowDefinitionsRequest,
   output: ListFlowDefinitionsResponse,
   errors: [],
@@ -40405,7 +40405,7 @@ export const listHubContents: API.OperationMethod<
   ListHubContentsResponse,
   ListHubContentsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListHubContentsRequest,
   output: ListHubContentsResponse,
   errors: [ResourceNotFound],
@@ -40419,7 +40419,7 @@ export const listHubContentVersions: API.OperationMethod<
   ListHubContentVersionsResponse,
   ListHubContentVersionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListHubContentVersionsRequest,
   output: ListHubContentVersionsResponse,
   errors: [ResourceNotFound],
@@ -40433,7 +40433,7 @@ export const listHubs: API.OperationMethod<
   ListHubsResponse,
   ListHubsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListHubsRequest,
   output: ListHubsResponse,
   errors: [],
@@ -40462,7 +40462,7 @@ export const listHumanTaskUis: API.OperationMethod<
     ListHumanTaskUisError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListHumanTaskUisRequest,
   output: ListHumanTaskUisResponse,
   errors: [],
@@ -40497,7 +40497,7 @@ export const listHyperParameterTuningJobs: API.OperationMethod<
     ListHyperParameterTuningJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListHyperParameterTuningJobsRequest,
   output: ListHyperParameterTuningJobsResponse,
   errors: [],
@@ -40532,7 +40532,7 @@ export const listImages: API.OperationMethod<
     ListImagesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImagesRequest,
   output: ListImagesResponse,
   errors: [],
@@ -40567,7 +40567,7 @@ export const listImageVersions: API.OperationMethod<
     ListImageVersionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImageVersionsRequest,
   output: ListImageVersionsResponse,
   errors: [ResourceNotFound],
@@ -40602,7 +40602,7 @@ export const listInferenceComponents: API.OperationMethod<
     ListInferenceComponentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInferenceComponentsInput,
   output: ListInferenceComponentsOutput,
   errors: [],
@@ -40637,7 +40637,7 @@ export const listInferenceExperiments: API.OperationMethod<
     ListInferenceExperimentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInferenceExperimentsRequest,
   output: ListInferenceExperimentsResponse,
   errors: [],
@@ -40672,7 +40672,7 @@ export const listInferenceRecommendationsJobs: API.OperationMethod<
     ListInferenceRecommendationsJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInferenceRecommendationsJobsRequest,
   output: ListInferenceRecommendationsJobsResponse,
   errors: [],
@@ -40711,7 +40711,7 @@ export const listInferenceRecommendationsJobSteps: API.OperationMethod<
     ListInferenceRecommendationsJobStepsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInferenceRecommendationsJobStepsRequest,
   output: ListInferenceRecommendationsJobStepsResponse,
   errors: [ResourceNotFound],
@@ -40746,7 +40746,7 @@ export const listLabelingJobs: API.OperationMethod<
     ListLabelingJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLabelingJobsRequest,
   output: ListLabelingJobsResponse,
   errors: [],
@@ -40781,7 +40781,7 @@ export const listLabelingJobsForWorkteam: API.OperationMethod<
     ListLabelingJobsForWorkteamError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLabelingJobsForWorkteamRequest,
   output: ListLabelingJobsForWorkteamResponse,
   errors: [ResourceNotFound],
@@ -40816,7 +40816,7 @@ export const listLineageGroups: API.OperationMethod<
     ListLineageGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLineageGroupsRequest,
   output: ListLineageGroupsResponse,
   errors: [],
@@ -40851,7 +40851,7 @@ export const listMlflowApps: API.OperationMethod<
     ListMlflowAppsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMlflowAppsRequest,
   output: ListMlflowAppsResponse,
   errors: [],
@@ -40886,7 +40886,7 @@ export const listMlflowTrackingServers: API.OperationMethod<
     ListMlflowTrackingServersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMlflowTrackingServersRequest,
   output: ListMlflowTrackingServersResponse,
   errors: [],
@@ -40921,7 +40921,7 @@ export const listModelBiasJobDefinitions: API.OperationMethod<
     ListModelBiasJobDefinitionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListModelBiasJobDefinitionsRequest,
   output: ListModelBiasJobDefinitionsResponse,
   errors: [],
@@ -40956,7 +40956,7 @@ export const listModelCardExportJobs: API.OperationMethod<
     ListModelCardExportJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListModelCardExportJobsRequest,
   output: ListModelCardExportJobsResponse,
   errors: [],
@@ -40991,7 +40991,7 @@ export const listModelCards: API.OperationMethod<
     ListModelCardsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListModelCardsRequest,
   output: ListModelCardsResponse,
   errors: [],
@@ -41026,7 +41026,7 @@ export const listModelCardVersions: API.OperationMethod<
     ListModelCardVersionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListModelCardVersionsRequest,
   output: ListModelCardVersionsResponse,
   errors: [ResourceNotFound],
@@ -41061,7 +41061,7 @@ export const listModelExplainabilityJobDefinitions: API.OperationMethod<
     ListModelExplainabilityJobDefinitionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListModelExplainabilityJobDefinitionsRequest,
   output: ListModelExplainabilityJobDefinitionsResponse,
   errors: [],
@@ -41096,7 +41096,7 @@ export const listModelMetadata: API.OperationMethod<
     ListModelMetadataError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListModelMetadataRequest,
   output: ListModelMetadataResponse,
   errors: [],
@@ -41131,7 +41131,7 @@ export const listModelPackageGroups: API.OperationMethod<
     ListModelPackageGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListModelPackageGroupsInput,
   output: ListModelPackageGroupsOutput,
   errors: [],
@@ -41166,7 +41166,7 @@ export const listModelPackages: API.OperationMethod<
     ListModelPackagesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListModelPackagesInput,
   output: ListModelPackagesOutput,
   errors: [],
@@ -41201,7 +41201,7 @@ export const listModelQualityJobDefinitions: API.OperationMethod<
     ListModelQualityJobDefinitionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListModelQualityJobDefinitionsRequest,
   output: ListModelQualityJobDefinitionsResponse,
   errors: [],
@@ -41236,7 +41236,7 @@ export const listModels: API.OperationMethod<
     ListModelsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListModelsInput,
   output: ListModelsOutput,
   errors: [],
@@ -41271,7 +41271,7 @@ export const listMonitoringAlertHistory: API.OperationMethod<
     ListMonitoringAlertHistoryError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMonitoringAlertHistoryRequest,
   output: ListMonitoringAlertHistoryResponse,
   errors: [ResourceNotFound],
@@ -41306,7 +41306,7 @@ export const listMonitoringAlerts: API.OperationMethod<
     ListMonitoringAlertsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMonitoringAlertsRequest,
   output: ListMonitoringAlertsResponse,
   errors: [ResourceNotFound],
@@ -41341,7 +41341,7 @@ export const listMonitoringExecutions: API.OperationMethod<
     ListMonitoringExecutionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMonitoringExecutionsRequest,
   output: ListMonitoringExecutionsResponse,
   errors: [],
@@ -41376,7 +41376,7 @@ export const listMonitoringSchedules: API.OperationMethod<
     ListMonitoringSchedulesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMonitoringSchedulesRequest,
   output: ListMonitoringSchedulesResponse,
   errors: [],
@@ -41411,7 +41411,7 @@ export const listNotebookInstanceLifecycleConfigs: API.OperationMethod<
     ListNotebookInstanceLifecycleConfigsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNotebookInstanceLifecycleConfigsInput,
   output: ListNotebookInstanceLifecycleConfigsOutput,
   errors: [],
@@ -41446,7 +41446,7 @@ export const listNotebookInstances: API.OperationMethod<
     ListNotebookInstancesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNotebookInstancesInput,
   output: ListNotebookInstancesOutput,
   errors: [],
@@ -41481,7 +41481,7 @@ export const listOptimizationJobs: API.OperationMethod<
     ListOptimizationJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOptimizationJobsRequest,
   output: ListOptimizationJobsResponse,
   errors: [],
@@ -41516,7 +41516,7 @@ export const listPartnerApps: API.OperationMethod<
     ListPartnerAppsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPartnerAppsRequest,
   output: ListPartnerAppsResponse,
   errors: [],
@@ -41551,7 +41551,7 @@ export const listPipelineExecutions: API.OperationMethod<
     ListPipelineExecutionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPipelineExecutionsRequest,
   output: ListPipelineExecutionsResponse,
   errors: [ResourceNotFound],
@@ -41586,7 +41586,7 @@ export const listPipelineExecutionSteps: API.OperationMethod<
     ListPipelineExecutionStepsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPipelineExecutionStepsRequest,
   output: ListPipelineExecutionStepsResponse,
   errors: [ResourceNotFound],
@@ -41623,7 +41623,7 @@ export const listPipelineParametersForExecution: API.OperationMethod<
     ListPipelineParametersForExecutionError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPipelineParametersForExecutionRequest,
   output: ListPipelineParametersForExecutionResponse,
   errors: [ResourceNotFound],
@@ -41658,7 +41658,7 @@ export const listPipelines: API.OperationMethod<
     ListPipelinesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPipelinesRequest,
   output: ListPipelinesResponse,
   errors: [],
@@ -41693,7 +41693,7 @@ export const listPipelineVersions: API.OperationMethod<
     ListPipelineVersionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPipelineVersionsRequest,
   output: ListPipelineVersionsResponse,
   errors: [ResourceNotFound],
@@ -41728,7 +41728,7 @@ export const listProcessingJobs: API.OperationMethod<
     ListProcessingJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProcessingJobsRequest,
   output: ListProcessingJobsResponse,
   errors: [],
@@ -41763,7 +41763,7 @@ export const listProjects: API.OperationMethod<
     ListProjectsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInput,
   output: ListProjectsOutput,
   errors: [],
@@ -41797,7 +41797,7 @@ export const listResourceCatalogs: API.OperationMethod<
     ListResourceCatalogsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceCatalogsRequest,
   output: ListResourceCatalogsResponse,
   errors: [],
@@ -41832,7 +41832,7 @@ export const listSpaces: API.OperationMethod<
     ListSpacesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSpacesRequest,
   output: ListSpacesResponse,
   errors: [],
@@ -41867,7 +41867,7 @@ export const listStageDevices: API.OperationMethod<
     ListStageDevicesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStageDevicesRequest,
   output: ListStageDevicesResponse,
   errors: [],
@@ -41902,7 +41902,7 @@ export const listStudioLifecycleConfigs: API.OperationMethod<
     ListStudioLifecycleConfigsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStudioLifecycleConfigsRequest,
   output: ListStudioLifecycleConfigsResponse,
   errors: [ResourceInUse],
@@ -41937,7 +41937,7 @@ export const listSubscribedWorkteams: API.OperationMethod<
     ListSubscribedWorkteamsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSubscribedWorkteamsRequest,
   output: ListSubscribedWorkteamsResponse,
   errors: [],
@@ -41972,7 +41972,7 @@ export const listTags: API.OperationMethod<
     ListTagsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagsInput,
   output: ListTagsOutput,
   errors: [],
@@ -42019,7 +42019,7 @@ export const listTrainingJobs: API.OperationMethod<
     ListTrainingJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTrainingJobsRequest,
   output: ListTrainingJobsResponse,
   errors: [],
@@ -42056,7 +42056,7 @@ export const listTrainingJobsForHyperParameterTuningJob: API.OperationMethod<
     ListTrainingJobsForHyperParameterTuningJobError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTrainingJobsForHyperParameterTuningJobRequest,
   output: ListTrainingJobsForHyperParameterTuningJobResponse,
   errors: [ResourceNotFound],
@@ -42091,7 +42091,7 @@ export const listTrainingPlans: API.OperationMethod<
     ListTrainingPlansError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTrainingPlansRequest,
   output: ListTrainingPlansResponse,
   errors: [],
@@ -42126,7 +42126,7 @@ export const listTransformJobs: API.OperationMethod<
     ListTransformJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTransformJobsRequest,
   output: ListTransformJobsResponse,
   errors: [],
@@ -42167,7 +42167,7 @@ export const listTrialComponents: API.OperationMethod<
     ListTrialComponentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTrialComponentsRequest,
   output: ListTrialComponentsResponse,
   errors: [ResourceNotFound],
@@ -42202,7 +42202,7 @@ export const listTrials: API.OperationMethod<
     ListTrialsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTrialsRequest,
   output: ListTrialsResponse,
   errors: [ResourceNotFound],
@@ -42239,7 +42239,7 @@ export const listUltraServersByReservedCapacity: API.OperationMethod<
     ListUltraServersByReservedCapacityError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUltraServersByReservedCapacityRequest,
   output: ListUltraServersByReservedCapacityResponse,
   errors: [ResourceNotFound],
@@ -42274,7 +42274,7 @@ export const listUserProfiles: API.OperationMethod<
     ListUserProfilesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUserProfilesRequest,
   output: ListUserProfilesResponse,
   errors: [],
@@ -42309,7 +42309,7 @@ export const listWorkforces: API.OperationMethod<
     ListWorkforcesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkforcesRequest,
   output: ListWorkforcesResponse,
   errors: [],
@@ -42344,7 +42344,7 @@ export const listWorkteams: API.OperationMethod<
     ListWorkteamsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkteamsRequest,
   output: ListWorkteamsResponse,
   errors: [],
@@ -42364,7 +42364,7 @@ export const putModelPackageGroupPolicy: API.OperationMethod<
   PutModelPackageGroupPolicyOutput,
   PutModelPackageGroupPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutModelPackageGroupPolicyInput,
   output: PutModelPackageGroupPolicyOutput,
   errors: [ConflictException],
@@ -42393,7 +42393,7 @@ export const queryLineage: API.OperationMethod<
     QueryLineageError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: QueryLineageRequest,
   output: QueryLineageResponse,
   errors: [ResourceNotFound],
@@ -42412,7 +42412,7 @@ export const registerDevices: API.OperationMethod<
   RegisterDevicesResponse,
   RegisterDevicesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterDevicesRequest,
   output: RegisterDevicesResponse,
   errors: [ResourceLimitExceeded],
@@ -42426,7 +42426,7 @@ export const renderUiTemplate: API.OperationMethod<
   RenderUiTemplateResponse,
   RenderUiTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RenderUiTemplateRequest,
   output: RenderUiTemplateResponse,
   errors: [ResourceNotFound],
@@ -42444,7 +42444,7 @@ export const retryPipelineExecution: API.OperationMethod<
   RetryPipelineExecutionResponse,
   RetryPipelineExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RetryPipelineExecutionRequest,
   output: RetryPipelineExecutionResponse,
   errors: [ConflictException, ResourceLimitExceeded, ResourceNotFound],
@@ -42477,7 +42477,7 @@ export const search: API.OperationMethod<
     SearchError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchRequest,
   output: SearchResponse,
   errors: [],
@@ -42505,7 +42505,7 @@ export const searchTrainingPlanOfferings: API.OperationMethod<
   SearchTrainingPlanOfferingsResponse,
   SearchTrainingPlanOfferingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SearchTrainingPlanOfferingsRequest,
   output: SearchTrainingPlanOfferingsResponse,
   errors: [ResourceLimitExceeded],
@@ -42523,7 +42523,7 @@ export const sendPipelineExecutionStepFailure: API.OperationMethod<
   SendPipelineExecutionStepFailureResponse,
   SendPipelineExecutionStepFailureError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendPipelineExecutionStepFailureRequest,
   output: SendPipelineExecutionStepFailureResponse,
   errors: [ConflictException, ResourceLimitExceeded, ResourceNotFound],
@@ -42541,7 +42541,7 @@ export const sendPipelineExecutionStepSuccess: API.OperationMethod<
   SendPipelineExecutionStepSuccessResponse,
   SendPipelineExecutionStepSuccessError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendPipelineExecutionStepSuccessRequest,
   output: SendPipelineExecutionStepSuccessResponse,
   errors: [ConflictException, ResourceLimitExceeded, ResourceNotFound],
@@ -42555,7 +42555,7 @@ export const startClusterHealthCheck: API.OperationMethod<
   StartClusterHealthCheckResponse,
   StartClusterHealthCheckError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartClusterHealthCheckRequest,
   output: StartClusterHealthCheckResponse,
   errors: [ResourceNotFound],
@@ -42569,7 +42569,7 @@ export const startEdgeDeploymentStage: API.OperationMethod<
   StartEdgeDeploymentStageResponse,
   StartEdgeDeploymentStageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartEdgeDeploymentStageRequest,
   output: StartEdgeDeploymentStageResponse,
   errors: [],
@@ -42586,7 +42586,7 @@ export const startInferenceExperiment: API.OperationMethod<
   StartInferenceExperimentResponse,
   StartInferenceExperimentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartInferenceExperimentRequest,
   output: StartInferenceExperimentResponse,
   errors: [ConflictException, ResourceNotFound],
@@ -42603,7 +42603,7 @@ export const startMlflowTrackingServer: API.OperationMethod<
   StartMlflowTrackingServerResponse,
   StartMlflowTrackingServerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartMlflowTrackingServerRequest,
   output: StartMlflowTrackingServerResponse,
   errors: [ConflictException, ResourceNotFound],
@@ -42619,7 +42619,7 @@ export const startMonitoringSchedule: API.OperationMethod<
   StartMonitoringScheduleResponse,
   StartMonitoringScheduleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartMonitoringScheduleRequest,
   output: StartMonitoringScheduleResponse,
   errors: [ResourceNotFound],
@@ -42633,7 +42633,7 @@ export const startNotebookInstance: API.OperationMethod<
   StartNotebookInstanceResponse,
   StartNotebookInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartNotebookInstanceInput,
   output: StartNotebookInstanceResponse,
   errors: [ResourceLimitExceeded],
@@ -42651,7 +42651,7 @@ export const startPipelineExecution: API.OperationMethod<
   StartPipelineExecutionResponse,
   StartPipelineExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartPipelineExecutionRequest,
   output: StartPipelineExecutionResponse,
   errors: [ConflictException, ResourceLimitExceeded, ResourceNotFound],
@@ -42668,7 +42668,7 @@ export const startSession: API.OperationMethod<
   StartSessionResponse,
   StartSessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartSessionRequest,
   output: StartSessionResponse,
   errors: [ResourceLimitExceeded, ResourceNotFound],
@@ -42682,7 +42682,7 @@ export const stopAutoMLJob: API.OperationMethod<
   StopAutoMLJobResponse,
   StopAutoMLJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopAutoMLJobRequest,
   output: StopAutoMLJobResponse,
   errors: [ResourceNotFound],
@@ -42700,7 +42700,7 @@ export const stopCompilationJob: API.OperationMethod<
   StopCompilationJobResponse,
   StopCompilationJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopCompilationJobRequest,
   output: StopCompilationJobResponse,
   errors: [ResourceNotFound],
@@ -42714,7 +42714,7 @@ export const stopEdgeDeploymentStage: API.OperationMethod<
   StopEdgeDeploymentStageResponse,
   StopEdgeDeploymentStageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopEdgeDeploymentStageRequest,
   output: StopEdgeDeploymentStageResponse,
   errors: [],
@@ -42728,7 +42728,7 @@ export const stopEdgePackagingJob: API.OperationMethod<
   StopEdgePackagingJobResponse,
   StopEdgePackagingJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopEdgePackagingJobRequest,
   output: StopEdgePackagingJobResponse,
   errors: [],
@@ -42744,7 +42744,7 @@ export const stopHyperParameterTuningJob: API.OperationMethod<
   StopHyperParameterTuningJobResponse,
   StopHyperParameterTuningJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopHyperParameterTuningJobRequest,
   output: StopHyperParameterTuningJobResponse,
   errors: [ResourceNotFound],
@@ -42761,7 +42761,7 @@ export const stopInferenceExperiment: API.OperationMethod<
   StopInferenceExperimentResponse,
   StopInferenceExperimentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopInferenceExperimentRequest,
   output: StopInferenceExperimentResponse,
   errors: [ConflictException, ResourceNotFound],
@@ -42777,7 +42777,7 @@ export const stopInferenceRecommendationsJob: API.OperationMethod<
   StopInferenceRecommendationsJobResponse,
   StopInferenceRecommendationsJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopInferenceRecommendationsJobRequest,
   output: StopInferenceRecommendationsJobResponse,
   errors: [ResourceNotFound],
@@ -42791,7 +42791,7 @@ export const stopLabelingJob: API.OperationMethod<
   StopLabelingJobResponse,
   StopLabelingJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopLabelingJobRequest,
   output: StopLabelingJobResponse,
   errors: [ResourceNotFound],
@@ -42808,7 +42808,7 @@ export const stopMlflowTrackingServer: API.OperationMethod<
   StopMlflowTrackingServerResponse,
   StopMlflowTrackingServerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopMlflowTrackingServerRequest,
   output: StopMlflowTrackingServerResponse,
   errors: [ConflictException, ResourceNotFound],
@@ -42822,7 +42822,7 @@ export const stopMonitoringSchedule: API.OperationMethod<
   StopMonitoringScheduleResponse,
   StopMonitoringScheduleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopMonitoringScheduleRequest,
   output: StopMonitoringScheduleResponse,
   errors: [ResourceNotFound],
@@ -42838,7 +42838,7 @@ export const stopNotebookInstance: API.OperationMethod<
   StopNotebookInstanceResponse,
   StopNotebookInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopNotebookInstanceInput,
   output: StopNotebookInstanceResponse,
   errors: [],
@@ -42852,7 +42852,7 @@ export const stopOptimizationJob: API.OperationMethod<
   StopOptimizationJobResponse,
   StopOptimizationJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopOptimizationJobRequest,
   output: StopOptimizationJobResponse,
   errors: [ResourceNotFound],
@@ -42881,7 +42881,7 @@ export const stopPipelineExecution: API.OperationMethod<
   StopPipelineExecutionResponse,
   StopPipelineExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopPipelineExecutionRequest,
   output: StopPipelineExecutionResponse,
   errors: [ConflictException, ResourceNotFound],
@@ -42895,7 +42895,7 @@ export const stopProcessingJob: API.OperationMethod<
   StopProcessingJobResponse,
   StopProcessingJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopProcessingJobRequest,
   output: StopProcessingJobResponse,
   errors: [ResourceNotFound],
@@ -42911,7 +42911,7 @@ export const stopTrainingJob: API.OperationMethod<
   StopTrainingJobResponse,
   StopTrainingJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopTrainingJobRequest,
   output: StopTrainingJobResponse,
   errors: [ResourceNotFound],
@@ -42927,7 +42927,7 @@ export const stopTransformJob: API.OperationMethod<
   StopTransformJobResponse,
   StopTransformJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopTransformJobRequest,
   output: StopTransformJobResponse,
   errors: [ResourceNotFound],
@@ -42944,7 +42944,7 @@ export const updateAction: API.OperationMethod<
   UpdateActionResponse,
   UpdateActionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateActionRequest,
   output: UpdateActionResponse,
   errors: [ConflictException, ResourceNotFound],
@@ -42958,7 +42958,7 @@ export const updateAppImageConfig: API.OperationMethod<
   UpdateAppImageConfigResponse,
   UpdateAppImageConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAppImageConfigRequest,
   output: UpdateAppImageConfigResponse,
   errors: [ResourceNotFound],
@@ -42975,7 +42975,7 @@ export const updateArtifact: API.OperationMethod<
   UpdateArtifactResponse,
   UpdateArtifactError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateArtifactRequest,
   output: UpdateArtifactResponse,
   errors: [ConflictException, ResourceNotFound],
@@ -42993,7 +42993,7 @@ export const updateCluster: API.OperationMethod<
   UpdateClusterResponse,
   UpdateClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateClusterRequest,
   output: UpdateClusterResponse,
   errors: [ConflictException, ResourceLimitExceeded, ResourceNotFound],
@@ -43011,7 +43011,7 @@ export const updateClusterSchedulerConfig: API.OperationMethod<
   UpdateClusterSchedulerConfigResponse,
   UpdateClusterSchedulerConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateClusterSchedulerConfigRequest,
   output: UpdateClusterSchedulerConfigResponse,
   errors: [ConflictException, ResourceLimitExceeded, ResourceNotFound],
@@ -43030,7 +43030,7 @@ export const updateClusterSoftware: API.OperationMethod<
   UpdateClusterSoftwareResponse,
   UpdateClusterSoftwareError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateClusterSoftwareRequest,
   output: UpdateClusterSoftwareResponse,
   errors: [ConflictException, ResourceNotFound],
@@ -43044,7 +43044,7 @@ export const updateCodeRepository: API.OperationMethod<
   UpdateCodeRepositoryOutput,
   UpdateCodeRepositoryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCodeRepositoryInput,
   output: UpdateCodeRepositoryOutput,
   errors: [ConflictException],
@@ -43062,7 +43062,7 @@ export const updateComputeQuota: API.OperationMethod<
   UpdateComputeQuotaResponse,
   UpdateComputeQuotaError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateComputeQuotaRequest,
   output: UpdateComputeQuotaResponse,
   errors: [ConflictException, ResourceLimitExceeded, ResourceNotFound],
@@ -43079,7 +43079,7 @@ export const updateContext: API.OperationMethod<
   UpdateContextResponse,
   UpdateContextError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateContextRequest,
   output: UpdateContextResponse,
   errors: [ConflictException, ResourceNotFound],
@@ -43093,7 +43093,7 @@ export const updateDeviceFleet: API.OperationMethod<
   UpdateDeviceFleetResponse,
   UpdateDeviceFleetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDeviceFleetRequest,
   output: UpdateDeviceFleetResponse,
   errors: [ResourceInUse],
@@ -43107,7 +43107,7 @@ export const updateDevices: API.OperationMethod<
   UpdateDevicesResponse,
   UpdateDevicesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDevicesRequest,
   output: UpdateDevicesResponse,
   errors: [],
@@ -43125,7 +43125,7 @@ export const updateDomain: API.OperationMethod<
   UpdateDomainResponse,
   UpdateDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDomainRequest,
   output: UpdateDomainResponse,
   errors: [ResourceInUse, ResourceLimitExceeded, ResourceNotFound],
@@ -43145,7 +43145,7 @@ export const updateEndpoint: API.OperationMethod<
   UpdateEndpointOutput,
   UpdateEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEndpointInput,
   output: UpdateEndpointOutput,
   errors: [ResourceLimitExceeded],
@@ -43161,7 +43161,7 @@ export const updateEndpointWeightsAndCapacities: API.OperationMethod<
   UpdateEndpointWeightsAndCapacitiesOutput,
   UpdateEndpointWeightsAndCapacitiesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEndpointWeightsAndCapacitiesInput,
   output: UpdateEndpointWeightsAndCapacitiesOutput,
   errors: [ResourceLimitExceeded],
@@ -43178,7 +43178,7 @@ export const updateExperiment: API.OperationMethod<
   UpdateExperimentResponse,
   UpdateExperimentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateExperimentRequest,
   output: UpdateExperimentResponse,
   errors: [ConflictException, ResourceNotFound],
@@ -43199,7 +43199,7 @@ export const updateFeatureGroup: API.OperationMethod<
   UpdateFeatureGroupResponse,
   UpdateFeatureGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateFeatureGroupRequest,
   output: UpdateFeatureGroupResponse,
   errors: [ResourceLimitExceeded, ResourceNotFound],
@@ -43213,7 +43213,7 @@ export const updateFeatureMetadata: API.OperationMethod<
   UpdateFeatureMetadataResponse,
   UpdateFeatureMetadataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateFeatureMetadataRequest,
   output: UpdateFeatureMetadataResponse,
   errors: [ResourceNotFound],
@@ -43227,7 +43227,7 @@ export const updateHub: API.OperationMethod<
   UpdateHubResponse,
   UpdateHubError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateHubRequest,
   output: UpdateHubResponse,
   errors: [ResourceNotFound],
@@ -43260,7 +43260,7 @@ export const updateHubContent: API.OperationMethod<
   UpdateHubContentResponse,
   UpdateHubContentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateHubContentRequest,
   output: UpdateHubContentResponse,
   errors: [ResourceInUse, ResourceNotFound],
@@ -43283,7 +43283,7 @@ export const updateHubContentReference: API.OperationMethod<
   UpdateHubContentReferenceResponse,
   UpdateHubContentReferenceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateHubContentReferenceRequest,
   output: UpdateHubContentReferenceResponse,
   errors: [ResourceInUse, ResourceNotFound],
@@ -43297,7 +43297,7 @@ export const updateImage: API.OperationMethod<
   UpdateImageResponse,
   UpdateImageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateImageRequest,
   output: UpdateImageResponse,
   errors: [ResourceInUse, ResourceNotFound],
@@ -43314,7 +43314,7 @@ export const updateImageVersion: API.OperationMethod<
   UpdateImageVersionResponse,
   UpdateImageVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateImageVersionRequest,
   output: UpdateImageVersionResponse,
   errors: [ResourceInUse, ResourceNotFound],
@@ -43330,7 +43330,7 @@ export const updateInferenceComponent: API.OperationMethod<
   UpdateInferenceComponentOutput,
   UpdateInferenceComponentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateInferenceComponentInput,
   output: UpdateInferenceComponentOutput,
   errors: [ResourceLimitExceeded],
@@ -43346,7 +43346,7 @@ export const updateInferenceComponentRuntimeConfig: API.OperationMethod<
   UpdateInferenceComponentRuntimeConfigOutput,
   UpdateInferenceComponentRuntimeConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateInferenceComponentRuntimeConfigInput,
   output: UpdateInferenceComponentRuntimeConfigOutput,
   errors: [ResourceLimitExceeded],
@@ -43363,7 +43363,7 @@ export const updateInferenceExperiment: API.OperationMethod<
   UpdateInferenceExperimentResponse,
   UpdateInferenceExperimentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateInferenceExperimentRequest,
   output: UpdateInferenceExperimentResponse,
   errors: [ConflictException, ResourceNotFound],
@@ -43380,7 +43380,7 @@ export const updateMlflowApp: API.OperationMethod<
   UpdateMlflowAppResponse,
   UpdateMlflowAppError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateMlflowAppRequest,
   output: UpdateMlflowAppResponse,
   errors: [ConflictException, ResourceNotFound],
@@ -43398,7 +43398,7 @@ export const updateMlflowTrackingServer: API.OperationMethod<
   UpdateMlflowTrackingServerResponse,
   UpdateMlflowTrackingServerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateMlflowTrackingServerRequest,
   output: UpdateMlflowTrackingServerResponse,
   errors: [ConflictException, ResourceLimitExceeded, ResourceNotFound],
@@ -43418,7 +43418,7 @@ export const updateModelCard: API.OperationMethod<
   UpdateModelCardResponse,
   UpdateModelCardError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateModelCardRequest,
   output: UpdateModelCardResponse,
   errors: [ConflictException, ResourceLimitExceeded, ResourceNotFound],
@@ -43432,7 +43432,7 @@ export const updateModelPackage: API.OperationMethod<
   UpdateModelPackageOutput,
   UpdateModelPackageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateModelPackageInput,
   output: UpdateModelPackageOutput,
   errors: [ConflictException],
@@ -43449,7 +43449,7 @@ export const updateMonitoringAlert: API.OperationMethod<
   UpdateMonitoringAlertResponse,
   UpdateMonitoringAlertError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateMonitoringAlertRequest,
   output: UpdateMonitoringAlertResponse,
   errors: [ResourceLimitExceeded, ResourceNotFound],
@@ -43466,7 +43466,7 @@ export const updateMonitoringSchedule: API.OperationMethod<
   UpdateMonitoringScheduleResponse,
   UpdateMonitoringScheduleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateMonitoringScheduleRequest,
   output: UpdateMonitoringScheduleResponse,
   errors: [ResourceLimitExceeded, ResourceNotFound],
@@ -43482,7 +43482,7 @@ export const updateNotebookInstance: API.OperationMethod<
   UpdateNotebookInstanceOutput,
   UpdateNotebookInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateNotebookInstanceInput,
   output: UpdateNotebookInstanceOutput,
   errors: [ResourceLimitExceeded],
@@ -43500,7 +43500,7 @@ export const updateNotebookInstanceLifecycleConfig: API.OperationMethod<
   UpdateNotebookInstanceLifecycleConfigOutput,
   UpdateNotebookInstanceLifecycleConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateNotebookInstanceLifecycleConfigInput,
   output: UpdateNotebookInstanceLifecycleConfigOutput,
   errors: [ResourceLimitExceeded],
@@ -43517,7 +43517,7 @@ export const updatePartnerApp: API.OperationMethod<
   UpdatePartnerAppResponse,
   UpdatePartnerAppError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePartnerAppRequest,
   output: UpdatePartnerAppResponse,
   errors: [ConflictException, ResourceNotFound],
@@ -43534,7 +43534,7 @@ export const updatePipeline: API.OperationMethod<
   UpdatePipelineResponse,
   UpdatePipelineError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePipelineRequest,
   output: UpdatePipelineResponse,
   errors: [ConflictException, ResourceNotFound],
@@ -43551,7 +43551,7 @@ export const updatePipelineExecution: API.OperationMethod<
   UpdatePipelineExecutionResponse,
   UpdatePipelineExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePipelineExecutionRequest,
   output: UpdatePipelineExecutionResponse,
   errors: [ConflictException, ResourceNotFound],
@@ -43568,7 +43568,7 @@ export const updatePipelineVersion: API.OperationMethod<
   UpdatePipelineVersionResponse,
   UpdatePipelineVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePipelineVersionRequest,
   output: UpdatePipelineVersionResponse,
   errors: [ConflictException, ResourceNotFound],
@@ -43584,7 +43584,7 @@ export const updateProject: API.OperationMethod<
   UpdateProjectOutput,
   UpdateProjectError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateProjectInput,
   output: UpdateProjectOutput,
   errors: [ConflictException],
@@ -43604,7 +43604,7 @@ export const updateSpace: API.OperationMethod<
   UpdateSpaceResponse,
   UpdateSpaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSpaceRequest,
   output: UpdateSpaceResponse,
   errors: [ResourceInUse, ResourceLimitExceeded, ResourceNotFound],
@@ -43621,7 +43621,7 @@ export const updateTrainingJob: API.OperationMethod<
   UpdateTrainingJobResponse,
   UpdateTrainingJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTrainingJobRequest,
   output: UpdateTrainingJobResponse,
   errors: [ResourceLimitExceeded, ResourceNotFound],
@@ -43638,7 +43638,7 @@ export const updateTrial: API.OperationMethod<
   UpdateTrialResponse,
   UpdateTrialError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTrialRequest,
   output: UpdateTrialResponse,
   errors: [ConflictException, ResourceNotFound],
@@ -43655,7 +43655,7 @@ export const updateTrialComponent: API.OperationMethod<
   UpdateTrialComponentResponse,
   UpdateTrialComponentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTrialComponentRequest,
   output: UpdateTrialComponentResponse,
   errors: [ConflictException, ResourceNotFound],
@@ -43673,7 +43673,7 @@ export const updateUserProfile: API.OperationMethod<
   UpdateUserProfileResponse,
   UpdateUserProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateUserProfileRequest,
   output: UpdateUserProfileResponse,
   errors: [ResourceInUse, ResourceLimitExceeded, ResourceNotFound],
@@ -43703,7 +43703,7 @@ export const updateWorkforce: API.OperationMethod<
   UpdateWorkforceResponse,
   UpdateWorkforceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateWorkforceRequest,
   output: UpdateWorkforceResponse,
   errors: [ConflictException],
@@ -43717,7 +43717,7 @@ export const updateWorkteam: API.OperationMethod<
   UpdateWorkteamResponse,
   UpdateWorkteamError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateWorkteamRequest,
   output: UpdateWorkteamResponse,
   errors: [ResourceLimitExceeded],

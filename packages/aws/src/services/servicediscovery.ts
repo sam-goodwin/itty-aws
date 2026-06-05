@@ -1518,7 +1518,7 @@ export const createHttpNamespace: API.OperationMethod<
   CreateHttpNamespaceResponse,
   CreateHttpNamespaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateHttpNamespaceRequest,
   output: CreateHttpNamespaceResponse,
   errors: [
@@ -1551,7 +1551,7 @@ export const createPrivateDnsNamespace: API.OperationMethod<
   CreatePrivateDnsNamespaceResponse,
   CreatePrivateDnsNamespaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePrivateDnsNamespaceRequest,
   output: CreatePrivateDnsNamespaceResponse,
   errors: [
@@ -1585,7 +1585,7 @@ export const createPublicDnsNamespace: API.OperationMethod<
   CreatePublicDnsNamespaceResponse,
   CreatePublicDnsNamespaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePublicDnsNamespaceRequest,
   output: CreatePublicDnsNamespaceResponse,
   errors: [
@@ -1633,7 +1633,7 @@ export const createService: API.OperationMethod<
   CreateServiceResponse,
   CreateServiceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateServiceRequest,
   output: CreateServiceResponse,
   errors: [
@@ -1659,7 +1659,7 @@ export const deleteNamespace: API.OperationMethod<
   DeleteNamespaceResponse,
   DeleteNamespaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteNamespaceRequest,
   output: DeleteNamespaceResponse,
   errors: [DuplicateRequest, InvalidInput, NamespaceNotFound, ResourceInUse],
@@ -1678,7 +1678,7 @@ export const deleteService: API.OperationMethod<
   DeleteServiceResponse,
   DeleteServiceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteServiceRequest,
   output: DeleteServiceResponse,
   errors: [InvalidInput, ResourceInUse, ServiceNotFound],
@@ -1695,7 +1695,7 @@ export const deleteServiceAttributes: API.OperationMethod<
   DeleteServiceAttributesResponse,
   DeleteServiceAttributesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteServiceAttributesRequest,
   output: DeleteServiceAttributesResponse,
   errors: [InvalidInput, ServiceNotFound],
@@ -1716,7 +1716,7 @@ export const deregisterInstance: API.OperationMethod<
   DeregisterInstanceResponse,
   DeregisterInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeregisterInstanceRequest,
   output: DeregisterInstanceResponse,
   errors: [
@@ -1745,7 +1745,7 @@ export const discoverInstances: API.OperationMethod<
   DiscoverInstancesResponse,
   DiscoverInstancesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DiscoverInstancesRequest,
   output: DiscoverInstancesResponse,
   errors: [
@@ -1769,7 +1769,7 @@ export const discoverInstancesRevision: API.OperationMethod<
   DiscoverInstancesRevisionResponse,
   DiscoverInstancesRevisionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DiscoverInstancesRevisionRequest,
   output: DiscoverInstancesRevisionResponse,
   errors: [
@@ -1792,7 +1792,7 @@ export const getInstance: API.OperationMethod<
   GetInstanceResponse,
   GetInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInstanceRequest,
   output: GetInstanceResponse,
   errors: [InstanceNotFound, InvalidInput, ServiceNotFound],
@@ -1830,7 +1830,7 @@ export const getInstancesHealthStatus: API.OperationMethod<
     GetInstancesHealthStatusError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetInstancesHealthStatusRequest,
   output: GetInstancesHealthStatusResponse,
   errors: [InstanceNotFound, InvalidInput, ServiceNotFound],
@@ -1849,7 +1849,7 @@ export const getNamespace: API.OperationMethod<
   GetNamespaceResponse,
   GetNamespaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetNamespaceRequest,
   output: GetNamespaceResponse,
   errors: [InvalidInput, NamespaceNotFound],
@@ -1866,7 +1866,7 @@ export const getOperation: API.OperationMethod<
   GetOperationResponse,
   GetOperationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOperationRequest,
   output: GetOperationResponse,
   errors: [InvalidInput, OperationNotFound],
@@ -1880,7 +1880,7 @@ export const getService: API.OperationMethod<
   GetServiceResponse,
   GetServiceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetServiceRequest,
   output: GetServiceResponse,
   errors: [InvalidInput, ServiceNotFound],
@@ -1897,7 +1897,7 @@ export const getServiceAttributes: API.OperationMethod<
   GetServiceAttributesResponse,
   GetServiceAttributesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetServiceAttributesRequest,
   output: GetServiceAttributesResponse,
   errors: [InvalidInput, ServiceNotFound],
@@ -1927,7 +1927,7 @@ export const listInstances: API.OperationMethod<
     ListInstancesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInstancesRequest,
   output: ListInstancesResponse,
   errors: [InvalidInput, ServiceNotFound],
@@ -1961,7 +1961,7 @@ export const listNamespaces: API.OperationMethod<
     ListNamespacesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNamespacesRequest,
   output: ListNamespacesResponse,
   errors: [InvalidInput],
@@ -1995,7 +1995,7 @@ export const listOperations: API.OperationMethod<
     ListOperationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsRequest,
   output: ListOperationsResponse,
   errors: [InvalidInput],
@@ -2030,7 +2030,7 @@ export const listServices: API.OperationMethod<
     ListServicesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicesRequest,
   output: ListServicesResponse,
   errors: [InvalidInput],
@@ -2052,7 +2052,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [InvalidInput, ResourceNotFoundException],
@@ -2104,7 +2104,7 @@ export const registerInstance: API.OperationMethod<
   RegisterInstanceResponse,
   RegisterInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterInstanceRequest,
   output: RegisterInstanceResponse,
   errors: [
@@ -2128,7 +2128,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [InvalidInput, ResourceNotFoundException, TooManyTagsException],
@@ -2145,7 +2145,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [InvalidInput, ResourceNotFoundException],
@@ -2165,7 +2165,7 @@ export const updateHttpNamespace: API.OperationMethod<
   UpdateHttpNamespaceResponse,
   UpdateHttpNamespaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateHttpNamespaceRequest,
   output: UpdateHttpNamespaceResponse,
   errors: [DuplicateRequest, InvalidInput, NamespaceNotFound, ResourceInUse],
@@ -2192,7 +2192,7 @@ export const updateInstanceCustomHealthStatus: API.OperationMethod<
   UpdateInstanceCustomHealthStatusResponse,
   UpdateInstanceCustomHealthStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateInstanceCustomHealthStatusRequest,
   output: UpdateInstanceCustomHealthStatusResponse,
   errors: [
@@ -2217,7 +2217,7 @@ export const updatePrivateDnsNamespace: API.OperationMethod<
   UpdatePrivateDnsNamespaceResponse,
   UpdatePrivateDnsNamespaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePrivateDnsNamespaceRequest,
   output: UpdatePrivateDnsNamespaceResponse,
   errors: [DuplicateRequest, InvalidInput, NamespaceNotFound, ResourceInUse],
@@ -2236,7 +2236,7 @@ export const updatePublicDnsNamespace: API.OperationMethod<
   UpdatePublicDnsNamespaceResponse,
   UpdatePublicDnsNamespaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePublicDnsNamespaceRequest,
   output: UpdatePublicDnsNamespaceResponse,
   errors: [DuplicateRequest, InvalidInput, NamespaceNotFound, ResourceInUse],
@@ -2282,7 +2282,7 @@ export const updateService: API.OperationMethod<
   UpdateServiceResponse,
   UpdateServiceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateServiceRequest,
   output: UpdateServiceResponse,
   errors: [DuplicateRequest, InvalidInput, ServiceNotFound],
@@ -2300,7 +2300,7 @@ export const updateServiceAttributes: API.OperationMethod<
   UpdateServiceAttributesResponse,
   UpdateServiceAttributesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateServiceAttributesRequest,
   output: UpdateServiceAttributesResponse,
   errors: [

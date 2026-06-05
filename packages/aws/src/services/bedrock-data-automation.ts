@@ -2293,7 +2293,7 @@ export const copyBlueprintStage: API.OperationMethod<
   CopyBlueprintStageResponse,
   CopyBlueprintStageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CopyBlueprintStageRequest,
   output: CopyBlueprintStageResponse,
   errors: [
@@ -2320,7 +2320,7 @@ export const createBlueprintVersion: API.OperationMethod<
   CreateBlueprintVersionResponse,
   CreateBlueprintVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateBlueprintVersionRequest,
   output: CreateBlueprintVersionResponse,
   errors: [
@@ -2347,7 +2347,7 @@ export const getDataAutomationLibraryEntity: API.OperationMethod<
   GetDataAutomationLibraryEntityResponse,
   GetDataAutomationLibraryEntityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDataAutomationLibraryEntityRequest,
   output: GetDataAutomationLibraryEntityResponse,
   errors: [
@@ -2388,7 +2388,7 @@ export const listDataAutomationLibraryEntities: API.OperationMethod<
     ListDataAutomationLibraryEntitiesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataAutomationLibraryEntitiesRequest,
   output: ListDataAutomationLibraryEntitiesResponse,
   errors: [
@@ -2420,7 +2420,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -2447,7 +2447,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -2474,7 +2474,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -2501,7 +2501,7 @@ export const invokeBlueprintOptimizationAsync: API.OperationMethod<
   InvokeBlueprintOptimizationAsyncResponse,
   InvokeBlueprintOptimizationAsyncError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InvokeBlueprintOptimizationAsyncRequest,
   output: InvokeBlueprintOptimizationAsyncResponse,
   errors: [
@@ -2528,7 +2528,7 @@ export const getBlueprintOptimizationStatus: API.OperationMethod<
   GetBlueprintOptimizationStatusResponse,
   GetBlueprintOptimizationStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetBlueprintOptimizationStatusRequest,
   output: GetBlueprintOptimizationStatusResponse,
   errors: [
@@ -2555,7 +2555,7 @@ export const createBlueprint: API.OperationMethod<
   CreateBlueprintResponse,
   CreateBlueprintError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateBlueprintRequest,
   output: CreateBlueprintResponse,
   errors: [
@@ -2582,7 +2582,7 @@ export const getBlueprint: API.OperationMethod<
   GetBlueprintResponse,
   GetBlueprintError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetBlueprintRequest,
   output: GetBlueprintResponse,
   errors: [
@@ -2609,7 +2609,7 @@ export const updateBlueprint: API.OperationMethod<
   UpdateBlueprintResponse,
   UpdateBlueprintError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateBlueprintRequest,
   output: UpdateBlueprintResponse,
   errors: [
@@ -2636,7 +2636,7 @@ export const deleteBlueprint: API.OperationMethod<
   DeleteBlueprintResponse,
   DeleteBlueprintError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteBlueprintRequest,
   output: DeleteBlueprintResponse,
   errors: [
@@ -2677,7 +2677,7 @@ export const listBlueprints: API.OperationMethod<
     ListBlueprintsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBlueprintsRequest,
   output: ListBlueprintsResponse,
   errors: [
@@ -2711,7 +2711,7 @@ export const invokeDataAutomationLibraryIngestionJob: API.OperationMethod<
   InvokeDataAutomationLibraryIngestionJobResponse,
   InvokeDataAutomationLibraryIngestionJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InvokeDataAutomationLibraryIngestionJobRequest,
   output: InvokeDataAutomationLibraryIngestionJobResponse,
   errors: [
@@ -2739,7 +2739,7 @@ export const getDataAutomationLibraryIngestionJob: API.OperationMethod<
   GetDataAutomationLibraryIngestionJobResponse,
   GetDataAutomationLibraryIngestionJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDataAutomationLibraryIngestionJobRequest,
   output: GetDataAutomationLibraryIngestionJobResponse,
   errors: [
@@ -2780,7 +2780,7 @@ export const listDataAutomationLibraryIngestionJobs: API.OperationMethod<
     ListDataAutomationLibraryIngestionJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataAutomationLibraryIngestionJobsRequest,
   output: ListDataAutomationLibraryIngestionJobsResponse,
   errors: [
@@ -2813,7 +2813,7 @@ export const createDataAutomationLibrary: API.OperationMethod<
   CreateDataAutomationLibraryResponse,
   CreateDataAutomationLibraryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDataAutomationLibraryRequest,
   output: CreateDataAutomationLibraryResponse,
   errors: [
@@ -2840,7 +2840,7 @@ export const getDataAutomationLibrary: API.OperationMethod<
   GetDataAutomationLibraryResponse,
   GetDataAutomationLibraryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDataAutomationLibraryRequest,
   output: GetDataAutomationLibraryResponse,
   errors: [
@@ -2867,7 +2867,7 @@ export const updateDataAutomationLibrary: API.OperationMethod<
   UpdateDataAutomationLibraryResponse,
   UpdateDataAutomationLibraryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDataAutomationLibraryRequest,
   output: UpdateDataAutomationLibraryResponse,
   errors: [
@@ -2895,7 +2895,7 @@ export const deleteDataAutomationLibrary: API.OperationMethod<
   DeleteDataAutomationLibraryResponse,
   DeleteDataAutomationLibraryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDataAutomationLibraryRequest,
   output: DeleteDataAutomationLibraryResponse,
   errors: [
@@ -2936,7 +2936,7 @@ export const listDataAutomationLibraries: API.OperationMethod<
     ListDataAutomationLibrariesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataAutomationLibrariesRequest,
   output: ListDataAutomationLibrariesResponse,
   errors: [
@@ -2968,7 +2968,7 @@ export const createDataAutomationProject: API.OperationMethod<
   CreateDataAutomationProjectResponse,
   CreateDataAutomationProjectError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDataAutomationProjectRequest,
   output: CreateDataAutomationProjectResponse,
   errors: [
@@ -2995,7 +2995,7 @@ export const getDataAutomationProject: API.OperationMethod<
   GetDataAutomationProjectResponse,
   GetDataAutomationProjectError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDataAutomationProjectRequest,
   output: GetDataAutomationProjectResponse,
   errors: [
@@ -3023,7 +3023,7 @@ export const updateDataAutomationProject: API.OperationMethod<
   UpdateDataAutomationProjectResponse,
   UpdateDataAutomationProjectError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDataAutomationProjectRequest,
   output: UpdateDataAutomationProjectResponse,
   errors: [
@@ -3051,7 +3051,7 @@ export const deleteDataAutomationProject: API.OperationMethod<
   DeleteDataAutomationProjectResponse,
   DeleteDataAutomationProjectError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDataAutomationProjectRequest,
   output: DeleteDataAutomationProjectResponse,
   errors: [
@@ -3092,7 +3092,7 @@ export const listDataAutomationProjects: API.OperationMethod<
     ListDataAutomationProjectsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataAutomationProjectsRequest,
   output: ListDataAutomationProjectsResponse,
   errors: [

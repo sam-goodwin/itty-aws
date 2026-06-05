@@ -1575,7 +1575,7 @@ export const disableControl: API.OperationMethod<
   DisableControlOutput,
   DisableControlError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableControlInput,
   output: DisableControlOutput,
   errors: [
@@ -1603,7 +1603,7 @@ export const getBaselineOperation: API.OperationMethod<
   GetBaselineOperationOutput,
   GetBaselineOperationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetBaselineOperationInput,
   output: GetBaselineOperationOutput,
   errors: [
@@ -1629,7 +1629,7 @@ export const getBaseline: API.OperationMethod<
   GetBaselineOutput,
   GetBaselineError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetBaselineInput,
   output: GetBaselineOutput,
   errors: [
@@ -1669,7 +1669,7 @@ export const listBaselines: API.OperationMethod<
     ListBaselinesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBaselinesInput,
   output: ListBaselinesOutput,
   errors: [
@@ -1700,7 +1700,7 @@ export const getControlOperation: API.OperationMethod<
   GetControlOperationOutput,
   GetControlOperationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetControlOperationInput,
   output: GetControlOperationOutput,
   errors: [
@@ -1740,7 +1740,7 @@ export const listControlOperations: API.OperationMethod<
     ListControlOperationsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListControlOperationsInput,
   output: ListControlOperationsOutput,
   errors: [
@@ -1773,7 +1773,7 @@ export const enableBaseline: API.OperationMethod<
   EnableBaselineOutput,
   EnableBaselineError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableBaselineInput,
   output: EnableBaselineOutput,
   errors: [
@@ -1801,7 +1801,7 @@ export const getEnabledBaseline: API.OperationMethod<
   GetEnabledBaselineOutput,
   GetEnabledBaselineError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEnabledBaselineInput,
   output: GetEnabledBaselineOutput,
   errors: [
@@ -1829,7 +1829,7 @@ export const updateEnabledBaseline: API.OperationMethod<
   UpdateEnabledBaselineOutput,
   UpdateEnabledBaselineError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEnabledBaselineInput,
   output: UpdateEnabledBaselineOutput,
   errors: [
@@ -1859,7 +1859,7 @@ export const disableBaseline: API.OperationMethod<
   DisableBaselineOutput,
   DisableBaselineError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableBaselineInput,
   output: DisableBaselineOutput,
   errors: [
@@ -1901,7 +1901,7 @@ export const listEnabledBaselines: API.OperationMethod<
     ListEnabledBaselinesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnabledBaselinesInput,
   output: ListEnabledBaselinesOutput,
   errors: [
@@ -1934,7 +1934,7 @@ export const resetEnabledBaseline: API.OperationMethod<
   ResetEnabledBaselineOutput,
   ResetEnabledBaselineError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetEnabledBaselineInput,
   output: ResetEnabledBaselineOutput,
   errors: [
@@ -1964,7 +1964,7 @@ export const enableControl: API.OperationMethod<
   EnableControlOutput,
   EnableControlError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableControlInput,
   output: EnableControlOutput,
   errors: [
@@ -1992,7 +1992,7 @@ export const getEnabledControl: API.OperationMethod<
   GetEnabledControlOutput,
   GetEnabledControlError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEnabledControlInput,
   output: GetEnabledControlOutput,
   errors: [
@@ -2026,7 +2026,7 @@ export const updateEnabledControl: API.OperationMethod<
   UpdateEnabledControlOutput,
   UpdateEnabledControlError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEnabledControlInput,
   output: UpdateEnabledControlOutput,
   errors: [
@@ -2069,7 +2069,7 @@ export const listEnabledControls: API.OperationMethod<
     ListEnabledControlsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnabledControlsInput,
   output: ListEnabledControlsOutput,
   errors: [
@@ -2103,7 +2103,7 @@ export const resetEnabledControl: API.OperationMethod<
   ResetEnabledControlOutput,
   ResetEnabledControlError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetEnabledControlInput,
   output: ResetEnabledControlOutput,
   errors: [
@@ -2131,7 +2131,7 @@ export const getLandingZoneOperation: API.OperationMethod<
   GetLandingZoneOperationOutput,
   GetLandingZoneOperationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLandingZoneOperationInput,
   output: GetLandingZoneOperationOutput,
   errors: [
@@ -2171,7 +2171,7 @@ export const listLandingZoneOperations: API.OperationMethod<
     ListLandingZoneOperationsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLandingZoneOperationsInput,
   output: ListLandingZoneOperationsOutput,
   errors: [
@@ -2202,7 +2202,7 @@ export const createLandingZone: API.OperationMethod<
   CreateLandingZoneOutput,
   CreateLandingZoneError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLandingZoneInput,
   output: CreateLandingZoneOutput,
   errors: [
@@ -2228,7 +2228,7 @@ export const getLandingZone: API.OperationMethod<
   GetLandingZoneOutput,
   GetLandingZoneError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLandingZoneInput,
   output: GetLandingZoneOutput,
   errors: [
@@ -2255,7 +2255,7 @@ export const updateLandingZone: API.OperationMethod<
   UpdateLandingZoneOutput,
   UpdateLandingZoneError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateLandingZoneInput,
   output: UpdateLandingZoneOutput,
   errors: [
@@ -2285,7 +2285,7 @@ export const deleteLandingZone: API.OperationMethod<
   DeleteLandingZoneOutput,
   DeleteLandingZoneError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLandingZoneInput,
   output: DeleteLandingZoneOutput,
   errors: [
@@ -2328,7 +2328,7 @@ export const listLandingZones: API.OperationMethod<
     ListLandingZonesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLandingZonesInput,
   output: ListLandingZonesOutput,
   errors: [
@@ -2360,7 +2360,7 @@ export const resetLandingZone: API.OperationMethod<
   ResetLandingZoneOutput,
   ResetLandingZoneError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetLandingZoneInput,
   output: ResetLandingZoneOutput,
   errors: [
@@ -2385,7 +2385,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceOutput,
   ListTagsForResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [
@@ -2407,7 +2407,7 @@ export const tagResource: API.OperationMethod<
   TagResourceOutput,
   TagResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
   errors: [
@@ -2429,7 +2429,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceOutput,
   UntagResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
   errors: [

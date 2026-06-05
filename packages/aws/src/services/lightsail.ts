@@ -8529,7 +8529,7 @@ export const allocateStaticIp: API.OperationMethod<
   AllocateStaticIpResult,
   AllocateStaticIpError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AllocateStaticIpRequest,
   output: AllocateStaticIpResult,
   errors: [
@@ -8572,7 +8572,7 @@ export const attachCertificateToDistribution: API.OperationMethod<
   AttachCertificateToDistributionResult,
   AttachCertificateToDistributionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AttachCertificateToDistributionRequest,
   output: AttachCertificateToDistributionResult,
   errors: [
@@ -8607,7 +8607,7 @@ export const attachDisk: API.OperationMethod<
   AttachDiskResult,
   AttachDiskError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AttachDiskRequest,
   output: AttachDiskResult,
   errors: [
@@ -8646,7 +8646,7 @@ export const attachInstancesToLoadBalancer: API.OperationMethod<
   AttachInstancesToLoadBalancerResult,
   AttachInstancesToLoadBalancerError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AttachInstancesToLoadBalancerRequest,
   output: AttachInstancesToLoadBalancerResult,
   errors: [
@@ -8688,7 +8688,7 @@ export const attachLoadBalancerTlsCertificate: API.OperationMethod<
   AttachLoadBalancerTlsCertificateResult,
   AttachLoadBalancerTlsCertificateError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AttachLoadBalancerTlsCertificateRequest,
   output: AttachLoadBalancerTlsCertificateResult,
   errors: [
@@ -8720,7 +8720,7 @@ export const attachStaticIp: API.OperationMethod<
   AttachStaticIpResult,
   AttachStaticIpError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AttachStaticIpRequest,
   output: AttachStaticIpResult,
   errors: [
@@ -8756,7 +8756,7 @@ export const closeInstancePublicPorts: API.OperationMethod<
   CloseInstancePublicPortsResult,
   CloseInstancePublicPortsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CloseInstancePublicPortsRequest,
   output: CloseInstancePublicPortsResult,
   errors: [
@@ -8799,7 +8799,7 @@ export const copySnapshot: API.OperationMethod<
   CopySnapshotResult,
   CopySnapshotError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CopySnapshotRequest,
   output: CopySnapshotResult,
   errors: [
@@ -8833,7 +8833,7 @@ export const createBucket: API.OperationMethod<
   CreateBucketResult,
   CreateBucketError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateBucketRequest,
   output: CreateBucketResult,
   errors: [
@@ -8871,7 +8871,7 @@ export const createBucketAccessKey: API.OperationMethod<
   CreateBucketAccessKeyResult,
   CreateBucketAccessKeyError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateBucketAccessKeyRequest,
   output: CreateBucketAccessKeyResult,
   errors: [
@@ -8911,7 +8911,7 @@ export const createCertificate: API.OperationMethod<
   CreateCertificateResult,
   CreateCertificateError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCertificateRequest,
   output: CreateCertificateResult,
   errors: [
@@ -8947,7 +8947,7 @@ export const createCloudFormationStack: API.OperationMethod<
   CreateCloudFormationStackResult,
   CreateCloudFormationStackError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCloudFormationStackRequest,
   output: CreateCloudFormationStackResult,
   errors: [
@@ -8986,7 +8986,7 @@ export const createContactMethod: API.OperationMethod<
   CreateContactMethodResult,
   CreateContactMethodError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateContactMethodRequest,
   output: CreateContactMethodResult,
   errors: [
@@ -9019,7 +9019,7 @@ export const createContainerService: API.OperationMethod<
   CreateContainerServiceResult,
   CreateContainerServiceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateContainerServiceRequest,
   output: CreateContainerServiceResult,
   errors: [
@@ -9058,7 +9058,7 @@ export const createContainerServiceDeployment: API.OperationMethod<
   CreateContainerServiceDeploymentResult,
   CreateContainerServiceDeploymentError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateContainerServiceDeploymentRequest,
   output: CreateContainerServiceDeploymentResult,
   errors: [
@@ -9104,7 +9104,7 @@ export const createContainerServiceRegistryLogin: API.OperationMethod<
   CreateContainerServiceRegistryLoginResult,
   CreateContainerServiceRegistryLoginError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateContainerServiceRegistryLoginRequest,
   output: CreateContainerServiceRegistryLoginResult,
   errors: [
@@ -9138,7 +9138,7 @@ export const createDisk: API.OperationMethod<
   CreateDiskResult,
   CreateDiskError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDiskRequest,
   output: CreateDiskResult,
   errors: [
@@ -9176,7 +9176,7 @@ export const createDiskFromSnapshot: API.OperationMethod<
   CreateDiskFromSnapshotResult,
   CreateDiskFromSnapshotError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDiskFromSnapshotRequest,
   output: CreateDiskFromSnapshotResult,
   errors: [
@@ -9229,7 +9229,7 @@ export const createDiskSnapshot: API.OperationMethod<
   CreateDiskSnapshotResult,
   CreateDiskSnapshotError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDiskSnapshotRequest,
   output: CreateDiskSnapshotResult,
   errors: [
@@ -9263,7 +9263,7 @@ export const createDistribution: API.OperationMethod<
   CreateDistributionResult,
   CreateDistributionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDistributionRequest,
   output: CreateDistributionResult,
   errors: [
@@ -9296,7 +9296,7 @@ export const createDomain: API.OperationMethod<
   CreateDomainResult,
   CreateDomainError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDomainRequest,
   output: CreateDomainResult,
   errors: [
@@ -9334,7 +9334,7 @@ export const createDomainEntry: API.OperationMethod<
   CreateDomainEntryResult,
   CreateDomainEntryError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDomainEntryRequest,
   output: CreateDomainEntryResult,
   errors: [
@@ -9369,7 +9369,7 @@ export const createGUISessionAccessDetails: API.OperationMethod<
   CreateGUISessionAccessDetailsResult,
   CreateGUISessionAccessDetailsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateGUISessionAccessDetailsRequest,
   output: CreateGUISessionAccessDetailsResult,
   errors: [
@@ -9402,7 +9402,7 @@ export const createInstances: API.OperationMethod<
   CreateInstancesResult,
   CreateInstancesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateInstancesRequest,
   output: CreateInstancesResult,
   errors: [
@@ -9439,7 +9439,7 @@ export const createInstancesFromSnapshot: API.OperationMethod<
   CreateInstancesFromSnapshotResult,
   CreateInstancesFromSnapshotError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateInstancesFromSnapshotRequest,
   output: CreateInstancesFromSnapshotResult,
   errors: [
@@ -9475,7 +9475,7 @@ export const createInstanceSnapshot: API.OperationMethod<
   CreateInstanceSnapshotResult,
   CreateInstanceSnapshotError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateInstanceSnapshotRequest,
   output: CreateInstanceSnapshotResult,
   errors: [
@@ -9515,7 +9515,7 @@ export const createKeyPair: API.OperationMethod<
   CreateKeyPairResult,
   CreateKeyPairError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateKeyPairRequest,
   output: CreateKeyPairResult,
   errors: [
@@ -9556,7 +9556,7 @@ export const createLoadBalancer: API.OperationMethod<
   CreateLoadBalancerResult,
   CreateLoadBalancerError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLoadBalancerRequest,
   output: CreateLoadBalancerResult,
   errors: [
@@ -9594,7 +9594,7 @@ export const createLoadBalancerTlsCertificate: API.OperationMethod<
   CreateLoadBalancerTlsCertificateResult,
   CreateLoadBalancerTlsCertificateError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLoadBalancerTlsCertificateRequest,
   output: CreateLoadBalancerTlsCertificateResult,
   errors: [
@@ -9629,7 +9629,7 @@ export const createRelationalDatabase: API.OperationMethod<
   CreateRelationalDatabaseResult,
   CreateRelationalDatabaseError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRelationalDatabaseRequest,
   output: CreateRelationalDatabaseResult,
   errors: [
@@ -9669,7 +9669,7 @@ export const createRelationalDatabaseFromSnapshot: API.OperationMethod<
   CreateRelationalDatabaseFromSnapshotResult,
   CreateRelationalDatabaseFromSnapshotError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRelationalDatabaseFromSnapshotRequest,
   output: CreateRelationalDatabaseFromSnapshotResult,
   errors: [
@@ -9705,7 +9705,7 @@ export const createRelationalDatabaseSnapshot: API.OperationMethod<
   CreateRelationalDatabaseSnapshotResult,
   CreateRelationalDatabaseSnapshotError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRelationalDatabaseSnapshotRequest,
   output: CreateRelationalDatabaseSnapshotResult,
   errors: [
@@ -9741,7 +9741,7 @@ export const deleteAlarm: API.OperationMethod<
   DeleteAlarmResult,
   DeleteAlarmError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAlarmRequest,
   output: DeleteAlarmResult,
   errors: [
@@ -9771,7 +9771,7 @@ export const deleteAutoSnapshot: API.OperationMethod<
   DeleteAutoSnapshotResult,
   DeleteAutoSnapshotError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAutoSnapshotRequest,
   output: DeleteAutoSnapshotResult,
   errors: [
@@ -9803,7 +9803,7 @@ export const deleteBucket: API.OperationMethod<
   DeleteBucketResult,
   DeleteBucketError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteBucketRequest,
   output: DeleteBucketResult,
   errors: [
@@ -9836,7 +9836,7 @@ export const deleteBucketAccessKey: API.OperationMethod<
   DeleteBucketAccessKeyResult,
   DeleteBucketAccessKeyError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteBucketAccessKeyRequest,
   output: DeleteBucketAccessKeyResult,
   errors: [
@@ -9869,7 +9869,7 @@ export const deleteCertificate: API.OperationMethod<
   DeleteCertificateResult,
   DeleteCertificateError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCertificateRequest,
   output: DeleteCertificateResult,
   errors: [
@@ -9903,7 +9903,7 @@ export const deleteContactMethod: API.OperationMethod<
   DeleteContactMethodResult,
   DeleteContactMethodError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteContactMethodRequest,
   output: DeleteContactMethodResult,
   errors: [
@@ -9933,7 +9933,7 @@ export const deleteContainerImage: API.OperationMethod<
   DeleteContainerImageResult,
   DeleteContainerImageError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteContainerImageRequest,
   output: DeleteContainerImageResult,
   errors: [
@@ -9961,7 +9961,7 @@ export const deleteContainerService: API.OperationMethod<
   DeleteContainerServiceResult,
   DeleteContainerServiceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteContainerServiceRequest,
   output: DeleteContainerServiceResult,
   errors: [
@@ -9998,7 +9998,7 @@ export const deleteDisk: API.OperationMethod<
   DeleteDiskResult,
   DeleteDiskError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDiskRequest,
   output: DeleteDiskResult,
   errors: [
@@ -10040,7 +10040,7 @@ export const deleteDiskSnapshot: API.OperationMethod<
   DeleteDiskSnapshotResult,
   DeleteDiskSnapshotError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDiskSnapshotRequest,
   output: DeleteDiskSnapshotResult,
   errors: [
@@ -10070,7 +10070,7 @@ export const deleteDistribution: API.OperationMethod<
   DeleteDistributionResult,
   DeleteDistributionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDistributionRequest,
   output: DeleteDistributionResult,
   errors: [
@@ -10104,7 +10104,7 @@ export const deleteDomain: API.OperationMethod<
   DeleteDomainResult,
   DeleteDomainError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDomainRequest,
   output: DeleteDomainResult,
   errors: [
@@ -10140,7 +10140,7 @@ export const deleteDomainEntry: API.OperationMethod<
   DeleteDomainEntryResult,
   DeleteDomainEntryError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDomainEntryRequest,
   output: DeleteDomainEntryResult,
   errors: [
@@ -10176,7 +10176,7 @@ export const deleteInstance: API.OperationMethod<
   DeleteInstanceResult,
   DeleteInstanceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteInstanceRequest,
   output: DeleteInstanceResult,
   errors: [
@@ -10213,7 +10213,7 @@ export const deleteInstanceSnapshot: API.OperationMethod<
   DeleteInstanceSnapshotResult,
   DeleteInstanceSnapshotError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteInstanceSnapshotRequest,
   output: DeleteInstanceSnapshotResult,
   errors: [
@@ -10254,7 +10254,7 @@ export const deleteKeyPair: API.OperationMethod<
   DeleteKeyPairResult,
   DeleteKeyPairError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteKeyPairRequest,
   output: DeleteKeyPairResult,
   errors: [
@@ -10293,7 +10293,7 @@ export const deleteKnownHostKeys: API.OperationMethod<
   DeleteKnownHostKeysResult,
   DeleteKnownHostKeysError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteKnownHostKeysRequest,
   output: DeleteKnownHostKeysResult,
   errors: [
@@ -10331,7 +10331,7 @@ export const deleteLoadBalancer: API.OperationMethod<
   DeleteLoadBalancerResult,
   DeleteLoadBalancerError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLoadBalancerRequest,
   output: DeleteLoadBalancerResult,
   errors: [
@@ -10367,7 +10367,7 @@ export const deleteLoadBalancerTlsCertificate: API.OperationMethod<
   DeleteLoadBalancerTlsCertificateResult,
   DeleteLoadBalancerTlsCertificateError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLoadBalancerTlsCertificateRequest,
   output: DeleteLoadBalancerTlsCertificateResult,
   errors: [
@@ -10403,7 +10403,7 @@ export const deleteRelationalDatabase: API.OperationMethod<
   DeleteRelationalDatabaseResult,
   DeleteRelationalDatabaseError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRelationalDatabaseRequest,
   output: DeleteRelationalDatabaseResult,
   errors: [
@@ -10439,7 +10439,7 @@ export const deleteRelationalDatabaseSnapshot: API.OperationMethod<
   DeleteRelationalDatabaseSnapshotResult,
   DeleteRelationalDatabaseSnapshotError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRelationalDatabaseSnapshotRequest,
   output: DeleteRelationalDatabaseSnapshotResult,
   errors: [
@@ -10473,7 +10473,7 @@ export const detachCertificateFromDistribution: API.OperationMethod<
   DetachCertificateFromDistributionResult,
   DetachCertificateFromDistributionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetachCertificateFromDistributionRequest,
   output: DetachCertificateFromDistributionResult,
   errors: [
@@ -10509,7 +10509,7 @@ export const detachDisk: API.OperationMethod<
   DetachDiskResult,
   DetachDiskError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetachDiskRequest,
   output: DetachDiskResult,
   errors: [
@@ -10548,7 +10548,7 @@ export const detachInstancesFromLoadBalancer: API.OperationMethod<
   DetachInstancesFromLoadBalancerResult,
   DetachInstancesFromLoadBalancerError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetachInstancesFromLoadBalancerRequest,
   output: DetachInstancesFromLoadBalancerResult,
   errors: [
@@ -10580,7 +10580,7 @@ export const detachStaticIp: API.OperationMethod<
   DetachStaticIpResult,
   DetachStaticIpError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetachStaticIpRequest,
   output: DetachStaticIpResult,
   errors: [
@@ -10611,7 +10611,7 @@ export const disableAddOn: API.OperationMethod<
   DisableAddOnResult,
   DisableAddOnError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableAddOnRequest,
   output: DisableAddOnResult,
   errors: [
@@ -10645,7 +10645,7 @@ export const downloadDefaultKeyPair: API.OperationMethod<
   DownloadDefaultKeyPairResult,
   DownloadDefaultKeyPairError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DownloadDefaultKeyPairRequest,
   output: DownloadDefaultKeyPairResult,
   errors: [
@@ -10677,7 +10677,7 @@ export const enableAddOn: API.OperationMethod<
   EnableAddOnResult,
   EnableAddOnError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableAddOnRequest,
   output: EnableAddOnResult,
   errors: [
@@ -10722,7 +10722,7 @@ export const exportSnapshot: API.OperationMethod<
   ExportSnapshotResult,
   ExportSnapshotError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExportSnapshotRequest,
   output: ExportSnapshotResult,
   errors: [
@@ -10754,7 +10754,7 @@ export const getActiveNames: API.OperationMethod<
   GetActiveNamesResult,
   GetActiveNamesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetActiveNamesRequest,
   output: GetActiveNamesResult,
   errors: [
@@ -10792,7 +10792,7 @@ export const getAlarms: API.OperationMethod<
   GetAlarmsResult,
   GetAlarmsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAlarmsRequest,
   output: GetAlarmsResult,
   errors: [
@@ -10823,7 +10823,7 @@ export const getAutoSnapshots: API.OperationMethod<
   GetAutoSnapshotsResult,
   GetAutoSnapshotsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAutoSnapshotsRequest,
   output: GetAutoSnapshotsResult,
   errors: [
@@ -10862,7 +10862,7 @@ export const getBlueprints: API.OperationMethod<
   GetBlueprintsResult,
   GetBlueprintsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetBlueprintsRequest,
   output: GetBlueprintsResult,
   errors: [
@@ -10896,7 +10896,7 @@ export const getBucketAccessKeys: API.OperationMethod<
   GetBucketAccessKeysResult,
   GetBucketAccessKeysError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetBucketAccessKeysRequest,
   output: GetBucketAccessKeysResult,
   errors: [
@@ -10929,7 +10929,7 @@ export const getBucketBundles: API.OperationMethod<
   GetBucketBundlesResult,
   GetBucketBundlesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetBucketBundlesRequest,
   output: GetBucketBundlesResult,
   errors: [
@@ -10960,7 +10960,7 @@ export const getBucketMetricData: API.OperationMethod<
   GetBucketMetricDataResult,
   GetBucketMetricDataError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetBucketMetricDataRequest,
   output: GetBucketMetricDataResult,
   errors: [
@@ -10993,7 +10993,7 @@ export const getBuckets: API.OperationMethod<
   GetBucketsResult,
   GetBucketsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetBucketsRequest,
   output: GetBucketsResult,
   errors: [
@@ -11031,7 +11031,7 @@ export const getBundles: API.OperationMethod<
   GetBundlesResult,
   GetBundlesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetBundlesRequest,
   output: GetBundlesResult,
   errors: [
@@ -11065,7 +11065,7 @@ export const getCertificates: API.OperationMethod<
   GetCertificatesResult,
   GetCertificatesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCertificatesRequest,
   output: GetCertificatesResult,
   errors: [
@@ -11099,7 +11099,7 @@ export const getCloudFormationStackRecords: API.OperationMethod<
   GetCloudFormationStackRecordsResult,
   GetCloudFormationStackRecordsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCloudFormationStackRecordsRequest,
   output: GetCloudFormationStackRecordsResult,
   errors: [
@@ -11136,7 +11136,7 @@ export const getContactMethods: API.OperationMethod<
   GetContactMethodsResult,
   GetContactMethodsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetContactMethodsRequest,
   output: GetContactMethodsResult,
   errors: [
@@ -11164,7 +11164,7 @@ export const getContainerAPIMetadata: API.OperationMethod<
   GetContainerAPIMetadataResult,
   GetContainerAPIMetadataError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetContainerAPIMetadataRequest,
   output: GetContainerAPIMetadataResult,
   errors: [
@@ -11195,7 +11195,7 @@ export const getContainerImages: API.OperationMethod<
   GetContainerImagesResult,
   GetContainerImagesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetContainerImagesRequest,
   output: GetContainerImagesResult,
   errors: [
@@ -11232,7 +11232,7 @@ export const getContainerLog: API.OperationMethod<
   GetContainerLogResult,
   GetContainerLogError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetContainerLogRequest,
   output: GetContainerLogResult,
   errors: [
@@ -11271,7 +11271,7 @@ export const getContainerServiceDeployments: API.OperationMethod<
   GetContainerServiceDeploymentsResult,
   GetContainerServiceDeploymentsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetContainerServiceDeploymentsRequest,
   output: GetContainerServiceDeploymentsResult,
   errors: [
@@ -11303,7 +11303,7 @@ export const getContainerServiceMetricData: API.OperationMethod<
   GetContainerServiceMetricDataResult,
   GetContainerServiceMetricDataError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetContainerServiceMetricDataRequest,
   output: GetContainerServiceMetricDataResult,
   errors: [
@@ -11335,7 +11335,7 @@ export const getContainerServicePowers: API.OperationMethod<
   GetContainerServicePowersResult,
   GetContainerServicePowersError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetContainerServicePowersRequest,
   output: GetContainerServicePowersResult,
   errors: [
@@ -11363,7 +11363,7 @@ export const getContainerServices: API.OperationMethod<
   ContainerServicesListResult,
   GetContainerServicesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetContainerServicesRequest,
   output: ContainerServicesListResult,
   errors: [
@@ -11392,7 +11392,7 @@ export const getCostEstimate: API.OperationMethod<
   GetCostEstimateResult,
   GetCostEstimateError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCostEstimateRequest,
   output: GetCostEstimateResult,
   errors: [
@@ -11422,7 +11422,7 @@ export const getDisk: API.OperationMethod<
   GetDiskResult,
   GetDiskError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDiskRequest,
   output: GetDiskResult,
   errors: [
@@ -11454,7 +11454,7 @@ export const getDisks: API.OperationMethod<
   GetDisksResult,
   GetDisksError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDisksRequest,
   output: GetDisksResult,
   errors: [
@@ -11486,7 +11486,7 @@ export const getDiskSnapshot: API.OperationMethod<
   GetDiskSnapshotResult,
   GetDiskSnapshotError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDiskSnapshotRequest,
   output: GetDiskSnapshotResult,
   errors: [
@@ -11519,7 +11519,7 @@ export const getDiskSnapshots: API.OperationMethod<
   GetDiskSnapshotsResult,
   GetDiskSnapshotsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDiskSnapshotsRequest,
   output: GetDiskSnapshotsResult,
   errors: [
@@ -11553,7 +11553,7 @@ export const getDistributionBundles: API.OperationMethod<
   GetDistributionBundlesResult,
   GetDistributionBundlesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDistributionBundlesRequest,
   output: GetDistributionBundlesResult,
   errors: [
@@ -11582,7 +11582,7 @@ export const getDistributionLatestCacheReset: API.OperationMethod<
   GetDistributionLatestCacheResetResult,
   GetDistributionLatestCacheResetError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDistributionLatestCacheResetRequest,
   output: GetDistributionLatestCacheResetResult,
   errors: [
@@ -11615,7 +11615,7 @@ export const getDistributionMetricData: API.OperationMethod<
   GetDistributionMetricDataResult,
   GetDistributionMetricDataError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDistributionMetricDataRequest,
   output: GetDistributionMetricDataResult,
   errors: [
@@ -11644,7 +11644,7 @@ export const getDistributions: API.OperationMethod<
   GetDistributionsResult,
   GetDistributionsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDistributionsRequest,
   output: GetDistributionsResult,
   errors: [
@@ -11674,7 +11674,7 @@ export const getDomain: API.OperationMethod<
   GetDomainResult,
   GetDomainError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDomainRequest,
   output: GetDomainResult,
   errors: [
@@ -11706,7 +11706,7 @@ export const getDomains: API.OperationMethod<
   GetDomainsResult,
   GetDomainsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDomainsRequest,
   output: GetDomainsResult,
   errors: [
@@ -11743,7 +11743,7 @@ export const getExportSnapshotRecords: API.OperationMethod<
   GetExportSnapshotRecordsResult,
   GetExportSnapshotRecordsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetExportSnapshotRecordsRequest,
   output: GetExportSnapshotRecordsResult,
   errors: [
@@ -11776,7 +11776,7 @@ export const getInstance: API.OperationMethod<
   GetInstanceResult,
   GetInstanceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInstanceRequest,
   output: GetInstanceResult,
   errors: [
@@ -11813,7 +11813,7 @@ export const getInstanceAccessDetails: API.OperationMethod<
   GetInstanceAccessDetailsResult,
   GetInstanceAccessDetailsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInstanceAccessDetailsRequest,
   output: GetInstanceAccessDetailsResult,
   errors: [
@@ -11850,7 +11850,7 @@ export const getInstanceMetricData: API.OperationMethod<
   GetInstanceMetricDataResult,
   GetInstanceMetricDataError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInstanceMetricDataRequest,
   output: GetInstanceMetricDataResult,
   errors: [
@@ -11883,7 +11883,7 @@ export const getInstancePortStates: API.OperationMethod<
   GetInstancePortStatesResult,
   GetInstancePortStatesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInstancePortStatesRequest,
   output: GetInstancePortStatesResult,
   errors: [
@@ -11916,7 +11916,7 @@ export const getInstances: API.OperationMethod<
   GetInstancesResult,
   GetInstancesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInstancesRequest,
   output: GetInstancesResult,
   errors: [
@@ -11948,7 +11948,7 @@ export const getInstanceSnapshot: API.OperationMethod<
   GetInstanceSnapshotResult,
   GetInstanceSnapshotError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInstanceSnapshotRequest,
   output: GetInstanceSnapshotResult,
   errors: [
@@ -11980,7 +11980,7 @@ export const getInstanceSnapshots: API.OperationMethod<
   GetInstanceSnapshotsResult,
   GetInstanceSnapshotsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInstanceSnapshotsRequest,
   output: GetInstanceSnapshotsResult,
   errors: [
@@ -12012,7 +12012,7 @@ export const getInstanceState: API.OperationMethod<
   GetInstanceStateResult,
   GetInstanceStateError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInstanceStateRequest,
   output: GetInstanceStateResult,
   errors: [
@@ -12044,7 +12044,7 @@ export const getKeyPair: API.OperationMethod<
   GetKeyPairResult,
   GetKeyPairError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetKeyPairRequest,
   output: GetKeyPairResult,
   errors: [
@@ -12076,7 +12076,7 @@ export const getKeyPairs: API.OperationMethod<
   GetKeyPairsResult,
   GetKeyPairsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetKeyPairsRequest,
   output: GetKeyPairsResult,
   errors: [
@@ -12108,7 +12108,7 @@ export const getLoadBalancer: API.OperationMethod<
   GetLoadBalancerResult,
   GetLoadBalancerError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLoadBalancerRequest,
   output: GetLoadBalancerResult,
   errors: [
@@ -12144,7 +12144,7 @@ export const getLoadBalancerMetricData: API.OperationMethod<
   GetLoadBalancerMetricDataResult,
   GetLoadBalancerMetricDataError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLoadBalancerMetricDataRequest,
   output: GetLoadBalancerMetricDataResult,
   errors: [
@@ -12176,7 +12176,7 @@ export const getLoadBalancers: API.OperationMethod<
   GetLoadBalancersResult,
   GetLoadBalancersError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLoadBalancersRequest,
   output: GetLoadBalancersResult,
   errors: [
@@ -12214,7 +12214,7 @@ export const getLoadBalancerTlsCertificates: API.OperationMethod<
   GetLoadBalancerTlsCertificatesResult,
   GetLoadBalancerTlsCertificatesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLoadBalancerTlsCertificatesRequest,
   output: GetLoadBalancerTlsCertificatesResult,
   errors: [
@@ -12248,7 +12248,7 @@ export const getLoadBalancerTlsPolicies: API.OperationMethod<
   GetLoadBalancerTlsPoliciesResult,
   GetLoadBalancerTlsPoliciesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLoadBalancerTlsPoliciesRequest,
   output: GetLoadBalancerTlsPoliciesResult,
   errors: [
@@ -12279,7 +12279,7 @@ export const getOperation: API.OperationMethod<
   GetOperationResult,
   GetOperationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOperationRequest,
   output: GetOperationResult,
   errors: [
@@ -12315,7 +12315,7 @@ export const getOperations: API.OperationMethod<
   GetOperationsResult,
   GetOperationsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOperationsRequest,
   output: GetOperationsResult,
   errors: [
@@ -12347,7 +12347,7 @@ export const getOperationsForResource: API.OperationMethod<
   GetOperationsForResourceResult,
   GetOperationsForResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOperationsForResourceRequest,
   output: GetOperationsForResourceResult,
   errors: [
@@ -12381,7 +12381,7 @@ export const getRegions: API.OperationMethod<
   GetRegionsResult,
   GetRegionsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRegionsRequest,
   output: GetRegionsResult,
   errors: [
@@ -12413,7 +12413,7 @@ export const getRelationalDatabase: API.OperationMethod<
   GetRelationalDatabaseResult,
   GetRelationalDatabaseError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRelationalDatabaseRequest,
   output: GetRelationalDatabaseResult,
   errors: [
@@ -12449,7 +12449,7 @@ export const getRelationalDatabaseBlueprints: API.OperationMethod<
   GetRelationalDatabaseBlueprintsResult,
   GetRelationalDatabaseBlueprintsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRelationalDatabaseBlueprintsRequest,
   output: GetRelationalDatabaseBlueprintsResult,
   errors: [
@@ -12485,7 +12485,7 @@ export const getRelationalDatabaseBundles: API.OperationMethod<
   GetRelationalDatabaseBundlesResult,
   GetRelationalDatabaseBundlesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRelationalDatabaseBundlesRequest,
   output: GetRelationalDatabaseBundlesResult,
   errors: [
@@ -12517,7 +12517,7 @@ export const getRelationalDatabaseEvents: API.OperationMethod<
   GetRelationalDatabaseEventsResult,
   GetRelationalDatabaseEventsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRelationalDatabaseEventsRequest,
   output: GetRelationalDatabaseEventsResult,
   errors: [
@@ -12549,7 +12549,7 @@ export const getRelationalDatabaseLogEvents: API.OperationMethod<
   GetRelationalDatabaseLogEventsResult,
   GetRelationalDatabaseLogEventsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRelationalDatabaseLogEventsRequest,
   output: GetRelationalDatabaseLogEventsResult,
   errors: [
@@ -12581,7 +12581,7 @@ export const getRelationalDatabaseLogStreams: API.OperationMethod<
   GetRelationalDatabaseLogStreamsResult,
   GetRelationalDatabaseLogStreamsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRelationalDatabaseLogStreamsRequest,
   output: GetRelationalDatabaseLogStreamsResult,
   errors: [
@@ -12618,7 +12618,7 @@ export const getRelationalDatabaseMasterUserPassword: API.OperationMethod<
   GetRelationalDatabaseMasterUserPasswordResult,
   GetRelationalDatabaseMasterUserPasswordError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRelationalDatabaseMasterUserPasswordRequest,
   output: GetRelationalDatabaseMasterUserPasswordResult,
   errors: [
@@ -12654,7 +12654,7 @@ export const getRelationalDatabaseMetricData: API.OperationMethod<
   GetRelationalDatabaseMetricDataResult,
   GetRelationalDatabaseMetricDataError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRelationalDatabaseMetricDataRequest,
   output: GetRelationalDatabaseMetricDataResult,
   errors: [
@@ -12691,7 +12691,7 @@ export const getRelationalDatabaseParameters: API.OperationMethod<
   GetRelationalDatabaseParametersResult,
   GetRelationalDatabaseParametersError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRelationalDatabaseParametersRequest,
   output: GetRelationalDatabaseParametersResult,
   errors: [
@@ -12723,7 +12723,7 @@ export const getRelationalDatabases: API.OperationMethod<
   GetRelationalDatabasesResult,
   GetRelationalDatabasesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRelationalDatabasesRequest,
   output: GetRelationalDatabasesResult,
   errors: [
@@ -12755,7 +12755,7 @@ export const getRelationalDatabaseSnapshot: API.OperationMethod<
   GetRelationalDatabaseSnapshotResult,
   GetRelationalDatabaseSnapshotError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRelationalDatabaseSnapshotRequest,
   output: GetRelationalDatabaseSnapshotResult,
   errors: [
@@ -12787,7 +12787,7 @@ export const getRelationalDatabaseSnapshots: API.OperationMethod<
   GetRelationalDatabaseSnapshotsResult,
   GetRelationalDatabaseSnapshotsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRelationalDatabaseSnapshotsRequest,
   output: GetRelationalDatabaseSnapshotsResult,
   errors: [
@@ -12818,7 +12818,7 @@ export const getSetupHistory: API.OperationMethod<
   GetSetupHistoryResult,
   GetSetupHistoryError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSetupHistoryRequest,
   output: GetSetupHistoryResult,
   errors: [
@@ -12848,7 +12848,7 @@ export const getStaticIp: API.OperationMethod<
   GetStaticIpResult,
   GetStaticIpError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetStaticIpRequest,
   output: GetStaticIpResult,
   errors: [
@@ -12880,7 +12880,7 @@ export const getStaticIps: API.OperationMethod<
   GetStaticIpsResult,
   GetStaticIpsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetStaticIpsRequest,
   output: GetStaticIpsResult,
   errors: [
@@ -12912,7 +12912,7 @@ export const importKeyPair: API.OperationMethod<
   ImportKeyPairResult,
   ImportKeyPairError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportKeyPairRequest,
   output: ImportKeyPairResult,
   errors: [
@@ -12944,7 +12944,7 @@ export const isVpcPeered: API.OperationMethod<
   IsVpcPeeredResult,
   IsVpcPeeredError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: IsVpcPeeredRequest,
   output: IsVpcPeeredResult,
   errors: [
@@ -12981,7 +12981,7 @@ export const openInstancePublicPorts: API.OperationMethod<
   OpenInstancePublicPortsResult,
   OpenInstancePublicPortsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: OpenInstancePublicPortsRequest,
   output: OpenInstancePublicPortsResult,
   errors: [
@@ -13013,7 +13013,7 @@ export const peerVpc: API.OperationMethod<
   PeerVpcResult,
   PeerVpcError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PeerVpcRequest,
   output: PeerVpcResult,
   errors: [
@@ -13060,7 +13060,7 @@ export const putAlarm: API.OperationMethod<
   PutAlarmResult,
   PutAlarmError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutAlarmRequest,
   output: PutAlarmResult,
   errors: [
@@ -13100,7 +13100,7 @@ export const putInstancePublicPorts: API.OperationMethod<
   PutInstancePublicPortsResult,
   PutInstancePublicPortsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutInstancePublicPortsRequest,
   output: PutInstancePublicPortsResult,
   errors: [
@@ -13136,7 +13136,7 @@ export const rebootInstance: API.OperationMethod<
   RebootInstanceResult,
   RebootInstanceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RebootInstanceRequest,
   output: RebootInstanceResult,
   errors: [
@@ -13172,7 +13172,7 @@ export const rebootRelationalDatabase: API.OperationMethod<
   RebootRelationalDatabaseResult,
   RebootRelationalDatabaseError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RebootRelationalDatabaseRequest,
   output: RebootRelationalDatabaseResult,
   errors: [
@@ -13207,7 +13207,7 @@ export const registerContainerImage: API.OperationMethod<
   RegisterContainerImageResult,
   RegisterContainerImageError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterContainerImageRequest,
   output: RegisterContainerImageResult,
   errors: [
@@ -13237,7 +13237,7 @@ export const releaseStaticIp: API.OperationMethod<
   ReleaseStaticIpResult,
   ReleaseStaticIpError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReleaseStaticIpRequest,
   output: ReleaseStaticIpResult,
   errors: [
@@ -13271,7 +13271,7 @@ export const resetDistributionCache: API.OperationMethod<
   ResetDistributionCacheResult,
   ResetDistributionCacheError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetDistributionCacheRequest,
   output: ResetDistributionCacheResult,
   errors: [
@@ -13313,7 +13313,7 @@ export const sendContactMethodVerification: API.OperationMethod<
   SendContactMethodVerificationResult,
   SendContactMethodVerificationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendContactMethodVerificationRequest,
   output: SendContactMethodVerificationResult,
   errors: [
@@ -13348,7 +13348,7 @@ export const setIpAddressType: API.OperationMethod<
   SetIpAddressTypeResult,
   SetIpAddressTypeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIpAddressTypeRequest,
   output: SetIpAddressTypeResult,
   errors: [
@@ -13382,7 +13382,7 @@ export const setResourceAccessForBucket: API.OperationMethod<
   SetResourceAccessForBucketResult,
   SetResourceAccessForBucketError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetResourceAccessForBucketRequest,
   output: SetResourceAccessForBucketResult,
   errors: [
@@ -13414,7 +13414,7 @@ export const setupInstanceHttps: API.OperationMethod<
   SetupInstanceHttpsResult,
   SetupInstanceHttpsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetupInstanceHttpsRequest,
   output: SetupInstanceHttpsResult,
   errors: [
@@ -13444,7 +13444,7 @@ export const startGUISession: API.OperationMethod<
   StartGUISessionResult,
   StartGUISessionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartGUISessionRequest,
   output: StartGUISessionResult,
   errors: [
@@ -13483,7 +13483,7 @@ export const startInstance: API.OperationMethod<
   StartInstanceResult,
   StartInstanceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartInstanceRequest,
   output: StartInstanceResult,
   errors: [
@@ -13520,7 +13520,7 @@ export const startRelationalDatabase: API.OperationMethod<
   StartRelationalDatabaseResult,
   StartRelationalDatabaseError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartRelationalDatabaseRequest,
   output: StartRelationalDatabaseResult,
   errors: [
@@ -13552,7 +13552,7 @@ export const stopGUISession: API.OperationMethod<
   StopGUISessionResult,
   StopGUISessionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopGUISessionRequest,
   output: StopGUISessionResult,
   errors: [
@@ -13590,7 +13590,7 @@ export const stopInstance: API.OperationMethod<
   StopInstanceResult,
   StopInstanceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopInstanceRequest,
   output: StopInstanceResult,
   errors: [
@@ -13630,7 +13630,7 @@ export const stopRelationalDatabase: API.OperationMethod<
   StopRelationalDatabaseResult,
   StopRelationalDatabaseError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopRelationalDatabaseRequest,
   output: StopRelationalDatabaseResult,
   errors: [
@@ -13668,7 +13668,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResult,
   TagResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResult,
   errors: [
@@ -13707,7 +13707,7 @@ export const testAlarm: API.OperationMethod<
   TestAlarmResult,
   TestAlarmError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestAlarmRequest,
   output: TestAlarmResult,
   errors: [
@@ -13738,7 +13738,7 @@ export const unpeerVpc: API.OperationMethod<
   UnpeerVpcResult,
   UnpeerVpcError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UnpeerVpcRequest,
   output: UnpeerVpcResult,
   errors: [
@@ -13775,7 +13775,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResult,
   UntagResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResult,
   errors: [
@@ -13808,7 +13808,7 @@ export const updateBucket: API.OperationMethod<
   UpdateBucketResult,
   UpdateBucketError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateBucketRequest,
   output: UpdateBucketResult,
   errors: [
@@ -13850,7 +13850,7 @@ export const updateBucketBundle: API.OperationMethod<
   UpdateBucketBundleResult,
   UpdateBucketBundleError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateBucketBundleRequest,
   output: UpdateBucketBundleResult,
   errors: [
@@ -13879,7 +13879,7 @@ export const updateContainerService: API.OperationMethod<
   UpdateContainerServiceResult,
   UpdateContainerServiceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateContainerServiceRequest,
   output: UpdateContainerServiceResult,
   errors: [
@@ -13909,7 +13909,7 @@ export const updateDistribution: API.OperationMethod<
   UpdateDistributionResult,
   UpdateDistributionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDistributionRequest,
   output: UpdateDistributionResult,
   errors: [
@@ -13948,7 +13948,7 @@ export const updateDistributionBundle: API.OperationMethod<
   UpdateDistributionBundleResult,
   UpdateDistributionBundleError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDistributionBundleRequest,
   output: UpdateDistributionBundleResult,
   errors: [
@@ -13982,7 +13982,7 @@ export const updateDomainEntry: API.OperationMethod<
   UpdateDomainEntryResult,
   UpdateDomainEntryError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDomainEntryRequest,
   output: UpdateDomainEntryResult,
   errors: [
@@ -14019,7 +14019,7 @@ export const updateInstanceMetadataOptions: API.OperationMethod<
   UpdateInstanceMetadataOptionsResult,
   UpdateInstanceMetadataOptionsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateInstanceMetadataOptionsRequest,
   output: UpdateInstanceMetadataOptionsResult,
   errors: [
@@ -14056,7 +14056,7 @@ export const updateLoadBalancerAttribute: API.OperationMethod<
   UpdateLoadBalancerAttributeResult,
   UpdateLoadBalancerAttributeError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateLoadBalancerAttributeRequest,
   output: UpdateLoadBalancerAttributeResult,
   errors: [
@@ -14095,7 +14095,7 @@ export const updateRelationalDatabase: API.OperationMethod<
   UpdateRelationalDatabaseResult,
   UpdateRelationalDatabaseError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRelationalDatabaseRequest,
   output: UpdateRelationalDatabaseResult,
   errors: [
@@ -14138,7 +14138,7 @@ export const updateRelationalDatabaseParameters: API.OperationMethod<
   UpdateRelationalDatabaseParametersResult,
   UpdateRelationalDatabaseParametersError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRelationalDatabaseParametersRequest,
   output: UpdateRelationalDatabaseParametersResult,
   errors: [

@@ -368,7 +368,7 @@ export const deleteHumanLoop: API.OperationMethod<
   DeleteHumanLoopResponse,
   DeleteHumanLoopError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteHumanLoopRequest,
   output: DeleteHumanLoopResponse,
   errors: [
@@ -393,7 +393,7 @@ export const describeHumanLoop: API.OperationMethod<
   DescribeHumanLoopResponse,
   DescribeHumanLoopError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeHumanLoopRequest,
   output: DescribeHumanLoopResponse,
   errors: [
@@ -432,7 +432,7 @@ export const listHumanLoops: API.OperationMethod<
     ListHumanLoopsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListHumanLoopsRequest,
   output: ListHumanLoopsResponse,
   errors: [
@@ -463,7 +463,7 @@ export const startHumanLoop: API.OperationMethod<
   StartHumanLoopResponse,
   StartHumanLoopError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartHumanLoopRequest,
   output: StartHumanLoopResponse,
   errors: [
@@ -488,7 +488,7 @@ export const stopHumanLoop: API.OperationMethod<
   StopHumanLoopResponse,
   StopHumanLoopError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopHumanLoopRequest,
   output: StopHumanLoopResponse,
   errors: [

@@ -862,7 +862,7 @@ export const cancelParticipantAuthentication: API.OperationMethod<
   CancelParticipantAuthenticationResponse,
   CancelParticipantAuthenticationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelParticipantAuthenticationRequest,
   output: CancelParticipantAuthenticationResponse,
   errors: [
@@ -898,7 +898,7 @@ export const completeAttachmentUpload: API.OperationMethod<
   CompleteAttachmentUploadResponse,
   CompleteAttachmentUploadError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CompleteAttachmentUploadRequest,
   output: CompleteAttachmentUploadResponse,
   errors: [
@@ -987,7 +987,7 @@ export const createParticipantConnection: API.OperationMethod<
   CreateParticipantConnectionResponse,
   CreateParticipantConnectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateParticipantConnectionRequest,
   output: CreateParticipantConnectionResponse,
   errors: [
@@ -1014,7 +1014,7 @@ export const describeView: API.OperationMethod<
   DescribeViewResponse,
   DescribeViewError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeViewRequest,
   output: DescribeViewResponse,
   errors: [
@@ -1047,7 +1047,7 @@ export const disconnectParticipant: API.OperationMethod<
   DisconnectParticipantResponse,
   DisconnectParticipantError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisconnectParticipantRequest,
   output: DisconnectParticipantResponse,
   errors: [
@@ -1085,7 +1085,7 @@ export const getAttachment: API.OperationMethod<
   GetAttachmentResponse,
   GetAttachmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAttachmentRequest,
   output: GetAttachmentResponse,
   errors: [
@@ -1124,7 +1124,7 @@ export const getAuthenticationUrl: API.OperationMethod<
   GetAuthenticationUrlResponse,
   GetAuthenticationUrlError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAuthenticationUrlRequest,
   output: GetAuthenticationUrlResponse,
   errors: [
@@ -1189,7 +1189,7 @@ export const getTranscript: API.OperationMethod<
     GetTranscriptError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTranscriptRequest,
   output: GetTranscriptResponse,
   errors: [
@@ -1234,7 +1234,7 @@ export const sendEvent: API.OperationMethod<
   SendEventResponse,
   SendEventError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendEventRequest,
   output: SendEventResponse,
   errors: [
@@ -1267,7 +1267,7 @@ export const sendMessage: API.OperationMethod<
   SendMessageResponse,
   SendMessageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendMessageRequest,
   output: SendMessageResponse,
   errors: [
@@ -1301,7 +1301,7 @@ export const startAttachmentUpload: API.OperationMethod<
   StartAttachmentUploadResponse,
   StartAttachmentUploadError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartAttachmentUploadRequest,
   output: StartAttachmentUploadResponse,
   errors: [

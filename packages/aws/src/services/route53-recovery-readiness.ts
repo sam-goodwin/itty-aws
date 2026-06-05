@@ -1772,7 +1772,7 @@ export const createCell: API.OperationMethod<
   CreateCellResponse,
   CreateCellError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCellRequest,
   output: CreateCellResponse,
   errors: [
@@ -1798,7 +1798,7 @@ export const createCrossAccountAuthorization: API.OperationMethod<
   CreateCrossAccountAuthorizationResponse,
   CreateCrossAccountAuthorizationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCrossAccountAuthorizationRequest,
   output: CreateCrossAccountAuthorizationResponse,
   errors: [
@@ -1824,7 +1824,7 @@ export const createReadinessCheck: API.OperationMethod<
   CreateReadinessCheckResponse,
   CreateReadinessCheckError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateReadinessCheckRequest,
   output: CreateReadinessCheckResponse,
   errors: [
@@ -1850,7 +1850,7 @@ export const createRecoveryGroup: API.OperationMethod<
   CreateRecoveryGroupResponse,
   CreateRecoveryGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRecoveryGroupRequest,
   output: CreateRecoveryGroupResponse,
   errors: [
@@ -1876,7 +1876,7 @@ export const createResourceSet: API.OperationMethod<
   CreateResourceSetResponse,
   CreateResourceSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateResourceSetRequest,
   output: CreateResourceSetResponse,
   errors: [
@@ -1902,7 +1902,7 @@ export const deleteCell: API.OperationMethod<
   DeleteCellResponse,
   DeleteCellError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCellRequest,
   output: DeleteCellResponse,
   errors: [
@@ -1927,7 +1927,7 @@ export const deleteCrossAccountAuthorization: API.OperationMethod<
   DeleteCrossAccountAuthorizationResponse,
   DeleteCrossAccountAuthorizationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCrossAccountAuthorizationRequest,
   output: DeleteCrossAccountAuthorizationResponse,
   errors: [
@@ -1952,7 +1952,7 @@ export const deleteReadinessCheck: API.OperationMethod<
   DeleteReadinessCheckResponse,
   DeleteReadinessCheckError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteReadinessCheckRequest,
   output: DeleteReadinessCheckResponse,
   errors: [
@@ -1978,7 +1978,7 @@ export const deleteRecoveryGroup: API.OperationMethod<
   DeleteRecoveryGroupResponse,
   DeleteRecoveryGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRecoveryGroupRequest,
   output: DeleteRecoveryGroupResponse,
   errors: [
@@ -2004,7 +2004,7 @@ export const deleteResourceSet: API.OperationMethod<
   DeleteResourceSetResponse,
   DeleteResourceSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourceSetRequest,
   output: DeleteResourceSetResponse,
   errors: [
@@ -2030,7 +2030,7 @@ export const getArchitectureRecommendations: API.OperationMethod<
   GetArchitectureRecommendationsResponse,
   GetArchitectureRecommendationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetArchitectureRecommendationsRequest,
   output: GetArchitectureRecommendationsResponse,
   errors: [
@@ -2056,7 +2056,7 @@ export const getCell: API.OperationMethod<
   GetCellResponse,
   GetCellError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCellRequest,
   output: GetCellResponse,
   errors: [
@@ -2097,7 +2097,7 @@ export const getCellReadinessSummary: API.OperationMethod<
     GetCellReadinessSummaryError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetCellReadinessSummaryRequest,
   output: GetCellReadinessSummaryResponse,
   errors: [
@@ -2129,7 +2129,7 @@ export const getReadinessCheck: API.OperationMethod<
   GetReadinessCheckResponse,
   GetReadinessCheckError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetReadinessCheckRequest,
   output: GetReadinessCheckResponse,
   errors: [
@@ -2170,7 +2170,7 @@ export const getReadinessCheckResourceStatus: API.OperationMethod<
     GetReadinessCheckResourceStatusError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetReadinessCheckResourceStatusRequest,
   output: GetReadinessCheckResourceStatusResponse,
   errors: [
@@ -2217,7 +2217,7 @@ export const getReadinessCheckStatus: API.OperationMethod<
     GetReadinessCheckStatusError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetReadinessCheckStatusRequest,
   output: GetReadinessCheckStatusResponse,
   errors: [
@@ -2249,7 +2249,7 @@ export const getRecoveryGroup: API.OperationMethod<
   GetRecoveryGroupResponse,
   GetRecoveryGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRecoveryGroupRequest,
   output: GetRecoveryGroupResponse,
   errors: [
@@ -2290,7 +2290,7 @@ export const getRecoveryGroupReadinessSummary: API.OperationMethod<
     GetRecoveryGroupReadinessSummaryError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetRecoveryGroupReadinessSummaryRequest,
   output: GetRecoveryGroupReadinessSummaryResponse,
   errors: [
@@ -2322,7 +2322,7 @@ export const getResourceSet: API.OperationMethod<
   GetResourceSetResponse,
   GetResourceSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResourceSetRequest,
   output: GetResourceSetResponse,
   errors: [
@@ -2362,7 +2362,7 @@ export const listCells: API.OperationMethod<
     ListCellsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCellsRequest,
   output: ListCellsResponse,
   errors: [
@@ -2407,7 +2407,7 @@ export const listCrossAccountAuthorizations: API.OperationMethod<
     ListCrossAccountAuthorizationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCrossAccountAuthorizationsRequest,
   output: ListCrossAccountAuthorizationsResponse,
   errors: [
@@ -2452,7 +2452,7 @@ export const listReadinessChecks: API.OperationMethod<
     ListReadinessChecksError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReadinessChecksRequest,
   output: ListReadinessChecksResponse,
   errors: [
@@ -2497,7 +2497,7 @@ export const listRecoveryGroups: API.OperationMethod<
     ListRecoveryGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecoveryGroupsRequest,
   output: ListRecoveryGroupsResponse,
   errors: [
@@ -2542,7 +2542,7 @@ export const listResourceSets: API.OperationMethod<
     ListResourceSetsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceSetsRequest,
   output: ListResourceSetsResponse,
   errors: [
@@ -2587,7 +2587,7 @@ export const listRules: API.OperationMethod<
     ListRulesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRulesRequest,
   output: ListRulesResponse,
   errors: [
@@ -2616,7 +2616,7 @@ export const listTagsForResources: API.OperationMethod<
   ListTagsForResourcesResponse,
   ListTagsForResourcesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourcesRequest,
   output: ListTagsForResourcesResponse,
   errors: [
@@ -2638,7 +2638,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -2660,7 +2660,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -2684,7 +2684,7 @@ export const updateCell: API.OperationMethod<
   UpdateCellResponse,
   UpdateCellError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCellRequest,
   output: UpdateCellResponse,
   errors: [
@@ -2710,7 +2710,7 @@ export const updateReadinessCheck: API.OperationMethod<
   UpdateReadinessCheckResponse,
   UpdateReadinessCheckError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateReadinessCheckRequest,
   output: UpdateReadinessCheckResponse,
   errors: [
@@ -2736,7 +2736,7 @@ export const updateRecoveryGroup: API.OperationMethod<
   UpdateRecoveryGroupResponse,
   UpdateRecoveryGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRecoveryGroupRequest,
   output: UpdateRecoveryGroupResponse,
   errors: [
@@ -2762,7 +2762,7 @@ export const updateResourceSet: API.OperationMethod<
   UpdateResourceSetResponse,
   UpdateResourceSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateResourceSetRequest,
   output: UpdateResourceSetResponse,
   errors: [

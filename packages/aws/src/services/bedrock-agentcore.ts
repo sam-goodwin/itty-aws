@@ -3576,7 +3576,7 @@ export const completeResourceTokenAuth: API.OperationMethod<
   CompleteResourceTokenAuthResponse,
   CompleteResourceTokenAuthError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CompleteResourceTokenAuthRequest,
   output: CompleteResourceTokenAuthResponse,
   errors: [
@@ -3604,7 +3604,7 @@ export const getResourceApiKey: API.OperationMethod<
   GetResourceApiKeyResponse,
   GetResourceApiKeyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResourceApiKeyRequest,
   output: GetResourceApiKeyResponse,
   errors: [
@@ -3632,7 +3632,7 @@ export const getResourceOauth2Token: API.OperationMethod<
   GetResourceOauth2TokenResponse,
   GetResourceOauth2TokenError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResourceOauth2TokenRequest,
   output: GetResourceOauth2TokenResponse,
   errors: [
@@ -3660,7 +3660,7 @@ export const getWorkloadAccessToken: API.OperationMethod<
   GetWorkloadAccessTokenResponse,
   GetWorkloadAccessTokenError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetWorkloadAccessTokenRequest,
   output: GetWorkloadAccessTokenResponse,
   errors: [
@@ -3688,7 +3688,7 @@ export const getWorkloadAccessTokenForJWT: API.OperationMethod<
   GetWorkloadAccessTokenForJWTResponse,
   GetWorkloadAccessTokenForJWTError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetWorkloadAccessTokenForJWTRequest,
   output: GetWorkloadAccessTokenForJWTResponse,
   errors: [
@@ -3716,7 +3716,7 @@ export const getWorkloadAccessTokenForUserId: API.OperationMethod<
   GetWorkloadAccessTokenForUserIdResponse,
   GetWorkloadAccessTokenForUserIdError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetWorkloadAccessTokenForUserIdRequest,
   output: GetWorkloadAccessTokenForUserIdResponse,
   errors: [
@@ -3755,7 +3755,7 @@ export const invokeCodeInterpreter: API.OperationMethod<
   InvokeCodeInterpreterResponse,
   InvokeCodeInterpreterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InvokeCodeInterpreterRequest,
   output: InvokeCodeInterpreterResponse,
   errors: [
@@ -3785,7 +3785,7 @@ export const getAgentCard: API.OperationMethod<
   GetAgentCardResponse,
   GetAgentCardError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAgentCardRequest,
   output: GetAgentCardResponse,
   errors: [
@@ -3825,7 +3825,7 @@ export const invokeAgentRuntime: API.OperationMethod<
   InvokeAgentRuntimeResponse,
   InvokeAgentRuntimeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InvokeAgentRuntimeRequest,
   output: InvokeAgentRuntimeResponse,
   errors: [
@@ -3859,7 +3859,7 @@ export const invokeAgentRuntimeCommand: API.OperationMethod<
   InvokeAgentRuntimeCommandResponse,
   InvokeAgentRuntimeCommandError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InvokeAgentRuntimeCommandRequest,
   output: InvokeAgentRuntimeCommandResponse,
   errors: [
@@ -3891,7 +3891,7 @@ export const stopRuntimeSession: API.OperationMethod<
   StopRuntimeSessionResponse,
   StopRuntimeSessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopRuntimeSessionRequest,
   output: StopRuntimeSessionResponse,
   errors: [
@@ -3932,7 +3932,7 @@ export const saveBrowserSessionProfile: API.OperationMethod<
   SaveBrowserSessionProfileResponse,
   SaveBrowserSessionProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SaveBrowserSessionProfileRequest,
   output: SaveBrowserSessionProfileResponse,
   errors: [
@@ -3969,7 +3969,7 @@ export const getBrowserSession: API.OperationMethod<
   GetBrowserSessionResponse,
   GetBrowserSessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetBrowserSessionRequest,
   output: GetBrowserSessionResponse,
   errors: [
@@ -4006,7 +4006,7 @@ export const invokeBrowser: API.OperationMethod<
   InvokeBrowserResponse,
   InvokeBrowserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InvokeBrowserRequest,
   output: InvokeBrowserResponse,
   errors: [
@@ -4043,7 +4043,7 @@ export const listBrowserSessions: API.OperationMethod<
   ListBrowserSessionsResponse,
   ListBrowserSessionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListBrowserSessionsRequest,
   output: ListBrowserSessionsResponse,
   errors: [
@@ -4085,7 +4085,7 @@ export const startBrowserSession: API.OperationMethod<
   StartBrowserSessionResponse,
   StartBrowserSessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartBrowserSessionRequest,
   output: StartBrowserSessionResponse,
   errors: [
@@ -4123,7 +4123,7 @@ export const stopBrowserSession: API.OperationMethod<
   StopBrowserSessionResponse,
   StopBrowserSessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopBrowserSessionRequest,
   output: StopBrowserSessionResponse,
   errors: [
@@ -4153,7 +4153,7 @@ export const updateBrowserStream: API.OperationMethod<
   UpdateBrowserStreamResponse,
   UpdateBrowserStreamError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateBrowserStreamRequest,
   output: UpdateBrowserStreamResponse,
   errors: [
@@ -4191,7 +4191,7 @@ export const getCodeInterpreterSession: API.OperationMethod<
   GetCodeInterpreterSessionResponse,
   GetCodeInterpreterSessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCodeInterpreterSessionRequest,
   output: GetCodeInterpreterSessionResponse,
   errors: [
@@ -4227,7 +4227,7 @@ export const listCodeInterpreterSessions: API.OperationMethod<
   ListCodeInterpreterSessionsResponse,
   ListCodeInterpreterSessionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListCodeInterpreterSessionsRequest,
   output: ListCodeInterpreterSessionsResponse,
   errors: [
@@ -4265,7 +4265,7 @@ export const startCodeInterpreterSession: API.OperationMethod<
   StartCodeInterpreterSessionResponse,
   StartCodeInterpreterSessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartCodeInterpreterSessionRequest,
   output: StartCodeInterpreterSessionResponse,
   errors: [
@@ -4303,7 +4303,7 @@ export const stopCodeInterpreterSession: API.OperationMethod<
   StopCodeInterpreterSessionResponse,
   StopCodeInterpreterSessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopCodeInterpreterSessionRequest,
   output: StopCodeInterpreterSessionResponse,
   errors: [
@@ -4335,7 +4335,7 @@ export const evaluate: API.OperationMethod<
   EvaluateResponse,
   EvaluateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EvaluateRequest,
   output: EvaluateResponse,
   errors: [
@@ -4366,7 +4366,7 @@ export const batchCreateMemoryRecords: API.OperationMethod<
   BatchCreateMemoryRecordsOutput,
   BatchCreateMemoryRecordsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchCreateMemoryRecordsInput,
   output: BatchCreateMemoryRecordsOutput,
   errors: [
@@ -4394,7 +4394,7 @@ export const batchDeleteMemoryRecords: API.OperationMethod<
   BatchDeleteMemoryRecordsOutput,
   BatchDeleteMemoryRecordsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchDeleteMemoryRecordsInput,
   output: BatchDeleteMemoryRecordsOutput,
   errors: [
@@ -4422,7 +4422,7 @@ export const batchUpdateMemoryRecords: API.OperationMethod<
   BatchUpdateMemoryRecordsOutput,
   BatchUpdateMemoryRecordsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchUpdateMemoryRecordsInput,
   output: BatchUpdateMemoryRecordsOutput,
   errors: [
@@ -4456,7 +4456,7 @@ export const createEvent: API.OperationMethod<
   CreateEventOutput,
   CreateEventError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEventInput,
   output: CreateEventOutput,
   errors: [
@@ -4489,7 +4489,7 @@ export const deleteEvent: API.OperationMethod<
   DeleteEventOutput,
   DeleteEventError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEventInput,
   output: DeleteEventOutput,
   errors: [
@@ -4521,7 +4521,7 @@ export const deleteMemoryRecord: API.OperationMethod<
   DeleteMemoryRecordOutput,
   DeleteMemoryRecordError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMemoryRecordInput,
   output: DeleteMemoryRecordOutput,
   errors: [
@@ -4553,7 +4553,7 @@ export const getEvent: API.OperationMethod<
   GetEventOutput,
   GetEventError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEventInput,
   output: GetEventOutput,
   errors: [
@@ -4585,7 +4585,7 @@ export const getMemoryRecord: API.OperationMethod<
   GetMemoryRecordOutput,
   GetMemoryRecordError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMemoryRecordInput,
   output: GetMemoryRecordOutput,
   errors: [
@@ -4632,7 +4632,7 @@ export const listActors: API.OperationMethod<
     ListActorsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListActorsInput,
   output: ListActorsOutput,
   errors: [
@@ -4685,7 +4685,7 @@ export const listEvents: API.OperationMethod<
     ListEventsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEventsInput,
   output: ListEventsOutput,
   errors: [
@@ -4737,7 +4737,7 @@ export const listMemoryExtractionJobs: API.OperationMethod<
     ListMemoryExtractionJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMemoryExtractionJobsInput,
   output: ListMemoryExtractionJobsOutput,
   errors: [
@@ -4789,7 +4789,7 @@ export const listMemoryRecords: API.OperationMethod<
     ListMemoryRecordsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMemoryRecordsInput,
   output: ListMemoryRecordsOutput,
   errors: [
@@ -4844,7 +4844,7 @@ export const listSessions: API.OperationMethod<
     ListSessionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSessionsInput,
   output: ListSessionsOutput,
   errors: [
@@ -4897,7 +4897,7 @@ export const retrieveMemoryRecords: API.OperationMethod<
     RetrieveMemoryRecordsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: RetrieveMemoryRecordsInput,
   output: RetrieveMemoryRecordsOutput,
   errors: [
@@ -4934,7 +4934,7 @@ export const startMemoryExtractionJob: API.OperationMethod<
   StartMemoryExtractionJobOutput,
   StartMemoryExtractionJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartMemoryExtractionJobInput,
   output: StartMemoryExtractionJobOutput,
   errors: [
@@ -4962,7 +4962,7 @@ export const searchRegistryRecords: API.OperationMethod<
   SearchRegistryRecordsResponse,
   SearchRegistryRecordsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SearchRegistryRecordsRequest,
   output: SearchRegistryRecordsResponse,
   errors: [

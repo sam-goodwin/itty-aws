@@ -603,7 +603,7 @@ export const createEnvironmentEC2: API.OperationMethod<
   CreateEnvironmentEC2Result,
   CreateEnvironmentEC2Error,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEnvironmentEC2Request,
   output: CreateEnvironmentEC2Result,
   errors: [
@@ -637,7 +637,7 @@ export const createEnvironmentMembership: API.OperationMethod<
   CreateEnvironmentMembershipResult,
   CreateEnvironmentMembershipError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEnvironmentMembershipRequest,
   output: CreateEnvironmentMembershipResult,
   errors: [
@@ -672,7 +672,7 @@ export const deleteEnvironment: API.OperationMethod<
   DeleteEnvironmentResult,
   DeleteEnvironmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEnvironmentRequest,
   output: DeleteEnvironmentResult,
   errors: [
@@ -706,7 +706,7 @@ export const deleteEnvironmentMembership: API.OperationMethod<
   DeleteEnvironmentMembershipResult,
   DeleteEnvironmentMembershipError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEnvironmentMembershipRequest,
   output: DeleteEnvironmentMembershipResult,
   errors: [
@@ -755,7 +755,7 @@ export const describeEnvironmentMemberships: API.OperationMethod<
     DescribeEnvironmentMembershipsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEnvironmentMembershipsRequest,
   output: DescribeEnvironmentMembershipsResult,
   errors: [
@@ -794,7 +794,7 @@ export const describeEnvironments: API.OperationMethod<
   DescribeEnvironmentsResult,
   DescribeEnvironmentsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeEnvironmentsRequest,
   output: DescribeEnvironmentsResult,
   errors: [
@@ -828,7 +828,7 @@ export const describeEnvironmentStatus: API.OperationMethod<
   DescribeEnvironmentStatusResult,
   DescribeEnvironmentStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeEnvironmentStatusRequest,
   output: DescribeEnvironmentStatusResult,
   errors: [
@@ -881,7 +881,7 @@ export const listEnvironments: API.OperationMethod<
     ListEnvironmentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnvironmentsRequest,
   output: ListEnvironmentsResult,
   errors: [
@@ -916,7 +916,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -946,7 +946,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -974,7 +974,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -1005,7 +1005,7 @@ export const updateEnvironment: API.OperationMethod<
   UpdateEnvironmentResult,
   UpdateEnvironmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEnvironmentRequest,
   output: UpdateEnvironmentResult,
   errors: [
@@ -1040,7 +1040,7 @@ export const updateEnvironmentMembership: API.OperationMethod<
   UpdateEnvironmentMembershipResult,
   UpdateEnvironmentMembershipError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEnvironmentMembershipRequest,
   output: UpdateEnvironmentMembershipResult,
   errors: [

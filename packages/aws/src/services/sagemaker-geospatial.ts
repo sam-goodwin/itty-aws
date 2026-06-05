@@ -1729,7 +1729,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -1755,7 +1755,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -1781,7 +1781,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -1809,7 +1809,7 @@ export const startEarthObservationJob: API.OperationMethod<
   StartEarthObservationJobOutput,
   StartEarthObservationJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartEarthObservationJobInput,
   output: StartEarthObservationJobOutput,
   errors: [
@@ -1837,7 +1837,7 @@ export const getEarthObservationJob: API.OperationMethod<
   GetEarthObservationJobOutput,
   GetEarthObservationJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEarthObservationJobInput,
   output: GetEarthObservationJobOutput,
   errors: [
@@ -1864,7 +1864,7 @@ export const deleteEarthObservationJob: API.OperationMethod<
   DeleteEarthObservationJobOutput,
   DeleteEarthObservationJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEarthObservationJobInput,
   output: DeleteEarthObservationJobOutput,
   errors: [
@@ -1906,7 +1906,7 @@ export const listEarthObservationJobs: API.OperationMethod<
     ListEarthObservationJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEarthObservationJobInput,
   output: ListEarthObservationJobOutput,
   errors: [
@@ -1939,7 +1939,7 @@ export const exportEarthObservationJob: API.OperationMethod<
   ExportEarthObservationJobOutput,
   ExportEarthObservationJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExportEarthObservationJobInput,
   output: ExportEarthObservationJobOutput,
   errors: [
@@ -1967,7 +1967,7 @@ export const getTile: API.OperationMethod<
   GetTileOutput,
   GetTileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTileInput,
   output: GetTileOutput,
   errors: [
@@ -1994,7 +1994,7 @@ export const stopEarthObservationJob: API.OperationMethod<
   StopEarthObservationJobOutput,
   StopEarthObservationJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopEarthObservationJobInput,
   output: StopEarthObservationJobOutput,
   errors: [
@@ -2021,7 +2021,7 @@ export const getRasterDataCollection: API.OperationMethod<
   GetRasterDataCollectionOutput,
   GetRasterDataCollectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRasterDataCollectionInput,
   output: GetRasterDataCollectionOutput,
   errors: [
@@ -2062,7 +2062,7 @@ export const listRasterDataCollections: API.OperationMethod<
     ListRasterDataCollectionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRasterDataCollectionsInput,
   output: ListRasterDataCollectionsOutput,
   errors: [
@@ -2108,7 +2108,7 @@ export const searchRasterDataCollection: API.OperationMethod<
     SearchRasterDataCollectionError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchRasterDataCollectionInput,
   output: SearchRasterDataCollectionOutput,
   errors: [
@@ -2137,7 +2137,7 @@ export const startVectorEnrichmentJob: API.OperationMethod<
   StartVectorEnrichmentJobOutput,
   StartVectorEnrichmentJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartVectorEnrichmentJobInput,
   output: StartVectorEnrichmentJobOutput,
   errors: [
@@ -2165,7 +2165,7 @@ export const getVectorEnrichmentJob: API.OperationMethod<
   GetVectorEnrichmentJobOutput,
   GetVectorEnrichmentJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetVectorEnrichmentJobInput,
   output: GetVectorEnrichmentJobOutput,
   errors: [
@@ -2192,7 +2192,7 @@ export const deleteVectorEnrichmentJob: API.OperationMethod<
   DeleteVectorEnrichmentJobOutput,
   DeleteVectorEnrichmentJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteVectorEnrichmentJobInput,
   output: DeleteVectorEnrichmentJobOutput,
   errors: [
@@ -2234,7 +2234,7 @@ export const listVectorEnrichmentJobs: API.OperationMethod<
     ListVectorEnrichmentJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVectorEnrichmentJobInput,
   output: ListVectorEnrichmentJobOutput,
   errors: [
@@ -2267,7 +2267,7 @@ export const exportVectorEnrichmentJob: API.OperationMethod<
   ExportVectorEnrichmentJobOutput,
   ExportVectorEnrichmentJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExportVectorEnrichmentJobInput,
   output: ExportVectorEnrichmentJobOutput,
   errors: [
@@ -2296,7 +2296,7 @@ export const stopVectorEnrichmentJob: API.OperationMethod<
   StopVectorEnrichmentJobOutput,
   StopVectorEnrichmentJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopVectorEnrichmentJobInput,
   output: StopVectorEnrichmentJobOutput,
   errors: [

@@ -917,7 +917,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceOutput,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [NotFoundException, ServiceUnavailableException],
@@ -941,7 +941,7 @@ export const tagResource: API.OperationMethod<
   TagResourceOutput,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
   errors: [ConflictException, NotFoundException, ServiceUnavailableException],
@@ -965,7 +965,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceOutput,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
   errors: [ConflictException, NotFoundException, ServiceUnavailableException],
@@ -989,7 +989,7 @@ export const createVectorBucket: API.OperationMethod<
   CreateVectorBucketOutput,
   CreateVectorBucketError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateVectorBucketInput,
   output: CreateVectorBucketOutput,
   errors: [
@@ -1015,7 +1015,7 @@ export const deleteVectorBucket: API.OperationMethod<
   DeleteVectorBucketOutput,
   DeleteVectorBucketError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteVectorBucketInput,
   output: DeleteVectorBucketOutput,
   errors: [ConflictException, NotFoundException, ServiceUnavailableException],
@@ -1036,7 +1036,7 @@ export const deleteVectorBucketPolicy: API.OperationMethod<
   DeleteVectorBucketPolicyOutput,
   DeleteVectorBucketPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteVectorBucketPolicyInput,
   output: DeleteVectorBucketPolicyOutput,
   errors: [NotFoundException, ServiceUnavailableException],
@@ -1057,7 +1057,7 @@ export const getVectorBucket: API.OperationMethod<
   GetVectorBucketOutput,
   GetVectorBucketError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetVectorBucketInput,
   output: GetVectorBucketOutput,
   errors: [NotFoundException, ServiceUnavailableException],
@@ -1078,7 +1078,7 @@ export const getVectorBucketPolicy: API.OperationMethod<
   GetVectorBucketPolicyOutput,
   GetVectorBucketPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetVectorBucketPolicyInput,
   output: GetVectorBucketPolicyOutput,
   errors: [NotFoundException, ServiceUnavailableException],
@@ -1111,7 +1111,7 @@ export const listVectorBuckets: API.OperationMethod<
     ListVectorBucketsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVectorBucketsInput,
   output: ListVectorBucketsOutput,
   errors: [ServiceUnavailableException],
@@ -1138,7 +1138,7 @@ export const putVectorBucketPolicy: API.OperationMethod<
   PutVectorBucketPolicyOutput,
   PutVectorBucketPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutVectorBucketPolicyInput,
   output: PutVectorBucketPolicyOutput,
   errors: [NotFoundException, ServiceUnavailableException],
@@ -1163,7 +1163,7 @@ export const createIndex: API.OperationMethod<
   CreateIndexOutput,
   CreateIndexError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateIndexInput,
   output: CreateIndexOutput,
   errors: [
@@ -1189,7 +1189,7 @@ export const deleteIndex: API.OperationMethod<
   DeleteIndexOutput,
   DeleteIndexError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteIndexInput,
   output: DeleteIndexOutput,
   errors: [NotFoundException, ServiceUnavailableException],
@@ -1210,7 +1210,7 @@ export const getIndex: API.OperationMethod<
   GetIndexOutput,
   GetIndexError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIndexInput,
   output: GetIndexOutput,
   errors: [NotFoundException, ServiceUnavailableException],
@@ -1246,7 +1246,7 @@ export const listIndexes: API.OperationMethod<
     ListIndexesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIndexesInput,
   output: ListIndexesOutput,
   errors: [NotFoundException, ServiceUnavailableException],
@@ -1278,7 +1278,7 @@ export const deleteVectors: API.OperationMethod<
   DeleteVectorsOutput,
   DeleteVectorsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteVectorsInput,
   output: DeleteVectorsOutput,
   errors: [
@@ -1311,7 +1311,7 @@ export const getVectors: API.OperationMethod<
   GetVectorsOutput,
   GetVectorsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetVectorsInput,
   output: GetVectorsOutput,
   errors: [
@@ -1361,7 +1361,7 @@ export const listVectors: API.OperationMethod<
     ListVectorsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVectorsInput,
   output: ListVectorsOutput,
   errors: [
@@ -1402,7 +1402,7 @@ export const putVectors: API.OperationMethod<
   PutVectorsOutput,
   PutVectorsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutVectorsInput,
   output: PutVectorsOutput,
   errors: [
@@ -1442,7 +1442,7 @@ export const queryVectors: API.OperationMethod<
   QueryVectorsOutput,
   QueryVectorsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: QueryVectorsInput,
   output: QueryVectorsOutput,
   errors: [

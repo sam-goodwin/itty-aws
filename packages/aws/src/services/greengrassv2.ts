@@ -2121,7 +2121,7 @@ export const associateServiceRoleToAccount: API.OperationMethod<
   AssociateServiceRoleToAccountResponse,
   AssociateServiceRoleToAccountError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateServiceRoleToAccountRequest,
   output: AssociateServiceRoleToAccountResponse,
   errors: [InternalServerException, ValidationException],
@@ -2151,7 +2151,7 @@ export const batchAssociateClientDeviceWithCoreDevice: API.OperationMethod<
   BatchAssociateClientDeviceWithCoreDeviceResponse,
   BatchAssociateClientDeviceWithCoreDeviceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchAssociateClientDeviceWithCoreDeviceRequest,
   output: BatchAssociateClientDeviceWithCoreDeviceResponse,
   errors: [
@@ -2179,7 +2179,7 @@ export const batchDisassociateClientDeviceFromCoreDevice: API.OperationMethod<
   BatchDisassociateClientDeviceFromCoreDeviceResponse,
   BatchDisassociateClientDeviceFromCoreDeviceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchDisassociateClientDeviceFromCoreDeviceRequest,
   output: BatchDisassociateClientDeviceFromCoreDeviceResponse,
   errors: [
@@ -2208,7 +2208,7 @@ export const cancelDeployment: API.OperationMethod<
   CancelDeploymentResponse,
   CancelDeploymentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelDeploymentRequest,
   output: CancelDeploymentResponse,
   errors: [
@@ -2266,7 +2266,7 @@ export const createComponentVersion: API.OperationMethod<
   CreateComponentVersionResponse,
   CreateComponentVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateComponentVersionRequest,
   output: CreateComponentVersionResponse,
   errors: [
@@ -2309,7 +2309,7 @@ export const createDeployment: API.OperationMethod<
   CreateDeploymentResponse,
   CreateDeploymentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDeploymentRequest,
   output: CreateDeploymentResponse,
   errors: [
@@ -2343,7 +2343,7 @@ export const deleteComponent: API.OperationMethod<
   DeleteComponentResponse,
   DeleteComponentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteComponentRequest,
   output: DeleteComponentResponse,
   errors: [
@@ -2374,7 +2374,7 @@ export const deleteCoreDevice: API.OperationMethod<
   DeleteCoreDeviceResponse,
   DeleteCoreDeviceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCoreDeviceRequest,
   output: DeleteCoreDeviceResponse,
   errors: [
@@ -2407,7 +2407,7 @@ export const deleteDeployment: API.OperationMethod<
   DeleteDeploymentResponse,
   DeleteDeploymentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDeploymentRequest,
   output: DeleteDeploymentResponse,
   errors: [
@@ -2434,7 +2434,7 @@ export const describeComponent: API.OperationMethod<
   DescribeComponentResponse,
   DescribeComponentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeComponentRequest,
   output: DescribeComponentResponse,
   errors: [
@@ -2459,7 +2459,7 @@ export const disassociateServiceRoleFromAccount: API.OperationMethod<
   DisassociateServiceRoleFromAccountResponse,
   DisassociateServiceRoleFromAccountError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateServiceRoleFromAccountRequest,
   output: DisassociateServiceRoleFromAccountResponse,
   errors: [InternalServerException],
@@ -2479,7 +2479,7 @@ export const getComponent: API.OperationMethod<
   GetComponentResponse,
   GetComponentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetComponentRequest,
   output: GetComponentResponse,
   errors: [
@@ -2507,7 +2507,7 @@ export const getComponentVersionArtifact: API.OperationMethod<
   GetComponentVersionArtifactResponse,
   GetComponentVersionArtifactError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetComponentVersionArtifactRequest,
   output: GetComponentVersionArtifactResponse,
   errors: [
@@ -2537,7 +2537,7 @@ export const getConnectivityInfo: API.OperationMethod<
   GetConnectivityInfoResponse,
   GetConnectivityInfoError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConnectivityInfoRequest,
   output: GetConnectivityInfoResponse,
   errors: [InternalServerException, ValidationException],
@@ -2576,7 +2576,7 @@ export const getCoreDevice: API.OperationMethod<
   GetCoreDeviceResponse,
   GetCoreDeviceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCoreDeviceRequest,
   output: GetCoreDeviceResponse,
   errors: [
@@ -2602,7 +2602,7 @@ export const getDeployment: API.OperationMethod<
   GetDeploymentResponse,
   GetDeploymentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDeploymentRequest,
   output: GetDeploymentResponse,
   errors: [
@@ -2627,7 +2627,7 @@ export const getServiceRoleForAccount: API.OperationMethod<
   GetServiceRoleForAccountResponse,
   GetServiceRoleForAccountError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetServiceRoleForAccountRequest,
   output: GetServiceRoleForAccountResponse,
   errors: [InternalServerException],
@@ -2663,7 +2663,7 @@ export const listClientDevicesAssociatedWithCoreDevice: API.OperationMethod<
     ListClientDevicesAssociatedWithCoreDeviceError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListClientDevicesAssociatedWithCoreDeviceRequest,
   output: ListClientDevicesAssociatedWithCoreDeviceResponse,
   errors: [
@@ -2711,7 +2711,7 @@ export const listComponents: API.OperationMethod<
     ListComponentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListComponentsRequest,
   output: ListComponentsResponse,
   errors: [
@@ -2759,7 +2759,7 @@ export const listComponentVersions: API.OperationMethod<
     ListComponentVersionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListComponentVersionsRequest,
   output: ListComponentVersionsResponse,
   errors: [
@@ -2829,7 +2829,7 @@ export const listCoreDevices: API.OperationMethod<
     ListCoreDevicesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCoreDevicesRequest,
   output: ListCoreDevicesResponse,
   errors: [
@@ -2874,7 +2874,7 @@ export const listDeployments: API.OperationMethod<
     ListDeploymentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDeploymentsRequest,
   output: ListDeploymentsResponse,
   errors: [
@@ -2920,7 +2920,7 @@ export const listEffectiveDeployments: API.OperationMethod<
     ListEffectiveDeploymentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEffectiveDeploymentsRequest,
   output: ListEffectiveDeploymentsResponse,
   errors: [
@@ -2989,7 +2989,7 @@ export const listInstalledComponents: API.OperationMethod<
     ListInstalledComponentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInstalledComponentsRequest,
   output: ListInstalledComponentsResponse,
   errors: [
@@ -3019,7 +3019,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -3059,7 +3059,7 @@ export const resolveComponentCandidates: API.OperationMethod<
   ResolveComponentCandidatesResponse,
   ResolveComponentCandidatesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResolveComponentCandidatesRequest,
   output: ResolveComponentCandidatesResponse,
   errors: [
@@ -3085,7 +3085,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -3107,7 +3107,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -3135,7 +3135,7 @@ export const updateConnectivityInfo: API.OperationMethod<
   UpdateConnectivityInfoResponse,
   UpdateConnectivityInfoError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateConnectivityInfoRequest,
   output: UpdateConnectivityInfoResponse,
   errors: [InternalServerException, ValidationException],

@@ -3834,7 +3834,7 @@ export const addTags: API.OperationMethod<
   AddTagsResponse,
   AddTagsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddTagsRequest,
   output: AddTagsResponse,
   errors: [
@@ -3881,7 +3881,7 @@ export const cancelQuery: API.OperationMethod<
   CancelQueryResponse,
   CancelQueryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelQueryRequest,
   output: CancelQueryResponse,
   errors: [
@@ -3921,7 +3921,7 @@ export const createChannel: API.OperationMethod<
   CreateChannelResponse,
   CreateChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateChannelRequest,
   output: CreateChannelResponse,
   errors: [
@@ -3973,7 +3973,7 @@ export const createDashboard: API.OperationMethod<
   CreateDashboardResponse,
   CreateDashboardError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDashboardRequest,
   output: CreateDashboardResponse,
   errors: [
@@ -4016,7 +4016,7 @@ export const createEventDataStore: API.OperationMethod<
   CreateEventDataStoreResponse,
   CreateEventDataStoreError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEventDataStoreRequest,
   output: CreateEventDataStoreResponse,
   errors: [
@@ -4084,7 +4084,7 @@ export const createTrail: API.OperationMethod<
   CreateTrailResponse,
   CreateTrailError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTrailRequest,
   output: CreateTrailResponse,
   errors: [
@@ -4137,7 +4137,7 @@ export const deleteChannel: API.OperationMethod<
   DeleteChannelResponse,
   DeleteChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteChannelRequest,
   output: DeleteChannelResponse,
   errors: [
@@ -4160,7 +4160,7 @@ export const deleteDashboard: API.OperationMethod<
   DeleteDashboardResponse,
   DeleteDashboardError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDashboardRequest,
   output: DeleteDashboardResponse,
   errors: [
@@ -4204,7 +4204,7 @@ export const deleteEventDataStore: API.OperationMethod<
   DeleteEventDataStoreResponse,
   DeleteEventDataStoreError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEventDataStoreRequest,
   output: DeleteEventDataStoreResponse,
   errors: [
@@ -4241,7 +4241,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyResponse,
   DeleteResourcePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourcePolicyRequest,
   output: DeleteResourcePolicyResponse,
   errors: [
@@ -4287,7 +4287,7 @@ export const deleteTrail: API.OperationMethod<
   DeleteTrailResponse,
   DeleteTrailError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTrailRequest,
   output: DeleteTrailResponse,
   errors: [
@@ -4326,7 +4326,7 @@ export const deregisterOrganizationDelegatedAdmin: API.OperationMethod<
   DeregisterOrganizationDelegatedAdminResponse,
   DeregisterOrganizationDelegatedAdminError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeregisterOrganizationDelegatedAdminRequest,
   output: DeregisterOrganizationDelegatedAdminResponse,
   errors: [
@@ -4368,7 +4368,7 @@ export const describeQuery: API.OperationMethod<
   DescribeQueryResponse,
   DescribeQueryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeQueryRequest,
   output: DescribeQueryResponse,
   errors: [
@@ -4398,7 +4398,7 @@ export const describeTrails: API.OperationMethod<
   DescribeTrailsResponse,
   DescribeTrailsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeTrailsRequest,
   output: DescribeTrailsResponse,
   errors: [
@@ -4437,7 +4437,7 @@ export const disableFederation: API.OperationMethod<
   DisableFederationResponse,
   DisableFederationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableFederationRequest,
   output: DisableFederationResponse,
   errors: [
@@ -4493,7 +4493,7 @@ export const enableFederation: API.OperationMethod<
   EnableFederationResponse,
   EnableFederationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableFederationRequest,
   output: EnableFederationResponse,
   errors: [
@@ -4547,7 +4547,7 @@ export const generateQuery: API.OperationMethod<
   GenerateQueryResponse,
   GenerateQueryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GenerateQueryRequest,
   output: GenerateQueryResponse,
   errors: [
@@ -4575,7 +4575,7 @@ export const getChannel: API.OperationMethod<
   GetChannelResponse,
   GetChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetChannelRequest,
   output: GetChannelResponse,
   errors: [
@@ -4597,7 +4597,7 @@ export const getDashboard: API.OperationMethod<
   GetDashboardResponse,
   GetDashboardError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDashboardRequest,
   output: GetDashboardResponse,
   errors: [ResourceNotFoundException, UnsupportedOperationException],
@@ -4624,7 +4624,7 @@ export const getEventConfiguration: API.OperationMethod<
   GetEventConfigurationResponse,
   GetEventConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEventConfigurationRequest,
   output: GetEventConfigurationResponse,
   errors: [
@@ -4659,7 +4659,7 @@ export const getEventDataStore: API.OperationMethod<
   GetEventDataStoreResponse,
   GetEventDataStoreError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEventDataStoreRequest,
   output: GetEventDataStoreResponse,
   errors: [
@@ -4708,7 +4708,7 @@ export const getEventSelectors: API.OperationMethod<
   GetEventSelectorsResponse,
   GetEventSelectorsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEventSelectorsRequest,
   output: GetEventSelectorsResponse,
   errors: [
@@ -4734,7 +4734,7 @@ export const getImport: API.OperationMethod<
   GetImportResponse,
   GetImportError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetImportRequest,
   output: GetImportResponse,
   errors: [
@@ -4773,7 +4773,7 @@ export const getInsightSelectors: API.OperationMethod<
   GetInsightSelectorsResponse,
   GetInsightSelectorsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInsightSelectorsRequest,
   output: GetInsightSelectorsResponse,
   errors: [
@@ -4826,7 +4826,7 @@ export const getQueryResults: API.OperationMethod<
     GetQueryResultsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetQueryResultsRequest,
   output: GetQueryResultsResponse,
   errors: [
@@ -4860,7 +4860,7 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyResponse,
   GetResourcePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResourcePolicyRequest,
   output: GetResourcePolicyResponse,
   errors: [
@@ -4887,7 +4887,7 @@ export const getTrail: API.OperationMethod<
   GetTrailResponse,
   GetTrailError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTrailRequest,
   output: GetTrailResponse,
   errors: [
@@ -4917,7 +4917,7 @@ export const getTrailStatus: API.OperationMethod<
   GetTrailStatusResponse,
   GetTrailStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTrailStatusRequest,
   output: GetTrailStatusResponse,
   errors: [
@@ -4956,7 +4956,7 @@ export const listChannels: API.OperationMethod<
     ListChannelsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChannelsRequest,
   output: ListChannelsResponse,
   errors: [
@@ -4979,7 +4979,7 @@ export const listDashboards: API.OperationMethod<
   ListDashboardsResponse,
   ListDashboardsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListDashboardsRequest,
   output: ListDashboardsResponse,
   errors: [UnsupportedOperationException],
@@ -5015,7 +5015,7 @@ export const listEventDataStores: API.OperationMethod<
     ListEventDataStoresError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEventDataStoresRequest,
   output: ListEventDataStoresResponse,
   errors: [
@@ -5060,7 +5060,7 @@ export const listImportFailures: API.OperationMethod<
     ListImportFailuresError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImportFailuresRequest,
   output: ListImportFailuresResponse,
   errors: [
@@ -5107,7 +5107,7 @@ export const listImports: API.OperationMethod<
     ListImportsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImportsRequest,
   output: ListImportsResponse,
   errors: [
@@ -5167,7 +5167,7 @@ export const listInsightsData: API.OperationMethod<
     ListInsightsDataError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInsightsDataRequest,
   output: ListInsightsDataResponse,
   errors: [
@@ -5230,7 +5230,7 @@ export const listInsightsMetricData: API.OperationMethod<
     ListInsightsMetricDataError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInsightsMetricDataRequest,
   output: ListInsightsMetricDataResponse,
   errors: [
@@ -5281,7 +5281,7 @@ export const listPublicKeys: API.OperationMethod<
     ListPublicKeysError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPublicKeysRequest,
   output: ListPublicKeysResponse,
   errors: [
@@ -5338,7 +5338,7 @@ export const listQueries: API.OperationMethod<
     ListQueriesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListQueriesRequest,
   output: ListQueriesResponse,
   errors: [
@@ -5397,7 +5397,7 @@ export const listTags: API.OperationMethod<
     ListTagsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagsRequest,
   output: ListTagsResponse,
   errors: [
@@ -5447,7 +5447,7 @@ export const listTrails: API.OperationMethod<
     ListTrailsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTrailsRequest,
   output: ListTrailsResponse,
   errors: [OperationNotPermittedException, UnsupportedOperationException],
@@ -5526,7 +5526,7 @@ export const lookupEvents: API.OperationMethod<
     LookupEventsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: LookupEventsRequest,
   output: LookupEventsResponse,
   errors: [
@@ -5574,7 +5574,7 @@ export const putEventConfiguration: API.OperationMethod<
   PutEventConfigurationResponse,
   PutEventConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutEventConfigurationRequest,
   output: PutEventConfigurationResponse,
   errors: [
@@ -5676,7 +5676,7 @@ export const putEventSelectors: API.OperationMethod<
   PutEventSelectorsResponse,
   PutEventSelectorsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutEventSelectorsRequest,
   output: PutEventSelectorsResponse,
   errors: [
@@ -5746,7 +5746,7 @@ export const putInsightSelectors: API.OperationMethod<
   PutInsightSelectorsResponse,
   PutInsightSelectorsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutInsightSelectorsRequest,
   output: PutInsightSelectorsResponse,
   errors: [
@@ -5787,7 +5787,7 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyResponse,
   PutResourcePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutResourcePolicyRequest,
   output: PutResourcePolicyResponse,
   errors: [
@@ -5824,7 +5824,7 @@ export const registerOrganizationDelegatedAdmin: API.OperationMethod<
   RegisterOrganizationDelegatedAdminResponse,
   RegisterOrganizationDelegatedAdminError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterOrganizationDelegatedAdminRequest,
   output: RegisterOrganizationDelegatedAdminResponse,
   errors: [
@@ -5869,7 +5869,7 @@ export const removeTags: API.OperationMethod<
   RemoveTagsResponse,
   RemoveTagsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveTagsRequest,
   output: RemoveTagsResponse,
   errors: [
@@ -5916,7 +5916,7 @@ export const restoreEventDataStore: API.OperationMethod<
   RestoreEventDataStoreResponse,
   RestoreEventDataStoreError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RestoreEventDataStoreRequest,
   output: RestoreEventDataStoreResponse,
   errors: [
@@ -5949,7 +5949,7 @@ export const searchSampleQueries: API.OperationMethod<
   SearchSampleQueriesResponse,
   SearchSampleQueriesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SearchSampleQueriesRequest,
   output: SearchSampleQueriesResponse,
   errors: [
@@ -5976,7 +5976,7 @@ export const startDashboardRefresh: API.OperationMethod<
   StartDashboardRefreshResponse,
   StartDashboardRefreshError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartDashboardRefreshRequest,
   output: StartDashboardRefreshResponse,
   errors: [
@@ -6009,7 +6009,7 @@ export const startEventDataStoreIngestion: API.OperationMethod<
   StartEventDataStoreIngestionResponse,
   StartEventDataStoreIngestionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartEventDataStoreIngestionRequest,
   output: StartEventDataStoreIngestionResponse,
   errors: [
@@ -6065,7 +6065,7 @@ export const startImport: API.OperationMethod<
   StartImportResponse,
   StartImportError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartImportRequest,
   output: StartImportResponse,
   errors: [
@@ -6107,7 +6107,7 @@ export const startLogging: API.OperationMethod<
   StartLoggingResponse,
   StartLoggingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartLoggingRequest,
   output: StartLoggingResponse,
   errors: [
@@ -6154,7 +6154,7 @@ export const startQuery: API.OperationMethod<
   StartQueryResponse,
   StartQueryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartQueryRequest,
   output: StartQueryResponse,
   errors: [
@@ -6196,7 +6196,7 @@ export const stopEventDataStoreIngestion: API.OperationMethod<
   StopEventDataStoreIngestionResponse,
   StopEventDataStoreIngestionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopEventDataStoreIngestionRequest,
   output: StopEventDataStoreIngestionResponse,
   errors: [
@@ -6227,7 +6227,7 @@ export const stopImport: API.OperationMethod<
   StopImportResponse,
   StopImportError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopImportRequest,
   output: StopImportResponse,
   errors: [
@@ -6264,7 +6264,7 @@ export const stopLogging: API.OperationMethod<
   StopLoggingResponse,
   StopLoggingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopLoggingRequest,
   output: StopLoggingResponse,
   errors: [
@@ -6301,7 +6301,7 @@ export const updateChannel: API.OperationMethod<
   UpdateChannelResponse,
   UpdateChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateChannelRequest,
   output: UpdateChannelResponse,
   errors: [
@@ -6342,7 +6342,7 @@ export const updateDashboard: API.OperationMethod<
   UpdateDashboardResponse,
   UpdateDashboardError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDashboardRequest,
   output: UpdateDashboardResponse,
   errors: [
@@ -6399,7 +6399,7 @@ export const updateEventDataStore: API.OperationMethod<
   UpdateEventDataStoreResponse,
   UpdateEventDataStoreError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEventDataStoreRequest,
   output: UpdateEventDataStoreResponse,
   errors: [
@@ -6475,7 +6475,7 @@ export const updateTrail: API.OperationMethod<
   UpdateTrailResponse,
   UpdateTrailError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTrailRequest,
   output: UpdateTrailResponse,
   errors: [

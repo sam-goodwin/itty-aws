@@ -1514,7 +1514,7 @@ export const createAppInstance: API.OperationMethod<
   CreateAppInstanceResponse,
   CreateAppInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAppInstanceRequest,
   output: CreateAppInstanceResponse,
   errors: [
@@ -1556,7 +1556,7 @@ export const createAppInstanceAdmin: API.OperationMethod<
   CreateAppInstanceAdminResponse,
   CreateAppInstanceAdminError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAppInstanceAdminRequest,
   output: CreateAppInstanceAdminResponse,
   errors: [
@@ -1589,7 +1589,7 @@ export const createAppInstanceBot: API.OperationMethod<
   CreateAppInstanceBotResponse,
   CreateAppInstanceBotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAppInstanceBotRequest,
   output: CreateAppInstanceBotResponse,
   errors: [
@@ -1622,7 +1622,7 @@ export const createAppInstanceUser: API.OperationMethod<
   CreateAppInstanceUserResponse,
   CreateAppInstanceUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAppInstanceUserRequest,
   output: CreateAppInstanceUserResponse,
   errors: [
@@ -1653,7 +1653,7 @@ export const deleteAppInstance: API.OperationMethod<
   DeleteAppInstanceResponse,
   DeleteAppInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAppInstanceRequest,
   output: DeleteAppInstanceResponse,
   errors: [
@@ -1686,7 +1686,7 @@ export const deleteAppInstanceAdmin: API.OperationMethod<
   DeleteAppInstanceAdminResponse,
   DeleteAppInstanceAdminError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAppInstanceAdminRequest,
   output: DeleteAppInstanceAdminResponse,
   errors: [
@@ -1718,7 +1718,7 @@ export const deleteAppInstanceBot: API.OperationMethod<
   DeleteAppInstanceBotResponse,
   DeleteAppInstanceBotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAppInstanceBotRequest,
   output: DeleteAppInstanceBotResponse,
   errors: [
@@ -1750,7 +1750,7 @@ export const deleteAppInstanceUser: API.OperationMethod<
   DeleteAppInstanceUserResponse,
   DeleteAppInstanceUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAppInstanceUserRequest,
   output: DeleteAppInstanceUserResponse,
   errors: [
@@ -1780,7 +1780,7 @@ export const deregisterAppInstanceUserEndpoint: API.OperationMethod<
   DeregisterAppInstanceUserEndpointResponse,
   DeregisterAppInstanceUserEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeregisterAppInstanceUserEndpointRequest,
   output: DeregisterAppInstanceUserEndpointResponse,
   errors: [
@@ -1808,7 +1808,7 @@ export const describeAppInstance: API.OperationMethod<
   DescribeAppInstanceResponse,
   DescribeAppInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAppInstanceRequest,
   output: DescribeAppInstanceResponse,
   errors: [
@@ -1836,7 +1836,7 @@ export const describeAppInstanceAdmin: API.OperationMethod<
   DescribeAppInstanceAdminResponse,
   DescribeAppInstanceAdminError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAppInstanceAdminRequest,
   output: DescribeAppInstanceAdminResponse,
   errors: [
@@ -1865,7 +1865,7 @@ export const describeAppInstanceBot: API.OperationMethod<
   DescribeAppInstanceBotResponse,
   DescribeAppInstanceBotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAppInstanceBotRequest,
   output: DescribeAppInstanceBotResponse,
   errors: [
@@ -1894,7 +1894,7 @@ export const describeAppInstanceUser: API.OperationMethod<
   DescribeAppInstanceUserResponse,
   DescribeAppInstanceUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAppInstanceUserRequest,
   output: DescribeAppInstanceUserResponse,
   errors: [
@@ -1922,7 +1922,7 @@ export const describeAppInstanceUserEndpoint: API.OperationMethod<
   DescribeAppInstanceUserEndpointResponse,
   DescribeAppInstanceUserEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAppInstanceUserEndpointRequest,
   output: DescribeAppInstanceUserEndpointResponse,
   errors: [
@@ -1950,7 +1950,7 @@ export const getAppInstanceRetentionSettings: API.OperationMethod<
   GetAppInstanceRetentionSettingsResponse,
   GetAppInstanceRetentionSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAppInstanceRetentionSettingsRequest,
   output: GetAppInstanceRetentionSettingsResponse,
   errors: [
@@ -1994,7 +1994,7 @@ export const listAppInstanceAdmins: API.OperationMethod<
     ListAppInstanceAdminsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppInstanceAdminsRequest,
   output: ListAppInstanceAdminsResponse,
   errors: [
@@ -2044,7 +2044,7 @@ export const listAppInstanceBots: API.OperationMethod<
     ListAppInstanceBotsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppInstanceBotsRequest,
   output: ListAppInstanceBotsResponse,
   errors: [
@@ -2094,7 +2094,7 @@ export const listAppInstances: API.OperationMethod<
     ListAppInstancesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppInstancesRequest,
   output: ListAppInstancesResponse,
   errors: [
@@ -2142,7 +2142,7 @@ export const listAppInstanceUserEndpoints: API.OperationMethod<
     ListAppInstanceUserEndpointsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppInstanceUserEndpointsRequest,
   output: ListAppInstanceUserEndpointsResponse,
   errors: [
@@ -2191,7 +2191,7 @@ export const listAppInstanceUsers: API.OperationMethod<
     ListAppInstanceUsersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppInstanceUsersRequest,
   output: ListAppInstanceUsersResponse,
   errors: [
@@ -2224,7 +2224,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -2253,7 +2253,7 @@ export const putAppInstanceRetentionSettings: API.OperationMethod<
   PutAppInstanceRetentionSettingsResponse,
   PutAppInstanceRetentionSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutAppInstanceRetentionSettingsRequest,
   output: PutAppInstanceRetentionSettingsResponse,
   errors: [
@@ -2288,7 +2288,7 @@ export const putAppInstanceUserExpirationSettings: API.OperationMethod<
   PutAppInstanceUserExpirationSettingsResponse,
   PutAppInstanceUserExpirationSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutAppInstanceUserExpirationSettingsRequest,
   output: PutAppInstanceUserExpirationSettingsResponse,
   errors: [
@@ -2319,7 +2319,7 @@ export const registerAppInstanceUserEndpoint: API.OperationMethod<
   RegisterAppInstanceUserEndpointResponse,
   RegisterAppInstanceUserEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterAppInstanceUserEndpointRequest,
   output: RegisterAppInstanceUserEndpointResponse,
   errors: [
@@ -2350,7 +2350,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -2379,7 +2379,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -2408,7 +2408,7 @@ export const updateAppInstance: API.OperationMethod<
   UpdateAppInstanceResponse,
   UpdateAppInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAppInstanceRequest,
   output: UpdateAppInstanceResponse,
   errors: [
@@ -2439,7 +2439,7 @@ export const updateAppInstanceBot: API.OperationMethod<
   UpdateAppInstanceBotResponse,
   UpdateAppInstanceBotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAppInstanceBotRequest,
   output: UpdateAppInstanceBotResponse,
   errors: [
@@ -2472,7 +2472,7 @@ export const updateAppInstanceUser: API.OperationMethod<
   UpdateAppInstanceUserResponse,
   UpdateAppInstanceUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAppInstanceUserRequest,
   output: UpdateAppInstanceUserResponse,
   errors: [
@@ -2503,7 +2503,7 @@ export const updateAppInstanceUserEndpoint: API.OperationMethod<
   UpdateAppInstanceUserEndpointResponse,
   UpdateAppInstanceUserEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAppInstanceUserEndpointRequest,
   output: UpdateAppInstanceUserEndpointResponse,
   errors: [

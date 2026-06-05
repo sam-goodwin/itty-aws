@@ -351,7 +351,7 @@ export const getDeployments: API.OperationMethod<
   GetDeploymentsResult,
   GetDeploymentsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDeploymentsRequest,
   output: GetDeploymentsResult,
   errors: [InternalServiceException],
@@ -367,7 +367,7 @@ export const getDeviceRegistration: API.OperationMethod<
   GetDeviceRegistrationResult,
   GetDeviceRegistrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDeviceRegistrationRequest,
   output: GetDeviceRegistrationResult,
   errors: [InternalServiceException],
@@ -381,7 +381,7 @@ export const sendHeartbeat: API.OperationMethod<
   SendHeartbeatResponse,
   SendHeartbeatError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendHeartbeatRequest,
   output: SendHeartbeatResponse,
   errors: [InternalServiceException],

@@ -1786,7 +1786,7 @@ export const abortMultipartUpload: API.OperationMethod<
   AbortMultipartUploadResponse,
   AbortMultipartUploadError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AbortMultipartUploadInput,
   output: AbortMultipartUploadResponse,
   errors: [
@@ -1827,7 +1827,7 @@ export const abortVaultLock: API.OperationMethod<
   AbortVaultLockResponse,
   AbortVaultLockError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AbortVaultLockInput,
   output: AbortVaultLockResponse,
   errors: [
@@ -1858,7 +1858,7 @@ export const addTagsToVault: API.OperationMethod<
   AddTagsToVaultResponse,
   AddTagsToVaultError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddTagsToVaultInput,
   output: AddTagsToVaultResponse,
   errors: [
@@ -1923,7 +1923,7 @@ export const completeMultipartUpload: API.OperationMethod<
   ArchiveCreationOutput,
   CompleteMultipartUploadError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CompleteMultipartUploadInput,
   output: ArchiveCreationOutput,
   errors: [
@@ -1964,7 +1964,7 @@ export const completeVaultLock: API.OperationMethod<
   CompleteVaultLockResponse,
   CompleteVaultLockError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CompleteVaultLockInput,
   output: CompleteVaultLockResponse,
   errors: [
@@ -2011,7 +2011,7 @@ export const createVault: API.OperationMethod<
   CreateVaultOutput,
   CreateVaultError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateVaultInput,
   output: CreateVaultOutput,
   errors: [
@@ -2060,7 +2060,7 @@ export const deleteArchive: API.OperationMethod<
   DeleteArchiveResponse,
   DeleteArchiveError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteArchiveInput,
   output: DeleteArchiveResponse,
   errors: [
@@ -2106,7 +2106,7 @@ export const deleteVault: API.OperationMethod<
   DeleteVaultResponse,
   DeleteVaultError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteVaultInput,
   output: DeleteVaultResponse,
   errors: [
@@ -2139,7 +2139,7 @@ export const deleteVaultAccessPolicy: API.OperationMethod<
   DeleteVaultAccessPolicyResponse,
   DeleteVaultAccessPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteVaultAccessPolicyInput,
   output: DeleteVaultAccessPolicyResponse,
   errors: [
@@ -2178,7 +2178,7 @@ export const deleteVaultNotifications: API.OperationMethod<
   DeleteVaultNotificationsResponse,
   DeleteVaultNotificationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteVaultNotificationsInput,
   output: DeleteVaultNotificationsResponse,
   errors: [
@@ -2225,7 +2225,7 @@ export const describeJob: API.OperationMethod<
   GlacierJobDescription,
   DescribeJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeJobInput,
   output: GlacierJobDescription,
   errors: [
@@ -2269,7 +2269,7 @@ export const describeVault: API.OperationMethod<
   DescribeVaultOutput,
   DescribeVaultError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeVaultInput,
   output: DescribeVaultOutput,
   errors: [
@@ -2296,7 +2296,7 @@ export const getDataRetrievalPolicy: API.OperationMethod<
   GetDataRetrievalPolicyOutput,
   GetDataRetrievalPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDataRetrievalPolicyInput,
   output: GetDataRetrievalPolicyOutput,
   errors: [
@@ -2360,7 +2360,7 @@ export const getJobOutput: API.OperationMethod<
   GetJobOutputOutput,
   GetJobOutputError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetJobOutputInput,
   output: GetJobOutputOutput,
   errors: [
@@ -2391,7 +2391,7 @@ export const getVaultAccessPolicy: API.OperationMethod<
   GetVaultAccessPolicyOutput,
   GetVaultAccessPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetVaultAccessPolicyInput,
   output: GetVaultAccessPolicyOutput,
   errors: [
@@ -2439,7 +2439,7 @@ export const getVaultLock: API.OperationMethod<
   GetVaultLockOutput,
   GetVaultLockError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetVaultLockInput,
   output: GetVaultLockOutput,
   errors: [
@@ -2481,7 +2481,7 @@ export const getVaultNotifications: API.OperationMethod<
   GetVaultNotificationsOutput,
   GetVaultNotificationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetVaultNotificationsInput,
   output: GetVaultNotificationsOutput,
   errors: [
@@ -2512,7 +2512,7 @@ export const initiateJob: API.OperationMethod<
   InitiateJobOutput,
   InitiateJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InitiateJobInput,
   output: InitiateJobOutput,
   errors: [
@@ -2572,7 +2572,7 @@ export const initiateMultipartUpload: API.OperationMethod<
   InitiateMultipartUploadOutput,
   InitiateMultipartUploadError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InitiateMultipartUploadInput,
   output: InitiateMultipartUploadOutput,
   errors: [
@@ -2629,7 +2629,7 @@ export const initiateVaultLock: API.OperationMethod<
   InitiateVaultLockOutput,
   InitiateVaultLockError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InitiateVaultLockInput,
   output: InitiateVaultLockOutput,
   errors: [
@@ -2703,7 +2703,7 @@ export const listJobs: API.OperationMethod<
     ListJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJobsInput,
   output: ListJobsOutput,
   errors: [
@@ -2775,7 +2775,7 @@ export const listMultipartUploads: API.OperationMethod<
     ListMultipartUploadsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMultipartUploadsInput,
   output: ListMultipartUploadsOutput,
   errors: [
@@ -2844,7 +2844,7 @@ export const listParts: API.OperationMethod<
     ListPartsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPartsInput,
   output: ListPartsOutput,
   errors: [
@@ -2876,7 +2876,7 @@ export const listProvisionedCapacity: API.OperationMethod<
   ListProvisionedCapacityOutput,
   ListProvisionedCapacityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListProvisionedCapacityInput,
   output: ListProvisionedCapacityOutput,
   errors: [
@@ -2903,7 +2903,7 @@ export const listTagsForVault: API.OperationMethod<
   ListTagsForVaultOutput,
   ListTagsForVaultError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForVaultInput,
   output: ListTagsForVaultOutput,
   errors: [
@@ -2963,7 +2963,7 @@ export const listVaults: API.OperationMethod<
     ListVaultsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVaultsInput,
   output: ListVaultsOutput,
   errors: [
@@ -2995,7 +2995,7 @@ export const purchaseProvisionedCapacity: API.OperationMethod<
   PurchaseProvisionedCapacityOutput,
   PurchaseProvisionedCapacityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PurchaseProvisionedCapacityInput,
   output: PurchaseProvisionedCapacityOutput,
   errors: [
@@ -3024,7 +3024,7 @@ export const removeTagsFromVault: API.OperationMethod<
   RemoveTagsFromVaultResponse,
   RemoveTagsFromVaultError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveTagsFromVaultInput,
   output: RemoveTagsFromVaultResponse,
   errors: [
@@ -3055,7 +3055,7 @@ export const setDataRetrievalPolicy: API.OperationMethod<
   SetDataRetrievalPolicyResponse,
   SetDataRetrievalPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetDataRetrievalPolicyInput,
   output: SetDataRetrievalPolicyResponse,
   errors: [
@@ -3085,7 +3085,7 @@ export const setVaultAccessPolicy: API.OperationMethod<
   SetVaultAccessPolicyResponse,
   SetVaultAccessPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetVaultAccessPolicyInput,
   output: SetVaultAccessPolicyResponse,
   errors: [
@@ -3141,7 +3141,7 @@ export const setVaultNotifications: API.OperationMethod<
   SetVaultNotificationsResponse,
   SetVaultNotificationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetVaultNotificationsInput,
   output: SetVaultNotificationsResponse,
   errors: [
@@ -3200,7 +3200,7 @@ export const uploadArchive: API.OperationMethod<
   ArchiveCreationOutput,
   UploadArchiveError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UploadArchiveInput,
   output: ArchiveCreationOutput,
   errors: [
@@ -3269,7 +3269,7 @@ export const uploadMultipartPart: API.OperationMethod<
   UploadMultipartPartOutput,
   UploadMultipartPartError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UploadMultipartPartInput,
   output: UploadMultipartPartOutput,
   errors: [

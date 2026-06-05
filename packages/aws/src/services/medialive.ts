@@ -19442,7 +19442,7 @@ export const acceptInputDeviceTransfer: API.OperationMethod<
   AcceptInputDeviceTransferResponse,
   AcceptInputDeviceTransferError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AcceptInputDeviceTransferRequest,
   output: AcceptInputDeviceTransferResponse,
   errors: [
@@ -19475,7 +19475,7 @@ export const batchDelete: API.OperationMethod<
   BatchDeleteResponse,
   BatchDeleteError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchDeleteRequest,
   output: BatchDeleteResponse,
   errors: [
@@ -19507,7 +19507,7 @@ export const batchStart: API.OperationMethod<
   BatchStartResponse,
   BatchStartError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchStartRequest,
   output: BatchStartResponse,
   errors: [
@@ -19539,7 +19539,7 @@ export const batchStop: API.OperationMethod<
   BatchStopResponse,
   BatchStopError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchStopRequest,
   output: BatchStopResponse,
   errors: [
@@ -19571,7 +19571,7 @@ export const batchUpdateSchedule: API.OperationMethod<
   BatchUpdateScheduleResponse,
   BatchUpdateScheduleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchUpdateScheduleRequest,
   output: BatchUpdateScheduleResponse,
   errors: [
@@ -19604,7 +19604,7 @@ export const cancelInputDeviceTransfer: API.OperationMethod<
   CancelInputDeviceTransferResponse,
   CancelInputDeviceTransferError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelInputDeviceTransferRequest,
   output: CancelInputDeviceTransferResponse,
   errors: [
@@ -19637,7 +19637,7 @@ export const claimDevice: API.OperationMethod<
   ClaimDeviceResponse,
   ClaimDeviceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ClaimDeviceRequest,
   output: ClaimDeviceResponse,
   errors: [
@@ -19669,7 +19669,7 @@ export const createChannel: API.OperationMethod<
   CreateChannelResponse,
   CreateChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateChannelRequest,
   output: CreateChannelResponse,
   errors: [
@@ -19700,7 +19700,7 @@ export const createChannelPlacementGroup: API.OperationMethod<
   CreateChannelPlacementGroupResponse,
   CreateChannelPlacementGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateChannelPlacementGroupRequest,
   output: CreateChannelPlacementGroupResponse,
   errors: [
@@ -19729,7 +19729,7 @@ export const createCloudWatchAlarmTemplate: API.OperationMethod<
   CreateCloudWatchAlarmTemplateResponse,
   CreateCloudWatchAlarmTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCloudWatchAlarmTemplateRequest,
   output: CreateCloudWatchAlarmTemplateResponse,
   errors: [
@@ -19757,7 +19757,7 @@ export const createCloudWatchAlarmTemplateGroup: API.OperationMethod<
   CreateCloudWatchAlarmTemplateGroupResponse,
   CreateCloudWatchAlarmTemplateGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCloudWatchAlarmTemplateGroupRequest,
   output: CreateCloudWatchAlarmTemplateGroupResponse,
   errors: [
@@ -19786,7 +19786,7 @@ export const createCluster: API.OperationMethod<
   CreateClusterResponse,
   CreateClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateClusterRequest,
   output: CreateClusterResponse,
   errors: [
@@ -19815,7 +19815,7 @@ export const createEventBridgeRuleTemplate: API.OperationMethod<
   CreateEventBridgeRuleTemplateResponse,
   CreateEventBridgeRuleTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEventBridgeRuleTemplateRequest,
   output: CreateEventBridgeRuleTemplateResponse,
   errors: [
@@ -19843,7 +19843,7 @@ export const createEventBridgeRuleTemplateGroup: API.OperationMethod<
   CreateEventBridgeRuleTemplateGroupResponse,
   CreateEventBridgeRuleTemplateGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEventBridgeRuleTemplateGroupRequest,
   output: CreateEventBridgeRuleTemplateGroupResponse,
   errors: [
@@ -19871,7 +19871,7 @@ export const createInput: API.OperationMethod<
   CreateInputResponse,
   CreateInputError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateInputRequest,
   output: CreateInputResponse,
   errors: [
@@ -19899,7 +19899,7 @@ export const createInputSecurityGroup: API.OperationMethod<
   CreateInputSecurityGroupResponse,
   CreateInputSecurityGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateInputSecurityGroupRequest,
   output: CreateInputSecurityGroupResponse,
   errors: [
@@ -19929,7 +19929,7 @@ export const createMultiplex: API.OperationMethod<
   CreateMultiplexResponse,
   CreateMultiplexError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMultiplexRequest,
   output: CreateMultiplexResponse,
   errors: [
@@ -19961,7 +19961,7 @@ export const createMultiplexProgram: API.OperationMethod<
   CreateMultiplexProgramResponse,
   CreateMultiplexProgramError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMultiplexProgramRequest,
   output: CreateMultiplexProgramResponse,
   errors: [
@@ -19992,7 +19992,7 @@ export const createNetwork: API.OperationMethod<
   CreateNetworkResponse,
   CreateNetworkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateNetworkRequest,
   output: CreateNetworkResponse,
   errors: [
@@ -20022,7 +20022,7 @@ export const createNode: API.OperationMethod<
   CreateNodeResponse,
   CreateNodeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateNodeRequest,
   output: CreateNodeResponse,
   errors: [
@@ -20052,7 +20052,7 @@ export const createNodeRegistrationScript: API.OperationMethod<
   CreateNodeRegistrationScriptResponse,
   CreateNodeRegistrationScriptError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateNodeRegistrationScriptRequest,
   output: CreateNodeRegistrationScriptResponse,
   errors: [
@@ -20081,7 +20081,7 @@ export const createPartnerInput: API.OperationMethod<
   CreatePartnerInputResponse,
   CreatePartnerInputError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePartnerInputRequest,
   output: CreatePartnerInputResponse,
   errors: [
@@ -20110,7 +20110,7 @@ export const createSdiSource: API.OperationMethod<
   CreateSdiSourceResponse,
   CreateSdiSourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSdiSourceRequest,
   output: CreateSdiSourceResponse,
   errors: [
@@ -20139,7 +20139,7 @@ export const createSignalMap: API.OperationMethod<
   CreateSignalMapResponse,
   CreateSignalMapError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSignalMapRequest,
   output: CreateSignalMapResponse,
   errors: [
@@ -20165,7 +20165,7 @@ export const createTags: API.OperationMethod<
   CreateTagsResponse,
   CreateTagsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTagsRequest,
   output: CreateTagsResponse,
   errors: [
@@ -20193,7 +20193,7 @@ export const deleteChannel: API.OperationMethod<
   DeleteChannelResponse,
   DeleteChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteChannelRequest,
   output: DeleteChannelResponse,
   errors: [
@@ -20225,7 +20225,7 @@ export const deleteChannelPlacementGroup: API.OperationMethod<
   DeleteChannelPlacementGroupResponse,
   DeleteChannelPlacementGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteChannelPlacementGroupRequest,
   output: DeleteChannelPlacementGroupResponse,
   errors: [
@@ -20255,7 +20255,7 @@ export const deleteCloudWatchAlarmTemplate: API.OperationMethod<
   DeleteCloudWatchAlarmTemplateResponse,
   DeleteCloudWatchAlarmTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCloudWatchAlarmTemplateRequest,
   output: DeleteCloudWatchAlarmTemplateResponse,
   errors: [
@@ -20283,7 +20283,7 @@ export const deleteCloudWatchAlarmTemplateGroup: API.OperationMethod<
   DeleteCloudWatchAlarmTemplateGroupResponse,
   DeleteCloudWatchAlarmTemplateGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCloudWatchAlarmTemplateGroupRequest,
   output: DeleteCloudWatchAlarmTemplateGroupResponse,
   errors: [
@@ -20313,7 +20313,7 @@ export const deleteCluster: API.OperationMethod<
   DeleteClusterResponse,
   DeleteClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteClusterRequest,
   output: DeleteClusterResponse,
   errors: [
@@ -20343,7 +20343,7 @@ export const deleteEventBridgeRuleTemplate: API.OperationMethod<
   DeleteEventBridgeRuleTemplateResponse,
   DeleteEventBridgeRuleTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEventBridgeRuleTemplateRequest,
   output: DeleteEventBridgeRuleTemplateResponse,
   errors: [
@@ -20371,7 +20371,7 @@ export const deleteEventBridgeRuleTemplateGroup: API.OperationMethod<
   DeleteEventBridgeRuleTemplateGroupResponse,
   DeleteEventBridgeRuleTemplateGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEventBridgeRuleTemplateGroupRequest,
   output: DeleteEventBridgeRuleTemplateGroupResponse,
   errors: [
@@ -20401,7 +20401,7 @@ export const deleteInput: API.OperationMethod<
   DeleteInputResponse,
   DeleteInputError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteInputRequest,
   output: DeleteInputResponse,
   errors: [
@@ -20432,7 +20432,7 @@ export const deleteInputSecurityGroup: API.OperationMethod<
   DeleteInputSecurityGroupResponse,
   DeleteInputSecurityGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteInputSecurityGroupRequest,
   output: DeleteInputSecurityGroupResponse,
   errors: [
@@ -20463,7 +20463,7 @@ export const deleteMultiplex: API.OperationMethod<
   DeleteMultiplexResponse,
   DeleteMultiplexError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMultiplexRequest,
   output: DeleteMultiplexResponse,
   errors: [
@@ -20495,7 +20495,7 @@ export const deleteMultiplexProgram: API.OperationMethod<
   DeleteMultiplexProgramResponse,
   DeleteMultiplexProgramError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMultiplexProgramRequest,
   output: DeleteMultiplexProgramResponse,
   errors: [
@@ -20527,7 +20527,7 @@ export const deleteNetwork: API.OperationMethod<
   DeleteNetworkResponse,
   DeleteNetworkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteNetworkRequest,
   output: DeleteNetworkResponse,
   errors: [
@@ -20559,7 +20559,7 @@ export const deleteNode: API.OperationMethod<
   DeleteNodeResponse,
   DeleteNodeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteNodeRequest,
   output: DeleteNodeResponse,
   errors: [
@@ -20591,7 +20591,7 @@ export const deleteReservation: API.OperationMethod<
   DeleteReservationResponse,
   DeleteReservationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteReservationRequest,
   output: DeleteReservationResponse,
   errors: [
@@ -20622,7 +20622,7 @@ export const deleteSchedule: API.OperationMethod<
   DeleteScheduleResponse,
   DeleteScheduleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteScheduleRequest,
   output: DeleteScheduleResponse,
   errors: [
@@ -20653,7 +20653,7 @@ export const deleteSdiSource: API.OperationMethod<
   DeleteSdiSourceResponse,
   DeleteSdiSourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSdiSourceRequest,
   output: DeleteSdiSourceResponse,
   errors: [
@@ -20683,7 +20683,7 @@ export const deleteSignalMap: API.OperationMethod<
   DeleteSignalMapResponse,
   DeleteSignalMapError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSignalMapRequest,
   output: DeleteSignalMapResponse,
   errors: [
@@ -20709,7 +20709,7 @@ export const deleteTags: API.OperationMethod<
   DeleteTagsResponse,
   DeleteTagsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTagsRequest,
   output: DeleteTagsResponse,
   errors: [
@@ -20735,7 +20735,7 @@ export const describeAccountConfiguration: API.OperationMethod<
   DescribeAccountConfigurationResponse,
   DescribeAccountConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAccountConfigurationRequest,
   output: DescribeAccountConfigurationResponse,
   errors: [
@@ -20764,7 +20764,7 @@ export const describeChannel: API.OperationMethod<
   DescribeChannelResponse,
   DescribeChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeChannelRequest,
   output: DescribeChannelResponse,
   errors: [
@@ -20794,7 +20794,7 @@ export const describeChannelPlacementGroup: API.OperationMethod<
   DescribeChannelPlacementGroupResponse,
   DescribeChannelPlacementGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeChannelPlacementGroupRequest,
   output: DescribeChannelPlacementGroupResponse,
   errors: [
@@ -20824,7 +20824,7 @@ export const describeCluster: API.OperationMethod<
   DescribeClusterResponse,
   DescribeClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeClusterRequest,
   output: DescribeClusterResponse,
   errors: [
@@ -20854,7 +20854,7 @@ export const describeInput: API.OperationMethod<
   DescribeInputResponse,
   DescribeInputError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeInputRequest,
   output: DescribeInputResponse,
   errors: [
@@ -20884,7 +20884,7 @@ export const describeInputDevice: API.OperationMethod<
   DescribeInputDeviceResponse,
   DescribeInputDeviceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeInputDeviceRequest,
   output: DescribeInputDeviceResponse,
   errors: [
@@ -20914,7 +20914,7 @@ export const describeInputDeviceThumbnail: API.OperationMethod<
   DescribeInputDeviceThumbnailResponse,
   DescribeInputDeviceThumbnailError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeInputDeviceThumbnailRequest,
   output: DescribeInputDeviceThumbnailResponse,
   errors: [
@@ -20944,7 +20944,7 @@ export const describeInputSecurityGroup: API.OperationMethod<
   DescribeInputSecurityGroupResponse,
   DescribeInputSecurityGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeInputSecurityGroupRequest,
   output: DescribeInputSecurityGroupResponse,
   errors: [
@@ -20974,7 +20974,7 @@ export const describeMultiplex: API.OperationMethod<
   DescribeMultiplexResponse,
   DescribeMultiplexError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeMultiplexRequest,
   output: DescribeMultiplexResponse,
   errors: [
@@ -21004,7 +21004,7 @@ export const describeMultiplexProgram: API.OperationMethod<
   DescribeMultiplexProgramResponse,
   DescribeMultiplexProgramError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeMultiplexProgramRequest,
   output: DescribeMultiplexProgramResponse,
   errors: [
@@ -21034,7 +21034,7 @@ export const describeNetwork: API.OperationMethod<
   DescribeNetworkResponse,
   DescribeNetworkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeNetworkRequest,
   output: DescribeNetworkResponse,
   errors: [
@@ -21064,7 +21064,7 @@ export const describeNode: API.OperationMethod<
   DescribeNodeResponse,
   DescribeNodeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeNodeRequest,
   output: DescribeNodeResponse,
   errors: [
@@ -21094,7 +21094,7 @@ export const describeOffering: API.OperationMethod<
   DescribeOfferingResponse,
   DescribeOfferingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeOfferingRequest,
   output: DescribeOfferingResponse,
   errors: [
@@ -21124,7 +21124,7 @@ export const describeReservation: API.OperationMethod<
   DescribeReservationResponse,
   DescribeReservationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeReservationRequest,
   output: DescribeReservationResponse,
   errors: [
@@ -21169,7 +21169,7 @@ export const describeSchedule: API.OperationMethod<
     DescribeScheduleError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeScheduleRequest,
   output: DescribeScheduleResponse,
   errors: [
@@ -21205,7 +21205,7 @@ export const describeSdiSource: API.OperationMethod<
   DescribeSdiSourceResponse,
   DescribeSdiSourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeSdiSourceRequest,
   output: DescribeSdiSourceResponse,
   errors: [
@@ -21236,7 +21236,7 @@ export const describeThumbnails: API.OperationMethod<
   DescribeThumbnailsResponse,
   DescribeThumbnailsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeThumbnailsRequest,
   output: DescribeThumbnailsResponse,
   errors: [
@@ -21265,7 +21265,7 @@ export const getCloudWatchAlarmTemplate: API.OperationMethod<
   GetCloudWatchAlarmTemplateResponse,
   GetCloudWatchAlarmTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCloudWatchAlarmTemplateRequest,
   output: GetCloudWatchAlarmTemplateResponse,
   errors: [
@@ -21291,7 +21291,7 @@ export const getCloudWatchAlarmTemplateGroup: API.OperationMethod<
   GetCloudWatchAlarmTemplateGroupResponse,
   GetCloudWatchAlarmTemplateGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCloudWatchAlarmTemplateGroupRequest,
   output: GetCloudWatchAlarmTemplateGroupResponse,
   errors: [
@@ -21317,7 +21317,7 @@ export const getEventBridgeRuleTemplate: API.OperationMethod<
   GetEventBridgeRuleTemplateResponse,
   GetEventBridgeRuleTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEventBridgeRuleTemplateRequest,
   output: GetEventBridgeRuleTemplateResponse,
   errors: [
@@ -21343,7 +21343,7 @@ export const getEventBridgeRuleTemplateGroup: API.OperationMethod<
   GetEventBridgeRuleTemplateGroupResponse,
   GetEventBridgeRuleTemplateGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEventBridgeRuleTemplateGroupRequest,
   output: GetEventBridgeRuleTemplateGroupResponse,
   errors: [
@@ -21369,7 +21369,7 @@ export const getSignalMap: API.OperationMethod<
   GetSignalMapResponse,
   GetSignalMapError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSignalMapRequest,
   output: GetSignalMapResponse,
   errors: [
@@ -21412,7 +21412,7 @@ export const listAlerts: API.OperationMethod<
     ListAlertsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAlertsRequest,
   output: ListAlertsResponse,
   errors: [
@@ -21462,7 +21462,7 @@ export const listChannelPlacementGroups: API.OperationMethod<
     ListChannelPlacementGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChannelPlacementGroupsRequest,
   output: ListChannelPlacementGroupsResponse,
   errors: [
@@ -21511,7 +21511,7 @@ export const listChannels: API.OperationMethod<
     ListChannelsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChannelsRequest,
   output: ListChannelsResponse,
   errors: [
@@ -21559,7 +21559,7 @@ export const listCloudWatchAlarmTemplateGroups: API.OperationMethod<
     ListCloudWatchAlarmTemplateGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCloudWatchAlarmTemplateGroupsRequest,
   output: ListCloudWatchAlarmTemplateGroupsResponse,
   errors: [
@@ -21606,7 +21606,7 @@ export const listCloudWatchAlarmTemplates: API.OperationMethod<
     ListCloudWatchAlarmTemplatesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCloudWatchAlarmTemplatesRequest,
   output: ListCloudWatchAlarmTemplatesResponse,
   errors: [
@@ -21655,7 +21655,7 @@ export const listClusterAlerts: API.OperationMethod<
     ListClusterAlertsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListClusterAlertsRequest,
   output: ListClusterAlertsResponse,
   errors: [
@@ -21705,7 +21705,7 @@ export const listClusters: API.OperationMethod<
     ListClustersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListClustersRequest,
   output: ListClustersResponse,
   errors: [
@@ -21753,7 +21753,7 @@ export const listEventBridgeRuleTemplateGroups: API.OperationMethod<
     ListEventBridgeRuleTemplateGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEventBridgeRuleTemplateGroupsRequest,
   output: ListEventBridgeRuleTemplateGroupsResponse,
   errors: [
@@ -21800,7 +21800,7 @@ export const listEventBridgeRuleTemplates: API.OperationMethod<
     ListEventBridgeRuleTemplatesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEventBridgeRuleTemplatesRequest,
   output: ListEventBridgeRuleTemplatesResponse,
   errors: [
@@ -21848,7 +21848,7 @@ export const listInputDevices: API.OperationMethod<
     ListInputDevicesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInputDevicesRequest,
   output: ListInputDevicesResponse,
   errors: [
@@ -21898,7 +21898,7 @@ export const listInputDeviceTransfers: API.OperationMethod<
     ListInputDeviceTransfersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInputDeviceTransfersRequest,
   output: ListInputDeviceTransfersResponse,
   errors: [
@@ -21948,7 +21948,7 @@ export const listInputs: API.OperationMethod<
     ListInputsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInputsRequest,
   output: ListInputsResponse,
   errors: [
@@ -21997,7 +21997,7 @@ export const listInputSecurityGroups: API.OperationMethod<
     ListInputSecurityGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInputSecurityGroupsRequest,
   output: ListInputSecurityGroupsResponse,
   errors: [
@@ -22047,7 +22047,7 @@ export const listMultiplexAlerts: API.OperationMethod<
     ListMultiplexAlertsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMultiplexAlertsRequest,
   output: ListMultiplexAlertsResponse,
   errors: [
@@ -22097,7 +22097,7 @@ export const listMultiplexes: API.OperationMethod<
     ListMultiplexesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMultiplexesRequest,
   output: ListMultiplexesResponse,
   errors: [
@@ -22147,7 +22147,7 @@ export const listMultiplexPrograms: API.OperationMethod<
     ListMultiplexProgramsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMultiplexProgramsRequest,
   output: ListMultiplexProgramsResponse,
   errors: [
@@ -22197,7 +22197,7 @@ export const listNetworks: API.OperationMethod<
     ListNetworksError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNetworksRequest,
   output: ListNetworksResponse,
   errors: [
@@ -22246,7 +22246,7 @@ export const listNodes: API.OperationMethod<
     ListNodesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNodesRequest,
   output: ListNodesResponse,
   errors: [
@@ -22295,7 +22295,7 @@ export const listOfferings: API.OperationMethod<
     ListOfferingsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOfferingsRequest,
   output: ListOfferingsResponse,
   errors: [
@@ -22344,7 +22344,7 @@ export const listReservations: API.OperationMethod<
     ListReservationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReservationsRequest,
   output: ListReservationsResponse,
   errors: [
@@ -22393,7 +22393,7 @@ export const listSdiSources: API.OperationMethod<
     ListSdiSourcesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSdiSourcesRequest,
   output: ListSdiSourcesResponse,
   errors: [
@@ -22441,7 +22441,7 @@ export const listSignalMaps: API.OperationMethod<
     ListSignalMapsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSignalMapsRequest,
   output: ListSignalMapsResponse,
   errors: [
@@ -22472,7 +22472,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -22500,7 +22500,7 @@ export const listVersions: API.OperationMethod<
   ListVersionsResponse,
   ListVersionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListVersionsRequest,
   output: ListVersionsResponse,
   errors: [
@@ -22532,7 +22532,7 @@ export const purchaseOffering: API.OperationMethod<
   PurchaseOfferingResponse,
   PurchaseOfferingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PurchaseOfferingRequest,
   output: PurchaseOfferingResponse,
   errors: [
@@ -22564,7 +22564,7 @@ export const rebootInputDevice: API.OperationMethod<
   RebootInputDeviceResponse,
   RebootInputDeviceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RebootInputDeviceRequest,
   output: RebootInputDeviceResponse,
   errors: [
@@ -22597,7 +22597,7 @@ export const rejectInputDeviceTransfer: API.OperationMethod<
   RejectInputDeviceTransferResponse,
   RejectInputDeviceTransferError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RejectInputDeviceTransferRequest,
   output: RejectInputDeviceTransferResponse,
   errors: [
@@ -22630,7 +22630,7 @@ export const restartChannelPipelines: API.OperationMethod<
   RestartChannelPipelinesResponse,
   RestartChannelPipelinesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RestartChannelPipelinesRequest,
   output: RestartChannelPipelinesResponse,
   errors: [
@@ -22662,7 +22662,7 @@ export const startChannel: API.OperationMethod<
   StartChannelResponse,
   StartChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartChannelRequest,
   output: StartChannelResponse,
   errors: [
@@ -22692,7 +22692,7 @@ export const startDeleteMonitorDeployment: API.OperationMethod<
   StartDeleteMonitorDeploymentResponse,
   StartDeleteMonitorDeploymentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartDeleteMonitorDeploymentRequest,
   output: StartDeleteMonitorDeploymentResponse,
   errors: [
@@ -22722,7 +22722,7 @@ export const startInputDevice: API.OperationMethod<
   StartInputDeviceResponse,
   StartInputDeviceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartInputDeviceRequest,
   output: StartInputDeviceResponse,
   errors: [
@@ -22754,7 +22754,7 @@ export const startInputDeviceMaintenanceWindow: API.OperationMethod<
   StartInputDeviceMaintenanceWindowResponse,
   StartInputDeviceMaintenanceWindowError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartInputDeviceMaintenanceWindowRequest,
   output: StartInputDeviceMaintenanceWindowResponse,
   errors: [
@@ -22784,7 +22784,7 @@ export const startMonitorDeployment: API.OperationMethod<
   StartMonitorDeploymentResponse,
   StartMonitorDeploymentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartMonitorDeploymentRequest,
   output: StartMonitorDeploymentResponse,
   errors: [
@@ -22814,7 +22814,7 @@ export const startMultiplex: API.OperationMethod<
   StartMultiplexResponse,
   StartMultiplexError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartMultiplexRequest,
   output: StartMultiplexResponse,
   errors: [
@@ -22844,7 +22844,7 @@ export const startUpdateSignalMap: API.OperationMethod<
   StartUpdateSignalMapResponse,
   StartUpdateSignalMapError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartUpdateSignalMapRequest,
   output: StartUpdateSignalMapResponse,
   errors: [
@@ -22874,7 +22874,7 @@ export const stopChannel: API.OperationMethod<
   StopChannelResponse,
   StopChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopChannelRequest,
   output: StopChannelResponse,
   errors: [
@@ -22906,7 +22906,7 @@ export const stopInputDevice: API.OperationMethod<
   StopInputDeviceResponse,
   StopInputDeviceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopInputDeviceRequest,
   output: StopInputDeviceResponse,
   errors: [
@@ -22938,7 +22938,7 @@ export const stopMultiplex: API.OperationMethod<
   StopMultiplexResponse,
   StopMultiplexError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopMultiplexRequest,
   output: StopMultiplexResponse,
   errors: [
@@ -22971,7 +22971,7 @@ export const transferInputDevice: API.OperationMethod<
   TransferInputDeviceResponse,
   TransferInputDeviceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TransferInputDeviceRequest,
   output: TransferInputDeviceResponse,
   errors: [
@@ -23003,7 +23003,7 @@ export const updateAccountConfiguration: API.OperationMethod<
   UpdateAccountConfigurationResponse,
   UpdateAccountConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccountConfigurationRequest,
   output: UpdateAccountConfigurationResponse,
   errors: [
@@ -23033,7 +23033,7 @@ export const updateChannel: API.OperationMethod<
   UpdateChannelResponse,
   UpdateChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateChannelRequest,
   output: UpdateChannelResponse,
   errors: [
@@ -23065,7 +23065,7 @@ export const updateChannelClass: API.OperationMethod<
   UpdateChannelClassResponse,
   UpdateChannelClassError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateChannelClassRequest,
   output: UpdateChannelClassResponse,
   errors: [
@@ -23098,7 +23098,7 @@ export const updateChannelPlacementGroup: API.OperationMethod<
   UpdateChannelPlacementGroupResponse,
   UpdateChannelPlacementGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateChannelPlacementGroupRequest,
   output: UpdateChannelPlacementGroupResponse,
   errors: [
@@ -23128,7 +23128,7 @@ export const updateCloudWatchAlarmTemplate: API.OperationMethod<
   UpdateCloudWatchAlarmTemplateResponse,
   UpdateCloudWatchAlarmTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCloudWatchAlarmTemplateRequest,
   output: UpdateCloudWatchAlarmTemplateResponse,
   errors: [
@@ -23156,7 +23156,7 @@ export const updateCloudWatchAlarmTemplateGroup: API.OperationMethod<
   UpdateCloudWatchAlarmTemplateGroupResponse,
   UpdateCloudWatchAlarmTemplateGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCloudWatchAlarmTemplateGroupRequest,
   output: UpdateCloudWatchAlarmTemplateGroupResponse,
   errors: [
@@ -23185,7 +23185,7 @@ export const updateCluster: API.OperationMethod<
   UpdateClusterResponse,
   UpdateClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateClusterRequest,
   output: UpdateClusterResponse,
   errors: [
@@ -23214,7 +23214,7 @@ export const updateEventBridgeRuleTemplate: API.OperationMethod<
   UpdateEventBridgeRuleTemplateResponse,
   UpdateEventBridgeRuleTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEventBridgeRuleTemplateRequest,
   output: UpdateEventBridgeRuleTemplateResponse,
   errors: [
@@ -23242,7 +23242,7 @@ export const updateEventBridgeRuleTemplateGroup: API.OperationMethod<
   UpdateEventBridgeRuleTemplateGroupResponse,
   UpdateEventBridgeRuleTemplateGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEventBridgeRuleTemplateGroupRequest,
   output: UpdateEventBridgeRuleTemplateGroupResponse,
   errors: [
@@ -23271,7 +23271,7 @@ export const updateInput: API.OperationMethod<
   UpdateInputResponse,
   UpdateInputError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateInputRequest,
   output: UpdateInputResponse,
   errors: [
@@ -23302,7 +23302,7 @@ export const updateInputDevice: API.OperationMethod<
   UpdateInputDeviceResponse,
   UpdateInputDeviceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateInputDeviceRequest,
   output: UpdateInputDeviceResponse,
   errors: [
@@ -23333,7 +23333,7 @@ export const updateInputSecurityGroup: API.OperationMethod<
   UpdateInputSecurityGroupResponse,
   UpdateInputSecurityGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateInputSecurityGroupRequest,
   output: UpdateInputSecurityGroupResponse,
   errors: [
@@ -23364,7 +23364,7 @@ export const updateMultiplex: API.OperationMethod<
   UpdateMultiplexResponse,
   UpdateMultiplexError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateMultiplexRequest,
   output: UpdateMultiplexResponse,
   errors: [
@@ -23396,7 +23396,7 @@ export const updateMultiplexProgram: API.OperationMethod<
   UpdateMultiplexProgramResponse,
   UpdateMultiplexProgramError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateMultiplexProgramRequest,
   output: UpdateMultiplexProgramResponse,
   errors: [
@@ -23427,7 +23427,7 @@ export const updateNetwork: API.OperationMethod<
   UpdateNetworkResponse,
   UpdateNetworkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateNetworkRequest,
   output: UpdateNetworkResponse,
   errors: [
@@ -23457,7 +23457,7 @@ export const updateNode: API.OperationMethod<
   UpdateNodeResponse,
   UpdateNodeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateNodeRequest,
   output: UpdateNodeResponse,
   errors: [
@@ -23488,7 +23488,7 @@ export const updateNodeState: API.OperationMethod<
   UpdateNodeStateResponse,
   UpdateNodeStateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateNodeStateRequest,
   output: UpdateNodeStateResponse,
   errors: [
@@ -23520,7 +23520,7 @@ export const updateReservation: API.OperationMethod<
   UpdateReservationResponse,
   UpdateReservationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateReservationRequest,
   output: UpdateReservationResponse,
   errors: [
@@ -23551,7 +23551,7 @@ export const updateSdiSource: API.OperationMethod<
   UpdateSdiSourceResponse,
   UpdateSdiSourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSdiSourceRequest,
   output: UpdateSdiSourceResponse,
   errors: [

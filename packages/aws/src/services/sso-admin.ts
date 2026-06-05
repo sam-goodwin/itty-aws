@@ -2954,7 +2954,7 @@ export const addRegion: API.OperationMethod<
   AddRegionResponse,
   AddRegionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddRegionRequest,
   output: AddRegionResponse,
   errors: [
@@ -2983,7 +2983,7 @@ export const attachCustomerManagedPolicyReferenceToPermissionSet: API.OperationM
   AttachCustomerManagedPolicyReferenceToPermissionSetResponse,
   AttachCustomerManagedPolicyReferenceToPermissionSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AttachCustomerManagedPolicyReferenceToPermissionSetRequest,
   output: AttachCustomerManagedPolicyReferenceToPermissionSetResponse,
   errors: [
@@ -3015,7 +3015,7 @@ export const attachManagedPolicyToPermissionSet: API.OperationMethod<
   AttachManagedPolicyToPermissionSetResponse,
   AttachManagedPolicyToPermissionSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AttachManagedPolicyToPermissionSetRequest,
   output: AttachManagedPolicyToPermissionSetResponse,
   errors: [
@@ -3051,7 +3051,7 @@ export const createAccountAssignment: API.OperationMethod<
   CreateAccountAssignmentResponse,
   CreateAccountAssignmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccountAssignmentRequest,
   output: CreateAccountAssignmentResponse,
   errors: [
@@ -3083,7 +3083,7 @@ export const createApplication: API.OperationMethod<
   CreateApplicationResponse,
   CreateApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateApplicationRequest,
   output: CreateApplicationResponse,
   errors: [
@@ -3113,7 +3113,7 @@ export const createApplicationAssignment: API.OperationMethod<
   CreateApplicationAssignmentResponse,
   CreateApplicationAssignmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateApplicationAssignmentRequest,
   output: CreateApplicationAssignmentResponse,
   errors: [
@@ -3148,7 +3148,7 @@ export const createInstance: API.OperationMethod<
   CreateInstanceResponse,
   CreateInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateInstanceRequest,
   output: CreateInstanceResponse,
   errors: [
@@ -3178,7 +3178,7 @@ export const createInstanceAccessControlAttributeConfiguration: API.OperationMet
   CreateInstanceAccessControlAttributeConfigurationResponse,
   CreateInstanceAccessControlAttributeConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateInstanceAccessControlAttributeConfigurationRequest,
   output: CreateInstanceAccessControlAttributeConfigurationResponse,
   errors: [
@@ -3209,7 +3209,7 @@ export const createPermissionSet: API.OperationMethod<
   CreatePermissionSetResponse,
   CreatePermissionSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePermissionSetRequest,
   output: CreatePermissionSetResponse,
   errors: [
@@ -3240,7 +3240,7 @@ export const createTrustedTokenIssuer: API.OperationMethod<
   CreateTrustedTokenIssuerResponse,
   CreateTrustedTokenIssuerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTrustedTokenIssuerRequest,
   output: CreateTrustedTokenIssuerResponse,
   errors: [
@@ -3270,7 +3270,7 @@ export const deleteAccountAssignment: API.OperationMethod<
   DeleteAccountAssignmentResponse,
   DeleteAccountAssignmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccountAssignmentRequest,
   output: DeleteAccountAssignmentResponse,
   errors: [
@@ -3298,7 +3298,7 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationResponse,
   DeleteApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteApplicationRequest,
   output: DeleteApplicationResponse,
   errors: [
@@ -3326,7 +3326,7 @@ export const deleteApplicationAssignment: API.OperationMethod<
   DeleteApplicationAssignmentResponse,
   DeleteApplicationAssignmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteApplicationAssignmentRequest,
   output: DeleteApplicationAssignmentResponse,
   errors: [
@@ -3354,7 +3354,7 @@ export const deleteInlinePolicyFromPermissionSet: API.OperationMethod<
   DeleteInlinePolicyFromPermissionSetResponse,
   DeleteInlinePolicyFromPermissionSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteInlinePolicyFromPermissionSetRequest,
   output: DeleteInlinePolicyFromPermissionSetResponse,
   errors: [
@@ -3381,7 +3381,7 @@ export const deleteInstance: API.OperationMethod<
   DeleteInstanceResponse,
   DeleteInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteInstanceRequest,
   output: DeleteInstanceResponse,
   errors: [
@@ -3408,7 +3408,7 @@ export const deleteInstanceAccessControlAttributeConfiguration: API.OperationMet
   DeleteInstanceAccessControlAttributeConfigurationResponse,
   DeleteInstanceAccessControlAttributeConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteInstanceAccessControlAttributeConfigurationRequest,
   output: DeleteInstanceAccessControlAttributeConfigurationResponse,
   errors: [
@@ -3436,7 +3436,7 @@ export const deletePermissionsBoundaryFromPermissionSet: API.OperationMethod<
   DeletePermissionsBoundaryFromPermissionSetResponse,
   DeletePermissionsBoundaryFromPermissionSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePermissionsBoundaryFromPermissionSetRequest,
   output: DeletePermissionsBoundaryFromPermissionSetResponse,
   errors: [
@@ -3464,7 +3464,7 @@ export const deletePermissionSet: API.OperationMethod<
   DeletePermissionSetResponse,
   DeletePermissionSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePermissionSetRequest,
   output: DeletePermissionSetResponse,
   errors: [
@@ -3494,7 +3494,7 @@ export const deleteTrustedTokenIssuer: API.OperationMethod<
   DeleteTrustedTokenIssuerResponse,
   DeleteTrustedTokenIssuerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTrustedTokenIssuerRequest,
   output: DeleteTrustedTokenIssuerResponse,
   errors: [
@@ -3521,7 +3521,7 @@ export const describeAccountAssignmentCreationStatus: API.OperationMethod<
   DescribeAccountAssignmentCreationStatusResponse,
   DescribeAccountAssignmentCreationStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAccountAssignmentCreationStatusRequest,
   output: DescribeAccountAssignmentCreationStatusResponse,
   errors: [
@@ -3547,7 +3547,7 @@ export const describeAccountAssignmentDeletionStatus: API.OperationMethod<
   DescribeAccountAssignmentDeletionStatusResponse,
   DescribeAccountAssignmentDeletionStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAccountAssignmentDeletionStatusRequest,
   output: DescribeAccountAssignmentDeletionStatusResponse,
   errors: [
@@ -3573,7 +3573,7 @@ export const describeApplication: API.OperationMethod<
   DescribeApplicationResponse,
   DescribeApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeApplicationRequest,
   output: DescribeApplicationResponse,
   errors: [
@@ -3599,7 +3599,7 @@ export const describeApplicationAssignment: API.OperationMethod<
   DescribeApplicationAssignmentResponse,
   DescribeApplicationAssignmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeApplicationAssignmentRequest,
   output: DescribeApplicationAssignmentResponse,
   errors: [
@@ -3625,7 +3625,7 @@ export const describeApplicationProvider: API.OperationMethod<
   DescribeApplicationProviderResponse,
   DescribeApplicationProviderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeApplicationProviderRequest,
   output: DescribeApplicationProviderResponse,
   errors: [
@@ -3656,7 +3656,7 @@ export const describeInstance: API.OperationMethod<
   DescribeInstanceResponse,
   DescribeInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeInstanceRequest,
   output: DescribeInstanceResponse,
   errors: [
@@ -3681,7 +3681,7 @@ export const describeInstanceAccessControlAttributeConfiguration: API.OperationM
   DescribeInstanceAccessControlAttributeConfigurationResponse,
   DescribeInstanceAccessControlAttributeConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeInstanceAccessControlAttributeConfigurationRequest,
   output: DescribeInstanceAccessControlAttributeConfigurationResponse,
   errors: [
@@ -3707,7 +3707,7 @@ export const describePermissionSet: API.OperationMethod<
   DescribePermissionSetResponse,
   DescribePermissionSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribePermissionSetRequest,
   output: DescribePermissionSetResponse,
   errors: [
@@ -3733,7 +3733,7 @@ export const describePermissionSetProvisioningStatus: API.OperationMethod<
   DescribePermissionSetProvisioningStatusResponse,
   DescribePermissionSetProvisioningStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribePermissionSetProvisioningStatusRequest,
   output: DescribePermissionSetProvisioningStatusResponse,
   errors: [
@@ -3767,7 +3767,7 @@ export const describeRegion: API.OperationMethod<
   DescribeRegionResponse,
   DescribeRegionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeRegionRequest,
   output: DescribeRegionResponse,
   errors: [
@@ -3793,7 +3793,7 @@ export const describeTrustedTokenIssuer: API.OperationMethod<
   DescribeTrustedTokenIssuerResponse,
   DescribeTrustedTokenIssuerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeTrustedTokenIssuerRequest,
   output: DescribeTrustedTokenIssuerResponse,
   errors: [
@@ -3820,7 +3820,7 @@ export const detachCustomerManagedPolicyReferenceFromPermissionSet: API.Operatio
   DetachCustomerManagedPolicyReferenceFromPermissionSetResponse,
   DetachCustomerManagedPolicyReferenceFromPermissionSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetachCustomerManagedPolicyReferenceFromPermissionSetRequest,
   output: DetachCustomerManagedPolicyReferenceFromPermissionSetResponse,
   errors: [
@@ -3848,7 +3848,7 @@ export const detachManagedPolicyFromPermissionSet: API.OperationMethod<
   DetachManagedPolicyFromPermissionSetResponse,
   DetachManagedPolicyFromPermissionSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetachManagedPolicyFromPermissionSetRequest,
   output: DetachManagedPolicyFromPermissionSetResponse,
   errors: [
@@ -3875,7 +3875,7 @@ export const getApplicationAssignmentConfiguration: API.OperationMethod<
   GetApplicationAssignmentConfigurationResponse,
   GetApplicationAssignmentConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetApplicationAssignmentConfigurationRequest,
   output: GetApplicationAssignmentConfigurationResponse,
   errors: [
@@ -3903,7 +3903,7 @@ export const getApplicationSessionConfiguration: API.OperationMethod<
   GetApplicationSessionConfigurationResponse,
   GetApplicationSessionConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetApplicationSessionConfigurationRequest,
   output: GetApplicationSessionConfigurationResponse,
   errors: [
@@ -3929,7 +3929,7 @@ export const getInlinePolicyForPermissionSet: API.OperationMethod<
   GetInlinePolicyForPermissionSetResponse,
   GetInlinePolicyForPermissionSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInlinePolicyForPermissionSetRequest,
   output: GetInlinePolicyForPermissionSetResponse,
   errors: [
@@ -3955,7 +3955,7 @@ export const getPermissionsBoundaryForPermissionSet: API.OperationMethod<
   GetPermissionsBoundaryForPermissionSetResponse,
   GetPermissionsBoundaryForPermissionSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPermissionsBoundaryForPermissionSetRequest,
   output: GetPermissionsBoundaryForPermissionSetResponse,
   errors: [
@@ -3996,7 +3996,7 @@ export const listAccountAssignmentCreationStatus: API.OperationMethod<
     ListAccountAssignmentCreationStatusError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountAssignmentCreationStatusRequest,
   output: ListAccountAssignmentCreationStatusResponse,
   errors: [
@@ -4043,7 +4043,7 @@ export const listAccountAssignmentDeletionStatus: API.OperationMethod<
     ListAccountAssignmentDeletionStatusError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountAssignmentDeletionStatusRequest,
   output: ListAccountAssignmentDeletionStatusResponse,
   errors: [
@@ -4090,7 +4090,7 @@ export const listAccountAssignments: API.OperationMethod<
     ListAccountAssignmentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountAssignmentsRequest,
   output: ListAccountAssignmentsResponse,
   errors: [
@@ -4137,7 +4137,7 @@ export const listAccountAssignmentsForPrincipal: API.OperationMethod<
     ListAccountAssignmentsForPrincipalError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountAssignmentsForPrincipalRequest,
   output: ListAccountAssignmentsForPrincipalResponse,
   errors: [
@@ -4184,7 +4184,7 @@ export const listAccountsForProvisionedPermissionSet: API.OperationMethod<
     ListAccountsForProvisionedPermissionSetError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsForProvisionedPermissionSetRequest,
   output: ListAccountsForProvisionedPermissionSetResponse,
   errors: [
@@ -4231,7 +4231,7 @@ export const listApplicationAssignments: API.OperationMethod<
     ListApplicationAssignmentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationAssignmentsRequest,
   output: ListApplicationAssignmentsResponse,
   errors: [
@@ -4278,7 +4278,7 @@ export const listApplicationAssignmentsForPrincipal: API.OperationMethod<
     ListApplicationAssignmentsForPrincipalError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationAssignmentsForPrincipalRequest,
   output: ListApplicationAssignmentsForPrincipalResponse,
   errors: [
@@ -4324,7 +4324,7 @@ export const listApplicationProviders: API.OperationMethod<
     ListApplicationProvidersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationProvidersRequest,
   output: ListApplicationProvidersResponse,
   errors: [
@@ -4369,7 +4369,7 @@ export const listApplications: API.OperationMethod<
     ListApplicationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationsRequest,
   output: ListApplicationsResponse,
   errors: [
@@ -4415,7 +4415,7 @@ export const listCustomerManagedPolicyReferencesInPermissionSet: API.OperationMe
     ListCustomerManagedPolicyReferencesInPermissionSetError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomerManagedPolicyReferencesInPermissionSetRequest,
   output: ListCustomerManagedPolicyReferencesInPermissionSetResponse,
   errors: [
@@ -4461,7 +4461,7 @@ export const listInstances: API.OperationMethod<
     ListInstancesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInstancesRequest,
   output: ListInstancesResponse,
   errors: [
@@ -4507,7 +4507,7 @@ export const listManagedPoliciesInPermissionSet: API.OperationMethod<
     ListManagedPoliciesInPermissionSetError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedPoliciesInPermissionSetRequest,
   output: ListManagedPoliciesInPermissionSetResponse,
   errors: [
@@ -4554,7 +4554,7 @@ export const listPermissionSetProvisioningStatus: API.OperationMethod<
     ListPermissionSetProvisioningStatusError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPermissionSetProvisioningStatusRequest,
   output: ListPermissionSetProvisioningStatusResponse,
   errors: [
@@ -4601,7 +4601,7 @@ export const listPermissionSets: API.OperationMethod<
     ListPermissionSetsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPermissionSetsRequest,
   output: ListPermissionSetsResponse,
   errors: [
@@ -4648,7 +4648,7 @@ export const listPermissionSetsProvisionedToAccount: API.OperationMethod<
     ListPermissionSetsProvisionedToAccountError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPermissionSetsProvisionedToAccountRequest,
   output: ListPermissionSetsProvisionedToAccountResponse,
   errors: [
@@ -4702,7 +4702,7 @@ export const listRegions: API.OperationMethod<
     ListRegionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegionsRequest,
   output: ListRegionsResponse,
   errors: [
@@ -4748,7 +4748,7 @@ export const listTagsForResource: API.OperationMethod<
     ListTagsForResourceError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -4793,7 +4793,7 @@ export const listTrustedTokenIssuers: API.OperationMethod<
     ListTrustedTokenIssuersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTrustedTokenIssuersRequest,
   output: ListTrustedTokenIssuersResponse,
   errors: [
@@ -4825,7 +4825,7 @@ export const provisionPermissionSet: API.OperationMethod<
   ProvisionPermissionSetResponse,
   ProvisionPermissionSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ProvisionPermissionSetRequest,
   output: ProvisionPermissionSetResponse,
   errors: [
@@ -4853,7 +4853,7 @@ export const putApplicationAssignmentConfiguration: API.OperationMethod<
   PutApplicationAssignmentConfigurationResponse,
   PutApplicationAssignmentConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutApplicationAssignmentConfigurationRequest,
   output: PutApplicationAssignmentConfigurationResponse,
   errors: [
@@ -4883,7 +4883,7 @@ export const putApplicationSessionConfiguration: API.OperationMethod<
   PutApplicationSessionConfigurationResponse,
   PutApplicationSessionConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutApplicationSessionConfigurationRequest,
   output: PutApplicationSessionConfigurationResponse,
   errors: [
@@ -4914,7 +4914,7 @@ export const putInlinePolicyToPermissionSet: API.OperationMethod<
   PutInlinePolicyToPermissionSetResponse,
   PutInlinePolicyToPermissionSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutInlinePolicyToPermissionSetRequest,
   output: PutInlinePolicyToPermissionSetResponse,
   errors: [
@@ -4943,7 +4943,7 @@ export const putPermissionsBoundaryToPermissionSet: API.OperationMethod<
   PutPermissionsBoundaryToPermissionSetResponse,
   PutPermissionsBoundaryToPermissionSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutPermissionsBoundaryToPermissionSetRequest,
   output: PutPermissionsBoundaryToPermissionSetResponse,
   errors: [
@@ -4979,7 +4979,7 @@ export const removeRegion: API.OperationMethod<
   RemoveRegionResponse,
   RemoveRegionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveRegionRequest,
   output: RemoveRegionResponse,
   errors: [
@@ -5008,7 +5008,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -5037,7 +5037,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -5065,7 +5065,7 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationResponse,
   UpdateApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateApplicationRequest,
   output: UpdateApplicationResponse,
   errors: [
@@ -5093,7 +5093,7 @@ export const updateInstance: API.OperationMethod<
   UpdateInstanceResponse,
   UpdateInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateInstanceRequest,
   output: UpdateInstanceResponse,
   errors: [
@@ -5121,7 +5121,7 @@ export const updateInstanceAccessControlAttributeConfiguration: API.OperationMet
   UpdateInstanceAccessControlAttributeConfigurationResponse,
   UpdateInstanceAccessControlAttributeConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateInstanceAccessControlAttributeConfigurationRequest,
   output: UpdateInstanceAccessControlAttributeConfigurationResponse,
   errors: [
@@ -5149,7 +5149,7 @@ export const updatePermissionSet: API.OperationMethod<
   UpdatePermissionSetResponse,
   UpdatePermissionSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePermissionSetRequest,
   output: UpdatePermissionSetResponse,
   errors: [
@@ -5179,7 +5179,7 @@ export const updateTrustedTokenIssuer: API.OperationMethod<
   UpdateTrustedTokenIssuerResponse,
   UpdateTrustedTokenIssuerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTrustedTokenIssuerRequest,
   output: UpdateTrustedTokenIssuerResponse,
   errors: [
@@ -5207,7 +5207,7 @@ export const putApplicationAccessScope: API.OperationMethod<
   PutApplicationAccessScopeResponse,
   PutApplicationAccessScopeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutApplicationAccessScopeRequest,
   output: PutApplicationAccessScopeResponse,
   errors: [
@@ -5234,7 +5234,7 @@ export const getApplicationAccessScope: API.OperationMethod<
   GetApplicationAccessScopeResponse,
   GetApplicationAccessScopeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetApplicationAccessScopeRequest,
   output: GetApplicationAccessScopeResponse,
   errors: [
@@ -5261,7 +5261,7 @@ export const deleteApplicationAccessScope: API.OperationMethod<
   DeleteApplicationAccessScopeResponse,
   DeleteApplicationAccessScopeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteApplicationAccessScopeRequest,
   output: DeleteApplicationAccessScopeResponse,
   errors: [
@@ -5303,7 +5303,7 @@ export const listApplicationAccessScopes: API.OperationMethod<
     ListApplicationAccessScopesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationAccessScopesRequest,
   output: ListApplicationAccessScopesResponse,
   errors: [
@@ -5336,7 +5336,7 @@ export const putApplicationAuthenticationMethod: API.OperationMethod<
   PutApplicationAuthenticationMethodResponse,
   PutApplicationAuthenticationMethodError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutApplicationAuthenticationMethodRequest,
   output: PutApplicationAuthenticationMethodResponse,
   errors: [
@@ -5363,7 +5363,7 @@ export const getApplicationAuthenticationMethod: API.OperationMethod<
   GetApplicationAuthenticationMethodResponse,
   GetApplicationAuthenticationMethodError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetApplicationAuthenticationMethodRequest,
   output: GetApplicationAuthenticationMethodResponse,
   errors: [
@@ -5390,7 +5390,7 @@ export const deleteApplicationAuthenticationMethod: API.OperationMethod<
   DeleteApplicationAuthenticationMethodResponse,
   DeleteApplicationAuthenticationMethodError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteApplicationAuthenticationMethodRequest,
   output: DeleteApplicationAuthenticationMethodResponse,
   errors: [
@@ -5432,7 +5432,7 @@ export const listApplicationAuthenticationMethods: API.OperationMethod<
     ListApplicationAuthenticationMethodsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationAuthenticationMethodsRequest,
   output: ListApplicationAuthenticationMethodsResponse,
   errors: [
@@ -5489,7 +5489,7 @@ export const putApplicationGrant: API.OperationMethod<
   PutApplicationGrantResponse,
   PutApplicationGrantError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutApplicationGrantRequest,
   output: PutApplicationGrantResponse,
   errors: [
@@ -5516,7 +5516,7 @@ export const getApplicationGrant: API.OperationMethod<
   GetApplicationGrantResponse,
   GetApplicationGrantError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetApplicationGrantRequest,
   output: GetApplicationGrantResponse,
   errors: [
@@ -5543,7 +5543,7 @@ export const deleteApplicationGrant: API.OperationMethod<
   DeleteApplicationGrantResponse,
   DeleteApplicationGrantError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteApplicationGrantRequest,
   output: DeleteApplicationGrantResponse,
   errors: [
@@ -5585,7 +5585,7 @@ export const listApplicationGrants: API.OperationMethod<
     ListApplicationGrantsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationGrantsRequest,
   output: ListApplicationGrantsResponse,
   errors: [

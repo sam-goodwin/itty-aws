@@ -48,7 +48,7 @@ export interface GetAccountTagRequest {
   workerId?: string;
 }
 
-export const GetAccountTagRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetAccountTagRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   resourceId: Schema.String.pipe(T.HttpQuery("resource_id")),
   resourceType: Schema.Union([
@@ -281,7 +281,7 @@ export type GetAccountTagResponse =
       zoneId: string;
     };
 
-export const GetAccountTagResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
+export const GetAccountTagResponse = /*@__PURE__*/ Schema.Union([
   Schema.Struct({
     id: Schema.String,
     accessApplicationId: Schema.String,
@@ -564,7 +564,7 @@ export const getAccountTag: API.OperationMethod<
   GetAccountTagResponse,
   GetAccountTagError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountTagRequest,
   output: GetAccountTagResponse,
   errors: [],
@@ -606,7 +606,7 @@ export interface PutAccountTagRequest {
   tags?: Record<string, unknown>;
 }
 
-export const PutAccountTagRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PutAccountTagRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   ifMatch: Schema.optional(Schema.String).pipe(T.HttpHeader("If-Match")),
   resourceId: Schema.String,
@@ -847,7 +847,7 @@ export type PutAccountTagResponse =
       zoneId: string;
     };
 
-export const PutAccountTagResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
+export const PutAccountTagResponse = /*@__PURE__*/ Schema.Union([
   Schema.Struct({
     id: Schema.String,
     accessApplicationId: Schema.String,
@@ -1130,7 +1130,7 @@ export const putAccountTag: API.OperationMethod<
   PutAccountTagResponse,
   PutAccountTagError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutAccountTagRequest,
   output: PutAccountTagResponse,
   errors: [],
@@ -1143,18 +1143,17 @@ export interface DeleteAccountTagRequest {
   ifMatch?: string;
 }
 
-export const DeleteAccountTagRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    ifMatch: Schema.optional(Schema.String).pipe(T.HttpHeader("If-Match")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "/accounts/{account_id}/tags" }),
-  ) as unknown as Schema.Schema<DeleteAccountTagRequest>;
+export const DeleteAccountTagRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  ifMatch: Schema.optional(Schema.String).pipe(T.HttpHeader("If-Match")),
+}).pipe(
+  T.Http({ method: "DELETE", path: "/accounts/{account_id}/tags" }),
+) as unknown as Schema.Schema<DeleteAccountTagRequest>;
 
 export type DeleteAccountTagResponse = unknown;
 
 export const DeleteAccountTagResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeleteAccountTagResponse>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeleteAccountTagResponse>;
 
 export type DeleteAccountTagError = DefaultErrors;
 
@@ -1163,7 +1162,7 @@ export const deleteAccountTag: API.OperationMethod<
   DeleteAccountTagResponse,
   DeleteAccountTagError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccountTagRequest,
   output: DeleteAccountTagResponse,
   errors: [],
@@ -1179,7 +1178,7 @@ export interface ListKeysRequest {
   cursor?: string;
 }
 
-export const ListKeysRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListKeysRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   cursor: Schema.optional(Schema.String).pipe(T.HttpQuery("cursor")),
 }).pipe(
@@ -1191,7 +1190,7 @@ export interface ListKeysResponse {
   resultInfo?: { cursors?: { after?: string | null } | null } | null;
 }
 
-export const ListKeysResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListKeysResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Array(Schema.String),
   resultInfo: Schema.optional(
     Schema.Union([
@@ -1221,7 +1220,7 @@ export const listKeys: API.PaginatedOperationMethod<
   ListKeysResponse,
   ListKeysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListKeysRequest,
   output: ListKeysResponse,
   errors: [],
@@ -1276,50 +1275,49 @@ export interface ListResourceTaggingsRequest {
   )[];
 }
 
-export const ListResourceTaggingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    cursor: Schema.optional(Schema.String).pipe(T.HttpQuery("cursor")),
-    tag: Schema.optional(Schema.Array(Schema.String)).pipe(T.HttpQuery("tag")),
-    type: Schema.optional(
-      Schema.Array(
-        Schema.Union([
-          Schema.Literals([
-            "access_application",
-            "access_application_policy",
-            "access_group",
-            "account",
-            "ai_gateway",
-            "alerting_policy",
-            "alerting_webhook",
-            "api_gateway_operation",
-            "cloudflared_tunnel",
-            "custom_certificate",
-            "custom_hostname",
-            "d1_database",
-            "dns_record",
-            "durable_object_namespace",
-            "gateway_list",
-            "gateway_rule",
-            "image",
-            "kv_namespace",
-            "managed_client_certificate",
-            "queue",
-            "r2_bucket",
-            "resource_share",
-            "stream_live_input",
-            "stream_video",
-            "worker",
-            "worker_version",
-            "zone",
-          ]),
-          Schema.String,
+export const ListResourceTaggingsRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  cursor: Schema.optional(Schema.String).pipe(T.HttpQuery("cursor")),
+  tag: Schema.optional(Schema.Array(Schema.String)).pipe(T.HttpQuery("tag")),
+  type: Schema.optional(
+    Schema.Array(
+      Schema.Union([
+        Schema.Literals([
+          "access_application",
+          "access_application_policy",
+          "access_group",
+          "account",
+          "ai_gateway",
+          "alerting_policy",
+          "alerting_webhook",
+          "api_gateway_operation",
+          "cloudflared_tunnel",
+          "custom_certificate",
+          "custom_hostname",
+          "d1_database",
+          "dns_record",
+          "durable_object_namespace",
+          "gateway_list",
+          "gateway_rule",
+          "image",
+          "kv_namespace",
+          "managed_client_certificate",
+          "queue",
+          "r2_bucket",
+          "resource_share",
+          "stream_live_input",
+          "stream_video",
+          "worker",
+          "worker_version",
+          "zone",
         ]),
-      ),
-    ).pipe(T.HttpQuery("type")),
-  }).pipe(
-    T.Http({ method: "GET", path: "/accounts/{account_id}/tags/resources" }),
-  ) as unknown as Schema.Schema<ListResourceTaggingsRequest>;
+        Schema.String,
+      ]),
+    ),
+  ).pipe(T.HttpQuery("type")),
+}).pipe(
+  T.Http({ method: "GET", path: "/accounts/{account_id}/tags/resources" }),
+) as unknown as Schema.Schema<ListResourceTaggingsRequest>;
 
 export interface ListResourceTaggingsResponse {
   result: (
@@ -1525,303 +1523,302 @@ export interface ListResourceTaggingsResponse {
   resultInfo?: { cursors?: { after?: string | null } | null } | null;
 }
 
-export const ListResourceTaggingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
-      Schema.Union([
-        Schema.Struct({
-          id: Schema.String,
-          accessApplicationId: Schema.String,
-          etag: Schema.String,
-          name: Schema.String,
-          tags: Schema.Record(Schema.String, Schema.Unknown),
-          type: Schema.Literal("access_application_policy"),
-          zoneId: Schema.String,
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            accessApplicationId: "access_application_id",
-            etag: "etag",
-            name: "name",
-            tags: "tags",
-            type: "type",
-            zoneId: "zone_id",
-          }),
+export const ListResourceTaggingsResponse = /*@__PURE__*/ Schema.Struct({
+  result: Schema.Array(
+    Schema.Union([
+      Schema.Struct({
+        id: Schema.String,
+        accessApplicationId: Schema.String,
+        etag: Schema.String,
+        name: Schema.String,
+        tags: Schema.Record(Schema.String, Schema.Unknown),
+        type: Schema.Literal("access_application_policy"),
+        zoneId: Schema.String,
+      }).pipe(
+        Schema.encodeKeys({
+          id: "id",
+          accessApplicationId: "access_application_id",
+          etag: "etag",
+          name: "name",
+          tags: "tags",
+          type: "type",
+          zoneId: "zone_id",
+        }),
+      ),
+      Schema.Struct({
+        id: Schema.String,
+        etag: Schema.String,
+        name: Schema.String,
+        tags: Schema.Record(Schema.String, Schema.Unknown),
+        type: Schema.Literal("api_gateway_operation"),
+        zoneId: Schema.String,
+      }).pipe(
+        Schema.encodeKeys({
+          id: "id",
+          etag: "etag",
+          name: "name",
+          tags: "tags",
+          type: "type",
+          zoneId: "zone_id",
+        }),
+      ),
+      Schema.Struct({
+        id: Schema.String,
+        etag: Schema.String,
+        name: Schema.String,
+        tags: Schema.Record(Schema.String, Schema.Unknown),
+        type: Schema.Literal("custom_certificate"),
+        zoneId: Schema.String,
+      }).pipe(
+        Schema.encodeKeys({
+          id: "id",
+          etag: "etag",
+          name: "name",
+          tags: "tags",
+          type: "type",
+          zoneId: "zone_id",
+        }),
+      ),
+      Schema.Struct({
+        id: Schema.String,
+        etag: Schema.String,
+        name: Schema.String,
+        tags: Schema.Record(Schema.String, Schema.Unknown),
+        type: Schema.Literal("custom_hostname"),
+        zoneId: Schema.String,
+      }).pipe(
+        Schema.encodeKeys({
+          id: "id",
+          etag: "etag",
+          name: "name",
+          tags: "tags",
+          type: "type",
+          zoneId: "zone_id",
+        }),
+      ),
+      Schema.Struct({
+        id: Schema.String,
+        etag: Schema.String,
+        name: Schema.String,
+        tags: Schema.Record(Schema.String, Schema.Unknown),
+        type: Schema.Literal("dns_record"),
+        zoneId: Schema.String,
+      }).pipe(
+        Schema.encodeKeys({
+          id: "id",
+          etag: "etag",
+          name: "name",
+          tags: "tags",
+          type: "type",
+          zoneId: "zone_id",
+        }),
+      ),
+      Schema.Struct({
+        id: Schema.String,
+        etag: Schema.String,
+        name: Schema.String,
+        tags: Schema.Record(Schema.String, Schema.Unknown),
+        type: Schema.Literal("managed_client_certificate"),
+        zoneId: Schema.String,
+      }).pipe(
+        Schema.encodeKeys({
+          id: "id",
+          etag: "etag",
+          name: "name",
+          tags: "tags",
+          type: "type",
+          zoneId: "zone_id",
+        }),
+      ),
+      Schema.Struct({
+        id: Schema.String,
+        etag: Schema.String,
+        name: Schema.String,
+        tags: Schema.Record(Schema.String, Schema.Unknown),
+        type: Schema.Literal("worker_version"),
+        workerId: Schema.String,
+      }).pipe(
+        Schema.encodeKeys({
+          id: "id",
+          etag: "etag",
+          name: "name",
+          tags: "tags",
+          type: "type",
+          workerId: "worker_id",
+        }),
+      ),
+      Schema.Struct({
+        id: Schema.String,
+        etag: Schema.String,
+        name: Schema.String,
+        tags: Schema.Record(Schema.String, Schema.Unknown),
+        type: Schema.Literal("zone"),
+        zoneId: Schema.String,
+      }).pipe(
+        Schema.encodeKeys({
+          id: "id",
+          etag: "etag",
+          name: "name",
+          tags: "tags",
+          type: "type",
+          zoneId: "zone_id",
+        }),
+      ),
+      Schema.Struct({
+        id: Schema.String,
+        etag: Schema.String,
+        name: Schema.String,
+        tags: Schema.Record(Schema.String, Schema.Unknown),
+        type: Schema.Literal("access_application"),
+      }),
+      Schema.Struct({
+        id: Schema.String,
+        etag: Schema.String,
+        name: Schema.String,
+        tags: Schema.Record(Schema.String, Schema.Unknown),
+        type: Schema.Literal("access_group"),
+      }),
+      Schema.Struct({
+        id: Schema.String,
+        etag: Schema.String,
+        name: Schema.String,
+        tags: Schema.Record(Schema.String, Schema.Unknown),
+        type: Schema.Literal("account"),
+      }),
+      Schema.Struct({
+        id: Schema.String,
+        etag: Schema.String,
+        name: Schema.String,
+        tags: Schema.Record(Schema.String, Schema.Unknown),
+        type: Schema.Literal("ai_gateway"),
+      }),
+      Schema.Struct({
+        id: Schema.String,
+        etag: Schema.String,
+        name: Schema.String,
+        tags: Schema.Record(Schema.String, Schema.Unknown),
+        type: Schema.Literal("alerting_policy"),
+      }),
+      Schema.Struct({
+        id: Schema.String,
+        etag: Schema.String,
+        name: Schema.String,
+        tags: Schema.Record(Schema.String, Schema.Unknown),
+        type: Schema.Literal("alerting_webhook"),
+      }),
+      Schema.Struct({
+        id: Schema.String,
+        etag: Schema.String,
+        name: Schema.String,
+        tags: Schema.Record(Schema.String, Schema.Unknown),
+        type: Schema.Literal("cloudflared_tunnel"),
+      }),
+      Schema.Struct({
+        id: Schema.String,
+        etag: Schema.String,
+        name: Schema.String,
+        tags: Schema.Record(Schema.String, Schema.Unknown),
+        type: Schema.Literal("d1_database"),
+      }),
+      Schema.Struct({
+        id: Schema.String,
+        etag: Schema.String,
+        name: Schema.String,
+        tags: Schema.Record(Schema.String, Schema.Unknown),
+        type: Schema.Literal("durable_object_namespace"),
+      }),
+      Schema.Struct({
+        id: Schema.String,
+        etag: Schema.String,
+        name: Schema.String,
+        tags: Schema.Record(Schema.String, Schema.Unknown),
+        type: Schema.Literal("gateway_list"),
+      }),
+      Schema.Struct({
+        id: Schema.String,
+        etag: Schema.String,
+        name: Schema.String,
+        tags: Schema.Record(Schema.String, Schema.Unknown),
+        type: Schema.Literal("gateway_rule"),
+      }),
+      Schema.Struct({
+        id: Schema.String,
+        etag: Schema.String,
+        name: Schema.String,
+        tags: Schema.Record(Schema.String, Schema.Unknown),
+        type: Schema.Literal("image"),
+      }),
+      Schema.Struct({
+        id: Schema.String,
+        etag: Schema.String,
+        name: Schema.String,
+        tags: Schema.Record(Schema.String, Schema.Unknown),
+        type: Schema.Literal("kv_namespace"),
+      }),
+      Schema.Struct({
+        id: Schema.String,
+        etag: Schema.String,
+        name: Schema.String,
+        tags: Schema.Record(Schema.String, Schema.Unknown),
+        type: Schema.Literal("queue"),
+      }),
+      Schema.Struct({
+        id: Schema.String,
+        etag: Schema.String,
+        name: Schema.String,
+        tags: Schema.Record(Schema.String, Schema.Unknown),
+        type: Schema.Literal("r2_bucket"),
+      }),
+      Schema.Struct({
+        id: Schema.String,
+        etag: Schema.String,
+        name: Schema.String,
+        tags: Schema.Record(Schema.String, Schema.Unknown),
+        type: Schema.Literal("resource_share"),
+      }),
+      Schema.Struct({
+        id: Schema.String,
+        etag: Schema.String,
+        name: Schema.String,
+        tags: Schema.Record(Schema.String, Schema.Unknown),
+        type: Schema.Literal("stream_live_input"),
+      }),
+      Schema.Struct({
+        id: Schema.String,
+        etag: Schema.String,
+        name: Schema.String,
+        tags: Schema.Record(Schema.String, Schema.Unknown),
+        type: Schema.Literal("stream_video"),
+      }),
+      Schema.Struct({
+        id: Schema.String,
+        etag: Schema.String,
+        name: Schema.String,
+        tags: Schema.Record(Schema.String, Schema.Unknown),
+        type: Schema.Literal("worker"),
+      }),
+    ]),
+  ),
+  resultInfo: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        cursors: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              after: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }),
+            Schema.Null,
+          ]),
         ),
-        Schema.Struct({
-          id: Schema.String,
-          etag: Schema.String,
-          name: Schema.String,
-          tags: Schema.Record(Schema.String, Schema.Unknown),
-          type: Schema.Literal("api_gateway_operation"),
-          zoneId: Schema.String,
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            etag: "etag",
-            name: "name",
-            tags: "tags",
-            type: "type",
-            zoneId: "zone_id",
-          }),
-        ),
-        Schema.Struct({
-          id: Schema.String,
-          etag: Schema.String,
-          name: Schema.String,
-          tags: Schema.Record(Schema.String, Schema.Unknown),
-          type: Schema.Literal("custom_certificate"),
-          zoneId: Schema.String,
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            etag: "etag",
-            name: "name",
-            tags: "tags",
-            type: "type",
-            zoneId: "zone_id",
-          }),
-        ),
-        Schema.Struct({
-          id: Schema.String,
-          etag: Schema.String,
-          name: Schema.String,
-          tags: Schema.Record(Schema.String, Schema.Unknown),
-          type: Schema.Literal("custom_hostname"),
-          zoneId: Schema.String,
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            etag: "etag",
-            name: "name",
-            tags: "tags",
-            type: "type",
-            zoneId: "zone_id",
-          }),
-        ),
-        Schema.Struct({
-          id: Schema.String,
-          etag: Schema.String,
-          name: Schema.String,
-          tags: Schema.Record(Schema.String, Schema.Unknown),
-          type: Schema.Literal("dns_record"),
-          zoneId: Schema.String,
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            etag: "etag",
-            name: "name",
-            tags: "tags",
-            type: "type",
-            zoneId: "zone_id",
-          }),
-        ),
-        Schema.Struct({
-          id: Schema.String,
-          etag: Schema.String,
-          name: Schema.String,
-          tags: Schema.Record(Schema.String, Schema.Unknown),
-          type: Schema.Literal("managed_client_certificate"),
-          zoneId: Schema.String,
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            etag: "etag",
-            name: "name",
-            tags: "tags",
-            type: "type",
-            zoneId: "zone_id",
-          }),
-        ),
-        Schema.Struct({
-          id: Schema.String,
-          etag: Schema.String,
-          name: Schema.String,
-          tags: Schema.Record(Schema.String, Schema.Unknown),
-          type: Schema.Literal("worker_version"),
-          workerId: Schema.String,
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            etag: "etag",
-            name: "name",
-            tags: "tags",
-            type: "type",
-            workerId: "worker_id",
-          }),
-        ),
-        Schema.Struct({
-          id: Schema.String,
-          etag: Schema.String,
-          name: Schema.String,
-          tags: Schema.Record(Schema.String, Schema.Unknown),
-          type: Schema.Literal("zone"),
-          zoneId: Schema.String,
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            etag: "etag",
-            name: "name",
-            tags: "tags",
-            type: "type",
-            zoneId: "zone_id",
-          }),
-        ),
-        Schema.Struct({
-          id: Schema.String,
-          etag: Schema.String,
-          name: Schema.String,
-          tags: Schema.Record(Schema.String, Schema.Unknown),
-          type: Schema.Literal("access_application"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          etag: Schema.String,
-          name: Schema.String,
-          tags: Schema.Record(Schema.String, Schema.Unknown),
-          type: Schema.Literal("access_group"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          etag: Schema.String,
-          name: Schema.String,
-          tags: Schema.Record(Schema.String, Schema.Unknown),
-          type: Schema.Literal("account"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          etag: Schema.String,
-          name: Schema.String,
-          tags: Schema.Record(Schema.String, Schema.Unknown),
-          type: Schema.Literal("ai_gateway"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          etag: Schema.String,
-          name: Schema.String,
-          tags: Schema.Record(Schema.String, Schema.Unknown),
-          type: Schema.Literal("alerting_policy"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          etag: Schema.String,
-          name: Schema.String,
-          tags: Schema.Record(Schema.String, Schema.Unknown),
-          type: Schema.Literal("alerting_webhook"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          etag: Schema.String,
-          name: Schema.String,
-          tags: Schema.Record(Schema.String, Schema.Unknown),
-          type: Schema.Literal("cloudflared_tunnel"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          etag: Schema.String,
-          name: Schema.String,
-          tags: Schema.Record(Schema.String, Schema.Unknown),
-          type: Schema.Literal("d1_database"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          etag: Schema.String,
-          name: Schema.String,
-          tags: Schema.Record(Schema.String, Schema.Unknown),
-          type: Schema.Literal("durable_object_namespace"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          etag: Schema.String,
-          name: Schema.String,
-          tags: Schema.Record(Schema.String, Schema.Unknown),
-          type: Schema.Literal("gateway_list"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          etag: Schema.String,
-          name: Schema.String,
-          tags: Schema.Record(Schema.String, Schema.Unknown),
-          type: Schema.Literal("gateway_rule"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          etag: Schema.String,
-          name: Schema.String,
-          tags: Schema.Record(Schema.String, Schema.Unknown),
-          type: Schema.Literal("image"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          etag: Schema.String,
-          name: Schema.String,
-          tags: Schema.Record(Schema.String, Schema.Unknown),
-          type: Schema.Literal("kv_namespace"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          etag: Schema.String,
-          name: Schema.String,
-          tags: Schema.Record(Schema.String, Schema.Unknown),
-          type: Schema.Literal("queue"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          etag: Schema.String,
-          name: Schema.String,
-          tags: Schema.Record(Schema.String, Schema.Unknown),
-          type: Schema.Literal("r2_bucket"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          etag: Schema.String,
-          name: Schema.String,
-          tags: Schema.Record(Schema.String, Schema.Unknown),
-          type: Schema.Literal("resource_share"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          etag: Schema.String,
-          name: Schema.String,
-          tags: Schema.Record(Schema.String, Schema.Unknown),
-          type: Schema.Literal("stream_live_input"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          etag: Schema.String,
-          name: Schema.String,
-          tags: Schema.Record(Schema.String, Schema.Unknown),
-          type: Schema.Literal("stream_video"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          etag: Schema.String,
-          name: Schema.String,
-          tags: Schema.Record(Schema.String, Schema.Unknown),
-          type: Schema.Literal("worker"),
-        }),
-      ]),
-    ),
-    resultInfo: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          cursors: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                after: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Null,
-      ]),
-    ),
-  }).pipe(
-    Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
-  ) as unknown as Schema.Schema<ListResourceTaggingsResponse>;
+      }),
+      Schema.Null,
+    ]),
+  ),
+}).pipe(
+  Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
+) as unknown as Schema.Schema<ListResourceTaggingsResponse>;
 
 export type ListResourceTaggingsError = DefaultErrors;
 
@@ -1830,7 +1827,7 @@ export const listResourceTaggings: API.PaginatedOperationMethod<
   ListResourceTaggingsResponse,
   ListResourceTaggingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceTaggingsRequest,
   output: ListResourceTaggingsResponse,
   errors: [],
@@ -1883,7 +1880,7 @@ export interface ListValuesRequest {
     | (string & {});
 }
 
-export const ListValuesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListValuesRequest = /*@__PURE__*/ Schema.Struct({
   tagKey: Schema.String.pipe(T.HttpPath("tagKey")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   cursor: Schema.optional(Schema.String).pipe(T.HttpQuery("cursor")),
@@ -1933,7 +1930,7 @@ export interface ListValuesResponse {
   resultInfo?: { cursors?: { after?: string | null } | null } | null;
 }
 
-export const ListValuesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListValuesResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Array(Schema.String),
   resultInfo: Schema.optional(
     Schema.Union([
@@ -1963,7 +1960,7 @@ export const listValues: API.PaginatedOperationMethod<
   ListValuesResponse,
   ListValuesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListValuesRequest,
   output: ListValuesResponse,
   errors: [],
@@ -1998,7 +1995,7 @@ export interface GetZoneTagRequest {
   accessApplicationId?: string;
 }
 
-export const GetZoneTagRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetZoneTagRequest = /*@__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   resourceId: Schema.String.pipe(T.HttpQuery("resource_id")),
   resourceType: Schema.Union([
@@ -2220,7 +2217,7 @@ export type GetZoneTagResponse =
       zoneId: string;
     };
 
-export const GetZoneTagResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
+export const GetZoneTagResponse = /*@__PURE__*/ Schema.Union([
   Schema.Struct({
     id: Schema.String,
     accessApplicationId: Schema.String,
@@ -2503,7 +2500,7 @@ export const getZoneTag: API.OperationMethod<
   GetZoneTagResponse,
   GetZoneTagError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetZoneTagRequest,
   output: GetZoneTagResponse,
   errors: [],
@@ -2532,7 +2529,7 @@ export interface PutZoneTagRequest {
   accessApplicationId?: string;
 }
 
-export const PutZoneTagRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PutZoneTagRequest = /*@__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   ifMatch: Schema.optional(Schema.String).pipe(T.HttpHeader("If-Match")),
   resourceId: Schema.String,
@@ -2760,7 +2757,7 @@ export type PutZoneTagResponse =
       zoneId: string;
     };
 
-export const PutZoneTagResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
+export const PutZoneTagResponse = /*@__PURE__*/ Schema.Union([
   Schema.Struct({
     id: Schema.String,
     accessApplicationId: Schema.String,
@@ -3043,7 +3040,7 @@ export const putZoneTag: API.OperationMethod<
   PutZoneTagResponse,
   PutZoneTagError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutZoneTagRequest,
   output: PutZoneTagResponse,
   errors: [],
@@ -3056,7 +3053,7 @@ export interface DeleteZoneTagRequest {
   ifMatch?: string;
 }
 
-export const DeleteZoneTagRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteZoneTagRequest = /*@__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   ifMatch: Schema.optional(Schema.String).pipe(T.HttpHeader("If-Match")),
 }).pipe(
@@ -3066,7 +3063,7 @@ export const DeleteZoneTagRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteZoneTagResponse = unknown;
 
 export const DeleteZoneTagResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeleteZoneTagResponse>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeleteZoneTagResponse>;
 
 export type DeleteZoneTagError = DefaultErrors;
 
@@ -3075,7 +3072,7 @@ export const deleteZoneTag: API.OperationMethod<
   DeleteZoneTagResponse,
   DeleteZoneTagError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteZoneTagRequest,
   output: DeleteZoneTagResponse,
   errors: [],

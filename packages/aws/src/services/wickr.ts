@@ -2513,7 +2513,7 @@ export const batchCreateUser: API.OperationMethod<
   BatchCreateUserResponse,
   BatchCreateUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchCreateUserRequest,
   output: BatchCreateUserResponse,
   errors: [
@@ -2543,7 +2543,7 @@ export const batchDeleteUser: API.OperationMethod<
   BatchDeleteUserResponse,
   BatchDeleteUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchDeleteUserRequest,
   output: BatchDeleteUserResponse,
   errors: [
@@ -2573,7 +2573,7 @@ export const batchLookupUserUname: API.OperationMethod<
   BatchLookupUserUnameResponse,
   BatchLookupUserUnameError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchLookupUserUnameRequest,
   output: BatchLookupUserUnameResponse,
   errors: [
@@ -2603,7 +2603,7 @@ export const batchReinviteUser: API.OperationMethod<
   BatchReinviteUserResponse,
   BatchReinviteUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchReinviteUserRequest,
   output: BatchReinviteUserResponse,
   errors: [
@@ -2633,7 +2633,7 @@ export const batchResetDevicesForUser: API.OperationMethod<
   BatchResetDevicesForUserResponse,
   BatchResetDevicesForUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchResetDevicesForUserRequest,
   output: BatchResetDevicesForUserResponse,
   errors: [
@@ -2663,7 +2663,7 @@ export const batchToggleUserSuspendStatus: API.OperationMethod<
   BatchToggleUserSuspendStatusResponse,
   BatchToggleUserSuspendStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchToggleUserSuspendStatusRequest,
   output: BatchToggleUserSuspendStatusResponse,
   errors: [
@@ -2693,7 +2693,7 @@ export const createBot: API.OperationMethod<
   CreateBotResponse,
   CreateBotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateBotRequest,
   output: CreateBotResponse,
   errors: [
@@ -2723,7 +2723,7 @@ export const createDataRetentionBot: API.OperationMethod<
   CreateDataRetentionBotResponse,
   CreateDataRetentionBotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDataRetentionBotRequest,
   output: CreateDataRetentionBotResponse,
   errors: [
@@ -2753,7 +2753,7 @@ export const createDataRetentionBotChallenge: API.OperationMethod<
   CreateDataRetentionBotChallengeResponse,
   CreateDataRetentionBotChallengeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDataRetentionBotChallengeRequest,
   output: CreateDataRetentionBotChallengeResponse,
   errors: [
@@ -2783,7 +2783,7 @@ export const createNetwork: API.OperationMethod<
   CreateNetworkResponse,
   CreateNetworkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateNetworkRequest,
   output: CreateNetworkResponse,
   errors: [
@@ -2813,7 +2813,7 @@ export const createSecurityGroup: API.OperationMethod<
   CreateSecurityGroupResponse,
   CreateSecurityGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSecurityGroupRequest,
   output: CreateSecurityGroupResponse,
   errors: [
@@ -2843,7 +2843,7 @@ export const deleteBot: API.OperationMethod<
   DeleteBotResponse,
   DeleteBotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteBotRequest,
   output: DeleteBotResponse,
   errors: [
@@ -2873,7 +2873,7 @@ export const deleteDataRetentionBot: API.OperationMethod<
   DeleteDataRetentionBotResponse,
   DeleteDataRetentionBotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDataRetentionBotRequest,
   output: DeleteDataRetentionBotResponse,
   errors: [
@@ -2903,7 +2903,7 @@ export const deleteNetwork: API.OperationMethod<
   DeleteNetworkResponse,
   DeleteNetworkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteNetworkRequest,
   output: DeleteNetworkResponse,
   errors: [
@@ -2933,7 +2933,7 @@ export const deleteSecurityGroup: API.OperationMethod<
   DeleteSecurityGroupResponse,
   DeleteSecurityGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSecurityGroupRequest,
   output: DeleteSecurityGroupResponse,
   errors: [
@@ -2963,7 +2963,7 @@ export const getBot: API.OperationMethod<
   GetBotResponse,
   GetBotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetBotRequest,
   output: GetBotResponse,
   errors: [
@@ -2993,7 +2993,7 @@ export const getBotsCount: API.OperationMethod<
   GetBotsCountResponse,
   GetBotsCountError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetBotsCountRequest,
   output: GetBotsCountResponse,
   errors: [
@@ -3023,7 +3023,7 @@ export const getDataRetentionBot: API.OperationMethod<
   GetDataRetentionBotResponse,
   GetDataRetentionBotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDataRetentionBotRequest,
   output: GetDataRetentionBotResponse,
   errors: [
@@ -3053,7 +3053,7 @@ export const getGuestUserHistoryCount: API.OperationMethod<
   GetGuestUserHistoryCountResponse,
   GetGuestUserHistoryCountError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetGuestUserHistoryCountRequest,
   output: GetGuestUserHistoryCountResponse,
   errors: [
@@ -3083,7 +3083,7 @@ export const getNetwork: API.OperationMethod<
   GetNetworkResponse,
   GetNetworkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetNetworkRequest,
   output: GetNetworkResponse,
   errors: [
@@ -3113,7 +3113,7 @@ export const getNetworkSettings: API.OperationMethod<
   GetNetworkSettingsResponse,
   GetNetworkSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetNetworkSettingsRequest,
   output: GetNetworkSettingsResponse,
   errors: [
@@ -3143,7 +3143,7 @@ export const getOidcInfo: API.OperationMethod<
   GetOidcInfoResponse,
   GetOidcInfoError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOidcInfoRequest,
   output: GetOidcInfoResponse,
   errors: [
@@ -3173,7 +3173,7 @@ export const getOpentdfConfig: API.OperationMethod<
   GetOpentdfConfigResponse,
   GetOpentdfConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOpentdfConfigRequest,
   output: GetOpentdfConfigResponse,
   errors: [
@@ -3203,7 +3203,7 @@ export const getSecurityGroup: API.OperationMethod<
   GetSecurityGroupResponse,
   GetSecurityGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSecurityGroupRequest,
   output: GetSecurityGroupResponse,
   errors: [
@@ -3233,7 +3233,7 @@ export const getUser: API.OperationMethod<
   GetUserResponse,
   GetUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUserRequest,
   output: GetUserResponse,
   errors: [
@@ -3263,7 +3263,7 @@ export const getUsersCount: API.OperationMethod<
   GetUsersCountResponse,
   GetUsersCountError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUsersCountRequest,
   output: GetUsersCountResponse,
   errors: [
@@ -3308,7 +3308,7 @@ export const listBlockedGuestUsers: API.OperationMethod<
     ListBlockedGuestUsersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBlockedGuestUsersRequest,
   output: ListBlockedGuestUsersResponse,
   errors: [
@@ -3359,7 +3359,7 @@ export const listBots: API.OperationMethod<
     ListBotsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBotsRequest,
   output: ListBotsResponse,
   errors: [
@@ -3410,7 +3410,7 @@ export const listDevicesForUser: API.OperationMethod<
     ListDevicesForUserError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDevicesForUserRequest,
   output: ListDevicesForUserResponse,
   errors: [
@@ -3461,7 +3461,7 @@ export const listGuestUsers: API.OperationMethod<
     ListGuestUsersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGuestUsersRequest,
   output: ListGuestUsersResponse,
   errors: [
@@ -3511,7 +3511,7 @@ export const listNetworks: API.OperationMethod<
     ListNetworksError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNetworksRequest,
   output: ListNetworksResponse,
   errors: [
@@ -3561,7 +3561,7 @@ export const listSecurityGroups: API.OperationMethod<
     ListSecurityGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSecurityGroupsRequest,
   output: ListSecurityGroupsResponse,
   errors: [
@@ -3612,7 +3612,7 @@ export const listSecurityGroupUsers: API.OperationMethod<
     ListSecurityGroupUsersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSecurityGroupUsersRequest,
   output: ListSecurityGroupUsersResponse,
   errors: [
@@ -3663,7 +3663,7 @@ export const listUsers: API.OperationMethod<
     ListUsersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsersRequest,
   output: ListUsersResponse,
   errors: [
@@ -3699,7 +3699,7 @@ export const registerOidcConfig: API.OperationMethod<
   RegisterOidcConfigResponse,
   RegisterOidcConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterOidcConfigRequest,
   output: RegisterOidcConfigResponse,
   errors: [
@@ -3729,7 +3729,7 @@ export const registerOidcConfigTest: API.OperationMethod<
   RegisterOidcConfigTestResponse,
   RegisterOidcConfigTestError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterOidcConfigTestRequest,
   output: RegisterOidcConfigTestResponse,
   errors: [
@@ -3759,7 +3759,7 @@ export const registerOpentdfConfig: API.OperationMethod<
   RegisterOpentdfConfigResponse,
   RegisterOpentdfConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterOpentdfConfigRequest,
   output: RegisterOpentdfConfigResponse,
   errors: [
@@ -3789,7 +3789,7 @@ export const updateBot: API.OperationMethod<
   UpdateBotResponse,
   UpdateBotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateBotRequest,
   output: UpdateBotResponse,
   errors: [
@@ -3819,7 +3819,7 @@ export const updateDataRetention: API.OperationMethod<
   UpdateDataRetentionResponse,
   UpdateDataRetentionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDataRetentionRequest,
   output: UpdateDataRetentionResponse,
   errors: [
@@ -3849,7 +3849,7 @@ export const updateGuestUser: API.OperationMethod<
   UpdateGuestUserResponse,
   UpdateGuestUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateGuestUserRequest,
   output: UpdateGuestUserResponse,
   errors: [
@@ -3879,7 +3879,7 @@ export const updateNetwork: API.OperationMethod<
   UpdateNetworkResponse,
   UpdateNetworkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateNetworkRequest,
   output: UpdateNetworkResponse,
   errors: [
@@ -3909,7 +3909,7 @@ export const updateNetworkSettings: API.OperationMethod<
   UpdateNetworkSettingsResponse,
   UpdateNetworkSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateNetworkSettingsRequest,
   output: UpdateNetworkSettingsResponse,
   errors: [
@@ -3939,7 +3939,7 @@ export const updateSecurityGroup: API.OperationMethod<
   UpdateSecurityGroupResponse,
   UpdateSecurityGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSecurityGroupRequest,
   output: UpdateSecurityGroupResponse,
   errors: [
@@ -3971,7 +3971,7 @@ export const updateUser: API.OperationMethod<
   UpdateUserResponse,
   UpdateUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateUserRequest,
   output: UpdateUserResponse,
   errors: [

@@ -5230,7 +5230,7 @@ export const batchExecuteStatement: API.OperationMethod<
   BatchExecuteStatementOutput,
   BatchExecuteStatementError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchExecuteStatementInput,
   output: BatchExecuteStatementOutput,
   errors: [InternalServerError, RequestLimitExceeded, ThrottlingException],
@@ -5306,7 +5306,7 @@ export const batchGetItem: API.OperationMethod<
   BatchGetItemOutput,
   BatchGetItemError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetItemInput,
   output: BatchGetItemOutput,
   errors: [
@@ -5419,7 +5419,7 @@ export const batchWriteItem: API.OperationMethod<
   BatchWriteItemOutput,
   BatchWriteItemError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchWriteItemInput,
   output: BatchWriteItemOutput,
   errors: [
@@ -5479,7 +5479,7 @@ export const createBackup: API.OperationMethod<
   CreateBackupOutput,
   CreateBackupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateBackupInput,
   output: CreateBackupOutput,
   errors: [
@@ -5550,7 +5550,7 @@ export const createGlobalTable: API.OperationMethod<
   CreateGlobalTableOutput,
   CreateGlobalTableError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateGlobalTableInput,
   output: CreateGlobalTableOutput,
   errors: [
@@ -5589,7 +5589,7 @@ export const createTable: API.OperationMethod<
   CreateTableOutput,
   CreateTableError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTableInput,
   output: CreateTableOutput,
   errors: [
@@ -5617,7 +5617,7 @@ export const deleteBackup: API.OperationMethod<
   DeleteBackupOutput,
   DeleteBackupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteBackupInput,
   output: DeleteBackupOutput,
   errors: [
@@ -5661,7 +5661,7 @@ export const deleteItem: API.OperationMethod<
   DeleteItemOutput,
   DeleteItemError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteItemInput,
   output: DeleteItemOutput,
   errors: [
@@ -5711,7 +5711,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyOutput,
   DeleteResourcePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourcePolicyInput,
   output: DeleteResourcePolicyOutput,
   errors: [
@@ -5758,7 +5758,7 @@ export const deleteTable: API.OperationMethod<
   DeleteTableOutput,
   DeleteTableError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTableInput,
   output: DeleteTableOutput,
   errors: [
@@ -5785,7 +5785,7 @@ export const describeBackup: API.OperationMethod<
   DescribeBackupOutput,
   DescribeBackupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeBackupInput,
   output: DescribeBackupOutput,
   errors: [
@@ -5821,7 +5821,7 @@ export const describeContinuousBackups: API.OperationMethod<
   DescribeContinuousBackupsOutput,
   DescribeContinuousBackupsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeContinuousBackupsInput,
   output: DescribeContinuousBackupsOutput,
   errors: [
@@ -5843,7 +5843,7 @@ export const describeContributorInsights: API.OperationMethod<
   DescribeContributorInsightsOutput,
   DescribeContributorInsightsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeContributorInsightsInput,
   output: DescribeContributorInsightsOutput,
   errors: [InternalServerError, ResourceNotFoundException],
@@ -5858,7 +5858,7 @@ export const describeEndpoints: API.OperationMethod<
   DescribeEndpointsResponse,
   DescribeEndpointsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeEndpointsRequest,
   output: DescribeEndpointsResponse,
   errors: [],
@@ -5876,7 +5876,7 @@ export const describeExport: API.OperationMethod<
   DescribeExportOutput,
   DescribeExportError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeExportInput,
   output: DescribeExportOutput,
   errors: [
@@ -5902,7 +5902,7 @@ export const describeGlobalTable: API.OperationMethod<
   DescribeGlobalTableOutput,
   DescribeGlobalTableError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeGlobalTableInput,
   output: DescribeGlobalTableOutput,
   errors: [
@@ -5928,7 +5928,7 @@ export const describeGlobalTableSettings: API.OperationMethod<
   DescribeGlobalTableSettingsOutput,
   DescribeGlobalTableSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeGlobalTableSettingsInput,
   output: DescribeGlobalTableSettingsOutput,
   errors: [
@@ -5946,7 +5946,7 @@ export const describeImport: API.OperationMethod<
   DescribeImportOutput,
   DescribeImportError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeImportInput,
   output: DescribeImportOutput,
   errors: [ImportNotFoundException],
@@ -5964,7 +5964,7 @@ export const describeKinesisStreamingDestination: API.OperationMethod<
   DescribeKinesisStreamingDestinationOutput,
   DescribeKinesisStreamingDestinationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeKinesisStreamingDestinationInput,
   output: DescribeKinesisStreamingDestinationOutput,
   errors: [
@@ -6047,7 +6047,7 @@ export const describeLimits: API.OperationMethod<
   DescribeLimitsOutput,
   DescribeLimitsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeLimitsInput,
   output: DescribeLimitsOutput,
   errors: [InternalServerError, InvalidEndpointException],
@@ -6073,7 +6073,7 @@ export const describeTable: API.OperationMethod<
   DescribeTableOutput,
   DescribeTableError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeTableInput,
   output: DescribeTableOutput,
   errors: [
@@ -6094,7 +6094,7 @@ export const describeTableReplicaAutoScaling: API.OperationMethod<
   DescribeTableReplicaAutoScalingOutput,
   DescribeTableReplicaAutoScalingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeTableReplicaAutoScalingInput,
   output: DescribeTableReplicaAutoScalingOutput,
   errors: [InternalServerError, ResourceNotFoundException],
@@ -6112,7 +6112,7 @@ export const describeTimeToLive: API.OperationMethod<
   DescribeTimeToLiveOutput,
   DescribeTimeToLiveError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeTimeToLiveInput,
   output: DescribeTimeToLiveOutput,
   errors: [
@@ -6137,7 +6137,7 @@ export const disableKinesisStreamingDestination: API.OperationMethod<
   KinesisStreamingDestinationOutput,
   DisableKinesisStreamingDestinationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: KinesisStreamingDestinationInput,
   output: KinesisStreamingDestinationOutput,
   errors: [
@@ -6166,7 +6166,7 @@ export const enableKinesisStreamingDestination: API.OperationMethod<
   KinesisStreamingDestinationOutput,
   EnableKinesisStreamingDestinationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: KinesisStreamingDestinationInput,
   output: KinesisStreamingDestinationOutput,
   errors: [
@@ -6210,7 +6210,7 @@ export const executeStatement: API.OperationMethod<
   ExecuteStatementOutput,
   ExecuteStatementError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExecuteStatementInput,
   output: ExecuteStatementOutput,
   errors: [
@@ -6249,7 +6249,7 @@ export const executeTransaction: API.OperationMethod<
   ExecuteTransactionOutput,
   ExecuteTransactionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExecuteTransactionInput,
   output: ExecuteTransactionOutput,
   errors: [
@@ -6281,7 +6281,7 @@ export const exportTableToPointInTime: API.OperationMethod<
   ExportTableToPointInTimeOutput,
   ExportTableToPointInTimeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExportTableToPointInTimeInput,
   output: ExportTableToPointInTimeOutput,
   errors: [
@@ -6316,7 +6316,7 @@ export const getItem: API.OperationMethod<
   GetItemOutput,
   GetItemError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetItemInput,
   output: GetItemOutput,
   errors: [
@@ -6374,7 +6374,7 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyOutput,
   GetResourcePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResourcePolicyInput,
   output: GetResourcePolicyOutput,
   errors: [
@@ -6397,7 +6397,7 @@ export const importTable: API.OperationMethod<
   ImportTableOutput,
   ImportTableError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportTableInput,
   output: ImportTableOutput,
   errors: [
@@ -6431,7 +6431,7 @@ export const listBackups: API.OperationMethod<
   ListBackupsOutput,
   ListBackupsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListBackupsInput,
   output: ListBackupsOutput,
   errors: [InternalServerError, InvalidEndpointException],
@@ -6464,7 +6464,7 @@ export const listContributorInsights: API.OperationMethod<
     ListContributorInsightsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListContributorInsightsInput,
   output: ListContributorInsightsOutput,
   errors: [InternalServerError, ResourceNotFoundException],
@@ -6501,7 +6501,7 @@ export const listExports: API.OperationMethod<
     ListExportsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExportsInput,
   output: ListExportsOutput,
   errors: [InternalServerError, LimitExceededException],
@@ -6527,7 +6527,7 @@ export const listGlobalTables: API.OperationMethod<
   ListGlobalTablesOutput,
   ListGlobalTablesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListGlobalTablesInput,
   output: ListGlobalTablesOutput,
   errors: [InternalServerError, InvalidEndpointException],
@@ -6556,7 +6556,7 @@ export const listImports: API.OperationMethod<
     ListImportsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImportsInput,
   output: ListImportsOutput,
   errors: [LimitExceededException],
@@ -6595,7 +6595,7 @@ export const listTables: API.OperationMethod<
     ListTablesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTablesInput,
   output: ListTablesOutput,
   errors: [InternalServerError, InvalidEndpointException],
@@ -6623,7 +6623,7 @@ export const listTagsOfResource: API.OperationMethod<
   ListTagsOfResourceOutput,
   ListTagsOfResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsOfResourceInput,
   output: ListTagsOfResourceOutput,
   errors: [
@@ -6679,7 +6679,7 @@ export const putItem: API.OperationMethod<
   PutItemOutput,
   PutItemError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutItemInput,
   output: PutItemOutput,
   errors: [
@@ -6730,7 +6730,7 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyOutput,
   PutResourcePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutResourcePolicyInput,
   output: PutResourcePolicyOutput,
   errors: [
@@ -6824,7 +6824,7 @@ export const query: API.OperationMethod<
     QueryError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: QueryInput,
   output: QueryOutput,
   errors: [
@@ -6877,7 +6877,7 @@ export const restoreTableFromBackup: API.OperationMethod<
   RestoreTableFromBackupOutput,
   RestoreTableFromBackupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RestoreTableFromBackupInput,
   output: RestoreTableFromBackupOutput,
   errors: [
@@ -6945,7 +6945,7 @@ export const restoreTableToPointInTime: API.OperationMethod<
   RestoreTableToPointInTimeOutput,
   RestoreTableToPointInTimeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RestoreTableToPointInTimeInput,
   output: RestoreTableToPointInTimeOutput,
   errors: [
@@ -7032,7 +7032,7 @@ export const scan: API.OperationMethod<
     ScanError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ScanInput,
   output: ScanOutput,
   errors: [
@@ -7084,7 +7084,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceResponse,
   errors: [
@@ -7132,7 +7132,7 @@ export const transactGetItems: API.OperationMethod<
   TransactGetItemsOutput,
   TransactGetItemsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TransactGetItemsInput,
   output: TransactGetItemsOutput,
   errors: [
@@ -7219,7 +7219,7 @@ export const transactWriteItems: API.OperationMethod<
   TransactWriteItemsOutput,
   TransactWriteItemsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TransactWriteItemsInput,
   output: TransactWriteItemsOutput,
   errors: [
@@ -7266,7 +7266,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceResponse,
   errors: [
@@ -7303,7 +7303,7 @@ export const updateContinuousBackups: API.OperationMethod<
   UpdateContinuousBackupsOutput,
   UpdateContinuousBackupsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateContinuousBackupsInput,
   output: UpdateContinuousBackupsOutput,
   errors: [
@@ -7331,7 +7331,7 @@ export const updateContributorInsights: API.OperationMethod<
   UpdateContributorInsightsOutput,
   UpdateContributorInsightsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateContributorInsightsInput,
   output: UpdateContributorInsightsOutput,
   errors: [InternalServerError, ResourceNotFoundException],
@@ -7377,7 +7377,7 @@ export const updateGlobalTable: API.OperationMethod<
   UpdateGlobalTableOutput,
   UpdateGlobalTableError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateGlobalTableInput,
   output: UpdateGlobalTableOutput,
   errors: [
@@ -7410,7 +7410,7 @@ export const updateGlobalTableSettings: API.OperationMethod<
   UpdateGlobalTableSettingsOutput,
   UpdateGlobalTableSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateGlobalTableSettingsInput,
   output: UpdateGlobalTableSettingsOutput,
   errors: [
@@ -7450,7 +7450,7 @@ export const updateItem: API.OperationMethod<
   UpdateItemOutput,
   UpdateItemError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateItemInput,
   output: UpdateItemOutput,
   errors: [
@@ -7481,7 +7481,7 @@ export const updateKinesisStreamingDestination: API.OperationMethod<
   UpdateKinesisStreamingDestinationOutput,
   UpdateKinesisStreamingDestinationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateKinesisStreamingDestinationInput,
   output: UpdateKinesisStreamingDestinationOutput,
   errors: [
@@ -7524,7 +7524,7 @@ export const updateTable: API.OperationMethod<
   UpdateTableOutput,
   UpdateTableError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTableInput,
   output: UpdateTableOutput,
   errors: [
@@ -7549,7 +7549,7 @@ export const updateTableReplicaAutoScaling: API.OperationMethod<
   UpdateTableReplicaAutoScalingOutput,
   UpdateTableReplicaAutoScalingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTableReplicaAutoScalingInput,
   output: UpdateTableReplicaAutoScalingOutput,
   errors: [
@@ -7600,7 +7600,7 @@ export const updateTimeToLive: API.OperationMethod<
   UpdateTimeToLiveOutput,
   UpdateTimeToLiveError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTimeToLiveInput,
   output: UpdateTimeToLiveOutput,
   errors: [

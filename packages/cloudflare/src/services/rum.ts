@@ -22,7 +22,7 @@ export interface ListRulesRequest {
   accountId: string;
 }
 
-export const ListRulesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListRulesRequest = /*@__PURE__*/ Schema.Struct({
   rulesetId: Schema.String.pipe(T.HttpPath("rulesetId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -53,7 +53,7 @@ export interface ListRulesResponse {
   } | null;
 }
 
-export const ListRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListRulesResponse = /*@__PURE__*/ Schema.Struct({
   rules: Schema.optional(
     Schema.Union([
       Schema.Array(
@@ -115,7 +115,7 @@ export const listRules: API.OperationMethod<
   ListRulesResponse,
   ListRulesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListRulesRequest,
   output: ListRulesResponse,
   errors: [],
@@ -135,7 +135,7 @@ export interface CreateRuleRequest {
   paths?: string[];
 }
 
-export const CreateRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateRuleRequest = /*@__PURE__*/ Schema.Struct({
   rulesetId: Schema.String.pipe(T.HttpPath("rulesetId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   host: Schema.optional(Schema.String),
@@ -170,7 +170,7 @@ export interface CreateRuleResponse {
   priority?: number | null;
 }
 
-export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateRuleResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -203,7 +203,7 @@ export const createRule: API.OperationMethod<
   CreateRuleResponse,
   CreateRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRuleRequest,
   output: CreateRuleResponse,
   errors: [],
@@ -224,7 +224,7 @@ export interface UpdateRuleRequest {
   paths?: string[];
 }
 
-export const UpdateRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateRuleRequest = /*@__PURE__*/ Schema.Struct({
   rulesetId: Schema.String.pipe(T.HttpPath("rulesetId")),
   ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -260,7 +260,7 @@ export interface UpdateRuleResponse {
   priority?: number | null;
 }
 
-export const UpdateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateRuleResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -293,7 +293,7 @@ export const updateRule: API.OperationMethod<
   UpdateRuleResponse,
   UpdateRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRuleRequest,
   output: UpdateRuleResponse,
   errors: [],
@@ -306,7 +306,7 @@ export interface DeleteRuleRequest {
   accountId: string;
 }
 
-export const DeleteRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteRuleRequest = /*@__PURE__*/ Schema.Struct({
   rulesetId: Schema.String.pipe(T.HttpPath("rulesetId")),
   ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -322,7 +322,7 @@ export interface DeleteRuleResponse {
   id?: string | null;
 }
 
-export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteRuleResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
 }).pipe(
   T.ResponsePath("result"),
@@ -335,7 +335,7 @@ export const deleteRule: API.OperationMethod<
   DeleteRuleResponse,
   DeleteRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRuleRequest,
   output: DeleteRuleResponse,
   errors: [],
@@ -357,32 +357,30 @@ export interface BulkCreateRulesRequest {
   }[];
 }
 
-export const BulkCreateRulesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    rulesetId: Schema.String.pipe(T.HttpPath("rulesetId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    deleteRules: Schema.optional(Schema.Array(Schema.String)),
-    rules: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          host: Schema.optional(Schema.String),
-          inclusive: Schema.optional(Schema.Boolean),
-          isPaused: Schema.optional(Schema.Boolean),
-          paths: Schema.optional(Schema.Array(Schema.String)),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            host: "host",
-            inclusive: "inclusive",
-            isPaused: "is_paused",
-            paths: "paths",
-          }),
-        ),
+export const BulkCreateRulesRequest = /*@__PURE__*/ Schema.Struct({
+  rulesetId: Schema.String.pipe(T.HttpPath("rulesetId")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  deleteRules: Schema.optional(Schema.Array(Schema.String)),
+  rules: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        host: Schema.optional(Schema.String),
+        inclusive: Schema.optional(Schema.Boolean),
+        isPaused: Schema.optional(Schema.Boolean),
+        paths: Schema.optional(Schema.Array(Schema.String)),
+      }).pipe(
+        Schema.encodeKeys({
+          id: "id",
+          host: "host",
+          inclusive: "inclusive",
+          isPaused: "is_paused",
+          paths: "paths",
+        }),
       ),
     ),
-  },
-).pipe(
+  ),
+}).pipe(
   Schema.encodeKeys({ deleteRules: "delete_rules", rules: "rules" }),
   T.Http({
     method: "POST",
@@ -411,65 +409,60 @@ export interface BulkCreateRulesResponse {
   } | null;
 }
 
-export const BulkCreateRulesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    rules: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            created: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            inclusive: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            isPaused: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            paths: Schema.optional(
-              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-            ),
-            priority: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              created: "created",
-              host: "host",
-              inclusive: "inclusive",
-              isPaused: "is_paused",
-              paths: "paths",
-              priority: "priority",
-            }),
-          ),
-        ),
-        Schema.Null,
-      ]),
-    ),
-    ruleset: Schema.optional(
-      Schema.Union([
+export const BulkCreateRulesResponse = /*@__PURE__*/ Schema.Struct({
+  rules: Schema.optional(
+    Schema.Union([
+      Schema.Array(
         Schema.Struct({
           id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-          zoneName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          zoneTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          inclusive: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+          isPaused: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+          paths: Schema.optional(
+            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+          ),
+          priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
         }).pipe(
           Schema.encodeKeys({
             id: "id",
-            enabled: "enabled",
-            zoneName: "zone_name",
-            zoneTag: "zone_tag",
+            created: "created",
+            host: "host",
+            inclusive: "inclusive",
+            isPaused: "is_paused",
+            paths: "paths",
+            priority: "priority",
           }),
         ),
-        Schema.Null,
-      ]),
-    ),
-  }).pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<BulkCreateRulesResponse>;
+      ),
+      Schema.Null,
+    ]),
+  ),
+  ruleset: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+        zoneName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        zoneTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      }).pipe(
+        Schema.encodeKeys({
+          id: "id",
+          enabled: "enabled",
+          zoneName: "zone_name",
+          zoneTag: "zone_tag",
+        }),
+      ),
+      Schema.Null,
+    ]),
+  ),
+}).pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<BulkCreateRulesResponse>;
 
 export type BulkCreateRulesError = DefaultErrors;
 
@@ -478,7 +471,7 @@ export const bulkCreateRules: API.OperationMethod<
   BulkCreateRulesResponse,
   BulkCreateRulesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BulkCreateRulesRequest,
   output: BulkCreateRulesResponse,
   errors: [],
@@ -494,7 +487,7 @@ export interface GetSiteInfoRequest {
   accountId: string;
 }
 
-export const GetSiteInfoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetSiteInfoRequest = /*@__PURE__*/ Schema.Struct({
   siteId: Schema.String.pipe(T.HttpPath("siteId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -534,7 +527,7 @@ export interface GetSiteInfoResponse {
   snippet?: string | null;
 }
 
-export const GetSiteInfoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetSiteInfoResponse = /*@__PURE__*/ Schema.Struct({
   autoInstall: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
   created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   rules: Schema.optional(
@@ -613,7 +606,7 @@ export const getSiteInfo: API.OperationMethod<
   GetSiteInfoResponse,
   GetSiteInfoError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSiteInfoRequest,
   output: GetSiteInfoResponse,
   errors: [],
@@ -628,7 +621,7 @@ export interface ListSiteInfosRequest {
   orderBy?: "host" | "created" | (string & {});
 }
 
-export const ListSiteInfosRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListSiteInfosRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
   perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
@@ -672,7 +665,7 @@ export interface ListSiteInfosResponse {
   } | null;
 }
 
-export const ListSiteInfosResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListSiteInfosResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       autoInstall: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -781,7 +774,7 @@ export const listSiteInfos: API.PaginatedOperationMethod<
   ListSiteInfosResponse,
   ListSiteInfosError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSiteInfosRequest,
   output: ListSiteInfosResponse,
   errors: [],
@@ -805,7 +798,7 @@ export interface CreateSiteInfoRequest {
   zoneTag?: string;
 }
 
-export const CreateSiteInfoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateSiteInfoRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   autoInstall: Schema.optional(Schema.Boolean),
   host: Schema.optional(Schema.String),
@@ -849,69 +842,63 @@ export interface CreateSiteInfoResponse {
   snippet?: string | null;
 }
 
-export const CreateSiteInfoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    autoInstall: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    rules: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            created: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            inclusive: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            isPaused: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            paths: Schema.optional(
-              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-            ),
-            priority: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              created: "created",
-              host: "host",
-              inclusive: "inclusive",
-              isPaused: "is_paused",
-              paths: "paths",
-              priority: "priority",
-            }),
-          ),
-        ),
-        Schema.Null,
-      ]),
-    ),
-    ruleset: Schema.optional(
-      Schema.Union([
+export const CreateSiteInfoResponse = /*@__PURE__*/ Schema.Struct({
+  autoInstall: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  rules: Schema.optional(
+    Schema.Union([
+      Schema.Array(
         Schema.Struct({
           id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-          zoneName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          zoneTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          inclusive: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+          isPaused: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+          paths: Schema.optional(
+            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+          ),
+          priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
         }).pipe(
           Schema.encodeKeys({
             id: "id",
-            enabled: "enabled",
-            zoneName: "zone_name",
-            zoneTag: "zone_tag",
+            created: "created",
+            host: "host",
+            inclusive: "inclusive",
+            isPaused: "is_paused",
+            paths: "paths",
+            priority: "priority",
           }),
         ),
-        Schema.Null,
-      ]),
-    ),
-    siteTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    siteToken: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    snippet: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  },
-)
+      ),
+      Schema.Null,
+    ]),
+  ),
+  ruleset: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+        zoneName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        zoneTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      }).pipe(
+        Schema.encodeKeys({
+          id: "id",
+          enabled: "enabled",
+          zoneName: "zone_name",
+          zoneTag: "zone_tag",
+        }),
+      ),
+      Schema.Null,
+    ]),
+  ),
+  siteTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  siteToken: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  snippet: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+})
   .pipe(
     Schema.encodeKeys({
       autoInstall: "auto_install",
@@ -934,7 +921,7 @@ export const createSiteInfo: API.OperationMethod<
   CreateSiteInfoResponse,
   CreateSiteInfoError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSiteInfoRequest,
   output: CreateSiteInfoResponse,
   errors: [],
@@ -956,7 +943,7 @@ export interface UpdateSiteInfoRequest {
   zoneTag?: string;
 }
 
-export const UpdateSiteInfoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateSiteInfoRequest = /*@__PURE__*/ Schema.Struct({
   siteId: Schema.String.pipe(T.HttpPath("siteId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   autoInstall: Schema.optional(Schema.Boolean),
@@ -1008,69 +995,63 @@ export interface UpdateSiteInfoResponse {
   snippet?: string | null;
 }
 
-export const UpdateSiteInfoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    autoInstall: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    rules: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            created: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            inclusive: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            isPaused: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            paths: Schema.optional(
-              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-            ),
-            priority: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              created: "created",
-              host: "host",
-              inclusive: "inclusive",
-              isPaused: "is_paused",
-              paths: "paths",
-              priority: "priority",
-            }),
-          ),
-        ),
-        Schema.Null,
-      ]),
-    ),
-    ruleset: Schema.optional(
-      Schema.Union([
+export const UpdateSiteInfoResponse = /*@__PURE__*/ Schema.Struct({
+  autoInstall: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  rules: Schema.optional(
+    Schema.Union([
+      Schema.Array(
         Schema.Struct({
           id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-          zoneName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          zoneTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          inclusive: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+          isPaused: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+          paths: Schema.optional(
+            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+          ),
+          priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
         }).pipe(
           Schema.encodeKeys({
             id: "id",
-            enabled: "enabled",
-            zoneName: "zone_name",
-            zoneTag: "zone_tag",
+            created: "created",
+            host: "host",
+            inclusive: "inclusive",
+            isPaused: "is_paused",
+            paths: "paths",
+            priority: "priority",
           }),
         ),
-        Schema.Null,
-      ]),
-    ),
-    siteTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    siteToken: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    snippet: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  },
-)
+      ),
+      Schema.Null,
+    ]),
+  ),
+  ruleset: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+        zoneName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        zoneTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      }).pipe(
+        Schema.encodeKeys({
+          id: "id",
+          enabled: "enabled",
+          zoneName: "zone_name",
+          zoneTag: "zone_tag",
+        }),
+      ),
+      Schema.Null,
+    ]),
+  ),
+  siteTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  siteToken: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  snippet: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+})
   .pipe(
     Schema.encodeKeys({
       autoInstall: "auto_install",
@@ -1093,7 +1074,7 @@ export const updateSiteInfo: API.OperationMethod<
   UpdateSiteInfoResponse,
   UpdateSiteInfoError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSiteInfoRequest,
   output: UpdateSiteInfoResponse,
   errors: [],
@@ -1105,7 +1086,7 @@ export interface DeleteSiteInfoRequest {
   accountId: string;
 }
 
-export const DeleteSiteInfoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteSiteInfoRequest = /*@__PURE__*/ Schema.Struct({
   siteId: Schema.String.pipe(T.HttpPath("siteId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -1120,11 +1101,9 @@ export interface DeleteSiteInfoResponse {
   siteTag?: string | null;
 }
 
-export const DeleteSiteInfoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    siteTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  },
-)
+export const DeleteSiteInfoResponse = /*@__PURE__*/ Schema.Struct({
+  siteTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+})
   .pipe(Schema.encodeKeys({ siteTag: "site_tag" }))
   .pipe(
     T.ResponsePath("result"),
@@ -1137,7 +1116,7 @@ export const deleteSiteInfo: API.OperationMethod<
   DeleteSiteInfoResponse,
   DeleteSiteInfoError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSiteInfoRequest,
   output: DeleteSiteInfoResponse,
   errors: [],

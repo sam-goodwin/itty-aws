@@ -1381,7 +1381,7 @@ export const batchGetView: API.OperationMethod<
   BatchGetViewOutput,
   BatchGetViewError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetViewInput,
   output: BatchGetViewOutput,
   errors: [
@@ -1407,7 +1407,7 @@ export const createResourceExplorerSetup: API.OperationMethod<
   CreateResourceExplorerSetupOutput,
   CreateResourceExplorerSetupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateResourceExplorerSetupInput,
   output: CreateResourceExplorerSetupOutput,
   errors: [
@@ -1433,7 +1433,7 @@ export const deleteResourceExplorerSetup: API.OperationMethod<
   DeleteResourceExplorerSetupOutput,
   DeleteResourceExplorerSetupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourceExplorerSetupInput,
   output: DeleteResourceExplorerSetupOutput,
   errors: [
@@ -1461,7 +1461,7 @@ export const disassociateDefaultView: API.OperationMethod<
   DisassociateDefaultViewResponse,
   DisassociateDefaultViewError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateDefaultViewRequest,
   output: DisassociateDefaultViewResponse,
   errors: [
@@ -1486,7 +1486,7 @@ export const getAccountLevelServiceConfiguration: API.OperationMethod<
   GetAccountLevelServiceConfigurationOutput,
   GetAccountLevelServiceConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountLevelServiceConfigurationRequest,
   output: GetAccountLevelServiceConfigurationOutput,
   errors: [
@@ -1511,7 +1511,7 @@ export const getDefaultView: API.OperationMethod<
   GetDefaultViewOutput,
   GetDefaultViewError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDefaultViewRequest,
   output: GetDefaultViewOutput,
   errors: [
@@ -1537,7 +1537,7 @@ export const getIndex: API.OperationMethod<
   GetIndexOutput,
   GetIndexError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIndexRequest,
   output: GetIndexOutput,
   errors: [
@@ -1564,7 +1564,7 @@ export const getManagedView: API.OperationMethod<
   GetManagedViewOutput,
   GetManagedViewError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetManagedViewInput,
   output: GetManagedViewOutput,
   errors: [
@@ -1606,7 +1606,7 @@ export const getResourceExplorerSetup: API.OperationMethod<
     GetResourceExplorerSetupError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetResourceExplorerSetupInput,
   output: GetResourceExplorerSetupOutput,
   errors: [
@@ -1638,7 +1638,7 @@ export const getServiceIndex: API.OperationMethod<
   GetServiceIndexOutput,
   GetServiceIndexError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetServiceIndexRequest,
   output: GetServiceIndexOutput,
   errors: [
@@ -1664,7 +1664,7 @@ export const getServiceView: API.OperationMethod<
   GetServiceViewOutput,
   GetServiceViewError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetServiceViewInput,
   output: GetServiceViewOutput,
   errors: [
@@ -1704,7 +1704,7 @@ export const listIndexesForMembers: API.OperationMethod<
     ListIndexesForMembersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIndexesForMembersInput,
   output: ListIndexesForMembersOutput,
   errors: [
@@ -1750,7 +1750,7 @@ export const listManagedViews: API.OperationMethod<
     ListManagedViewsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedViewsInput,
   output: ListManagedViewsOutput,
   errors: [
@@ -1798,7 +1798,7 @@ export const listResources: API.OperationMethod<
     ListResourcesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourcesInput,
   output: ListResourcesOutput,
   errors: [
@@ -1845,7 +1845,7 @@ export const listServiceIndexes: API.OperationMethod<
     ListServiceIndexesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServiceIndexesInput,
   output: ListServiceIndexesOutput,
   errors: [
@@ -1890,7 +1890,7 @@ export const listServiceViews: API.OperationMethod<
     ListServiceViewsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServiceViewsInput,
   output: ListServiceViewsOutput,
   errors: [
@@ -1934,7 +1934,7 @@ export const listStreamingAccessForServices: API.OperationMethod<
     ListStreamingAccessForServicesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStreamingAccessForServicesInput,
   output: ListStreamingAccessForServicesOutput,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
@@ -1974,7 +1974,7 @@ export const listSupportedResourceTypes: API.OperationMethod<
     ListSupportedResourceTypesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSupportedResourceTypesInput,
   output: ListSupportedResourceTypesOutput,
   errors: [
@@ -2006,7 +2006,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceOutput,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [
@@ -2055,7 +2055,7 @@ export const search: API.OperationMethod<
     SearchError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchInput,
   output: SearchOutput,
   errors: [
@@ -2089,7 +2089,7 @@ export const tagResource: API.OperationMethod<
   TagResourceOutput,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
   errors: [
@@ -2117,7 +2117,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceOutput,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
   errors: [
@@ -2164,7 +2164,7 @@ export const createIndex: API.OperationMethod<
   CreateIndexOutput,
   CreateIndexError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateIndexInput,
   output: CreateIndexOutput,
   errors: [
@@ -2208,7 +2208,7 @@ export const updateIndexType: API.OperationMethod<
   UpdateIndexTypeOutput,
   UpdateIndexTypeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateIndexTypeInput,
   output: UpdateIndexTypeOutput,
   errors: [
@@ -2238,7 +2238,7 @@ export const deleteIndex: API.OperationMethod<
   DeleteIndexOutput,
   DeleteIndexError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteIndexInput,
   output: DeleteIndexOutput,
   errors: [
@@ -2278,7 +2278,7 @@ export const listIndexes: API.OperationMethod<
     ListIndexesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIndexesInput,
   output: ListIndexesOutput,
   errors: [
@@ -2313,7 +2313,7 @@ export const createView: API.OperationMethod<
   CreateViewOutput,
   CreateViewError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateViewInput,
   output: CreateViewOutput,
   errors: [
@@ -2342,7 +2342,7 @@ export const getView: API.OperationMethod<
   GetViewOutput,
   GetViewError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetViewInput,
   output: GetViewOutput,
   errors: [
@@ -2370,7 +2370,7 @@ export const updateView: API.OperationMethod<
   UpdateViewOutput,
   UpdateViewError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateViewInput,
   output: UpdateViewOutput,
   errors: [
@@ -2400,7 +2400,7 @@ export const deleteView: API.OperationMethod<
   DeleteViewOutput,
   DeleteViewError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteViewInput,
   output: DeleteViewOutput,
   errors: [
@@ -2443,7 +2443,7 @@ export const listViews: API.OperationMethod<
     ListViewsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListViewsInput,
   output: ListViewsOutput,
   errors: [
@@ -2476,7 +2476,7 @@ export const associateDefaultView: API.OperationMethod<
   AssociateDefaultViewOutput,
   AssociateDefaultViewError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateDefaultViewInput,
   output: AssociateDefaultViewOutput,
   errors: [

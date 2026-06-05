@@ -37,7 +37,7 @@ export interface GetAiGatewayRequest {
   accountId: string;
 }
 
-export const GetAiGatewayRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetAiGatewayRequest = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.HttpPath("id")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
 }).pipe(
@@ -136,7 +136,7 @@ export interface GetAiGatewayResponse {
   zdr?: boolean | null;
 }
 
-export const GetAiGatewayResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetAiGatewayResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   cacheInvalidateOnUpdate: Schema.Boolean,
   cacheTtl: Schema.Union([Schema.Number, Schema.Null]),
@@ -514,7 +514,7 @@ export const getAiGateway: API.OperationMethod<
   GetAiGatewayResponse,
   GetAiGatewayError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAiGatewayRequest,
   output: GetAiGatewayResponse,
   errors: [GatewayNotFound],
@@ -529,7 +529,7 @@ export interface ListAiGatewaysRequest {
   search?: string;
 }
 
-export const ListAiGatewaysRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListAiGatewaysRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
   perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
@@ -633,490 +633,486 @@ export interface ListAiGatewaysResponse {
   } | null;
 }
 
-export const ListAiGatewaysResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    result: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        cacheInvalidateOnUpdate: Schema.Boolean,
-        cacheTtl: Schema.Union([Schema.Number, Schema.Null]),
-        collectLogs: Schema.Boolean,
-        createdAt: Schema.String,
-        modifiedAt: Schema.String,
-        rateLimitingInterval: Schema.Union([Schema.Number, Schema.Null]),
-        rateLimitingLimit: Schema.Union([Schema.Number, Schema.Null]),
-        authentication: Schema.optional(
-          Schema.Union([Schema.Boolean, Schema.Null]),
-        ),
-        dlp: Schema.optional(
-          Schema.Union([
-            Schema.Union([
-              Schema.Struct({
-                action: Schema.Union([
-                  Schema.Literals(["BLOCK", "FLAG"]),
-                  Schema.String,
-                ]),
-                enabled: Schema.Boolean,
-                profiles: Schema.Array(Schema.String),
-              }),
-              Schema.Struct({
-                enabled: Schema.Boolean,
-                policies: Schema.Array(
-                  Schema.Struct({
-                    id: Schema.String,
-                    action: Schema.Union([
-                      Schema.Literals(["FLAG", "BLOCK"]),
-                      Schema.String,
-                    ]),
-                    check: Schema.Array(
-                      Schema.Union([
-                        Schema.Literals(["REQUEST", "RESPONSE"]),
-                        Schema.String,
-                      ]),
-                    ),
-                    enabled: Schema.Boolean,
-                    profiles: Schema.Array(Schema.String),
-                  }),
-                ),
-              }),
-            ]),
-            Schema.Null,
-          ]),
-        ),
-        guardrails: Schema.optional(
+export const ListAiGatewaysResponse = /*@__PURE__*/ Schema.Struct({
+  result: Schema.Array(
+    Schema.Struct({
+      id: Schema.String,
+      cacheInvalidateOnUpdate: Schema.Boolean,
+      cacheTtl: Schema.Union([Schema.Number, Schema.Null]),
+      collectLogs: Schema.Boolean,
+      createdAt: Schema.String,
+      modifiedAt: Schema.String,
+      rateLimitingInterval: Schema.Union([Schema.Number, Schema.Null]),
+      rateLimitingLimit: Schema.Union([Schema.Number, Schema.Null]),
+      authentication: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      dlp: Schema.optional(
+        Schema.Union([
           Schema.Union([
             Schema.Struct({
-              prompt: Schema.Struct({
-                p1: Schema.optional(
-                  Schema.Union([
+              action: Schema.Union([
+                Schema.Literals(["BLOCK", "FLAG"]),
+                Schema.String,
+              ]),
+              enabled: Schema.Boolean,
+              profiles: Schema.Array(Schema.String),
+            }),
+            Schema.Struct({
+              enabled: Schema.Boolean,
+              policies: Schema.Array(
+                Schema.Struct({
+                  id: Schema.String,
+                  action: Schema.Union([
+                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.String,
+                  ]),
+                  check: Schema.Array(
                     Schema.Union([
-                      Schema.Literals(["FLAG", "BLOCK"]),
+                      Schema.Literals(["REQUEST", "RESPONSE"]),
                       Schema.String,
                     ]),
-                    Schema.Null,
-                  ]),
-                ),
-                s1: Schema.optional(
-                  Schema.Union([
-                    Schema.Union([
-                      Schema.Literals(["FLAG", "BLOCK"]),
-                      Schema.String,
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-                s10: Schema.optional(
-                  Schema.Union([
-                    Schema.Union([
-                      Schema.Literals(["FLAG", "BLOCK"]),
-                      Schema.String,
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-                s11: Schema.optional(
-                  Schema.Union([
-                    Schema.Union([
-                      Schema.Literals(["FLAG", "BLOCK"]),
-                      Schema.String,
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-                s12: Schema.optional(
-                  Schema.Union([
-                    Schema.Union([
-                      Schema.Literals(["FLAG", "BLOCK"]),
-                      Schema.String,
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-                s13: Schema.optional(
-                  Schema.Union([
-                    Schema.Union([
-                      Schema.Literals(["FLAG", "BLOCK"]),
-                      Schema.String,
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-                s2: Schema.optional(
-                  Schema.Union([
-                    Schema.Union([
-                      Schema.Literals(["FLAG", "BLOCK"]),
-                      Schema.String,
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-                s3: Schema.optional(
-                  Schema.Union([
-                    Schema.Union([
-                      Schema.Literals(["FLAG", "BLOCK"]),
-                      Schema.String,
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-                s4: Schema.optional(
-                  Schema.Union([
-                    Schema.Union([
-                      Schema.Literals(["FLAG", "BLOCK"]),
-                      Schema.String,
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-                s5: Schema.optional(
-                  Schema.Union([
-                    Schema.Union([
-                      Schema.Literals(["FLAG", "BLOCK"]),
-                      Schema.String,
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-                s6: Schema.optional(
-                  Schema.Union([
-                    Schema.Union([
-                      Schema.Literals(["FLAG", "BLOCK"]),
-                      Schema.String,
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-                s7: Schema.optional(
-                  Schema.Union([
-                    Schema.Union([
-                      Schema.Literals(["FLAG", "BLOCK"]),
-                      Schema.String,
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-                s8: Schema.optional(
-                  Schema.Union([
-                    Schema.Union([
-                      Schema.Literals(["FLAG", "BLOCK"]),
-                      Schema.String,
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-                s9: Schema.optional(
-                  Schema.Union([
-                    Schema.Union([
-                      Schema.Literals(["FLAG", "BLOCK"]),
-                      Schema.String,
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  p1: "P1",
-                  s1: "S1",
-                  s10: "S10",
-                  s11: "S11",
-                  s12: "S12",
-                  s13: "S13",
-                  s2: "S2",
-                  s3: "S3",
-                  s4: "S4",
-                  s5: "S5",
-                  s6: "S6",
-                  s7: "S7",
-                  s8: "S8",
-                  s9: "S9",
-                }),
-              ),
-              response: Schema.Struct({
-                p1: Schema.optional(
-                  Schema.Union([
-                    Schema.Union([
-                      Schema.Literals(["FLAG", "BLOCK"]),
-                      Schema.String,
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-                s1: Schema.optional(
-                  Schema.Union([
-                    Schema.Union([
-                      Schema.Literals(["FLAG", "BLOCK"]),
-                      Schema.String,
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-                s10: Schema.optional(
-                  Schema.Union([
-                    Schema.Union([
-                      Schema.Literals(["FLAG", "BLOCK"]),
-                      Schema.String,
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-                s11: Schema.optional(
-                  Schema.Union([
-                    Schema.Union([
-                      Schema.Literals(["FLAG", "BLOCK"]),
-                      Schema.String,
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-                s12: Schema.optional(
-                  Schema.Union([
-                    Schema.Union([
-                      Schema.Literals(["FLAG", "BLOCK"]),
-                      Schema.String,
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-                s13: Schema.optional(
-                  Schema.Union([
-                    Schema.Union([
-                      Schema.Literals(["FLAG", "BLOCK"]),
-                      Schema.String,
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-                s2: Schema.optional(
-                  Schema.Union([
-                    Schema.Union([
-                      Schema.Literals(["FLAG", "BLOCK"]),
-                      Schema.String,
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-                s3: Schema.optional(
-                  Schema.Union([
-                    Schema.Union([
-                      Schema.Literals(["FLAG", "BLOCK"]),
-                      Schema.String,
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-                s4: Schema.optional(
-                  Schema.Union([
-                    Schema.Union([
-                      Schema.Literals(["FLAG", "BLOCK"]),
-                      Schema.String,
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-                s5: Schema.optional(
-                  Schema.Union([
-                    Schema.Union([
-                      Schema.Literals(["FLAG", "BLOCK"]),
-                      Schema.String,
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-                s6: Schema.optional(
-                  Schema.Union([
-                    Schema.Union([
-                      Schema.Literals(["FLAG", "BLOCK"]),
-                      Schema.String,
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-                s7: Schema.optional(
-                  Schema.Union([
-                    Schema.Union([
-                      Schema.Literals(["FLAG", "BLOCK"]),
-                      Schema.String,
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-                s8: Schema.optional(
-                  Schema.Union([
-                    Schema.Union([
-                      Schema.Literals(["FLAG", "BLOCK"]),
-                      Schema.String,
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-                s9: Schema.optional(
-                  Schema.Union([
-                    Schema.Union([
-                      Schema.Literals(["FLAG", "BLOCK"]),
-                      Schema.String,
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  p1: "P1",
-                  s1: "S1",
-                  s10: "S10",
-                  s11: "S11",
-                  s12: "S12",
-                  s13: "S13",
-                  s2: "S2",
-                  s3: "S3",
-                  s4: "S4",
-                  s5: "S5",
-                  s6: "S6",
-                  s7: "S7",
-                  s8: "S8",
-                  s9: "S9",
+                  ),
+                  enabled: Schema.Boolean,
+                  profiles: Schema.Array(Schema.String),
                 }),
               ),
             }),
-            Schema.Null,
           ]),
-        ),
-        isDefault: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-        logManagement: Schema.optional(
-          Schema.Union([Schema.Number, Schema.Null]),
-        ),
-        logManagementStrategy: Schema.optional(
-          Schema.Union([
-            Schema.Literal("STOP_INSERTING"),
-            Schema.Literal("DELETE_OLDEST"),
-            Schema.Null,
-          ]),
-        ),
-        logpush: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-        logpushPublicKey: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        otel: Schema.optional(
-          Schema.Union([
-            Schema.Array(
-              Schema.Struct({
-                authorization: Schema.String,
-                headers: Schema.Record(Schema.String, Schema.Unknown),
-                url: Schema.String,
-                contentType: Schema.optional(
+          Schema.Null,
+        ]),
+      ),
+      guardrails: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            prompt: Schema.Struct({
+              p1: Schema.optional(
+                Schema.Union([
                   Schema.Union([
-                    Schema.Union([
-                      Schema.Literals(["json", "protobuf"]),
-                      Schema.String,
-                    ]),
-                    Schema.Null,
+                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.String,
                   ]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  authorization: "authorization",
-                  headers: "headers",
-                  url: "url",
-                  contentType: "content_type",
-                }),
+                  Schema.Null,
+                ]),
               ),
+              s1: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+              s10: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+              s11: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+              s12: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+              s13: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+              s2: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+              s3: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+              s4: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+              s5: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+              s6: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+              s7: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+              s8: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+              s9: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                p1: "P1",
+                s1: "S1",
+                s10: "S10",
+                s11: "S11",
+                s12: "S12",
+                s13: "S13",
+                s2: "S2",
+                s3: "S3",
+                s4: "S4",
+                s5: "S5",
+                s6: "S6",
+                s7: "S7",
+                s8: "S8",
+                s9: "S9",
+              }),
             ),
-            Schema.Null,
-          ]),
-        ),
-        rateLimitingTechnique: Schema.optional(
-          Schema.Union([
-            Schema.Literal("fixed"),
-            Schema.Literal("sliding"),
-            Schema.Null,
-          ]),
-        ),
-        retryBackoff: Schema.optional(
-          Schema.Union([
-            Schema.Literal("constant"),
-            Schema.Literal("linear"),
-            Schema.Literal("exponential"),
-            Schema.Null,
-          ]),
-        ),
-        retryDelay: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        retryMaxAttempts: Schema.optional(
-          Schema.Union([Schema.Number, Schema.Null]),
-        ),
-        storeId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        stripe: Schema.optional(
-          Schema.Union([
+            response: Schema.Struct({
+              p1: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+              s1: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+              s10: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+              s11: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+              s12: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+              s13: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+              s2: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+              s3: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+              s4: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+              s5: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+              s6: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+              s7: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+              s8: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+              s9: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["FLAG", "BLOCK"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                p1: "P1",
+                s1: "S1",
+                s10: "S10",
+                s11: "S11",
+                s12: "S12",
+                s13: "S13",
+                s2: "S2",
+                s3: "S3",
+                s4: "S4",
+                s5: "S5",
+                s6: "S6",
+                s7: "S7",
+                s8: "S8",
+                s9: "S9",
+              }),
+            ),
+          }),
+          Schema.Null,
+        ]),
+      ),
+      isDefault: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      logManagement: Schema.optional(
+        Schema.Union([Schema.Number, Schema.Null]),
+      ),
+      logManagementStrategy: Schema.optional(
+        Schema.Union([
+          Schema.Literal("STOP_INSERTING"),
+          Schema.Literal("DELETE_OLDEST"),
+          Schema.Null,
+        ]),
+      ),
+      logpush: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      logpushPublicKey: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      otel: Schema.optional(
+        Schema.Union([
+          Schema.Array(
             Schema.Struct({
               authorization: Schema.String,
-              usageEvents: Schema.Array(
-                Schema.Struct({
-                  payload: Schema.String,
-                }),
+              headers: Schema.Record(Schema.String, Schema.Unknown),
+              url: Schema.String,
+              contentType: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["json", "protobuf"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
               ),
             }).pipe(
               Schema.encodeKeys({
                 authorization: "authorization",
-                usageEvents: "usage_events",
+                headers: "headers",
+                url: "url",
+                contentType: "content_type",
               }),
             ),
-            Schema.Null,
-          ]),
-        ),
-        workersAiBillingMode: Schema.optional(
-          Schema.Union([Schema.Literal("postpaid"), Schema.Null]),
-        ),
-        zdr: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      rateLimitingTechnique: Schema.optional(
+        Schema.Union([
+          Schema.Literal("fixed"),
+          Schema.Literal("sliding"),
+          Schema.Null,
+        ]),
+      ),
+      retryBackoff: Schema.optional(
+        Schema.Union([
+          Schema.Literal("constant"),
+          Schema.Literal("linear"),
+          Schema.Literal("exponential"),
+          Schema.Null,
+        ]),
+      ),
+      retryDelay: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      retryMaxAttempts: Schema.optional(
+        Schema.Union([Schema.Number, Schema.Null]),
+      ),
+      storeId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      stripe: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            authorization: Schema.String,
+            usageEvents: Schema.Array(
+              Schema.Struct({
+                payload: Schema.String,
+              }),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              authorization: "authorization",
+              usageEvents: "usage_events",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      workersAiBillingMode: Schema.optional(
+        Schema.Union([Schema.Literal("postpaid"), Schema.Null]),
+      ),
+      zdr: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        cacheInvalidateOnUpdate: "cache_invalidate_on_update",
+        cacheTtl: "cache_ttl",
+        collectLogs: "collect_logs",
+        createdAt: "created_at",
+        modifiedAt: "modified_at",
+        rateLimitingInterval: "rate_limiting_interval",
+        rateLimitingLimit: "rate_limiting_limit",
+        authentication: "authentication",
+        dlp: "dlp",
+        guardrails: "guardrails",
+        isDefault: "is_default",
+        logManagement: "log_management",
+        logManagementStrategy: "log_management_strategy",
+        logpush: "logpush",
+        logpushPublicKey: "logpush_public_key",
+        otel: "otel",
+        rateLimitingTechnique: "rate_limiting_technique",
+        retryBackoff: "retry_backoff",
+        retryDelay: "retry_delay",
+        retryMaxAttempts: "retry_max_attempts",
+        storeId: "store_id",
+        stripe: "stripe",
+        workersAiBillingMode: "workers_ai_billing_mode",
+        zdr: "zdr",
+      }),
+    ),
+  ),
+  resultInfo: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       }).pipe(
         Schema.encodeKeys({
-          id: "id",
-          cacheInvalidateOnUpdate: "cache_invalidate_on_update",
-          cacheTtl: "cache_ttl",
-          collectLogs: "collect_logs",
-          createdAt: "created_at",
-          modifiedAt: "modified_at",
-          rateLimitingInterval: "rate_limiting_interval",
-          rateLimitingLimit: "rate_limiting_limit",
-          authentication: "authentication",
-          dlp: "dlp",
-          guardrails: "guardrails",
-          isDefault: "is_default",
-          logManagement: "log_management",
-          logManagementStrategy: "log_management_strategy",
-          logpush: "logpush",
-          logpushPublicKey: "logpush_public_key",
-          otel: "otel",
-          rateLimitingTechnique: "rate_limiting_technique",
-          retryBackoff: "retry_backoff",
-          retryDelay: "retry_delay",
-          retryMaxAttempts: "retry_max_attempts",
-          storeId: "store_id",
-          stripe: "stripe",
-          workersAiBillingMode: "workers_ai_billing_mode",
-          zdr: "zdr",
+          count: "count",
+          page: "page",
+          perPage: "per_page",
+          totalCount: "total_count",
         }),
       ),
-    ),
-    resultInfo: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          totalCount: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            count: "count",
-            page: "page",
-            perPage: "per_page",
-            totalCount: "total_count",
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
-  },
-).pipe(
+      Schema.Null,
+    ]),
+  ),
+}).pipe(
   Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
 ) as unknown as Schema.Schema<ListAiGatewaysResponse>;
 
@@ -1127,7 +1123,7 @@ export const listAiGateways: API.PaginatedOperationMethod<
   ListAiGatewaysResponse,
   ListAiGatewaysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAiGatewaysRequest,
   output: ListAiGatewaysResponse,
   errors: [],
@@ -1179,51 +1175,45 @@ export interface CreateAiGatewayRequest {
   zdr?: boolean;
 }
 
-export const CreateAiGatewayRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    id: Schema.String,
-    cacheInvalidateOnUpdate: Schema.Boolean,
-    cacheTtl: Schema.Union([Schema.Number, Schema.Null]),
-    collectLogs: Schema.Boolean,
-    rateLimitingInterval: Schema.Union([Schema.Number, Schema.Null]),
-    rateLimitingLimit: Schema.Union([Schema.Number, Schema.Null]),
-    authentication: Schema.optional(Schema.Boolean),
-    logManagement: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    logManagementStrategy: Schema.optional(
-      Schema.Union([
-        Schema.Literal("STOP_INSERTING"),
-        Schema.Literal("DELETE_OLDEST"),
-        Schema.Null,
-      ]),
-    ),
-    logpush: Schema.optional(Schema.Boolean),
-    logpushPublicKey: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    rateLimitingTechnique: Schema.optional(
-      Schema.Union([
-        Schema.Literal("fixed"),
-        Schema.Literal("sliding"),
-        Schema.Null,
-      ]),
-    ),
-    retryBackoff: Schema.optional(
-      Schema.Union([
-        Schema.Literal("constant"),
-        Schema.Literal("linear"),
-        Schema.Literal("exponential"),
-        Schema.Null,
-      ]),
-    ),
-    retryDelay: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    retryMaxAttempts: Schema.optional(
-      Schema.Union([Schema.Number, Schema.Null]),
-    ),
-    workersAiBillingMode: Schema.optional(Schema.Literal("postpaid")),
-    zdr: Schema.optional(Schema.Boolean),
-  },
-).pipe(
+export const CreateAiGatewayRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  id: Schema.String,
+  cacheInvalidateOnUpdate: Schema.Boolean,
+  cacheTtl: Schema.Union([Schema.Number, Schema.Null]),
+  collectLogs: Schema.Boolean,
+  rateLimitingInterval: Schema.Union([Schema.Number, Schema.Null]),
+  rateLimitingLimit: Schema.Union([Schema.Number, Schema.Null]),
+  authentication: Schema.optional(Schema.Boolean),
+  logManagement: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  logManagementStrategy: Schema.optional(
+    Schema.Union([
+      Schema.Literal("STOP_INSERTING"),
+      Schema.Literal("DELETE_OLDEST"),
+      Schema.Null,
+    ]),
+  ),
+  logpush: Schema.optional(Schema.Boolean),
+  logpushPublicKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  rateLimitingTechnique: Schema.optional(
+    Schema.Union([
+      Schema.Literal("fixed"),
+      Schema.Literal("sliding"),
+      Schema.Null,
+    ]),
+  ),
+  retryBackoff: Schema.optional(
+    Schema.Union([
+      Schema.Literal("constant"),
+      Schema.Literal("linear"),
+      Schema.Literal("exponential"),
+      Schema.Null,
+    ]),
+  ),
+  retryDelay: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  retryMaxAttempts: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  workersAiBillingMode: Schema.optional(Schema.Literal("postpaid")),
+  zdr: Schema.optional(Schema.Boolean),
+}).pipe(
   Schema.encodeKeys({
     id: "id",
     cacheInvalidateOnUpdate: "cache_invalidate_on_update",
@@ -1338,467 +1328,376 @@ export interface CreateAiGatewayResponse {
   zdr?: boolean | null;
 }
 
-export const CreateAiGatewayResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    cacheInvalidateOnUpdate: Schema.Boolean,
-    cacheTtl: Schema.Union([Schema.Number, Schema.Null]),
-    collectLogs: Schema.Boolean,
-    createdAt: Schema.String,
-    modifiedAt: Schema.String,
-    rateLimitingInterval: Schema.Union([Schema.Number, Schema.Null]),
-    rateLimitingLimit: Schema.Union([Schema.Number, Schema.Null]),
-    authentication: Schema.optional(
-      Schema.Union([Schema.Boolean, Schema.Null]),
-    ),
-    dlp: Schema.optional(
-      Schema.Union([
-        Schema.Union([
-          Schema.Struct({
-            action: Schema.Union([
-              Schema.Literals(["BLOCK", "FLAG"]),
-              Schema.String,
-            ]),
-            enabled: Schema.Boolean,
-            profiles: Schema.Array(Schema.String),
-          }),
-          Schema.Struct({
-            enabled: Schema.Boolean,
-            policies: Schema.Array(
-              Schema.Struct({
-                id: Schema.String,
-                action: Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                check: Schema.Array(
-                  Schema.Union([
-                    Schema.Literals(["REQUEST", "RESPONSE"]),
-                    Schema.String,
-                  ]),
-                ),
-                enabled: Schema.Boolean,
-                profiles: Schema.Array(Schema.String),
-              }),
-            ),
-          }),
-        ]),
-        Schema.Null,
-      ]),
-    ),
-    guardrails: Schema.optional(
+export const CreateAiGatewayResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  cacheInvalidateOnUpdate: Schema.Boolean,
+  cacheTtl: Schema.Union([Schema.Number, Schema.Null]),
+  collectLogs: Schema.Boolean,
+  createdAt: Schema.String,
+  modifiedAt: Schema.String,
+  rateLimitingInterval: Schema.Union([Schema.Number, Schema.Null]),
+  rateLimitingLimit: Schema.Union([Schema.Number, Schema.Null]),
+  authentication: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  dlp: Schema.optional(
+    Schema.Union([
       Schema.Union([
         Schema.Struct({
-          prompt: Schema.Struct({
-            p1: Schema.optional(
-              Schema.Union([
+          action: Schema.Union([
+            Schema.Literals(["BLOCK", "FLAG"]),
+            Schema.String,
+          ]),
+          enabled: Schema.Boolean,
+          profiles: Schema.Array(Schema.String),
+        }),
+        Schema.Struct({
+          enabled: Schema.Boolean,
+          policies: Schema.Array(
+            Schema.Struct({
+              id: Schema.String,
+              action: Schema.Union([
+                Schema.Literals(["FLAG", "BLOCK"]),
+                Schema.String,
+              ]),
+              check: Schema.Array(
                 Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.Literals(["REQUEST", "RESPONSE"]),
                   Schema.String,
                 ]),
-                Schema.Null,
-              ]),
-            ),
-            s1: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s10: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s11: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s12: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s13: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s2: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s3: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s4: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s5: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s6: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s7: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s8: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s9: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              p1: "P1",
-              s1: "S1",
-              s10: "S10",
-              s11: "S11",
-              s12: "S12",
-              s13: "S13",
-              s2: "S2",
-              s3: "S3",
-              s4: "S4",
-              s5: "S5",
-              s6: "S6",
-              s7: "S7",
-              s8: "S8",
-              s9: "S9",
-            }),
-          ),
-          response: Schema.Struct({
-            p1: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s1: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s10: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s11: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s12: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s13: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s2: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s3: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s4: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s5: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s6: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s7: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s8: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s9: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              p1: "P1",
-              s1: "S1",
-              s10: "S10",
-              s11: "S11",
-              s12: "S12",
-              s13: "S13",
-              s2: "S2",
-              s3: "S3",
-              s4: "S4",
-              s5: "S5",
-              s6: "S6",
-              s7: "S7",
-              s8: "S8",
-              s9: "S9",
+              ),
+              enabled: Schema.Boolean,
+              profiles: Schema.Array(Schema.String),
             }),
           ),
         }),
-        Schema.Null,
       ]),
-    ),
-    isDefault: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    logManagement: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    logManagementStrategy: Schema.optional(
-      Schema.Union([
-        Schema.Literal("STOP_INSERTING"),
-        Schema.Literal("DELETE_OLDEST"),
-        Schema.Null,
-      ]),
-    ),
-    logpush: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    logpushPublicKey: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    otel: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            authorization: Schema.String,
-            headers: Schema.Record(Schema.String, Schema.Unknown),
-            url: Schema.String,
-            contentType: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["json", "protobuf"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              authorization: "authorization",
-              headers: "headers",
-              url: "url",
-              contentType: "content_type",
-            }),
+      Schema.Null,
+    ]),
+  ),
+  guardrails: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        prompt: Schema.Struct({
+          p1: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
+          s1: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s10: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s11: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s12: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s13: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s2: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s3: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s4: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s5: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s6: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s7: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s8: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s9: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            p1: "P1",
+            s1: "S1",
+            s10: "S10",
+            s11: "S11",
+            s12: "S12",
+            s13: "S13",
+            s2: "S2",
+            s3: "S3",
+            s4: "S4",
+            s5: "S5",
+            s6: "S6",
+            s7: "S7",
+            s8: "S8",
+            s9: "S9",
+          }),
         ),
-        Schema.Null,
-      ]),
-    ),
-    rateLimitingTechnique: Schema.optional(
-      Schema.Union([
-        Schema.Literal("fixed"),
-        Schema.Literal("sliding"),
-        Schema.Null,
-      ]),
-    ),
-    retryBackoff: Schema.optional(
-      Schema.Union([
-        Schema.Literal("constant"),
-        Schema.Literal("linear"),
-        Schema.Literal("exponential"),
-        Schema.Null,
-      ]),
-    ),
-    retryDelay: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    retryMaxAttempts: Schema.optional(
-      Schema.Union([Schema.Number, Schema.Null]),
-    ),
-    storeId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    stripe: Schema.optional(
-      Schema.Union([
+        response: Schema.Struct({
+          p1: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s1: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s10: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s11: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s12: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s13: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s2: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s3: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s4: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s5: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s6: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s7: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s8: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s9: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            p1: "P1",
+            s1: "S1",
+            s10: "S10",
+            s11: "S11",
+            s12: "S12",
+            s13: "S13",
+            s2: "S2",
+            s3: "S3",
+            s4: "S4",
+            s5: "S5",
+            s6: "S6",
+            s7: "S7",
+            s8: "S8",
+            s9: "S9",
+          }),
+        ),
+      }),
+      Schema.Null,
+    ]),
+  ),
+  isDefault: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  logManagement: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  logManagementStrategy: Schema.optional(
+    Schema.Union([
+      Schema.Literal("STOP_INSERTING"),
+      Schema.Literal("DELETE_OLDEST"),
+      Schema.Null,
+    ]),
+  ),
+  logpush: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  logpushPublicKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  otel: Schema.optional(
+    Schema.Union([
+      Schema.Array(
         Schema.Struct({
           authorization: Schema.String,
-          usageEvents: Schema.Array(
-            Schema.Struct({
-              payload: Schema.String,
-            }),
+          headers: Schema.Record(Schema.String, Schema.Unknown),
+          url: Schema.String,
+          contentType: Schema.optional(
+            Schema.Union([
+              Schema.Union([
+                Schema.Literals(["json", "protobuf"]),
+                Schema.String,
+              ]),
+              Schema.Null,
+            ]),
           ),
         }).pipe(
           Schema.encodeKeys({
             authorization: "authorization",
-            usageEvents: "usage_events",
+            headers: "headers",
+            url: "url",
+            contentType: "content_type",
           }),
         ),
-        Schema.Null,
-      ]),
-    ),
-    workersAiBillingMode: Schema.optional(
-      Schema.Union([Schema.Literal("postpaid"), Schema.Null]),
-    ),
-    zdr: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        cacheInvalidateOnUpdate: "cache_invalidate_on_update",
-        cacheTtl: "cache_ttl",
-        collectLogs: "collect_logs",
-        createdAt: "created_at",
-        modifiedAt: "modified_at",
-        rateLimitingInterval: "rate_limiting_interval",
-        rateLimitingLimit: "rate_limiting_limit",
-        authentication: "authentication",
-        dlp: "dlp",
-        guardrails: "guardrails",
-        isDefault: "is_default",
-        logManagement: "log_management",
-        logManagementStrategy: "log_management_strategy",
-        logpush: "logpush",
-        logpushPublicKey: "logpush_public_key",
-        otel: "otel",
-        rateLimitingTechnique: "rate_limiting_technique",
-        retryBackoff: "retry_backoff",
-        retryDelay: "retry_delay",
-        retryMaxAttempts: "retry_max_attempts",
-        storeId: "store_id",
-        stripe: "stripe",
-        workersAiBillingMode: "workers_ai_billing_mode",
-        zdr: "zdr",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<CreateAiGatewayResponse>;
+      ),
+      Schema.Null,
+    ]),
+  ),
+  rateLimitingTechnique: Schema.optional(
+    Schema.Union([
+      Schema.Literal("fixed"),
+      Schema.Literal("sliding"),
+      Schema.Null,
+    ]),
+  ),
+  retryBackoff: Schema.optional(
+    Schema.Union([
+      Schema.Literal("constant"),
+      Schema.Literal("linear"),
+      Schema.Literal("exponential"),
+      Schema.Null,
+    ]),
+  ),
+  retryDelay: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  retryMaxAttempts: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  storeId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  stripe: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        authorization: Schema.String,
+        usageEvents: Schema.Array(
+          Schema.Struct({
+            payload: Schema.String,
+          }),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          authorization: "authorization",
+          usageEvents: "usage_events",
+        }),
+      ),
+      Schema.Null,
+    ]),
+  ),
+  workersAiBillingMode: Schema.optional(
+    Schema.Union([Schema.Literal("postpaid"), Schema.Null]),
+  ),
+  zdr: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      cacheInvalidateOnUpdate: "cache_invalidate_on_update",
+      cacheTtl: "cache_ttl",
+      collectLogs: "collect_logs",
+      createdAt: "created_at",
+      modifiedAt: "modified_at",
+      rateLimitingInterval: "rate_limiting_interval",
+      rateLimitingLimit: "rate_limiting_limit",
+      authentication: "authentication",
+      dlp: "dlp",
+      guardrails: "guardrails",
+      isDefault: "is_default",
+      logManagement: "log_management",
+      logManagementStrategy: "log_management_strategy",
+      logpush: "logpush",
+      logpushPublicKey: "logpush_public_key",
+      otel: "otel",
+      rateLimitingTechnique: "rate_limiting_technique",
+      retryBackoff: "retry_backoff",
+      retryDelay: "retry_delay",
+      retryMaxAttempts: "retry_max_attempts",
+      storeId: "store_id",
+      stripe: "stripe",
+      workersAiBillingMode: "workers_ai_billing_mode",
+      zdr: "zdr",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<CreateAiGatewayResponse>;
 
 export type CreateAiGatewayError = DefaultErrors | GatewayAlreadyExists;
 
@@ -1807,7 +1706,7 @@ export const createAiGateway: API.OperationMethod<
   CreateAiGatewayResponse,
   CreateAiGatewayError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAiGatewayRequest,
   output: CreateAiGatewayResponse,
   errors: [GatewayAlreadyExists],
@@ -1916,256 +1815,250 @@ export interface UpdateAiGatewayRequest {
   zdr?: boolean;
 }
 
-export const UpdateAiGatewayRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.String.pipe(T.HttpPath("id")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    cacheInvalidateOnUpdate: Schema.Boolean,
-    cacheTtl: Schema.Union([Schema.Number, Schema.Null]),
-    collectLogs: Schema.Boolean,
-    rateLimitingInterval: Schema.Union([Schema.Number, Schema.Null]),
-    rateLimitingLimit: Schema.Union([Schema.Number, Schema.Null]),
-    authentication: Schema.optional(Schema.Boolean),
-    dlp: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          action: Schema.Union([
-            Schema.Literals(["BLOCK", "FLAG"]),
-            Schema.String,
-          ]),
-          enabled: Schema.Boolean,
-          profiles: Schema.Array(Schema.String),
-        }),
-        Schema.Struct({
-          enabled: Schema.Boolean,
-          policies: Schema.Array(
-            Schema.Struct({
-              id: Schema.String,
-              action: Schema.Union([
-                Schema.Literals(["FLAG", "BLOCK"]),
-                Schema.String,
-              ]),
-              check: Schema.Array(
-                Schema.Union([
-                  Schema.Literals(["REQUEST", "RESPONSE"]),
-                  Schema.String,
-                ]),
-              ),
-              enabled: Schema.Boolean,
-              profiles: Schema.Array(Schema.String),
-            }),
-          ),
-        }),
-      ]),
-    ),
-    guardrails: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          prompt: Schema.Struct({
-            p1: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
-            ),
-            s1: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
-            ),
-            s10: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
-            ),
-            s11: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
-            ),
-            s12: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
-            ),
-            s13: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
-            ),
-            s2: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
-            ),
-            s3: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
-            ),
-            s4: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
-            ),
-            s5: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
-            ),
-            s6: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
-            ),
-            s7: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
-            ),
-            s8: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
-            ),
-            s9: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              p1: "P1",
-              s1: "S1",
-              s10: "S10",
-              s11: "S11",
-              s12: "S12",
-              s13: "S13",
-              s2: "S2",
-              s3: "S3",
-              s4: "S4",
-              s5: "S5",
-              s6: "S6",
-              s7: "S7",
-              s8: "S8",
-              s9: "S9",
-            }),
-          ),
-          response: Schema.Struct({
-            p1: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
-            ),
-            s1: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
-            ),
-            s10: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
-            ),
-            s11: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
-            ),
-            s12: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
-            ),
-            s13: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
-            ),
-            s2: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
-            ),
-            s3: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
-            ),
-            s4: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
-            ),
-            s5: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
-            ),
-            s6: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
-            ),
-            s7: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
-            ),
-            s8: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
-            ),
-            s9: Schema.optional(
-              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              p1: "P1",
-              s1: "S1",
-              s10: "S10",
-              s11: "S11",
-              s12: "S12",
-              s13: "S13",
-              s2: "S2",
-              s3: "S3",
-              s4: "S4",
-              s5: "S5",
-              s6: "S6",
-              s7: "S7",
-              s8: "S8",
-              s9: "S9",
-            }),
-          ),
-        }),
-        Schema.Null,
-      ]),
-    ),
-    logManagement: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    logManagementStrategy: Schema.optional(
-      Schema.Union([
-        Schema.Literal("STOP_INSERTING"),
-        Schema.Literal("DELETE_OLDEST"),
-        Schema.Null,
-      ]),
-    ),
-    logpush: Schema.optional(Schema.Boolean),
-    logpushPublicKey: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    otel: Schema.optional(
-      Schema.Union([
-        Schema.Array(
+export const UpdateAiGatewayRequest = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String.pipe(T.HttpPath("id")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  cacheInvalidateOnUpdate: Schema.Boolean,
+  cacheTtl: Schema.Union([Schema.Number, Schema.Null]),
+  collectLogs: Schema.Boolean,
+  rateLimitingInterval: Schema.Union([Schema.Number, Schema.Null]),
+  rateLimitingLimit: Schema.Union([Schema.Number, Schema.Null]),
+  authentication: Schema.optional(Schema.Boolean),
+  dlp: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        action: Schema.Union([
+          Schema.Literals(["BLOCK", "FLAG"]),
+          Schema.String,
+        ]),
+        enabled: Schema.Boolean,
+        profiles: Schema.Array(Schema.String),
+      }),
+      Schema.Struct({
+        enabled: Schema.Boolean,
+        policies: Schema.Array(
           Schema.Struct({
-            authorization: Schema.String,
-            headers: Schema.Record(Schema.String, Schema.Unknown),
-            url: Schema.String,
-            contentType: Schema.optional(
+            id: Schema.String,
+            action: Schema.Union([
+              Schema.Literals(["FLAG", "BLOCK"]),
+              Schema.String,
+            ]),
+            check: Schema.Array(
               Schema.Union([
-                Schema.Literals(["json", "protobuf"]),
+                Schema.Literals(["REQUEST", "RESPONSE"]),
                 Schema.String,
               ]),
             ),
-          }).pipe(
-            Schema.encodeKeys({
-              authorization: "authorization",
-              headers: "headers",
-              url: "url",
-              contentType: "content_type",
-            }),
-          ),
+            enabled: Schema.Boolean,
+            profiles: Schema.Array(Schema.String),
+          }),
         ),
-        Schema.Null,
-      ]),
-    ),
-    rateLimitingTechnique: Schema.optional(
-      Schema.Union([
-        Schema.Literal("fixed"),
-        Schema.Literal("sliding"),
-        Schema.Null,
-      ]),
-    ),
-    retryBackoff: Schema.optional(
-      Schema.Union([
-        Schema.Literal("constant"),
-        Schema.Literal("linear"),
-        Schema.Literal("exponential"),
-        Schema.Null,
-      ]),
-    ),
-    retryDelay: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    retryMaxAttempts: Schema.optional(
-      Schema.Union([Schema.Number, Schema.Null]),
-    ),
-    storeId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    stripe: Schema.optional(
-      Schema.Union([
+      }),
+    ]),
+  ),
+  guardrails: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        prompt: Schema.Struct({
+          p1: Schema.optional(
+            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+          ),
+          s1: Schema.optional(
+            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+          ),
+          s10: Schema.optional(
+            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+          ),
+          s11: Schema.optional(
+            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+          ),
+          s12: Schema.optional(
+            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+          ),
+          s13: Schema.optional(
+            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+          ),
+          s2: Schema.optional(
+            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+          ),
+          s3: Schema.optional(
+            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+          ),
+          s4: Schema.optional(
+            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+          ),
+          s5: Schema.optional(
+            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+          ),
+          s6: Schema.optional(
+            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+          ),
+          s7: Schema.optional(
+            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+          ),
+          s8: Schema.optional(
+            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+          ),
+          s9: Schema.optional(
+            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            p1: "P1",
+            s1: "S1",
+            s10: "S10",
+            s11: "S11",
+            s12: "S12",
+            s13: "S13",
+            s2: "S2",
+            s3: "S3",
+            s4: "S4",
+            s5: "S5",
+            s6: "S6",
+            s7: "S7",
+            s8: "S8",
+            s9: "S9",
+          }),
+        ),
+        response: Schema.Struct({
+          p1: Schema.optional(
+            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+          ),
+          s1: Schema.optional(
+            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+          ),
+          s10: Schema.optional(
+            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+          ),
+          s11: Schema.optional(
+            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+          ),
+          s12: Schema.optional(
+            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+          ),
+          s13: Schema.optional(
+            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+          ),
+          s2: Schema.optional(
+            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+          ),
+          s3: Schema.optional(
+            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+          ),
+          s4: Schema.optional(
+            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+          ),
+          s5: Schema.optional(
+            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+          ),
+          s6: Schema.optional(
+            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+          ),
+          s7: Schema.optional(
+            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+          ),
+          s8: Schema.optional(
+            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+          ),
+          s9: Schema.optional(
+            Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            p1: "P1",
+            s1: "S1",
+            s10: "S10",
+            s11: "S11",
+            s12: "S12",
+            s13: "S13",
+            s2: "S2",
+            s3: "S3",
+            s4: "S4",
+            s5: "S5",
+            s6: "S6",
+            s7: "S7",
+            s8: "S8",
+            s9: "S9",
+          }),
+        ),
+      }),
+      Schema.Null,
+    ]),
+  ),
+  logManagement: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  logManagementStrategy: Schema.optional(
+    Schema.Union([
+      Schema.Literal("STOP_INSERTING"),
+      Schema.Literal("DELETE_OLDEST"),
+      Schema.Null,
+    ]),
+  ),
+  logpush: Schema.optional(Schema.Boolean),
+  logpushPublicKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  otel: Schema.optional(
+    Schema.Union([
+      Schema.Array(
         Schema.Struct({
           authorization: Schema.String,
-          usageEvents: Schema.Array(
-            Schema.Struct({
-              payload: Schema.String,
-            }),
+          headers: Schema.Record(Schema.String, Schema.Unknown),
+          url: Schema.String,
+          contentType: Schema.optional(
+            Schema.Union([
+              Schema.Literals(["json", "protobuf"]),
+              Schema.String,
+            ]),
           ),
         }).pipe(
           Schema.encodeKeys({
             authorization: "authorization",
-            usageEvents: "usage_events",
+            headers: "headers",
+            url: "url",
+            contentType: "content_type",
           }),
         ),
-        Schema.Null,
-      ]),
-    ),
-    workersAiBillingMode: Schema.optional(Schema.Literal("postpaid")),
-    zdr: Schema.optional(Schema.Boolean),
-  },
-).pipe(
+      ),
+      Schema.Null,
+    ]),
+  ),
+  rateLimitingTechnique: Schema.optional(
+    Schema.Union([
+      Schema.Literal("fixed"),
+      Schema.Literal("sliding"),
+      Schema.Null,
+    ]),
+  ),
+  retryBackoff: Schema.optional(
+    Schema.Union([
+      Schema.Literal("constant"),
+      Schema.Literal("linear"),
+      Schema.Literal("exponential"),
+      Schema.Null,
+    ]),
+  ),
+  retryDelay: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  retryMaxAttempts: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  storeId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  stripe: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        authorization: Schema.String,
+        usageEvents: Schema.Array(
+          Schema.Struct({
+            payload: Schema.String,
+          }),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          authorization: "authorization",
+          usageEvents: "usage_events",
+        }),
+      ),
+      Schema.Null,
+    ]),
+  ),
+  workersAiBillingMode: Schema.optional(Schema.Literal("postpaid")),
+  zdr: Schema.optional(Schema.Boolean),
+}).pipe(
   Schema.encodeKeys({
     cacheInvalidateOnUpdate: "cache_invalidate_on_update",
     cacheTtl: "cache_ttl",
@@ -2284,467 +2177,376 @@ export interface UpdateAiGatewayResponse {
   zdr?: boolean | null;
 }
 
-export const UpdateAiGatewayResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    cacheInvalidateOnUpdate: Schema.Boolean,
-    cacheTtl: Schema.Union([Schema.Number, Schema.Null]),
-    collectLogs: Schema.Boolean,
-    createdAt: Schema.String,
-    modifiedAt: Schema.String,
-    rateLimitingInterval: Schema.Union([Schema.Number, Schema.Null]),
-    rateLimitingLimit: Schema.Union([Schema.Number, Schema.Null]),
-    authentication: Schema.optional(
-      Schema.Union([Schema.Boolean, Schema.Null]),
-    ),
-    dlp: Schema.optional(
-      Schema.Union([
-        Schema.Union([
-          Schema.Struct({
-            action: Schema.Union([
-              Schema.Literals(["BLOCK", "FLAG"]),
-              Schema.String,
-            ]),
-            enabled: Schema.Boolean,
-            profiles: Schema.Array(Schema.String),
-          }),
-          Schema.Struct({
-            enabled: Schema.Boolean,
-            policies: Schema.Array(
-              Schema.Struct({
-                id: Schema.String,
-                action: Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                check: Schema.Array(
-                  Schema.Union([
-                    Schema.Literals(["REQUEST", "RESPONSE"]),
-                    Schema.String,
-                  ]),
-                ),
-                enabled: Schema.Boolean,
-                profiles: Schema.Array(Schema.String),
-              }),
-            ),
-          }),
-        ]),
-        Schema.Null,
-      ]),
-    ),
-    guardrails: Schema.optional(
+export const UpdateAiGatewayResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  cacheInvalidateOnUpdate: Schema.Boolean,
+  cacheTtl: Schema.Union([Schema.Number, Schema.Null]),
+  collectLogs: Schema.Boolean,
+  createdAt: Schema.String,
+  modifiedAt: Schema.String,
+  rateLimitingInterval: Schema.Union([Schema.Number, Schema.Null]),
+  rateLimitingLimit: Schema.Union([Schema.Number, Schema.Null]),
+  authentication: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  dlp: Schema.optional(
+    Schema.Union([
       Schema.Union([
         Schema.Struct({
-          prompt: Schema.Struct({
-            p1: Schema.optional(
-              Schema.Union([
+          action: Schema.Union([
+            Schema.Literals(["BLOCK", "FLAG"]),
+            Schema.String,
+          ]),
+          enabled: Schema.Boolean,
+          profiles: Schema.Array(Schema.String),
+        }),
+        Schema.Struct({
+          enabled: Schema.Boolean,
+          policies: Schema.Array(
+            Schema.Struct({
+              id: Schema.String,
+              action: Schema.Union([
+                Schema.Literals(["FLAG", "BLOCK"]),
+                Schema.String,
+              ]),
+              check: Schema.Array(
                 Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.Literals(["REQUEST", "RESPONSE"]),
                   Schema.String,
                 ]),
-                Schema.Null,
-              ]),
-            ),
-            s1: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s10: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s11: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s12: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s13: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s2: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s3: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s4: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s5: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s6: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s7: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s8: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s9: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              p1: "P1",
-              s1: "S1",
-              s10: "S10",
-              s11: "S11",
-              s12: "S12",
-              s13: "S13",
-              s2: "S2",
-              s3: "S3",
-              s4: "S4",
-              s5: "S5",
-              s6: "S6",
-              s7: "S7",
-              s8: "S8",
-              s9: "S9",
-            }),
-          ),
-          response: Schema.Struct({
-            p1: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s1: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s10: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s11: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s12: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s13: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s2: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s3: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s4: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s5: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s6: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s7: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s8: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s9: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              p1: "P1",
-              s1: "S1",
-              s10: "S10",
-              s11: "S11",
-              s12: "S12",
-              s13: "S13",
-              s2: "S2",
-              s3: "S3",
-              s4: "S4",
-              s5: "S5",
-              s6: "S6",
-              s7: "S7",
-              s8: "S8",
-              s9: "S9",
+              ),
+              enabled: Schema.Boolean,
+              profiles: Schema.Array(Schema.String),
             }),
           ),
         }),
-        Schema.Null,
       ]),
-    ),
-    isDefault: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    logManagement: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    logManagementStrategy: Schema.optional(
-      Schema.Union([
-        Schema.Literal("STOP_INSERTING"),
-        Schema.Literal("DELETE_OLDEST"),
-        Schema.Null,
-      ]),
-    ),
-    logpush: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    logpushPublicKey: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    otel: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            authorization: Schema.String,
-            headers: Schema.Record(Schema.String, Schema.Unknown),
-            url: Schema.String,
-            contentType: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["json", "protobuf"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              authorization: "authorization",
-              headers: "headers",
-              url: "url",
-              contentType: "content_type",
-            }),
+      Schema.Null,
+    ]),
+  ),
+  guardrails: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        prompt: Schema.Struct({
+          p1: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
+          s1: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s10: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s11: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s12: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s13: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s2: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s3: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s4: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s5: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s6: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s7: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s8: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s9: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            p1: "P1",
+            s1: "S1",
+            s10: "S10",
+            s11: "S11",
+            s12: "S12",
+            s13: "S13",
+            s2: "S2",
+            s3: "S3",
+            s4: "S4",
+            s5: "S5",
+            s6: "S6",
+            s7: "S7",
+            s8: "S8",
+            s9: "S9",
+          }),
         ),
-        Schema.Null,
-      ]),
-    ),
-    rateLimitingTechnique: Schema.optional(
-      Schema.Union([
-        Schema.Literal("fixed"),
-        Schema.Literal("sliding"),
-        Schema.Null,
-      ]),
-    ),
-    retryBackoff: Schema.optional(
-      Schema.Union([
-        Schema.Literal("constant"),
-        Schema.Literal("linear"),
-        Schema.Literal("exponential"),
-        Schema.Null,
-      ]),
-    ),
-    retryDelay: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    retryMaxAttempts: Schema.optional(
-      Schema.Union([Schema.Number, Schema.Null]),
-    ),
-    storeId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    stripe: Schema.optional(
-      Schema.Union([
+        response: Schema.Struct({
+          p1: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s1: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s10: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s11: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s12: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s13: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s2: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s3: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s4: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s5: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s6: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s7: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s8: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s9: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            p1: "P1",
+            s1: "S1",
+            s10: "S10",
+            s11: "S11",
+            s12: "S12",
+            s13: "S13",
+            s2: "S2",
+            s3: "S3",
+            s4: "S4",
+            s5: "S5",
+            s6: "S6",
+            s7: "S7",
+            s8: "S8",
+            s9: "S9",
+          }),
+        ),
+      }),
+      Schema.Null,
+    ]),
+  ),
+  isDefault: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  logManagement: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  logManagementStrategy: Schema.optional(
+    Schema.Union([
+      Schema.Literal("STOP_INSERTING"),
+      Schema.Literal("DELETE_OLDEST"),
+      Schema.Null,
+    ]),
+  ),
+  logpush: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  logpushPublicKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  otel: Schema.optional(
+    Schema.Union([
+      Schema.Array(
         Schema.Struct({
           authorization: Schema.String,
-          usageEvents: Schema.Array(
-            Schema.Struct({
-              payload: Schema.String,
-            }),
+          headers: Schema.Record(Schema.String, Schema.Unknown),
+          url: Schema.String,
+          contentType: Schema.optional(
+            Schema.Union([
+              Schema.Union([
+                Schema.Literals(["json", "protobuf"]),
+                Schema.String,
+              ]),
+              Schema.Null,
+            ]),
           ),
         }).pipe(
           Schema.encodeKeys({
             authorization: "authorization",
-            usageEvents: "usage_events",
+            headers: "headers",
+            url: "url",
+            contentType: "content_type",
           }),
         ),
-        Schema.Null,
-      ]),
-    ),
-    workersAiBillingMode: Schema.optional(
-      Schema.Union([Schema.Literal("postpaid"), Schema.Null]),
-    ),
-    zdr: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        cacheInvalidateOnUpdate: "cache_invalidate_on_update",
-        cacheTtl: "cache_ttl",
-        collectLogs: "collect_logs",
-        createdAt: "created_at",
-        modifiedAt: "modified_at",
-        rateLimitingInterval: "rate_limiting_interval",
-        rateLimitingLimit: "rate_limiting_limit",
-        authentication: "authentication",
-        dlp: "dlp",
-        guardrails: "guardrails",
-        isDefault: "is_default",
-        logManagement: "log_management",
-        logManagementStrategy: "log_management_strategy",
-        logpush: "logpush",
-        logpushPublicKey: "logpush_public_key",
-        otel: "otel",
-        rateLimitingTechnique: "rate_limiting_technique",
-        retryBackoff: "retry_backoff",
-        retryDelay: "retry_delay",
-        retryMaxAttempts: "retry_max_attempts",
-        storeId: "store_id",
-        stripe: "stripe",
-        workersAiBillingMode: "workers_ai_billing_mode",
-        zdr: "zdr",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<UpdateAiGatewayResponse>;
+      ),
+      Schema.Null,
+    ]),
+  ),
+  rateLimitingTechnique: Schema.optional(
+    Schema.Union([
+      Schema.Literal("fixed"),
+      Schema.Literal("sliding"),
+      Schema.Null,
+    ]),
+  ),
+  retryBackoff: Schema.optional(
+    Schema.Union([
+      Schema.Literal("constant"),
+      Schema.Literal("linear"),
+      Schema.Literal("exponential"),
+      Schema.Null,
+    ]),
+  ),
+  retryDelay: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  retryMaxAttempts: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  storeId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  stripe: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        authorization: Schema.String,
+        usageEvents: Schema.Array(
+          Schema.Struct({
+            payload: Schema.String,
+          }),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          authorization: "authorization",
+          usageEvents: "usage_events",
+        }),
+      ),
+      Schema.Null,
+    ]),
+  ),
+  workersAiBillingMode: Schema.optional(
+    Schema.Union([Schema.Literal("postpaid"), Schema.Null]),
+  ),
+  zdr: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      cacheInvalidateOnUpdate: "cache_invalidate_on_update",
+      cacheTtl: "cache_ttl",
+      collectLogs: "collect_logs",
+      createdAt: "created_at",
+      modifiedAt: "modified_at",
+      rateLimitingInterval: "rate_limiting_interval",
+      rateLimitingLimit: "rate_limiting_limit",
+      authentication: "authentication",
+      dlp: "dlp",
+      guardrails: "guardrails",
+      isDefault: "is_default",
+      logManagement: "log_management",
+      logManagementStrategy: "log_management_strategy",
+      logpush: "logpush",
+      logpushPublicKey: "logpush_public_key",
+      otel: "otel",
+      rateLimitingTechnique: "rate_limiting_technique",
+      retryBackoff: "retry_backoff",
+      retryDelay: "retry_delay",
+      retryMaxAttempts: "retry_max_attempts",
+      storeId: "store_id",
+      stripe: "stripe",
+      workersAiBillingMode: "workers_ai_billing_mode",
+      zdr: "zdr",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<UpdateAiGatewayResponse>;
 
 export type UpdateAiGatewayError = DefaultErrors | GatewayNotFound;
 
@@ -2753,7 +2555,7 @@ export const updateAiGateway: API.OperationMethod<
   UpdateAiGatewayResponse,
   UpdateAiGatewayError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAiGatewayRequest,
   output: UpdateAiGatewayResponse,
   errors: [GatewayNotFound],
@@ -2764,12 +2566,10 @@ export interface DeleteAiGatewayRequest {
   accountId: string;
 }
 
-export const DeleteAiGatewayRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.String.pipe(T.HttpPath("id")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  },
-).pipe(
+export const DeleteAiGatewayRequest = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String.pipe(T.HttpPath("id")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/accounts/{account_id}/ai-gateway/gateways/{id}",
@@ -2865,467 +2665,376 @@ export interface DeleteAiGatewayResponse {
   zdr?: boolean | null;
 }
 
-export const DeleteAiGatewayResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    cacheInvalidateOnUpdate: Schema.Boolean,
-    cacheTtl: Schema.Union([Schema.Number, Schema.Null]),
-    collectLogs: Schema.Boolean,
-    createdAt: Schema.String,
-    modifiedAt: Schema.String,
-    rateLimitingInterval: Schema.Union([Schema.Number, Schema.Null]),
-    rateLimitingLimit: Schema.Union([Schema.Number, Schema.Null]),
-    authentication: Schema.optional(
-      Schema.Union([Schema.Boolean, Schema.Null]),
-    ),
-    dlp: Schema.optional(
-      Schema.Union([
-        Schema.Union([
-          Schema.Struct({
-            action: Schema.Union([
-              Schema.Literals(["BLOCK", "FLAG"]),
-              Schema.String,
-            ]),
-            enabled: Schema.Boolean,
-            profiles: Schema.Array(Schema.String),
-          }),
-          Schema.Struct({
-            enabled: Schema.Boolean,
-            policies: Schema.Array(
-              Schema.Struct({
-                id: Schema.String,
-                action: Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                check: Schema.Array(
-                  Schema.Union([
-                    Schema.Literals(["REQUEST", "RESPONSE"]),
-                    Schema.String,
-                  ]),
-                ),
-                enabled: Schema.Boolean,
-                profiles: Schema.Array(Schema.String),
-              }),
-            ),
-          }),
-        ]),
-        Schema.Null,
-      ]),
-    ),
-    guardrails: Schema.optional(
+export const DeleteAiGatewayResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  cacheInvalidateOnUpdate: Schema.Boolean,
+  cacheTtl: Schema.Union([Schema.Number, Schema.Null]),
+  collectLogs: Schema.Boolean,
+  createdAt: Schema.String,
+  modifiedAt: Schema.String,
+  rateLimitingInterval: Schema.Union([Schema.Number, Schema.Null]),
+  rateLimitingLimit: Schema.Union([Schema.Number, Schema.Null]),
+  authentication: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  dlp: Schema.optional(
+    Schema.Union([
       Schema.Union([
         Schema.Struct({
-          prompt: Schema.Struct({
-            p1: Schema.optional(
-              Schema.Union([
+          action: Schema.Union([
+            Schema.Literals(["BLOCK", "FLAG"]),
+            Schema.String,
+          ]),
+          enabled: Schema.Boolean,
+          profiles: Schema.Array(Schema.String),
+        }),
+        Schema.Struct({
+          enabled: Schema.Boolean,
+          policies: Schema.Array(
+            Schema.Struct({
+              id: Schema.String,
+              action: Schema.Union([
+                Schema.Literals(["FLAG", "BLOCK"]),
+                Schema.String,
+              ]),
+              check: Schema.Array(
                 Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
+                  Schema.Literals(["REQUEST", "RESPONSE"]),
                   Schema.String,
                 ]),
-                Schema.Null,
-              ]),
-            ),
-            s1: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s10: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s11: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s12: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s13: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s2: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s3: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s4: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s5: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s6: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s7: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s8: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s9: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              p1: "P1",
-              s1: "S1",
-              s10: "S10",
-              s11: "S11",
-              s12: "S12",
-              s13: "S13",
-              s2: "S2",
-              s3: "S3",
-              s4: "S4",
-              s5: "S5",
-              s6: "S6",
-              s7: "S7",
-              s8: "S8",
-              s9: "S9",
-            }),
-          ),
-          response: Schema.Struct({
-            p1: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s1: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s10: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s11: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s12: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s13: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s2: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s3: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s4: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s5: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s6: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s7: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s8: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            s9: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["FLAG", "BLOCK"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              p1: "P1",
-              s1: "S1",
-              s10: "S10",
-              s11: "S11",
-              s12: "S12",
-              s13: "S13",
-              s2: "S2",
-              s3: "S3",
-              s4: "S4",
-              s5: "S5",
-              s6: "S6",
-              s7: "S7",
-              s8: "S8",
-              s9: "S9",
+              ),
+              enabled: Schema.Boolean,
+              profiles: Schema.Array(Schema.String),
             }),
           ),
         }),
-        Schema.Null,
       ]),
-    ),
-    isDefault: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    logManagement: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    logManagementStrategy: Schema.optional(
-      Schema.Union([
-        Schema.Literal("STOP_INSERTING"),
-        Schema.Literal("DELETE_OLDEST"),
-        Schema.Null,
-      ]),
-    ),
-    logpush: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    logpushPublicKey: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    otel: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            authorization: Schema.String,
-            headers: Schema.Record(Schema.String, Schema.Unknown),
-            url: Schema.String,
-            contentType: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["json", "protobuf"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              authorization: "authorization",
-              headers: "headers",
-              url: "url",
-              contentType: "content_type",
-            }),
+      Schema.Null,
+    ]),
+  ),
+  guardrails: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        prompt: Schema.Struct({
+          p1: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
           ),
+          s1: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s10: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s11: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s12: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s13: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s2: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s3: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s4: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s5: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s6: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s7: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s8: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s9: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            p1: "P1",
+            s1: "S1",
+            s10: "S10",
+            s11: "S11",
+            s12: "S12",
+            s13: "S13",
+            s2: "S2",
+            s3: "S3",
+            s4: "S4",
+            s5: "S5",
+            s6: "S6",
+            s7: "S7",
+            s8: "S8",
+            s9: "S9",
+          }),
         ),
-        Schema.Null,
-      ]),
-    ),
-    rateLimitingTechnique: Schema.optional(
-      Schema.Union([
-        Schema.Literal("fixed"),
-        Schema.Literal("sliding"),
-        Schema.Null,
-      ]),
-    ),
-    retryBackoff: Schema.optional(
-      Schema.Union([
-        Schema.Literal("constant"),
-        Schema.Literal("linear"),
-        Schema.Literal("exponential"),
-        Schema.Null,
-      ]),
-    ),
-    retryDelay: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    retryMaxAttempts: Schema.optional(
-      Schema.Union([Schema.Number, Schema.Null]),
-    ),
-    storeId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    stripe: Schema.optional(
-      Schema.Union([
+        response: Schema.Struct({
+          p1: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s1: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s10: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s11: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s12: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s13: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s2: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s3: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s4: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s5: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s6: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s7: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s8: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+          s9: Schema.optional(
+            Schema.Union([
+              Schema.Union([Schema.Literals(["FLAG", "BLOCK"]), Schema.String]),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            p1: "P1",
+            s1: "S1",
+            s10: "S10",
+            s11: "S11",
+            s12: "S12",
+            s13: "S13",
+            s2: "S2",
+            s3: "S3",
+            s4: "S4",
+            s5: "S5",
+            s6: "S6",
+            s7: "S7",
+            s8: "S8",
+            s9: "S9",
+          }),
+        ),
+      }),
+      Schema.Null,
+    ]),
+  ),
+  isDefault: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  logManagement: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  logManagementStrategy: Schema.optional(
+    Schema.Union([
+      Schema.Literal("STOP_INSERTING"),
+      Schema.Literal("DELETE_OLDEST"),
+      Schema.Null,
+    ]),
+  ),
+  logpush: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  logpushPublicKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  otel: Schema.optional(
+    Schema.Union([
+      Schema.Array(
         Schema.Struct({
           authorization: Schema.String,
-          usageEvents: Schema.Array(
-            Schema.Struct({
-              payload: Schema.String,
-            }),
+          headers: Schema.Record(Schema.String, Schema.Unknown),
+          url: Schema.String,
+          contentType: Schema.optional(
+            Schema.Union([
+              Schema.Union([
+                Schema.Literals(["json", "protobuf"]),
+                Schema.String,
+              ]),
+              Schema.Null,
+            ]),
           ),
         }).pipe(
           Schema.encodeKeys({
             authorization: "authorization",
-            usageEvents: "usage_events",
+            headers: "headers",
+            url: "url",
+            contentType: "content_type",
           }),
         ),
-        Schema.Null,
-      ]),
-    ),
-    workersAiBillingMode: Schema.optional(
-      Schema.Union([Schema.Literal("postpaid"), Schema.Null]),
-    ),
-    zdr: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        cacheInvalidateOnUpdate: "cache_invalidate_on_update",
-        cacheTtl: "cache_ttl",
-        collectLogs: "collect_logs",
-        createdAt: "created_at",
-        modifiedAt: "modified_at",
-        rateLimitingInterval: "rate_limiting_interval",
-        rateLimitingLimit: "rate_limiting_limit",
-        authentication: "authentication",
-        dlp: "dlp",
-        guardrails: "guardrails",
-        isDefault: "is_default",
-        logManagement: "log_management",
-        logManagementStrategy: "log_management_strategy",
-        logpush: "logpush",
-        logpushPublicKey: "logpush_public_key",
-        otel: "otel",
-        rateLimitingTechnique: "rate_limiting_technique",
-        retryBackoff: "retry_backoff",
-        retryDelay: "retry_delay",
-        retryMaxAttempts: "retry_max_attempts",
-        storeId: "store_id",
-        stripe: "stripe",
-        workersAiBillingMode: "workers_ai_billing_mode",
-        zdr: "zdr",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<DeleteAiGatewayResponse>;
+      ),
+      Schema.Null,
+    ]),
+  ),
+  rateLimitingTechnique: Schema.optional(
+    Schema.Union([
+      Schema.Literal("fixed"),
+      Schema.Literal("sliding"),
+      Schema.Null,
+    ]),
+  ),
+  retryBackoff: Schema.optional(
+    Schema.Union([
+      Schema.Literal("constant"),
+      Schema.Literal("linear"),
+      Schema.Literal("exponential"),
+      Schema.Null,
+    ]),
+  ),
+  retryDelay: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  retryMaxAttempts: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  storeId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  stripe: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        authorization: Schema.String,
+        usageEvents: Schema.Array(
+          Schema.Struct({
+            payload: Schema.String,
+          }),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          authorization: "authorization",
+          usageEvents: "usage_events",
+        }),
+      ),
+      Schema.Null,
+    ]),
+  ),
+  workersAiBillingMode: Schema.optional(
+    Schema.Union([Schema.Literal("postpaid"), Schema.Null]),
+  ),
+  zdr: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      cacheInvalidateOnUpdate: "cache_invalidate_on_update",
+      cacheTtl: "cache_ttl",
+      collectLogs: "collect_logs",
+      createdAt: "created_at",
+      modifiedAt: "modified_at",
+      rateLimitingInterval: "rate_limiting_interval",
+      rateLimitingLimit: "rate_limiting_limit",
+      authentication: "authentication",
+      dlp: "dlp",
+      guardrails: "guardrails",
+      isDefault: "is_default",
+      logManagement: "log_management",
+      logManagementStrategy: "log_management_strategy",
+      logpush: "logpush",
+      logpushPublicKey: "logpush_public_key",
+      otel: "otel",
+      rateLimitingTechnique: "rate_limiting_technique",
+      retryBackoff: "retry_backoff",
+      retryDelay: "retry_delay",
+      retryMaxAttempts: "retry_max_attempts",
+      storeId: "store_id",
+      stripe: "stripe",
+      workersAiBillingMode: "workers_ai_billing_mode",
+      zdr: "zdr",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<DeleteAiGatewayResponse>;
 
 export type DeleteAiGatewayError = DefaultErrors | GatewayNotFound;
 
@@ -3334,7 +3043,7 @@ export const deleteAiGateway: API.OperationMethod<
   DeleteAiGatewayResponse,
   DeleteAiGatewayError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAiGatewayRequest,
   output: DeleteAiGatewayResponse,
   errors: [GatewayNotFound],
@@ -3349,15 +3058,14 @@ export interface CreditBalanceBillingRequest {
   accountId: string;
 }
 
-export const CreditBalanceBillingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/ai-gateway/billing/credit-balance",
-    }),
-  ) as unknown as Schema.Schema<CreditBalanceBillingRequest>;
+export const CreditBalanceBillingRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/ai-gateway/billing/credit-balance",
+  }),
+) as unknown as Schema.Schema<CreditBalanceBillingRequest>;
 
 export interface CreditBalanceBillingResponse {
   balance: number;
@@ -3373,40 +3081,39 @@ export interface CreditBalanceBillingResponse {
   firstTopupSuccess?: boolean | null;
 }
 
-export const CreditBalanceBillingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    balance: Schema.Number,
-    hasDefaultPaymentMethod: Schema.Boolean,
-    paymentMethod: Schema.Union([
-      Schema.Struct({
-        brand: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        last4: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }),
-      Schema.Null,
-    ]),
-    topupConfig: Schema.Struct({
-      amount: Schema.Union([Schema.Number, Schema.Null]),
-      disabledReason: Schema.Union([Schema.String, Schema.Null]),
-      error: Schema.Union([Schema.String, Schema.Null]),
-      lastFailedAt: Schema.Union([Schema.Number, Schema.Null]),
-      threshold: Schema.Union([Schema.Number, Schema.Null]),
+export const CreditBalanceBillingResponse = /*@__PURE__*/ Schema.Struct({
+  balance: Schema.Number,
+  hasDefaultPaymentMethod: Schema.Boolean,
+  paymentMethod: Schema.Union([
+    Schema.Struct({
+      brand: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      last4: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }),
-    firstTopupSuccess: Schema.optional(
-      Schema.Union([Schema.Boolean, Schema.Null]),
-    ),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        balance: "balance",
-        hasDefaultPaymentMethod: "has_default_payment_method",
-        paymentMethod: "payment_method",
-        topupConfig: "topup_config",
-        firstTopupSuccess: "first_topup_success",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<CreditBalanceBillingResponse>;
+    Schema.Null,
+  ]),
+  topupConfig: Schema.Struct({
+    amount: Schema.Union([Schema.Number, Schema.Null]),
+    disabledReason: Schema.Union([Schema.String, Schema.Null]),
+    error: Schema.Union([Schema.String, Schema.Null]),
+    lastFailedAt: Schema.Union([Schema.Number, Schema.Null]),
+    threshold: Schema.Union([Schema.Number, Schema.Null]),
+  }),
+  firstTopupSuccess: Schema.optional(
+    Schema.Union([Schema.Boolean, Schema.Null]),
+  ),
+})
+  .pipe(
+    Schema.encodeKeys({
+      balance: "balance",
+      hasDefaultPaymentMethod: "has_default_payment_method",
+      paymentMethod: "payment_method",
+      topupConfig: "topup_config",
+      firstTopupSuccess: "first_topup_success",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<CreditBalanceBillingResponse>;
 
 export type CreditBalanceBillingError = DefaultErrors;
 
@@ -3415,7 +3122,7 @@ export const creditBalanceBilling: API.OperationMethod<
   CreditBalanceBillingResponse,
   CreditBalanceBillingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreditBalanceBillingRequest,
   output: CreditBalanceBillingResponse,
   errors: [],
@@ -3430,15 +3137,14 @@ export interface GetBillingSpendingLimitRequest {
   accountId: string;
 }
 
-export const GetBillingSpendingLimitRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/ai-gateway/billing/spending-limit",
-    }),
-  ) as unknown as Schema.Schema<GetBillingSpendingLimitRequest>;
+export const GetBillingSpendingLimitRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/ai-gateway/billing/spending-limit",
+  }),
+) as unknown as Schema.Schema<GetBillingSpendingLimitRequest>;
 
 export interface GetBillingSpendingLimitResponse {
   config: {
@@ -3449,17 +3155,16 @@ export interface GetBillingSpendingLimitResponse {
   enabled: boolean;
 }
 
-export const GetBillingSpendingLimitResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    config: Schema.Struct({
-      amount: Schema.Union([Schema.Number, Schema.Null]),
-      duration: Schema.Union([Schema.String, Schema.Null]),
-      strategy: Schema.Union([Schema.String, Schema.Null]),
-    }),
-    enabled: Schema.Boolean,
-  }).pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<GetBillingSpendingLimitResponse>;
+export const GetBillingSpendingLimitResponse = /*@__PURE__*/ Schema.Struct({
+  config: Schema.Struct({
+    amount: Schema.Union([Schema.Number, Schema.Null]),
+    duration: Schema.Union([Schema.String, Schema.Null]),
+    strategy: Schema.Union([Schema.String, Schema.Null]),
+  }),
+  enabled: Schema.Boolean,
+}).pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<GetBillingSpendingLimitResponse>;
 
 export type GetBillingSpendingLimitError = DefaultErrors;
 
@@ -3468,7 +3173,7 @@ export const getBillingSpendingLimit: API.OperationMethod<
   GetBillingSpendingLimitResponse,
   GetBillingSpendingLimitError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetBillingSpendingLimitRequest,
   output: GetBillingSpendingLimitResponse,
   errors: [],
@@ -3485,29 +3190,28 @@ export interface CreateBillingSpendingLimitRequest {
   strategy: "fixed" | "sliding" | (string & {});
 }
 
-export const CreateBillingSpendingLimitRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    amount: Schema.Number,
-    duration: Schema.Union([
-      Schema.Literals(["daily", "weekly", "monthly"]),
-      Schema.String,
-    ]),
-    strategy: Schema.Union([
-      Schema.Literals(["fixed", "sliding"]),
-      Schema.String,
-    ]),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/ai-gateway/billing/spending-limit",
-    }),
-  ) as unknown as Schema.Schema<CreateBillingSpendingLimitRequest>;
+export const CreateBillingSpendingLimitRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  amount: Schema.Number,
+  duration: Schema.Union([
+    Schema.Literals(["daily", "weekly", "monthly"]),
+    Schema.String,
+  ]),
+  strategy: Schema.Union([
+    Schema.Literals(["fixed", "sliding"]),
+    Schema.String,
+  ]),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/accounts/{account_id}/ai-gateway/billing/spending-limit",
+  }),
+) as unknown as Schema.Schema<CreateBillingSpendingLimitRequest>;
 
 export type CreateBillingSpendingLimitResponse = unknown;
 
 export const CreateBillingSpendingLimitResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
+  /*@__PURE__*/ Schema.Unknown.pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<CreateBillingSpendingLimitResponse>;
 
@@ -3518,7 +3222,7 @@ export const createBillingSpendingLimit: API.OperationMethod<
   CreateBillingSpendingLimitResponse,
   CreateBillingSpendingLimitError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateBillingSpendingLimitRequest,
   output: CreateBillingSpendingLimitResponse,
   errors: [],
@@ -3529,20 +3233,19 @@ export interface DeleteBillingSpendingLimitRequest {
   accountId: string;
 }
 
-export const DeleteBillingSpendingLimitRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/accounts/{account_id}/ai-gateway/billing/spending-limit",
-    }),
-  ) as unknown as Schema.Schema<DeleteBillingSpendingLimitRequest>;
+export const DeleteBillingSpendingLimitRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/accounts/{account_id}/ai-gateway/billing/spending-limit",
+  }),
+) as unknown as Schema.Schema<DeleteBillingSpendingLimitRequest>;
 
 export type DeleteBillingSpendingLimitResponse = unknown;
 
 export const DeleteBillingSpendingLimitResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
+  /*@__PURE__*/ Schema.Unknown.pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteBillingSpendingLimitResponse>;
 
@@ -3553,7 +3256,7 @@ export const deleteBillingSpendingLimit: API.OperationMethod<
   DeleteBillingSpendingLimitResponse,
   DeleteBillingSpendingLimitError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteBillingSpendingLimitRequest,
   output: DeleteBillingSpendingLimitResponse,
   errors: [],
@@ -3570,16 +3273,15 @@ export interface CreateBillingTopupRequest {
   amount: number;
 }
 
-export const CreateBillingTopupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    amount: Schema.Number,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/ai-gateway/billing/topup",
-    }),
-  ) as unknown as Schema.Schema<CreateBillingTopupRequest>;
+export const CreateBillingTopupRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  amount: Schema.Number,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/accounts/{account_id}/ai-gateway/billing/topup",
+  }),
+) as unknown as Schema.Schema<CreateBillingTopupRequest>;
 
 export interface CreateBillingTopupResponse {
   /** Stripe PaymentIntent client secret. */
@@ -3594,26 +3296,25 @@ export interface CreateBillingTopupResponse {
   last4?: string | null;
 }
 
-export const CreateBillingTopupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    clientSecret: Schema.Union([Schema.String, Schema.Null]),
-    onboarding: Schema.Boolean,
-    paymentIntentId: Schema.String,
-    brand: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    last4: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        clientSecret: "client_secret",
-        onboarding: "onboarding",
-        paymentIntentId: "payment_intent_id",
-        brand: "brand",
-        last4: "last4",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<CreateBillingTopupResponse>;
+export const CreateBillingTopupResponse = /*@__PURE__*/ Schema.Struct({
+  clientSecret: Schema.Union([Schema.String, Schema.Null]),
+  onboarding: Schema.Boolean,
+  paymentIntentId: Schema.String,
+  brand: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  last4: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+})
+  .pipe(
+    Schema.encodeKeys({
+      clientSecret: "client_secret",
+      onboarding: "onboarding",
+      paymentIntentId: "payment_intent_id",
+      brand: "brand",
+      last4: "last4",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<CreateBillingTopupResponse>;
 
 export type CreateBillingTopupError = DefaultErrors;
 
@@ -3622,7 +3323,7 @@ export const createBillingTopup: API.OperationMethod<
   CreateBillingTopupResponse,
   CreateBillingTopupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateBillingTopupRequest,
   output: CreateBillingTopupResponse,
   errors: [],
@@ -3635,40 +3336,38 @@ export interface StatusBillingTopupRequest {
   paymentIntentId: string;
 }
 
-export const StatusBillingTopupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    paymentIntentId: Schema.String,
-  }).pipe(
-    Schema.encodeKeys({ paymentIntentId: "payment_intent_id" }),
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/ai-gateway/billing/topup/status",
-    }),
-  ) as unknown as Schema.Schema<StatusBillingTopupRequest>;
+export const StatusBillingTopupRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  paymentIntentId: Schema.String,
+}).pipe(
+  Schema.encodeKeys({ paymentIntentId: "payment_intent_id" }),
+  T.Http({
+    method: "POST",
+    path: "/accounts/{account_id}/ai-gateway/billing/topup/status",
+  }),
+) as unknown as Schema.Schema<StatusBillingTopupRequest>;
 
 export interface StatusBillingTopupResponse {
   paymentIntentId: string;
   status: "completed" | "pending" | (string & {});
 }
 
-export const StatusBillingTopupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    paymentIntentId: Schema.String,
-    status: Schema.Union([
-      Schema.Literals(["completed", "pending"]),
-      Schema.String,
-    ]),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        paymentIntentId: "payment_intent_id",
-        status: "status",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<StatusBillingTopupResponse>;
+export const StatusBillingTopupResponse = /*@__PURE__*/ Schema.Struct({
+  paymentIntentId: Schema.String,
+  status: Schema.Union([
+    Schema.Literals(["completed", "pending"]),
+    Schema.String,
+  ]),
+})
+  .pipe(
+    Schema.encodeKeys({
+      paymentIntentId: "payment_intent_id",
+      status: "status",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<StatusBillingTopupResponse>;
 
 export type StatusBillingTopupError = DefaultErrors;
 
@@ -3677,7 +3376,7 @@ export const statusBillingTopup: API.OperationMethod<
   StatusBillingTopupResponse,
   StatusBillingTopupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StatusBillingTopupRequest,
   output: StatusBillingTopupResponse,
   errors: [],
@@ -3692,15 +3391,14 @@ export interface GetBillingTopupConfigRequest {
   accountId: string;
 }
 
-export const GetBillingTopupConfigRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/ai-gateway/billing/topup/config",
-    }),
-  ) as unknown as Schema.Schema<GetBillingTopupConfigRequest>;
+export const GetBillingTopupConfigRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/ai-gateway/billing/topup/config",
+  }),
+) as unknown as Schema.Schema<GetBillingTopupConfigRequest>;
 
 export interface GetBillingTopupConfigResponse {
   amount: number | null;
@@ -3710,16 +3408,15 @@ export interface GetBillingTopupConfigResponse {
   threshold: number | null;
 }
 
-export const GetBillingTopupConfigResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    amount: Schema.Union([Schema.Number, Schema.Null]),
-    disabledReason: Schema.Union([Schema.String, Schema.Null]),
-    error: Schema.Union([Schema.String, Schema.Null]),
-    lastFailedAt: Schema.Union([Schema.Number, Schema.Null]),
-    threshold: Schema.Union([Schema.Number, Schema.Null]),
-  }).pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<GetBillingTopupConfigResponse>;
+export const GetBillingTopupConfigResponse = /*@__PURE__*/ Schema.Struct({
+  amount: Schema.Union([Schema.Number, Schema.Null]),
+  disabledReason: Schema.Union([Schema.String, Schema.Null]),
+  error: Schema.Union([Schema.String, Schema.Null]),
+  lastFailedAt: Schema.Union([Schema.Number, Schema.Null]),
+  threshold: Schema.Union([Schema.Number, Schema.Null]),
+}).pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<GetBillingTopupConfigResponse>;
 
 export type GetBillingTopupConfigError = DefaultErrors;
 
@@ -3728,7 +3425,7 @@ export const getBillingTopupConfig: API.OperationMethod<
   GetBillingTopupConfigResponse,
   GetBillingTopupConfigError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetBillingTopupConfigRequest,
   output: GetBillingTopupConfigResponse,
   errors: [],
@@ -3743,30 +3440,28 @@ export interface CreateBillingTopupConfigRequest {
   threshold: number;
 }
 
-export const CreateBillingTopupConfigRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    amount: Schema.Number,
-    threshold: Schema.Number,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/ai-gateway/billing/topup/config",
-    }),
-  ) as unknown as Schema.Schema<CreateBillingTopupConfigRequest>;
+export const CreateBillingTopupConfigRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  amount: Schema.Number,
+  threshold: Schema.Number,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/accounts/{account_id}/ai-gateway/billing/topup/config",
+  }),
+) as unknown as Schema.Schema<CreateBillingTopupConfigRequest>;
 
 export interface CreateBillingTopupConfigResponse {
   amount: number;
   threshold: number;
 }
 
-export const CreateBillingTopupConfigResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    amount: Schema.Number,
-    threshold: Schema.Number,
-  }).pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<CreateBillingTopupConfigResponse>;
+export const CreateBillingTopupConfigResponse = /*@__PURE__*/ Schema.Struct({
+  amount: Schema.Number,
+  threshold: Schema.Number,
+}).pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<CreateBillingTopupConfigResponse>;
 
 export type CreateBillingTopupConfigError = DefaultErrors;
 
@@ -3775,7 +3470,7 @@ export const createBillingTopupConfig: API.OperationMethod<
   CreateBillingTopupConfigResponse,
   CreateBillingTopupConfigError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateBillingTopupConfigRequest,
   output: CreateBillingTopupConfigResponse,
   errors: [],
@@ -3786,20 +3481,19 @@ export interface DeleteBillingTopupConfigRequest {
   accountId: string;
 }
 
-export const DeleteBillingTopupConfigRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/accounts/{account_id}/ai-gateway/billing/topup/config",
-    }),
-  ) as unknown as Schema.Schema<DeleteBillingTopupConfigRequest>;
+export const DeleteBillingTopupConfigRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/accounts/{account_id}/ai-gateway/billing/topup/config",
+  }),
+) as unknown as Schema.Schema<DeleteBillingTopupConfigRequest>;
 
 export type DeleteBillingTopupConfigResponse = unknown;
 
 export const DeleteBillingTopupConfigResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
+  /*@__PURE__*/ Schema.Unknown.pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteBillingTopupConfigResponse>;
 
@@ -3810,7 +3504,7 @@ export const deleteBillingTopupConfig: API.OperationMethod<
   DeleteBillingTopupConfigResponse,
   DeleteBillingTopupConfigError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteBillingTopupConfigRequest,
   output: DeleteBillingTopupConfigResponse,
   errors: [],
@@ -3826,7 +3520,7 @@ export interface GetDatasetRequest {
   accountId: string;
 }
 
-export const GetDatasetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetDatasetRequest = /*@__PURE__*/ Schema.Struct({
   gatewayId: Schema.String.pipe(T.HttpPath("gatewayId")),
   id: Schema.String.pipe(T.HttpPath("id")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -3866,7 +3560,7 @@ export interface GetDatasetResponse {
   name: string;
 }
 
-export const GetDatasetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetDatasetResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   createdAt: Schema.String,
   enable: Schema.Boolean,
@@ -3925,7 +3619,7 @@ export const getDataset: API.OperationMethod<
   GetDatasetResponse,
   GetDatasetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDatasetRequest,
   output: GetDatasetResponse,
   errors: [],
@@ -3945,7 +3639,7 @@ export interface ListDatasetsRequest {
   search?: string;
 }
 
-export const ListDatasetsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListDatasetsRequest = /*@__PURE__*/ Schema.Struct({
   gatewayId: Schema.String.pipe(T.HttpPath("gatewayId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -3996,7 +3690,7 @@ export interface ListDatasetsResponse {
   } | null;
 }
 
-export const ListDatasetsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListDatasetsResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       id: Schema.String,
@@ -4075,7 +3769,7 @@ export const listDatasets: API.PaginatedOperationMethod<
   ListDatasetsResponse,
   ListDatasetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatasetsRequest,
   output: ListDatasetsResponse,
   errors: [],
@@ -4118,7 +3812,7 @@ export interface CreateDatasetRequest {
   name: string;
 }
 
-export const CreateDatasetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateDatasetRequest = /*@__PURE__*/ Schema.Struct({
   gatewayId: Schema.String.pipe(T.HttpPath("gatewayId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   enable: Schema.Boolean,
@@ -4188,7 +3882,7 @@ export interface CreateDatasetResponse {
   name: string;
 }
 
-export const CreateDatasetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateDatasetResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   createdAt: Schema.String,
   enable: Schema.Boolean,
@@ -4247,7 +3941,7 @@ export const createDataset: API.OperationMethod<
   CreateDatasetResponse,
   CreateDatasetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDatasetRequest,
   output: CreateDatasetResponse,
   errors: [],
@@ -4284,7 +3978,7 @@ export interface UpdateDatasetRequest {
   name: string;
 }
 
-export const UpdateDatasetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateDatasetRequest = /*@__PURE__*/ Schema.Struct({
   gatewayId: Schema.String.pipe(T.HttpPath("gatewayId")),
   id: Schema.String.pipe(T.HttpPath("id")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -4355,7 +4049,7 @@ export interface UpdateDatasetResponse {
   name: string;
 }
 
-export const UpdateDatasetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateDatasetResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   createdAt: Schema.String,
   enable: Schema.Boolean,
@@ -4414,7 +4108,7 @@ export const updateDataset: API.OperationMethod<
   UpdateDatasetResponse,
   UpdateDatasetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDatasetRequest,
   output: UpdateDatasetResponse,
   errors: [],
@@ -4426,7 +4120,7 @@ export interface DeleteDatasetRequest {
   accountId: string;
 }
 
-export const DeleteDatasetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteDatasetRequest = /*@__PURE__*/ Schema.Struct({
   gatewayId: Schema.String.pipe(T.HttpPath("gatewayId")),
   id: Schema.String.pipe(T.HttpPath("id")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -4466,7 +4160,7 @@ export interface DeleteDatasetResponse {
   name: string;
 }
 
-export const DeleteDatasetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteDatasetResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   createdAt: Schema.String,
   enable: Schema.Boolean,
@@ -4525,7 +4219,7 @@ export const deleteDataset: API.OperationMethod<
   DeleteDatasetResponse,
   DeleteDatasetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDatasetRequest,
   output: DeleteDatasetResponse,
   errors: [],
@@ -4545,7 +4239,7 @@ export interface CreateDeploymentDynamicRoutingRequest {
 }
 
 export const CreateDeploymentDynamicRoutingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     gatewayId: Schema.String.pipe(T.HttpPath("gatewayId")),
     id: Schema.String.pipe(T.HttpPath("id")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -4606,7 +4300,7 @@ export interface CreateDeploymentDynamicRoutingResponse {
 }
 
 export const CreateDeploymentDynamicRoutingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     createdAt: Schema.String,
     elements: Schema.Array(
@@ -4713,7 +4407,7 @@ export const createDeploymentDynamicRouting: API.OperationMethod<
   CreateDeploymentDynamicRoutingResponse,
   CreateDeploymentDynamicRoutingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDeploymentDynamicRoutingRequest,
   output: CreateDeploymentDynamicRoutingResponse,
   errors: [],
@@ -4729,17 +4423,18 @@ export interface ListDeploymentsDynamicRoutingRequest {
   accountId: string;
 }
 
-export const ListDeploymentsDynamicRoutingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListDeploymentsDynamicRoutingRequest = /*@__PURE__*/ Schema.Struct(
+  {
     gatewayId: Schema.String.pipe(T.HttpPath("gatewayId")),
     id: Schema.String.pipe(T.HttpPath("id")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/ai-gateway/gateways/{gatewayId}/routes/{id}/deployments",
-    }),
-  ) as unknown as Schema.Schema<ListDeploymentsDynamicRoutingRequest>;
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/ai-gateway/gateways/{gatewayId}/routes/{id}/deployments",
+  }),
+) as unknown as Schema.Schema<ListDeploymentsDynamicRoutingRequest>;
 
 export interface ListDeploymentsDynamicRoutingResponse {
   data: {
@@ -4757,7 +4452,7 @@ export interface ListDeploymentsDynamicRoutingResponse {
 }
 
 export const ListDeploymentsDynamicRoutingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Struct({
       deployments: Schema.Array(
         Schema.Struct({
@@ -4795,7 +4490,7 @@ export const listDeploymentsDynamicRouting: API.OperationMethod<
   ListDeploymentsDynamicRoutingResponse,
   ListDeploymentsDynamicRoutingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListDeploymentsDynamicRoutingRequest,
   output: ListDeploymentsDynamicRoutingResponse,
   errors: [],
@@ -4811,17 +4506,16 @@ export interface GetDynamicRoutingRequest {
   accountId: string;
 }
 
-export const GetDynamicRoutingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    gatewayId: Schema.String.pipe(T.HttpPath("gatewayId")),
-    id: Schema.String.pipe(T.HttpPath("id")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/ai-gateway/gateways/{gatewayId}/routes/{id}",
-    }),
-  ) as unknown as Schema.Schema<GetDynamicRoutingRequest>;
+export const GetDynamicRoutingRequest = /*@__PURE__*/ Schema.Struct({
+  gatewayId: Schema.String.pipe(T.HttpPath("gatewayId")),
+  id: Schema.String.pipe(T.HttpPath("id")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/ai-gateway/gateways/{gatewayId}/routes/{id}",
+  }),
+) as unknown as Schema.Schema<GetDynamicRoutingRequest>;
 
 export interface GetDynamicRoutingResponse {
   id: string;
@@ -4878,134 +4572,133 @@ export interface GetDynamicRoutingResponse {
   };
 }
 
-export const GetDynamicRoutingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
+export const GetDynamicRoutingResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  createdAt: Schema.String,
+  deployment: Schema.Struct({
     createdAt: Schema.String,
-    deployment: Schema.Struct({
-      createdAt: Schema.String,
-      deploymentId: Schema.String,
-      versionId: Schema.String,
-    }).pipe(
-      Schema.encodeKeys({
-        createdAt: "created_at",
-        deploymentId: "deployment_id",
-        versionId: "version_id",
+    deploymentId: Schema.String,
+    versionId: Schema.String,
+  }).pipe(
+    Schema.encodeKeys({
+      createdAt: "created_at",
+      deploymentId: "deployment_id",
+      versionId: "version_id",
+    }),
+  ),
+  elements: Schema.Array(
+    Schema.Union([
+      Schema.Struct({
+        id: Schema.String,
+        outputs: Schema.Struct({
+          false: Schema.Struct({
+            elementId: Schema.String,
+          }),
+          true: Schema.Struct({
+            elementId: Schema.String,
+          }),
+        }),
+        properties: Schema.Struct({
+          conditions: Schema.optional(
+            Schema.Union([Schema.Unknown, Schema.Null]),
+          ),
+        }),
+        type: Schema.Literal("conditional"),
       }),
-    ),
-    elements: Schema.Array(
-      Schema.Union([
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Struct({
-            false: Schema.Struct({
-              elementId: Schema.String,
-            }),
-            true: Schema.Struct({
-              elementId: Schema.String,
-            }),
+      Schema.Struct({
+        id: Schema.String,
+        outputs: Schema.Struct({
+          fallback: Schema.Struct({
+            elementId: Schema.String,
           }),
-          properties: Schema.Struct({
-            conditions: Schema.optional(
-              Schema.Union([Schema.Unknown, Schema.Null]),
-            ),
+          success: Schema.Struct({
+            elementId: Schema.String,
           }),
-          type: Schema.Literal("conditional"),
         }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Struct({
-            fallback: Schema.Struct({
-              elementId: Schema.String,
-            }),
-            success: Schema.Struct({
-              elementId: Schema.String,
-            }),
-          }),
-          properties: Schema.Struct({
-            key: Schema.String,
-            limit: Schema.Number,
-            limitType: Schema.Union([
-              Schema.Literals(["count", "cost"]),
-              Schema.String,
-            ]),
-            window: Schema.Number,
-          }),
-          type: Schema.Literal("rate"),
+        properties: Schema.Struct({
+          key: Schema.String,
+          limit: Schema.Number,
+          limitType: Schema.Union([
+            Schema.Literals(["count", "cost"]),
+            Schema.String,
+          ]),
+          window: Schema.Number,
         }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Struct({
-            fallback: Schema.Struct({
-              elementId: Schema.String,
-            }),
-            success: Schema.Struct({
-              elementId: Schema.String,
-            }),
-          }),
-          properties: Schema.Struct({
-            model: Schema.String,
-            provider: Schema.String,
-            retries: Schema.Number,
-            timeout: Schema.Number,
-          }),
-          type: Schema.Literal("model"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Struct({
-            next: Schema.Struct({
-              elementId: Schema.String,
-            }),
-          }),
-          type: Schema.Literal("start"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Record(Schema.String, Schema.Unknown),
-          type: Schema.Literal("percentage"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Record(Schema.String, Schema.Unknown),
-          type: Schema.Literal("end"),
-        }),
-      ]),
-    ),
-    gatewayId: Schema.String,
-    modifiedAt: Schema.String,
-    name: Schema.String,
-    version: Schema.Struct({
-      active: Schema.Literals([true, false]),
-      createdAt: Schema.String,
-      data: Schema.String,
-      versionId: Schema.String,
-      isValid: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        active: "active",
-        createdAt: "created_at",
-        data: "data",
-        versionId: "version_id",
-        isValid: "is_valid",
+        type: Schema.Literal("rate"),
       }),
-    ),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        createdAt: "created_at",
-        deployment: "deployment",
-        elements: "elements",
-        gatewayId: "gateway_id",
-        modifiedAt: "modified_at",
-        name: "name",
-        version: "version",
+      Schema.Struct({
+        id: Schema.String,
+        outputs: Schema.Struct({
+          fallback: Schema.Struct({
+            elementId: Schema.String,
+          }),
+          success: Schema.Struct({
+            elementId: Schema.String,
+          }),
+        }),
+        properties: Schema.Struct({
+          model: Schema.String,
+          provider: Schema.String,
+          retries: Schema.Number,
+          timeout: Schema.Number,
+        }),
+        type: Schema.Literal("model"),
       }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<GetDynamicRoutingResponse>;
+      Schema.Struct({
+        id: Schema.String,
+        outputs: Schema.Struct({
+          next: Schema.Struct({
+            elementId: Schema.String,
+          }),
+        }),
+        type: Schema.Literal("start"),
+      }),
+      Schema.Struct({
+        id: Schema.String,
+        outputs: Schema.Record(Schema.String, Schema.Unknown),
+        type: Schema.Literal("percentage"),
+      }),
+      Schema.Struct({
+        id: Schema.String,
+        outputs: Schema.Record(Schema.String, Schema.Unknown),
+        type: Schema.Literal("end"),
+      }),
+    ]),
+  ),
+  gatewayId: Schema.String,
+  modifiedAt: Schema.String,
+  name: Schema.String,
+  version: Schema.Struct({
+    active: Schema.Literals([true, false]),
+    createdAt: Schema.String,
+    data: Schema.String,
+    versionId: Schema.String,
+    isValid: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      active: "active",
+      createdAt: "created_at",
+      data: "data",
+      versionId: "version_id",
+      isValid: "is_valid",
+    }),
+  ),
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      createdAt: "created_at",
+      deployment: "deployment",
+      elements: "elements",
+      gatewayId: "gateway_id",
+      modifiedAt: "modified_at",
+      name: "name",
+      version: "version",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<GetDynamicRoutingResponse>;
 
 export type GetDynamicRoutingError = DefaultErrors;
 
@@ -5014,7 +4707,7 @@ export const getDynamicRouting: API.OperationMethod<
   GetDynamicRoutingResponse,
   GetDynamicRoutingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDynamicRoutingRequest,
   output: GetDynamicRoutingResponse,
   errors: [],
@@ -5030,18 +4723,17 @@ export interface ListDynamicRoutingsRequest {
   perPage?: number;
 }
 
-export const ListDynamicRoutingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    gatewayId: Schema.String.pipe(T.HttpPath("gatewayId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/ai-gateway/gateways/{gatewayId}/routes",
-    }),
-  ) as unknown as Schema.Schema<ListDynamicRoutingsRequest>;
+export const ListDynamicRoutingsRequest = /*@__PURE__*/ Schema.Struct({
+  gatewayId: Schema.String.pipe(T.HttpPath("gatewayId")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/ai-gateway/gateways/{gatewayId}/routes",
+  }),
+) as unknown as Schema.Schema<ListDynamicRoutingsRequest>;
 
 export interface ListDynamicRoutingsResponse {
   data: {
@@ -5119,153 +4811,150 @@ export interface ListDynamicRoutingsResponse {
   success: boolean;
 }
 
-export const ListDynamicRoutingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    data: Schema.Struct({
-      orderBy: Schema.String,
-      orderByDirection: Schema.String,
-      page: Schema.Number,
-      perPage: Schema.Number,
-      routes: Schema.Array(
-        Schema.Struct({
-          id: Schema.String,
-          accountTag: Schema.String,
+export const ListDynamicRoutingsResponse = /*@__PURE__*/ Schema.Struct({
+  data: Schema.Struct({
+    orderBy: Schema.String,
+    orderByDirection: Schema.String,
+    page: Schema.Number,
+    perPage: Schema.Number,
+    routes: Schema.Array(
+      Schema.Struct({
+        id: Schema.String,
+        accountTag: Schema.String,
+        createdAt: Schema.String,
+        deployment: Schema.Struct({
           createdAt: Schema.String,
-          deployment: Schema.Struct({
-            createdAt: Schema.String,
-            deploymentId: Schema.String,
-            versionId: Schema.String,
-          }).pipe(
-            Schema.encodeKeys({
-              createdAt: "created_at",
-              deploymentId: "deployment_id",
-              versionId: "version_id",
-            }),
-          ),
-          elements: Schema.Array(
-            Schema.Union([
-              Schema.Struct({
-                id: Schema.String,
-                outputs: Schema.Struct({
-                  false: Schema.Struct({
-                    elementId: Schema.String,
-                  }),
-                  true: Schema.Struct({
-                    elementId: Schema.String,
-                  }),
-                }),
-                properties: Schema.Struct({
-                  conditions: Schema.optional(
-                    Schema.Union([Schema.Unknown, Schema.Null]),
-                  ),
-                }),
-                type: Schema.Literal("conditional"),
-              }),
-              Schema.Struct({
-                id: Schema.String,
-                outputs: Schema.Struct({
-                  fallback: Schema.Struct({
-                    elementId: Schema.String,
-                  }),
-                  success: Schema.Struct({
-                    elementId: Schema.String,
-                  }),
-                }),
-                properties: Schema.Struct({
-                  key: Schema.String,
-                  limit: Schema.Number,
-                  limitType: Schema.Union([
-                    Schema.Literals(["count", "cost"]),
-                    Schema.String,
-                  ]),
-                  window: Schema.Number,
-                }),
-                type: Schema.Literal("rate"),
-              }),
-              Schema.Struct({
-                id: Schema.String,
-                outputs: Schema.Struct({
-                  fallback: Schema.Struct({
-                    elementId: Schema.String,
-                  }),
-                  success: Schema.Struct({
-                    elementId: Schema.String,
-                  }),
-                }),
-                properties: Schema.Struct({
-                  model: Schema.String,
-                  provider: Schema.String,
-                  retries: Schema.Number,
-                  timeout: Schema.Number,
-                }),
-                type: Schema.Literal("model"),
-              }),
-              Schema.Struct({
-                id: Schema.String,
-                outputs: Schema.Struct({
-                  next: Schema.Struct({
-                    elementId: Schema.String,
-                  }),
-                }),
-                type: Schema.Literal("start"),
-              }),
-              Schema.Struct({
-                id: Schema.String,
-                outputs: Schema.Record(Schema.String, Schema.Unknown),
-                type: Schema.Literal("percentage"),
-              }),
-              Schema.Struct({
-                id: Schema.String,
-                outputs: Schema.Record(Schema.String, Schema.Unknown),
-                type: Schema.Literal("end"),
-              }),
-            ]),
-          ),
-          gatewayId: Schema.String,
-          modifiedAt: Schema.String,
-          name: Schema.String,
-          version: Schema.Struct({
-            active: Schema.Literals([true, false]),
-            createdAt: Schema.String,
-            data: Schema.String,
-            versionId: Schema.String,
-            isValid: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              active: "active",
-              createdAt: "created_at",
-              data: "data",
-              versionId: "version_id",
-              isValid: "is_valid",
-            }),
-          ),
+          deploymentId: Schema.String,
+          versionId: Schema.String,
         }).pipe(
           Schema.encodeKeys({
-            id: "id",
-            accountTag: "account_tag",
             createdAt: "created_at",
-            deployment: "deployment",
-            elements: "elements",
-            gatewayId: "gateway_id",
-            modifiedAt: "modified_at",
-            name: "name",
-            version: "version",
+            deploymentId: "deployment_id",
+            versionId: "version_id",
           }),
         ),
+        elements: Schema.Array(
+          Schema.Union([
+            Schema.Struct({
+              id: Schema.String,
+              outputs: Schema.Struct({
+                false: Schema.Struct({
+                  elementId: Schema.String,
+                }),
+                true: Schema.Struct({
+                  elementId: Schema.String,
+                }),
+              }),
+              properties: Schema.Struct({
+                conditions: Schema.optional(
+                  Schema.Union([Schema.Unknown, Schema.Null]),
+                ),
+              }),
+              type: Schema.Literal("conditional"),
+            }),
+            Schema.Struct({
+              id: Schema.String,
+              outputs: Schema.Struct({
+                fallback: Schema.Struct({
+                  elementId: Schema.String,
+                }),
+                success: Schema.Struct({
+                  elementId: Schema.String,
+                }),
+              }),
+              properties: Schema.Struct({
+                key: Schema.String,
+                limit: Schema.Number,
+                limitType: Schema.Union([
+                  Schema.Literals(["count", "cost"]),
+                  Schema.String,
+                ]),
+                window: Schema.Number,
+              }),
+              type: Schema.Literal("rate"),
+            }),
+            Schema.Struct({
+              id: Schema.String,
+              outputs: Schema.Struct({
+                fallback: Schema.Struct({
+                  elementId: Schema.String,
+                }),
+                success: Schema.Struct({
+                  elementId: Schema.String,
+                }),
+              }),
+              properties: Schema.Struct({
+                model: Schema.String,
+                provider: Schema.String,
+                retries: Schema.Number,
+                timeout: Schema.Number,
+              }),
+              type: Schema.Literal("model"),
+            }),
+            Schema.Struct({
+              id: Schema.String,
+              outputs: Schema.Struct({
+                next: Schema.Struct({
+                  elementId: Schema.String,
+                }),
+              }),
+              type: Schema.Literal("start"),
+            }),
+            Schema.Struct({
+              id: Schema.String,
+              outputs: Schema.Record(Schema.String, Schema.Unknown),
+              type: Schema.Literal("percentage"),
+            }),
+            Schema.Struct({
+              id: Schema.String,
+              outputs: Schema.Record(Schema.String, Schema.Unknown),
+              type: Schema.Literal("end"),
+            }),
+          ]),
+        ),
+        gatewayId: Schema.String,
+        modifiedAt: Schema.String,
+        name: Schema.String,
+        version: Schema.Struct({
+          active: Schema.Literals([true, false]),
+          createdAt: Schema.String,
+          data: Schema.String,
+          versionId: Schema.String,
+          isValid: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+        }).pipe(
+          Schema.encodeKeys({
+            active: "active",
+            createdAt: "created_at",
+            data: "data",
+            versionId: "version_id",
+            isValid: "is_valid",
+          }),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          id: "id",
+          accountTag: "account_tag",
+          createdAt: "created_at",
+          deployment: "deployment",
+          elements: "elements",
+          gatewayId: "gateway_id",
+          modifiedAt: "modified_at",
+          name: "name",
+          version: "version",
+        }),
       ),
-    }).pipe(
-      Schema.encodeKeys({
-        orderBy: "order_by",
-        orderByDirection: "order_by_direction",
-        page: "page",
-        perPage: "per_page",
-        routes: "routes",
-      }),
     ),
-    success: Schema.Boolean,
-  }) as unknown as Schema.Schema<ListDynamicRoutingsResponse>;
+  }).pipe(
+    Schema.encodeKeys({
+      orderBy: "order_by",
+      orderByDirection: "order_by_direction",
+      page: "page",
+      perPage: "per_page",
+      routes: "routes",
+    }),
+  ),
+  success: Schema.Boolean,
+}) as unknown as Schema.Schema<ListDynamicRoutingsResponse>;
 
 export type ListDynamicRoutingsError = DefaultErrors;
 
@@ -5274,7 +4963,7 @@ export const listDynamicRoutings: API.OperationMethod<
   ListDynamicRoutingsResponse,
   ListDynamicRoutingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListDynamicRoutingsRequest,
   output: ListDynamicRoutingsResponse,
   errors: [],
@@ -5328,94 +5017,93 @@ export interface CreateDynamicRoutingRequest {
   name: string;
 }
 
-export const CreateDynamicRoutingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    gatewayId: Schema.String.pipe(T.HttpPath("gatewayId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    elements: Schema.Array(
-      Schema.Union([
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Struct({
-            false: Schema.Struct({
-              elementId: Schema.String,
-            }),
-            true: Schema.Struct({
-              elementId: Schema.String,
-            }),
+export const CreateDynamicRoutingRequest = /*@__PURE__*/ Schema.Struct({
+  gatewayId: Schema.String.pipe(T.HttpPath("gatewayId")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  elements: Schema.Array(
+    Schema.Union([
+      Schema.Struct({
+        id: Schema.String,
+        outputs: Schema.Struct({
+          false: Schema.Struct({
+            elementId: Schema.String,
           }),
-          properties: Schema.Struct({
-            conditions: Schema.optional(Schema.Unknown),
+          true: Schema.Struct({
+            elementId: Schema.String,
           }),
-          type: Schema.Literal("conditional"),
         }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Struct({
-            fallback: Schema.Struct({
-              elementId: Schema.String,
-            }),
-            success: Schema.Struct({
-              elementId: Schema.String,
-            }),
-          }),
-          properties: Schema.Struct({
-            key: Schema.String,
-            limit: Schema.Number,
-            limitType: Schema.Union([
-              Schema.Literals(["count", "cost"]),
-              Schema.String,
-            ]),
-            window: Schema.Number,
-          }),
-          type: Schema.Literal("rate"),
+        properties: Schema.Struct({
+          conditions: Schema.optional(Schema.Unknown),
         }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Struct({
-            fallback: Schema.Struct({
-              elementId: Schema.String,
-            }),
-            success: Schema.Struct({
-              elementId: Schema.String,
-            }),
+        type: Schema.Literal("conditional"),
+      }),
+      Schema.Struct({
+        id: Schema.String,
+        outputs: Schema.Struct({
+          fallback: Schema.Struct({
+            elementId: Schema.String,
           }),
-          properties: Schema.Struct({
-            model: Schema.String,
-            provider: Schema.String,
-            retries: Schema.Number,
-            timeout: Schema.Number,
+          success: Schema.Struct({
+            elementId: Schema.String,
           }),
-          type: Schema.Literal("model"),
         }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Struct({
-            next: Schema.Struct({
-              elementId: Schema.String,
-            }),
+        properties: Schema.Struct({
+          key: Schema.String,
+          limit: Schema.Number,
+          limitType: Schema.Union([
+            Schema.Literals(["count", "cost"]),
+            Schema.String,
+          ]),
+          window: Schema.Number,
+        }),
+        type: Schema.Literal("rate"),
+      }),
+      Schema.Struct({
+        id: Schema.String,
+        outputs: Schema.Struct({
+          fallback: Schema.Struct({
+            elementId: Schema.String,
           }),
-          type: Schema.Literal("start"),
+          success: Schema.Struct({
+            elementId: Schema.String,
+          }),
         }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Record(Schema.String, Schema.Unknown),
-          type: Schema.Literal("percentage"),
+        properties: Schema.Struct({
+          model: Schema.String,
+          provider: Schema.String,
+          retries: Schema.Number,
+          timeout: Schema.Number,
         }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Record(Schema.String, Schema.Unknown),
-          type: Schema.Literal("end"),
+        type: Schema.Literal("model"),
+      }),
+      Schema.Struct({
+        id: Schema.String,
+        outputs: Schema.Struct({
+          next: Schema.Struct({
+            elementId: Schema.String,
+          }),
         }),
-      ]),
-    ),
-    name: Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/ai-gateway/gateways/{gatewayId}/routes",
-    }),
-  ) as unknown as Schema.Schema<CreateDynamicRoutingRequest>;
+        type: Schema.Literal("start"),
+      }),
+      Schema.Struct({
+        id: Schema.String,
+        outputs: Schema.Record(Schema.String, Schema.Unknown),
+        type: Schema.Literal("percentage"),
+      }),
+      Schema.Struct({
+        id: Schema.String,
+        outputs: Schema.Record(Schema.String, Schema.Unknown),
+        type: Schema.Literal("end"),
+      }),
+    ]),
+  ),
+  name: Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/accounts/{account_id}/ai-gateway/gateways/{gatewayId}/routes",
+  }),
+) as unknown as Schema.Schema<CreateDynamicRoutingRequest>;
 
 export interface CreateDynamicRoutingResponse {
   id: string;
@@ -5472,9 +5160,234 @@ export interface CreateDynamicRoutingResponse {
   };
 }
 
-export const CreateDynamicRoutingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateDynamicRoutingResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  createdAt: Schema.String,
+  deployment: Schema.Struct({
+    createdAt: Schema.String,
+    deploymentId: Schema.String,
+    versionId: Schema.String,
+  }).pipe(
+    Schema.encodeKeys({
+      createdAt: "created_at",
+      deploymentId: "deployment_id",
+      versionId: "version_id",
+    }),
+  ),
+  elements: Schema.Array(
+    Schema.Union([
+      Schema.Struct({
+        id: Schema.String,
+        outputs: Schema.Struct({
+          false: Schema.Struct({
+            elementId: Schema.String,
+          }),
+          true: Schema.Struct({
+            elementId: Schema.String,
+          }),
+        }),
+        properties: Schema.Struct({
+          conditions: Schema.optional(
+            Schema.Union([Schema.Unknown, Schema.Null]),
+          ),
+        }),
+        type: Schema.Literal("conditional"),
+      }),
+      Schema.Struct({
+        id: Schema.String,
+        outputs: Schema.Struct({
+          fallback: Schema.Struct({
+            elementId: Schema.String,
+          }),
+          success: Schema.Struct({
+            elementId: Schema.String,
+          }),
+        }),
+        properties: Schema.Struct({
+          key: Schema.String,
+          limit: Schema.Number,
+          limitType: Schema.Union([
+            Schema.Literals(["count", "cost"]),
+            Schema.String,
+          ]),
+          window: Schema.Number,
+        }),
+        type: Schema.Literal("rate"),
+      }),
+      Schema.Struct({
+        id: Schema.String,
+        outputs: Schema.Struct({
+          fallback: Schema.Struct({
+            elementId: Schema.String,
+          }),
+          success: Schema.Struct({
+            elementId: Schema.String,
+          }),
+        }),
+        properties: Schema.Struct({
+          model: Schema.String,
+          provider: Schema.String,
+          retries: Schema.Number,
+          timeout: Schema.Number,
+        }),
+        type: Schema.Literal("model"),
+      }),
+      Schema.Struct({
+        id: Schema.String,
+        outputs: Schema.Struct({
+          next: Schema.Struct({
+            elementId: Schema.String,
+          }),
+        }),
+        type: Schema.Literal("start"),
+      }),
+      Schema.Struct({
+        id: Schema.String,
+        outputs: Schema.Record(Schema.String, Schema.Unknown),
+        type: Schema.Literal("percentage"),
+      }),
+      Schema.Struct({
+        id: Schema.String,
+        outputs: Schema.Record(Schema.String, Schema.Unknown),
+        type: Schema.Literal("end"),
+      }),
+    ]),
+  ),
+  gatewayId: Schema.String,
+  modifiedAt: Schema.String,
+  name: Schema.String,
+  version: Schema.Struct({
+    active: Schema.Literals([true, false]),
+    createdAt: Schema.String,
+    data: Schema.String,
+    versionId: Schema.String,
+    isValid: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      active: "active",
+      createdAt: "created_at",
+      data: "data",
+      versionId: "version_id",
+      isValid: "is_valid",
+    }),
+  ),
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      createdAt: "created_at",
+      deployment: "deployment",
+      elements: "elements",
+      gatewayId: "gateway_id",
+      modifiedAt: "modified_at",
+      name: "name",
+      version: "version",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<CreateDynamicRoutingResponse>;
+
+export type CreateDynamicRoutingError = DefaultErrors;
+
+export const createDynamicRouting: API.OperationMethod<
+  CreateDynamicRoutingRequest,
+  CreateDynamicRoutingResponse,
+  CreateDynamicRoutingError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateDynamicRoutingRequest,
+  output: CreateDynamicRoutingResponse,
+  errors: [],
+}));
+
+export interface PatchDynamicRoutingRequest {
+  gatewayId: string;
+  id: string;
+  /** Path param */
+  accountId: string;
+  /** Body param */
+  name: string;
+}
+
+export const PatchDynamicRoutingRequest = /*@__PURE__*/ Schema.Struct({
+  gatewayId: Schema.String.pipe(T.HttpPath("gatewayId")),
+  id: Schema.String.pipe(T.HttpPath("id")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  name: Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/accounts/{account_id}/ai-gateway/gateways/{gatewayId}/routes/{id}",
+  }),
+) as unknown as Schema.Schema<PatchDynamicRoutingRequest>;
+
+export interface PatchDynamicRoutingResponse {
+  route: {
+    id: string;
+    accountTag: string;
+    createdAt: string;
+    deployment: { createdAt: string; deploymentId: string; versionId: string };
+    elements: (
+      | { id: string; outputs: { next: { elementId: string } }; type: "start" }
+      | {
+          id: string;
+          outputs: {
+            false: { elementId: string };
+            true: { elementId: string };
+          };
+          properties: { conditions?: unknown | null };
+          type: "conditional";
+        }
+      | { id: string; outputs: Record<string, unknown>; type: "percentage" }
+      | {
+          id: string;
+          outputs: {
+            fallback: { elementId: string };
+            success: { elementId: string };
+          };
+          properties: {
+            key: string;
+            limit: number;
+            limitType: "count" | "cost" | (string & {});
+            window: number;
+          };
+          type: "rate";
+        }
+      | {
+          id: string;
+          outputs: {
+            fallback: { elementId: string };
+            success: { elementId: string };
+          };
+          properties: {
+            model: string;
+            provider: string;
+            retries: number;
+            timeout: number;
+          };
+          type: "model";
+        }
+      | { id: string; outputs: Record<string, unknown>; type: "end" }
+    )[];
+    gatewayId: string;
+    modifiedAt: string;
+    name: string;
+    version: {
+      active: true | false;
+      createdAt: string;
+      data: string;
+      versionId: string;
+      isValid?: boolean | null;
+    };
+  };
+  success: boolean;
+}
+
+export const PatchDynamicRoutingResponse = /*@__PURE__*/ Schema.Struct({
+  route: Schema.Struct({
     id: Schema.String,
+    accountTag: Schema.String,
     createdAt: Schema.String,
     deployment: Schema.Struct({
       createdAt: Schema.String,
@@ -5584,249 +5497,21 @@ export const CreateDynamicRoutingResponse =
         isValid: "is_valid",
       }),
     ),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        createdAt: "created_at",
-        deployment: "deployment",
-        elements: "elements",
-        gatewayId: "gateway_id",
-        modifiedAt: "modified_at",
-        name: "name",
-        version: "version",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<CreateDynamicRoutingResponse>;
-
-export type CreateDynamicRoutingError = DefaultErrors;
-
-export const createDynamicRouting: API.OperationMethod<
-  CreateDynamicRoutingRequest,
-  CreateDynamicRoutingResponse,
-  CreateDynamicRoutingError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateDynamicRoutingRequest,
-  output: CreateDynamicRoutingResponse,
-  errors: [],
-}));
-
-export interface PatchDynamicRoutingRequest {
-  gatewayId: string;
-  id: string;
-  /** Path param */
-  accountId: string;
-  /** Body param */
-  name: string;
-}
-
-export const PatchDynamicRoutingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    gatewayId: Schema.String.pipe(T.HttpPath("gatewayId")),
-    id: Schema.String.pipe(T.HttpPath("id")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    name: Schema.String,
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/accounts/{account_id}/ai-gateway/gateways/{gatewayId}/routes/{id}",
+    Schema.encodeKeys({
+      id: "id",
+      accountTag: "account_tag",
+      createdAt: "created_at",
+      deployment: "deployment",
+      elements: "elements",
+      gatewayId: "gateway_id",
+      modifiedAt: "modified_at",
+      name: "name",
+      version: "version",
     }),
-  ) as unknown as Schema.Schema<PatchDynamicRoutingRequest>;
-
-export interface PatchDynamicRoutingResponse {
-  route: {
-    id: string;
-    accountTag: string;
-    createdAt: string;
-    deployment: { createdAt: string; deploymentId: string; versionId: string };
-    elements: (
-      | { id: string; outputs: { next: { elementId: string } }; type: "start" }
-      | {
-          id: string;
-          outputs: {
-            false: { elementId: string };
-            true: { elementId: string };
-          };
-          properties: { conditions?: unknown | null };
-          type: "conditional";
-        }
-      | { id: string; outputs: Record<string, unknown>; type: "percentage" }
-      | {
-          id: string;
-          outputs: {
-            fallback: { elementId: string };
-            success: { elementId: string };
-          };
-          properties: {
-            key: string;
-            limit: number;
-            limitType: "count" | "cost" | (string & {});
-            window: number;
-          };
-          type: "rate";
-        }
-      | {
-          id: string;
-          outputs: {
-            fallback: { elementId: string };
-            success: { elementId: string };
-          };
-          properties: {
-            model: string;
-            provider: string;
-            retries: number;
-            timeout: number;
-          };
-          type: "model";
-        }
-      | { id: string; outputs: Record<string, unknown>; type: "end" }
-    )[];
-    gatewayId: string;
-    modifiedAt: string;
-    name: string;
-    version: {
-      active: true | false;
-      createdAt: string;
-      data: string;
-      versionId: string;
-      isValid?: boolean | null;
-    };
-  };
-  success: boolean;
-}
-
-export const PatchDynamicRoutingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    route: Schema.Struct({
-      id: Schema.String,
-      accountTag: Schema.String,
-      createdAt: Schema.String,
-      deployment: Schema.Struct({
-        createdAt: Schema.String,
-        deploymentId: Schema.String,
-        versionId: Schema.String,
-      }).pipe(
-        Schema.encodeKeys({
-          createdAt: "created_at",
-          deploymentId: "deployment_id",
-          versionId: "version_id",
-        }),
-      ),
-      elements: Schema.Array(
-        Schema.Union([
-          Schema.Struct({
-            id: Schema.String,
-            outputs: Schema.Struct({
-              false: Schema.Struct({
-                elementId: Schema.String,
-              }),
-              true: Schema.Struct({
-                elementId: Schema.String,
-              }),
-            }),
-            properties: Schema.Struct({
-              conditions: Schema.optional(
-                Schema.Union([Schema.Unknown, Schema.Null]),
-              ),
-            }),
-            type: Schema.Literal("conditional"),
-          }),
-          Schema.Struct({
-            id: Schema.String,
-            outputs: Schema.Struct({
-              fallback: Schema.Struct({
-                elementId: Schema.String,
-              }),
-              success: Schema.Struct({
-                elementId: Schema.String,
-              }),
-            }),
-            properties: Schema.Struct({
-              key: Schema.String,
-              limit: Schema.Number,
-              limitType: Schema.Union([
-                Schema.Literals(["count", "cost"]),
-                Schema.String,
-              ]),
-              window: Schema.Number,
-            }),
-            type: Schema.Literal("rate"),
-          }),
-          Schema.Struct({
-            id: Schema.String,
-            outputs: Schema.Struct({
-              fallback: Schema.Struct({
-                elementId: Schema.String,
-              }),
-              success: Schema.Struct({
-                elementId: Schema.String,
-              }),
-            }),
-            properties: Schema.Struct({
-              model: Schema.String,
-              provider: Schema.String,
-              retries: Schema.Number,
-              timeout: Schema.Number,
-            }),
-            type: Schema.Literal("model"),
-          }),
-          Schema.Struct({
-            id: Schema.String,
-            outputs: Schema.Struct({
-              next: Schema.Struct({
-                elementId: Schema.String,
-              }),
-            }),
-            type: Schema.Literal("start"),
-          }),
-          Schema.Struct({
-            id: Schema.String,
-            outputs: Schema.Record(Schema.String, Schema.Unknown),
-            type: Schema.Literal("percentage"),
-          }),
-          Schema.Struct({
-            id: Schema.String,
-            outputs: Schema.Record(Schema.String, Schema.Unknown),
-            type: Schema.Literal("end"),
-          }),
-        ]),
-      ),
-      gatewayId: Schema.String,
-      modifiedAt: Schema.String,
-      name: Schema.String,
-      version: Schema.Struct({
-        active: Schema.Literals([true, false]),
-        createdAt: Schema.String,
-        data: Schema.String,
-        versionId: Schema.String,
-        isValid: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          active: "active",
-          createdAt: "created_at",
-          data: "data",
-          versionId: "version_id",
-          isValid: "is_valid",
-        }),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        accountTag: "account_tag",
-        createdAt: "created_at",
-        deployment: "deployment",
-        elements: "elements",
-        gatewayId: "gateway_id",
-        modifiedAt: "modified_at",
-        name: "name",
-        version: "version",
-      }),
-    ),
-    success: Schema.Boolean,
-  }) as unknown as Schema.Schema<PatchDynamicRoutingResponse>;
+  ),
+  success: Schema.Boolean,
+}) as unknown as Schema.Schema<PatchDynamicRoutingResponse>;
 
 export type PatchDynamicRoutingError = DefaultErrors;
 
@@ -5835,7 +5520,7 @@ export const patchDynamicRouting: API.OperationMethod<
   PatchDynamicRoutingResponse,
   PatchDynamicRoutingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchDynamicRoutingRequest,
   output: PatchDynamicRoutingResponse,
   errors: [],
@@ -5847,17 +5532,16 @@ export interface DeleteDynamicRoutingRequest {
   accountId: string;
 }
 
-export const DeleteDynamicRoutingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    gatewayId: Schema.String.pipe(T.HttpPath("gatewayId")),
-    id: Schema.String.pipe(T.HttpPath("id")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/accounts/{account_id}/ai-gateway/gateways/{gatewayId}/routes/{id}",
-    }),
-  ) as unknown as Schema.Schema<DeleteDynamicRoutingRequest>;
+export const DeleteDynamicRoutingRequest = /*@__PURE__*/ Schema.Struct({
+  gatewayId: Schema.String.pipe(T.HttpPath("gatewayId")),
+  id: Schema.String.pipe(T.HttpPath("id")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/accounts/{account_id}/ai-gateway/gateways/{gatewayId}/routes/{id}",
+  }),
+) as unknown as Schema.Schema<DeleteDynamicRoutingRequest>;
 
 export interface DeleteDynamicRoutingResponse {
   id: string;
@@ -5906,106 +5590,105 @@ export interface DeleteDynamicRoutingResponse {
   name: string;
 }
 
-export const DeleteDynamicRoutingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    createdAt: Schema.String,
-    elements: Schema.Array(
-      Schema.Union([
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Struct({
-            false: Schema.Struct({
-              elementId: Schema.String,
-            }),
-            true: Schema.Struct({
-              elementId: Schema.String,
-            }),
+export const DeleteDynamicRoutingResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  createdAt: Schema.String,
+  elements: Schema.Array(
+    Schema.Union([
+      Schema.Struct({
+        id: Schema.String,
+        outputs: Schema.Struct({
+          false: Schema.Struct({
+            elementId: Schema.String,
           }),
-          properties: Schema.Struct({
-            conditions: Schema.optional(
-              Schema.Union([Schema.Unknown, Schema.Null]),
-            ),
+          true: Schema.Struct({
+            elementId: Schema.String,
           }),
-          type: Schema.Literal("conditional"),
         }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Struct({
-            fallback: Schema.Struct({
-              elementId: Schema.String,
-            }),
-            success: Schema.Struct({
-              elementId: Schema.String,
-            }),
-          }),
-          properties: Schema.Struct({
-            key: Schema.String,
-            limit: Schema.Number,
-            limitType: Schema.Union([
-              Schema.Literals(["count", "cost"]),
-              Schema.String,
-            ]),
-            window: Schema.Number,
-          }),
-          type: Schema.Literal("rate"),
+        properties: Schema.Struct({
+          conditions: Schema.optional(
+            Schema.Union([Schema.Unknown, Schema.Null]),
+          ),
         }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Struct({
-            fallback: Schema.Struct({
-              elementId: Schema.String,
-            }),
-            success: Schema.Struct({
-              elementId: Schema.String,
-            }),
-          }),
-          properties: Schema.Struct({
-            model: Schema.String,
-            provider: Schema.String,
-            retries: Schema.Number,
-            timeout: Schema.Number,
-          }),
-          type: Schema.Literal("model"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Struct({
-            next: Schema.Struct({
-              elementId: Schema.String,
-            }),
-          }),
-          type: Schema.Literal("start"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Record(Schema.String, Schema.Unknown),
-          type: Schema.Literal("percentage"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Record(Schema.String, Schema.Unknown),
-          type: Schema.Literal("end"),
-        }),
-      ]),
-    ),
-    gatewayId: Schema.String,
-    modifiedAt: Schema.String,
-    name: Schema.String,
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        createdAt: "created_at",
-        elements: "elements",
-        gatewayId: "gateway_id",
-        modifiedAt: "modified_at",
-        name: "name",
+        type: Schema.Literal("conditional"),
       }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<DeleteDynamicRoutingResponse>;
+      Schema.Struct({
+        id: Schema.String,
+        outputs: Schema.Struct({
+          fallback: Schema.Struct({
+            elementId: Schema.String,
+          }),
+          success: Schema.Struct({
+            elementId: Schema.String,
+          }),
+        }),
+        properties: Schema.Struct({
+          key: Schema.String,
+          limit: Schema.Number,
+          limitType: Schema.Union([
+            Schema.Literals(["count", "cost"]),
+            Schema.String,
+          ]),
+          window: Schema.Number,
+        }),
+        type: Schema.Literal("rate"),
+      }),
+      Schema.Struct({
+        id: Schema.String,
+        outputs: Schema.Struct({
+          fallback: Schema.Struct({
+            elementId: Schema.String,
+          }),
+          success: Schema.Struct({
+            elementId: Schema.String,
+          }),
+        }),
+        properties: Schema.Struct({
+          model: Schema.String,
+          provider: Schema.String,
+          retries: Schema.Number,
+          timeout: Schema.Number,
+        }),
+        type: Schema.Literal("model"),
+      }),
+      Schema.Struct({
+        id: Schema.String,
+        outputs: Schema.Struct({
+          next: Schema.Struct({
+            elementId: Schema.String,
+          }),
+        }),
+        type: Schema.Literal("start"),
+      }),
+      Schema.Struct({
+        id: Schema.String,
+        outputs: Schema.Record(Schema.String, Schema.Unknown),
+        type: Schema.Literal("percentage"),
+      }),
+      Schema.Struct({
+        id: Schema.String,
+        outputs: Schema.Record(Schema.String, Schema.Unknown),
+        type: Schema.Literal("end"),
+      }),
+    ]),
+  ),
+  gatewayId: Schema.String,
+  modifiedAt: Schema.String,
+  name: Schema.String,
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      createdAt: "created_at",
+      elements: "elements",
+      gatewayId: "gateway_id",
+      modifiedAt: "modified_at",
+      name: "name",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<DeleteDynamicRoutingResponse>;
 
 export type DeleteDynamicRoutingError = DefaultErrors;
 
@@ -6014,7 +5697,7 @@ export const deleteDynamicRouting: API.OperationMethod<
   DeleteDynamicRoutingResponse,
   DeleteDynamicRoutingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDynamicRoutingRequest,
   output: DeleteDynamicRoutingResponse,
   errors: [],
@@ -6030,7 +5713,7 @@ export interface GetEvaluationRequest {
   accountId: string;
 }
 
-export const GetEvaluationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetEvaluationRequest = /*@__PURE__*/ Schema.Struct({
   gatewayId: Schema.String.pipe(T.HttpPath("gatewayId")),
   id: Schema.String.pipe(T.HttpPath("id")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -6092,7 +5775,7 @@ export interface GetEvaluationResponse {
   totalLogs: number;
 }
 
-export const GetEvaluationResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetEvaluationResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   createdAt: Schema.String,
   datasets: Schema.Array(
@@ -6203,7 +5886,7 @@ export const getEvaluation: API.OperationMethod<
   GetEvaluationResponse,
   GetEvaluationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEvaluationRequest,
   output: GetEvaluationResponse,
   errors: [],
@@ -6223,17 +5906,15 @@ export interface ListEvaluationsRequest {
   search?: string;
 }
 
-export const ListEvaluationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    gatewayId: Schema.String.pipe(T.HttpPath("gatewayId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-    name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
-    processed: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("processed")),
-    search: Schema.optional(Schema.String).pipe(T.HttpQuery("search")),
-  },
-).pipe(
+export const ListEvaluationsRequest = /*@__PURE__*/ Schema.Struct({
+  gatewayId: Schema.String.pipe(T.HttpPath("gatewayId")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+  name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
+  processed: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("processed")),
+  search: Schema.optional(Schema.String).pipe(T.HttpQuery("search")),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/accounts/{account_id}/ai-gateway/gateways/{gatewayId}/evaluations",
@@ -6298,132 +5979,129 @@ export interface ListEvaluationsResponse {
   } | null;
 }
 
-export const ListEvaluationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        createdAt: Schema.String,
-        datasets: Schema.Array(
-          Schema.Struct({
-            id: Schema.String,
-            accountId: Schema.String,
-            accountTag: Schema.String,
-            createdAt: Schema.String,
-            enable: Schema.Boolean,
-            filters: Schema.Array(
-              Schema.Struct({
-                key: Schema.Union([
-                  Schema.Literals([
-                    "created_at",
-                    "request_content_type",
-                    "response_content_type",
-                    "success",
-                    "cached",
-                    "provider",
-                    "model",
-                    "cost",
-                    "tokens",
-                    "tokens_in",
-                    "tokens_out",
-                    "duration",
-                    "feedback",
-                  ]),
-                  Schema.String,
-                ]),
-                operator: Schema.Union([
-                  Schema.Literals(["eq", "contains", "lt", "gt"]),
-                  Schema.String,
-                ]),
-                value: Schema.Array(
-                  Schema.Union([Schema.String, Schema.Number, Schema.Boolean]),
-                ),
-              }),
-            ),
-            gatewayId: Schema.String,
-            modifiedAt: Schema.String,
-            name: Schema.String,
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              accountId: "account_id",
-              accountTag: "account_tag",
-              createdAt: "created_at",
-              enable: "enable",
-              filters: "filters",
-              gatewayId: "gateway_id",
-              modifiedAt: "modified_at",
-              name: "name",
-            }),
-          ),
-        ),
-        gatewayId: Schema.String,
-        modifiedAt: Schema.String,
-        name: Schema.String,
-        processed: Schema.Boolean,
-        results: Schema.Array(
-          Schema.Struct({
-            id: Schema.String,
-            createdAt: Schema.String,
-            evaluationId: Schema.String,
-            evaluationTypeId: Schema.String,
-            modifiedAt: Schema.String,
-            result: Schema.String,
-            status: Schema.Number,
-            statusDescription: Schema.String,
-            totalLogs: Schema.Number,
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              createdAt: "created_at",
-              evaluationId: "evaluation_id",
-              evaluationTypeId: "evaluation_type_id",
-              modifiedAt: "modified_at",
-              result: "result",
-              status: "status",
-              statusDescription: "status_description",
-              totalLogs: "total_logs",
-            }),
-          ),
-        ),
-        totalLogs: Schema.Number,
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          createdAt: "created_at",
-          datasets: "datasets",
-          gatewayId: "gateway_id",
-          modifiedAt: "modified_at",
-          name: "name",
-          processed: "processed",
-          results: "results",
-          totalLogs: "total_logs",
-        }),
-      ),
-    ),
-    resultInfo: Schema.optional(
-      Schema.Union([
+export const ListEvaluationsResponse = /*@__PURE__*/ Schema.Struct({
+  result: Schema.Array(
+    Schema.Struct({
+      id: Schema.String,
+      createdAt: Schema.String,
+      datasets: Schema.Array(
         Schema.Struct({
-          count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          totalCount: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
+          id: Schema.String,
+          accountId: Schema.String,
+          accountTag: Schema.String,
+          createdAt: Schema.String,
+          enable: Schema.Boolean,
+          filters: Schema.Array(
+            Schema.Struct({
+              key: Schema.Union([
+                Schema.Literals([
+                  "created_at",
+                  "request_content_type",
+                  "response_content_type",
+                  "success",
+                  "cached",
+                  "provider",
+                  "model",
+                  "cost",
+                  "tokens",
+                  "tokens_in",
+                  "tokens_out",
+                  "duration",
+                  "feedback",
+                ]),
+                Schema.String,
+              ]),
+              operator: Schema.Union([
+                Schema.Literals(["eq", "contains", "lt", "gt"]),
+                Schema.String,
+              ]),
+              value: Schema.Array(
+                Schema.Union([Schema.String, Schema.Number, Schema.Boolean]),
+              ),
+            }),
           ),
+          gatewayId: Schema.String,
+          modifiedAt: Schema.String,
+          name: Schema.String,
         }).pipe(
           Schema.encodeKeys({
-            count: "count",
-            page: "page",
-            perPage: "per_page",
-            totalCount: "total_count",
+            id: "id",
+            accountId: "account_id",
+            accountTag: "account_tag",
+            createdAt: "created_at",
+            enable: "enable",
+            filters: "filters",
+            gatewayId: "gateway_id",
+            modifiedAt: "modified_at",
+            name: "name",
           }),
         ),
-        Schema.Null,
-      ]),
+      ),
+      gatewayId: Schema.String,
+      modifiedAt: Schema.String,
+      name: Schema.String,
+      processed: Schema.Boolean,
+      results: Schema.Array(
+        Schema.Struct({
+          id: Schema.String,
+          createdAt: Schema.String,
+          evaluationId: Schema.String,
+          evaluationTypeId: Schema.String,
+          modifiedAt: Schema.String,
+          result: Schema.String,
+          status: Schema.Number,
+          statusDescription: Schema.String,
+          totalLogs: Schema.Number,
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            createdAt: "created_at",
+            evaluationId: "evaluation_id",
+            evaluationTypeId: "evaluation_type_id",
+            modifiedAt: "modified_at",
+            result: "result",
+            status: "status",
+            statusDescription: "status_description",
+            totalLogs: "total_logs",
+          }),
+        ),
+      ),
+      totalLogs: Schema.Number,
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdAt: "created_at",
+        datasets: "datasets",
+        gatewayId: "gateway_id",
+        modifiedAt: "modified_at",
+        name: "name",
+        processed: "processed",
+        results: "results",
+        totalLogs: "total_logs",
+      }),
     ),
-  }).pipe(
-    Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
-  ) as unknown as Schema.Schema<ListEvaluationsResponse>;
+  ),
+  resultInfo: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      }).pipe(
+        Schema.encodeKeys({
+          count: "count",
+          page: "page",
+          perPage: "per_page",
+          totalCount: "total_count",
+        }),
+      ),
+      Schema.Null,
+    ]),
+  ),
+}).pipe(
+  Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
+) as unknown as Schema.Schema<ListEvaluationsResponse>;
 
 export type ListEvaluationsError = DefaultErrors;
 
@@ -6432,7 +6110,7 @@ export const listEvaluations: API.PaginatedOperationMethod<
   ListEvaluationsResponse,
   ListEvaluationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEvaluationsRequest,
   output: ListEvaluationsResponse,
   errors: [],
@@ -6457,24 +6135,23 @@ export interface CreateEvaluationRequest {
   name: string;
 }
 
-export const CreateEvaluationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    gatewayId: Schema.String.pipe(T.HttpPath("gatewayId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    datasetIds: Schema.Array(Schema.String),
-    evaluationTypeIds: Schema.Array(Schema.String),
-    name: Schema.String,
-  }).pipe(
-    Schema.encodeKeys({
-      datasetIds: "dataset_ids",
-      evaluationTypeIds: "evaluation_type_ids",
-      name: "name",
-    }),
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/ai-gateway/gateways/{gatewayId}/evaluations",
-    }),
-  ) as unknown as Schema.Schema<CreateEvaluationRequest>;
+export const CreateEvaluationRequest = /*@__PURE__*/ Schema.Struct({
+  gatewayId: Schema.String.pipe(T.HttpPath("gatewayId")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  datasetIds: Schema.Array(Schema.String),
+  evaluationTypeIds: Schema.Array(Schema.String),
+  name: Schema.String,
+}).pipe(
+  Schema.encodeKeys({
+    datasetIds: "dataset_ids",
+    evaluationTypeIds: "evaluation_type_ids",
+    name: "name",
+  }),
+  T.Http({
+    method: "POST",
+    path: "/accounts/{account_id}/ai-gateway/gateways/{gatewayId}/evaluations",
+  }),
+) as unknown as Schema.Schema<CreateEvaluationRequest>;
 
 export interface CreateEvaluationResponse {
   id: string;
@@ -6527,110 +6204,109 @@ export interface CreateEvaluationResponse {
   totalLogs: number;
 }
 
-export const CreateEvaluationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    createdAt: Schema.String,
-    datasets: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        accountId: Schema.String,
-        accountTag: Schema.String,
-        createdAt: Schema.String,
-        enable: Schema.Boolean,
-        filters: Schema.Array(
-          Schema.Struct({
-            key: Schema.Union([
-              Schema.Literals([
-                "created_at",
-                "request_content_type",
-                "response_content_type",
-                "success",
-                "cached",
-                "provider",
-                "model",
-                "cost",
-                "tokens",
-                "tokens_in",
-                "tokens_out",
-                "duration",
-                "feedback",
-              ]),
-              Schema.String,
+export const CreateEvaluationResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  createdAt: Schema.String,
+  datasets: Schema.Array(
+    Schema.Struct({
+      id: Schema.String,
+      accountId: Schema.String,
+      accountTag: Schema.String,
+      createdAt: Schema.String,
+      enable: Schema.Boolean,
+      filters: Schema.Array(
+        Schema.Struct({
+          key: Schema.Union([
+            Schema.Literals([
+              "created_at",
+              "request_content_type",
+              "response_content_type",
+              "success",
+              "cached",
+              "provider",
+              "model",
+              "cost",
+              "tokens",
+              "tokens_in",
+              "tokens_out",
+              "duration",
+              "feedback",
             ]),
-            operator: Schema.Union([
-              Schema.Literals(["eq", "contains", "lt", "gt"]),
-              Schema.String,
-            ]),
-            value: Schema.Array(
-              Schema.Union([Schema.String, Schema.Number, Schema.Boolean]),
-            ),
-          }),
-        ),
-        gatewayId: Schema.String,
-        modifiedAt: Schema.String,
-        name: Schema.String,
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          accountId: "account_id",
-          accountTag: "account_tag",
-          createdAt: "created_at",
-          enable: "enable",
-          filters: "filters",
-          gatewayId: "gateway_id",
-          modifiedAt: "modified_at",
-          name: "name",
+            Schema.String,
+          ]),
+          operator: Schema.Union([
+            Schema.Literals(["eq", "contains", "lt", "gt"]),
+            Schema.String,
+          ]),
+          value: Schema.Array(
+            Schema.Union([Schema.String, Schema.Number, Schema.Boolean]),
+          ),
         }),
       ),
-    ),
-    gatewayId: Schema.String,
-    modifiedAt: Schema.String,
-    name: Schema.String,
-    processed: Schema.Boolean,
-    results: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        createdAt: Schema.String,
-        evaluationId: Schema.String,
-        evaluationTypeId: Schema.String,
-        modifiedAt: Schema.String,
-        result: Schema.String,
-        status: Schema.Number,
-        statusDescription: Schema.String,
-        totalLogs: Schema.Number,
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          createdAt: "created_at",
-          evaluationId: "evaluation_id",
-          evaluationTypeId: "evaluation_type_id",
-          modifiedAt: "modified_at",
-          result: "result",
-          status: "status",
-          statusDescription: "status_description",
-          totalLogs: "total_logs",
-        }),
-      ),
-    ),
-    totalLogs: Schema.Number,
-  })
-    .pipe(
+      gatewayId: Schema.String,
+      modifiedAt: Schema.String,
+      name: Schema.String,
+    }).pipe(
       Schema.encodeKeys({
         id: "id",
+        accountId: "account_id",
+        accountTag: "account_tag",
         createdAt: "created_at",
-        datasets: "datasets",
+        enable: "enable",
+        filters: "filters",
         gatewayId: "gateway_id",
         modifiedAt: "modified_at",
         name: "name",
-        processed: "processed",
-        results: "results",
+      }),
+    ),
+  ),
+  gatewayId: Schema.String,
+  modifiedAt: Schema.String,
+  name: Schema.String,
+  processed: Schema.Boolean,
+  results: Schema.Array(
+    Schema.Struct({
+      id: Schema.String,
+      createdAt: Schema.String,
+      evaluationId: Schema.String,
+      evaluationTypeId: Schema.String,
+      modifiedAt: Schema.String,
+      result: Schema.String,
+      status: Schema.Number,
+      statusDescription: Schema.String,
+      totalLogs: Schema.Number,
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdAt: "created_at",
+        evaluationId: "evaluation_id",
+        evaluationTypeId: "evaluation_type_id",
+        modifiedAt: "modified_at",
+        result: "result",
+        status: "status",
+        statusDescription: "status_description",
         totalLogs: "total_logs",
       }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<CreateEvaluationResponse>;
+    ),
+  ),
+  totalLogs: Schema.Number,
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      createdAt: "created_at",
+      datasets: "datasets",
+      gatewayId: "gateway_id",
+      modifiedAt: "modified_at",
+      name: "name",
+      processed: "processed",
+      results: "results",
+      totalLogs: "total_logs",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<CreateEvaluationResponse>;
 
 export type CreateEvaluationError = DefaultErrors;
 
@@ -6639,7 +6315,7 @@ export const createEvaluation: API.OperationMethod<
   CreateEvaluationResponse,
   CreateEvaluationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEvaluationRequest,
   output: CreateEvaluationResponse,
   errors: [],
@@ -6651,17 +6327,16 @@ export interface DeleteEvaluationRequest {
   accountId: string;
 }
 
-export const DeleteEvaluationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    gatewayId: Schema.String.pipe(T.HttpPath("gatewayId")),
-    id: Schema.String.pipe(T.HttpPath("id")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/accounts/{account_id}/ai-gateway/gateways/{gatewayId}/evaluations/{id}",
-    }),
-  ) as unknown as Schema.Schema<DeleteEvaluationRequest>;
+export const DeleteEvaluationRequest = /*@__PURE__*/ Schema.Struct({
+  gatewayId: Schema.String.pipe(T.HttpPath("gatewayId")),
+  id: Schema.String.pipe(T.HttpPath("id")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/accounts/{account_id}/ai-gateway/gateways/{gatewayId}/evaluations/{id}",
+  }),
+) as unknown as Schema.Schema<DeleteEvaluationRequest>;
 
 export interface DeleteEvaluationResponse {
   id: string;
@@ -6714,110 +6389,109 @@ export interface DeleteEvaluationResponse {
   totalLogs: number;
 }
 
-export const DeleteEvaluationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    createdAt: Schema.String,
-    datasets: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        accountId: Schema.String,
-        accountTag: Schema.String,
-        createdAt: Schema.String,
-        enable: Schema.Boolean,
-        filters: Schema.Array(
-          Schema.Struct({
-            key: Schema.Union([
-              Schema.Literals([
-                "created_at",
-                "request_content_type",
-                "response_content_type",
-                "success",
-                "cached",
-                "provider",
-                "model",
-                "cost",
-                "tokens",
-                "tokens_in",
-                "tokens_out",
-                "duration",
-                "feedback",
-              ]),
-              Schema.String,
+export const DeleteEvaluationResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  createdAt: Schema.String,
+  datasets: Schema.Array(
+    Schema.Struct({
+      id: Schema.String,
+      accountId: Schema.String,
+      accountTag: Schema.String,
+      createdAt: Schema.String,
+      enable: Schema.Boolean,
+      filters: Schema.Array(
+        Schema.Struct({
+          key: Schema.Union([
+            Schema.Literals([
+              "created_at",
+              "request_content_type",
+              "response_content_type",
+              "success",
+              "cached",
+              "provider",
+              "model",
+              "cost",
+              "tokens",
+              "tokens_in",
+              "tokens_out",
+              "duration",
+              "feedback",
             ]),
-            operator: Schema.Union([
-              Schema.Literals(["eq", "contains", "lt", "gt"]),
-              Schema.String,
-            ]),
-            value: Schema.Array(
-              Schema.Union([Schema.String, Schema.Number, Schema.Boolean]),
-            ),
-          }),
-        ),
-        gatewayId: Schema.String,
-        modifiedAt: Schema.String,
-        name: Schema.String,
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          accountId: "account_id",
-          accountTag: "account_tag",
-          createdAt: "created_at",
-          enable: "enable",
-          filters: "filters",
-          gatewayId: "gateway_id",
-          modifiedAt: "modified_at",
-          name: "name",
+            Schema.String,
+          ]),
+          operator: Schema.Union([
+            Schema.Literals(["eq", "contains", "lt", "gt"]),
+            Schema.String,
+          ]),
+          value: Schema.Array(
+            Schema.Union([Schema.String, Schema.Number, Schema.Boolean]),
+          ),
         }),
       ),
-    ),
-    gatewayId: Schema.String,
-    modifiedAt: Schema.String,
-    name: Schema.String,
-    processed: Schema.Boolean,
-    results: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        createdAt: Schema.String,
-        evaluationId: Schema.String,
-        evaluationTypeId: Schema.String,
-        modifiedAt: Schema.String,
-        result: Schema.String,
-        status: Schema.Number,
-        statusDescription: Schema.String,
-        totalLogs: Schema.Number,
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          createdAt: "created_at",
-          evaluationId: "evaluation_id",
-          evaluationTypeId: "evaluation_type_id",
-          modifiedAt: "modified_at",
-          result: "result",
-          status: "status",
-          statusDescription: "status_description",
-          totalLogs: "total_logs",
-        }),
-      ),
-    ),
-    totalLogs: Schema.Number,
-  })
-    .pipe(
+      gatewayId: Schema.String,
+      modifiedAt: Schema.String,
+      name: Schema.String,
+    }).pipe(
       Schema.encodeKeys({
         id: "id",
+        accountId: "account_id",
+        accountTag: "account_tag",
         createdAt: "created_at",
-        datasets: "datasets",
+        enable: "enable",
+        filters: "filters",
         gatewayId: "gateway_id",
         modifiedAt: "modified_at",
         name: "name",
-        processed: "processed",
-        results: "results",
+      }),
+    ),
+  ),
+  gatewayId: Schema.String,
+  modifiedAt: Schema.String,
+  name: Schema.String,
+  processed: Schema.Boolean,
+  results: Schema.Array(
+    Schema.Struct({
+      id: Schema.String,
+      createdAt: Schema.String,
+      evaluationId: Schema.String,
+      evaluationTypeId: Schema.String,
+      modifiedAt: Schema.String,
+      result: Schema.String,
+      status: Schema.Number,
+      statusDescription: Schema.String,
+      totalLogs: Schema.Number,
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdAt: "created_at",
+        evaluationId: "evaluation_id",
+        evaluationTypeId: "evaluation_type_id",
+        modifiedAt: "modified_at",
+        result: "result",
+        status: "status",
+        statusDescription: "status_description",
         totalLogs: "total_logs",
       }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<DeleteEvaluationResponse>;
+    ),
+  ),
+  totalLogs: Schema.Number,
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      createdAt: "created_at",
+      datasets: "datasets",
+      gatewayId: "gateway_id",
+      modifiedAt: "modified_at",
+      name: "name",
+      processed: "processed",
+      results: "results",
+      totalLogs: "total_logs",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<DeleteEvaluationResponse>;
 
 export type DeleteEvaluationError = DefaultErrors;
 
@@ -6826,7 +6500,7 @@ export const deleteEvaluation: API.OperationMethod<
   DeleteEvaluationResponse,
   DeleteEvaluationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEvaluationRequest,
   output: DeleteEvaluationResponse,
   errors: [],
@@ -6847,21 +6521,20 @@ export interface ListEvaluationTypesRequest {
   orderByDirection?: "asc" | "desc" | (string & {});
 }
 
-export const ListEvaluationTypesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("order_by")),
-    orderByDirection: Schema.optional(
-      Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
-    ).pipe(T.HttpQuery("order_by_direction")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/ai-gateway/evaluation-types",
-    }),
-  ) as unknown as Schema.Schema<ListEvaluationTypesRequest>;
+export const ListEvaluationTypesRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+  orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("order_by")),
+  orderByDirection: Schema.optional(
+    Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+  ).pipe(T.HttpQuery("order_by_direction")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/ai-gateway/evaluation-types",
+  }),
+) as unknown as Schema.Schema<ListEvaluationTypesRequest>;
 
 export interface ListEvaluationTypesResponse {
   result: {
@@ -6882,54 +6555,51 @@ export interface ListEvaluationTypesResponse {
   } | null;
 }
 
-export const ListEvaluationTypesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
+export const ListEvaluationTypesResponse = /*@__PURE__*/ Schema.Struct({
+  result: Schema.Array(
+    Schema.Struct({
+      id: Schema.String,
+      createdAt: Schema.String,
+      description: Schema.String,
+      enable: Schema.Boolean,
+      mandatory: Schema.Boolean,
+      modifiedAt: Schema.String,
+      name: Schema.String,
+      type: Schema.String,
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdAt: "created_at",
+        description: "description",
+        enable: "enable",
+        mandatory: "mandatory",
+        modifiedAt: "modified_at",
+        name: "name",
+        type: "type",
+      }),
+    ),
+  ),
+  resultInfo: Schema.optional(
+    Schema.Union([
       Schema.Struct({
-        id: Schema.String,
-        createdAt: Schema.String,
-        description: Schema.String,
-        enable: Schema.Boolean,
-        mandatory: Schema.Boolean,
-        modifiedAt: Schema.String,
-        name: Schema.String,
-        type: Schema.String,
+        count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       }).pipe(
         Schema.encodeKeys({
-          id: "id",
-          createdAt: "created_at",
-          description: "description",
-          enable: "enable",
-          mandatory: "mandatory",
-          modifiedAt: "modified_at",
-          name: "name",
-          type: "type",
+          count: "count",
+          page: "page",
+          perPage: "per_page",
+          totalCount: "total_count",
         }),
       ),
-    ),
-    resultInfo: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          totalCount: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            count: "count",
-            page: "page",
-            perPage: "per_page",
-            totalCount: "total_count",
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
-  }).pipe(
-    Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
-  ) as unknown as Schema.Schema<ListEvaluationTypesResponse>;
+      Schema.Null,
+    ]),
+  ),
+}).pipe(
+  Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
+) as unknown as Schema.Schema<ListEvaluationTypesResponse>;
 
 export type ListEvaluationTypesError = DefaultErrors;
 
@@ -6938,7 +6608,7 @@ export const listEvaluationTypes: API.PaginatedOperationMethod<
   ListEvaluationTypesResponse,
   ListEvaluationTypesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEvaluationTypesRequest,
   output: ListEvaluationTypesResponse,
   errors: [],
@@ -6962,18 +6632,17 @@ export interface InvoiceHistoryBillingRequest {
   type?: "auto" | "all" | "manual" | (string & {});
 }
 
-export const InvoiceHistoryBillingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    type: Schema.optional(
-      Schema.Union([Schema.Literals(["auto", "all", "manual"]), Schema.String]),
-    ).pipe(T.HttpQuery("type")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/ai-gateway/billing/invoice-history",
-    }),
-  ) as unknown as Schema.Schema<InvoiceHistoryBillingRequest>;
+export const InvoiceHistoryBillingRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  type: Schema.optional(
+    Schema.Union([Schema.Literals(["auto", "all", "manual"]), Schema.String]),
+  ).pipe(T.HttpQuery("type")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/ai-gateway/billing/invoice-history",
+  }),
+) as unknown as Schema.Schema<InvoiceHistoryBillingRequest>;
 
 export interface InvoiceHistoryBillingResponse {
   invoices: {
@@ -7000,67 +6669,60 @@ export interface InvoiceHistoryBillingResponse {
   };
 }
 
-export const InvoiceHistoryBillingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    invoices: Schema.Array(
-      Schema.Struct({
-        amountDue: Schema.Number,
-        amountPaid: Schema.Number,
-        amountRemaining: Schema.Number,
-        currency: Schema.String,
-        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        attemptCount: Schema.optional(
-          Schema.Union([Schema.Number, Schema.Null]),
-        ),
-        attempted: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-        autoAdvance: Schema.optional(
-          Schema.Union([Schema.Boolean, Schema.Null]),
-        ),
-        created: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        createdBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        description: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        invoiceOrigin: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        invoicePdf: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          amountDue: "amount_due",
-          amountPaid: "amount_paid",
-          amountRemaining: "amount_remaining",
-          currency: "currency",
-          id: "id",
-          attemptCount: "attempt_count",
-          attempted: "attempted",
-          autoAdvance: "auto_advance",
-          created: "created",
-          createdBy: "created_by",
-          description: "description",
-          invoiceOrigin: "invoice_origin",
-          invoicePdf: "invoice_pdf",
-          status: "status",
-        }),
+export const InvoiceHistoryBillingResponse = /*@__PURE__*/ Schema.Struct({
+  invoices: Schema.Array(
+    Schema.Struct({
+      amountDue: Schema.Number,
+      amountPaid: Schema.Number,
+      amountRemaining: Schema.Number,
+      currency: Schema.String,
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      attemptCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      attempted: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      autoAdvance: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      created: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      createdBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      invoiceOrigin: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
       ),
-    ),
-    pagination: Schema.Struct({
-      hasMore: Schema.Boolean,
-      page: Schema.Number,
-      perPage: Schema.Number,
-      totalCount: Schema.Number,
+      invoicePdf: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(
       Schema.encodeKeys({
-        hasMore: "has_more",
-        page: "page",
-        perPage: "per_page",
-        totalCount: "total_count",
+        amountDue: "amount_due",
+        amountPaid: "amount_paid",
+        amountRemaining: "amount_remaining",
+        currency: "currency",
+        id: "id",
+        attemptCount: "attempt_count",
+        attempted: "attempted",
+        autoAdvance: "auto_advance",
+        created: "created",
+        createdBy: "created_by",
+        description: "description",
+        invoiceOrigin: "invoice_origin",
+        invoicePdf: "invoice_pdf",
+        status: "status",
       }),
     ),
+  ),
+  pagination: Schema.Struct({
+    hasMore: Schema.Boolean,
+    page: Schema.Number,
+    perPage: Schema.Number,
+    totalCount: Schema.Number,
   }).pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<InvoiceHistoryBillingResponse>;
+    Schema.encodeKeys({
+      hasMore: "has_more",
+      page: "page",
+      perPage: "per_page",
+      totalCount: "total_count",
+    }),
+  ),
+}).pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<InvoiceHistoryBillingResponse>;
 
 export type InvoiceHistoryBillingError = DefaultErrors;
 
@@ -7069,7 +6731,7 @@ export const invoiceHistoryBilling: API.OperationMethod<
   InvoiceHistoryBillingResponse,
   InvoiceHistoryBillingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InvoiceHistoryBillingRequest,
   output: InvoiceHistoryBillingResponse,
   errors: [],
@@ -7086,25 +6748,24 @@ export interface UsageHistoryBillingRequest {
   startTime?: number | null;
 }
 
-export const UsageHistoryBillingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    valueGroupingWindow: Schema.Union([
-      Schema.Literals(["day", "hour"]),
-      Schema.String,
-    ]).pipe(T.HttpQuery("value_grouping_window")),
-    endTime: Schema.optional(Schema.Union([Schema.Number, Schema.Null])).pipe(
-      T.HttpQuery("end_time"),
-    ),
-    startTime: Schema.optional(Schema.Union([Schema.Number, Schema.Null])).pipe(
-      T.HttpQuery("start_time"),
-    ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/ai-gateway/billing/usage-history",
-    }),
-  ) as unknown as Schema.Schema<UsageHistoryBillingRequest>;
+export const UsageHistoryBillingRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  valueGroupingWindow: Schema.Union([
+    Schema.Literals(["day", "hour"]),
+    Schema.String,
+  ]).pipe(T.HttpQuery("value_grouping_window")),
+  endTime: Schema.optional(Schema.Union([Schema.Number, Schema.Null])).pipe(
+    T.HttpQuery("end_time"),
+  ),
+  startTime: Schema.optional(Schema.Union([Schema.Number, Schema.Null])).pipe(
+    T.HttpQuery("start_time"),
+  ),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/ai-gateway/billing/usage-history",
+  }),
+) as unknown as Schema.Schema<UsageHistoryBillingRequest>;
 
 export interface UsageHistoryBillingResponse {
   history: {
@@ -7115,26 +6776,25 @@ export interface UsageHistoryBillingResponse {
   }[];
 }
 
-export const UsageHistoryBillingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    history: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        aggregatedValue: Schema.Number,
-        endTime: Schema.Number,
-        startTime: Schema.Number,
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          aggregatedValue: "aggregated_value",
-          endTime: "end_time",
-          startTime: "start_time",
-        }),
-      ),
+export const UsageHistoryBillingResponse = /*@__PURE__*/ Schema.Struct({
+  history: Schema.Array(
+    Schema.Struct({
+      id: Schema.String,
+      aggregatedValue: Schema.Number,
+      endTime: Schema.Number,
+      startTime: Schema.Number,
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        aggregatedValue: "aggregated_value",
+        endTime: "end_time",
+        startTime: "start_time",
+      }),
     ),
-  }).pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<UsageHistoryBillingResponse>;
+  ),
+}).pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<UsageHistoryBillingResponse>;
 
 export type UsageHistoryBillingError = DefaultErrors;
 
@@ -7143,7 +6803,7 @@ export const usageHistoryBilling: API.OperationMethod<
   UsageHistoryBillingResponse,
   UsageHistoryBillingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UsageHistoryBillingRequest,
   output: UsageHistoryBillingResponse,
   errors: [],
@@ -7159,7 +6819,7 @@ export interface GetLogRequest {
   accountId: string;
 }
 
-export const GetLogRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetLogRequest = /*@__PURE__*/ Schema.Struct({
   gatewayId: Schema.String.pipe(T.HttpPath("gatewayId")),
   id: Schema.String.pipe(T.HttpPath("id")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -7198,7 +6858,7 @@ export interface GetLogResponse {
   step?: number | null;
 }
 
-export const GetLogResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetLogResponse = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   cached: Schema.Boolean,
   createdAt: Schema.String,
@@ -7271,7 +6931,7 @@ export const getLog: API.OperationMethod<
   GetLogResponse,
   GetLogError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLogRequest,
   output: GetLogResponse,
   errors: [],
@@ -7372,7 +7032,7 @@ export interface ListLogsRequest {
   success?: boolean;
 }
 
-export const ListLogsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListLogsRequest = /*@__PURE__*/ Schema.Struct({
   gatewayId: Schema.String.pipe(T.HttpPath("gatewayId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -7519,7 +7179,7 @@ export interface ListLogsResponse {
   } | null;
 }
 
-export const ListLogsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListLogsResponse = /*@__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       id: Schema.String,
@@ -7598,7 +7258,7 @@ export const listLogs: API.PaginatedOperationMethod<
   ListLogsResponse,
   ListLogsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLogsRequest,
   output: ListLogsResponse,
   errors: [],
@@ -7624,7 +7284,7 @@ export interface PatchLogRequest {
   score?: number | null;
 }
 
-export const PatchLogRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PatchLogRequest = /*@__PURE__*/ Schema.Struct({
   gatewayId: Schema.String.pipe(T.HttpPath("gatewayId")),
   id: Schema.String.pipe(T.HttpPath("id")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -7642,7 +7302,7 @@ export const PatchLogRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type PatchLogResponse = unknown;
 
-export const PatchLogResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
+export const PatchLogResponse = /*@__PURE__*/ Schema.Unknown.pipe(
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<PatchLogResponse>;
 
@@ -7653,7 +7313,7 @@ export const patchLog: API.OperationMethod<
   PatchLogResponse,
   PatchLogError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchLogRequest,
   output: PatchLogResponse,
   errors: [],
@@ -7713,7 +7373,7 @@ export interface DeleteLogRequest {
   orderByDirection?: "asc" | "desc" | (string & {});
 }
 
-export const DeleteLogRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteLogRequest = /*@__PURE__*/ Schema.Struct({
   gatewayId: Schema.String.pipe(T.HttpPath("gatewayId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   filters: Schema.optional(
@@ -7795,7 +7455,7 @@ export interface DeleteLogResponse {
   success: boolean;
 }
 
-export const DeleteLogResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteLogResponse = /*@__PURE__*/ Schema.Struct({
   success: Schema.Boolean,
 }) as unknown as Schema.Schema<DeleteLogResponse>;
 
@@ -7806,7 +7466,7 @@ export const deleteLog: API.OperationMethod<
   DeleteLogResponse,
   DeleteLogError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLogRequest,
   output: DeleteLogResponse,
   errors: [],
@@ -7818,7 +7478,7 @@ export interface RequestLogRequest {
   accountId: string;
 }
 
-export const RequestLogRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RequestLogRequest = /*@__PURE__*/ Schema.Struct({
   gatewayId: Schema.String.pipe(T.HttpPath("gatewayId")),
   id: Schema.String.pipe(T.HttpPath("id")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -7832,7 +7492,7 @@ export const RequestLogRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type RequestLogResponse = unknown;
 
 export const RequestLogResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<RequestLogResponse>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<RequestLogResponse>;
 
 export type RequestLogError = DefaultErrors;
 
@@ -7841,7 +7501,7 @@ export const requestLog: API.OperationMethod<
   RequestLogResponse,
   RequestLogError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RequestLogRequest,
   output: RequestLogResponse,
   errors: [],
@@ -7853,7 +7513,7 @@ export interface ResponseLogRequest {
   accountId: string;
 }
 
-export const ResponseLogRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ResponseLogRequest = /*@__PURE__*/ Schema.Struct({
   gatewayId: Schema.String.pipe(T.HttpPath("gatewayId")),
   id: Schema.String.pipe(T.HttpPath("id")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -7867,7 +7527,7 @@ export const ResponseLogRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ResponseLogResponse = unknown;
 
 export const ResponseLogResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<ResponseLogResponse>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Schema<ResponseLogResponse>;
 
 export type ResponseLogError = DefaultErrors;
 
@@ -7876,7 +7536,7 @@ export const responseLog: API.OperationMethod<
   ResponseLogResponse,
   ResponseLogError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResponseLogRequest,
   output: ResponseLogResponse,
   errors: [],
@@ -7891,15 +7551,14 @@ export interface InvoicePreviewBillingRequest {
   accountId: string;
 }
 
-export const InvoicePreviewBillingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/ai-gateway/billing/invoice-preview",
-    }),
-  ) as unknown as Schema.Schema<InvoicePreviewBillingRequest>;
+export const InvoicePreviewBillingRequest = /*@__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/ai-gateway/billing/invoice-preview",
+  }),
+) as unknown as Schema.Schema<InvoicePreviewBillingRequest>;
 
 export interface InvoicePreviewBillingResponse {
   id: string;
@@ -7928,87 +7587,84 @@ export interface InvoicePreviewBillingResponse {
   status: "draft" | "open" | "paid" | "uncollectible" | "void" | (string & {});
 }
 
-export const InvoicePreviewBillingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    amountDue: Schema.Number,
-    amountPaid: Schema.Number,
-    amountRemaining: Schema.Number,
-    currency: Schema.String,
-    invoiceLines: Schema.Array(
-      Schema.Struct({
-        amount: Schema.Number,
-        currency: Schema.String,
-        description: Schema.Union([Schema.String, Schema.Null]),
-        period: Schema.Struct({
-          end: Schema.Number,
-          start: Schema.Number,
-        }),
-        pricing: Schema.Struct({
-          unitAmountDecimal: Schema.Union([Schema.String, Schema.Null]),
-        }).pipe(
-          Schema.encodeKeys({ unitAmountDecimal: "unit_amount_decimal" }),
-        ),
-        quantity: Schema.Number,
-        pretaxCreditAmounts: Schema.optional(
-          Schema.Union([
-            Schema.Array(
-              Schema.Struct({
-                amount: Schema.Number,
-                type: Schema.String,
-                creditBalanceTransaction: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                discount: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  amount: "amount",
-                  type: "type",
-                  creditBalanceTransaction: "credit_balance_transaction",
-                  discount: "discount",
-                }),
-              ),
-            ),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          amount: "amount",
-          currency: "currency",
-          description: "description",
-          period: "period",
-          pricing: "pricing",
-          quantity: "quantity",
-          pretaxCreditAmounts: "pretax_credit_amounts",
-        }),
-      ),
-    ),
-    periodEnd: Schema.Number,
-    periodStart: Schema.Number,
-    status: Schema.Union([
-      Schema.Literals(["draft", "open", "paid", "uncollectible", "void"]),
-      Schema.String,
-    ]),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        amountDue: "amount_due",
-        amountPaid: "amount_paid",
-        amountRemaining: "amount_remaining",
-        currency: "currency",
-        invoiceLines: "invoice_lines",
-        periodEnd: "period_end",
-        periodStart: "period_start",
-        status: "status",
+export const InvoicePreviewBillingResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  amountDue: Schema.Number,
+  amountPaid: Schema.Number,
+  amountRemaining: Schema.Number,
+  currency: Schema.String,
+  invoiceLines: Schema.Array(
+    Schema.Struct({
+      amount: Schema.Number,
+      currency: Schema.String,
+      description: Schema.Union([Schema.String, Schema.Null]),
+      period: Schema.Struct({
+        end: Schema.Number,
+        start: Schema.Number,
       }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<InvoicePreviewBillingResponse>;
+      pricing: Schema.Struct({
+        unitAmountDecimal: Schema.Union([Schema.String, Schema.Null]),
+      }).pipe(Schema.encodeKeys({ unitAmountDecimal: "unit_amount_decimal" })),
+      quantity: Schema.Number,
+      pretaxCreditAmounts: Schema.optional(
+        Schema.Union([
+          Schema.Array(
+            Schema.Struct({
+              amount: Schema.Number,
+              type: Schema.String,
+              creditBalanceTransaction: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              discount: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                amount: "amount",
+                type: "type",
+                creditBalanceTransaction: "credit_balance_transaction",
+                discount: "discount",
+              }),
+            ),
+          ),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        amount: "amount",
+        currency: "currency",
+        description: "description",
+        period: "period",
+        pricing: "pricing",
+        quantity: "quantity",
+        pretaxCreditAmounts: "pretax_credit_amounts",
+      }),
+    ),
+  ),
+  periodEnd: Schema.Number,
+  periodStart: Schema.Number,
+  status: Schema.Union([
+    Schema.Literals(["draft", "open", "paid", "uncollectible", "void"]),
+    Schema.String,
+  ]),
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      amountDue: "amount_due",
+      amountPaid: "amount_paid",
+      amountRemaining: "amount_remaining",
+      currency: "currency",
+      invoiceLines: "invoice_lines",
+      periodEnd: "period_end",
+      periodStart: "period_start",
+      status: "status",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<InvoicePreviewBillingResponse>;
 
 export type InvoicePreviewBillingError = DefaultErrors;
 
@@ -8017,7 +7673,7 @@ export const invoicePreviewBilling: API.OperationMethod<
   InvoicePreviewBillingResponse,
   InvoicePreviewBillingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InvoicePreviewBillingRequest,
   output: InvoicePreviewBillingResponse,
   errors: [],
@@ -8035,18 +7691,17 @@ export interface ListProviderConfigsRequest {
   perPage?: number;
 }
 
-export const ListProviderConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    gatewayId: Schema.String.pipe(T.HttpPath("gatewayId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/ai-gateway/gateways/{gatewayId}/provider_configs",
-    }),
-  ) as unknown as Schema.Schema<ListProviderConfigsRequest>;
+export const ListProviderConfigsRequest = /*@__PURE__*/ Schema.Struct({
+  gatewayId: Schema.String.pipe(T.HttpPath("gatewayId")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/ai-gateway/gateways/{gatewayId}/provider_configs",
+  }),
+) as unknown as Schema.Schema<ListProviderConfigsRequest>;
 
 export interface ListProviderConfigsResponse {
   result: {
@@ -8069,60 +7724,57 @@ export interface ListProviderConfigsResponse {
   } | null;
 }
 
-export const ListProviderConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
+export const ListProviderConfigsResponse = /*@__PURE__*/ Schema.Struct({
+  result: Schema.Array(
+    Schema.Struct({
+      id: Schema.String,
+      alias: Schema.String,
+      defaultConfig: Schema.Boolean,
+      gatewayId: Schema.String,
+      modifiedAt: Schema.String,
+      providerSlug: Schema.String,
+      secretId: Schema.String,
+      secretPreview: Schema.String,
+      rateLimit: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      rateLimitPeriod: Schema.optional(
+        Schema.Union([Schema.Number, Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        alias: "alias",
+        defaultConfig: "default_config",
+        gatewayId: "gateway_id",
+        modifiedAt: "modified_at",
+        providerSlug: "provider_slug",
+        secretId: "secret_id",
+        secretPreview: "secret_preview",
+        rateLimit: "rate_limit",
+        rateLimitPeriod: "rate_limit_period",
+      }),
+    ),
+  ),
+  resultInfo: Schema.optional(
+    Schema.Union([
       Schema.Struct({
-        id: Schema.String,
-        alias: Schema.String,
-        defaultConfig: Schema.Boolean,
-        gatewayId: Schema.String,
-        modifiedAt: Schema.String,
-        providerSlug: Schema.String,
-        secretId: Schema.String,
-        secretPreview: Schema.String,
-        rateLimit: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        rateLimitPeriod: Schema.optional(
-          Schema.Union([Schema.Number, Schema.Null]),
-        ),
+        count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       }).pipe(
         Schema.encodeKeys({
-          id: "id",
-          alias: "alias",
-          defaultConfig: "default_config",
-          gatewayId: "gateway_id",
-          modifiedAt: "modified_at",
-          providerSlug: "provider_slug",
-          secretId: "secret_id",
-          secretPreview: "secret_preview",
-          rateLimit: "rate_limit",
-          rateLimitPeriod: "rate_limit_period",
+          count: "count",
+          page: "page",
+          perPage: "per_page",
+          totalCount: "total_count",
         }),
       ),
-    ),
-    resultInfo: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          totalCount: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            count: "count",
-            page: "page",
-            perPage: "per_page",
-            totalCount: "total_count",
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
-  }).pipe(
-    Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
-  ) as unknown as Schema.Schema<ListProviderConfigsResponse>;
+      Schema.Null,
+    ]),
+  ),
+}).pipe(
+  Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
+) as unknown as Schema.Schema<ListProviderConfigsResponse>;
 
 export type ListProviderConfigsError = DefaultErrors;
 
@@ -8131,7 +7783,7 @@ export const listProviderConfigs: API.PaginatedOperationMethod<
   ListProviderConfigsResponse,
   ListProviderConfigsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProviderConfigsRequest,
   output: ListProviderConfigsResponse,
   errors: [],
@@ -8164,32 +7816,31 @@ export interface CreateProviderConfigRequest {
   rateLimitPeriod?: number;
 }
 
-export const CreateProviderConfigRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    gatewayId: Schema.String.pipe(T.HttpPath("gatewayId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    alias: Schema.String,
-    defaultConfig: Schema.Boolean,
-    providerSlug: Schema.String,
-    secret: Schema.String,
-    secretId: Schema.String,
-    rateLimit: Schema.optional(Schema.Number),
-    rateLimitPeriod: Schema.optional(Schema.Number),
-  }).pipe(
-    Schema.encodeKeys({
-      alias: "alias",
-      defaultConfig: "default_config",
-      providerSlug: "provider_slug",
-      secret: "secret",
-      secretId: "secret_id",
-      rateLimit: "rate_limit",
-      rateLimitPeriod: "rate_limit_period",
-    }),
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/ai-gateway/gateways/{gatewayId}/provider_configs",
-    }),
-  ) as unknown as Schema.Schema<CreateProviderConfigRequest>;
+export const CreateProviderConfigRequest = /*@__PURE__*/ Schema.Struct({
+  gatewayId: Schema.String.pipe(T.HttpPath("gatewayId")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  alias: Schema.String,
+  defaultConfig: Schema.Boolean,
+  providerSlug: Schema.String,
+  secret: Schema.String,
+  secretId: Schema.String,
+  rateLimit: Schema.optional(Schema.Number),
+  rateLimitPeriod: Schema.optional(Schema.Number),
+}).pipe(
+  Schema.encodeKeys({
+    alias: "alias",
+    defaultConfig: "default_config",
+    providerSlug: "provider_slug",
+    secret: "secret",
+    secretId: "secret_id",
+    rateLimit: "rate_limit",
+    rateLimitPeriod: "rate_limit_period",
+  }),
+  T.Http({
+    method: "POST",
+    path: "/accounts/{account_id}/ai-gateway/gateways/{gatewayId}/provider_configs",
+  }),
+) as unknown as Schema.Schema<CreateProviderConfigRequest>;
 
 export interface CreateProviderConfigResponse {
   id: string;
@@ -8205,38 +7856,35 @@ export interface CreateProviderConfigResponse {
   rateLimitPeriod?: number | null;
 }
 
-export const CreateProviderConfigResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    alias: Schema.String,
-    defaultConfig: Schema.Boolean,
-    gatewayId: Schema.String,
-    modifiedAt: Schema.String,
-    providerSlug: Schema.String,
-    secretId: Schema.String,
-    secretPreview: Schema.String,
-    rateLimit: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    rateLimitPeriod: Schema.optional(
-      Schema.Union([Schema.Number, Schema.Null]),
-    ),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        alias: "alias",
-        defaultConfig: "default_config",
-        gatewayId: "gateway_id",
-        modifiedAt: "modified_at",
-        providerSlug: "provider_slug",
-        secretId: "secret_id",
-        secretPreview: "secret_preview",
-        rateLimit: "rate_limit",
-        rateLimitPeriod: "rate_limit_period",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<CreateProviderConfigResponse>;
+export const CreateProviderConfigResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  alias: Schema.String,
+  defaultConfig: Schema.Boolean,
+  gatewayId: Schema.String,
+  modifiedAt: Schema.String,
+  providerSlug: Schema.String,
+  secretId: Schema.String,
+  secretPreview: Schema.String,
+  rateLimit: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  rateLimitPeriod: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      alias: "alias",
+      defaultConfig: "default_config",
+      gatewayId: "gateway_id",
+      modifiedAt: "modified_at",
+      providerSlug: "provider_slug",
+      secretId: "secret_id",
+      secretPreview: "secret_preview",
+      rateLimit: "rate_limit",
+      rateLimitPeriod: "rate_limit_period",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<CreateProviderConfigResponse>;
 
 export type CreateProviderConfigError = DefaultErrors;
 
@@ -8245,7 +7893,7 @@ export const createProviderConfig: API.OperationMethod<
   CreateProviderConfigResponse,
   CreateProviderConfigError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProviderConfigRequest,
   output: CreateProviderConfigResponse,
   errors: [],
@@ -8261,7 +7909,7 @@ export interface GetUrlRequest {
   accountId: string;
 }
 
-export const GetUrlRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetUrlRequest = /*@__PURE__*/ Schema.Struct({
   gatewayId: Schema.String.pipe(T.HttpPath("gatewayId")),
   provider: Schema.String.pipe(T.HttpPath("provider")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -8274,7 +7922,7 @@ export const GetUrlRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type GetUrlResponse = string;
 
-export const GetUrlResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.String.pipe(
+export const GetUrlResponse = /*@__PURE__*/ Schema.String.pipe(
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<GetUrlResponse>;
 
@@ -8285,7 +7933,7 @@ export const getUrl: API.OperationMethod<
   GetUrlResponse,
   GetUrlError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUrlRequest,
   output: GetUrlResponse,
   errors: [],
@@ -8302,18 +7950,17 @@ export interface GetVersionDynamicRoutingRequest {
   accountId: string;
 }
 
-export const GetVersionDynamicRoutingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    gatewayId: Schema.String.pipe(T.HttpPath("gatewayId")),
-    id: Schema.String.pipe(T.HttpPath("id")),
-    versionId: Schema.String.pipe(T.HttpPath("versionId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/ai-gateway/gateways/{gatewayId}/routes/{id}/versions/{versionId}",
-    }),
-  ) as unknown as Schema.Schema<GetVersionDynamicRoutingRequest>;
+export const GetVersionDynamicRoutingRequest = /*@__PURE__*/ Schema.Struct({
+  gatewayId: Schema.String.pipe(T.HttpPath("gatewayId")),
+  id: Schema.String.pipe(T.HttpPath("id")),
+  versionId: Schema.String.pipe(T.HttpPath("versionId")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/ai-gateway/gateways/{gatewayId}/routes/{id}/versions/{versionId}",
+  }),
+) as unknown as Schema.Schema<GetVersionDynamicRoutingRequest>;
 
 export interface GetVersionDynamicRoutingResponse {
   id: string;
@@ -8366,114 +8013,113 @@ export interface GetVersionDynamicRoutingResponse {
   isValid?: boolean | null;
 }
 
-export const GetVersionDynamicRoutingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    active: Schema.Literals([true, false]),
-    createdAt: Schema.String,
-    data: Schema.String,
-    elements: Schema.Array(
-      Schema.Union([
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Struct({
-            false: Schema.Struct({
-              elementId: Schema.String,
-            }),
-            true: Schema.Struct({
-              elementId: Schema.String,
-            }),
+export const GetVersionDynamicRoutingResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  active: Schema.Literals([true, false]),
+  createdAt: Schema.String,
+  data: Schema.String,
+  elements: Schema.Array(
+    Schema.Union([
+      Schema.Struct({
+        id: Schema.String,
+        outputs: Schema.Struct({
+          false: Schema.Struct({
+            elementId: Schema.String,
           }),
-          properties: Schema.Struct({
-            conditions: Schema.optional(
-              Schema.Union([Schema.Unknown, Schema.Null]),
-            ),
+          true: Schema.Struct({
+            elementId: Schema.String,
           }),
-          type: Schema.Literal("conditional"),
         }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Struct({
-            fallback: Schema.Struct({
-              elementId: Schema.String,
-            }),
-            success: Schema.Struct({
-              elementId: Schema.String,
-            }),
-          }),
-          properties: Schema.Struct({
-            key: Schema.String,
-            limit: Schema.Number,
-            limitType: Schema.Union([
-              Schema.Literals(["count", "cost"]),
-              Schema.String,
-            ]),
-            window: Schema.Number,
-          }),
-          type: Schema.Literal("rate"),
+        properties: Schema.Struct({
+          conditions: Schema.optional(
+            Schema.Union([Schema.Unknown, Schema.Null]),
+          ),
         }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Struct({
-            fallback: Schema.Struct({
-              elementId: Schema.String,
-            }),
-            success: Schema.Struct({
-              elementId: Schema.String,
-            }),
-          }),
-          properties: Schema.Struct({
-            model: Schema.String,
-            provider: Schema.String,
-            retries: Schema.Number,
-            timeout: Schema.Number,
-          }),
-          type: Schema.Literal("model"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Struct({
-            next: Schema.Struct({
-              elementId: Schema.String,
-            }),
-          }),
-          type: Schema.Literal("start"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Record(Schema.String, Schema.Unknown),
-          type: Schema.Literal("percentage"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Record(Schema.String, Schema.Unknown),
-          type: Schema.Literal("end"),
-        }),
-      ]),
-    ),
-    gatewayId: Schema.String,
-    modifiedAt: Schema.String,
-    name: Schema.String,
-    versionId: Schema.String,
-    isValid: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        active: "active",
-        createdAt: "created_at",
-        data: "data",
-        elements: "elements",
-        gatewayId: "gateway_id",
-        modifiedAt: "modified_at",
-        name: "name",
-        versionId: "version_id",
-        isValid: "is_valid",
+        type: Schema.Literal("conditional"),
       }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<GetVersionDynamicRoutingResponse>;
+      Schema.Struct({
+        id: Schema.String,
+        outputs: Schema.Struct({
+          fallback: Schema.Struct({
+            elementId: Schema.String,
+          }),
+          success: Schema.Struct({
+            elementId: Schema.String,
+          }),
+        }),
+        properties: Schema.Struct({
+          key: Schema.String,
+          limit: Schema.Number,
+          limitType: Schema.Union([
+            Schema.Literals(["count", "cost"]),
+            Schema.String,
+          ]),
+          window: Schema.Number,
+        }),
+        type: Schema.Literal("rate"),
+      }),
+      Schema.Struct({
+        id: Schema.String,
+        outputs: Schema.Struct({
+          fallback: Schema.Struct({
+            elementId: Schema.String,
+          }),
+          success: Schema.Struct({
+            elementId: Schema.String,
+          }),
+        }),
+        properties: Schema.Struct({
+          model: Schema.String,
+          provider: Schema.String,
+          retries: Schema.Number,
+          timeout: Schema.Number,
+        }),
+        type: Schema.Literal("model"),
+      }),
+      Schema.Struct({
+        id: Schema.String,
+        outputs: Schema.Struct({
+          next: Schema.Struct({
+            elementId: Schema.String,
+          }),
+        }),
+        type: Schema.Literal("start"),
+      }),
+      Schema.Struct({
+        id: Schema.String,
+        outputs: Schema.Record(Schema.String, Schema.Unknown),
+        type: Schema.Literal("percentage"),
+      }),
+      Schema.Struct({
+        id: Schema.String,
+        outputs: Schema.Record(Schema.String, Schema.Unknown),
+        type: Schema.Literal("end"),
+      }),
+    ]),
+  ),
+  gatewayId: Schema.String,
+  modifiedAt: Schema.String,
+  name: Schema.String,
+  versionId: Schema.String,
+  isValid: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      active: "active",
+      createdAt: "created_at",
+      data: "data",
+      elements: "elements",
+      gatewayId: "gateway_id",
+      modifiedAt: "modified_at",
+      name: "name",
+      versionId: "version_id",
+      isValid: "is_valid",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<GetVersionDynamicRoutingResponse>;
 
 export type GetVersionDynamicRoutingError = DefaultErrors;
 
@@ -8482,7 +8128,7 @@ export const getVersionDynamicRouting: API.OperationMethod<
   GetVersionDynamicRoutingResponse,
   GetVersionDynamicRoutingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetVersionDynamicRoutingRequest,
   output: GetVersionDynamicRoutingResponse,
   errors: [],
@@ -8535,94 +8181,93 @@ export interface CreateVersionDynamicRoutingRequest {
   )[];
 }
 
-export const CreateVersionDynamicRoutingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    gatewayId: Schema.String.pipe(T.HttpPath("gatewayId")),
-    id: Schema.String.pipe(T.HttpPath("id")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    elements: Schema.Array(
-      Schema.Union([
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Struct({
-            false: Schema.Struct({
-              elementId: Schema.String,
-            }),
-            true: Schema.Struct({
-              elementId: Schema.String,
-            }),
+export const CreateVersionDynamicRoutingRequest = /*@__PURE__*/ Schema.Struct({
+  gatewayId: Schema.String.pipe(T.HttpPath("gatewayId")),
+  id: Schema.String.pipe(T.HttpPath("id")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  elements: Schema.Array(
+    Schema.Union([
+      Schema.Struct({
+        id: Schema.String,
+        outputs: Schema.Struct({
+          false: Schema.Struct({
+            elementId: Schema.String,
           }),
-          properties: Schema.Struct({
-            conditions: Schema.optional(Schema.Unknown),
+          true: Schema.Struct({
+            elementId: Schema.String,
           }),
-          type: Schema.Literal("conditional"),
         }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Struct({
-            fallback: Schema.Struct({
-              elementId: Schema.String,
-            }),
-            success: Schema.Struct({
-              elementId: Schema.String,
-            }),
-          }),
-          properties: Schema.Struct({
-            key: Schema.String,
-            limit: Schema.Number,
-            limitType: Schema.Union([
-              Schema.Literals(["count", "cost"]),
-              Schema.String,
-            ]),
-            window: Schema.Number,
-          }),
-          type: Schema.Literal("rate"),
+        properties: Schema.Struct({
+          conditions: Schema.optional(Schema.Unknown),
         }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Struct({
-            fallback: Schema.Struct({
-              elementId: Schema.String,
-            }),
-            success: Schema.Struct({
-              elementId: Schema.String,
-            }),
+        type: Schema.Literal("conditional"),
+      }),
+      Schema.Struct({
+        id: Schema.String,
+        outputs: Schema.Struct({
+          fallback: Schema.Struct({
+            elementId: Schema.String,
           }),
-          properties: Schema.Struct({
-            model: Schema.String,
-            provider: Schema.String,
-            retries: Schema.Number,
-            timeout: Schema.Number,
+          success: Schema.Struct({
+            elementId: Schema.String,
           }),
-          type: Schema.Literal("model"),
         }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Struct({
-            next: Schema.Struct({
-              elementId: Schema.String,
-            }),
+        properties: Schema.Struct({
+          key: Schema.String,
+          limit: Schema.Number,
+          limitType: Schema.Union([
+            Schema.Literals(["count", "cost"]),
+            Schema.String,
+          ]),
+          window: Schema.Number,
+        }),
+        type: Schema.Literal("rate"),
+      }),
+      Schema.Struct({
+        id: Schema.String,
+        outputs: Schema.Struct({
+          fallback: Schema.Struct({
+            elementId: Schema.String,
           }),
-          type: Schema.Literal("start"),
+          success: Schema.Struct({
+            elementId: Schema.String,
+          }),
         }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Record(Schema.String, Schema.Unknown),
-          type: Schema.Literal("percentage"),
+        properties: Schema.Struct({
+          model: Schema.String,
+          provider: Schema.String,
+          retries: Schema.Number,
+          timeout: Schema.Number,
         }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Record(Schema.String, Schema.Unknown),
-          type: Schema.Literal("end"),
+        type: Schema.Literal("model"),
+      }),
+      Schema.Struct({
+        id: Schema.String,
+        outputs: Schema.Struct({
+          next: Schema.Struct({
+            elementId: Schema.String,
+          }),
         }),
-      ]),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/ai-gateway/gateways/{gatewayId}/routes/{id}/versions",
-    }),
-  ) as unknown as Schema.Schema<CreateVersionDynamicRoutingRequest>;
+        type: Schema.Literal("start"),
+      }),
+      Schema.Struct({
+        id: Schema.String,
+        outputs: Schema.Record(Schema.String, Schema.Unknown),
+        type: Schema.Literal("percentage"),
+      }),
+      Schema.Struct({
+        id: Schema.String,
+        outputs: Schema.Record(Schema.String, Schema.Unknown),
+        type: Schema.Literal("end"),
+      }),
+    ]),
+  ),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/accounts/{account_id}/ai-gateway/gateways/{gatewayId}/routes/{id}/versions",
+  }),
+) as unknown as Schema.Schema<CreateVersionDynamicRoutingRequest>;
 
 export interface CreateVersionDynamicRoutingResponse {
   id: string;
@@ -8671,106 +8316,105 @@ export interface CreateVersionDynamicRoutingResponse {
   name: string;
 }
 
-export const CreateVersionDynamicRoutingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    createdAt: Schema.String,
-    elements: Schema.Array(
-      Schema.Union([
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Struct({
-            false: Schema.Struct({
-              elementId: Schema.String,
-            }),
-            true: Schema.Struct({
-              elementId: Schema.String,
-            }),
+export const CreateVersionDynamicRoutingResponse = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  createdAt: Schema.String,
+  elements: Schema.Array(
+    Schema.Union([
+      Schema.Struct({
+        id: Schema.String,
+        outputs: Schema.Struct({
+          false: Schema.Struct({
+            elementId: Schema.String,
           }),
-          properties: Schema.Struct({
-            conditions: Schema.optional(
-              Schema.Union([Schema.Unknown, Schema.Null]),
-            ),
+          true: Schema.Struct({
+            elementId: Schema.String,
           }),
-          type: Schema.Literal("conditional"),
         }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Struct({
-            fallback: Schema.Struct({
-              elementId: Schema.String,
-            }),
-            success: Schema.Struct({
-              elementId: Schema.String,
-            }),
-          }),
-          properties: Schema.Struct({
-            key: Schema.String,
-            limit: Schema.Number,
-            limitType: Schema.Union([
-              Schema.Literals(["count", "cost"]),
-              Schema.String,
-            ]),
-            window: Schema.Number,
-          }),
-          type: Schema.Literal("rate"),
+        properties: Schema.Struct({
+          conditions: Schema.optional(
+            Schema.Union([Schema.Unknown, Schema.Null]),
+          ),
         }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Struct({
-            fallback: Schema.Struct({
-              elementId: Schema.String,
-            }),
-            success: Schema.Struct({
-              elementId: Schema.String,
-            }),
-          }),
-          properties: Schema.Struct({
-            model: Schema.String,
-            provider: Schema.String,
-            retries: Schema.Number,
-            timeout: Schema.Number,
-          }),
-          type: Schema.Literal("model"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Struct({
-            next: Schema.Struct({
-              elementId: Schema.String,
-            }),
-          }),
-          type: Schema.Literal("start"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Record(Schema.String, Schema.Unknown),
-          type: Schema.Literal("percentage"),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          outputs: Schema.Record(Schema.String, Schema.Unknown),
-          type: Schema.Literal("end"),
-        }),
-      ]),
-    ),
-    gatewayId: Schema.String,
-    modifiedAt: Schema.String,
-    name: Schema.String,
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        createdAt: "created_at",
-        elements: "elements",
-        gatewayId: "gateway_id",
-        modifiedAt: "modified_at",
-        name: "name",
+        type: Schema.Literal("conditional"),
       }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<CreateVersionDynamicRoutingResponse>;
+      Schema.Struct({
+        id: Schema.String,
+        outputs: Schema.Struct({
+          fallback: Schema.Struct({
+            elementId: Schema.String,
+          }),
+          success: Schema.Struct({
+            elementId: Schema.String,
+          }),
+        }),
+        properties: Schema.Struct({
+          key: Schema.String,
+          limit: Schema.Number,
+          limitType: Schema.Union([
+            Schema.Literals(["count", "cost"]),
+            Schema.String,
+          ]),
+          window: Schema.Number,
+        }),
+        type: Schema.Literal("rate"),
+      }),
+      Schema.Struct({
+        id: Schema.String,
+        outputs: Schema.Struct({
+          fallback: Schema.Struct({
+            elementId: Schema.String,
+          }),
+          success: Schema.Struct({
+            elementId: Schema.String,
+          }),
+        }),
+        properties: Schema.Struct({
+          model: Schema.String,
+          provider: Schema.String,
+          retries: Schema.Number,
+          timeout: Schema.Number,
+        }),
+        type: Schema.Literal("model"),
+      }),
+      Schema.Struct({
+        id: Schema.String,
+        outputs: Schema.Struct({
+          next: Schema.Struct({
+            elementId: Schema.String,
+          }),
+        }),
+        type: Schema.Literal("start"),
+      }),
+      Schema.Struct({
+        id: Schema.String,
+        outputs: Schema.Record(Schema.String, Schema.Unknown),
+        type: Schema.Literal("percentage"),
+      }),
+      Schema.Struct({
+        id: Schema.String,
+        outputs: Schema.Record(Schema.String, Schema.Unknown),
+        type: Schema.Literal("end"),
+      }),
+    ]),
+  ),
+  gatewayId: Schema.String,
+  modifiedAt: Schema.String,
+  name: Schema.String,
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      createdAt: "created_at",
+      elements: "elements",
+      gatewayId: "gateway_id",
+      modifiedAt: "modified_at",
+      name: "name",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<CreateVersionDynamicRoutingResponse>;
 
 export type CreateVersionDynamicRoutingError = DefaultErrors;
 
@@ -8779,7 +8423,7 @@ export const createVersionDynamicRouting: API.OperationMethod<
   CreateVersionDynamicRoutingResponse,
   CreateVersionDynamicRoutingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateVersionDynamicRoutingRequest,
   output: CreateVersionDynamicRoutingResponse,
   errors: [],
@@ -8795,17 +8439,16 @@ export interface ListVersionsDynamicRoutingRequest {
   accountId: string;
 }
 
-export const ListVersionsDynamicRoutingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    gatewayId: Schema.String.pipe(T.HttpPath("gatewayId")),
-    id: Schema.String.pipe(T.HttpPath("id")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/ai-gateway/gateways/{gatewayId}/routes/{id}/versions",
-    }),
-  ) as unknown as Schema.Schema<ListVersionsDynamicRoutingRequest>;
+export const ListVersionsDynamicRoutingRequest = /*@__PURE__*/ Schema.Struct({
+  gatewayId: Schema.String.pipe(T.HttpPath("gatewayId")),
+  id: Schema.String.pipe(T.HttpPath("id")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/ai-gateway/gateways/{gatewayId}/routes/{id}/versions",
+  }),
+) as unknown as Schema.Schema<ListVersionsDynamicRoutingRequest>;
 
 export interface ListVersionsDynamicRoutingResponse {
   data: {
@@ -8824,41 +8467,40 @@ export interface ListVersionsDynamicRoutingResponse {
   success: boolean;
 }
 
-export const ListVersionsDynamicRoutingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    data: Schema.Struct({
-      orderBy: Schema.String,
-      orderByDirection: Schema.String,
-      page: Schema.Number,
-      perPage: Schema.Number,
-      versions: Schema.Array(
-        Schema.Struct({
-          active: Schema.Literals([true, false]),
-          createdAt: Schema.String,
-          data: Schema.String,
-          versionId: Schema.String,
-          isValid: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-        }).pipe(
-          Schema.encodeKeys({
-            active: "active",
-            createdAt: "created_at",
-            data: "data",
-            versionId: "version_id",
-            isValid: "is_valid",
-          }),
-        ),
+export const ListVersionsDynamicRoutingResponse = /*@__PURE__*/ Schema.Struct({
+  data: Schema.Struct({
+    orderBy: Schema.String,
+    orderByDirection: Schema.String,
+    page: Schema.Number,
+    perPage: Schema.Number,
+    versions: Schema.Array(
+      Schema.Struct({
+        active: Schema.Literals([true, false]),
+        createdAt: Schema.String,
+        data: Schema.String,
+        versionId: Schema.String,
+        isValid: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      }).pipe(
+        Schema.encodeKeys({
+          active: "active",
+          createdAt: "created_at",
+          data: "data",
+          versionId: "version_id",
+          isValid: "is_valid",
+        }),
       ),
-    }).pipe(
-      Schema.encodeKeys({
-        orderBy: "order_by",
-        orderByDirection: "order_by_direction",
-        page: "page",
-        perPage: "per_page",
-        versions: "versions",
-      }),
     ),
-    success: Schema.Boolean,
-  }) as unknown as Schema.Schema<ListVersionsDynamicRoutingResponse>;
+  }).pipe(
+    Schema.encodeKeys({
+      orderBy: "order_by",
+      orderByDirection: "order_by_direction",
+      page: "page",
+      perPage: "per_page",
+      versions: "versions",
+    }),
+  ),
+  success: Schema.Boolean,
+}) as unknown as Schema.Schema<ListVersionsDynamicRoutingResponse>;
 
 export type ListVersionsDynamicRoutingError = DefaultErrors;
 
@@ -8867,7 +8509,7 @@ export const listVersionsDynamicRouting: API.OperationMethod<
   ListVersionsDynamicRoutingResponse,
   ListVersionsDynamicRoutingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListVersionsDynamicRoutingRequest,
   output: ListVersionsDynamicRoutingResponse,
   errors: [],

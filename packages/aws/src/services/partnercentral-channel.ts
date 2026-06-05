@@ -1479,7 +1479,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -1506,7 +1506,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -1534,7 +1534,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -1563,7 +1563,7 @@ export const createChannelHandshake: API.OperationMethod<
   CreateChannelHandshakeResponse,
   CreateChannelHandshakeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateChannelHandshakeRequest,
   output: CreateChannelHandshakeResponse,
   errors: [
@@ -1606,7 +1606,7 @@ export const listChannelHandshakes: API.OperationMethod<
     ListChannelHandshakesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChannelHandshakesRequest,
   output: ListChannelHandshakesResponse,
   errors: [
@@ -1638,7 +1638,7 @@ export const acceptChannelHandshake: API.OperationMethod<
   AcceptChannelHandshakeResponse,
   AcceptChannelHandshakeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AcceptChannelHandshakeRequest,
   output: AcceptChannelHandshakeResponse,
   errors: [
@@ -1664,7 +1664,7 @@ export const cancelChannelHandshake: API.OperationMethod<
   CancelChannelHandshakeResponse,
   CancelChannelHandshakeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelChannelHandshakeRequest,
   output: CancelChannelHandshakeResponse,
   errors: [
@@ -1690,7 +1690,7 @@ export const rejectChannelHandshake: API.OperationMethod<
   RejectChannelHandshakeResponse,
   RejectChannelHandshakeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RejectChannelHandshakeRequest,
   output: RejectChannelHandshakeResponse,
   errors: [
@@ -1718,7 +1718,7 @@ export const createProgramManagementAccount: API.OperationMethod<
   CreateProgramManagementAccountResponse,
   CreateProgramManagementAccountError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProgramManagementAccountRequest,
   output: CreateProgramManagementAccountResponse,
   errors: [
@@ -1747,7 +1747,7 @@ export const updateProgramManagementAccount: API.OperationMethod<
   UpdateProgramManagementAccountResponse,
   UpdateProgramManagementAccountError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateProgramManagementAccountRequest,
   output: UpdateProgramManagementAccountResponse,
   errors: [
@@ -1775,7 +1775,7 @@ export const deleteProgramManagementAccount: API.OperationMethod<
   DeleteProgramManagementAccountResponse,
   DeleteProgramManagementAccountError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProgramManagementAccountRequest,
   output: DeleteProgramManagementAccountResponse,
   errors: [
@@ -1817,7 +1817,7 @@ export const listProgramManagementAccounts: API.OperationMethod<
     ListProgramManagementAccountsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProgramManagementAccountsRequest,
   output: ListProgramManagementAccountsResponse,
   errors: [
@@ -1851,7 +1851,7 @@ export const createRelationship: API.OperationMethod<
   CreateRelationshipResponse,
   CreateRelationshipError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRelationshipRequest,
   output: CreateRelationshipResponse,
   errors: [
@@ -1879,7 +1879,7 @@ export const getRelationship: API.OperationMethod<
   GetRelationshipResponse,
   GetRelationshipError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRelationshipRequest,
   output: GetRelationshipResponse,
   errors: [
@@ -1906,7 +1906,7 @@ export const updateRelationship: API.OperationMethod<
   UpdateRelationshipResponse,
   UpdateRelationshipError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRelationshipRequest,
   output: UpdateRelationshipResponse,
   errors: [
@@ -1934,7 +1934,7 @@ export const deleteRelationship: API.OperationMethod<
   DeleteRelationshipResponse,
   DeleteRelationshipError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRelationshipRequest,
   output: DeleteRelationshipResponse,
   errors: [
@@ -1976,7 +1976,7 @@ export const listRelationships: API.OperationMethod<
     ListRelationshipsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRelationshipsRequest,
   output: ListRelationshipsResponse,
   errors: [

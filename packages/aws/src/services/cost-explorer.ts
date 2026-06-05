@@ -3971,7 +3971,7 @@ export const createAnomalyMonitor: API.OperationMethod<
   CreateAnomalyMonitorResponse,
   CreateAnomalyMonitorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAnomalyMonitorRequest,
   output: CreateAnomalyMonitorResponse,
   errors: [LimitExceededException],
@@ -3990,7 +3990,7 @@ export const createAnomalySubscription: API.OperationMethod<
   CreateAnomalySubscriptionResponse,
   CreateAnomalySubscriptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAnomalySubscriptionRequest,
   output: CreateAnomalySubscriptionResponse,
   errors: [LimitExceededException, UnknownMonitorException],
@@ -4007,7 +4007,7 @@ export const createCostCategoryDefinition: API.OperationMethod<
   CreateCostCategoryDefinitionResponse,
   CreateCostCategoryDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCostCategoryDefinitionRequest,
   output: CreateCostCategoryDefinitionResponse,
   errors: [LimitExceededException, ServiceQuotaExceededException],
@@ -4024,7 +4024,7 @@ export const deleteAnomalyMonitor: API.OperationMethod<
   DeleteAnomalyMonitorResponse,
   DeleteAnomalyMonitorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAnomalyMonitorRequest,
   output: DeleteAnomalyMonitorResponse,
   errors: [LimitExceededException, UnknownMonitorException],
@@ -4041,7 +4041,7 @@ export const deleteAnomalySubscription: API.OperationMethod<
   DeleteAnomalySubscriptionResponse,
   DeleteAnomalySubscriptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAnomalySubscriptionRequest,
   output: DeleteAnomalySubscriptionResponse,
   errors: [LimitExceededException, UnknownSubscriptionException],
@@ -4059,7 +4059,7 @@ export const deleteCostCategoryDefinition: API.OperationMethod<
   DeleteCostCategoryDefinitionResponse,
   DeleteCostCategoryDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCostCategoryDefinitionRequest,
   output: DeleteCostCategoryDefinitionResponse,
   errors: [LimitExceededException, ResourceNotFoundException],
@@ -4082,7 +4082,7 @@ export const describeCostCategoryDefinition: API.OperationMethod<
   DescribeCostCategoryDefinitionResponse,
   DescribeCostCategoryDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeCostCategoryDefinitionRequest,
   output: DescribeCostCategoryDefinitionResponse,
   errors: [LimitExceededException, ResourceNotFoundException],
@@ -4116,7 +4116,7 @@ export const getAnomalies: API.OperationMethod<
     GetAnomaliesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetAnomaliesRequest,
   output: GetAnomaliesResponse,
   errors: [InvalidNextTokenException, LimitExceededException],
@@ -4156,7 +4156,7 @@ export const getAnomalyMonitors: API.OperationMethod<
     GetAnomalyMonitorsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetAnomalyMonitorsRequest,
   output: GetAnomalyMonitorsResponse,
   errors: [
@@ -4200,7 +4200,7 @@ export const getAnomalySubscriptions: API.OperationMethod<
     GetAnomalySubscriptionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetAnomalySubscriptionsRequest,
   output: GetAnomalySubscriptionsResponse,
   errors: [
@@ -4228,7 +4228,7 @@ export const getApproximateUsageRecords: API.OperationMethod<
   GetApproximateUsageRecordsResponse,
   GetApproximateUsageRecordsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetApproximateUsageRecordsRequest,
   output: GetApproximateUsageRecordsResponse,
   errors: [DataUnavailableException, LimitExceededException],
@@ -4247,7 +4247,7 @@ export const getCommitmentPurchaseAnalysis: API.OperationMethod<
   GetCommitmentPurchaseAnalysisResponse,
   GetCommitmentPurchaseAnalysisError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCommitmentPurchaseAnalysisRequest,
   output: GetCommitmentPurchaseAnalysisResponse,
   errors: [
@@ -4280,7 +4280,7 @@ export const getCostAndUsage: API.OperationMethod<
   GetCostAndUsageResponse,
   GetCostAndUsageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCostAndUsageRequest,
   output: GetCostAndUsageResponse,
   errors: [
@@ -4325,7 +4325,7 @@ export const getCostAndUsageComparisons: API.OperationMethod<
     GetCostAndUsageComparisonsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetCostAndUsageComparisonsRequest,
   output: GetCostAndUsageComparisonsResponse,
   errors: [
@@ -4372,7 +4372,7 @@ export const getCostAndUsageWithResources: API.OperationMethod<
   GetCostAndUsageWithResourcesResponse,
   GetCostAndUsageWithResourcesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCostAndUsageWithResourcesRequest,
   output: GetCostAndUsageWithResourcesResponse,
   errors: [
@@ -4405,7 +4405,7 @@ export const getCostCategories: API.OperationMethod<
   GetCostCategoriesResponse,
   GetCostCategoriesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCostCategoriesRequest,
   output: GetCostCategoriesResponse,
   errors: [
@@ -4450,7 +4450,7 @@ export const getCostComparisonDrivers: API.OperationMethod<
     GetCostComparisonDriversError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetCostComparisonDriversRequest,
   output: GetCostComparisonDriversResponse,
   errors: [
@@ -4482,7 +4482,7 @@ export const getCostForecast: API.OperationMethod<
   GetCostForecastResponse,
   GetCostForecastError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCostForecastRequest,
   output: GetCostForecastResponse,
   errors: [
@@ -4510,7 +4510,7 @@ export const getDimensionValues: API.OperationMethod<
   GetDimensionValuesResponse,
   GetDimensionValuesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDimensionValuesRequest,
   output: GetDimensionValuesResponse,
   errors: [
@@ -4568,7 +4568,7 @@ export const getReservationCoverage: API.OperationMethod<
   GetReservationCoverageResponse,
   GetReservationCoverageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetReservationCoverageRequest,
   output: GetReservationCoverageResponse,
   errors: [
@@ -4622,7 +4622,7 @@ export const getReservationPurchaseRecommendation: API.OperationMethod<
     GetReservationPurchaseRecommendationError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetReservationPurchaseRecommendationRequest,
   output: GetReservationPurchaseRecommendationResponse,
   errors: [
@@ -4653,7 +4653,7 @@ export const getReservationUtilization: API.OperationMethod<
   GetReservationUtilizationResponse,
   GetReservationUtilizationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetReservationUtilizationRequest,
   output: GetReservationUtilizationResponse,
   errors: [
@@ -4694,7 +4694,7 @@ export const getRightsizingRecommendation: API.OperationMethod<
     GetRightsizingRecommendationError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetRightsizingRecommendationRequest,
   output: GetRightsizingRecommendationResponse,
   errors: [InvalidNextTokenException, LimitExceededException],
@@ -4718,7 +4718,7 @@ export const getSavingsPlanPurchaseRecommendationDetails: API.OperationMethod<
   GetSavingsPlanPurchaseRecommendationDetailsResponse,
   GetSavingsPlanPurchaseRecommendationDetailsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSavingsPlanPurchaseRecommendationDetailsRequest,
   output: GetSavingsPlanPurchaseRecommendationDetailsResponse,
   errors: [DataUnavailableException, LimitExceededException],
@@ -4766,7 +4766,7 @@ export const getSavingsPlansCoverage: API.OperationMethod<
     GetSavingsPlansCoverageError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetSavingsPlansCoverageRequest,
   output: GetSavingsPlansCoverageResponse,
   errors: [
@@ -4795,7 +4795,7 @@ export const getSavingsPlansPurchaseRecommendation: API.OperationMethod<
   GetSavingsPlansPurchaseRecommendationResponse,
   GetSavingsPlansPurchaseRecommendationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSavingsPlansPurchaseRecommendationRequest,
   output: GetSavingsPlansPurchaseRecommendationResponse,
   errors: [InvalidNextTokenException, LimitExceededException],
@@ -4818,7 +4818,7 @@ export const getSavingsPlansUtilization: API.OperationMethod<
   GetSavingsPlansUtilizationResponse,
   GetSavingsPlansUtilizationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSavingsPlansUtilizationRequest,
   output: GetSavingsPlansUtilizationResponse,
   errors: [DataUnavailableException, LimitExceededException],
@@ -4860,7 +4860,7 @@ export const getSavingsPlansUtilizationDetails: API.OperationMethod<
     GetSavingsPlansUtilizationDetailsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetSavingsPlansUtilizationDetailsRequest,
   output: GetSavingsPlansUtilizationDetailsResponse,
   errors: [
@@ -4892,7 +4892,7 @@ export const getTags: API.OperationMethod<
   GetTagsResponse,
   GetTagsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTagsRequest,
   output: GetTagsResponse,
   errors: [
@@ -4921,7 +4921,7 @@ export const getUsageForecast: API.OperationMethod<
   GetUsageForecastResponse,
   GetUsageForecastError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUsageForecastRequest,
   output: GetUsageForecastResponse,
   errors: [
@@ -4960,7 +4960,7 @@ export const listCommitmentPurchaseAnalyses: API.OperationMethod<
     ListCommitmentPurchaseAnalysesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCommitmentPurchaseAnalysesRequest,
   output: ListCommitmentPurchaseAnalysesResponse,
   errors: [
@@ -5002,7 +5002,7 @@ export const listCostAllocationTagBackfillHistory: API.OperationMethod<
     ListCostAllocationTagBackfillHistoryError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCostAllocationTagBackfillHistoryRequest,
   output: ListCostAllocationTagBackfillHistoryResponse,
   errors: [InvalidNextTokenException, LimitExceededException],
@@ -5041,7 +5041,7 @@ export const listCostAllocationTags: API.OperationMethod<
     ListCostAllocationTagsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCostAllocationTagsRequest,
   output: ListCostAllocationTagsResponse,
   errors: [InvalidNextTokenException, LimitExceededException],
@@ -5084,7 +5084,7 @@ export const listCostCategoryDefinitions: API.OperationMethod<
     ListCostCategoryDefinitionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCostCategoryDefinitionsRequest,
   output: ListCostCategoryDefinitionsResponse,
   errors: [LimitExceededException],
@@ -5122,7 +5122,7 @@ export const listCostCategoryResourceAssociations: API.OperationMethod<
     ListCostCategoryResourceAssociationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCostCategoryResourceAssociationsRequest,
   output: ListCostCategoryResourceAssociationsResponse,
   errors: [LimitExceededException, ResourceNotFoundException],
@@ -5162,7 +5162,7 @@ export const listSavingsPlansPurchaseRecommendationGeneration: API.OperationMeth
     ListSavingsPlansPurchaseRecommendationGenerationError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSavingsPlansPurchaseRecommendationGenerationRequest,
   output: ListSavingsPlansPurchaseRecommendationGenerationResponse,
   errors: [
@@ -5190,7 +5190,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [LimitExceededException, ResourceNotFoundException],
@@ -5204,7 +5204,7 @@ export const provideAnomalyFeedback: API.OperationMethod<
   ProvideAnomalyFeedbackResponse,
   ProvideAnomalyFeedbackError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ProvideAnomalyFeedbackRequest,
   output: ProvideAnomalyFeedbackResponse,
   errors: [LimitExceededException],
@@ -5225,7 +5225,7 @@ export const startCommitmentPurchaseAnalysis: API.OperationMethod<
   StartCommitmentPurchaseAnalysisResponse,
   StartCommitmentPurchaseAnalysisError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartCommitmentPurchaseAnalysisRequest,
   output: StartCommitmentPurchaseAnalysisResponse,
   errors: [
@@ -5249,7 +5249,7 @@ export const startCostAllocationTagBackfill: API.OperationMethod<
   StartCostAllocationTagBackfillResponse,
   StartCostAllocationTagBackfillError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartCostAllocationTagBackfillRequest,
   output: StartCostAllocationTagBackfillResponse,
   errors: [BackfillLimitExceededException, LimitExceededException],
@@ -5274,7 +5274,7 @@ export const startSavingsPlansPurchaseRecommendationGeneration: API.OperationMet
   StartSavingsPlansPurchaseRecommendationGenerationResponse,
   StartSavingsPlansPurchaseRecommendationGenerationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartSavingsPlansPurchaseRecommendationGenerationRequest,
   output: StartSavingsPlansPurchaseRecommendationGenerationResponse,
   errors: [
@@ -5305,7 +5305,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -5327,7 +5327,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [LimitExceededException, ResourceNotFoundException],
@@ -5345,7 +5345,7 @@ export const updateAnomalyMonitor: API.OperationMethod<
   UpdateAnomalyMonitorResponse,
   UpdateAnomalyMonitorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAnomalyMonitorRequest,
   output: UpdateAnomalyMonitorResponse,
   errors: [LimitExceededException, UnknownMonitorException],
@@ -5367,7 +5367,7 @@ export const updateAnomalySubscription: API.OperationMethod<
   UpdateAnomalySubscriptionResponse,
   UpdateAnomalySubscriptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAnomalySubscriptionRequest,
   output: UpdateAnomalySubscriptionResponse,
   errors: [
@@ -5390,7 +5390,7 @@ export const updateCostAllocationTagsStatus: API.OperationMethod<
   UpdateCostAllocationTagsStatusResponse,
   UpdateCostAllocationTagsStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCostAllocationTagsStatusRequest,
   output: UpdateCostAllocationTagsStatusResponse,
   errors: [LimitExceededException],
@@ -5410,7 +5410,7 @@ export const updateCostCategoryDefinition: API.OperationMethod<
   UpdateCostCategoryDefinitionResponse,
   UpdateCostCategoryDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCostCategoryDefinitionRequest,
   output: UpdateCostCategoryDefinitionResponse,
   errors: [

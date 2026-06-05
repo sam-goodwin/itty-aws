@@ -1799,7 +1799,7 @@ export const associateUserToPermissionGroup: API.OperationMethod<
   AssociateUserToPermissionGroupResponse,
   AssociateUserToPermissionGroupError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateUserToPermissionGroupRequest,
   output: AssociateUserToPermissionGroupResponse,
   errors: [
@@ -1828,7 +1828,7 @@ export const createChangeset: API.OperationMethod<
   CreateChangesetResponse,
   CreateChangesetError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateChangesetRequest,
   output: CreateChangesetResponse,
   errors: [
@@ -1858,7 +1858,7 @@ export const createDataset: API.OperationMethod<
   CreateDatasetResponse,
   CreateDatasetError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDatasetRequest,
   output: CreateDatasetResponse,
   errors: [
@@ -1887,7 +1887,7 @@ export const createDataView: API.OperationMethod<
   CreateDataViewResponse,
   CreateDataViewError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDataViewRequest,
   output: CreateDataViewResponse,
   errors: [
@@ -1915,7 +1915,7 @@ export const createPermissionGroup: API.OperationMethod<
   CreatePermissionGroupResponse,
   CreatePermissionGroupError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePermissionGroupRequest,
   output: CreatePermissionGroupResponse,
   errors: [
@@ -1943,7 +1943,7 @@ export const createUser: API.OperationMethod<
   CreateUserResponse,
   CreateUserError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateUserRequest,
   output: CreateUserResponse,
   errors: [
@@ -1972,7 +1972,7 @@ export const deleteDataset: API.OperationMethod<
   DeleteDatasetResponse,
   DeleteDatasetError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDatasetRequest,
   output: DeleteDatasetResponse,
   errors: [
@@ -2002,7 +2002,7 @@ export const deletePermissionGroup: API.OperationMethod<
   DeletePermissionGroupResponse,
   DeletePermissionGroupError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePermissionGroupRequest,
   output: DeletePermissionGroupResponse,
   errors: [
@@ -2031,7 +2031,7 @@ export const disableUser: API.OperationMethod<
   DisableUserResponse,
   DisableUserError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableUserRequest,
   output: DisableUserResponse,
   errors: [
@@ -2059,7 +2059,7 @@ export const disassociateUserFromPermissionGroup: API.OperationMethod<
   DisassociateUserFromPermissionGroupResponse,
   DisassociateUserFromPermissionGroupError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateUserFromPermissionGroupRequest,
   output: DisassociateUserFromPermissionGroupResponse,
   errors: [
@@ -2088,7 +2088,7 @@ export const enableUser: API.OperationMethod<
   EnableUserResponse,
   EnableUserError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableUserRequest,
   output: EnableUserResponse,
   errors: [
@@ -2117,7 +2117,7 @@ export const getChangeset: API.OperationMethod<
   GetChangesetResponse,
   GetChangesetError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetChangesetRequest,
   output: GetChangesetResponse,
   errors: [
@@ -2145,7 +2145,7 @@ export const getDataset: API.OperationMethod<
   GetDatasetResponse,
   GetDatasetError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDatasetRequest,
   output: GetDatasetResponse,
   errors: [
@@ -2172,7 +2172,7 @@ export const getDataView: API.OperationMethod<
   GetDataViewResponse,
   GetDataViewError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDataViewRequest,
   output: GetDataViewResponse,
   errors: [
@@ -2202,7 +2202,7 @@ export const getExternalDataViewAccessDetails: API.OperationMethod<
   GetExternalDataViewAccessDetailsResponse,
   GetExternalDataViewAccessDetailsError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetExternalDataViewAccessDetailsRequest,
   output: GetExternalDataViewAccessDetailsResponse,
   errors: [
@@ -2228,7 +2228,7 @@ export const getPermissionGroup: API.OperationMethod<
   GetPermissionGroupResponse,
   GetPermissionGroupError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPermissionGroupRequest,
   output: GetPermissionGroupResponse,
   errors: [
@@ -2253,7 +2253,7 @@ export const getProgrammaticAccessCredentials: API.OperationMethod<
   GetProgrammaticAccessCredentialsResponse,
   GetProgrammaticAccessCredentialsError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProgrammaticAccessCredentialsRequest,
   output: GetProgrammaticAccessCredentialsResponse,
   errors: [
@@ -2278,7 +2278,7 @@ export const getUser: API.OperationMethod<
   GetUserResponse,
   GetUserError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUserRequest,
   output: GetUserResponse,
   errors: [
@@ -2304,7 +2304,7 @@ export const getWorkingLocation: API.OperationMethod<
   GetWorkingLocationResponse,
   GetWorkingLocationError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetWorkingLocationRequest,
   output: GetWorkingLocationResponse,
   errors: [
@@ -2345,7 +2345,7 @@ export const listChangesets: API.OperationMethod<
     ListChangesetsError,
     Creds | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChangesetsRequest,
   output: ListChangesetsResponse,
   errors: [
@@ -2393,7 +2393,7 @@ export const listDatasets: API.OperationMethod<
     ListDatasetsError,
     Creds | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatasetsRequest,
   output: ListDatasetsResponse,
   errors: [
@@ -2440,7 +2440,7 @@ export const listDataViews: API.OperationMethod<
     ListDataViewsError,
     Creds | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataViewsRequest,
   output: ListDataViewsResponse,
   errors: [
@@ -2486,7 +2486,7 @@ export const listPermissionGroups: API.OperationMethod<
     ListPermissionGroupsError,
     Creds | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPermissionGroupsRequest,
   output: ListPermissionGroupsResponse,
   errors: [
@@ -2517,7 +2517,7 @@ export const listPermissionGroupsByUser: API.OperationMethod<
   ListPermissionGroupsByUserResponse,
   ListPermissionGroupsByUserError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListPermissionGroupsByUserRequest,
   output: ListPermissionGroupsByUserResponse,
   errors: [
@@ -2557,7 +2557,7 @@ export const listUsers: API.OperationMethod<
     ListUsersError,
     Creds | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsersRequest,
   output: ListUsersResponse,
   errors: [
@@ -2588,7 +2588,7 @@ export const listUsersByPermissionGroup: API.OperationMethod<
   ListUsersByPermissionGroupResponse,
   ListUsersByPermissionGroupError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListUsersByPermissionGroupRequest,
   output: ListUsersByPermissionGroupResponse,
   errors: [
@@ -2615,7 +2615,7 @@ export const resetUserPassword: API.OperationMethod<
   ResetUserPasswordResponse,
   ResetUserPasswordError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetUserPasswordRequest,
   output: ResetUserPasswordResponse,
   errors: [
@@ -2643,7 +2643,7 @@ export const updateChangeset: API.OperationMethod<
   UpdateChangesetResponse,
   UpdateChangesetError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateChangesetRequest,
   output: UpdateChangesetResponse,
   errors: [
@@ -2671,7 +2671,7 @@ export const updateDataset: API.OperationMethod<
   UpdateDatasetResponse,
   UpdateDatasetError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDatasetRequest,
   output: UpdateDatasetResponse,
   errors: [
@@ -2699,7 +2699,7 @@ export const updatePermissionGroup: API.OperationMethod<
   UpdatePermissionGroupResponse,
   UpdatePermissionGroupError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePermissionGroupRequest,
   output: UpdatePermissionGroupResponse,
   errors: [
@@ -2727,7 +2727,7 @@ export const updateUser: API.OperationMethod<
   UpdateUserResponse,
   UpdateUserError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateUserRequest,
   output: UpdateUserResponse,
   errors: [

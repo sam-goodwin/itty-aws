@@ -2094,7 +2094,7 @@ export const addCustomRoutingEndpoints: API.OperationMethod<
   AddCustomRoutingEndpointsResponse,
   AddCustomRoutingEndpointsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddCustomRoutingEndpointsRequest,
   output: AddCustomRoutingEndpointsResponse,
   errors: [
@@ -2140,7 +2140,7 @@ export const addEndpoints: API.OperationMethod<
   AddEndpointsResponse,
   AddEndpointsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddEndpointsRequest,
   output: AddEndpointsResponse,
   errors: [
@@ -2175,7 +2175,7 @@ export const advertiseByoipCidr: API.OperationMethod<
   AdvertiseByoipCidrResponse,
   AdvertiseByoipCidrError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AdvertiseByoipCidrRequest,
   output: AdvertiseByoipCidrResponse,
   errors: [
@@ -2205,7 +2205,7 @@ export const allowCustomRoutingTraffic: API.OperationMethod<
   AllowCustomRoutingTrafficResponse,
   AllowCustomRoutingTrafficError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AllowCustomRoutingTrafficRequest,
   output: AllowCustomRoutingTrafficResponse,
   errors: [
@@ -2234,7 +2234,7 @@ export const createAccelerator: API.OperationMethod<
   CreateAcceleratorResponse,
   CreateAcceleratorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAcceleratorRequest,
   output: CreateAcceleratorResponse,
   errors: [
@@ -2279,7 +2279,7 @@ export const createCrossAccountAttachment: API.OperationMethod<
   CreateCrossAccountAttachmentResponse,
   CreateCrossAccountAttachmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCrossAccountAttachmentRequest,
   output: CreateCrossAccountAttachmentResponse,
   errors: [
@@ -2315,7 +2315,7 @@ export const createCustomRoutingAccelerator: API.OperationMethod<
   CreateCustomRoutingAcceleratorResponse,
   CreateCustomRoutingAcceleratorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCustomRoutingAcceleratorRequest,
   output: CreateCustomRoutingAcceleratorResponse,
   errors: [
@@ -2346,7 +2346,7 @@ export const createCustomRoutingEndpointGroup: API.OperationMethod<
   CreateCustomRoutingEndpointGroupResponse,
   CreateCustomRoutingEndpointGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCustomRoutingEndpointGroupRequest,
   output: CreateCustomRoutingEndpointGroupResponse,
   errors: [
@@ -2376,7 +2376,7 @@ export const createCustomRoutingListener: API.OperationMethod<
   CreateCustomRoutingListenerResponse,
   CreateCustomRoutingListenerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCustomRoutingListenerRequest,
   output: CreateCustomRoutingListenerResponse,
   errors: [
@@ -2409,7 +2409,7 @@ export const createEndpointGroup: API.OperationMethod<
   CreateEndpointGroupResponse,
   CreateEndpointGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEndpointGroupRequest,
   output: CreateEndpointGroupResponse,
   errors: [
@@ -2438,7 +2438,7 @@ export const createListener: API.OperationMethod<
   CreateListenerResponse,
   CreateListenerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateListenerRequest,
   output: CreateListenerResponse,
   errors: [
@@ -2477,7 +2477,7 @@ export const deleteAccelerator: API.OperationMethod<
   DeleteAcceleratorResponse,
   DeleteAcceleratorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAcceleratorRequest,
   output: DeleteAcceleratorResponse,
   errors: [
@@ -2510,7 +2510,7 @@ export const deleteCrossAccountAttachment: API.OperationMethod<
   DeleteCrossAccountAttachmentResponse,
   DeleteCrossAccountAttachmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCrossAccountAttachmentRequest,
   output: DeleteCrossAccountAttachmentResponse,
   errors: [
@@ -2549,7 +2549,7 @@ export const deleteCustomRoutingAccelerator: API.OperationMethod<
   DeleteCustomRoutingAcceleratorResponse,
   DeleteCustomRoutingAcceleratorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCustomRoutingAcceleratorRequest,
   output: DeleteCustomRoutingAcceleratorResponse,
   errors: [
@@ -2574,7 +2574,7 @@ export const deleteCustomRoutingEndpointGroup: API.OperationMethod<
   DeleteCustomRoutingEndpointGroupResponse,
   DeleteCustomRoutingEndpointGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCustomRoutingEndpointGroupRequest,
   output: DeleteCustomRoutingEndpointGroupResponse,
   errors: [
@@ -2597,7 +2597,7 @@ export const deleteCustomRoutingListener: API.OperationMethod<
   DeleteCustomRoutingListenerResponse,
   DeleteCustomRoutingListenerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCustomRoutingListenerRequest,
   output: DeleteCustomRoutingListenerResponse,
   errors: [
@@ -2620,7 +2620,7 @@ export const deleteEndpointGroup: API.OperationMethod<
   DeleteEndpointGroupResponse,
   DeleteEndpointGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEndpointGroupRequest,
   output: DeleteEndpointGroupResponse,
   errors: [
@@ -2643,7 +2643,7 @@ export const deleteListener: API.OperationMethod<
   DeleteListenerResponse,
   DeleteListenerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteListenerRequest,
   output: DeleteListenerResponse,
   errors: [
@@ -2672,7 +2672,7 @@ export const denyCustomRoutingTraffic: API.OperationMethod<
   DenyCustomRoutingTrafficResponse,
   DenyCustomRoutingTrafficError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DenyCustomRoutingTrafficRequest,
   output: DenyCustomRoutingTrafficResponse,
   errors: [
@@ -2703,7 +2703,7 @@ export const deprovisionByoipCidr: API.OperationMethod<
   DeprovisionByoipCidrResponse,
   DeprovisionByoipCidrError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeprovisionByoipCidrRequest,
   output: DeprovisionByoipCidrResponse,
   errors: [
@@ -2727,7 +2727,7 @@ export const describeAccelerator: API.OperationMethod<
   DescribeAcceleratorResponse,
   DescribeAcceleratorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAcceleratorRequest,
   output: DescribeAcceleratorResponse,
   errors: [
@@ -2749,7 +2749,7 @@ export const describeAcceleratorAttributes: API.OperationMethod<
   DescribeAcceleratorAttributesResponse,
   DescribeAcceleratorAttributesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAcceleratorAttributesRequest,
   output: DescribeAcceleratorAttributesResponse,
   errors: [
@@ -2772,7 +2772,7 @@ export const describeCrossAccountAttachment: API.OperationMethod<
   DescribeCrossAccountAttachmentResponse,
   DescribeCrossAccountAttachmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeCrossAccountAttachmentRequest,
   output: DescribeCrossAccountAttachmentResponse,
   errors: [
@@ -2795,7 +2795,7 @@ export const describeCustomRoutingAccelerator: API.OperationMethod<
   DescribeCustomRoutingAcceleratorResponse,
   DescribeCustomRoutingAcceleratorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeCustomRoutingAcceleratorRequest,
   output: DescribeCustomRoutingAcceleratorResponse,
   errors: [
@@ -2817,7 +2817,7 @@ export const describeCustomRoutingAcceleratorAttributes: API.OperationMethod<
   DescribeCustomRoutingAcceleratorAttributesResponse,
   DescribeCustomRoutingAcceleratorAttributesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeCustomRoutingAcceleratorAttributesRequest,
   output: DescribeCustomRoutingAcceleratorAttributesResponse,
   errors: [
@@ -2839,7 +2839,7 @@ export const describeCustomRoutingEndpointGroup: API.OperationMethod<
   DescribeCustomRoutingEndpointGroupResponse,
   DescribeCustomRoutingEndpointGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeCustomRoutingEndpointGroupRequest,
   output: DescribeCustomRoutingEndpointGroupResponse,
   errors: [
@@ -2861,7 +2861,7 @@ export const describeCustomRoutingListener: API.OperationMethod<
   DescribeCustomRoutingListenerResponse,
   DescribeCustomRoutingListenerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeCustomRoutingListenerRequest,
   output: DescribeCustomRoutingListenerResponse,
   errors: [
@@ -2883,7 +2883,7 @@ export const describeEndpointGroup: API.OperationMethod<
   DescribeEndpointGroupResponse,
   DescribeEndpointGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeEndpointGroupRequest,
   output: DescribeEndpointGroupResponse,
   errors: [
@@ -2905,7 +2905,7 @@ export const describeListener: API.OperationMethod<
   DescribeListenerResponse,
   DescribeListenerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeListenerRequest,
   output: DescribeListenerResponse,
   errors: [
@@ -2942,7 +2942,7 @@ export const listAccelerators: API.OperationMethod<
     ListAcceleratorsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAcceleratorsRequest,
   output: ListAcceleratorsResponse,
   errors: [
@@ -2987,7 +2987,7 @@ export const listByoipCidrs: API.OperationMethod<
     ListByoipCidrsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListByoipCidrsRequest,
   output: ListByoipCidrsResponse,
   errors: [
@@ -3032,7 +3032,7 @@ export const listCrossAccountAttachments: API.OperationMethod<
     ListCrossAccountAttachmentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCrossAccountAttachmentsRequest,
   output: ListCrossAccountAttachmentsResponse,
   errors: [
@@ -3064,7 +3064,7 @@ export const listCrossAccountResourceAccounts: API.OperationMethod<
   ListCrossAccountResourceAccountsResponse,
   ListCrossAccountResourceAccountsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListCrossAccountResourceAccountsRequest,
   output: ListCrossAccountResourceAccountsResponse,
   errors: [AccessDeniedException, InternalServiceErrorException],
@@ -3099,7 +3099,7 @@ export const listCrossAccountResources: API.OperationMethod<
     ListCrossAccountResourcesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCrossAccountResourcesRequest,
   output: ListCrossAccountResourcesResponse,
   errors: [
@@ -3144,7 +3144,7 @@ export const listCustomRoutingAccelerators: API.OperationMethod<
     ListCustomRoutingAcceleratorsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomRoutingAcceleratorsRequest,
   output: ListCustomRoutingAcceleratorsResponse,
   errors: [
@@ -3188,7 +3188,7 @@ export const listCustomRoutingEndpointGroups: API.OperationMethod<
     ListCustomRoutingEndpointGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomRoutingEndpointGroupsRequest,
   output: ListCustomRoutingEndpointGroupsResponse,
   errors: [
@@ -3233,7 +3233,7 @@ export const listCustomRoutingListeners: API.OperationMethod<
     ListCustomRoutingListenersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomRoutingListenersRequest,
   output: ListCustomRoutingListenersResponse,
   errors: [
@@ -3289,7 +3289,7 @@ export const listCustomRoutingPortMappings: API.OperationMethod<
     ListCustomRoutingPortMappingsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomRoutingPortMappingsRequest,
   output: ListCustomRoutingPortMappingsResponse,
   errors: [
@@ -3338,7 +3338,7 @@ export const listCustomRoutingPortMappingsByDestination: API.OperationMethod<
     ListCustomRoutingPortMappingsByDestinationError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomRoutingPortMappingsByDestinationRequest,
   output: ListCustomRoutingPortMappingsByDestinationResponse,
   errors: [
@@ -3383,7 +3383,7 @@ export const listEndpointGroups: API.OperationMethod<
     ListEndpointGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEndpointGroupsRequest,
   output: ListEndpointGroupsResponse,
   errors: [
@@ -3428,7 +3428,7 @@ export const listListeners: API.OperationMethod<
     ListListenersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListListenersRequest,
   output: ListListenersResponse,
   errors: [
@@ -3463,7 +3463,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -3496,7 +3496,7 @@ export const provisionByoipCidr: API.OperationMethod<
   ProvisionByoipCidrResponse,
   ProvisionByoipCidrError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ProvisionByoipCidrRequest,
   output: ProvisionByoipCidrResponse,
   errors: [
@@ -3523,7 +3523,7 @@ export const removeCustomRoutingEndpoints: API.OperationMethod<
   RemoveCustomRoutingEndpointsResponse,
   RemoveCustomRoutingEndpointsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveCustomRoutingEndpointsRequest,
   output: RemoveCustomRoutingEndpointsResponse,
   errors: [
@@ -3563,7 +3563,7 @@ export const removeEndpoints: API.OperationMethod<
   RemoveEndpointsResponse,
   RemoveEndpointsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveEndpointsRequest,
   output: RemoveEndpointsResponse,
   errors: [
@@ -3590,7 +3590,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -3616,7 +3616,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -3657,7 +3657,7 @@ export const updateAccelerator: API.OperationMethod<
   UpdateAcceleratorResponse,
   UpdateAcceleratorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAcceleratorRequest,
   output: UpdateAcceleratorResponse,
   errors: [
@@ -3684,7 +3684,7 @@ export const updateAcceleratorAttributes: API.OperationMethod<
   UpdateAcceleratorAttributesResponse,
   UpdateAcceleratorAttributesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAcceleratorAttributesRequest,
   output: UpdateAcceleratorAttributesResponse,
   errors: [
@@ -3717,7 +3717,7 @@ export const updateCrossAccountAttachment: API.OperationMethod<
   UpdateCrossAccountAttachmentResponse,
   UpdateCrossAccountAttachmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCrossAccountAttachmentRequest,
   output: UpdateCrossAccountAttachmentResponse,
   errors: [
@@ -3744,7 +3744,7 @@ export const updateCustomRoutingAccelerator: API.OperationMethod<
   UpdateCustomRoutingAcceleratorResponse,
   UpdateCustomRoutingAcceleratorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCustomRoutingAcceleratorRequest,
   output: UpdateCustomRoutingAcceleratorResponse,
   errors: [
@@ -3770,7 +3770,7 @@ export const updateCustomRoutingAcceleratorAttributes: API.OperationMethod<
   UpdateCustomRoutingAcceleratorAttributesResponse,
   UpdateCustomRoutingAcceleratorAttributesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCustomRoutingAcceleratorAttributesRequest,
   output: UpdateCustomRoutingAcceleratorAttributesResponse,
   errors: [
@@ -3796,7 +3796,7 @@ export const updateCustomRoutingListener: API.OperationMethod<
   UpdateCustomRoutingListenerResponse,
   UpdateCustomRoutingListenerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCustomRoutingListenerRequest,
   output: UpdateCustomRoutingListenerResponse,
   errors: [
@@ -3822,7 +3822,7 @@ export const updateEndpointGroup: API.OperationMethod<
   UpdateEndpointGroupResponse,
   UpdateEndpointGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEndpointGroupRequest,
   output: UpdateEndpointGroupResponse,
   errors: [
@@ -3848,7 +3848,7 @@ export const updateListener: API.OperationMethod<
   UpdateListenerResponse,
   UpdateListenerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateListenerRequest,
   output: UpdateListenerResponse,
   errors: [
@@ -3882,7 +3882,7 @@ export const withdrawByoipCidr: API.OperationMethod<
   WithdrawByoipCidrResponse,
   WithdrawByoipCidrError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: WithdrawByoipCidrRequest,
   output: WithdrawByoipCidrResponse,
   errors: [

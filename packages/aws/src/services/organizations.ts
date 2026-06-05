@@ -3157,7 +3157,7 @@ export const acceptHandshake: API.OperationMethod<
   AcceptHandshakeResponse,
   AcceptHandshakeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AcceptHandshakeRequest,
   output: AcceptHandshakeResponse,
   errors: [
@@ -3229,7 +3229,7 @@ export const attachPolicy: API.OperationMethod<
   AttachPolicyResponse,
   AttachPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AttachPolicyRequest,
   output: AttachPolicyResponse,
   errors: [
@@ -3272,7 +3272,7 @@ export const cancelHandshake: API.OperationMethod<
   CancelHandshakeResponse,
   CancelHandshakeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelHandshakeRequest,
   output: CancelHandshakeResponse,
   errors: [
@@ -3347,7 +3347,7 @@ export const closeAccount: API.OperationMethod<
   CloseAccountResponse,
   CloseAccountError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CloseAccountRequest,
   output: CloseAccountResponse,
   errors: [
@@ -3447,7 +3447,7 @@ export const createAccount: API.OperationMethod<
   CreateAccountResponse,
   CreateAccountError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccountRequest,
   output: CreateAccountResponse,
   errors: [
@@ -3588,7 +3588,7 @@ export const createGovCloudAccount: API.OperationMethod<
   CreateGovCloudAccountResponse,
   CreateGovCloudAccountError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateGovCloudAccountRequest,
   output: CreateGovCloudAccountResponse,
   errors: [
@@ -3633,7 +3633,7 @@ export const createOrganization: API.OperationMethod<
   CreateOrganizationResponse,
   CreateOrganizationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationRequest,
   output: CreateOrganizationResponse,
   errors: [
@@ -3678,7 +3678,7 @@ export const createOrganizationalUnit: API.OperationMethod<
   CreateOrganizationalUnitResponse,
   CreateOrganizationalUnitError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationalUnitRequest,
   output: CreateOrganizationalUnitResponse,
   errors: [
@@ -3723,7 +3723,7 @@ export const createPolicy: API.OperationMethod<
   CreatePolicyResponse,
   CreatePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePolicyRequest,
   output: CreatePolicyResponse,
   errors: [
@@ -3764,7 +3764,7 @@ export const declineHandshake: API.OperationMethod<
   DeclineHandshakeResponse,
   DeclineHandshakeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeclineHandshakeRequest,
   output: DeclineHandshakeResponse,
   errors: [
@@ -3797,7 +3797,7 @@ export const deleteOrganization: API.OperationMethod<
   DeleteOrganizationResponse,
   DeleteOrganizationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationRequest,
   output: DeleteOrganizationResponse,
   errors: [
@@ -3832,7 +3832,7 @@ export const deleteOrganizationalUnit: API.OperationMethod<
   DeleteOrganizationalUnitResponse,
   DeleteOrganizationalUnitError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationalUnitRequest,
   output: DeleteOrganizationalUnitResponse,
   errors: [
@@ -3869,7 +3869,7 @@ export const deletePolicy: API.OperationMethod<
   DeletePolicyResponse,
   DeletePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePolicyRequest,
   output: DeletePolicyResponse,
   errors: [
@@ -3904,7 +3904,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyResponse,
   DeleteResourcePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourcePolicyRequest,
   output: DeleteResourcePolicyResponse,
   errors: [
@@ -3951,7 +3951,7 @@ export const deregisterDelegatedAdministrator: API.OperationMethod<
   DeregisterDelegatedAdministratorResponse,
   DeregisterDelegatedAdministratorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeregisterDelegatedAdministratorRequest,
   output: DeregisterDelegatedAdministratorResponse,
   errors: [
@@ -3985,7 +3985,7 @@ export const describeAccount: API.OperationMethod<
   DescribeAccountResponse,
   DescribeAccountError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAccountRequest,
   output: DescribeAccountResponse,
   errors: [
@@ -4016,7 +4016,7 @@ export const describeCreateAccountStatus: API.OperationMethod<
   DescribeCreateAccountStatusResponse,
   DescribeCreateAccountStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeCreateAccountStatusRequest,
   output: DescribeCreateAccountStatusResponse,
   errors: [
@@ -4060,7 +4060,7 @@ export const describeEffectivePolicy: API.OperationMethod<
   DescribeEffectivePolicyResponse,
   DescribeEffectivePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeEffectivePolicyRequest,
   output: DescribeEffectivePolicyResponse,
   errors: [
@@ -4097,7 +4097,7 @@ export const describeHandshake: API.OperationMethod<
   DescribeHandshakeResponse,
   DescribeHandshakeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeHandshakeRequest,
   output: DescribeHandshakeResponse,
   errors: [
@@ -4131,7 +4131,7 @@ export const describeOrganization: API.OperationMethod<
   DescribeOrganizationResponse,
   DescribeOrganizationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeOrganizationRequest,
   output: DescribeOrganizationResponse,
   errors: [
@@ -4160,7 +4160,7 @@ export const describeOrganizationalUnit: API.OperationMethod<
   DescribeOrganizationalUnitResponse,
   DescribeOrganizationalUnitError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeOrganizationalUnitRequest,
   output: DescribeOrganizationalUnitResponse,
   errors: [
@@ -4191,7 +4191,7 @@ export const describePolicy: API.OperationMethod<
   DescribePolicyResponse,
   DescribePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribePolicyRequest,
   output: DescribePolicyResponse,
   errors: [
@@ -4223,7 +4223,7 @@ export const describeResourcePolicy: API.OperationMethod<
   DescribeResourcePolicyResponse,
   DescribeResourcePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeResourcePolicyRequest,
   output: DescribeResourcePolicyResponse,
   errors: [
@@ -4255,7 +4255,7 @@ export const describeResponsibilityTransfer: API.OperationMethod<
   DescribeResponsibilityTransferResponse,
   DescribeResponsibilityTransferError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeResponsibilityTransferRequest,
   output: DescribeResponsibilityTransferResponse,
   errors: [
@@ -4305,7 +4305,7 @@ export const detachPolicy: API.OperationMethod<
   DetachPolicyResponse,
   DetachPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetachPolicyRequest,
   output: DetachPolicyResponse,
   errors: [
@@ -4395,7 +4395,7 @@ export const disableAWSServiceAccess: API.OperationMethod<
   DisableAWSServiceAccessResponse,
   DisableAWSServiceAccessError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableAWSServiceAccessRequest,
   output: DisableAWSServiceAccessResponse,
   errors: [
@@ -4443,7 +4443,7 @@ export const disablePolicyType: API.OperationMethod<
   DisablePolicyTypeResponse,
   DisablePolicyTypeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisablePolicyTypeRequest,
   output: DisablePolicyTypeResponse,
   errors: [
@@ -4505,7 +4505,7 @@ export const enableAllFeatures: API.OperationMethod<
   EnableAllFeaturesResponse,
   EnableAllFeaturesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableAllFeaturesRequest,
   output: EnableAllFeaturesResponse,
   errors: [
@@ -4555,7 +4555,7 @@ export const enableAWSServiceAccess: API.OperationMethod<
   EnableAWSServiceAccessResponse,
   EnableAWSServiceAccessError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableAWSServiceAccessRequest,
   output: EnableAWSServiceAccessResponse,
   errors: [
@@ -4604,7 +4604,7 @@ export const enablePolicyType: API.OperationMethod<
   EnablePolicyTypeResponse,
   EnablePolicyTypeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnablePolicyTypeRequest,
   output: EnablePolicyTypeResponse,
   errors: [
@@ -4657,7 +4657,7 @@ export const inviteAccountToOrganization: API.OperationMethod<
   InviteAccountToOrganizationResponse,
   InviteAccountToOrganizationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InviteAccountToOrganizationRequest,
   output: InviteAccountToOrganizationResponse,
   errors: [
@@ -4698,7 +4698,7 @@ export const inviteOrganizationToTransferResponsibility: API.OperationMethod<
   InviteOrganizationToTransferResponsibilityResponse,
   InviteOrganizationToTransferResponsibilityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InviteOrganizationToTransferResponsibilityRequest,
   output: InviteOrganizationToTransferResponsibilityResponse,
   errors: [
@@ -4781,7 +4781,7 @@ export const leaveOrganization: API.OperationMethod<
   LeaveOrganizationResponse,
   LeaveOrganizationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: LeaveOrganizationRequest,
   output: LeaveOrganizationResponse,
   errors: [
@@ -4833,7 +4833,7 @@ export const listAccounts: API.OperationMethod<
     ListAccountsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsRequest,
   output: ListAccountsResponse,
   errors: [
@@ -4890,7 +4890,7 @@ export const listAccountsForParent: API.OperationMethod<
     ListAccountsForParentError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsForParentRequest,
   output: ListAccountsForParentResponse,
   errors: [
@@ -4945,7 +4945,7 @@ export const listAccountsWithInvalidEffectivePolicy: API.OperationMethod<
     ListAccountsWithInvalidEffectivePolicyError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsWithInvalidEffectivePolicyRequest,
   output: ListAccountsWithInvalidEffectivePolicyResponse,
   errors: [
@@ -5005,7 +5005,7 @@ export const listAWSServiceAccessForOrganization: API.OperationMethod<
     ListAWSServiceAccessForOrganizationError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAWSServiceAccessForOrganizationRequest,
   output: ListAWSServiceAccessForOrganizationResponse,
   errors: [
@@ -5062,7 +5062,7 @@ export const listChildren: API.OperationMethod<
     ListChildrenError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChildrenRequest,
   output: ListChildrenResponse,
   errors: [
@@ -5117,7 +5117,7 @@ export const listCreateAccountStatus: API.OperationMethod<
     ListCreateAccountStatusError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCreateAccountStatusRequest,
   output: ListCreateAccountStatusResponse,
   errors: [
@@ -5169,7 +5169,7 @@ export const listDelegatedAdministrators: API.OperationMethod<
     ListDelegatedAdministratorsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDelegatedAdministratorsRequest,
   output: ListDelegatedAdministratorsResponse,
   errors: [
@@ -5225,7 +5225,7 @@ export const listDelegatedServicesForAccount: API.OperationMethod<
     ListDelegatedServicesForAccountError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDelegatedServicesForAccountRequest,
   output: ListDelegatedServicesForAccountResponse,
   errors: [
@@ -5283,7 +5283,7 @@ export const listEffectivePolicyValidationErrors: API.OperationMethod<
     ListEffectivePolicyValidationErrorsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEffectivePolicyValidationErrorsRequest,
   output: ListEffectivePolicyValidationErrorsResponse,
   errors: [
@@ -5344,7 +5344,7 @@ export const listHandshakesForAccount: API.OperationMethod<
     ListHandshakesForAccountError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListHandshakesForAccountRequest,
   output: ListHandshakesForAccountResponse,
   errors: [
@@ -5401,7 +5401,7 @@ export const listHandshakesForOrganization: API.OperationMethod<
     ListHandshakesForOrganizationError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListHandshakesForOrganizationRequest,
   output: ListHandshakesForOrganizationResponse,
   errors: [
@@ -5441,7 +5441,7 @@ export const listInboundResponsibilityTransfers: API.OperationMethod<
   ListInboundResponsibilityTransfersResponse,
   ListInboundResponsibilityTransfersError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListInboundResponsibilityTransfersRequest,
   output: ListInboundResponsibilityTransfersResponse,
   errors: [
@@ -5492,7 +5492,7 @@ export const listOrganizationalUnitsForParent: API.OperationMethod<
     ListOrganizationalUnitsForParentError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationalUnitsForParentRequest,
   output: ListOrganizationalUnitsForParentResponse,
   errors: [
@@ -5532,7 +5532,7 @@ export const listOutboundResponsibilityTransfers: API.OperationMethod<
   ListOutboundResponsibilityTransfersResponse,
   ListOutboundResponsibilityTransfersError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListOutboundResponsibilityTransfersRequest,
   output: ListOutboundResponsibilityTransfersResponse,
   errors: [
@@ -5586,7 +5586,7 @@ export const listParents: API.OperationMethod<
     ListParentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListParentsRequest,
   output: ListParentsResponse,
   errors: [
@@ -5640,7 +5640,7 @@ export const listPolicies: API.OperationMethod<
     ListPoliciesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPoliciesRequest,
   output: ListPoliciesResponse,
   errors: [
@@ -5697,7 +5697,7 @@ export const listPoliciesForTarget: API.OperationMethod<
     ListPoliciesForTargetError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPoliciesForTargetRequest,
   output: ListPoliciesForTargetResponse,
   errors: [
@@ -5757,7 +5757,7 @@ export const listRoots: API.OperationMethod<
     ListRootsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRootsRequest,
   output: ListRootsResponse,
   errors: [
@@ -5816,7 +5816,7 @@ export const listTagsForResource: API.OperationMethod<
     ListTagsForResourceError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -5872,7 +5872,7 @@ export const listTargetsForPolicy: API.OperationMethod<
     ListTargetsForPolicyError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTargetsForPolicyRequest,
   output: ListTargetsForPolicyResponse,
   errors: [
@@ -5913,7 +5913,7 @@ export const moveAccount: API.OperationMethod<
   MoveAccountResponse,
   MoveAccountError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MoveAccountRequest,
   output: MoveAccountResponse,
   errors: [
@@ -5949,7 +5949,7 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyResponse,
   PutResourcePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutResourcePolicyRequest,
   output: PutResourcePolicyResponse,
   errors: [
@@ -5992,7 +5992,7 @@ export const registerDelegatedAdministrator: API.OperationMethod<
   RegisterDelegatedAdministratorResponse,
   RegisterDelegatedAdministratorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterDelegatedAdministratorRequest,
   output: RegisterDelegatedAdministratorResponse,
   errors: [
@@ -6052,7 +6052,7 @@ export const removeAccountFromOrganization: API.OperationMethod<
   RemoveAccountFromOrganizationResponse,
   RemoveAccountFromOrganizationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveAccountFromOrganizationRequest,
   output: RemoveAccountFromOrganizationResponse,
   errors: [
@@ -6097,7 +6097,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -6134,7 +6134,7 @@ export const terminateResponsibilityTransfer: API.OperationMethod<
   TerminateResponsibilityTransferResponse,
   TerminateResponsibilityTransferError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TerminateResponsibilityTransferRequest,
   output: TerminateResponsibilityTransferResponse,
   errors: [
@@ -6181,7 +6181,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -6217,7 +6217,7 @@ export const updateOrganizationalUnit: API.OperationMethod<
   UpdateOrganizationalUnitResponse,
   UpdateOrganizationalUnitError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateOrganizationalUnitRequest,
   output: UpdateOrganizationalUnitResponse,
   errors: [
@@ -6257,7 +6257,7 @@ export const updatePolicy: API.OperationMethod<
   UpdatePolicyResponse,
   UpdatePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePolicyRequest,
   output: UpdatePolicyResponse,
   errors: [
@@ -6297,7 +6297,7 @@ export const updateResponsibilityTransfer: API.OperationMethod<
   UpdateResponsibilityTransferResponse,
   UpdateResponsibilityTransferError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateResponsibilityTransferRequest,
   output: UpdateResponsibilityTransferResponse,
   errors: [

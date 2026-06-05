@@ -3378,7 +3378,7 @@ export const associateDelegateToResource: API.OperationMethod<
   AssociateDelegateToResourceResponse,
   AssociateDelegateToResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateDelegateToResourceRequest,
   output: AssociateDelegateToResourceResponse,
   errors: [
@@ -3408,7 +3408,7 @@ export const associateMemberToGroup: API.OperationMethod<
   AssociateMemberToGroupResponse,
   AssociateMemberToGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateMemberToGroupRequest,
   output: AssociateMemberToGroupResponse,
   errors: [
@@ -3437,7 +3437,7 @@ export const assumeImpersonationRole: API.OperationMethod<
   AssumeImpersonationRoleResponse,
   AssumeImpersonationRoleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssumeImpersonationRoleRequest,
   output: AssumeImpersonationRoleResponse,
   errors: [
@@ -3464,7 +3464,7 @@ export const cancelMailboxExportJob: API.OperationMethod<
   CancelMailboxExportJobResponse,
   CancelMailboxExportJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelMailboxExportJobRequest,
   output: CancelMailboxExportJobResponse,
   errors: [
@@ -3493,7 +3493,7 @@ export const createAlias: API.OperationMethod<
   CreateAliasResponse,
   CreateAliasError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAliasRequest,
   output: CreateAliasResponse,
   errors: [
@@ -3523,7 +3523,7 @@ export const createAvailabilityConfiguration: API.OperationMethod<
   CreateAvailabilityConfigurationResponse,
   CreateAvailabilityConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAvailabilityConfigurationRequest,
   output: CreateAvailabilityConfigurationResponse,
   errors: [
@@ -3552,7 +3552,7 @@ export const createGroup: API.OperationMethod<
   CreateGroupResponse,
   CreateGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateGroupRequest,
   output: CreateGroupResponse,
   errors: [
@@ -3577,7 +3577,7 @@ export const createIdentityCenterApplication: API.OperationMethod<
   CreateIdentityCenterApplicationResponse,
   CreateIdentityCenterApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateIdentityCenterApplicationRequest,
   output: CreateIdentityCenterApplicationResponse,
   errors: [InvalidParameterException],
@@ -3603,7 +3603,7 @@ export const createImpersonationRole: API.OperationMethod<
   CreateImpersonationRoleResponse,
   CreateImpersonationRoleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateImpersonationRoleRequest,
   output: CreateImpersonationRoleResponse,
   errors: [
@@ -3629,7 +3629,7 @@ export const createMobileDeviceAccessRule: API.OperationMethod<
   CreateMobileDeviceAccessRuleResponse,
   CreateMobileDeviceAccessRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMobileDeviceAccessRuleRequest,
   output: CreateMobileDeviceAccessRuleResponse,
   errors: [
@@ -3664,7 +3664,7 @@ export const createOrganization: API.OperationMethod<
   CreateOrganizationResponse,
   CreateOrganizationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationRequest,
   output: CreateOrganizationResponse,
   errors: [
@@ -3693,7 +3693,7 @@ export const createResource: API.OperationMethod<
   CreateResourceResponse,
   CreateResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateResourceRequest,
   output: CreateResourceResponse,
   errors: [
@@ -3726,7 +3726,7 @@ export const createUser: API.OperationMethod<
   CreateUserResponse,
   CreateUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateUserRequest,
   output: CreateUserResponse,
   errors: [
@@ -3755,7 +3755,7 @@ export const deleteAccessControlRule: API.OperationMethod<
   DeleteAccessControlRuleResponse,
   DeleteAccessControlRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessControlRuleRequest,
   output: DeleteAccessControlRuleResponse,
   errors: [OrganizationNotFoundException, OrganizationStateException],
@@ -3776,7 +3776,7 @@ export const deleteAlias: API.OperationMethod<
   DeleteAliasResponse,
   DeleteAliasError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAliasRequest,
   output: DeleteAliasResponse,
   errors: [
@@ -3799,7 +3799,7 @@ export const deleteAvailabilityConfiguration: API.OperationMethod<
   DeleteAvailabilityConfigurationResponse,
   DeleteAvailabilityConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAvailabilityConfigurationRequest,
   output: DeleteAvailabilityConfigurationResponse,
   errors: [OrganizationNotFoundException, OrganizationStateException],
@@ -3817,7 +3817,7 @@ export const deleteEmailMonitoringConfiguration: API.OperationMethod<
   DeleteEmailMonitoringConfigurationResponse,
   DeleteEmailMonitoringConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEmailMonitoringConfigurationRequest,
   output: DeleteEmailMonitoringConfigurationResponse,
   errors: [
@@ -3843,7 +3843,7 @@ export const deleteGroup: API.OperationMethod<
   DeleteGroupResponse,
   DeleteGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteGroupRequest,
   output: DeleteGroupResponse,
   errors: [
@@ -3868,7 +3868,7 @@ export const deleteIdentityCenterApplication: API.OperationMethod<
   DeleteIdentityCenterApplicationResponse,
   DeleteIdentityCenterApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteIdentityCenterApplicationRequest,
   output: DeleteIdentityCenterApplicationResponse,
   errors: [InvalidParameterException, OrganizationStateException],
@@ -3886,7 +3886,7 @@ export const deleteIdentityProviderConfiguration: API.OperationMethod<
   DeleteIdentityProviderConfigurationResponse,
   DeleteIdentityProviderConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteIdentityProviderConfigurationRequest,
   output: DeleteIdentityProviderConfigurationResponse,
   errors: [
@@ -3908,7 +3908,7 @@ export const deleteImpersonationRole: API.OperationMethod<
   DeleteImpersonationRoleResponse,
   DeleteImpersonationRoleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteImpersonationRoleRequest,
   output: DeleteImpersonationRoleResponse,
   errors: [
@@ -3932,7 +3932,7 @@ export const deleteMailboxPermissions: API.OperationMethod<
   DeleteMailboxPermissionsResponse,
   DeleteMailboxPermissionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMailboxPermissionsRequest,
   output: DeleteMailboxPermissionsResponse,
   errors: [
@@ -3959,7 +3959,7 @@ export const deleteMobileDeviceAccessOverride: API.OperationMethod<
   DeleteMobileDeviceAccessOverrideResponse,
   DeleteMobileDeviceAccessOverrideError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMobileDeviceAccessOverrideRequest,
   output: DeleteMobileDeviceAccessOverrideResponse,
   errors: [
@@ -3984,7 +3984,7 @@ export const deleteMobileDeviceAccessRule: API.OperationMethod<
   DeleteMobileDeviceAccessRuleResponse,
   DeleteMobileDeviceAccessRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMobileDeviceAccessRuleRequest,
   output: DeleteMobileDeviceAccessRuleResponse,
   errors: [
@@ -4006,7 +4006,7 @@ export const deleteOrganization: API.OperationMethod<
   DeleteOrganizationResponse,
   DeleteOrganizationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationRequest,
   output: DeleteOrganizationResponse,
   errors: [
@@ -4028,7 +4028,7 @@ export const deletePersonalAccessToken: API.OperationMethod<
   DeletePersonalAccessTokenResponse,
   DeletePersonalAccessTokenError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePersonalAccessTokenRequest,
   output: DeletePersonalAccessTokenResponse,
   errors: [
@@ -4052,7 +4052,7 @@ export const deleteResource: API.OperationMethod<
   DeleteResourceResponse,
   DeleteResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourceRequest,
   output: DeleteResourceResponse,
   errors: [
@@ -4076,7 +4076,7 @@ export const deleteRetentionPolicy: API.OperationMethod<
   DeleteRetentionPolicyResponse,
   DeleteRetentionPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRetentionPolicyRequest,
   output: DeleteRetentionPolicyResponse,
   errors: [
@@ -4107,7 +4107,7 @@ export const deleteUser: API.OperationMethod<
   DeleteUserResponse,
   DeleteUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteUserRequest,
   output: DeleteUserResponse,
   errors: [
@@ -4138,7 +4138,7 @@ export const deregisterFromWorkMail: API.OperationMethod<
   DeregisterFromWorkMailResponse,
   DeregisterFromWorkMailError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeregisterFromWorkMailRequest,
   output: DeregisterFromWorkMailResponse,
   errors: [
@@ -4165,7 +4165,7 @@ export const deregisterMailDomain: API.OperationMethod<
   DeregisterMailDomainResponse,
   DeregisterMailDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeregisterMailDomainRequest,
   output: DeregisterMailDomainResponse,
   errors: [
@@ -4190,7 +4190,7 @@ export const describeEmailMonitoringConfiguration: API.OperationMethod<
   DescribeEmailMonitoringConfigurationResponse,
   DescribeEmailMonitoringConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeEmailMonitoringConfigurationRequest,
   output: DescribeEmailMonitoringConfigurationResponse,
   errors: [
@@ -4214,7 +4214,7 @@ export const describeEntity: API.OperationMethod<
   DescribeEntityResponse,
   DescribeEntityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeEntityRequest,
   output: DescribeEntityResponse,
   errors: [
@@ -4238,7 +4238,7 @@ export const describeGroup: API.OperationMethod<
   DescribeGroupResponse,
   DescribeGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeGroupRequest,
   output: DescribeGroupResponse,
   errors: [
@@ -4262,7 +4262,7 @@ export const describeIdentityProviderConfiguration: API.OperationMethod<
   DescribeIdentityProviderConfigurationResponse,
   DescribeIdentityProviderConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeIdentityProviderConfigurationRequest,
   output: DescribeIdentityProviderConfigurationResponse,
   errors: [
@@ -4284,7 +4284,7 @@ export const describeInboundDmarcSettings: API.OperationMethod<
   DescribeInboundDmarcSettingsResponse,
   DescribeInboundDmarcSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeInboundDmarcSettingsRequest,
   output: DescribeInboundDmarcSettingsResponse,
   errors: [OrganizationNotFoundException, OrganizationStateException],
@@ -4303,7 +4303,7 @@ export const describeMailboxExportJob: API.OperationMethod<
   DescribeMailboxExportJobResponse,
   DescribeMailboxExportJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeMailboxExportJobRequest,
   output: DescribeMailboxExportJobResponse,
   errors: [
@@ -4326,7 +4326,7 @@ export const describeOrganization: API.OperationMethod<
   DescribeOrganizationResponse,
   DescribeOrganizationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeOrganizationRequest,
   output: DescribeOrganizationResponse,
   errors: [InvalidParameterException, OrganizationNotFoundException],
@@ -4346,7 +4346,7 @@ export const describeResource: API.OperationMethod<
   DescribeResourceResponse,
   DescribeResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeResourceRequest,
   output: DescribeResourceResponse,
   errors: [
@@ -4373,7 +4373,7 @@ export const describeUser: API.OperationMethod<
   DescribeUserResponse,
   DescribeUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeUserRequest,
   output: DescribeUserResponse,
   errors: [
@@ -4401,7 +4401,7 @@ export const disassociateDelegateFromResource: API.OperationMethod<
   DisassociateDelegateFromResourceResponse,
   DisassociateDelegateFromResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateDelegateFromResourceRequest,
   output: DisassociateDelegateFromResourceResponse,
   errors: [
@@ -4431,7 +4431,7 @@ export const disassociateMemberFromGroup: API.OperationMethod<
   DisassociateMemberFromGroupResponse,
   DisassociateMemberFromGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateMemberFromGroupRequest,
   output: DisassociateMemberFromGroupResponse,
   errors: [
@@ -4461,7 +4461,7 @@ export const getAccessControlEffect: API.OperationMethod<
   GetAccessControlEffectResponse,
   GetAccessControlEffectError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccessControlEffectRequest,
   output: GetAccessControlEffectResponse,
   errors: [
@@ -4486,7 +4486,7 @@ export const getDefaultRetentionPolicy: API.OperationMethod<
   GetDefaultRetentionPolicyResponse,
   GetDefaultRetentionPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDefaultRetentionPolicyRequest,
   output: GetDefaultRetentionPolicyResponse,
   errors: [
@@ -4510,7 +4510,7 @@ export const getImpersonationRole: API.OperationMethod<
   GetImpersonationRoleResponse,
   GetImpersonationRoleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetImpersonationRoleRequest,
   output: GetImpersonationRoleResponse,
   errors: [
@@ -4536,7 +4536,7 @@ export const getImpersonationRoleEffect: API.OperationMethod<
   GetImpersonationRoleEffectResponse,
   GetImpersonationRoleEffectError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetImpersonationRoleEffectRequest,
   output: GetImpersonationRoleEffectResponse,
   errors: [
@@ -4562,7 +4562,7 @@ export const getMailboxDetails: API.OperationMethod<
   GetMailboxDetailsResponse,
   GetMailboxDetailsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMailboxDetailsRequest,
   output: GetMailboxDetailsResponse,
   errors: [
@@ -4586,7 +4586,7 @@ export const getMailDomain: API.OperationMethod<
   GetMailDomainResponse,
   GetMailDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMailDomainRequest,
   output: GetMailDomainResponse,
   errors: [
@@ -4610,7 +4610,7 @@ export const getMobileDeviceAccessEffect: API.OperationMethod<
   GetMobileDeviceAccessEffectResponse,
   GetMobileDeviceAccessEffectError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMobileDeviceAccessEffectRequest,
   output: GetMobileDeviceAccessEffectResponse,
   errors: [
@@ -4634,7 +4634,7 @@ export const getMobileDeviceAccessOverride: API.OperationMethod<
   GetMobileDeviceAccessOverrideResponse,
   GetMobileDeviceAccessOverrideError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMobileDeviceAccessOverrideRequest,
   output: GetMobileDeviceAccessOverrideResponse,
   errors: [
@@ -4659,7 +4659,7 @@ export const getPersonalAccessTokenMetadata: API.OperationMethod<
   GetPersonalAccessTokenMetadataResponse,
   GetPersonalAccessTokenMetadataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPersonalAccessTokenMetadataRequest,
   output: GetPersonalAccessTokenMetadataResponse,
   errors: [
@@ -4681,7 +4681,7 @@ export const listAccessControlRules: API.OperationMethod<
   ListAccessControlRulesResponse,
   ListAccessControlRulesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListAccessControlRulesRequest,
   output: ListAccessControlRulesResponse,
   errors: [OrganizationNotFoundException, OrganizationStateException],
@@ -4717,7 +4717,7 @@ export const listAliases: API.OperationMethod<
     ListAliasesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAliasesRequest,
   output: ListAliasesResponse,
   errors: [
@@ -4761,7 +4761,7 @@ export const listAvailabilityConfigurations: API.OperationMethod<
     ListAvailabilityConfigurationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAvailabilityConfigurationsRequest,
   output: ListAvailabilityConfigurationsResponse,
   errors: [
@@ -4807,7 +4807,7 @@ export const listGroupMembers: API.OperationMethod<
     ListGroupMembersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGroupMembersRequest,
   output: ListGroupMembersResponse,
   errors: [
@@ -4852,7 +4852,7 @@ export const listGroups: API.OperationMethod<
     ListGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGroupsRequest,
   output: ListGroupsResponse,
   errors: [
@@ -4897,7 +4897,7 @@ export const listGroupsForEntity: API.OperationMethod<
     ListGroupsForEntityError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGroupsForEntityRequest,
   output: ListGroupsForEntityResponse,
   errors: [
@@ -4941,7 +4941,7 @@ export const listImpersonationRoles: API.OperationMethod<
     ListImpersonationRolesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImpersonationRolesRequest,
   output: ListImpersonationRolesResponse,
   errors: [
@@ -4984,7 +4984,7 @@ export const listMailboxExportJobs: API.OperationMethod<
     ListMailboxExportJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMailboxExportJobsRequest,
   output: ListMailboxExportJobsResponse,
   errors: [
@@ -5028,7 +5028,7 @@ export const listMailboxPermissions: API.OperationMethod<
     ListMailboxPermissionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMailboxPermissionsRequest,
   output: ListMailboxPermissionsResponse,
   errors: [
@@ -5071,7 +5071,7 @@ export const listMailDomains: API.OperationMethod<
     ListMailDomainsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMailDomainsRequest,
   output: ListMailDomainsResponse,
   errors: [
@@ -5114,7 +5114,7 @@ export const listMobileDeviceAccessOverrides: API.OperationMethod<
     ListMobileDeviceAccessOverridesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMobileDeviceAccessOverridesRequest,
   output: ListMobileDeviceAccessOverridesResponse,
   errors: [
@@ -5142,7 +5142,7 @@ export const listMobileDeviceAccessRules: API.OperationMethod<
   ListMobileDeviceAccessRulesResponse,
   ListMobileDeviceAccessRulesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListMobileDeviceAccessRulesRequest,
   output: ListMobileDeviceAccessRulesResponse,
   errors: [
@@ -5175,7 +5175,7 @@ export const listOrganizations: API.OperationMethod<
     ListOrganizationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsRequest,
   output: ListOrganizationsResponse,
   errors: [InvalidParameterException],
@@ -5215,7 +5215,7 @@ export const listPersonalAccessTokens: API.OperationMethod<
     ListPersonalAccessTokensError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPersonalAccessTokensRequest,
   output: ListPersonalAccessTokensResponse,
   errors: [
@@ -5264,7 +5264,7 @@ export const listResourceDelegates: API.OperationMethod<
     ListResourceDelegatesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceDelegatesRequest,
   output: ListResourceDelegatesResponse,
   errors: [
@@ -5310,7 +5310,7 @@ export const listResources: API.OperationMethod<
     ListResourcesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourcesRequest,
   output: ListResourcesResponse,
   errors: [
@@ -5334,7 +5334,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException],
@@ -5367,7 +5367,7 @@ export const listUsers: API.OperationMethod<
     ListUsersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsersRequest,
   output: ListUsersResponse,
   errors: [
@@ -5400,7 +5400,7 @@ export const putAccessControlRule: API.OperationMethod<
   PutAccessControlRuleResponse,
   PutAccessControlRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutAccessControlRuleRequest,
   output: PutAccessControlRuleResponse,
   errors: [
@@ -5426,7 +5426,7 @@ export const putEmailMonitoringConfiguration: API.OperationMethod<
   PutEmailMonitoringConfigurationResponse,
   PutEmailMonitoringConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutEmailMonitoringConfigurationRequest,
   output: PutEmailMonitoringConfigurationResponse,
   errors: [
@@ -5451,7 +5451,7 @@ export const putIdentityProviderConfiguration: API.OperationMethod<
   PutIdentityProviderConfigurationResponse,
   PutIdentityProviderConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutIdentityProviderConfigurationRequest,
   output: PutIdentityProviderConfigurationResponse,
   errors: [
@@ -5473,7 +5473,7 @@ export const putInboundDmarcSettings: API.OperationMethod<
   PutInboundDmarcSettingsResponse,
   PutInboundDmarcSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutInboundDmarcSettingsRequest,
   output: PutInboundDmarcSettingsResponse,
   errors: [OrganizationNotFoundException, OrganizationStateException],
@@ -5494,7 +5494,7 @@ export const putMailboxPermissions: API.OperationMethod<
   PutMailboxPermissionsResponse,
   PutMailboxPermissionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutMailboxPermissionsRequest,
   output: PutMailboxPermissionsResponse,
   errors: [
@@ -5520,7 +5520,7 @@ export const putMobileDeviceAccessOverride: API.OperationMethod<
   PutMobileDeviceAccessOverrideResponse,
   PutMobileDeviceAccessOverrideError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutMobileDeviceAccessOverrideRequest,
   output: PutMobileDeviceAccessOverrideResponse,
   errors: [
@@ -5545,7 +5545,7 @@ export const putRetentionPolicy: API.OperationMethod<
   PutRetentionPolicyResponse,
   PutRetentionPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutRetentionPolicyRequest,
   output: PutRetentionPolicyResponse,
   errors: [
@@ -5571,7 +5571,7 @@ export const registerMailDomain: API.OperationMethod<
   RegisterMailDomainResponse,
   RegisterMailDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterMailDomainRequest,
   output: RegisterMailDomainResponse,
   errors: [
@@ -5611,7 +5611,7 @@ export const registerToWorkMail: API.OperationMethod<
   RegisterToWorkMailResponse,
   RegisterToWorkMailError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterToWorkMailRequest,
   output: RegisterToWorkMailResponse,
   errors: [
@@ -5648,7 +5648,7 @@ export const resetPassword: API.OperationMethod<
   ResetPasswordResponse,
   ResetPasswordError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetPasswordRequest,
   output: ResetPasswordResponse,
   errors: [
@@ -5681,7 +5681,7 @@ export const startMailboxExportJob: API.OperationMethod<
   StartMailboxExportJobResponse,
   StartMailboxExportJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartMailboxExportJobRequest,
   output: StartMailboxExportJobResponse,
   errors: [
@@ -5707,7 +5707,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -5737,7 +5737,7 @@ export const testAvailabilityConfiguration: API.OperationMethod<
   TestAvailabilityConfigurationResponse,
   TestAvailabilityConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestAvailabilityConfigurationRequest,
   output: TestAvailabilityConfigurationResponse,
   errors: [
@@ -5757,7 +5757,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException],
@@ -5777,7 +5777,7 @@ export const updateAvailabilityConfiguration: API.OperationMethod<
   UpdateAvailabilityConfigurationResponse,
   UpdateAvailabilityConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAvailabilityConfigurationRequest,
   output: UpdateAvailabilityConfigurationResponse,
   errors: [
@@ -5802,7 +5802,7 @@ export const updateDefaultMailDomain: API.OperationMethod<
   UpdateDefaultMailDomainResponse,
   UpdateDefaultMailDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDefaultMailDomainRequest,
   output: UpdateDefaultMailDomainResponse,
   errors: [
@@ -5829,7 +5829,7 @@ export const updateGroup: API.OperationMethod<
   UpdateGroupResponse,
   UpdateGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateGroupRequest,
   output: UpdateGroupResponse,
   errors: [
@@ -5858,7 +5858,7 @@ export const updateImpersonationRole: API.OperationMethod<
   UpdateImpersonationRoleResponse,
   UpdateImpersonationRoleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateImpersonationRoleRequest,
   output: UpdateImpersonationRoleResponse,
   errors: [
@@ -5887,7 +5887,7 @@ export const updateMailboxQuota: API.OperationMethod<
   UpdateMailboxQuotaResponse,
   UpdateMailboxQuotaError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateMailboxQuotaRequest,
   output: UpdateMailboxQuotaResponse,
   errors: [
@@ -5912,7 +5912,7 @@ export const updateMobileDeviceAccessRule: API.OperationMethod<
   UpdateMobileDeviceAccessRuleResponse,
   UpdateMobileDeviceAccessRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateMobileDeviceAccessRuleRequest,
   output: UpdateMobileDeviceAccessRuleResponse,
   errors: [
@@ -5945,7 +5945,7 @@ export const updatePrimaryEmailAddress: API.OperationMethod<
   UpdatePrimaryEmailAddressResponse,
   UpdatePrimaryEmailAddressError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePrimaryEmailAddressRequest,
   output: UpdatePrimaryEmailAddressResponse,
   errors: [
@@ -5986,7 +5986,7 @@ export const updateResource: API.OperationMethod<
   UpdateResourceResponse,
   UpdateResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateResourceRequest,
   output: UpdateResourceResponse,
   errors: [
@@ -6024,7 +6024,7 @@ export const updateUser: API.OperationMethod<
   UpdateUserResponse,
   UpdateUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateUserRequest,
   output: UpdateUserResponse,
   errors: [

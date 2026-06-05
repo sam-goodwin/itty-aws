@@ -5478,7 +5478,7 @@ export const cancelImageCreation: API.OperationMethod<
   CancelImageCreationResponse,
   CancelImageCreationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelImageCreationRequest,
   output: CancelImageCreationResponse,
   errors: [
@@ -5510,7 +5510,7 @@ export const cancelLifecycleExecution: API.OperationMethod<
   CancelLifecycleExecutionResponse,
   CancelLifecycleExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelLifecycleExecutionRequest,
   output: CancelLifecycleExecutionResponse,
   errors: [
@@ -5553,7 +5553,7 @@ export const createComponent: API.OperationMethod<
   CreateComponentResponse,
   CreateComponentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateComponentRequest,
   output: CreateComponentResponse,
   errors: [
@@ -5593,7 +5593,7 @@ export const createContainerRecipe: API.OperationMethod<
   CreateContainerRecipeResponse,
   CreateContainerRecipeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateContainerRecipeRequest,
   output: CreateContainerRecipeResponse,
   errors: [
@@ -5632,7 +5632,7 @@ export const createDistributionConfiguration: API.OperationMethod<
   CreateDistributionConfigurationResponse,
   CreateDistributionConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDistributionConfigurationRequest,
   output: CreateDistributionConfigurationResponse,
   errors: [
@@ -5671,7 +5671,7 @@ export const createImage: API.OperationMethod<
   CreateImageResponse,
   CreateImageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateImageRequest,
   output: CreateImageResponse,
   errors: [
@@ -5707,7 +5707,7 @@ export const createImagePipeline: API.OperationMethod<
   CreateImagePipelineResponse,
   CreateImagePipelineError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateImagePipelineRequest,
   output: CreateImagePipelineResponse,
   errors: [
@@ -5745,7 +5745,7 @@ export const createImageRecipe: API.OperationMethod<
   CreateImageRecipeResponse,
   CreateImageRecipeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateImageRecipeRequest,
   output: CreateImageRecipeResponse,
   errors: [
@@ -5783,7 +5783,7 @@ export const createInfrastructureConfiguration: API.OperationMethod<
   CreateInfrastructureConfigurationResponse,
   CreateInfrastructureConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateInfrastructureConfigurationRequest,
   output: CreateInfrastructureConfigurationResponse,
   errors: [
@@ -5819,7 +5819,7 @@ export const createLifecyclePolicy: API.OperationMethod<
   CreateLifecyclePolicyResponse,
   CreateLifecyclePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLifecyclePolicyRequest,
   output: CreateLifecyclePolicyResponse,
   errors: [
@@ -5857,7 +5857,7 @@ export const createWorkflow: API.OperationMethod<
   CreateWorkflowResponse,
   CreateWorkflowError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateWorkflowRequest,
   output: CreateWorkflowResponse,
   errors: [
@@ -5892,7 +5892,7 @@ export const deleteComponent: API.OperationMethod<
   DeleteComponentResponse,
   DeleteComponentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteComponentRequest,
   output: DeleteComponentResponse,
   errors: [
@@ -5922,7 +5922,7 @@ export const deleteContainerRecipe: API.OperationMethod<
   DeleteContainerRecipeResponse,
   DeleteContainerRecipeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteContainerRecipeRequest,
   output: DeleteContainerRecipeResponse,
   errors: [
@@ -5952,7 +5952,7 @@ export const deleteDistributionConfiguration: API.OperationMethod<
   DeleteDistributionConfigurationResponse,
   DeleteDistributionConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDistributionConfigurationRequest,
   output: DeleteDistributionConfigurationResponse,
   errors: [
@@ -5998,7 +5998,7 @@ export const deleteImage: API.OperationMethod<
   DeleteImageResponse,
   DeleteImageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteImageRequest,
   output: DeleteImageResponse,
   errors: [
@@ -6028,7 +6028,7 @@ export const deleteImagePipeline: API.OperationMethod<
   DeleteImagePipelineResponse,
   DeleteImagePipelineError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteImagePipelineRequest,
   output: DeleteImagePipelineResponse,
   errors: [
@@ -6058,7 +6058,7 @@ export const deleteImageRecipe: API.OperationMethod<
   DeleteImageRecipeResponse,
   DeleteImageRecipeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteImageRecipeRequest,
   output: DeleteImageRecipeResponse,
   errors: [
@@ -6088,7 +6088,7 @@ export const deleteInfrastructureConfiguration: API.OperationMethod<
   DeleteInfrastructureConfigurationResponse,
   DeleteInfrastructureConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteInfrastructureConfigurationRequest,
   output: DeleteInfrastructureConfigurationResponse,
   errors: [
@@ -6118,7 +6118,7 @@ export const deleteLifecyclePolicy: API.OperationMethod<
   DeleteLifecyclePolicyResponse,
   DeleteLifecyclePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLifecyclePolicyRequest,
   output: DeleteLifecyclePolicyResponse,
   errors: [
@@ -6148,7 +6148,7 @@ export const deleteWorkflow: API.OperationMethod<
   DeleteWorkflowResponse,
   DeleteWorkflowError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteWorkflowRequest,
   output: DeleteWorkflowResponse,
   errors: [
@@ -6183,7 +6183,7 @@ export const distributeImage: API.OperationMethod<
   DistributeImageResponse,
   DistributeImageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DistributeImageRequest,
   output: DistributeImageResponse,
   errors: [
@@ -6217,7 +6217,7 @@ export const getComponent: API.OperationMethod<
   GetComponentResponse,
   GetComponentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetComponentRequest,
   output: GetComponentResponse,
   errors: [
@@ -6245,7 +6245,7 @@ export const getComponentPolicy: API.OperationMethod<
   GetComponentPolicyResponse,
   GetComponentPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetComponentPolicyRequest,
   output: GetComponentPolicyResponse,
   errors: [
@@ -6273,7 +6273,7 @@ export const getContainerRecipe: API.OperationMethod<
   GetContainerRecipeResponse,
   GetContainerRecipeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetContainerRecipeRequest,
   output: GetContainerRecipeResponse,
   errors: [
@@ -6301,7 +6301,7 @@ export const getContainerRecipePolicy: API.OperationMethod<
   GetContainerRecipePolicyResponse,
   GetContainerRecipePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetContainerRecipePolicyRequest,
   output: GetContainerRecipePolicyResponse,
   errors: [
@@ -6329,7 +6329,7 @@ export const getDistributionConfiguration: API.OperationMethod<
   GetDistributionConfigurationResponse,
   GetDistributionConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDistributionConfigurationRequest,
   output: GetDistributionConfigurationResponse,
   errors: [
@@ -6357,7 +6357,7 @@ export const getImage: API.OperationMethod<
   GetImageResponse,
   GetImageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetImageRequest,
   output: GetImageResponse,
   errors: [
@@ -6385,7 +6385,7 @@ export const getImagePipeline: API.OperationMethod<
   GetImagePipelineResponse,
   GetImagePipelineError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetImagePipelineRequest,
   output: GetImagePipelineResponse,
   errors: [
@@ -6413,7 +6413,7 @@ export const getImagePolicy: API.OperationMethod<
   GetImagePolicyResponse,
   GetImagePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetImagePolicyRequest,
   output: GetImagePolicyResponse,
   errors: [
@@ -6441,7 +6441,7 @@ export const getImageRecipe: API.OperationMethod<
   GetImageRecipeResponse,
   GetImageRecipeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetImageRecipeRequest,
   output: GetImageRecipeResponse,
   errors: [
@@ -6469,7 +6469,7 @@ export const getImageRecipePolicy: API.OperationMethod<
   GetImageRecipePolicyResponse,
   GetImageRecipePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetImageRecipePolicyRequest,
   output: GetImageRecipePolicyResponse,
   errors: [
@@ -6497,7 +6497,7 @@ export const getInfrastructureConfiguration: API.OperationMethod<
   GetInfrastructureConfigurationResponse,
   GetInfrastructureConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInfrastructureConfigurationRequest,
   output: GetInfrastructureConfigurationResponse,
   errors: [
@@ -6525,7 +6525,7 @@ export const getLifecycleExecution: API.OperationMethod<
   GetLifecycleExecutionResponse,
   GetLifecycleExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLifecycleExecutionRequest,
   output: GetLifecycleExecutionResponse,
   errors: [
@@ -6553,7 +6553,7 @@ export const getLifecyclePolicy: API.OperationMethod<
   GetLifecyclePolicyResponse,
   GetLifecyclePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLifecyclePolicyRequest,
   output: GetLifecyclePolicyResponse,
   errors: [
@@ -6583,7 +6583,7 @@ export const getMarketplaceResource: API.OperationMethod<
   GetMarketplaceResourceResponse,
   GetMarketplaceResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMarketplaceResourceRequest,
   output: GetMarketplaceResourceResponse,
   errors: [
@@ -6611,7 +6611,7 @@ export const getWorkflow: API.OperationMethod<
   GetWorkflowResponse,
   GetWorkflowError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetWorkflowRequest,
   output: GetWorkflowResponse,
   errors: [
@@ -6640,7 +6640,7 @@ export const getWorkflowExecution: API.OperationMethod<
   GetWorkflowExecutionResponse,
   GetWorkflowExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetWorkflowExecutionRequest,
   output: GetWorkflowExecutionResponse,
   errors: [
@@ -6669,7 +6669,7 @@ export const getWorkflowStepExecution: API.OperationMethod<
   GetWorkflowStepExecutionResponse,
   GetWorkflowStepExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetWorkflowStepExecutionRequest,
   output: GetWorkflowStepExecutionResponse,
   errors: [
@@ -6701,7 +6701,7 @@ export const importComponent: API.OperationMethod<
   ImportComponentResponse,
   ImportComponentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportComponentRequest,
   output: ImportComponentResponse,
   errors: [
@@ -6733,7 +6733,7 @@ export const importDiskImage: API.OperationMethod<
   ImportDiskImageResponse,
   ImportDiskImageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportDiskImageRequest,
   output: ImportDiskImageResponse,
   errors: [ClientException, ServiceException, ServiceUnavailableException],
@@ -6758,7 +6758,7 @@ export const importVmImage: API.OperationMethod<
   ImportVmImageResponse,
   ImportVmImageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportVmImageRequest,
   output: ImportVmImageResponse,
   errors: [ClientException, ServiceException, ServiceUnavailableException],
@@ -6796,7 +6796,7 @@ export const listComponentBuildVersions: API.OperationMethod<
     ListComponentBuildVersionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListComponentBuildVersionsRequest,
   output: ListComponentBuildVersionsResponse,
   errors: [
@@ -6857,7 +6857,7 @@ export const listComponents: API.OperationMethod<
     ListComponentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListComponentsRequest,
   output: ListComponentsResponse,
   errors: [
@@ -6908,7 +6908,7 @@ export const listContainerRecipes: API.OperationMethod<
     ListContainerRecipesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListContainerRecipesRequest,
   output: ListContainerRecipesResponse,
   errors: [
@@ -6959,7 +6959,7 @@ export const listDistributionConfigurations: API.OperationMethod<
     ListDistributionConfigurationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDistributionConfigurationsRequest,
   output: ListDistributionConfigurationsResponse,
   errors: [
@@ -7010,7 +7010,7 @@ export const listImageBuildVersions: API.OperationMethod<
     ListImageBuildVersionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImageBuildVersionsRequest,
   output: ListImageBuildVersionsResponse,
   errors: [
@@ -7063,7 +7063,7 @@ export const listImagePackages: API.OperationMethod<
     ListImagePackagesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImagePackagesRequest,
   output: ListImagePackagesResponse,
   errors: [
@@ -7116,7 +7116,7 @@ export const listImagePipelineImages: API.OperationMethod<
     ListImagePipelineImagesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImagePipelineImagesRequest,
   output: ListImagePipelineImagesResponse,
   errors: [
@@ -7168,7 +7168,7 @@ export const listImagePipelines: API.OperationMethod<
     ListImagePipelinesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImagePipelinesRequest,
   output: ListImagePipelinesResponse,
   errors: [
@@ -7219,7 +7219,7 @@ export const listImageRecipes: API.OperationMethod<
     ListImageRecipesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImageRecipesRequest,
   output: ListImageRecipesResponse,
   errors: [
@@ -7271,7 +7271,7 @@ export const listImages: API.OperationMethod<
     ListImagesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImagesRequest,
   output: ListImagesResponse,
   errors: [
@@ -7336,7 +7336,7 @@ export const listImageScanFindingAggregations: API.OperationMethod<
     ListImageScanFindingAggregationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImageScanFindingAggregationsRequest,
   output: ListImageScanFindingAggregationsResponse,
   errors: [
@@ -7386,7 +7386,7 @@ export const listImageScanFindings: API.OperationMethod<
     ListImageScanFindingsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImageScanFindingsRequest,
   output: ListImageScanFindingsResponse,
   errors: [
@@ -7437,7 +7437,7 @@ export const listInfrastructureConfigurations: API.OperationMethod<
     ListInfrastructureConfigurationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInfrastructureConfigurationsRequest,
   output: ListInfrastructureConfigurationsResponse,
   errors: [
@@ -7488,7 +7488,7 @@ export const listLifecycleExecutionResources: API.OperationMethod<
     ListLifecycleExecutionResourcesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLifecycleExecutionResourcesRequest,
   output: ListLifecycleExecutionResourcesResponse,
   errors: [
@@ -7539,7 +7539,7 @@ export const listLifecycleExecutions: API.OperationMethod<
     ListLifecycleExecutionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLifecycleExecutionsRequest,
   output: ListLifecycleExecutionsResponse,
   errors: [
@@ -7590,7 +7590,7 @@ export const listLifecyclePolicies: API.OperationMethod<
     ListLifecyclePoliciesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLifecyclePoliciesRequest,
   output: ListLifecyclePoliciesResponse,
   errors: [
@@ -7622,7 +7622,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -7664,7 +7664,7 @@ export const listWaitingWorkflowSteps: API.OperationMethod<
     ListWaitingWorkflowStepsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWaitingWorkflowStepsRequest,
   output: ListWaitingWorkflowStepsResponse,
   errors: [
@@ -7715,7 +7715,7 @@ export const listWorkflowBuildVersions: API.OperationMethod<
     ListWorkflowBuildVersionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkflowBuildVersionsRequest,
   output: ListWorkflowBuildVersionsResponse,
   errors: [
@@ -7767,7 +7767,7 @@ export const listWorkflowExecutions: API.OperationMethod<
     ListWorkflowExecutionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkflowExecutionsRequest,
   output: ListWorkflowExecutionsResponse,
   errors: [
@@ -7818,7 +7818,7 @@ export const listWorkflows: API.OperationMethod<
     ListWorkflowsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkflowsRequest,
   output: ListWorkflowsResponse,
   errors: [
@@ -7870,7 +7870,7 @@ export const listWorkflowStepExecutions: API.OperationMethod<
     ListWorkflowStepExecutionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkflowStepExecutionsRequest,
   output: ListWorkflowStepExecutionsResponse,
   errors: [
@@ -7909,7 +7909,7 @@ export const putComponentPolicy: API.OperationMethod<
   PutComponentPolicyResponse,
   PutComponentPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutComponentPolicyRequest,
   output: PutComponentPolicyResponse,
   errors: [
@@ -7948,7 +7948,7 @@ export const putContainerRecipePolicy: API.OperationMethod<
   PutContainerRecipePolicyResponse,
   PutContainerRecipePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutContainerRecipePolicyRequest,
   output: PutContainerRecipePolicyResponse,
   errors: [
@@ -7982,7 +7982,7 @@ export const putImagePolicy: API.OperationMethod<
   PutImagePolicyResponse,
   PutImagePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutImagePolicyRequest,
   output: PutImagePolicyResponse,
   errors: [
@@ -8016,7 +8016,7 @@ export const putImageRecipePolicy: API.OperationMethod<
   PutImageRecipePolicyResponse,
   PutImageRecipePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutImageRecipePolicyRequest,
   output: PutImageRecipePolicyResponse,
   errors: [
@@ -8048,7 +8048,7 @@ export const retryImage: API.OperationMethod<
   RetryImageResponse,
   RetryImageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RetryImageRequest,
   output: RetryImageResponse,
   errors: [
@@ -8083,7 +8083,7 @@ export const sendWorkflowStepAction: API.OperationMethod<
   SendWorkflowStepActionResponse,
   SendWorkflowStepActionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendWorkflowStepActionRequest,
   output: SendWorkflowStepActionResponse,
   errors: [
@@ -8118,7 +8118,7 @@ export const startImagePipelineExecution: API.OperationMethod<
   StartImagePipelineExecutionResponse,
   StartImagePipelineExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartImagePipelineExecutionRequest,
   output: StartImagePipelineExecutionResponse,
   errors: [
@@ -8153,7 +8153,7 @@ export const startResourceStateUpdate: API.OperationMethod<
   StartResourceStateUpdateResponse,
   StartResourceStateUpdateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartResourceStateUpdateRequest,
   output: StartResourceStateUpdateResponse,
   errors: [
@@ -8181,7 +8181,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -8203,7 +8203,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -8232,7 +8232,7 @@ export const updateDistributionConfiguration: API.OperationMethod<
   UpdateDistributionConfigurationResponse,
   UpdateDistributionConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDistributionConfigurationRequest,
   output: UpdateDistributionConfigurationResponse,
   errors: [
@@ -8271,7 +8271,7 @@ export const updateImagePipeline: API.OperationMethod<
   UpdateImagePipelineResponse,
   UpdateImagePipelineError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateImagePipelineRequest,
   output: UpdateImagePipelineResponse,
   errors: [
@@ -8304,7 +8304,7 @@ export const updateInfrastructureConfiguration: API.OperationMethod<
   UpdateInfrastructureConfigurationResponse,
   UpdateInfrastructureConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateInfrastructureConfigurationRequest,
   output: UpdateInfrastructureConfigurationResponse,
   errors: [
@@ -8337,7 +8337,7 @@ export const updateLifecyclePolicy: API.OperationMethod<
   UpdateLifecyclePolicyResponse,
   UpdateLifecyclePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateLifecyclePolicyRequest,
   output: UpdateLifecyclePolicyResponse,
   errors: [

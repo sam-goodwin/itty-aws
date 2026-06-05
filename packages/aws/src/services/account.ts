@@ -701,7 +701,7 @@ export const putAccountName: API.OperationMethod<
   PutAccountNameResponse,
   PutAccountNameError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutAccountNameRequest,
   output: PutAccountNameResponse,
   errors: [
@@ -725,7 +725,7 @@ export const getAccountInformation: API.OperationMethod<
   GetAccountInformationResponse,
   GetAccountInformationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountInformationRequest,
   output: GetAccountInformationResponse,
   errors: [
@@ -753,7 +753,7 @@ export const putAlternateContact: API.OperationMethod<
   PutAlternateContactResponse,
   PutAlternateContactError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutAlternateContactRequest,
   output: PutAlternateContactResponse,
   errors: [
@@ -782,7 +782,7 @@ export const getAlternateContact: API.OperationMethod<
   GetAlternateContactResponse,
   GetAlternateContactError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAlternateContactRequest,
   output: GetAlternateContactResponse,
   errors: [
@@ -812,7 +812,7 @@ export const deleteAlternateContact: API.OperationMethod<
   DeleteAlternateContactResponse,
   DeleteAlternateContactError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAlternateContactRequest,
   output: DeleteAlternateContactResponse,
   errors: [
@@ -839,7 +839,7 @@ export const getGovCloudAccountInformation: API.OperationMethod<
   GetGovCloudAccountInformationResponse,
   GetGovCloudAccountInformationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetGovCloudAccountInformationRequest,
   output: GetGovCloudAccountInformationResponse,
   errors: [
@@ -867,7 +867,7 @@ export const putContactInformation: API.OperationMethod<
   PutContactInformationResponse,
   PutContactInformationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutContactInformationRequest,
   output: PutContactInformationResponse,
   errors: [
@@ -894,7 +894,7 @@ export const getContactInformation: API.OperationMethod<
   GetContactInformationResponse,
   GetContactInformationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetContactInformationRequest,
   output: GetContactInformationResponse,
   errors: [
@@ -921,7 +921,7 @@ export const acceptPrimaryEmailUpdate: API.OperationMethod<
   AcceptPrimaryEmailUpdateResponse,
   AcceptPrimaryEmailUpdateError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AcceptPrimaryEmailUpdateRequest,
   output: AcceptPrimaryEmailUpdateResponse,
   errors: [
@@ -948,7 +948,7 @@ export const getPrimaryEmail: API.OperationMethod<
   GetPrimaryEmailResponse,
   GetPrimaryEmailError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPrimaryEmailRequest,
   output: GetPrimaryEmailResponse,
   errors: [
@@ -975,7 +975,7 @@ export const startPrimaryEmailUpdate: API.OperationMethod<
   StartPrimaryEmailUpdateResponse,
   StartPrimaryEmailUpdateError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartPrimaryEmailUpdateRequest,
   output: StartPrimaryEmailUpdateResponse,
   errors: [
@@ -1004,7 +1004,7 @@ export const disableRegion: API.OperationMethod<
   DisableRegionResponse,
   DisableRegionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableRegionRequest,
   output: DisableRegionResponse,
   errors: [
@@ -1030,7 +1030,7 @@ export const enableRegion: API.OperationMethod<
   EnableRegionResponse,
   EnableRegionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableRegionRequest,
   output: EnableRegionResponse,
   errors: [
@@ -1055,7 +1055,7 @@ export const getRegionOptStatus: API.OperationMethod<
   GetRegionOptStatusResponse,
   GetRegionOptStatusError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRegionOptStatusRequest,
   output: GetRegionOptStatusResponse,
   errors: [
@@ -1094,7 +1094,7 @@ export const listRegions: API.OperationMethod<
     ListRegionsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegionsRequest,
   output: ListRegionsResponse,
   errors: [

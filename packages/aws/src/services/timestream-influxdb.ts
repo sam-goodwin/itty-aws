@@ -1585,7 +1585,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException],
@@ -1602,7 +1602,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [ResourceNotFoundException, ServiceQuotaExceededException],
@@ -1616,7 +1616,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException],
@@ -1638,7 +1638,7 @@ export const createDbCluster: API.OperationMethod<
   CreateDbClusterOutput,
   CreateDbClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDbClusterInput,
   output: CreateDbClusterOutput,
   errors: [
@@ -1666,7 +1666,7 @@ export const getDbCluster: API.OperationMethod<
   GetDbClusterOutput,
   GetDbClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDbClusterInput,
   output: GetDbClusterOutput,
   errors: [
@@ -1693,7 +1693,7 @@ export const updateDbCluster: API.OperationMethod<
   UpdateDbClusterOutput,
   UpdateDbClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDbClusterInput,
   output: UpdateDbClusterOutput,
   errors: [
@@ -1721,7 +1721,7 @@ export const deleteDbCluster: API.OperationMethod<
   DeleteDbClusterOutput,
   DeleteDbClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDbClusterInput,
   output: DeleteDbClusterOutput,
   errors: [
@@ -1763,7 +1763,7 @@ export const listDbClusters: API.OperationMethod<
     ListDbClustersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDbClustersInput,
   output: ListDbClustersOutput,
   errors: [
@@ -1810,7 +1810,7 @@ export const listDbInstancesForCluster: API.OperationMethod<
     ListDbInstancesForClusterError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDbInstancesForClusterInput,
   output: ListDbInstancesForClusterOutput,
   errors: [
@@ -1843,7 +1843,7 @@ export const rebootDbCluster: API.OperationMethod<
   RebootDbClusterOutput,
   RebootDbClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RebootDbClusterInput,
   output: RebootDbClusterOutput,
   errors: [
@@ -1872,7 +1872,7 @@ export const createDbInstance: API.OperationMethod<
   CreateDbInstanceOutput,
   CreateDbInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDbInstanceInput,
   output: CreateDbInstanceOutput,
   errors: [
@@ -1900,7 +1900,7 @@ export const getDbInstance: API.OperationMethod<
   GetDbInstanceOutput,
   GetDbInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDbInstanceInput,
   output: GetDbInstanceOutput,
   errors: [
@@ -1927,7 +1927,7 @@ export const updateDbInstance: API.OperationMethod<
   UpdateDbInstanceOutput,
   UpdateDbInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDbInstanceInput,
   output: UpdateDbInstanceOutput,
   errors: [
@@ -1955,7 +1955,7 @@ export const deleteDbInstance: API.OperationMethod<
   DeleteDbInstanceOutput,
   DeleteDbInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDbInstanceInput,
   output: DeleteDbInstanceOutput,
   errors: [
@@ -1997,7 +1997,7 @@ export const listDbInstances: API.OperationMethod<
     ListDbInstancesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDbInstancesInput,
   output: ListDbInstancesOutput,
   errors: [
@@ -2030,7 +2030,7 @@ export const rebootDbInstance: API.OperationMethod<
   RebootDbInstanceOutput,
   RebootDbInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RebootDbInstanceInput,
   output: RebootDbInstanceOutput,
   errors: [
@@ -2059,7 +2059,7 @@ export const createDbParameterGroup: API.OperationMethod<
   CreateDbParameterGroupOutput,
   CreateDbParameterGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDbParameterGroupInput,
   output: CreateDbParameterGroupOutput,
   errors: [
@@ -2087,7 +2087,7 @@ export const getDbParameterGroup: API.OperationMethod<
   GetDbParameterGroupOutput,
   GetDbParameterGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDbParameterGroupInput,
   output: GetDbParameterGroupOutput,
   errors: [
@@ -2128,7 +2128,7 @@ export const listDbParameterGroups: API.OperationMethod<
     ListDbParameterGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDbParameterGroupsInput,
   output: ListDbParameterGroupsOutput,
   errors: [

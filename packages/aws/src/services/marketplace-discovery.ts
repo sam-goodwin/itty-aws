@@ -2132,7 +2132,7 @@ export const getListing: API.OperationMethod<
   GetListingOutput,
   GetListingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetListingInput,
   output: GetListingOutput,
   errors: [ResourceNotFoundException],
@@ -2146,7 +2146,7 @@ export const getOffer: API.OperationMethod<
   GetOfferOutput,
   GetOfferError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOfferInput,
   output: GetOfferOutput,
   errors: [ResourceNotFoundException],
@@ -2160,7 +2160,7 @@ export const getOfferSet: API.OperationMethod<
   GetOfferSetOutput,
   GetOfferSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOfferSetInput,
   output: GetOfferSetOutput,
   errors: [ResourceNotFoundException],
@@ -2189,7 +2189,7 @@ export const getOfferTerms: API.OperationMethod<
     GetOfferTermsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetOfferTermsInput,
   output: GetOfferTermsOutput,
   errors: [ResourceNotFoundException],
@@ -2208,7 +2208,7 @@ export const getProduct: API.OperationMethod<
   GetProductOutput,
   GetProductError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProductInput,
   output: GetProductOutput,
   errors: [ResourceNotFoundException],
@@ -2239,7 +2239,7 @@ export const listFulfillmentOptions: API.OperationMethod<
     ListFulfillmentOptionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFulfillmentOptionsInput,
   output: ListFulfillmentOptionsOutput,
   errors: [ResourceNotFoundException],
@@ -2276,7 +2276,7 @@ export const listPurchaseOptions: API.OperationMethod<
     ListPurchaseOptionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPurchaseOptionsInput,
   output: ListPurchaseOptionsOutput,
   errors: [],
@@ -2310,7 +2310,7 @@ export const searchFacets: API.OperationMethod<
     SearchFacetsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchFacetsInput,
   output: SearchFacetsOutput,
   errors: [],
@@ -2344,7 +2344,7 @@ export const searchListings: API.OperationMethod<
     SearchListingsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchListingsInput,
   output: SearchListingsOutput,
   errors: [],

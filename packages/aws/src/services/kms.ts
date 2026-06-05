@@ -2899,7 +2899,7 @@ export const cancelKeyDeletion: API.OperationMethod<
   CancelKeyDeletionResponse,
   CancelKeyDeletionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelKeyDeletionRequest,
   output: CancelKeyDeletionResponse,
   errors: [
@@ -3006,7 +3006,7 @@ export const connectCustomKeyStore: API.OperationMethod<
   ConnectCustomKeyStoreResponse,
   ConnectCustomKeyStoreError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ConnectCustomKeyStoreRequest,
   output: ConnectCustomKeyStoreResponse,
   errors: [
@@ -3078,7 +3078,7 @@ export const createAlias: API.OperationMethod<
   CreateAliasResponse,
   CreateAliasError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAliasRequest,
   output: CreateAliasResponse,
   errors: [
@@ -3190,7 +3190,7 @@ export const createCustomKeyStore: API.OperationMethod<
   CreateCustomKeyStoreResponse,
   CreateCustomKeyStoreError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCustomKeyStoreRequest,
   output: CreateCustomKeyStoreResponse,
   errors: [
@@ -3282,7 +3282,7 @@ export const createGrant: API.OperationMethod<
   CreateGrantResponse,
   CreateGrantError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateGrantRequest,
   output: CreateGrantResponse,
   errors: [
@@ -3484,7 +3484,7 @@ export const createKey: API.OperationMethod<
   CreateKeyResponse,
   CreateKeyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateKeyRequest,
   output: CreateKeyResponse,
   errors: [
@@ -3593,7 +3593,7 @@ export const decrypt: API.OperationMethod<
   DecryptResponse,
   DecryptError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DecryptRequest,
   output: DecryptResponse,
   errors: [
@@ -3657,7 +3657,7 @@ export const deleteAlias: API.OperationMethod<
   DeleteAliasResponse,
   DeleteAliasError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAliasRequest,
   output: DeleteAliasResponse,
   errors: [
@@ -3729,7 +3729,7 @@ export const deleteCustomKeyStore: API.OperationMethod<
   DeleteCustomKeyStoreResponse,
   DeleteCustomKeyStoreError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCustomKeyStoreRequest,
   output: DeleteCustomKeyStoreResponse,
   errors: [
@@ -3789,7 +3789,7 @@ export const deleteImportedKeyMaterial: API.OperationMethod<
   DeleteImportedKeyMaterialResponse,
   DeleteImportedKeyMaterialError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteImportedKeyMaterialRequest,
   output: DeleteImportedKeyMaterialResponse,
   errors: [
@@ -3893,7 +3893,7 @@ export const deriveSharedSecret: API.OperationMethod<
   DeriveSharedSecretResponse,
   DeriveSharedSecretError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeriveSharedSecretRequest,
   output: DeriveSharedSecretResponse,
   errors: [
@@ -3984,7 +3984,7 @@ export const describeCustomKeyStores: API.OperationMethod<
     DescribeCustomKeyStoresError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCustomKeyStoresRequest,
   output: DescribeCustomKeyStoresResponse,
   errors: [
@@ -4069,7 +4069,7 @@ export const describeKey: API.OperationMethod<
   DescribeKeyResponse,
   DescribeKeyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeKeyRequest,
   output: DescribeKeyResponse,
   errors: [
@@ -4110,7 +4110,7 @@ export const disableKey: API.OperationMethod<
   DisableKeyResponse,
   DisableKeyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableKeyRequest,
   output: DisableKeyResponse,
   errors: [
@@ -4170,7 +4170,7 @@ export const disableKeyRotation: API.OperationMethod<
   DisableKeyRotationResponse,
   DisableKeyRotationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableKeyRotationRequest,
   output: DisableKeyRotationResponse,
   errors: [
@@ -4235,7 +4235,7 @@ export const disconnectCustomKeyStore: API.OperationMethod<
   DisconnectCustomKeyStoreResponse,
   DisconnectCustomKeyStoreError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisconnectCustomKeyStoreRequest,
   output: DisconnectCustomKeyStoreResponse,
   errors: [
@@ -4273,7 +4273,7 @@ export const enableKey: API.OperationMethod<
   EnableKeyResponse,
   EnableKeyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableKeyRequest,
   output: EnableKeyResponse,
   errors: [
@@ -4354,7 +4354,7 @@ export const enableKeyRotation: API.OperationMethod<
   EnableKeyRotationResponse,
   EnableKeyRotationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableKeyRotationRequest,
   output: EnableKeyRotationResponse,
   errors: [
@@ -4454,7 +4454,7 @@ export const encrypt: API.OperationMethod<
   EncryptResponse,
   EncryptError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EncryptRequest,
   output: EncryptResponse,
   errors: [
@@ -4574,7 +4574,7 @@ export const generateDataKey: API.OperationMethod<
   GenerateDataKeyResponse,
   GenerateDataKeyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GenerateDataKeyRequest,
   output: GenerateDataKeyResponse,
   errors: [
@@ -4681,7 +4681,7 @@ export const generateDataKeyPair: API.OperationMethod<
   GenerateDataKeyPairResponse,
   GenerateDataKeyPairError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GenerateDataKeyPairRequest,
   output: GenerateDataKeyPairResponse,
   errors: [
@@ -4770,7 +4770,7 @@ export const generateDataKeyPairWithoutPlaintext: API.OperationMethod<
   GenerateDataKeyPairWithoutPlaintextResponse,
   GenerateDataKeyPairWithoutPlaintextError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GenerateDataKeyPairWithoutPlaintextRequest,
   output: GenerateDataKeyPairWithoutPlaintextResponse,
   errors: [
@@ -4871,7 +4871,7 @@ export const generateDataKeyWithoutPlaintext: API.OperationMethod<
   GenerateDataKeyWithoutPlaintextResponse,
   GenerateDataKeyWithoutPlaintextError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GenerateDataKeyWithoutPlaintextRequest,
   output: GenerateDataKeyWithoutPlaintextResponse,
   errors: [
@@ -4935,7 +4935,7 @@ export const generateMac: API.OperationMethod<
   GenerateMacResponse,
   GenerateMacError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GenerateMacRequest,
   output: GenerateMacResponse,
   errors: [
@@ -4989,7 +4989,7 @@ export const generateRandom: API.OperationMethod<
   GenerateRandomResponse,
   GenerateRandomError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GenerateRandomRequest,
   output: GenerateRandomResponse,
   errors: [
@@ -5024,7 +5024,7 @@ export const getKeyPolicy: API.OperationMethod<
   GetKeyPolicyResponse,
   GetKeyPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetKeyPolicyRequest,
   output: GetKeyPolicyResponse,
   errors: [
@@ -5103,7 +5103,7 @@ export const getKeyRotationStatus: API.OperationMethod<
   GetKeyRotationStatusResponse,
   GetKeyRotationStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetKeyRotationStatusRequest,
   output: GetKeyRotationStatusResponse,
   errors: [
@@ -5195,7 +5195,7 @@ export const getParametersForImport: API.OperationMethod<
   GetParametersForImportResponse,
   GetParametersForImportError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetParametersForImportRequest,
   output: GetParametersForImportResponse,
   errors: [
@@ -5274,7 +5274,7 @@ export const getPublicKey: API.OperationMethod<
   GetPublicKeyResponse,
   GetPublicKeyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPublicKeyRequest,
   output: GetPublicKeyResponse,
   errors: [
@@ -5423,7 +5423,7 @@ export const importKeyMaterial: API.OperationMethod<
   ImportKeyMaterialResponse,
   ImportKeyMaterialError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportKeyMaterialRequest,
   output: ImportKeyMaterialResponse,
   errors: [
@@ -5503,7 +5503,7 @@ export const listAliases: API.OperationMethod<
     ListAliasesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAliasesRequest,
   output: ListAliasesResponse,
   errors: [
@@ -5585,7 +5585,7 @@ export const listGrants: API.OperationMethod<
     ListGrantsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGrantsRequest,
   output: ListGrantsResponse,
   errors: [
@@ -5649,7 +5649,7 @@ export const listKeyPolicies: API.OperationMethod<
     ListKeyPoliciesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListKeyPoliciesRequest,
   output: ListKeyPoliciesResponse,
   errors: [
@@ -5726,7 +5726,7 @@ export const listKeyRotations: API.OperationMethod<
     ListKeyRotationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListKeyRotationsRequest,
   output: ListKeyRotationsResponse,
   errors: [
@@ -5789,7 +5789,7 @@ export const listKeys: API.OperationMethod<
     ListKeysError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListKeysRequest,
   output: ListKeysResponse,
   errors: [
@@ -5855,7 +5855,7 @@ export const listResourceTags: API.OperationMethod<
     ListResourceTagsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceTagsRequest,
   output: ListResourceTagsResponse,
   errors: [
@@ -5941,7 +5941,7 @@ export const listRetirableGrants: API.OperationMethod<
     ListRetirableGrantsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRetirableGrantsRequest,
   output: ListGrantsResponse,
   errors: [
@@ -5992,7 +5992,7 @@ export const putKeyPolicy: API.OperationMethod<
   PutKeyPolicyResponse,
   PutKeyPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutKeyPolicyRequest,
   output: PutKeyPolicyResponse,
   errors: [
@@ -6099,7 +6099,7 @@ export const reEncrypt: API.OperationMethod<
   ReEncryptResponse,
   ReEncryptError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReEncryptRequest,
   output: ReEncryptResponse,
   errors: [
@@ -6206,7 +6206,7 @@ export const replicateKey: API.OperationMethod<
   ReplicateKeyResponse,
   ReplicateKeyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReplicateKeyRequest,
   output: ReplicateKeyResponse,
   errors: [
@@ -6274,7 +6274,7 @@ export const retireGrant: API.OperationMethod<
   RetireGrantResponse,
   RetireGrantError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RetireGrantRequest,
   output: RetireGrantResponse,
   errors: [
@@ -6338,7 +6338,7 @@ export const revokeGrant: API.OperationMethod<
   RevokeGrantResponse,
   RevokeGrantError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RevokeGrantRequest,
   output: RevokeGrantResponse,
   errors: [
@@ -6424,7 +6424,7 @@ export const rotateKeyOnDemand: API.OperationMethod<
   RotateKeyOnDemandResponse,
   RotateKeyOnDemandError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RotateKeyOnDemandRequest,
   output: RotateKeyOnDemandResponse,
   errors: [
@@ -6507,7 +6507,7 @@ export const scheduleKeyDeletion: API.OperationMethod<
   ScheduleKeyDeletionResponse,
   ScheduleKeyDeletionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ScheduleKeyDeletionRequest,
   output: ScheduleKeyDeletionResponse,
   errors: [
@@ -6587,7 +6587,7 @@ export const sign: API.OperationMethod<
   SignResponse,
   SignError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SignRequest,
   output: SignResponse,
   errors: [
@@ -6655,7 +6655,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -6713,7 +6713,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -6787,7 +6787,7 @@ export const updateAlias: API.OperationMethod<
   UpdateAliasResponse,
   UpdateAliasError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAliasRequest,
   output: UpdateAliasResponse,
   errors: [
@@ -6907,7 +6907,7 @@ export const updateCustomKeyStore: API.OperationMethod<
   UpdateCustomKeyStoreResponse,
   UpdateCustomKeyStoreError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCustomKeyStoreRequest,
   output: UpdateCustomKeyStoreResponse,
   errors: [
@@ -6961,7 +6961,7 @@ export const updateKeyDescription: API.OperationMethod<
   UpdateKeyDescriptionResponse,
   UpdateKeyDescriptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateKeyDescriptionRequest,
   output: UpdateKeyDescriptionResponse,
   errors: [
@@ -7048,7 +7048,7 @@ export const updatePrimaryRegion: API.OperationMethod<
   UpdatePrimaryRegionResponse,
   UpdatePrimaryRegionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePrimaryRegionRequest,
   output: UpdatePrimaryRegionResponse,
   errors: [
@@ -7121,7 +7121,7 @@ export const verify: API.OperationMethod<
   VerifyResponse,
   VerifyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: VerifyRequest,
   output: VerifyResponse,
   errors: [
@@ -7181,7 +7181,7 @@ export const verifyMac: API.OperationMethod<
   VerifyMacResponse,
   VerifyMacError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: VerifyMacRequest,
   output: VerifyMacResponse,
   errors: [

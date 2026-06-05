@@ -4042,7 +4042,7 @@ export const acceptSharedDirectory: API.OperationMethod<
   AcceptSharedDirectoryResult,
   AcceptSharedDirectoryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AcceptSharedDirectoryRequest,
   output: AcceptSharedDirectoryResult,
   errors: [
@@ -4078,7 +4078,7 @@ export const addIpRoutes: API.OperationMethod<
   AddIpRoutesResult,
   AddIpRoutesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddIpRoutesRequest,
   output: AddIpRoutesResult,
   errors: [
@@ -4111,7 +4111,7 @@ export const addRegion: API.OperationMethod<
   AddRegionResult,
   AddRegionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddRegionRequest,
   output: AddRegionResult,
   errors: [
@@ -4144,7 +4144,7 @@ export const addTagsToResource: API.OperationMethod<
   AddTagsToResourceResult,
   AddTagsToResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddTagsToResourceRequest,
   output: AddTagsToResourceResult,
   errors: [
@@ -4172,7 +4172,7 @@ export const cancelSchemaExtension: API.OperationMethod<
   CancelSchemaExtensionResult,
   CancelSchemaExtensionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelSchemaExtensionRequest,
   output: CancelSchemaExtensionResult,
   errors: [ClientException, EntityDoesNotExistException, ServiceException],
@@ -4195,7 +4195,7 @@ export const connectDirectory: API.OperationMethod<
   ConnectDirectoryResult,
   ConnectDirectoryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ConnectDirectoryRequest,
   output: ConnectDirectoryResult,
   errors: [
@@ -4224,7 +4224,7 @@ export const createAlias: API.OperationMethod<
   CreateAliasResult,
   CreateAliasError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAliasRequest,
   output: CreateAliasResult,
   errors: [
@@ -4253,7 +4253,7 @@ export const createComputer: API.OperationMethod<
   CreateComputerResult,
   CreateComputerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateComputerRequest,
   output: CreateComputerResult,
   errors: [
@@ -4286,7 +4286,7 @@ export const createConditionalForwarder: API.OperationMethod<
   CreateConditionalForwarderResult,
   CreateConditionalForwarderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateConditionalForwarderRequest,
   output: CreateConditionalForwarderResult,
   errors: [
@@ -4317,7 +4317,7 @@ export const createDirectory: API.OperationMethod<
   CreateDirectoryResult,
   CreateDirectoryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDirectoryRequest,
   output: CreateDirectoryResult,
   errors: [
@@ -4351,7 +4351,7 @@ export const createHybridAD: API.OperationMethod<
   CreateHybridADResult,
   CreateHybridADError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateHybridADRequest,
   output: CreateHybridADResult,
   errors: [
@@ -4381,7 +4381,7 @@ export const createLogSubscription: API.OperationMethod<
   CreateLogSubscriptionResult,
   CreateLogSubscriptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLogSubscriptionRequest,
   output: CreateLogSubscriptionResult,
   errors: [
@@ -4412,7 +4412,7 @@ export const createMicrosoftAD: API.OperationMethod<
   CreateMicrosoftADResult,
   CreateMicrosoftADError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMicrosoftADRequest,
   output: CreateMicrosoftADResult,
   errors: [
@@ -4440,7 +4440,7 @@ export const createSnapshot: API.OperationMethod<
   CreateSnapshotResult,
   CreateSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSnapshotRequest,
   output: CreateSnapshotResult,
   errors: [
@@ -4474,7 +4474,7 @@ export const createTrust: API.OperationMethod<
   CreateTrustResult,
   CreateTrustError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTrustRequest,
   output: CreateTrustResult,
   errors: [
@@ -4506,7 +4506,7 @@ export const deleteADAssessment: API.OperationMethod<
   DeleteADAssessmentResult,
   DeleteADAssessmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteADAssessmentRequest,
   output: DeleteADAssessmentResult,
   errors: [
@@ -4534,7 +4534,7 @@ export const deleteConditionalForwarder: API.OperationMethod<
   DeleteConditionalForwarderResult,
   DeleteConditionalForwarderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConditionalForwarderRequest,
   output: DeleteConditionalForwarderResult,
   errors: [
@@ -4563,7 +4563,7 @@ export const deleteDirectory: API.OperationMethod<
   DeleteDirectoryResult,
   DeleteDirectoryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDirectoryRequest,
   output: DeleteDirectoryResult,
   errors: [ClientException, EntityDoesNotExistException, ServiceException],
@@ -4582,7 +4582,7 @@ export const deleteLogSubscription: API.OperationMethod<
   DeleteLogSubscriptionResult,
   DeleteLogSubscriptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLogSubscriptionRequest,
   output: DeleteLogSubscriptionResult,
   errors: [
@@ -4606,7 +4606,7 @@ export const deleteSnapshot: API.OperationMethod<
   DeleteSnapshotResult,
   DeleteSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSnapshotRequest,
   output: DeleteSnapshotResult,
   errors: [
@@ -4632,7 +4632,7 @@ export const deleteTrust: API.OperationMethod<
   DeleteTrustResult,
   DeleteTrustError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTrustRequest,
   output: DeleteTrustResult,
   errors: [
@@ -4662,7 +4662,7 @@ export const deregisterCertificate: API.OperationMethod<
   DeregisterCertificateResult,
   DeregisterCertificateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeregisterCertificateRequest,
   output: DeregisterCertificateResult,
   errors: [
@@ -4690,7 +4690,7 @@ export const deregisterEventTopic: API.OperationMethod<
   DeregisterEventTopicResult,
   DeregisterEventTopicError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeregisterEventTopicRequest,
   output: DeregisterEventTopicResult,
   errors: [
@@ -4717,7 +4717,7 @@ export const describeADAssessment: API.OperationMethod<
   DescribeADAssessmentResult,
   DescribeADAssessmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeADAssessmentRequest,
   output: DescribeADAssessmentResult,
   errors: [
@@ -4744,7 +4744,7 @@ export const describeCAEnrollmentPolicy: API.OperationMethod<
   DescribeCAEnrollmentPolicyResult,
   DescribeCAEnrollmentPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeCAEnrollmentPolicyRequest,
   output: DescribeCAEnrollmentPolicyResult,
   errors: [
@@ -4771,7 +4771,7 @@ export const describeCertificate: API.OperationMethod<
   DescribeCertificateResult,
   DescribeCertificateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeCertificateRequest,
   output: DescribeCertificateResult,
   errors: [
@@ -4817,7 +4817,7 @@ export const describeClientAuthenticationSettings: API.OperationMethod<
     DescribeClientAuthenticationSettingsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeClientAuthenticationSettingsRequest,
   output: DescribeClientAuthenticationSettingsResult,
   errors: [
@@ -4854,7 +4854,7 @@ export const describeConditionalForwarders: API.OperationMethod<
   DescribeConditionalForwardersResult,
   DescribeConditionalForwardersError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeConditionalForwardersRequest,
   output: DescribeConditionalForwardersResult,
   errors: [
@@ -4909,7 +4909,7 @@ export const describeDirectories: API.OperationMethod<
     DescribeDirectoriesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDirectoriesRequest,
   output: DescribeDirectoriesResult,
   errors: [
@@ -4942,7 +4942,7 @@ export const describeDirectoryDataAccess: API.OperationMethod<
   DescribeDirectoryDataAccessResult,
   DescribeDirectoryDataAccessError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDirectoryDataAccessRequest,
   output: DescribeDirectoryDataAccessResult,
   errors: [
@@ -4984,7 +4984,7 @@ export const describeDomainControllers: API.OperationMethod<
     DescribeDomainControllersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDomainControllersRequest,
   output: DescribeDomainControllersResult,
   errors: [
@@ -5019,7 +5019,7 @@ export const describeEventTopics: API.OperationMethod<
   DescribeEventTopicsResult,
   DescribeEventTopicsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeEventTopicsRequest,
   output: DescribeEventTopicsResult,
   errors: [
@@ -5047,7 +5047,7 @@ export const describeHybridADUpdate: API.OperationMethod<
   DescribeHybridADUpdateResult,
   DescribeHybridADUpdateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeHybridADUpdateRequest,
   output: DescribeHybridADUpdateResult,
   errors: [
@@ -5090,7 +5090,7 @@ export const describeLDAPSSettings: API.OperationMethod<
     DescribeLDAPSSettingsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeLDAPSSettingsRequest,
   output: DescribeLDAPSSettingsResult,
   errors: [
@@ -5141,7 +5141,7 @@ export const describeRegions: API.OperationMethod<
     DescribeRegionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRegionsRequest,
   output: DescribeRegionsResult,
   errors: [
@@ -5175,7 +5175,7 @@ export const describeSettings: API.OperationMethod<
   DescribeSettingsResult,
   DescribeSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeSettingsRequest,
   output: DescribeSettingsResult,
   errors: [
@@ -5218,7 +5218,7 @@ export const describeSharedDirectories: API.OperationMethod<
     DescribeSharedDirectoriesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSharedDirectoriesRequest,
   output: DescribeSharedDirectoriesResult,
   errors: [
@@ -5274,7 +5274,7 @@ export const describeSnapshots: API.OperationMethod<
     DescribeSnapshotsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSnapshotsRequest,
   output: DescribeSnapshotsResult,
   errors: [
@@ -5325,7 +5325,7 @@ export const describeTrusts: API.OperationMethod<
     DescribeTrustsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTrustsRequest,
   output: DescribeTrustsResult,
   errors: [
@@ -5374,7 +5374,7 @@ export const describeUpdateDirectory: API.OperationMethod<
     DescribeUpdateDirectoryError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeUpdateDirectoryRequest,
   output: DescribeUpdateDirectoryResult,
   errors: [
@@ -5414,7 +5414,7 @@ export const disableCAEnrollmentPolicy: API.OperationMethod<
   DisableCAEnrollmentPolicyResult,
   DisableCAEnrollmentPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableCAEnrollmentPolicyRequest,
   output: DisableCAEnrollmentPolicyResult,
   errors: [
@@ -5444,7 +5444,7 @@ export const disableClientAuthentication: API.OperationMethod<
   DisableClientAuthenticationResult,
   DisableClientAuthenticationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableClientAuthenticationRequest,
   output: DisableClientAuthenticationResult,
   errors: [
@@ -5474,7 +5474,7 @@ export const disableDirectoryDataAccess: API.OperationMethod<
   DisableDirectoryDataAccessResult,
   DisableDirectoryDataAccessError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableDirectoryDataAccessRequest,
   output: DisableDirectoryDataAccessResult,
   errors: [
@@ -5504,7 +5504,7 @@ export const disableLDAPS: API.OperationMethod<
   DisableLDAPSResult,
   DisableLDAPSError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableLDAPSRequest,
   output: DisableLDAPSResult,
   errors: [
@@ -5531,7 +5531,7 @@ export const disableRadius: API.OperationMethod<
   DisableRadiusResult,
   DisableRadiusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableRadiusRequest,
   output: DisableRadiusResult,
   errors: [ClientException, EntityDoesNotExistException, ServiceException],
@@ -5551,7 +5551,7 @@ export const disableSso: API.OperationMethod<
   DisableSsoResult,
   DisableSsoError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableSsoRequest,
   output: DisableSsoResult,
   errors: [
@@ -5587,7 +5587,7 @@ export const enableCAEnrollmentPolicy: API.OperationMethod<
   EnableCAEnrollmentPolicyResult,
   EnableCAEnrollmentPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableCAEnrollmentPolicyRequest,
   output: EnableCAEnrollmentPolicyResult,
   errors: [
@@ -5619,7 +5619,7 @@ export const enableClientAuthentication: API.OperationMethod<
   EnableClientAuthenticationResult,
   EnableClientAuthenticationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableClientAuthenticationRequest,
   output: EnableClientAuthenticationResult,
   errors: [
@@ -5650,7 +5650,7 @@ export const enableDirectoryDataAccess: API.OperationMethod<
   EnableDirectoryDataAccessResult,
   EnableDirectoryDataAccessError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableDirectoryDataAccessRequest,
   output: EnableDirectoryDataAccessResult,
   errors: [
@@ -5681,7 +5681,7 @@ export const enableLDAPS: API.OperationMethod<
   EnableLDAPSResult,
   EnableLDAPSError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableLDAPSRequest,
   output: EnableLDAPSResult,
   errors: [
@@ -5711,7 +5711,7 @@ export const enableRadius: API.OperationMethod<
   EnableRadiusResult,
   EnableRadiusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableRadiusRequest,
   output: EnableRadiusResult,
   errors: [
@@ -5739,7 +5739,7 @@ export const enableSso: API.OperationMethod<
   EnableSsoResult,
   EnableSsoError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableSsoRequest,
   output: EnableSsoResult,
   errors: [
@@ -5763,7 +5763,7 @@ export const getDirectoryLimits: API.OperationMethod<
   GetDirectoryLimitsResult,
   GetDirectoryLimitsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDirectoryLimitsRequest,
   output: GetDirectoryLimitsResult,
   errors: [ClientException, EntityDoesNotExistException, ServiceException],
@@ -5781,7 +5781,7 @@ export const getSnapshotLimits: API.OperationMethod<
   GetSnapshotLimitsResult,
   GetSnapshotLimitsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSnapshotLimitsRequest,
   output: GetSnapshotLimitsResult,
   errors: [ClientException, EntityDoesNotExistException, ServiceException],
@@ -5818,7 +5818,7 @@ export const listADAssessments: API.OperationMethod<
     ListADAssessmentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListADAssessmentsRequest,
   output: ListADAssessmentsResult,
   errors: [
@@ -5867,7 +5867,7 @@ export const listCertificates: API.OperationMethod<
     ListCertificatesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCertificatesRequest,
   output: ListCertificatesResult,
   errors: [
@@ -5915,7 +5915,7 @@ export const listIpRoutes: API.OperationMethod<
     ListIpRoutesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIpRoutesRequest,
   output: ListIpRoutesResult,
   errors: [
@@ -5961,7 +5961,7 @@ export const listLogSubscriptions: API.OperationMethod<
     ListLogSubscriptionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLogSubscriptionsRequest,
   output: ListLogSubscriptionsResult,
   errors: [
@@ -6006,7 +6006,7 @@ export const listSchemaExtensions: API.OperationMethod<
     ListSchemaExtensionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSchemaExtensionsRequest,
   output: ListSchemaExtensionsResult,
   errors: [
@@ -6052,7 +6052,7 @@ export const listTagsForResource: API.OperationMethod<
     ListTagsForResourceError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResult,
   errors: [
@@ -6088,7 +6088,7 @@ export const registerCertificate: API.OperationMethod<
   RegisterCertificateResult,
   RegisterCertificateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterCertificateRequest,
   output: RegisterCertificateResult,
   errors: [
@@ -6121,7 +6121,7 @@ export const registerEventTopic: API.OperationMethod<
   RegisterEventTopicResult,
   RegisterEventTopicError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterEventTopicRequest,
   output: RegisterEventTopicResult,
   errors: [
@@ -6146,7 +6146,7 @@ export const rejectSharedDirectory: API.OperationMethod<
   RejectSharedDirectoryResult,
   RejectSharedDirectoryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RejectSharedDirectoryRequest,
   output: RejectSharedDirectoryResult,
   errors: [
@@ -6172,7 +6172,7 @@ export const removeIpRoutes: API.OperationMethod<
   RemoveIpRoutesResult,
   RemoveIpRoutesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveIpRoutesRequest,
   output: RemoveIpRoutesResult,
   errors: [
@@ -6201,7 +6201,7 @@ export const removeRegion: API.OperationMethod<
   RemoveRegionResult,
   RemoveRegionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveRegionRequest,
   output: RemoveRegionResult,
   errors: [
@@ -6227,7 +6227,7 @@ export const removeTagsFromResource: API.OperationMethod<
   RemoveTagsFromResourceResult,
   RemoveTagsFromResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveTagsFromResourceRequest,
   output: RemoveTagsFromResourceResult,
   errors: [
@@ -6269,7 +6269,7 @@ export const resetUserPassword: API.OperationMethod<
   ResetUserPasswordResult,
   ResetUserPasswordError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetUserPasswordRequest,
   output: ResetUserPasswordResult,
   errors: [
@@ -6303,7 +6303,7 @@ export const restoreFromSnapshot: API.OperationMethod<
   RestoreFromSnapshotResult,
   RestoreFromSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RestoreFromSnapshotRequest,
   output: RestoreFromSnapshotResult,
   errors: [
@@ -6348,7 +6348,7 @@ export const shareDirectory: API.OperationMethod<
   ShareDirectoryResult,
   ShareDirectoryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ShareDirectoryRequest,
   output: ShareDirectoryResult,
   errors: [
@@ -6400,7 +6400,7 @@ export const startADAssessment: API.OperationMethod<
   StartADAssessmentResult,
   StartADAssessmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartADAssessmentRequest,
   output: StartADAssessmentResult,
   errors: [
@@ -6428,7 +6428,7 @@ export const startSchemaExtension: API.OperationMethod<
   StartSchemaExtensionResult,
   StartSchemaExtensionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartSchemaExtensionRequest,
   output: StartSchemaExtensionResult,
   errors: [
@@ -6455,7 +6455,7 @@ export const unshareDirectory: API.OperationMethod<
   UnshareDirectoryResult,
   UnshareDirectoryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UnshareDirectoryRequest,
   output: UnshareDirectoryResult,
   errors: [
@@ -6483,7 +6483,7 @@ export const updateConditionalForwarder: API.OperationMethod<
   UpdateConditionalForwarderResult,
   UpdateConditionalForwarderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateConditionalForwarderRequest,
   output: UpdateConditionalForwarderResult,
   errors: [
@@ -6514,7 +6514,7 @@ export const updateDirectorySetup: API.OperationMethod<
   UpdateDirectorySetupResult,
   UpdateDirectorySetupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDirectorySetupRequest,
   output: UpdateDirectorySetupResult,
   errors: [
@@ -6558,7 +6558,7 @@ export const updateHybridAD: API.OperationMethod<
   UpdateHybridADResult,
   UpdateHybridADError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateHybridADRequest,
   output: UpdateHybridADResult,
   errors: [
@@ -6591,7 +6591,7 @@ export const updateNumberOfDomainControllers: API.OperationMethod<
   UpdateNumberOfDomainControllersResult,
   UpdateNumberOfDomainControllersError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateNumberOfDomainControllersRequest,
   output: UpdateNumberOfDomainControllersResult,
   errors: [
@@ -6619,7 +6619,7 @@ export const updateRadius: API.OperationMethod<
   UpdateRadiusResult,
   UpdateRadiusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRadiusRequest,
   output: UpdateRadiusResult,
   errors: [
@@ -6647,7 +6647,7 @@ export const updateSettings: API.OperationMethod<
   UpdateSettingsResult,
   UpdateSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSettingsRequest,
   output: UpdateSettingsResult,
   errors: [
@@ -6676,7 +6676,7 @@ export const updateTrust: API.OperationMethod<
   UpdateTrustResult,
   UpdateTrustError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTrustRequest,
   output: UpdateTrustResult,
   errors: [
@@ -6705,7 +6705,7 @@ export const verifyTrust: API.OperationMethod<
   VerifyTrustResult,
   VerifyTrustError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: VerifyTrustRequest,
   output: VerifyTrustResult,
   errors: [

@@ -3012,7 +3012,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -3038,7 +3038,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -3064,7 +3064,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -3101,7 +3101,7 @@ export const createCase: API.OperationMethod<
   CreateCaseResponse,
   CreateCaseError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCaseRequest,
   output: CreateCaseResponse,
   errors: [
@@ -3143,7 +3143,7 @@ export const getCase: API.OperationMethod<
     GetCaseError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetCaseRequest,
   output: GetCaseResponse,
   errors: [
@@ -3174,7 +3174,7 @@ export const updateCase: API.OperationMethod<
   UpdateCaseResponse,
   UpdateCaseError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCaseRequest,
   output: UpdateCaseResponse,
   errors: [
@@ -3208,7 +3208,7 @@ export const deleteCase: API.OperationMethod<
   DeleteCaseResponse,
   DeleteCaseError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCaseRequest,
   output: DeleteCaseResponse,
   errors: [
@@ -3249,7 +3249,7 @@ export const getCaseAuditEvents: API.OperationMethod<
     GetCaseAuditEventsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetCaseAuditEventsRequest,
   output: GetCaseAuditEventsResponse,
   errors: [
@@ -3295,7 +3295,7 @@ export const listCasesForContact: API.OperationMethod<
     ListCasesForContactError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCasesForContactRequest,
   output: ListCasesForContactResponse,
   errors: [
@@ -3343,7 +3343,7 @@ export const searchCases: API.OperationMethod<
     SearchCasesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchCasesRequest,
   output: SearchCasesResponse,
   errors: [
@@ -3406,7 +3406,7 @@ export const createRelatedItem: API.OperationMethod<
   CreateRelatedItemResponse,
   CreateRelatedItemError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRelatedItemRequest,
   output: CreateRelatedItemResponse,
   errors: [
@@ -3447,7 +3447,7 @@ export const updateRelatedItem: API.OperationMethod<
   UpdateRelatedItemResponse,
   UpdateRelatedItemError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRelatedItemRequest,
   output: UpdateRelatedItemResponse,
   errors: [
@@ -3475,7 +3475,7 @@ export const deleteRelatedItem: API.OperationMethod<
   DeleteRelatedItemResponse,
   DeleteRelatedItemError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRelatedItemRequest,
   output: DeleteRelatedItemResponse,
   errors: [
@@ -3518,7 +3518,7 @@ export const searchRelatedItems: API.OperationMethod<
     SearchRelatedItemsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchRelatedItemsRequest,
   output: SearchRelatedItemsResponse,
   errors: [
@@ -3552,7 +3552,7 @@ export const createCaseRule: API.OperationMethod<
   CreateCaseRuleResponse,
   CreateCaseRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCaseRuleRequest,
   output: CreateCaseRuleResponse,
   errors: [
@@ -3582,7 +3582,7 @@ export const updateCaseRule: API.OperationMethod<
   UpdateCaseRuleResponse,
   UpdateCaseRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCaseRuleRequest,
   output: UpdateCaseRuleResponse,
   errors: [
@@ -3610,7 +3610,7 @@ export const deleteCaseRule: API.OperationMethod<
   DeleteCaseRuleResponse,
   DeleteCaseRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCaseRuleRequest,
   output: DeleteCaseRuleResponse,
   errors: [
@@ -3651,7 +3651,7 @@ export const listCaseRules: API.OperationMethod<
     ListCaseRulesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCaseRulesRequest,
   output: ListCaseRulesResponse,
   errors: [
@@ -3683,7 +3683,7 @@ export const batchGetCaseRule: API.OperationMethod<
   BatchGetCaseRuleResponse,
   BatchGetCaseRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetCaseRuleRequest,
   output: BatchGetCaseRuleResponse,
   errors: [
@@ -3712,7 +3712,7 @@ export const createDomain: API.OperationMethod<
   CreateDomainResponse,
   CreateDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDomainRequest,
   output: CreateDomainResponse,
   errors: [
@@ -3739,7 +3739,7 @@ export const getDomain: API.OperationMethod<
   GetDomainResponse,
   GetDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDomainRequest,
   output: GetDomainResponse,
   errors: [
@@ -3768,7 +3768,7 @@ export const deleteDomain: API.OperationMethod<
   DeleteDomainResponse,
   DeleteDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDomainRequest,
   output: DeleteDomainResponse,
   errors: [
@@ -3809,7 +3809,7 @@ export const listDomains: API.OperationMethod<
     ListDomainsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDomainsRequest,
   output: ListDomainsResponse,
   errors: [
@@ -3839,7 +3839,7 @@ export const getCaseEventConfiguration: API.OperationMethod<
   GetCaseEventConfigurationResponse,
   GetCaseEventConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCaseEventConfigurationRequest,
   output: GetCaseEventConfigurationResponse,
   errors: [
@@ -3866,7 +3866,7 @@ export const putCaseEventConfiguration: API.OperationMethod<
   PutCaseEventConfigurationResponse,
   PutCaseEventConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutCaseEventConfigurationRequest,
   output: PutCaseEventConfigurationResponse,
   errors: [
@@ -3926,7 +3926,7 @@ export const searchAllRelatedItems: API.OperationMethod<
     SearchAllRelatedItemsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchAllRelatedItemsRequest,
   output: SearchAllRelatedItemsResponse,
   errors: [
@@ -3960,7 +3960,7 @@ export const createField: API.OperationMethod<
   CreateFieldResponse,
   CreateFieldError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFieldRequest,
   output: CreateFieldResponse,
   errors: [
@@ -3989,7 +3989,7 @@ export const updateField: API.OperationMethod<
   UpdateFieldResponse,
   UpdateFieldError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateFieldRequest,
   output: UpdateFieldResponse,
   errors: [
@@ -4044,7 +4044,7 @@ export const deleteField: API.OperationMethod<
   DeleteFieldResponse,
   DeleteFieldError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFieldRequest,
   output: DeleteFieldResponse,
   errors: [
@@ -4087,7 +4087,7 @@ export const listFields: API.OperationMethod<
     ListFieldsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFieldsRequest,
   output: ListFieldsResponse,
   errors: [
@@ -4119,7 +4119,7 @@ export const batchPutFieldOptions: API.OperationMethod<
   BatchPutFieldOptionsResponse,
   BatchPutFieldOptionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchPutFieldOptionsRequest,
   output: BatchPutFieldOptionsResponse,
   errors: [
@@ -4161,7 +4161,7 @@ export const listFieldOptions: API.OperationMethod<
     ListFieldOptionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFieldOptionsRequest,
   output: ListFieldOptionsResponse,
   errors: [
@@ -4192,7 +4192,7 @@ export const batchGetField: API.OperationMethod<
   BatchGetFieldResponse,
   BatchGetFieldError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetFieldRequest,
   output: BatchGetFieldResponse,
   errors: [
@@ -4226,7 +4226,7 @@ export const createLayout: API.OperationMethod<
   CreateLayoutResponse,
   CreateLayoutError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLayoutRequest,
   output: CreateLayoutResponse,
   errors: [
@@ -4254,7 +4254,7 @@ export const getLayout: API.OperationMethod<
   GetLayoutResponse,
   GetLayoutError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLayoutRequest,
   output: GetLayoutResponse,
   errors: [
@@ -4288,7 +4288,7 @@ export const updateLayout: API.OperationMethod<
   UpdateLayoutResponse,
   UpdateLayoutError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateLayoutRequest,
   output: UpdateLayoutResponse,
   errors: [
@@ -4325,7 +4325,7 @@ export const deleteLayout: API.OperationMethod<
   DeleteLayoutResponse,
   DeleteLayoutError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLayoutRequest,
   output: DeleteLayoutResponse,
   errors: [
@@ -4367,7 +4367,7 @@ export const listLayouts: API.OperationMethod<
     ListLayoutsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLayoutsRequest,
   output: ListLayoutsResponse,
   errors: [
@@ -4410,7 +4410,7 @@ export const createTemplate: API.OperationMethod<
   CreateTemplateResponse,
   CreateTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTemplateRequest,
   output: CreateTemplateResponse,
   errors: [
@@ -4446,7 +4446,7 @@ export const getTemplate: API.OperationMethod<
   GetTemplateResponse,
   GetTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTemplateRequest,
   output: GetTemplateResponse,
   errors: [
@@ -4484,7 +4484,7 @@ export const updateTemplate: API.OperationMethod<
   UpdateTemplateResponse,
   UpdateTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTemplateRequest,
   output: UpdateTemplateResponse,
   errors: [
@@ -4523,7 +4523,7 @@ export const deleteTemplate: API.OperationMethod<
   DeleteTemplateResponse,
   DeleteTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTemplateRequest,
   output: DeleteTemplateResponse,
   errors: [
@@ -4575,7 +4575,7 @@ export const listTemplates: API.OperationMethod<
     ListTemplatesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTemplatesRequest,
   output: ListTemplatesResponse,
   errors: [

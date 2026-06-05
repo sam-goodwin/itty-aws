@@ -898,7 +898,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceOutput,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [
@@ -923,7 +923,7 @@ export const tagResource: API.OperationMethod<
   TagResourceOutput,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
   errors: [
@@ -949,7 +949,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceOutput,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
   errors: [
@@ -976,7 +976,7 @@ export const createSchedule: API.OperationMethod<
   CreateScheduleOutput,
   CreateScheduleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateScheduleInput,
   output: CreateScheduleOutput,
   errors: [
@@ -1002,7 +1002,7 @@ export const getSchedule: API.OperationMethod<
   GetScheduleOutput,
   GetScheduleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetScheduleInput,
   output: GetScheduleOutput,
   errors: [
@@ -1032,7 +1032,7 @@ export const updateSchedule: API.OperationMethod<
   UpdateScheduleOutput,
   UpdateScheduleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateScheduleInput,
   output: UpdateScheduleOutput,
   errors: [
@@ -1058,7 +1058,7 @@ export const deleteSchedule: API.OperationMethod<
   DeleteScheduleOutput,
   DeleteScheduleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteScheduleInput,
   output: DeleteScheduleOutput,
   errors: [
@@ -1098,7 +1098,7 @@ export const listSchedules: API.OperationMethod<
     ListSchedulesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSchedulesInput,
   output: ListSchedulesOutput,
   errors: [
@@ -1129,7 +1129,7 @@ export const createScheduleGroup: API.OperationMethod<
   CreateScheduleGroupOutput,
   CreateScheduleGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateScheduleGroupInput,
   output: CreateScheduleGroupOutput,
   errors: [
@@ -1154,7 +1154,7 @@ export const getScheduleGroup: API.OperationMethod<
   GetScheduleGroupOutput,
   GetScheduleGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetScheduleGroupInput,
   output: GetScheduleGroupOutput,
   errors: [
@@ -1184,7 +1184,7 @@ export const deleteScheduleGroup: API.OperationMethod<
   DeleteScheduleGroupOutput,
   DeleteScheduleGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteScheduleGroupInput,
   output: DeleteScheduleGroupOutput,
   errors: [
@@ -1223,7 +1223,7 @@ export const listScheduleGroups: API.OperationMethod<
     ListScheduleGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListScheduleGroupsInput,
   output: ListScheduleGroupsOutput,
   errors: [InternalServerException, ThrottlingException, ValidationException],

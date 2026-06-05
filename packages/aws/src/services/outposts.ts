@@ -2340,7 +2340,7 @@ export const cancelCapacityTask: API.OperationMethod<
   CancelCapacityTaskOutput,
   CancelCapacityTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelCapacityTaskInput,
   output: CancelCapacityTaskOutput,
   errors: [
@@ -2366,7 +2366,7 @@ export const cancelOrder: API.OperationMethod<
   CancelOrderOutput,
   CancelOrderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelOrderInput,
   output: CancelOrderOutput,
   errors: [
@@ -2393,7 +2393,7 @@ export const createOrder: API.OperationMethod<
   CreateOrderOutput,
   CreateOrderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrderInput,
   output: CreateOrderOutput,
   errors: [
@@ -2423,7 +2423,7 @@ export const createOutpost: API.OperationMethod<
   CreateOutpostOutput,
   CreateOutpostError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOutpostInput,
   output: CreateOutpostOutput,
   errors: [
@@ -2449,7 +2449,7 @@ export const createRenewal: API.OperationMethod<
   CreateRenewalOutput,
   CreateRenewalError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRenewalInput,
   output: CreateRenewalOutput,
   errors: [
@@ -2474,7 +2474,7 @@ export const createSite: API.OperationMethod<
   CreateSiteOutput,
   CreateSiteError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSiteInput,
   output: CreateSiteOutput,
   errors: [
@@ -2500,7 +2500,7 @@ export const deleteOutpost: API.OperationMethod<
   DeleteOutpostOutput,
   DeleteOutpostError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOutpostInput,
   output: DeleteOutpostOutput,
   errors: [
@@ -2526,7 +2526,7 @@ export const deleteSite: API.OperationMethod<
   DeleteSiteOutput,
   DeleteSiteError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSiteInput,
   output: DeleteSiteOutput,
   errors: [
@@ -2551,7 +2551,7 @@ export const getCapacityTask: API.OperationMethod<
   GetCapacityTaskOutput,
   GetCapacityTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCapacityTaskInput,
   output: GetCapacityTaskOutput,
   errors: [
@@ -2575,7 +2575,7 @@ export const getCatalogItem: API.OperationMethod<
   GetCatalogItemOutput,
   GetCatalogItemError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCatalogItemInput,
   output: GetCatalogItemOutput,
   errors: [
@@ -2606,7 +2606,7 @@ export const getConnection: API.OperationMethod<
   GetConnectionResponse,
   GetConnectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConnectionRequest,
   output: GetConnectionResponse,
   errors: [
@@ -2629,7 +2629,7 @@ export const getOrder: API.OperationMethod<
   GetOrderOutput,
   GetOrderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrderInput,
   output: GetOrderOutput,
   errors: [InternalServerException, NotFoundException, ValidationException],
@@ -2648,7 +2648,7 @@ export const getOutpost: API.OperationMethod<
   GetOutpostOutput,
   GetOutpostError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOutpostInput,
   output: GetOutpostOutput,
   errors: [
@@ -2686,7 +2686,7 @@ export const getOutpostBillingInformation: API.OperationMethod<
     GetOutpostBillingInformationError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetOutpostBillingInformationInput,
   output: GetOutpostBillingInformationOutput,
   errors: [AccessDeniedException, InternalServerException, NotFoundException],
@@ -2726,7 +2726,7 @@ export const getOutpostInstanceTypes: API.OperationMethod<
     GetOutpostInstanceTypesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetOutpostInstanceTypesInput,
   output: GetOutpostInstanceTypesOutput,
   errors: [
@@ -2773,7 +2773,7 @@ export const getOutpostSupportedInstanceTypes: API.OperationMethod<
     GetOutpostSupportedInstanceTypesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetOutpostSupportedInstanceTypesInput,
   output: GetOutpostSupportedInstanceTypesOutput,
   errors: [
@@ -2803,7 +2803,7 @@ export const getRenewalPricing: API.OperationMethod<
   GetRenewalPricingOutput,
   GetRenewalPricingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRenewalPricingInput,
   output: GetRenewalPricingOutput,
   errors: [
@@ -2827,7 +2827,7 @@ export const getSite: API.OperationMethod<
   GetSiteOutput,
   GetSiteError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSiteInput,
   output: GetSiteOutput,
   errors: [
@@ -2851,7 +2851,7 @@ export const getSiteAddress: API.OperationMethod<
   GetSiteAddressOutput,
   GetSiteAddressError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSiteAddressInput,
   output: GetSiteAddressOutput,
   errors: [
@@ -2891,7 +2891,7 @@ export const listAssetInstances: API.OperationMethod<
     ListAssetInstancesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssetInstancesInput,
   output: ListAssetInstancesOutput,
   errors: [
@@ -2940,7 +2940,7 @@ export const listAssets: API.OperationMethod<
     ListAssetsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssetsInput,
   output: ListAssetsOutput,
   errors: [
@@ -2987,7 +2987,7 @@ export const listBlockingInstancesForCapacityTask: API.OperationMethod<
     ListBlockingInstancesForCapacityTaskError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBlockingInstancesForCapacityTaskInput,
   output: ListBlockingInstancesForCapacityTaskOutput,
   errors: [
@@ -3036,7 +3036,7 @@ export const listCapacityTasks: API.OperationMethod<
     ListCapacityTasksError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCapacityTasksInput,
   output: ListCapacityTasksOutput,
   errors: [
@@ -3085,7 +3085,7 @@ export const listCatalogItems: API.OperationMethod<
     ListCatalogItemsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCatalogItemsInput,
   output: ListCatalogItemsOutput,
   errors: [
@@ -3130,7 +3130,7 @@ export const listOrders: API.OperationMethod<
     ListOrdersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrdersInput,
   output: ListOrdersOutput,
   errors: [
@@ -3178,7 +3178,7 @@ export const listOutposts: API.OperationMethod<
     ListOutpostsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOutpostsInput,
   output: ListOutpostsOutput,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
@@ -3222,7 +3222,7 @@ export const listSites: API.OperationMethod<
     ListSitesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSitesInput,
   output: ListSitesOutput,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
@@ -3246,7 +3246,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [InternalServerException, NotFoundException, ValidationException],
@@ -3267,7 +3267,7 @@ export const startCapacityTask: API.OperationMethod<
   StartCapacityTaskOutput,
   StartCapacityTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartCapacityTaskInput,
   output: StartCapacityTaskOutput,
   errors: [
@@ -3299,7 +3299,7 @@ export const startConnection: API.OperationMethod<
   StartConnectionResponse,
   StartConnectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartConnectionRequest,
   output: StartConnectionResponse,
   errors: [
@@ -3324,7 +3324,7 @@ export const startOutpostDecommission: API.OperationMethod<
   StartOutpostDecommissionOutput,
   StartOutpostDecommissionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartOutpostDecommissionInput,
   output: StartOutpostDecommissionOutput,
   errors: [
@@ -3348,7 +3348,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [InternalServerException, NotFoundException, ValidationException],
@@ -3366,7 +3366,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [InternalServerException, NotFoundException, ValidationException],
@@ -3386,7 +3386,7 @@ export const updateOutpost: API.OperationMethod<
   UpdateOutpostOutput,
   UpdateOutpostError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateOutpostInput,
   output: UpdateOutpostOutput,
   errors: [
@@ -3412,7 +3412,7 @@ export const updateSite: API.OperationMethod<
   UpdateSiteOutput,
   UpdateSiteError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSiteInput,
   output: UpdateSiteOutput,
   errors: [
@@ -3444,7 +3444,7 @@ export const updateSiteAddress: API.OperationMethod<
   UpdateSiteAddressOutput,
   UpdateSiteAddressError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSiteAddressInput,
   output: UpdateSiteAddressOutput,
   errors: [
@@ -3475,7 +3475,7 @@ export const updateSiteRackPhysicalProperties: API.OperationMethod<
   UpdateSiteRackPhysicalPropertiesOutput,
   UpdateSiteRackPhysicalPropertiesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSiteRackPhysicalPropertiesInput,
   output: UpdateSiteRackPhysicalPropertiesOutput,
   errors: [

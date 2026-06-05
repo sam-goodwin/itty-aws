@@ -1180,7 +1180,7 @@ export const associateRepository: API.OperationMethod<
   AssociateRepositoryResponse,
   AssociateRepositoryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateRepositoryRequest,
   output: AssociateRepositoryResponse,
   errors: [
@@ -1210,7 +1210,7 @@ export const createCodeReview: API.OperationMethod<
   CreateCodeReviewResponse,
   CreateCodeReviewError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCodeReviewRequest,
   output: CreateCodeReviewResponse,
   errors: [
@@ -1237,7 +1237,7 @@ export const describeCodeReview: API.OperationMethod<
   DescribeCodeReviewResponse,
   DescribeCodeReviewError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeCodeReviewRequest,
   output: DescribeCodeReviewResponse,
   errors: [
@@ -1263,7 +1263,7 @@ export const describeRecommendationFeedback: API.OperationMethod<
   DescribeRecommendationFeedbackResponse,
   DescribeRecommendationFeedbackError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeRecommendationFeedbackRequest,
   output: DescribeRecommendationFeedbackResponse,
   errors: [
@@ -1290,7 +1290,7 @@ export const describeRepositoryAssociation: API.OperationMethod<
   DescribeRepositoryAssociationResponse,
   DescribeRepositoryAssociationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeRepositoryAssociationRequest,
   output: DescribeRepositoryAssociationResponse,
   errors: [
@@ -1317,7 +1317,7 @@ export const disassociateRepository: API.OperationMethod<
   DisassociateRepositoryResponse,
   DisassociateRepositoryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateRepositoryRequest,
   output: DisassociateRepositoryResponse,
   errors: [
@@ -1358,7 +1358,7 @@ export const listCodeReviews: API.OperationMethod<
     ListCodeReviewsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCodeReviewsRequest,
   output: ListCodeReviewsResponse,
   errors: [
@@ -1404,7 +1404,7 @@ export const listRecommendationFeedback: API.OperationMethod<
     ListRecommendationFeedbackError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecommendationFeedbackRequest,
   output: ListRecommendationFeedbackResponse,
   errors: [
@@ -1450,7 +1450,7 @@ export const listRecommendations: API.OperationMethod<
     ListRecommendationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecommendationsRequest,
   output: ListRecommendationsResponse,
   errors: [
@@ -1495,7 +1495,7 @@ export const listRepositoryAssociations: API.OperationMethod<
     ListRepositoryAssociationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRepositoryAssociationsRequest,
   output: ListRepositoryAssociationsResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
@@ -1519,7 +1519,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -1544,7 +1544,7 @@ export const putRecommendationFeedback: API.OperationMethod<
   PutRecommendationFeedbackResponse,
   PutRecommendationFeedbackError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutRecommendationFeedbackRequest,
   output: PutRecommendationFeedbackResponse,
   errors: [
@@ -1568,7 +1568,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -1590,7 +1590,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [

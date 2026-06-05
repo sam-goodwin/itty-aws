@@ -1716,7 +1716,7 @@ export const associateToConfiguration: API.OperationMethod<
   AssociateToConfigurationResult,
   AssociateToConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateToConfigurationRequest,
   output: AssociateToConfigurationResult,
   errors: [
@@ -1740,7 +1740,7 @@ export const createChimeWebhookConfiguration: API.OperationMethod<
   CreateChimeWebhookConfigurationResult,
   CreateChimeWebhookConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateChimeWebhookConfigurationRequest,
   output: CreateChimeWebhookConfigurationResult,
   errors: [
@@ -1766,7 +1766,7 @@ export const createMicrosoftTeamsChannelConfiguration: API.OperationMethod<
   CreateTeamsChannelConfigurationResult,
   CreateMicrosoftTeamsChannelConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTeamsChannelConfigurationRequest,
   output: CreateTeamsChannelConfigurationResult,
   errors: [
@@ -1792,7 +1792,7 @@ export const createSlackChannelConfiguration: API.OperationMethod<
   CreateSlackChannelConfigurationResult,
   CreateSlackChannelConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSlackChannelConfigurationRequest,
   output: CreateSlackChannelConfigurationResult,
   errors: [
@@ -1817,7 +1817,7 @@ export const deleteChimeWebhookConfiguration: API.OperationMethod<
   DeleteChimeWebhookConfigurationResult,
   DeleteChimeWebhookConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteChimeWebhookConfigurationRequest,
   output: DeleteChimeWebhookConfigurationResult,
   errors: [
@@ -1841,7 +1841,7 @@ export const deleteMicrosoftTeamsChannelConfiguration: API.OperationMethod<
   DeleteTeamsChannelConfigurationResult,
   DeleteMicrosoftTeamsChannelConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTeamsChannelConfigurationRequest,
   output: DeleteTeamsChannelConfigurationResult,
   errors: [
@@ -1863,7 +1863,7 @@ export const deleteMicrosoftTeamsConfiguredTeam: API.OperationMethod<
   DeleteTeamsConfiguredTeamResult,
   DeleteMicrosoftTeamsConfiguredTeamError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTeamsConfiguredTeamRequest,
   output: DeleteTeamsConfiguredTeamResult,
   errors: [DeleteTeamsConfiguredTeamException, InvalidParameterException],
@@ -1881,7 +1881,7 @@ export const deleteMicrosoftTeamsUserIdentity: API.OperationMethod<
   DeleteMicrosoftTeamsUserIdentityResult,
   DeleteMicrosoftTeamsUserIdentityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMicrosoftTeamsUserIdentityRequest,
   output: DeleteMicrosoftTeamsUserIdentityResult,
   errors: [
@@ -1904,7 +1904,7 @@ export const deleteSlackChannelConfiguration: API.OperationMethod<
   DeleteSlackChannelConfigurationResult,
   DeleteSlackChannelConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSlackChannelConfigurationRequest,
   output: DeleteSlackChannelConfigurationResult,
   errors: [
@@ -1927,7 +1927,7 @@ export const deleteSlackUserIdentity: API.OperationMethod<
   DeleteSlackUserIdentityResult,
   DeleteSlackUserIdentityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSlackUserIdentityRequest,
   output: DeleteSlackUserIdentityResult,
   errors: [
@@ -1948,7 +1948,7 @@ export const deleteSlackWorkspaceAuthorization: API.OperationMethod<
   DeleteSlackWorkspaceAuthorizationResult,
   DeleteSlackWorkspaceAuthorizationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSlackWorkspaceAuthorizationRequest,
   output: DeleteSlackWorkspaceAuthorizationResult,
   errors: [DeleteSlackWorkspaceAuthorizationFault, InvalidParameterException],
@@ -1981,7 +1981,7 @@ export const describeChimeWebhookConfigurations: API.OperationMethod<
     DescribeChimeWebhookConfigurationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeChimeWebhookConfigurationsRequest,
   output: DescribeChimeWebhookConfigurationsResult,
   errors: [
@@ -2024,7 +2024,7 @@ export const describeSlackChannelConfigurations: API.OperationMethod<
     DescribeSlackChannelConfigurationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSlackChannelConfigurationsRequest,
   output: DescribeSlackChannelConfigurationsResult,
   errors: [
@@ -2067,7 +2067,7 @@ export const describeSlackUserIdentities: API.OperationMethod<
     DescribeSlackUserIdentitiesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSlackUserIdentitiesRequest,
   output: DescribeSlackUserIdentitiesResult,
   errors: [
@@ -2110,7 +2110,7 @@ export const describeSlackWorkspaces: API.OperationMethod<
     DescribeSlackWorkspacesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSlackWorkspacesRequest,
   output: DescribeSlackWorkspacesResult,
   errors: [
@@ -2138,7 +2138,7 @@ export const disassociateFromConfiguration: API.OperationMethod<
   DisassociateFromConfigurationResult,
   DisassociateFromConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateFromConfigurationRequest,
   output: DisassociateFromConfigurationResult,
   errors: [
@@ -2159,7 +2159,7 @@ export const getAccountPreferences: API.OperationMethod<
   GetAccountPreferencesResult,
   GetAccountPreferencesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountPreferencesRequest,
   output: GetAccountPreferencesResult,
   errors: [GetAccountPreferencesException, InvalidRequestException],
@@ -2177,7 +2177,7 @@ export const getMicrosoftTeamsChannelConfiguration: API.OperationMethod<
   GetTeamsChannelConfigurationResult,
   GetMicrosoftTeamsChannelConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTeamsChannelConfigurationRequest,
   output: GetTeamsChannelConfigurationResult,
   errors: [
@@ -2210,7 +2210,7 @@ export const listAssociations: API.OperationMethod<
     ListAssociationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssociationsRequest,
   output: ListAssociationsResult,
   errors: [],
@@ -2249,7 +2249,7 @@ export const listMicrosoftTeamsChannelConfigurations: API.OperationMethod<
     ListMicrosoftTeamsChannelConfigurationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTeamsChannelConfigurationsRequest,
   output: ListTeamsChannelConfigurationsResult,
   errors: [
@@ -2292,7 +2292,7 @@ export const listMicrosoftTeamsConfiguredTeams: API.OperationMethod<
     ListMicrosoftTeamsConfiguredTeamsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMicrosoftTeamsConfiguredTeamsRequest,
   output: ListMicrosoftTeamsConfiguredTeamsResult,
   errors: [
@@ -2335,7 +2335,7 @@ export const listMicrosoftTeamsUserIdentities: API.OperationMethod<
     ListMicrosoftTeamsUserIdentitiesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMicrosoftTeamsUserIdentitiesRequest,
   output: ListMicrosoftTeamsUserIdentitiesResult,
   errors: [
@@ -2363,7 +2363,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -2386,7 +2386,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -2409,7 +2409,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -2431,7 +2431,7 @@ export const updateAccountPreferences: API.OperationMethod<
   UpdateAccountPreferencesResult,
   UpdateAccountPreferencesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccountPreferencesRequest,
   output: UpdateAccountPreferencesResult,
   errors: [
@@ -2454,7 +2454,7 @@ export const updateChimeWebhookConfiguration: API.OperationMethod<
   UpdateChimeWebhookConfigurationResult,
   UpdateChimeWebhookConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateChimeWebhookConfigurationRequest,
   output: UpdateChimeWebhookConfigurationResult,
   errors: [
@@ -2478,7 +2478,7 @@ export const updateMicrosoftTeamsChannelConfiguration: API.OperationMethod<
   UpdateTeamsChannelConfigurationResult,
   UpdateMicrosoftTeamsChannelConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTeamsChannelConfigurationRequest,
   output: UpdateTeamsChannelConfigurationResult,
   errors: [
@@ -2502,7 +2502,7 @@ export const updateSlackChannelConfiguration: API.OperationMethod<
   UpdateSlackChannelConfigurationResult,
   UpdateSlackChannelConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSlackChannelConfigurationRequest,
   output: UpdateSlackChannelConfigurationResult,
   errors: [
@@ -2527,7 +2527,7 @@ export const createCustomAction: API.OperationMethod<
   CreateCustomActionResult,
   CreateCustomActionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCustomActionRequest,
   output: CreateCustomActionResult,
   errors: [
@@ -2552,7 +2552,7 @@ export const getCustomAction: API.OperationMethod<
   GetCustomActionResult,
   GetCustomActionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCustomActionRequest,
   output: GetCustomActionResult,
   errors: [
@@ -2576,7 +2576,7 @@ export const updateCustomAction: API.OperationMethod<
   UpdateCustomActionResult,
   UpdateCustomActionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCustomActionRequest,
   output: UpdateCustomActionResult,
   errors: [
@@ -2600,7 +2600,7 @@ export const deleteCustomAction: API.OperationMethod<
   DeleteCustomActionResult,
   DeleteCustomActionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCustomActionRequest,
   output: DeleteCustomActionResult,
   errors: [
@@ -2638,7 +2638,7 @@ export const listCustomActions: API.OperationMethod<
     ListCustomActionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomActionsRequest,
   output: ListCustomActionsResult,
   errors: [

@@ -1331,7 +1331,7 @@ export const activateSubscription: API.OperationMethod<
   ActivateSubscriptionOutput,
   ActivateSubscriptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ActivateSubscriptionInput,
   output: ActivateSubscriptionOutput,
   errors: [
@@ -1350,7 +1350,7 @@ export const createDomain: API.OperationMethod<
   CreateDomainOutput,
   CreateDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDomainInput,
   output: CreateDomainOutput,
   errors: [ServiceQuotaExceededException],
@@ -1370,7 +1370,7 @@ export const createSubscription: API.OperationMethod<
   CreateSubscriptionOutput,
   CreateSubscriptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSubscriptionInput,
   output: CreateSubscriptionOutput,
   errors: [
@@ -1395,7 +1395,7 @@ export const deactivateSubscription: API.OperationMethod<
   DeactivateSubscriptionOutput,
   DeactivateSubscriptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeactivateSubscriptionInput,
   output: DeactivateSubscriptionOutput,
   errors: [
@@ -1414,7 +1414,7 @@ export const deleteDomain: API.OperationMethod<
   DeleteDomainOutput,
   DeleteDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDomainInput,
   output: DeleteDomainOutput,
   errors: [ResourceNotFoundException],
@@ -1428,7 +1428,7 @@ export const getDomain: API.OperationMethod<
   GetDomainOutput,
   GetDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDomainInput,
   output: GetDomainOutput,
   errors: [ResourceNotFoundException],
@@ -1448,7 +1448,7 @@ export const getMedicalScribeListeningSession: API.OperationMethod<
   GetMedicalScribeListeningSessionOutput,
   GetMedicalScribeListeningSessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMedicalScribeListeningSessionInput,
   output: GetMedicalScribeListeningSessionOutput,
   errors: [
@@ -1474,7 +1474,7 @@ export const getPatientInsightsJob: API.OperationMethod<
   GetPatientInsightsJobResponse,
   GetPatientInsightsJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPatientInsightsJobRequest,
   output: GetPatientInsightsJobResponse,
   errors: [
@@ -1499,7 +1499,7 @@ export const getSubscription: API.OperationMethod<
   GetSubscriptionOutput,
   GetSubscriptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSubscriptionInput,
   output: GetSubscriptionOutput,
   errors: [
@@ -1533,7 +1533,7 @@ export const listDomains: API.OperationMethod<
     ListDomainsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDomainsInput,
   output: ListDomainsOutput,
   errors: [],
@@ -1573,7 +1573,7 @@ export const listSubscriptions: API.OperationMethod<
     ListSubscriptionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSubscriptionsInput,
   output: ListSubscriptionsOutput,
   errors: [
@@ -1598,7 +1598,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceOutput,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [],
@@ -1619,7 +1619,7 @@ export const startMedicalScribeListeningSession: API.OperationMethod<
   StartMedicalScribeListeningSessionOutput,
   StartMedicalScribeListeningSessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartMedicalScribeListeningSessionInput,
   output: StartMedicalScribeListeningSessionOutput,
   errors: [
@@ -1647,7 +1647,7 @@ export const startPatientInsightsJob: API.OperationMethod<
   StartPatientInsightsJobResponse,
   StartPatientInsightsJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartPatientInsightsJobRequest,
   output: StartPatientInsightsJobResponse,
   errors: [
@@ -1668,7 +1668,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceResponse,
   errors: [],
@@ -1682,7 +1682,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceResponse,
   errors: [],

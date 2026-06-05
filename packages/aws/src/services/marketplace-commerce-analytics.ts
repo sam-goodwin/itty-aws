@@ -222,7 +222,7 @@ export const generateDataSet: API.OperationMethod<
   GenerateDataSetResult,
   GenerateDataSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GenerateDataSetRequest,
   output: GenerateDataSetResult,
   errors: [MarketplaceCommerceAnalyticsException],
@@ -245,7 +245,7 @@ export const startSupportDataExport: API.OperationMethod<
   StartSupportDataExportResult,
   StartSupportDataExportError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartSupportDataExportRequest,
   output: StartSupportDataExportResult,
   errors: [MarketplaceCommerceAnalyticsException],

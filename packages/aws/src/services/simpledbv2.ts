@@ -314,7 +314,7 @@ export const getExport: API.OperationMethod<
   GetExportResponse,
   GetExportError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetExportRequest,
   output: GetExportResponse,
   errors: [InvalidParameterValueException, NoSuchExportException],
@@ -347,7 +347,7 @@ export const listExports: API.OperationMethod<
     ListExportsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExportsRequest,
   output: ListExportsResponse,
   errors: [
@@ -377,7 +377,7 @@ export const startDomainExport: API.OperationMethod<
   StartDomainExportResponse,
   StartDomainExportError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartDomainExportRequest,
   output: StartDomainExportResponse,
   errors: [

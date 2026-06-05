@@ -193,7 +193,7 @@ export const scanSbom: API.OperationMethod<
   ScanSbomResponse,
   ScanSbomError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ScanSbomRequest,
   output: ScanSbomResponse,
   errors: [

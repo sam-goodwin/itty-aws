@@ -222,7 +222,7 @@ export const getAccountCustomizations: API.OperationMethod<
   GetAccountCustomizationsOutput,
   GetAccountCustomizationsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountCustomizationsInput,
   output: GetAccountCustomizationsOutput,
   errors: [
@@ -263,7 +263,7 @@ export const listServices: API.OperationMethod<
     ListServicesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicesInput,
   output: ListServicesOutput,
   errors: [
@@ -294,7 +294,7 @@ export const updateAccountCustomizations: API.OperationMethod<
   UpdateAccountCustomizationsOutput,
   UpdateAccountCustomizationsError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccountCustomizationsInput,
   output: UpdateAccountCustomizationsOutput,
   errors: [
